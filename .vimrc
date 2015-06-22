@@ -64,10 +64,10 @@ Plugin 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     "autocmd VimENter * NERDTree
     "autocmd VimENter * wincmd p
 Plugin 'bling/vim-airline'
-    let g:airline_powerline_fonts = 0
+
     let g:airline_theme='powerlineish'
+
     let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#left_sep = ' '
     let g:airline#extensions#tabline#left_alt_sep = '|'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/limelight.vim'
@@ -157,3 +157,19 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+
+
+"""""""""""""""""
+"
+" Custom macro's
+"
+"""""""""""""""""
+
+map <Leader>tn :tabnew<CR>
+map <Leader>to :tabonly<CR>
+map <Leader>tc :tabclose<CR>
+map <Leader>tn :tabnew<CR>
+map <Leader>tm :tabmove<CR>
+
+
