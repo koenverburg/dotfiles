@@ -11,21 +11,17 @@ Plugin 'gmarik/Vundle.vim'
 "Code environment
 Plugin 'tpope/vim-rails'
 Plugin 'moll/vim-node'
-Plugin 'mattn/emmet-vim' " ctrl y ,
+Plugin 'mattn/emmet-vim' " ctrl y RELEASE ,
     let g:user_emmet_install_global = 0
-    let g:user_emmet_mode='a'
-    "autocmd FileType html,cssEmmetInstall
-"Plugin 'emmetio/emmet'
+    autocmd FileType html,css,scss,stylus,jade EmmetInstall
 
 """""""""""""""""
 "
 " hightlight
 "
 """""""""""""""""
-Plugin 'sickill/vim-monokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
-
 Plugin 'ap/vim-css-color'
 
 """""""""""""""""
@@ -52,8 +48,8 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-commentary'
-    autocmd FileType apache set commentstring=#\ %s
     "select with v and comment with gc
 Plugin 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     nnoremap <silent> <F4> :NERDTreeToggle<CR>
@@ -66,6 +62,7 @@ Plugin 'bling/vim-airline'
     "let g:airline#extensions#tabline#left_alt_sep = '|'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'townk/vim-autoclose'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'wesQ3/vim-windowswap'
@@ -74,7 +71,9 @@ Plugin 'wesQ3/vim-windowswap'
     nnoremap <silent> <leader>pw :call WindowSwap#DoWindowSwap()<CR>
     nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
 Plugin 'zhaocai/GoldenView.Vim'
-Plugin 'konfekt/fastfold'
+Plugin 'Yggdroot/indentLine'
+    let g:indentLine_color_term = 239
+    let g:indentLine_color_gui = '#A4E57E'
 
 """""""""""""""""
 "
@@ -110,9 +109,6 @@ Plugin 'honza/vim-snippets'
 """""""""""""""""
 Plugin 'myhere/vim-nodejs-complete'
 Plugin 'shawncplus/phpcomplete.vim'
-"Plugin 'm2mdas/phpcomplete-extended'
-    "autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
-    "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 
 
@@ -196,6 +192,7 @@ function! AirlineInit()
     let g:airline_right_sep = ''
     let g:airline_left_alt_sep= ''
     let g:airline_left_sep = ''
+
     let g:airline_section_a = airline#section#create(['mode',' ','branch'])
     "let g:airline_section_b = airline#section#create_left(['ffenc','hunks ','%f'])
     let g:airline_section_c = airline#section#create(['filetype'])
@@ -208,11 +205,13 @@ autocmd VimEnter * call AirlineInit()
 
 "Au BufWritePost .vimrc so ~/.vimrc
 "Enable omni completion.
+set omnifunc=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType apache set commentstring=#\ %s
 
 
 
@@ -221,10 +220,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Custom macro's
 "
 """""""""""""""""
+
 "nnoremap <silent> <F11> :simalt ~x<CR>
-
-map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
-
+"autocmd VimEnter * vsp
 
 
 """""""""""""""""
