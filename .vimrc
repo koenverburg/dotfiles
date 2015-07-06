@@ -69,7 +69,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-colorscheme base16-paraiso
+colorscheme base16-default
 set background=dark
 set number
 " }}}
@@ -305,7 +305,7 @@ if has("gui_running")
     set guioptions= " disable all UI options
     set guicursor+=a:blinkon0 " disable blinking cursor
     set ballooneval
-    set lines=35 columns=100
+    set lines=300 columns=100
     autocmd GUIEnter * set visualbell t_vb=
     if has("gui_macvim")
         set guifont=Consolas:h15
