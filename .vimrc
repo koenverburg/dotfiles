@@ -50,8 +50,6 @@ call vundle#begin()
     Plugin 'tpope/vim-surround'
     Plugin 'townk/vim-autoclose'
     Plugin 'kien/ctrlp.vim'
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'zhaocai/GoldenView.Vim'
     Plugin 'Yggdroot/indentLine'
 "snippets
     Plugin 'MarcWeber/vim-addon-mw-utils'
