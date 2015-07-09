@@ -6,6 +6,7 @@
 " a few minutes to kill.
 
 " getting started ---------------------------------------------------- {{{
+
 " clone vundle first then run vim or gvim and use the command PluginInstall
 " to install all the plugins, and restart after that is done.
 "git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -51,8 +52,9 @@ call vundle#begin()
     Plugin 'townk/vim-autoclose'
     Plugin 'kien/ctrlp.vim'
     Plugin 'airblade/vim-gitgutter'
-    Plugin 'zhaocai/GoldenView.Vim'
     Plugin 'Yggdroot/indentLine'
+    Plugin 'xolox/vim-session'
+    Plugin 'xolox/vim-misc'
 "snippets
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'sirver/ultisnips'
@@ -69,7 +71,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-colorscheme base16-default
+colorscheme base16-monokai
 set background=dark
 set number
 " }}}
@@ -166,11 +168,22 @@ let g:airline#extensions#tabline#enabled = 1
 let g:user_emmet_install_global = 0
 
 let g:neocomplcache_enable_at_startup=1
+
+" vim sessions
+let g:session_directory = "~/.vim/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
+nnoremap <leader>so :OpenSession
+nnoremap <leader>ss :SaveSession
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
+
 " }}}
 " custom keys -------------------------------------------------------- {{{
 
 " fullscreen mode
-nnoremap ,f :simalt ~x<cr>
+nnoremap <leader>f :simalt ~x<cr>
 
 " open a new tab
 nnoremap <c-t> :tabnew<cr>
@@ -204,22 +217,21 @@ nnoremap N Nzzzv
 noremap H ^
 noremap L g_
 nnoremap <Tab> %
+
 " Easy buffer navigation
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+" faster saving
+nnoremap w :w<cr>
+
 " Save when losing focus
 au FocusLost * :wa
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
-
-
-
-
-
 
 
 " }}}
@@ -238,10 +250,11 @@ nnoremap <leader>S ^vg_y:execute @@<cr>
 " Select (charwise) the content of the current line, excluding indentation
 nnoremap VV ^vg_
 
-
 " insert mode completion
 inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
+
+nnoremap <leader>V :vsp $MYVIMRC<cr>
 
 " }}}
 " filetype ----------------------------------------------------------- {{{
@@ -273,23 +286,23 @@ endfunction
 autocmd VimEnter * call AirlineInit()
 " }}}
 " au group ----------------------------------------------------------- {{{
-" augroup relative_line_numbers
+augroup relative_line_numbers
 
-"     autocmd!
+    autocmd!
 
-"     " Automatically switch to absolute line numbers when vim loses focus
-"     autocmd FocusLost * :set number
+    " Automatically switch to absolute line numbers when vim loses focus
+    autocmd FocusLost * :set number
 
-"     " Automatically switch to relative line numbers when vim gains focus
-"     autocmd FocusGained * :set relativenumber
+    " Automatically switch to relative line numbers when vim gains focus
+    autocmd FocusGained * :set relativenumber
 
-"     " Automatically switch to absolute line numbers when vim is in insert mode
-"     autocmd InsertEnter * :set number
+    " Automatically switch to absolute line numbers when vim is in insert mode
+    autocmd InsertEnter * :set number
 
-"     " Automatically switch to relative line numbers when vim is in normal mode
-"     autocmd InsertLeave * :set relativenumber
+    " Automatically switch to relative line numbers when vim is in normal mode
+    autocmd InsertLeave * :set relativenumber
 
-" augroup END
+augroup END
 " Make sure Vim returns to the same line when you reopen a file.
 " https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc#cl-175
 augroup line_return
@@ -305,7 +318,7 @@ if has("gui_running")
     set guioptions= " disable all UI options
     set guicursor+=a:blinkon0 " disable blinking cursor
     set ballooneval
-    set lines=300 columns=100
+    set lines=100 columns=100
     autocmd GUIEnter * set visualbell t_vb=
     if has("gui_macvim")
         set guifont=Consolas:h15
