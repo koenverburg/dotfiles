@@ -88,6 +88,9 @@ set hidden
 let mapleader = ","
 let maplocalleader = "\\"
 
+"let me paste from system clipboard
+set clipboard+=unnamed
+
 " make backspace work in insert mode {{{
 set backspace=2
 set backspace=indent,eol,start
@@ -123,7 +126,13 @@ set foldmethod=marker
 " Space to toggle folds.
 nnoremap <Space> za
 vnoremap <Space> za
-autocmd FileType vim,c++,js,scss setlocal foldmethod=marker
+autocmd FileType vim,c++,js,scss,html,jade,php setlocal foldmethod=marker
+
+nnoremap z0 zCz
+
+
+nnoremap <leader>z zMzvvz
+
 
 
 function! MyFoldText() " {{{
@@ -233,6 +242,10 @@ au FocusLost * :wa
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
+" window resizing
+nnoremap <c-left> 5<c-w>>
+nnoremap <c-right> 5<c-w><
+
 
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
@@ -254,6 +267,7 @@ nnoremap VV ^vg_
 inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
 
+" quick edit vimrc
 nnoremap <leader>V :vsp $MYVIMRC<cr>
 
 " }}}
