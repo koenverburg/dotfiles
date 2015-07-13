@@ -299,24 +299,25 @@ endfunction
 autocmd VimEnter * call AirlineInit()
 " }}}
 " au group ----------------------------------------------------------- {{{
-augroup relative_line_numbers
+" augroup relative_line_numbers
 
-    autocmd!
+"     autocmd!
 
-    " Automatically switch to absolute line numbers when vim loses focus
-    autocmd FocusLost * :set number
+"     " Automatically switch to absolute line numbers when vim loses focus
+"     autocmd FocusLost * :set number
 
-    " Automatically switch to relative line numbers when vim gains focus
-    autocmd FocusGained * :set relativenumber
+"     " Automatically switch to relative line numbers when vim gains focus
+"     autocmd FocusGained * :set relativenumber
 
-    " Automatically switch to absolute line numbers when vim is in insert mode
-    autocmd InsertEnter * :set number
+"     " Automatically switch to absolute line numbers when vim is in insert mode
+"     autocmd InsertEnter * :set number
 
-    " Automatically switch to relative line numbers when vim is in normal mode
-    autocmd InsertLeave * :set relativenumber
+"     " Automatically switch to relative line numbers when vim is in normal mode
+"     autocmd InsertLeave * :set relativenumber
 
-augroup END
-"Make sure Vim returns to the same line when you reopen a file.
+" augroup END
+"
+" Make sure Vim returns to the same line when you reopen a file.
 " https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc#cl-175
 augroup line_return
     au!
