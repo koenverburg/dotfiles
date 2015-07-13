@@ -71,9 +71,8 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-colorscheme base16-monokai
+colorscheme base16-paraiso
 set background=dark
-set number
 " }}}
 " Basic options ------------------------------------------------------ {{{
 set ignorecase
@@ -268,7 +267,7 @@ inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
 
 " quick edit vimrc
-nnoremap <leader>V :vsp $MYVIMRC<cr>
+nnoremap <leader>ev :vsp $MYVIMRC<cr>
 
 " }}}
 " filetype ----------------------------------------------------------- {{{
@@ -317,7 +316,7 @@ augroup relative_line_numbers
     autocmd InsertLeave * :set relativenumber
 
 augroup END
-" Make sure Vim returns to the same line when you reopen a file.
+"Make sure Vim returns to the same line when you reopen a file.
 " https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc#cl-175
 augroup line_return
     au!
@@ -327,11 +326,12 @@ augroup line_return
         \ endif
 augroup END
 " }}}
-" if gui ------------------------------------------------------------- {{{
+" gui/console -------------------------------------------------------- {{{
 if has("gui_running")
     set guioptions= " disable all UI options
     set guicursor+=a:blinkon0 " disable blinking cursor
     set ballooneval
+    set number
     set lines=100 columns=100
     autocmd GUIEnter * set visualbell t_vb=
     if has("gui_macvim")
@@ -340,10 +340,14 @@ if has("gui_running")
         set guifont=Consolas:h11
     endif
 else
+    set guicursor+=a:blinkon0 " disable blinking cursor
     set noerrorbells visualbell t_vb=
     set t_ut= " setting for looking properly in tmux
     set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
     let &t_Co = 256
+    set ballooneval
+    colorscheme solarized
+    let g:airline_theme='solarized'
 endif
 
 " }}}
