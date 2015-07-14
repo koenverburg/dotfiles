@@ -74,13 +74,6 @@ syntax on
 colorscheme base16-paraiso
 set background=dark
 
-" if has("win32")
-"     set shell=powershell
-"     set shellcmdflag=-command
-"     set shellpipe=|
-"     set shellredir=>
-" endif
-
 " }}}
 " Basic options ------------------------------------------------------ {{{
 set ignorecase
