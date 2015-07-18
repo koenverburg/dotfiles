@@ -233,7 +233,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " faster saving
-nnoremap w :w<cr>
+nnoremap <leader>w :w<cr>
 
 " Save when losing focus
 au FocusLost * :wa
