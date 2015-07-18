@@ -71,7 +71,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-colorscheme base16-paraiso
+colorscheme solarized
 set background=dark
 
 " }}}
@@ -172,7 +172,7 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#A4E57E'
 
-let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:user_emmet_install_global = 0
 
