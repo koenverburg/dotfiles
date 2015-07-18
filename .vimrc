@@ -73,6 +73,7 @@ syntax on
 
 colorscheme base16-paraiso
 set background=dark
+
 " }}}
 " Basic options ------------------------------------------------------ {{{
 set ignorecase
@@ -316,6 +317,7 @@ autocmd VimEnter * call AirlineInit()
 "     autocmd InsertLeave * :set relativenumber
 
 " augroup END
+"Make sure Vim returns to the same line when you reopen a file.
 "
 " Make sure Vim returns to the same line when you reopen a file.
 " https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc#cl-175
