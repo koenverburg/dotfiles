@@ -20,7 +20,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'gmarik/Vundle.vim'
 "Code environment
-    Plugin 'tpope/vim-rails'
     Plugin 'moll/vim-node'
     Plugin 'mattn/emmet-vim' " ctrl y RELEASE ,
 " hightlight
@@ -55,6 +54,9 @@ call vundle#begin()
     Plugin 'Yggdroot/indentLine'
     Plugin 'xolox/vim-session'
     Plugin 'xolox/vim-misc'
+" gist
+    plugin 'mattn/webapi-vim'
+    plugin 'mattn/gist-vim'
 "snippets
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'sirver/ultisnips'
@@ -62,8 +64,8 @@ call vundle#begin()
     Plugin 'garbas/vim-snipmate'
     Plugin 'honza/vim-snippets'
 " autocomplete
-    Plugin 'myhere/vim-nodejs-complete'
-    Plugin 'shawncplus/phpcomplete.vim'
+    Plugin 'myhere/vim-nodejs-complete', {'on', filetype="js" }
+    Plugin 'shawncplus/phpcomplete.vim' , {'on', filetype="php" }
     Plugin 'shougo/neocomplcache.vim'
 call vundle#end()
 " }}}
