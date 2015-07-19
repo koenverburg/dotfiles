@@ -83,8 +83,10 @@ set smartcase
 
 set encoding=utf-8
 set laststatus=2
+set showtabline=2
 set lazyredraw
 set hidden
+set noshowmode
 
 " Leader
 let mapleader = ","
@@ -92,7 +94,17 @@ let maplocalleader = "\\"
 
 "let me paste from system clipboard
 set clipboard+=unnamed
-
+" utf-8 {{{
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+" }}}
 " make backspace work in insert mode {{{
 set backspace=2
 set backspace=indent,eol,start
@@ -162,20 +174,22 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 set synmaxcol=800
-
 " }}}
 " plugin setting ----------------------------------------------------- {{{
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsListSnippets="<c-e>"
 
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#A4E57E'
 
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
+
+let NERDTreeShowHidden=1
+
 let g:user_emmet_install_global = 0
 
 let g:neocomplcache_enable_at_startup=1
@@ -286,8 +300,8 @@ autocmd FileType html,css,scss,stylus,jade EmmetInstall
 " airline ------------------------------------------------------------ {{{
 function! AirlineInit()
     let g:airline_right_alt_sep = ' '
-    let g:airline_right_sep = ' '
-    let g:airline_left_alt_sep= ' '
+    let g:airline_right_sep = '  '
+    let g:airline_left_alt_sep= '  '
     let g:airline_left_sep = ' '
 
     let g:airline_section_a = airline#section#create(['mode'])
@@ -330,6 +344,20 @@ augroup line_return
         \     execute 'normal! g`"zvzz' |
         \ endif
 augroup END
+
+augroup reload_vimrc
+    autocmd!
+    autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
+augroup END
+" }}}
+" powershell --------------------------------------------------------- {{{
+" change to powershell
+" if has("gui_win32")
+"     set shell=powershell.exe\ -ExecutionPolicy\ Unrestricted
+"     set shellcmdflag=-Command
+"     set shellpipe=>
+"     set shellredir=>
+" endif
 " }}}
 " gui/console -------------------------------------------------------- {{{
 if has("gui_running")
@@ -343,14 +371,16 @@ if has("gui_running")
         set guifont=Consolas:h15
     elseif has("gui_win32")
         set guifont=Consolas:h11
+        set encoding=utf-8
     endif
 else
     set guicursor+=a:blinkon0 " disable blinking cursor
     set noerrorbells visualbell t_vb=
     set t_ut= " setting for looking properly in tmux
     set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
-    let &t_Co = 256
+    let t_Co = 256
     set ballooneval
+    set encoding=utf-8
     colorscheme solarized
     let g:airline_theme='solarized'
 endif
