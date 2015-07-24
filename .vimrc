@@ -81,12 +81,9 @@ set background=dark
 " Basic options ------------------------------------------------------ {{{
 set ignorecase
 set smartcase
-<<<<<<< HEAD
 set number
-=======
 
 set hlsearch
->>>>>>> fad86f6b6dd402aa309280a0042e41880c39a9f5
 set encoding=utf-8
 set laststatus=2
 set showtabline=2
@@ -271,12 +268,7 @@ au FocusLost * :wa
 nnoremap <c-left> 5<c-w>>
 nnoremap <c-right> 5<c-w><
 
-<<<<<<< HEAD
-" }}}
-" Conveniece mappings ------------------------------------------------ {{{
 
-=======
->>>>>>> fad86f6b6dd402aa309280a0042e41880c39a9f5
 " Kill the window
 nnoremap K :q<cr>
 
