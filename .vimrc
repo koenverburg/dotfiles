@@ -9,7 +9,7 @@
 
 " clone vundle first then run vim or gvim and use the command PluginInstall
 " to install all the plugins, and restart after that is done.
-"git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 " }}}
 " vundle  ------------------------------------------------------------ {{{
@@ -24,7 +24,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'gmarik/Vundle.vim'
 "Code environment
-    Plugin 'tpope/vim-rails'
     Plugin 'moll/vim-node'
     Plugin 'mattn/emmet-vim' " ctrl y RELEASE ,
 " hightlight
@@ -82,7 +81,12 @@ set background=dark
 " Basic options ------------------------------------------------------ {{{
 set ignorecase
 set smartcase
+<<<<<<< HEAD
 set number
+=======
+
+set hlsearch
+>>>>>>> fad86f6b6dd402aa309280a0042e41880c39a9f5
 set encoding=utf-8
 set laststatus=2
 set showtabline=2
@@ -187,7 +191,7 @@ let g:UltiSnipsListSnippets="<c-e>"
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#A4E57E'
 
-let g:airline_theme='solarized'
+let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
 
 let NERDTreeShowHidden=1
@@ -207,7 +211,7 @@ nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
 " }}}
-" custom keys -------------------------------------------------------- {{{
+" Conveniece mappings ------------------------------------------------ {{{
 
 " fullscreen mode
 nnoremap <leader>f :simalt ~x<cr>
@@ -234,6 +238,8 @@ vnoremap / /\v
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+" quick scape to get out of hlsearch
+nnoremap <leader><c-n> :nohlsearch<CR>
 
 " Same when jumping around
 " nnoremap g; g;zz
@@ -258,15 +264,19 @@ nnoremap <leader>w :w<cr>
 au FocusLost * :wa
 
 " Resize splits when the window is resized
-au VimResized * exe "normal! \<c-w>="
+"au VimResized * exe
+"normal! \<c-w>="
 
 " window resizing
 nnoremap <c-left> 5<c-w>>
 nnoremap <c-right> 5<c-w><
 
+<<<<<<< HEAD
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
 
+=======
+>>>>>>> fad86f6b6dd402aa309280a0042e41880c39a9f5
 " Kill the window
 nnoremap K :q<cr>
 
@@ -286,6 +296,26 @@ inoremap <c-f> <c-x><c-f>
 
 " quick edit vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
+
+" I dont record stuff vim
+nnoremap qq :w
+
+
+" Make tabs, trailing whitespace, and non-breaking spaces visible
+"exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬"
+set listchars=tab:▸\ ,eol:¬,trail:-
+set list
+
+
+" swap : and ; to make colon commands easer to type
+nnoremap ; :
+nnoremap : ;
+
+" set colorcolumn=81
+hi ColorColumn ctermbg=green
+call matchadd('ColorColumn', '\%81v', 100)
+
+
 
 " }}}
 " filetype ----------------------------------------------------------- {{{
@@ -316,7 +346,7 @@ function! AirlineInit()
 endfunction
 autocmd VimEnter * call AirlineInit()
 " }}}
-" au group ----------------------------------------------------------- {{{
+" functions ---------------------------------------------------------- {{{
 " augroup relative_line_numbers
 
 "     autocmd!
@@ -346,10 +376,14 @@ augroup line_return
         \ endif
 augroup END
 
-augroup reload_vimrc
-    autocmd!
-    autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
-augroup END
+" augroup reload_vimrc
+"     autocmd!
+"     autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
+" augroup END
+
+
+
+
 " }}}
 " powershell --------------------------------------------------------- {{{
 " change to powershell
@@ -360,18 +394,43 @@ augroup END
 "     set shellredir=>
 " endif
 " }}}
+" Wildmenu completion ------------------------------------------------ {{{
+
+set wildmenu
+set wildmode=list:longest
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+
+set wildignore+=*.luac                           " Lua byte code
+
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+
+set wildignore+=*.orig                           " Merge resolution files
+
+" Clojure/Leiningen
+set wildignore+=classes
+set wildignore+=lib
+
+" }}}
 " gui/console -------------------------------------------------------- {{{
 if has("gui_running")
     set guioptions= " disable all UI options
     set guicursor+=a:blinkon0 " disable blinking cursor
     set ballooneval
-    set lines=100 columns=100
+    set number
+    set lines=40 columns=100
     autocmd GUIEnter * set visualbell t_vb=
     if has("gui_macvim")
         set guifont=Consolas:h15
     elseif has("gui_win32")
         set guifont=Consolas:h11
-        set encoding=utf-8
     endif
 else
     set noerrorbells visualbell t_vb=
@@ -387,6 +446,10 @@ else
         set ballooneval
         set encoding=utf-8
     endif
+    let t_Co = 256
+    set ballooneval
+    " colorscheme solarized
+    " let g:airline_theme='solarized'
 endif
 
 " }}}
