@@ -13,6 +13,10 @@
 
 " }}}
 " vundle  ------------------------------------------------------------ {{{
+
+let s:is_windows = has('win32') || has('win32')
+let s:is_nvim = has('nvim')
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -78,7 +82,7 @@ set background=dark
 " Basic options ------------------------------------------------------ {{{
 set ignorecase
 set smartcase
-
+set number
 set encoding=utf-8
 set laststatus=2
 set showtabline=2
@@ -260,7 +264,6 @@ au VimResized * exe "normal! \<c-w>="
 nnoremap <c-left> 5<c-w>>
 nnoremap <c-right> 5<c-w><
 
-
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
 
@@ -362,7 +365,6 @@ if has("gui_running")
     set guioptions= " disable all UI options
     set guicursor+=a:blinkon0 " disable blinking cursor
     set ballooneval
-    set number
     set lines=100 columns=100
     autocmd GUIEnter * set visualbell t_vb=
     if has("gui_macvim")
@@ -372,15 +374,19 @@ if has("gui_running")
         set encoding=utf-8
     endif
 else
-    set guicursor+=a:blinkon0 " disable blinking cursor
     set noerrorbells visualbell t_vb=
+    if !s:is_nvim
+        set term=xterm
+    endif
     set t_ut= " setting for looking properly in tmux
     set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
-    let t_Co = 256
-    set ballooneval
-    set encoding=utf-8
-    colorscheme solarized
-    let g:airline_theme='solarized'
+    let &t_Co = 256
+    if s:is_windows
+        let &t_AF="\e[38;5;%dm"
+        let &t_AB="\e[48;5;%dm"
+        set ballooneval
+        set encoding=utf-8
+    endif
 endif
 
 " }}}
