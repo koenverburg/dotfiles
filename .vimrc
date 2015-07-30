@@ -74,14 +74,13 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-colorscheme solarized
+colorscheme base16-paraiso
 set background=dark
 
 " }}}
 " Basic options ------------------------------------------------------ {{{
 set ignorecase
 set smartcase
-set number
 
 set hlsearch
 set encoding=utf-8
@@ -339,25 +338,24 @@ endfunction
 autocmd VimEnter * call AirlineInit()
 " }}}
 " functions ---------------------------------------------------------- {{{
-" augroup relative_line_numbers
+augroup relative_line_numbers
 
-"     autocmd!
+    autocmd!
 
-"     " Automatically switch to absolute line numbers when vim loses focus
-"     autocmd FocusLost * :set number
+    " Automatically switch to absolute line numbers when vim loses focus
+    au FocusLost * :set number
 
-"     " Automatically switch to relative line numbers when vim gains focus
-"     autocmd FocusGained * :set relativenumber
+    " Automatically switch to relative line numbers when vim gains focus
+    au FocusGained * :set relativenumber
 
-"     " Automatically switch to absolute line numbers when vim is in insert mode
-"     autocmd InsertEnter * :set number
+    " Automatically switch to absolute line numbers when vim is in insert mode
+    au InsertEnter * :set number
 
-"     " Automatically switch to relative line numbers when vim is in normal mode
-"     autocmd InsertLeave * :set relativenumber
+    " Automatically switch to relative line numbers when vim is in normal mode
+    au InsertLeave * :set relativenumber
 
-" augroup END
-"Make sure Vim returns to the same line when you reopen a file.
-"
+augroup END
+
 " Make sure Vim returns to the same line when you reopen a file.
 " https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc#cl-175
 augroup line_return
@@ -416,7 +414,6 @@ if has("gui_running")
     set guioptions= " disable all UI options
     set guicursor+=a:blinkon0 " disable blinking cursor
     set ballooneval
-    set number
     set lines=40 columns=100
     autocmd GUIEnter * set visualbell t_vb=
     if has("gui_macvim")
@@ -440,8 +437,7 @@ else
     endif
     let t_Co = 256
     set ballooneval
-    " colorscheme solarized
-    " let g:airline_theme='solarized'
+    colorscheme base16-monokai
 endif
 
 " }}}
