@@ -306,7 +306,10 @@ nnoremap : ;
 hi ColorColumn ctermbg=green
 call matchadd('ColorColumn', '\%81v', 100)
 
-
+" setting relative numbers, normal numbers or non
+nnoremap <leader>nr :set relativenumber<CR>
+nnoremap <leader>nn :set number<CR>
+nnoremap <leader>on :set nonumber<CR>
 
 " }}}
 " filetype ----------------------------------------------------------- {{{
@@ -338,23 +341,6 @@ endfunction
 autocmd VimEnter * call AirlineInit()
 " }}}
 " functions ---------------------------------------------------------- {{{
-augroup relative_line_numbers
-
-    autocmd!
-
-    " Automatically switch to absolute line numbers when vim loses focus
-    au FocusLost * :set number
-
-    " Automatically switch to relative line numbers when vim gains focus
-    au FocusGained * :set relativenumber
-
-    " Automatically switch to absolute line numbers when vim is in insert mode
-    au InsertEnter * :set number
-
-    " Automatically switch to relative line numbers when vim is in normal mode
-    au InsertLeave * :set relativenumber
-
-augroup END
 
 " Make sure Vim returns to the same line when you reopen a file.
 " https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc#cl-175
