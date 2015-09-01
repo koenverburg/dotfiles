@@ -31,6 +31,7 @@ call vundle#begin()
     Plugin 'chriskempson/base16-vim'
     Plugin 'ap/vim-css-color'                   " see what the hex color is
     Plugin 'sheerun/vim-polyglot'               " support a whole lot of filetypes
+    Plugin 'farneman/Expression-Engine-Vim-syntax'
     " {{{
     "Plugin 'jelera/vim-javascript-syntax'
     "Plugin 'digitaltoad/vim-jade'
@@ -321,6 +322,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType apache set commentstring=#\ %s
 autocmd FileType html,css,scss,stylus,jade EmmetInstall
+au FileType javascript setl sw=2 sts=2 et
 " }}}
 " airline ------------------------------------------------------------ {{{
 function! AirlineInit()
