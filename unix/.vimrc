@@ -31,6 +31,7 @@ call vundle#begin()
     Plugin 'chriskempson/base16-vim'
     Plugin 'ap/vim-css-color'                   " see what the hex color is
     Plugin 'sheerun/vim-polyglot'               " support a whole lot of filetypes
+    Plugin 'xsbeats/vim-blade'                  " support for blade (laravel)
     Plugin 'farneman/Expression-Engine-Vim-syntax'
     " {{{
     "Plugin 'jelera/vim-javascript-syntax'
@@ -97,6 +98,7 @@ let maplocalleader = "\\"
 
 "let me paste from system clipboard
 set clipboard+=unnamed
+
 " utf-8 {{{
 if has("multi_byte")
   if &termencoding == ""
@@ -321,7 +323,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType apache set commentstring=#\ %s
-autocmd FileType html,css,scss,stylus,jade EmmetInstall
+autocmd FileType html,css,scss,stylus,jade,blade EmmetInstall
 au FileType javascript setl sw=2 sts=2 et
 " }}}
 " airline ------------------------------------------------------------ {{{
