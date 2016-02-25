@@ -50,7 +50,8 @@ call vundle#begin()
     Plugin 'editorconfig/editorconfig-vim'
     "Plugin 'Lokaltog/vim-easymotion'
     Plugin 'scrooloose/nerdtree'
-    Plugin 'bling/vim-airline'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
     Plugin 'tpope/vim-commentary'               "select with v and comment with gc
     Plugin 'tpope/vim-fugitive'                 "git from vim
     Plugin 'tpope/vim-surround'
@@ -339,18 +340,13 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType apache set commentstring=#\ %s
-<<<<<<< HEAD
 autocmd FileType html,css,scss,stylus,jade EmmetInstall
 au FileType php setl sw=4 sts=4 et
 au FileType html setl sw=4 sts=4 et
-"au FileType javascript setl sw=2 sts=2 et
 au FileType stylus setl sw=2 sts=2 et
 au FileType css,scss setl sw=4 sts=4 et
 au FileType jade setl sw=2 sts=2 et
-=======
-autocmd FileType html,css,scss,stylus,jade,blade EmmetInstall
 au FileType javascript setl sw=2 sts=2 et
->>>>>>> 8d30ba6caa6a82f1b4ed0cd5641b83d69ed34e9e
 " }}}
 " airline ------------------------------------------------------------ {{{
 function! AirlineInit()
