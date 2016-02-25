@@ -321,6 +321,12 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType apache set commentstring=#\ %s
 autocmd FileType html,css,scss,stylus,jade EmmetInstall
+au FileType php setl sw=4 sts=4 et
+au FileType html setl sw=4 sts=4 et
+"au FileType javascript setl sw=2 sts=2 et
+au FileType stylus setl sw=2 sts=2 et
+au FileType css,scss setl sw=4 sts=4 et
+au FileType jade setl sw=2 sts=2 et
 " }}}
 " airline ------------------------------------------------------------ {{{
 function! AirlineInit()
