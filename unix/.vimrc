@@ -24,13 +24,15 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'gmarik/Vundle.vim'
 "Code environment
-    Plugin 'moll/vim-node'
+    "Plugin 'moll/vim-node'
     Plugin 'mattn/emmet-vim' " ctrl y RELEASE ,
 " hightlight
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'chriskempson/base16-vim'
     Plugin 'ap/vim-css-color'                   " see what the hex color is
     Plugin 'sheerun/vim-polyglot'               " support a whole lot of filetypes
+    Plugin 'xsbeats/vim-blade'                  " support for blade (laravel)
+    Plugin 'mxw/vim-jsx'                        " support for jsx with reactjs
     " {{{
     "Plugin 'jelera/vim-javascript-syntax'
     "Plugin 'digitaltoad/vim-jade'
@@ -46,11 +48,11 @@ call vundle#begin()
     Plugin 'scrooloose/syntastic'
     Plugin 'vim-scripts/matchit.zip'
     Plugin 'editorconfig/editorconfig-vim'
-    Plugin 'Lokaltog/vim-easymotion'
+    "Plugin 'Lokaltog/vim-easymotion'
     Plugin 'scrooloose/nerdtree'
     Plugin 'bling/vim-airline'
     Plugin 'tpope/vim-commentary'               "select with v and comment with gc
-    Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-fugitive'                 "git from vim
     Plugin 'tpope/vim-surround'
     Plugin 'townk/vim-autoclose'
     Plugin 'kien/ctrlp.vim'
@@ -66,15 +68,17 @@ call vundle#begin()
     Plugin 'honza/vim-snippets'
 " autocomplete
     Plugin 'myhere/vim-nodejs-complete'
-    Plugin 'shawncplus/phpcomplete.vim'
+    "Plugin 'shawncplus/phpcomplete.vim'
     Plugin 'shougo/neocomplcache.vim'
+    "Plugin 'm2mdas/phpcomplete-extended-laravel'
+    "Plugin 'arnaud-lb/vim-php-namespace'
 call vundle#end()
 " }}}
 " after vundle  ------------------------------------------------------ {{{
 filetype plugin indent on
 syntax on
 
-colorscheme base16-paraiso
+colorscheme solarized
 set background=dark
 
 " }}}
@@ -96,6 +100,7 @@ let maplocalleader = "\\"
 
 "let me paste from system clipboard
 set clipboard+=unnamed
+
 " utf-8 {{{
 if has("multi_byte")
   if &termencoding == ""
@@ -201,11 +206,25 @@ let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
+
 nnoremap <leader>so :OpenSession
 nnoremap <leader>ss :SaveSession
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
+
+"php use ,u to use ,e for the full path
+inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
+noremap <Leader>u :call PhpInsertUse()<CR>
+
+inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
+noremap <Leader>e :call PhpExpandClass()<CR>
+
+
+"es javascript hint
+let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jsxhint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+let g:jsx_ext_required = 0
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
 
@@ -320,6 +339,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType apache set commentstring=#\ %s
+<<<<<<< HEAD
 autocmd FileType html,css,scss,stylus,jade EmmetInstall
 au FileType php setl sw=4 sts=4 et
 au FileType html setl sw=4 sts=4 et
@@ -327,6 +347,10 @@ au FileType html setl sw=4 sts=4 et
 au FileType stylus setl sw=2 sts=2 et
 au FileType css,scss setl sw=4 sts=4 et
 au FileType jade setl sw=2 sts=2 et
+=======
+autocmd FileType html,css,scss,stylus,jade,blade EmmetInstall
+au FileType javascript setl sw=2 sts=2 et
+>>>>>>> 8d30ba6caa6a82f1b4ed0cd5641b83d69ed34e9e
 " }}}
 " airline ------------------------------------------------------------ {{{
 function! AirlineInit()
@@ -366,15 +390,6 @@ augroup END
 
 
 
-" }}}
-" powershell --------------------------------------------------------- {{{
-" change to powershell
-" if has("gui_win32")
-"     set shell=powershell.exe\ -ExecutionPolicy\ Unrestricted
-"     set shellcmdflag=-Command
-"     set shellpipe=>
-"     set shellredir=>
-" endif
 " }}}
 " Wildmenu completion ------------------------------------------------ {{{
 
