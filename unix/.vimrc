@@ -48,7 +48,7 @@ call vundle#begin()
     Plugin 'scrooloose/syntastic'
     Plugin 'vim-scripts/matchit.zip'
     Plugin 'editorconfig/editorconfig-vim'
-    "Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'Lokaltog/vim-easymotion'
     Plugin 'scrooloose/nerdtree'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
@@ -68,7 +68,7 @@ call vundle#begin()
     Plugin 'garbas/vim-snipmate'
     Plugin 'honza/vim-snippets'
 " autocomplete
-    Plugin 'myhere/vim-nodejs-complete'
+    "Plugin 'myhere/vim-nodejs-complete'
     "Plugin 'shawncplus/phpcomplete.vim'
     Plugin 'shougo/neocomplcache.vim'
     "Plugin 'm2mdas/phpcomplete-extended-laravel'
@@ -152,7 +152,6 @@ autocmd FileType vim,c++,js,scss,html,jade,php setlocal foldmethod=marker
 
 nnoremap z0 zCz
 
-
 nnoremap <leader>z zMzvvz
 
 
@@ -195,9 +194,15 @@ let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#A4E57E'
 let g:indentLine_char = '│'
 
+" Airline
 let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
 
+
+" ctrl p ignore
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\|vendor'
+
+" Nerdtree show hidden files
 let NERDTreeShowHidden=1
 
 let g:user_emmet_install_global = 0
@@ -217,11 +222,11 @@ nnoremap <leader>sc :CloseSession<CR>
 
 
 "php use ,u to use ,e for the full path
-inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
-noremap <Leader>u :call PhpInsertUse()<CR>
+" inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
+" noremap <Leader>u :call PhpInsertUse()<CR>
 
-inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
-noremap <Leader>e :call PhpExpandClass()<CR>
+" inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
+" noremap <Leader>e :call PhpExpandClass()<CR>
 
 
 "es javascript hint
@@ -232,7 +237,7 @@ let g:jsx_ext_required = 0
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
 
-" fullscreen mode
+" fullscreen mode, only works on windows
 nnoremap <leader>f :simalt ~x<cr>
 
 " open a new tab
@@ -257,15 +262,16 @@ vnoremap / /\v
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
 " quick scape to get out of hlsearch
-nnoremap <leader><c-n> :nohlsearch<CR>
+nnoremap <leader><c-n> :nohl<CR>
 
 " Same when jumping around
-" nnoremap g; g;zz
-" nnoremap g, g,zz
-" noremap <c-o> <c-o>zz
+nnoremap g; g;zz
+nnoremap g, g,zz
+noremap <c-o> <c-o>zz
 
-" faster movie from the begin of the line to the end of the line
+" move faster from the begin of the line to the end of the line
 noremap H ^
 noremap L g_
 nnoremap <Tab> %
@@ -283,8 +289,8 @@ nnoremap <leader>w :w<cr>
 au FocusLost * :wa
 
 " Resize splits when the window is resized
-"au VimResized * exe
-"normal! \<c-w>="
+au VimResized * exe
+normal! \<c-w>="
 
 " window resizing
 nnoremap <c-left> 5<c-w>>
@@ -312,7 +318,12 @@ inoremap <c-f> <c-x><c-f>
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 
 " I dont record stuff vim
-nnoremap qq :w
+map qq <Nop>
+
+
+"easy ecape w/ modding my keyboard
+inoremap <cap> <esc>
+inoremap jj <esc>
 
 
 " Make tabs, trailing whitespace, and non-breaking spaces visible
@@ -332,10 +343,10 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " setting relative numbers, normal numbers or non
 set number
-"set relativenumber
-nnoremap <leader>nr :set relativenumber<CR>
-nnoremap <leader>nn :set number<CR>
-nnoremap <leader>on :set nonumber<CR>
+" set relativenumber
+" nnoremap <leader>nr :set relativenumber<CR>
+" nnoremap <leader>nn :set number<CR>
+" nnoremap <leader>on :set nonumber<CR>
 
 " }}}
 " filetype ----------------------------------------------------------- {{{
@@ -399,7 +410,6 @@ augroup END
 
 set wildmenu
 set wildmode=list:longest
-
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
@@ -407,12 +417,9 @@ set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
-
 set wildignore+=*.luac                           " Lua byte code
-
 set wildignore+=migrations                       " Django migrations
 set wildignore+=*.pyc                            " Python byte code
-
 set wildignore+=*.orig                           " Merge resolution files
 
 " Clojure/Leiningen
