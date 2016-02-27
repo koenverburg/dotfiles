@@ -190,8 +190,10 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets="<c-e>"
 
+" line indenting
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_char = '│'
 
 let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
@@ -226,6 +228,7 @@ noremap <Leader>e :call PhpExpandClass()<CR>
 let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:jsx_ext_required = 0
+
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
 
@@ -314,7 +317,8 @@ nnoremap qq :w
 
 " Make tabs, trailing whitespace, and non-breaking spaces visible
 "exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬"
-set listchars=tab:▸\ ,eol:¬,trail:-
+"set listchars=tab:▸\ ,eol:¬,trail:-
+set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set list
 
 
@@ -327,6 +331,8 @@ hi ColorColumn ctermbg=green
 call matchadd('ColorColumn', '\%81v', 100)
 
 " setting relative numbers, normal numbers or non
+set number
+"set relativenumber
 nnoremap <leader>nr :set relativenumber<CR>
 nnoremap <leader>nn :set number<CR>
 nnoremap <leader>on :set nonumber<CR>
@@ -347,6 +353,8 @@ au FileType stylus setl sw=2 sts=2 et
 au FileType css,scss setl sw=4 sts=4 et
 au FileType jade setl sw=2 sts=2 et
 au FileType javascript setl sw=2 sts=2 et
+au FileType javascript.jsx setl sw=2 sts=2 et
+au FileType js,jsx setl sw=2 sts=2 et
 " }}}
 " airline ------------------------------------------------------------ {{{
 function! AirlineInit()
