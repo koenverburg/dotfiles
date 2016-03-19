@@ -195,7 +195,8 @@ let g:indentLine_color_gui = '#A4E57E'
 let g:indentLine_char = '│'
 
 " Airline
-let g:airline_theme='powerlineish'
+"let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 
 
@@ -317,7 +318,7 @@ inoremap <c-f> <c-x><c-f>
 " quick edit vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 
-" I dont record stuff vim
+" I dont record stuff
 map qq <Nop>
 
 
