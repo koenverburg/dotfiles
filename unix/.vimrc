@@ -33,6 +33,7 @@ call vundle#begin()
     Plugin 'sheerun/vim-polyglot'               " support a whole lot of filetypes
     Plugin 'xsbeats/vim-blade'                  " support for blade (laravel)
     Plugin 'mxw/vim-jsx'                        " support for jsx with reactjs
+    Plugin 'digitaltoad/vim-pug'
     " {{{
     "Plugin 'jelera/vim-javascript-syntax'
     "Plugin 'digitaltoad/vim-jade'
@@ -45,7 +46,8 @@ call vundle#begin()
     "Plugin 'bps/vim-textobj-python'
     " }}}
 " VIM INTERFACE
-    Plugin 'scrooloose/syntastic'
+    Plugin 'scrooloose/syntastic'               "error checking
+    Plugin 'pmsorhaindo/syntastic-local-eslint.vim' "Linting for Nodejs projects
     Plugin 'vim-scripts/matchit.zip'
     Plugin 'editorconfig/editorconfig-vim'
     Plugin 'Lokaltog/vim-easymotion'
@@ -79,7 +81,8 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-colorscheme solarized
+"colorscheme solarized
+colorscheme base16-monokai
 set background=dark
 
 " }}}
@@ -195,8 +198,8 @@ let g:indentLine_color_gui = '#A4E57E'
 let g:indentLine_char = '│'
 
 " Airline
-"let g:airline_theme='powerlineish'
-let g:airline_theme='solarized'
+let g:airline_theme='powerlineish'
+"let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 
 
@@ -362,8 +365,9 @@ autocmd FileType html,css,scss,stylus,jade EmmetInstall
 au FileType php setl sw=4 sts=4 et
 au FileType html setl sw=4 sts=4 et
 au FileType stylus setl sw=2 sts=2 et
+au FileType less setl sw=4 sts=4 et
 au FileType css,scss setl sw=4 sts=4 et
-au FileType jade setl sw=2 sts=2 et
+au FileType pug setl sw=2 sts=2 et
 au FileType javascript setl sw=2 sts=2 et
 au FileType javascript.jsx setl sw=2 sts=2 et
 au FileType js,jsx setl sw=2 sts=2 et
