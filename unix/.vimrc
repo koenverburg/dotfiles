@@ -33,28 +33,18 @@ call vundle#begin()
     Plugin 'sheerun/vim-polyglot'               " support a whole lot of filetypes
     Plugin 'xsbeats/vim-blade'                  " support for blade (laravel)
     Plugin 'mxw/vim-jsx'                        " support for jsx with reactjs
-    Plugin 'digitaltoad/vim-pug'
-    " {{{
-    "Plugin 'jelera/vim-javascript-syntax'
-    "Plugin 'digitaltoad/vim-jade'
-    "Plugin 'wavded/vim-stylus'
-    "Plugin 'kchmck/vim-coffee-script'
-    "Plugin 'vim-ruby/vim-ruby'
-    "Plugin 'tpope/vim-markdown'
-    "Plugin 'StanAngeloff/php.vim'
-    "Plugin 'octol/vim-cpp-enhanced-highlight'
-    "Plugin 'bps/vim-textobj-python'
-    " }}}
+    Plugin 'digitaltoad/vim-pug'                " pug(jade) syntax support
 " VIM INTERFACE
     Plugin 'scrooloose/syntastic'               "error checking
     Plugin 'pmsorhaindo/syntastic-local-eslint.vim' "Linting for Nodejs projects
-    Plugin 'vim-scripts/matchit.zip'
+    "Plugin 'vim-scripts/matchit.zip'
     Plugin 'editorconfig/editorconfig-vim'
-    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'terryma/vim-multiple-cursors'
+    "Plugin 'Lokaltog/vim-easymotion'
     Plugin 'scrooloose/nerdtree'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'tpope/vim-commentary'               "select with v and comment with gc
+    Plugin 'tpope/vim-commentary'               "select with v and comment with //gc
     Plugin 'tpope/vim-fugitive'                 "git from vim
     Plugin 'tpope/vim-surround'
     Plugin 'townk/vim-autoclose'
@@ -64,14 +54,20 @@ call vundle#begin()
     Plugin 'xolox/vim-session'
     Plugin 'xolox/vim-misc'
 "snippets
-    Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'sirver/ultisnips'
-    Plugin 'tomtom/tlib_vim'
     Plugin 'garbas/vim-snipmate'
     Plugin 'honza/vim-snippets'
+" utilies
+    Plugin 'MarcWeber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'junegunn/limelight.vim'
 " autocomplete
-    "Plugin 'myhere/vim-nodejs-complete'
-    "Plugin 'shawncplus/phpcomplete.vim'
+    " autocomplete libs
+    Plugin 'myhere/vim-nodejs-complete'
+    Plugin 'shawncplus/phpcomplete.vim'
+    Plugin 'artur-shaik/vim-javacomplete2'  "http://vimawesome.com/plugin/vim-javacomplete2 when using java
+    "autocomplete driver
+    Plugin 'ervandew/supertab'
     Plugin 'shougo/neocomplcache.vim'
     "Plugin 'm2mdas/phpcomplete-extended-laravel'
     "Plugin 'arnaud-lb/vim-php-namespace'
@@ -121,12 +117,6 @@ set backspace=2
 set backspace=indent,eol,start
 set scrolloff=15
 " }}}
-" taps {{{
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-" }}}
 " backup ----------------------------------------------------------- {{{
 set backup
 set undofile
@@ -157,8 +147,6 @@ nnoremap z0 zCz
 
 nnoremap <leader>z zMzvvz
 
-
-
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
 
@@ -186,6 +174,14 @@ set ttimeoutlen=10
 set synmaxcol=800
 " }}}
 " plugin setting ----------------------------------------------------- {{{
+
+" Default mapping multi cursors
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_use_default_mapping=0
+
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -211,7 +207,6 @@ let NERDTreeShowHidden=1
 
 let g:user_emmet_install_global = 0
 
-let g:neocomplcache_enable_at_startup=1
 
 " vim sessions
 let g:session_directory = "~/.vim/session"
@@ -237,6 +232,10 @@ nnoremap <leader>sc :CloseSession<CR>
 let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:jsx_ext_required = 0
+
+"neocomplcache
+let g:neocomplcache_enable_at_startup=1
+
 
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
@@ -304,7 +303,7 @@ nnoremap <c-right> 5<c-w><
 " Kill the window
 nnoremap K :q<cr>
 
-" formatting, taxtmate-style
+" formatting, textmate-style
 nnoremap Q gqip
 
 " fast sourcing a line
@@ -326,7 +325,6 @@ map qq <Nop>
 
 
 "easy ecape w/ modding my keyboard
-inoremap <cap> <esc>
 inoremap jj <esc>
 
 
@@ -354,6 +352,11 @@ set number
 
 " }}}
 " filetype ----------------------------------------------------------- {{{
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
 set omnifunc=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -361,7 +364,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType apache set commentstring=#\ %s
-autocmd FileType html,css,scss,stylus,jade EmmetInstall
+autocmd FileType html,css,scss,stylus,less EmmetInstall
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 au FileType php setl sw=4 sts=4 et
 au FileType html setl sw=4 sts=4 et
 au FileType stylus setl sw=2 sts=2 et
@@ -401,14 +406,6 @@ augroup line_return
         \     execute 'normal! g`"zvzz' |
         \ endif
 augroup END
-
-" augroup reload_vimrc
-"     autocmd!
-"     autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
-" augroup END
-
-
-
 
 " }}}
 " Wildmenu completion ------------------------------------------------ {{{
