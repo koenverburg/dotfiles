@@ -1,9 +1,6 @@
 " .vimrc
 " Author: CreativeKoen <creativekoen@gmail.com>
 " Source: https://github.com/CreativeKoen/dotfiles
-"
-" This file changes a lot.  I'll try to document pieces of it whenever I have
-" a few minutes to kill.
 
 " getting started ---------------------------------------------------- {{{
 
@@ -80,12 +77,14 @@ syntax on
 "colorscheme solarized
 colorscheme base16-monokai
 set background=dark
-
+set fileformat=unix
+set fileformats=unix,dos
 " }}}
 " Basic options ------------------------------------------------------ {{{
 set ignorecase
 set smartcase
 
+set number
 set hlsearch
 set encoding=utf-8
 set laststatus=2
@@ -200,13 +199,13 @@ let g:airline#extensions#tabline#enabled = 1
 
 
 " ctrl p ignore
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']  " Windows
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\|vendor'
 
 " Nerdtree show hidden files
 let NERDTreeShowHidden=1
-
-let g:user_emmet_install_global = 0
-
 
 " vim sessions
 let g:session_directory = "~/.vim/session"
@@ -219,15 +218,6 @@ nnoremap <leader>ss :SaveSession
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
-
-"php use ,u to use ,e for the full path
-" inoremap <Leader>u <C-O>:call PhpInsertUse()<CR>
-" noremap <Leader>u :call PhpInsertUse()<CR>
-
-" inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
-" noremap <Leader>e :call PhpExpandClass()<CR>
-
-
 "es javascript hint
 let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jsxhint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
@@ -236,12 +226,14 @@ let g:jsx_ext_required = 0
 "neocomplcache
 let g:neocomplcache_enable_at_startup=1
 
+" emmet
+let g:user_emmet_install_global = 0
 
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
 
 " fullscreen mode, only works on windows
-nnoremap <leader>f :simalt ~x<cr>
+nnoremap <leader>F :simalt ~x<cr>
 
 " open a new tab
 nnoremap <c-t> :tabnew<cr>
@@ -249,10 +241,12 @@ nnoremap <c-t> :tabnew<cr>
 " sudo write
 command! W :w !sudo tee %
 
-
-" Tree
-nnoremap <silent> <F4> :NERDTreeToggle<CR>
-nnoremap <silent> <F5> :NERDTreeFind<CR>
+" NERDTREE
+nnoremap <silent> <F4> :NERDTreeToggle<cr>
+nnoremap <silent> <F5> :NERDTreeFind<cr>
+" for gaming keyboard
+nnoremap <leader>d :NERDTreeToggle<cr>
+nnoremap <leader>f :NERDTreeFind<cr>
 
 " Tabs
 nnoremap <leader>( :tabprev<cr>
@@ -267,7 +261,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " quick scape to get out of hlsearch
-nnoremap <leader><c-n> :nohl<CR>
+nnoremap <leader><space> :nohl<cr>
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -287,6 +281,7 @@ noremap <C-l> <C-w>l
 
 " faster saving
 nnoremap <leader>w :w<cr>
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
 " Save when losing focus
 au FocusLost * :wa
@@ -298,10 +293,6 @@ normal! \<c-w>="
 " window resizing
 nnoremap <c-left> 5<c-w>>
 nnoremap <c-right> 5<c-w><
-
-
-" Kill the window
-nnoremap K :q<cr>
 
 " formatting, textmate-style
 nnoremap Q gqip
@@ -323,17 +314,14 @@ nnoremap <leader>ev :vsp $MYVIMRC<cr>
 " I dont record stuff
 map qq <Nop>
 
-
 "easy ecape w/ modding my keyboard
 inoremap jj <esc>
-
 
 " Make tabs, trailing whitespace, and non-breaking spaces visible
 "exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬"
 "set listchars=tab:▸\ ,eol:¬,trail:-
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set list
-
 
 " swap : and ; to make colon commands easer to type
 nnoremap ; :
@@ -343,12 +331,13 @@ nnoremap : ;
 hi ColorColumn ctermbg=green
 call matchadd('ColorColumn', '\%81v', 100)
 
-" setting relative numbers, normal numbers or non
-set number
-" set relativenumber
-" nnoremap <leader>nr :set relativenumber<CR>
-" nnoremap <leader>nn :set number<CR>
-" nnoremap <leader>on :set nonumber<CR>
+" Theme stuff
+nnoremap <leader>1 :colorscheme solarized<cr>
+nnoremap <leader>2 :colorscheme base16-monokai<cr>
+" nnoremap <leader>3 :colorscheme molokai<cr>
+" nnoremap <leader>4 :colorscheme badwolf<cr>
+
+
 
 " }}}
 " filetype ----------------------------------------------------------- {{{
