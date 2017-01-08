@@ -20,70 +20,89 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
     Plugin 'gmarik/Vundle.vim'
+
 "Code environment
     "Plugin 'moll/vim-node'
-    Plugin 'mattn/emmet-vim' " ctrl y RELEASE ,
+    "Plugin 'mattn/emmet-vim' " ctrl y RELEASE ,
+
 " hightlight
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'chriskempson/base16-vim'
-    Plugin 'ap/vim-css-color'                   " see what the hex color is
-    Plugin 'sheerun/vim-polyglot'               " support a whole lot of filetypes
-    Plugin 'xsbeats/vim-blade'                  " support for blade (laravel)
-    Plugin 'mxw/vim-jsx'                        " support for jsx with reactjs
-    Plugin 'digitaltoad/vim-pug'                " pug(jade) syntax support
+    Plugin 'ap/vim-css-color'                       " see what the hex color is
+    Plugin 'sheerun/vim-polyglot'                   " support a whole lot of filetypes
+    Plugin 'xsbeats/vim-blade'                      " support for blade (laravel)
+    Plugin 'mxw/vim-jsx'                            " support for jsx with reactjs
+    Plugin 'digitaltoad/vim-pug'                    " pug(jade) syntax support
+"IDE per code language
+    " TypeScript
+    Plugin 'leafgarland/typescript-vim'
+    Plugin 'Quramy/tsuquyomi'
+    Plugin 'Shougo/vimproc.vim', {
+        \ 'build' : {
+        \     'windows' : 'tools\\update-dll-mingw',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'linux' : 'make',
+        \     'unix' : 'gmake',
+        \    },
+        \ }
+
 " VIM INTERFACE
-    Plugin 'scrooloose/syntastic'               "error checking
-    Plugin 'pmsorhaindo/syntastic-local-eslint.vim' "Linting for Nodejs projects
     "Plugin 'vim-scripts/matchit.zip'
-    Plugin 'editorconfig/editorconfig-vim'
+    Plugin 'editorconfig/editorconfig-core-c'
     Plugin 'terryma/vim-multiple-cursors'
     "Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'airblade/vim-gitgutter'
+    Plugin 'Yggdroot/indentLine'
+"must have
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'tacahiroy/ctrlp-funky'
+    Plugin 'tpope/vim-commentary'                   "select with v and comment with //gc
+    Plugin 'tpope/vim-fugitive'                     "git from vim
+    Plugin 'tpope/vim-surround'
+    Plugin 'townk/vim-autoclose'
     Plugin 'scrooloose/nerdtree'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'tpope/vim-commentary'               "select with v and comment with //gc
-    Plugin 'tpope/vim-fugitive'                 "git from vim
-    Plugin 'tpope/vim-surround'
-    Plugin 'townk/vim-autoclose'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'Yggdroot/indentLine'
+    Plugin 'scrooloose/syntastic'                   "error checking
+    Plugin 'pmsorhaindo/syntastic-local-eslint.vim' "Linting for Nodejs projects
+" vim sessions
     Plugin 'xolox/vim-session'
     Plugin 'xolox/vim-misc'
+
 "snippets
-    Plugin 'sirver/ultisnips'
-    Plugin 'garbas/vim-snipmate'
-    Plugin 'honza/vim-snippets'
+    " Plugin 'sirver/ultisnips'
+    " Plugin 'garbas/vim-snipmate'
+    " Plugin 'honza/vim-snippets'
 " utilies
     Plugin 'MarcWeber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
     Plugin 'junegunn/limelight.vim'
 " autocomplete
-    " autocomplete libs
-    Plugin 'myhere/vim-nodejs-complete'
-    Plugin 'shawncplus/phpcomplete.vim'
-    Plugin 'artur-shaik/vim-javacomplete2'  "http://vimawesome.com/plugin/vim-javacomplete2 when using java
-    "autocomplete driver
     Plugin 'ervandew/supertab'
-    Plugin 'shougo/neocomplcache.vim'
-    "Plugin 'm2mdas/phpcomplete-extended-laravel'
-    "Plugin 'arnaud-lb/vim-php-namespace'
+    Plugin 'shougo/neocomplete.vim'
+    " autocomplete libs {{{
+    " Plugin 'myhere/vim-nodejs-complete'
+    " Plugin 'shawncplus/phpcomplete.vim'
+    " Plugin 'm2mdas/phpcomplete-extended-laravel'
+    " Plugin 'arnaud-lb/vim-php-namespace'
+    " Plugin 'artur-shaik/vim-javacomplete2'  "http://vimawesome.com/plugin/vim-javacomplete2 when using java
+    " }}}
 call vundle#end()
 " }}}
 " after vundle  ------------------------------------------------------ {{{
 filetype plugin indent on
 syntax on
 
-"colorscheme solarized
-colorscheme base16-monokai
+"colorscheme base16-monokai
+colorscheme solarized
 set background=dark
-set fileformat=unix
-set fileformats=unix,dos
+
 " }}}
 " Basic options ------------------------------------------------------ {{{
+
 set ignorecase
 set smartcase
-
 set number
 set hlsearch
 set encoding=utf-8
@@ -97,10 +116,10 @@ set noshowmode
 let mapleader = ","
 let maplocalleader = "\\"
 
-"let me paste from system clipboard
-set clipboard+=unnamed
+set clipboard+=unnamed                          "let me paste from system clipboard
 
 " utf-8 {{{
+
 if has("multi_byte")
   if &termencoding == ""
     let &termencoding = &encoding
@@ -110,18 +129,24 @@ if has("multi_byte")
   "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
 endif
+
 " }}}
+
 " make backspace work in insert mode {{{
+
 set backspace=2
 set backspace=indent,eol,start
 set scrolloff=15
+
 " }}}
-" backup ----------------------------------------------------------- {{{
+
+" backup ------------------------------------------------------------ {{{
 set backup
 set undofile
 set backupdir=~/.vim/temp/backup//
 set undodir=~/.vim/temp/undo//
 set directory=~/.vim/temp/swap//
+
 " lets make those folder it they don't already exist.
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
@@ -132,7 +157,9 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
+
 " }}}
+
 " folding ----------------------------------------------------------- {{{
 set foldlevelstart=0
 set foldmethod=marker
@@ -140,7 +167,7 @@ set foldmethod=marker
 " Space to toggle folds.
 nnoremap <Space> za
 vnoremap <Space> za
-autocmd FileType vim,c++,js,scss,html,jade,php setlocal foldmethod=marker
+autocmd FileType vim,c#,js,ts,tsx,scss,html,pug,php setlocal foldmethod=marker
 
 nnoremap z0 zCz
 
@@ -161,18 +188,36 @@ function! MyFoldText() " {{{
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
+
 set foldtext=MyFoldText()
 
 " }}}
 
 " }}}
-" make vim work in conemu -------------------------------------------- {{{
-set notimeout
-set ttimeout
-set ttimeoutlen=10
-set synmaxcol=800
-" }}}
 " plugin setting ----------------------------------------------------- {{{
+
+"es javascript hint
+" let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jsxhint']
+" let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+" let g:jsx_ext_required = 0
+
+" emmet
+" let g:user_emmet_install_global = 0
+
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
+
+"neocomplete
+let g:neocomplete#enable_at_startup=1
+
+" jump to defination
+nnoremap <Leader>jt :CtrlPFunky<Cr>
+
+" narrow the list down with a word under cursor
+nnoremap <Leader>jT :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " Default mapping multi cursors
 let g:multi_cursor_next_key='<C-n>'
@@ -181,11 +226,11 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_use_default_mapping=0
 
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsListSnippets="<c-e>"
+" let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" let g:UltiSnipsListSnippets="<c-e>"
 
 " line indenting
 let g:indentLine_color_term = 239
@@ -193,10 +238,8 @@ let g:indentLine_color_gui = '#A4E57E'
 let g:indentLine_char = '│'
 
 " Airline
-let g:airline_theme='powerlineish'
-"let g:airline_theme='solarized'
+let g:airline_theme='powerlineish' "'solarized'
 let g:airline#extensions#tabline#enabled = 1
-
 
 " ctrl p ignore
 let g:ctrlp_map = '<leader>t'
@@ -218,16 +261,7 @@ nnoremap <leader>ss :SaveSession
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
-"es javascript hint
-let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jsxhint']
-let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-let g:jsx_ext_required = 0
 
-"neocomplcache
-let g:neocomplcache_enable_at_startup=1
-
-" emmet
-let g:user_emmet_install_global = 0
 
 " }}}
 " Conveniece mappings ------------------------------------------------ {{{
@@ -273,7 +307,7 @@ noremap H ^
 noremap L g_
 nnoremap <Tab> %
 
-" Easy buffer navigation
+" Easy buffer/pane navigation
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -327,20 +361,24 @@ set list
 nnoremap ; :
 nnoremap : ;
 
-" set colorcolumn=81
+set colorcolumn=81
 hi ColorColumn ctermbg=green
 call matchadd('ColorColumn', '\%81v', 100)
 
 " Theme stuff
 nnoremap <leader>1 :colorscheme solarized<cr>
 nnoremap <leader>2 :colorscheme base16-monokai<cr>
-" nnoremap <leader>3 :colorscheme molokai<cr>
-" nnoremap <leader>4 :colorscheme badwolf<cr>
+" nnoremap <leader>3 :colorscheme base16-molokai<cr>
+" nnoremap <leader>4 :colorscheme base16-badwolf<cr>
 
+" Align blocks of text and keep them selected
+vmap < <gv
+vmap > >gv
 
 
 " }}}
-" filetype ----------------------------------------------------------- {{{
+" filetype / Editorconfig -------------------------------------------- {{{
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -365,6 +403,7 @@ au FileType pug setl sw=2 sts=2 et
 au FileType javascript setl sw=2 sts=2 et
 au FileType javascript.jsx setl sw=2 sts=2 et
 au FileType js,jsx setl sw=2 sts=2 et
+
 " }}}
 " airline ------------------------------------------------------------ {{{
 function! AirlineInit()
@@ -413,12 +452,9 @@ set wildignore+=migrations                       " Django migrations
 set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
 
-" Clojure/Leiningen
-set wildignore+=classes
-set wildignore+=lib
-
 " }}}
 " gui/console -------------------------------------------------------- {{{
+
 if has("gui_running")
     set guioptions= " disable all UI options
     set guicursor+=a:blinkon0 " disable blinking cursor
@@ -448,5 +484,13 @@ else
     set ballooneval
     colorscheme base16-monokai
 endif
+
+" }}}
+" make vim work in conemu OVERBODIG -------------------------------------------- {{{
+
+" set notimeout
+" set ttimeout
+" set ttimeoutlen=10
+" set synmaxcol=800
 
 " }}}
