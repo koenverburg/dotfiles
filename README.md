@@ -1,11 +1,4 @@
-# dotfiles
+# The DotFiles
 
-Here I will have my config dotfiles for
-
-* vim(neovim in the future when the build is stable)
-* tmux
-* bash
-* zsh
-* fish
-
-
+So we will have a collections of configs in this repo for: powershell, neovim and vscode
+Things you might find here are my neovim config, ps functions for easy jumping to project folders and keybinds/plugins that I use in vs code
