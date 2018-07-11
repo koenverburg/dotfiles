@@ -4,19 +4,24 @@
 
 " Dein --------------------------------------------------------------------- {{{
 
-set runtimepath+=~/AppData/local/nvim/bundle/repos/github.com/Shougo/dein.vim
+" set runtimepath += "\\nvim\\bundle\\repos\\github.com\\Shougo\\dein.vim"
+set runtimepath += expand($LOCALAPPDATA)."\\nvim\\bundle\\repos\\github.com\\Shougo\\dein.vim"
 
 set nocompatible
 filetype off
 
-if dein#load_state('~/AppData/local/nvim')
-  call dein#begin('~/AppData/local/nvim')
-  call dein#add('~/AppData/local/nvim/bundle/repos/github.com/Shougo/dein.vim')
+let loadState = expand($LOCALAPPDATA)."\\nvim"
+let deinBeginPath = expand($LOCALAPPDATA)."\\nvim"
+let localDeinPath = expand($LOCALAPPDATA)."\\nvim\\bundle\\repos\\github.com\\Shougo\\dein.vim"
+
+if dein#load_state(loadState)
+  call dein#begin(deinBeginPath)
+  call dein#add(localDeinPath)
+  call dein#add('wsdjeg/dein-ui.vim')
 
   " colorscheme
   call dein#add('rakr/vim-one')
   call dein#add('morhetz/gruvbox')
-  call dein#add('trevordmiller/nova-vim')
   call dein#add('ayu-theme/ayu-vim')
 
   " json
@@ -28,10 +33,10 @@ if dein#load_state('~/AppData/local/nvim')
   " call dein#add('othree/yajs.vim')
   " call dein#add('othree/es.next.syntax.vim')
 
-  call dein#add('neovim/node-host', { 'build': 'npm install' })
-  call dein#add('billyvg/tigris.nvim', { 'build': './install.sh' })
+"   call dein#add('neovim/node-host', { 'build': 'npm install' })
+"   call dein#add('billyvg/tigris.nvim', { 'build': './install.sh' })
 
-  call dein#add('othree/csscomplete.vim')
+"   call dein#add('othree/csscomplete.vim')
 
   " interface
   call dein#add('editorconfig/editorconfig-vim')
@@ -40,7 +45,6 @@ if dein#load_state('~/AppData/local/nvim')
   call dein#add('kien/ctrlp.vim')
   call dein#add('tacahiroy/ctrlp-funky')
   call dein#add('terryma/vim-multiple-cursors')
-  call dein#add('galooshi/vim-import-js')
 
   call dein#add('neomake/neomake')
   call dein#add('sbdchd/neoformat')
@@ -104,11 +108,10 @@ let g:enable_italic_font = 1                                                    
 " Basic settings ----------------------------------------------------------- {{{
 
 set &runtimepath +='~/AppData/local/nvim/bundle/repos/github.com/w0rp/ale'
-"set &runtimepath +='~/AppData/local/nvim/bundle/repos/github.com/LanguageClient-neovim'
 
 set termguicolors
-let ayucolor="dark"   " dark | mirage | light
-colorscheme nova
+let ayucolor="mirage"   " dark | mirage | light
+colorscheme ayu
 set background=dark
 set fileformat=unix
 set fileformats=unix,dos
@@ -157,22 +160,22 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " }}}
 
 " editor config ------------------------------------------------------------ {{{
-  let g:EditorConfig_exec_path = 'editorconfig'
+"   let g:EditorConfig_exec_path = 'editorconfig'
   " let g:EditorConfig_core_mode = 'external_command'
 " }}}
 
 " tag bar ------------------------------------------------------------------ {{{
-  nnoremap <silent> <F8> :TagbarToggle<CR>
+"   nnoremap <silent> <F8> :TagbarToggle<CR>
 
-  set regexpengine=1
-  let g:neotags_enabled = 1
-  let g:neotags_file = './tags'
-  let g:neotags#python#order = 'mfc'
-  let g:neotags#javascript#order = 'fcfmpv'
+"   set regexpengine=1
+"   let g:neotags_enabled = 1
+"   let g:neotags_file = './tags'
+"   let g:neotags#python#order = 'mfc'
+"   let g:neotags#javascript#order = 'fcfmpv'
 
-  highlight link PythonMethodTag Special
-  highlight link PythonFunctionTag Special
-  highlight link PythonClassTag Identifier
+"   highlight link PythonMethodTag Special
+"   highlight link PythonFunctionTag Special
+"   highlight link PythonClassTag Identifier
 
   " highlight link javascriptFunctionTag Identifier
 " }}}
@@ -348,9 +351,9 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
   set backup
   set undofile
-  set backupdir=$LOCALAPPDATA/nvim-data/backup/
-  set undodir=$LOCALAPPDATA/nvim-data/undo/
-  set directory=$LOCALAPPDATA/nvim-data/swap/
+  set backupdir = $LOCALAPPDATA/nvim/data/backup/
+  set undodir   = $LOCALAPPDATA/nvim/data/undo/
+  set directory = $LOCALAPPDATA/nvim/data/swap/
 
   " lets make those folder it they don't already exist.
   if !isdirectory(expand(&undodir))
@@ -416,41 +419,38 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " Git ---------------------------------------------------------------------- {{{
 
-  set signcolumn=yes
-  let g:conflict_marker_enable_mappings = 0
-  let g:gitgutter_sign_added = '│'
-  let g:gitgutter_sign_modified = '│'
-  let g:gitgutter_sign_removed = '│'
-  let g:gitgutter_sign_removed_first_line = '│'
-  let g:gitgutter_sign_modified_removed = '│'
+"   set signcolumn=yes
+"   let g:conflict_marker_enable_mappings = 0
+"   let g:gitgutter_sign_added = '│'
+"   let g:gitgutter_sign_modified = '│'
+"   let g:gitgutter_sign_removed = '│'
+"   let g:gitgutter_sign_removed_first_line = '│'
+"   let g:gitgutter_sign_modified_removed = '│'
 
 " }}}
 
 " Linting ------------------------------------------------------------------ {{{
 
-  call neomake#configure#automake({
-  \ 'BufWritePost': {'delay': 0},
-  \ }, 1000)
+"   call neomake#configure#automake({
+"   \ 'BufWritePost': {'delay': 0},
+"   \ }, 1000)
 
-  " \ 'BufWinEnter': {},
-  " \ 'TextChanged': {},
-  " \ 'InsertLeave': { },
-  let g:ale_sign_error = '•'
-  let g:ale_sign_warning = '•'
+"   let g:ale_sign_error = '•'
+"   let g:ale_sign_warning = '•'
 
-  let g:airline#extensions#ale#error_symbol='•'
-  let g:airline#extensions#ale#warning_symbol='•'
+"   let g:airline#extensions#ale#error_symbol='•'
+"   let g:airline#extensions#ale#warning_symbol='•'
 
-  let g:neomake_error_sign = {'text': '•'}
-  let g:neomake_warning_sign = {'text': '•'}
-  let g:airline#extensions#neomake#error_symbol='•'
-  let g:airline#extensions#neomake#warning_symbol='•'
+"   let g:neomake_error_sign = {'text': '•'}
+"   let g:neomake_warning_sign = {'text': '•'}
+"   let g:airline#extensions#neomake#error_symbol='•'
+"   let g:airline#extensions#neomake#warning_symbol='•'
 
-  hi link ALEError SpellBad
-  hi link ALEWarning SpellBad
+"   hi link ALEError SpellBad
+"   hi link ALEWarning SpellBad
   " Write this in your vimrc file
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_enter = 0
+"   let g:ale_lint_on_text_changed = 'never'
+"   let g:ale_lint_on_enter = 0
   " let g:neomake_verbose = 3
 "}}}
 
@@ -472,12 +472,12 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 " Snipppets -----------------------------------------------------------------{{{
 
 " Enable snipMate compatibility feature.
-  let g:neosnippet#enable_snipmate_compatibility = 1
-  " let g:neosnippet#snippets_directory='~/GitHub/ionic-snippets'
-  " let g:neosnippet#expand_word_boundary = 1
-  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k>     <Plug>(neosnippet_expand_target)
+"   let g:neosnippet#enable_snipmate_compatibility = 1
+"   " let g:neosnippet#snippets_directory='~/GitHub/ionic-snippets'
+"   " let g:neosnippet#expand_word_boundary = 1
+"   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"   xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
   " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -491,34 +491,34 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " Javascript --------------------------------------------------------------- {{{
 
-  let g:javascript_plugin_flow = 1
-  let g:javascript_plugin_jsdoc = 1
+"   let g:javascript_plugin_flow = 1
+"   let g:javascript_plugin_jsdoc = 1
 
-  " let g:javascript_conceal_function             = "ƒ"
-  " let g:javascript_conceal_null                 = "ø"
-  " let g:javascript_conceal_this                 = "@"
-  " let g:javascript_conceal_return               = "⇚"
-  " let g:javascript_conceal_undefined            = "¿"
-  " let g:javascript_conceal_NaN                  = "ℕ"
-  " let g:javascript_conceal_prototype            = "¶"
-  " let g:javascript_conceal_static               = "•"
-  " let g:javascript_conceal_super                = "Ω"
-  " let g:javascript_conceal_arrow_function       = "⇒"
-  " let g:javascript_conceal_noarg_arrow_function = ""
-  " let g:javascript_conceal_underscore_arrow_function = ""
+"   let g:javascript_conceal_function             = "ƒ"
+"   let g:javascript_conceal_null                 = "ø"
+"   let g:javascript_conceal_this                 = "@"
+"   let g:javascript_conceal_return               = "⇚"
+"   let g:javascript_conceal_undefined            = "¿"
+"   let g:javascript_conceal_NaN                  = "ℕ"
+"   let g:javascript_conceal_prototype            = "¶"
+"   let g:javascript_conceal_static               = "•"
+"   let g:javascript_conceal_super                = "Ω"
+"   let g:javascript_conceal_arrow_function       = "⇒"
+"   let g:javascript_conceal_noarg_arrow_function = ""
+"   let g:javascript_conceal_underscore_arrow_function = ""
 
-  let g:neoformat_javascript_prettier = g:standard_prettier_settings
-  let g:neoformat_enabled_javascript = ['prettier']
+"   let g:neoformat_javascript_prettier = g:standard_prettier_settings
+"   let g:neoformat_enabled_javascript = ['prettier']
 
-  let g:neomake_javascript_enabled_makers = ['standard']
-  let g:jsx_ext_required = 1
-  let g:jsdoc_allow_input_prompt = 1
-  let g:jsdoc_input_description = 1
-  let g:jsdoc_return=0
-  let g:jsdoc_return_type=0
-  let g:vim_json_syntax_conceal = 0
+"   let g:neomake_javascript_enabled_makers = ['standard']
+"   let g:jsx_ext_required = 1
+"   let g:jsdoc_allow_input_prompt = 1
+"   let g:jsdoc_input_description = 1
+"   let g:jsdoc_return=0
+"   let g:jsdoc_return_type=0
+"   let g:vim_json_syntax_conceal = 0
 
-  let g:tigris#enabled = 1
+"   let g:tigris#enabled = 1
 
 "}}}
 
@@ -533,16 +533,16 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " CSS ---------------------------------------------------------------------- {{{
 
-  let g:neoformat_scss_prettier = g:standard_prettier_settings
-  let g:neoformat_enabled_scss = ['prettier']
-  let g:neomake_scss_enabled_makers = ['scsslint']
+"   let g:neoformat_scss_prettier = g:standard_prettier_settings
+"   let g:neoformat_enabled_scss = ['prettier']
+"   let g:neomake_scss_enabled_makers = ['scsslint']
 
 "}}}
 
 " HTML --------------------------------------------------------------------- {{{
 
-  let g:neomake_html_enabled_makers = []
-  let g:neoformat_enabled_html = ['htmlbeautify']
+"   let g:neomake_html_enabled_makers = []
+"   let g:neoformat_enabled_html = ['htmlbeautify']
 
 " }}}
 
@@ -599,7 +599,6 @@ set wildignore+=database                         " knex migrations
 " }}}
 
 " theme
-nnoremap <leader>1 :colorscheme nova<cr>
 nnoremap <leader>2 :colorscheme one<cr>
 nnoremap <leader>3 :colorscheme gruvbox<cr>
 nnoremap <leader>3 :colorscheme ayu<cr>
