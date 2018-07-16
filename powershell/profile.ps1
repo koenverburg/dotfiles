@@ -1,6 +1,7 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
+Import-Module AzureRM
 
 Set-Alias vim nvim
 Set-Alias gvim nvim-qt
