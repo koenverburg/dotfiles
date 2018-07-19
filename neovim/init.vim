@@ -95,8 +95,7 @@ let g:enable_italic_font = 1                                                    
  "}}}
 
 " Basic settings ----------------------------------------------------------- {{{
-
-set &runtimepath +='~/.neovim/cache/ale'
+set &runtimepath += '~/.neovim/cache/ale'
 
 set termguicolors
 let ayucolor="mirage"   " dark | mirage | light
@@ -156,11 +155,12 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   let g:neotags#python#order = 'mfc'
   let g:neotags#javascript#order = 'fcfmpv'
 
-"   highlight link PythonMethodTag Special
-"   highlight link PythonFunctionTag Special
-"   highlight link PythonClassTag Identifier
+  highlight link PythonMethodTag Special
+  highlight link PythonFunctionTag Special
+  highlight link PythonClassTag Identifier
 
-  " highlight link javascriptFunctionTag Identifier
+  highlight link javascriptFunctionTag Identifier
+
 " }}}
 
 " indent lines ------------------------------------------------------------- {{{
@@ -169,7 +169,7 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   let g:indentLine_setColors = 0
   let g:indentLine_leadingSpaceEnabled = 1
   let g:indentLine_setConceal = 1;
-  let g:indentLine_leadingSpaceChar = '·'
+  let g:indentLine_leadingSpaceChar = '??'
   "let g:indentLine_color_gui = #504945
   "let g:indentLine_char = '|'
 " }}}
@@ -180,12 +180,12 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   let g:vim_json_syntax_conceal = 0                                             " I want to see the quote's
 
 "   " Tabular
-"   if exists(":Tabularize")
-"     nmap <Leader>a= :Tabularize /=<CR>
-"     vmap <Leader>a= :Tabularize /=<CR>
-"     nmap <Leader>a: :Tabularize /:\zs<CR>
-"     vmap <Leader>a: :Tabularize /:\zs<CR>
-"   endif"
+  if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+  endif"
 
 "   " Airline
   let g:airline_theme = 'deus'
@@ -290,15 +290,15 @@ inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
 
 " Quick edit vimrc
-nnoremap <leader>ev :vsp $LOCALAPPDATA/nvim/init.vim<cr>
+nnoremap <leader>ev :vsp  $localappdata/nvim/init.vim<cr>
 
 "easy ecape w/ modding my keyboard
 inoremap jj <esc>
 
 " Make tabs, trailing whitespace, and non-breaking spaces visible
-"exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬"
-"set listchars=tab:▸\ ,eol:¬,trail:-
-set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
+"exec "set listchars=tab:???\ ,trail:\uB7,nbsp:~,eol:??"
+"set listchars=tab:???\ ,eol:??,trail:-
+set listchars=eol:??,tab:>-,trail:~,extends:>,precedes:<
 set list
 
 " swap : and ; to make colon commands easer to type
@@ -314,27 +314,6 @@ nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " }}}
-
-" backup ------------------------------------------------------------------- {{{
-
-  set backup
-  set undofile
-  set backupdir = '~/.neovim/data/backup/'
-  set undodir   = '~/.neovim/data/undo/'
-  set directory = '~/.neovim/data/swap/'
-
-"   lets make those folder it they don't already exist.
-  if !isdirectory(expand(&undodir))
-      call mkdir(expand(&undodir), "p")
-  endif
-  if !isdirectory(expand(&backupdir))
-      call mkdir(expand(&backupdir), "p")
-  endif
-  if !isdirectory(expand(&directory))
-      call mkdir(expand(&directory), "p")
-  endif
-
-"}}}
 
 " Fold, gets it's own section  --------------------------------------------- {{{
 
@@ -352,8 +331,8 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
       " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines')
       " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines   ')
       let fillcharcount = windowwidth - len(line)
-      " return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
-      return line . '⋯'. repeat(" ",fillcharcount)
+      " return line . '???' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
+      return line . '???'. repeat(" ",fillcharcount)
   endfunction " }}}
 
   set foldtext=MyFoldText()
@@ -389,37 +368,37 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
   set signcolumn=yes
   let g:conflict_marker_enable_mappings = 0
-  let g:gitgutter_sign_added = '│'
-  let g:gitgutter_sign_modified = '│'
-  let g:gitgutter_sign_removed = '│'
-  let g:gitgutter_sign_removed_first_line = '│'
-  let g:gitgutter_sign_modified_removed = '│'
+  let g:gitgutter_sign_added = '???'
+  let g:gitgutter_sign_modified = '???'
+  let g:gitgutter_sign_removed = '???'
+  let g:gitgutter_sign_removed_first_line = '???'
+  let g:gitgutter_sign_modified_removed = '???'
 
 " }}}
 
-" Linting ------------------------------------------------------------------ {{{
+" Linting off ------------------------------------------------------------------ {{{
 
-  call neomake#configure#automake({
-  \ 'BufWritePost': {'delay': 0},
-  \ }, 1000)
+  " call neomake#configure#automake({
+  " \ 'BufWritePost': { 'delay': 0 },
+  " \ }, 1000)
 
-  let g:ale_sign_error = '•'
-  let g:ale_sign_warning = '•'
+  " let g:ale_sign_error = '???'
+  " let g:ale_sign_warning = '???'
 
-  let g:airline#extensions#ale#error_symbol='•'
-  let g:airline#extensions#ale#warning_symbol='•'
+  " let g:airline#extensions#ale#error_symbol='???'
+  " let g:airline#extensions#ale#warning_symbol='???'
 
-  let g:neomake_error_sign = {'text': '•'}
-  let g:neomake_warning_sign = {'text': '•'}
-  let g:airline#extensions#neomake#error_symbol='•'
-  let g:airline#extensions#neomake#warning_symbol='•'
+  " let g:neomake_error_sign = {'text': '???'}
+  " let g:neomake_warning_sign = {'text': '???'}
+  " let g:airline#extensions#neomake#error_symbol='???'
+  " let g:airline#extensions#neomake#warning_symbol='???'
 
 "   hi link ALEError SpellBad
 "   hi link ALEWarning SpellBad
   " Write this in your vimrc file
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_enter = 0
-  let g:neomake_verbose = 3
+  " let g:ale_lint_on_text_changed = 'never'
+  " let g:ale_lint_on_enter = 0
+  " let g:neomake_verbose = 3
 "}}}
 
 " Nvim terminal ------------------------------------------------------------ {{{
@@ -437,51 +416,59 @@ let g:multi_cursor_exit_from_insert_mode=0
 
 "}}}
 
+" neoformat (js,css,html)
+" general
+let g:neoformat_scss_prettier = g:standard_prettier_settings
+let g:neoformat_javascript_prettier = g:standard_prettier_settings
+
+" scss
+let g:neoformat_enabled_scss = ['prettier']
+let g:neomake_scss_enabled_makers = ['scsslint']
+
+" javascript
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+" html,php
+let g:neomake_html_enabled_makers = []
+" let g:neoformat_enabled_html = ['htmlbeautify']
+
 " Javascript --------------------------------------------------------------- {{{
 
   let g:javascript_plugin_flow = 1
   let g:javascript_plugin_jsdoc = 1
 
-"   let g:javascript_conceal_function             = "ƒ"
-"   let g:javascript_conceal_null                 = "ø"
-"   let g:javascript_conceal_this                 = "@"
-"   let g:javascript_conceal_return               = "⇚"
-"   let g:javascript_conceal_undefined            = "¿"
-"   let g:javascript_conceal_NaN                  = "ℕ"
-"   let g:javascript_conceal_prototype            = "¶"
-"   let g:javascript_conceal_static               = "•"
-"   let g:javascript_conceal_super                = "Ω"
-"   let g:javascript_conceal_arrow_function       = "⇒"
-"   let g:javascript_conceal_noarg_arrow_function = ""
-"   let g:javascript_conceal_underscore_arrow_function = ""
+"   let g:javascript_conceal_function             = "??"
+  let g:javascript_conceal_null                 = "??"
+  let g:javascript_conceal_this                 = "@"
+  let g:javascript_conceal_return               = "???"
+  let g:javascript_conceal_undefined            = "??"
+  let g:javascript_conceal_NaN                  = "???"
+  let g:javascript_conceal_prototype            = "??"
+  let g:javascript_conceal_static               = "???"
+  let g:javascript_conceal_super                = "??"
+  let g:javascript_conceal_arrow_function       = "???"
+" let g:javascript_conceal_noarg_arrow_function = ""
+" let g:javascript_conceal_underscore_arrow_function = ""
 
-  let g:neoformat_javascript_prettier = g:standard_prettier_settings
-  let g:neoformat_enabled_javascript = ['prettier']
-
-"   let g:neomake_javascript_enabled_makers = ['standard']
-"   let g:jsx_ext_required = 1
-"   let g:jsdoc_allow_input_prompt = 1
-"   let g:jsdoc_input_description = 1
-"   let g:jsdoc_return=0
-"   let g:jsdoc_return_type=0
-"   let g:vim_json_syntax_conceal = 0
+  let g:jsx_ext_required = 1
+  let g:jsdoc_allow_input_prompt = 1
+  let g:jsdoc_input_description = 1
+  let g:jsdoc_return=0
+  let g:jsdoc_return_type=0
+  let g:vim_json_syntax_conceal = 0
 
   let g:tigris#enabled = 1
 
 "}}}
 
-" CSS ---------------------------------------------------------------------- {{{
+" CSS OFF  ---------------------------------------------------------------------- {{{
 
-"   let g:neoformat_scss_prettier = g:standard_prettier_settings
-"   let g:neoformat_enabled_scss = ['prettier']
-"   let g:neomake_scss_enabled_makers = ['scsslint']
 
 "}}}
 
-" HTML --------------------------------------------------------------------- {{{
+" HTML OFF --------------------------------------------------------------------- {{{
 
-"   let g:neomake_html_enabled_makers = []
-"   let g:neoformat_enabled_html = ['htmlbeautify']
 
 " }}}
 
@@ -551,7 +538,10 @@ set wildignore+=database                         " knex migrations
 
 " }}}
 
-" theme
+" " theme
 nnoremap <leader>2 :colorscheme one<cr>
 nnoremap <leader>3 :colorscheme gruvbox<cr>
 nnoremap <leader>3 :colorscheme ayu<cr>
+
+" let g:python3_host_prog='C:/Users/koenv/Envs/neovim3/Scripts/python.exe'
+let g:python_host_prog='C:/Python27/python.exe'
