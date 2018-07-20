@@ -1,0 +1,80 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "git.detectSubmodules": false,
+    "git.detectSubmodulesLimit": 9999,
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.iconTheme": "ayu",
+    "window.menuBarVisibility": "toggle",
+    "editor.renderWhitespace": "all",
+    "editor.renderIndentGuides": false,
+    "editor.cursorBlinking": "solid",
+    "editor.minimap.enabled": true,
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 26,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.foldingStrategy": "auto",
+    "explorer.openEditors.visible": 0,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/flow-typed": true
+    },
+    "vim.leader": ",",
+    "vim.easymotion": true,
+    "vim.useCtrlKeys": true,
+    "vim.disableExtension": true,
+    "vim.useSystemClipboard": true,
+    "files.trimTrailingWhitespace": true,
+    "javascript.referencesCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "typescript.implementationsCodeLens.enabled": true,
+    "gitlens.keymap": "alternate",
+    "gitlens.historyExplorer.enabled": true,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
+    "eslint.packageManager": "yarn",
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "[javascript]": {
+        "editor.formatOnSave": false
+    },
+    "alignment.surroundSpace": {
+        "colon": [
+            1,
+            1
+        ],
+        "assignment": [
+            1,
+            1
+        ],
+        "arrow": [
+            1,
+            1
+        ],
+        "comment": 2
+    },
+    "team.showWelcomeMessage": false,
+}
