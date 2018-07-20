@@ -1,17 +1,14 @@
 // Place your settings in this file to overwrite the default settings
 {
-    // Controls whether the editor should render whitespace characters
-    "editor.renderWhitespace": "all",
-    // Enable usage data and errors to be sent to Microsoft.
+    "git.detectSubmodules": false,
+    "git.detectSubmodulesLimit": 9999,
     "telemetry.enableTelemetry": false,
-    // Enable crash reports to be sent to Microsoft.
-    // This option requires restart to take effect.
     "telemetry.enableCrashReporter": false,
-    // Enable some vim ctrl key commands that override otherwise common operations, like ctrl+c
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Ayu Mirage",
     "workbench.iconTheme": "ayu",
     "window.menuBarVisibility": "toggle",
+    "editor.renderWhitespace": "all",
     "editor.renderIndentGuides": false,
     "editor.cursorBlinking": "solid",
     "editor.minimap.enabled": true,
@@ -19,6 +16,8 @@
     "editor.fontLigatures": true,
     "editor.lineHeight": 26,
     "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.foldingStrategy": "auto",
     "explorer.openEditors.visible": 0,
     "files.exclude": {
         "**/.git": true,
@@ -30,10 +29,11 @@
         "**/flow-typed": true
     },
     "vim.leader": ",",
-    "vim.useCtrlKeys": true,
-    "vim.useSystemClipboard": true,
     "vim.easymotion": true,
+    "vim.useCtrlKeys": true,
     "vim.disableExtension": true,
+    "vim.useSystemClipboard": true,
+    "files.trimTrailingWhitespace": true,
     "javascript.referencesCodeLens.enabled": true,
     "typescript.referencesCodeLens.enabled": true,
     "typescript.implementationsCodeLens.enabled": true,
@@ -54,11 +54,13 @@
     "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
     "eslint.packageManager": "yarn",
     "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true,
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
     },
-    "editor.foldingStrategy": "auto",
-    "editor.formatOnSave": false,
+    "[javascript]": {
+        "editor.formatOnSave": false
+    },
     "alignment.surroundSpace": {
         "colon": [
             1,
@@ -73,5 +75,6 @@
             1
         ],
         "comment": 2
-    }
+    },
+    "team.showWelcomeMessage": false,
 }
