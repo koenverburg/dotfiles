@@ -1,4 +1,3 @@
-scriptencoding utf-8
 " .vimrc
 " Author: CreativeKoen <creativekoen@gmail.com>
 " Source: https://github.com/CreativeKoen/dotfiles
@@ -27,6 +26,10 @@ Plug 'othree/es.next.syntax.vim'
 
 " css
 Plug 'othree/csscomplete.vim'
+
+" graphql
+Plug 'jparise/vim-graphql'
+
 
 " interface
 Plug 'editorconfig/editorconfig-vim'
