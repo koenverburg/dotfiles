@@ -1,5 +1,5 @@
 " .vimrc
-" Author: CreativeKoen <creativekoen@gmail.com>
+" Author: Koen Verburg <creativekoen@gmail.com>
 " Source: https://github.com/CreativeKoen/dotfiles
 
 " Plug --------------------------------------------------------------------- {{{
@@ -56,10 +56,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " misc
-Plug 'w0rp/ale'
-Plug 'shougo/echodoc.vim'
-Plug 'c0r73x/neotags.nvim'
-Plug 'majutsushi/tagbar'
+"Plug 'w0rp/ale'
+"Plug 'shougo/echodoc.vim'
+"Plug 'c0r73x/neotags.nvim'
+"Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 
@@ -150,19 +150,19 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " }}}
 
 " tag bar ------------------------------------------------------------------ {{{
-  nnoremap <silent> <F8> :TagbarToggle<CR>
+  " nnoremap <silent> <F8> :TagbarToggle<CR>
 
-  set regexpengine=1
-  let g:neotags_enabled = 1
-  let g:neotags_file = './tags'
-  let g:neotags#python#order = 'mfc'
-  let g:neotags#javascript#order = 'fcfmpv'
+  " set regexpengine=1
+  " let g:neotags_enabled = 1
+  " let g:neotags_file = './tags'
+  " let g:neotags#python#order = 'mfc'
+  " let g:neotags#javascript#order = 'fcfmpv'
 
-  highlight link PythonMethodTag Special
-  highlight link PythonFunctionTag Special
-  highlight link PythonClassTag Identifier
+  " highlight link PythonMethodTag Special
+  " highlight link PythonFunctionTag Special
+  " highlight link PythonClassTag Identifier
 
-  highlight link javascriptFunctionTag Identifier
+  " highlight link javascriptFunctionTag Identifier
 
 " }}}
 
@@ -172,7 +172,7 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   let g:indentLine_setColors = 0
   let g:indentLine_leadingSpaceEnabled = 1
   let g:indentLine_setConceal = 1;
-  let g:indentLine_leadingSpaceChar = '??'
+  let g:indentLine_leadingSpaceChar = '·'
   "let g:indentLine_color_gui = #504945
   "let g:indentLine_char = '|'
 " }}}
@@ -299,9 +299,9 @@ nnoremap <leader>ev :vsp  $localappdata/nvim/init.vim<cr>
 inoremap jj <esc>
 
 " Make tabs, trailing whitespace, and non-breaking spaces visible
-"exec "set listchars=tab:???\ ,trail:\uB7,nbsp:~,eol:??"
-"set listchars=tab:???\ ,eol:??,trail:-
-set listchars=eol:??,tab:>-,trail:~,extends:>,precedes:<
+"exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬"
+"set listchars=tab:▸\ ,eol:¬,trail:-
+set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set list
 
 " swap : and ; to make colon commands easer to type
@@ -334,8 +334,8 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
       " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines')
       " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines   ')
       let fillcharcount = windowwidth - len(line)
-      " return line . '???' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
-      return line . '???'. repeat(" ",fillcharcount)
+      " return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
+      return line . '⋯'. repeat(" ",fillcharcount)
   endfunction " }}}
 
   set foldtext=MyFoldText()
@@ -371,11 +371,11 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
   set signcolumn=yes
   let g:conflict_marker_enable_mappings = 0
-  let g:gitgutter_sign_added = '???'
-  let g:gitgutter_sign_modified = '???'
-  let g:gitgutter_sign_removed = '???'
-  let g:gitgutter_sign_removed_first_line = '???'
-  let g:gitgutter_sign_modified_removed = '???'
+  let g:gitgutter_sign_added = '│'
+  let g:gitgutter_sign_modified = '│'
+  let g:gitgutter_sign_removed = '│'
+  let g:gitgutter_sign_removed_first_line = '│'
+  let g:gitgutter_sign_modified_removed = '│'
 
 " }}}
 
@@ -385,16 +385,16 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
   " \ 'BufWritePost': { 'delay': 0 },
   " \ }, 1000)
 
-  " let g:ale_sign_error = '???'
-  " let g:ale_sign_warning = '???'
+  " let g:ale_sign_error = '•'
+  " let g:ale_sign_warning = '•'
 
-  " let g:airline#extensions#ale#error_symbol='???'
-  " let g:airline#extensions#ale#warning_symbol='???'
+  " let g:airline#extensions#ale#error_symbol='•'
+  " let g:airline#extensions#ale#warning_symbol='•'
 
-  " let g:neomake_error_sign = {'text': '???'}
-  " let g:neomake_warning_sign = {'text': '???'}
-  " let g:airline#extensions#neomake#error_symbol='???'
-  " let g:airline#extensions#neomake#warning_symbol='???'
+  " let g:neomake_error_sign = {'text': '•'}
+  " let g:neomake_warning_sign = {'text': '•'}
+  " let g:airline#extensions#neomake#error_symbol='•'
+  " let g:airline#extensions#neomake#warning_symbol='•'
 
 "   hi link ALEError SpellBad
 "   hi link ALEWarning SpellBad
@@ -421,19 +421,19 @@ let g:multi_cursor_exit_from_insert_mode=0
 
 " neoformat (js,css,html)
 " general
-let g:neoformat_scss_prettier = g:standard_prettier_settings
-let g:neoformat_javascript_prettier = g:standard_prettier_settings
+" let g:neoformat_scss_prettier = g:standard_prettier_settings
+" let g:neoformat_javascript_prettier = g:standard_prettier_settings
 
-" scss
-let g:neoformat_enabled_scss = ['prettier']
-let g:neomake_scss_enabled_makers = ['scsslint']
+" " scss
+" let g:neoformat_enabled_scss = ['prettier']
+" let g:neomake_scss_enabled_makers = ['scsslint']
 
-" javascript
-let g:neoformat_enabled_javascript = ['prettier']
-let g:neomake_javascript_enabled_makers = ['eslint']
+" " javascript
+" let g:neoformat_enabled_javascript = ['prettier']
+" let g:neomake_javascript_enabled_makers = ['eslint']
 
-" html,php
-let g:neomake_html_enabled_makers = []
+" " html,php
+" let g:neomake_html_enabled_makers = []
 " let g:neoformat_enabled_html = ['htmlbeautify']
 
 " Javascript --------------------------------------------------------------- {{{
@@ -441,16 +441,16 @@ let g:neomake_html_enabled_makers = []
   let g:javascript_plugin_flow = 1
   let g:javascript_plugin_jsdoc = 1
 
-"   let g:javascript_conceal_function             = "??"
-  let g:javascript_conceal_null                 = "??"
+"   let g:javascript_conceal_function             = "ƒ"
+  let g:javascript_conceal_null                 = "ø"
   let g:javascript_conceal_this                 = "@"
-  let g:javascript_conceal_return               = "???"
-  let g:javascript_conceal_undefined            = "??"
-  let g:javascript_conceal_NaN                  = "???"
-  let g:javascript_conceal_prototype            = "??"
-  let g:javascript_conceal_static               = "???"
-  let g:javascript_conceal_super                = "??"
-  let g:javascript_conceal_arrow_function       = "???"
+  let g:javascript_conceal_return               = "⇚"
+  let g:javascript_conceal_undefined            = "¿"
+  let g:javascript_conceal_NaN                  = "ℕ"
+  let g:javascript_conceal_prototype            = "¶"
+  let g:javascript_conceal_static               = "•"
+  let g:javascript_conceal_super                = "Ω"
+  let g:javascript_conceal_arrow_function       = "⇒"
 " let g:javascript_conceal_noarg_arrow_function = ""
 " let g:javascript_conceal_underscore_arrow_function = ""
 
