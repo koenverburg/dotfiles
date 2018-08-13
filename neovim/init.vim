@@ -56,7 +56,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " misc
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 "Plug 'shougo/echodoc.vim'
 "Plug 'c0r73x/neotags.nvim'
 "Plug 'majutsushi/tagbar'
@@ -546,5 +546,5 @@ nnoremap <leader>2 :colorscheme one<cr>
 nnoremap <leader>3 :colorscheme gruvbox<cr>
 nnoremap <leader>3 :colorscheme ayu<cr>
 
-" let g:python3_host_prog='C:/Users/koenv/Envs/neovim3/Scripts/python.exe'
-let g:python_host_prog='C:/Python27/python.exe'
+let g:python3_host_prog='C:\Users\<user>\AppData\Local\Programs\Python\Python36-32\python.exe'
+let g:python_host_prog='C:\Python27\python.exe'
