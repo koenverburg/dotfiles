@@ -1,44 +1,42 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
-Import-Module AzureRM
+
+Set-Theme Agnoster
 
 Set-Alias vim nvim
 Set-Alias gvim nvim-qt
-Set-Alias touch New-Item
-
+Set-Alias time Measure-Command
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-Set-Theme Paradox
+$ThemeSettings.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkMagenta
+$ThemeSettings.Colors.GitForegroundColor = [ConsoleColor]::DarkMagenta
 
-Start-SshAgent
-$env:ConEmuANSI = $True # hack for normal powershell
-
-$ThemeSettings.Colors.GitForegroundColor = [ConsoleColor]::DarkGray
-$ThemeSettings.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray
-
-function yt {
-    yarn test -u --notify
-}
-
+# Basic commands
+function which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition }
+function touch($file) { "" | Out-File $file -Encoding ASCII }
 function elevateProcess {
-    $file, [string]$arguments = $args;
-    $psi = new-object System.Diagnostics.ProcessStartInfo $file;
+    $file, [string] $arguments = $args;
+    $psi = New-Object System.Diagnostics.ProcessStartInfo $file;
     $psi.Arguments = $arguments;
     $psi.Verb = "runas";
-    $psi.WorkingDirectory = get-location;
+    $psi.WorkingDirectory = Get-Location;
     [System.Diagnostics.Process]::Start($psi) >> $null
 }
+Set-Alias sudo elevateProcess
 
-set-alias sudo elevateProcess
-function Set-Hosts {
+function SetHosts {
     sudo notepad "$($env:SystemRoot)\system32\drivers\etc\hosts"
 }
+Set-Alias hosts SetHosts
 
-set-alias hosts Set-Hosts
-
-function whats {
-    Start-Process -FilePath "C:\Users\$($env:USERNAME)\AppData\Local\WhatsApp\WhatsApp.exe"
+function ohboi {
+    git add --all
+    git commit -am "added stuff"
+    git push
 }
+
+# jump to folders
+
