@@ -7,6 +7,7 @@
     "window.menuBarVisibility": "toggle",
     "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
     "window.zoomLevel": 0,
+    "window.smoothScrollingWorkaround": true,
     // Workbench settings
     "workbench.iconTheme": "ayu",
     "workbench.colorTheme": "Ayu Mirage",
@@ -64,4 +65,22 @@
         "**/node_modules": true,
         "**/flow-typed": true
     },
+    "zenMode.fullScreen": false,
+    "zenMode.restore": true,
+    "zenMode.centerLayout": false,
+    "guides.enabled": true,
+    // "[zen]": {
+    // "workbench.iconTheme": null,
+    // "workbench.editor.showIcons": false,
+    // "workbench.statusBar.visible": false,
+    // "workbench.activityBar.visible": false,
+    // "editor.lineNumbers": "off",
+    // "editor.matchBrackets": false,
+    // "editor.minimap.enabled": false,
+    // "editor.occurrencesHighlight": false,
+    // "editor.overviewRulerBorder": false,
+    // "editor.renderIndentGuides": false,
+    // "editor.folding": false,
+    // "guides.active.enabled": false,
+    // }
 }
