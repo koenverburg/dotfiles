@@ -13,6 +13,7 @@
     "workbench.editor.tabSizing": "shrink",
     "workbench.editor.tabCloseButton": "off",
     "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.activityBar.visible": false,
     "breadcrumbs.enabled": true,
     "explorer.openEditors.visible": 0,
     // editor settings
@@ -270,7 +271,5 @@
     "zenMode.fullScreen": false,
     "zenMode.restore": true,
     "zenMode.centerLayout": false,
-    "guides.enabled": true,
-    "workbench.activityBar.visible": false,
-    "vim.disableExtension": true,
+    "guides.enabled": true
 }
