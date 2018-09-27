@@ -7,17 +7,16 @@
     "window.menuBarVisibility": "toggle",
     "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
     "window.zoomLevel": 0,
-    "window.smoothScrollingWorkaround": true,
     // Workbench settings
     "workbench.iconTheme": "ayu",
     "workbench.colorTheme": "Ayu Mirage",
     "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.tabCloseButton": "off",
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "breadcrumbs.enabled": true,
     "explorer.openEditors.visible": 0,
     // editor settings
     "editor.fontSize": 13.4,
-    "editor.renderWhitespace": "all",
     "editor.renderIndentGuides": false,
     "editor.snippetSuggestions": "top",
     "editor.cursorBlinking": "solid",
@@ -25,21 +24,224 @@
     "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.lineHeight": 27,
+    "editor.renderWhitespace": "all",
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "editor.showFoldingControls": "always",
+    "editor.folding": false,
+    "editor.showFoldingControls": "mouseover",
+    "editor.matchBrackets": false,
+    "guides.active.enabled": true,
     // misc stuff
     "files.trimTrailingWhitespace": true,
     "javascript.referencesCodeLens.enabled": true,
     "team.showWelcomeMessage": false,
     "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
-    // vim stuff
+    //
+    // VIM CONFIG
+    //
+    // What key should <leader> map to in remappings?
     "vim.leader": ",",
-    "vim.easymotion": true,
+    // Option to delegate certain key combinations back to VSCode to be handled natively
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-w>": false,
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-b>": false,
+        "<C-o>": false
+    },
+    // Remapped keys in insert mode. Allows mapping to vim commands or vscode actions. See README for more.
+    "vim.insertModeKeyBindings": [
+        // bind jj to <ESC> in insert mode
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "k",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        // {
+        //     "before": ["l", "l"],
+        //     "after": ["<Esc>"]
+        // },
+        {
+            "before": [
+                "h",
+                "h"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    // Non-recursive remapped keys in normal mode. Allows mapping to vim commands or vscode actions. See README for more.
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // map : to show command palette
+        {
+            "before": [
+                ":"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        },
+        // ZZ save current file
+        {
+            "before": [
+                "Z",
+                "Z"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                },
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        // <leader>w : save current file
+        {
+            "before": [
+                "leader",
+                "w"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        // <leader>c : uncomment/comment line
+        {
+            "before": [
+                "leader",
+                "c"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine",
+                    "args": []
+                }
+            ]
+        },
+        // vim multicursor select next match
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.addSelectionToNextFindMatch",
+                    "args": []
+                }
+            ]
+        },
+        // vim multicursor like skip match
+        {
+            "before": [
+                "<C-x>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.moveSelectionToNextFindMatch",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    // Enable some vim ctrl key commands that override otherwise common operations, like ctrl+c
     "vim.useCtrlKeys": true,
-    "vim.disableExtension": true,
-    "vim.useSystemClipboard": true,
+    // Color of the search highlight.
+    "vim.searchHighlightColor": "rgba(150, 150, 255, 0.3)",
+    // Use system clipboard for unnamed register.
+    "vim.useSystemClipboard": false,
+    // Override VSCode's copy command with our own copy command, which works better with VSCodeVim. Turn this off if copying is not working.
+    "vim.overrideCopy": true,
+    // Non-recursive keybinding overrides to use for insert mode. Allows mapping to vim commands or vscode actions. See README for more.
+    "vim.insertModeKeyBindingsNonRecursive": [],
+    // Width to word-wrap to when using gq.
+    "vim.textwidth": 80,
+    // Timeout in milliseconds for remapped commands
+    "vim.timeout": 1000,
+    // Number of lines to scroll with CTRL-U and CTRL-D commands.
+    "vim.scroll": 20,
+    // Show the text of any command you are in the middle of writing.
+    "vim.showcmd": true,
+    // keywords contain alphanumeric characters and '_'
+    "vim.iskeyword": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    // Ignore case in search patterns.
+    "vim.ignorecase": true,
+    // Override the 'ignorecase' option if the search pattern contains upper case characters.
+    "vim.smartcase": true,
+    // Enable the EasyMotion plugin for Vim.
+    "vim.easymotion": true,
+    // Set a custom background color for EasyMotion markers.
+    "vim.easymotionMarkerBackgroundColor": "#000000",
+    // // Set a custom color for the text on one character long markers.
+    "vim.easymotionMarkerForegroundColorOneChar": "#ff0000",
+    // // Set a custom color for the text on two character long markers.
+    "vim.easymotionMarkerForegroundColorTwoChar": "#ffa500",
+    // Set the width (in pixels) allocated to each character in the match.
+    "vim.easymotionMarkerWidthPerChar": 8,
+    // Set the height of the marker.
+    "vim.easymotionMarkerHeight": 14,
+    // Set the font family of the marker text.
+    "vim.easymotionMarkerFontFamily": "Consolas",
+    // Set the font size of the marker text.
+    "vim.easymotionMarkerFontSize": "14",
+    // Set the font weight of the marker text.
+    "vim.easymotionMarkerFontWeight": "normal",
+    // Set the Y offset of the marker text (the distance from the top).
+    "vim.easymotionMarkerYOffset": 11,
+    // Enable the Surround plugin for Vim.
+    "vim.surround": true,
+    // Show all matches of the most recent search pattern
+    "vim.hlsearch": false,
+    // Show where a / search matches as you type it.
+    "vim.incsearch": true,
+    // How much search or command history should be remembered
+    "vim.history": 50,
+    // Indent code automatically.
+    "vim.autoindent": true,
+    // Start in Insert Mode.
+    "vim.startInInsertMode": false,
+    // In visual mode, start a search with * or # using the current selection
+    "vim.visualstar": false,
+    // Uses a hack to move around folds properly
+    "vim.foldfix": false,
+    // Get rid of that annoying pop up that shows up everytime you type gc or gb
+    // "vim.disableAnnoyingGcMessage": false,
+    // Use neovim on backend. (only works for Ex commands right now). You should restart VScode after enable/disabling this for the changes to take effect. NOTE: Neovim must be installed and neovimPath must be set the executable in order for this setting to work. Otherwise, vscodevim will crash.
+    "vim.enableNeovim": false,
+    // Path to run neovim executable. For example, /usr/bin/nvim, or
+    "vim.neovimPath": "nvim",
+    // Get rid of that annoying message that shows up everytime you make a new file
     // eslint
     "eslint.packageManager": "yarn",
     "eslint.alwaysShowStatus": true,
@@ -69,18 +271,6 @@
     "zenMode.restore": true,
     "zenMode.centerLayout": false,
     "guides.enabled": true,
-    // "[zen]": {
-    // "workbench.iconTheme": null,
-    // "workbench.editor.showIcons": false,
-    // "workbench.statusBar.visible": false,
-    // "workbench.activityBar.visible": false,
-    // "editor.lineNumbers": "off",
-    // "editor.matchBrackets": false,
-    // "editor.minimap.enabled": false,
-    // "editor.occurrencesHighlight": false,
-    // "editor.overviewRulerBorder": false,
-    // "editor.renderIndentGuides": false,
-    // "editor.folding": false,
-    // "guides.active.enabled": false,
-    // }
+    "workbench.activityBar.visible": false,
+    "vim.disableExtension": true,
 }
