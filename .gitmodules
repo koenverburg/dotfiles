@@ -1,3 +1,4 @@
 [submodule "ConEmu-Color-Themes"]
-	path = ConEmu-Color-Themes
-	url = https://github.com/joonro/ConEmu-Color-Themes.git
+    path = ConEmu-Color-Themes
+    url = https://github.com/joonro/ConEmu-Color-Themes.git
+    ignore = dirty
