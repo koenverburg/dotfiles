@@ -10,13 +10,21 @@ Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-Set-Theme Honukai
+Set-Theme koenverburg
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell
 
 $ThemeSettings.Colors.GitForegroundColor = [ConsoleColor]::DarkGray
 $ThemeSettings.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray
+
+function which($name) {
+    Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
+}
+
+function touch($file) {
+    "" | Out-File $file -Encoding ASCII
+}
 
 function elevateProcess {
     $file, [string]$arguments = $args;

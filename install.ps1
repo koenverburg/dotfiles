@@ -1,5 +1,8 @@
-New-Item -Path "C:\Users\$($env:USERNAME)\dotfiles" -ItemType SymbolicLink -Value $pwd >> $null
-Write-Output "symlinked powershell profile"
+New-Item -ItemType Junction -Path "C:\Users\$($env:USERNAME)\dotfiles" -Value $($pwd) >> $null
+Write-Output "[i] Create a Junction for ~/Dotfiles"
 
-New-Item -Path "C:\Users\$($env:USERNAME)\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -ItemType SymbolicLink -Value ".\powershell\profile.ps1" >> $null
-Write-Output "symlinked powershell profile"
+New-Item -ItemType SymbolicLink -Path "C:\Users\$($env:USERNAME)\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" -Value ".\powershell\profile.ps1" -Force >> $null
+Write-Output "[i] Symlinked powershell profile"
+
+New-Item -ItemType SymbolicLink -Path "C:\Users\$($env:USERNAME)\Documents\WindowsPowerShell\poshThemes\koenverburg.psm1" -Value ".\cmder\koenverburg.psm1" -Force >> $null
+Write-Output "[i] Create a a symlink for the cmder theme"
