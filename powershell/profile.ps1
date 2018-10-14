@@ -11,17 +11,13 @@ Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-Set-Theme Paradox
+Set-Theme Honukai
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell
 
 $ThemeSettings.Colors.GitForegroundColor = [ConsoleColor]::DarkGray
 $ThemeSettings.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray
-
-function yt {
-    yarn test -u --notify
-}
 
 function elevateProcess {
     $file, [string]$arguments = $args;
@@ -42,3 +38,5 @@ set-alias hosts Set-Hosts
 function whats {
     Start-Process -FilePath "C:\Users\$($env:USERNAME)\AppData\Local\WhatsApp\WhatsApp.exe"
 }
+
+Import-Module "C:\Users\$($env:USERNAME)\dotfiles\overwrite\localProject.ps1"
