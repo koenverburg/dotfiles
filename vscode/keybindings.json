@@ -5,7 +5,7 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+b",
+        "key": "ctrl+shift+b",
         "command": "editor.action.goToDeclaration",
         "when": "editorTextFocus"
     },
@@ -19,20 +19,16 @@
         "command": "workbench.action.showAllSymbols"
     },
     {
-        "key": "ctrl+n",
+        "key": "ctrl+t",
         "command": "workbench.action.quickOpen"
     },
     {
-        "key": "ctrl+shift+n",
+        "key": "ctrl+shift+t",
         "command": "workbench.action.quickOpen"
     },
     {
         "key": "ctrl+f12",
         "command": "workbench.action.gotoSymbol"
-    },
-    {
-        "key": "ctrl+t l",
-        "command": "workbench.action.tasks.test"
     },
     {
         "key": "ctrl+p",
