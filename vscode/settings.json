@@ -10,14 +10,14 @@
     // Workbench settings
     "workbench.iconTheme": "ayu",
     "workbench.colorTheme": "Ayu Mirage",
+    "workbench.statusBar.visible": true,
     "workbench.editor.tabSizing": "shrink",
     "workbench.editor.tabCloseButton": "off",
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.activityBar.visible": false,
     "breadcrumbs.enabled": true,
-    "explorer.openEditors.visible": 0,
     // editor settings
     "editor.fontSize": 13.4,
+    "explorer.openEditors.visible": 0,
     "editor.renderIndentGuides": false,
     "editor.snippetSuggestions": "top",
     "editor.cursorBlinking": "solid",
@@ -30,9 +30,10 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.folding": false,
+    "editor.tabCompletion": "on",
+    "editor.suggest.localityBonus": true,
     "editor.showFoldingControls": "mouseover",
     "editor.matchBrackets": false,
-    "guides.active.enabled": true,
     // misc stuff
     "files.trimTrailingWhitespace": true,
     "javascript.referencesCodeLens.enabled": true,
@@ -74,10 +75,6 @@
                 "<Esc>"
             ]
         },
-        // {
-        //     "before": ["l", "l"],
-        //     "after": ["<Esc>"]
-        // },
         {
             "before": [
                 "h",
@@ -271,5 +268,8 @@
     "zenMode.fullScreen": false,
     "zenMode.restore": true,
     "zenMode.centerLayout": false,
-    "guides.enabled": true
+    "vim.disableExtension": true,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false,
+    "extensions.ignoreRecommendations": false,
 }
