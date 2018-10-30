@@ -64,5 +64,31 @@
         "key": "alt+delete",
         "command": "subwordNavigation.deleteSubwordRight",
         "when": "editorTextFocus"
-    }
+    },
+    {
+        "key": "shift+F3",
+        "command": "toggle",
+        "when": "editorTextFocus",
+        "args": {
+            "id": "focus",
+            "value": [
+                {
+                    "editor.minimap.enabled": true,
+                    "workbench.statusBar.visible": true,
+                    "editor.lineNumbers": "on",
+                    "vim.disableExtension": true,
+                    "workbench.activityBar.visible": true,
+                    "editor.renderWhitespace": "all",
+                },
+                {
+                    "editor.minimap.enabled": false,
+                    "workbench.statusBar.visible": false,
+                    "editor.lineNumbers": "off",
+                    "vim.disableExtension": false,
+                    "workbench.activityBar.visible": false,
+                    "editor.renderWhitespace": "none",
+                }
+            ]
+        }
+    },
 ]
