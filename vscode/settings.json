@@ -10,15 +10,14 @@
     // Workbench settings
     "workbench.iconTheme": "ayu",
     "workbench.colorTheme": "Ayu Mirage",
+    "workbench.statusBar.visible": true,
     "workbench.editor.tabSizing": "shrink",
     "workbench.editor.tabCloseButton": "off",
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.activityBar.visible": false,
     "breadcrumbs.enabled": true,
-    "explorer.openEditors.visible": 0,
     // editor settings
     "editor.fontSize": 13.4,
-    "editor.renderIndentGuides": false,
+    "explorer.openEditors.visible": 0,
     "editor.snippetSuggestions": "top",
     "editor.cursorBlinking": "solid",
     "editor.minimap.enabled": true,
@@ -30,14 +29,16 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.folding": false,
+    "editor.tabCompletion": "on",
+    "editor.suggest.localityBonus": true,
     "editor.showFoldingControls": "mouseover",
     "editor.matchBrackets": false,
-    "guides.active.enabled": true,
     // misc stuff
     "files.trimTrailingWhitespace": true,
     "javascript.referencesCodeLens.enabled": true,
     "team.showWelcomeMessage": false,
     "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
+    "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
     //
     // VIM CONFIG
     //
@@ -74,10 +75,6 @@
                 "<Esc>"
             ]
         },
-        // {
-        //     "before": ["l", "l"],
-        //     "after": ["<Esc>"]
-        // },
         {
             "before": [
                 "h",
@@ -245,7 +242,7 @@
     // Get rid of that annoying message that shows up everytime you make a new file
     // eslint
     "eslint.packageManager": "yarn",
-    "eslint.alwaysShowStatus": true,
+    "eslint.alwaysShowStatus": false,
     "eslint.autoFixOnSave": true,
     // powershell as default shell, not that I use terminals in my ide but still.
     "powershell.integratedConsole.showOnStartup": false,
@@ -255,6 +252,9 @@
         "javascript": "javascriptreact"
     },
     // formatting
+    "[scss]": {
+        "editor.formatOnSave": true,
+    },
     "[javascript]": {
         "editor.formatOnSave": false
     },
@@ -271,5 +271,7 @@
     "zenMode.fullScreen": false,
     "zenMode.restore": true,
     "zenMode.centerLayout": false,
-    "guides.enabled": true
+    "vim.disableExtension": true,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false,
 }
