@@ -12,21 +12,59 @@ function Write-Theme {
     $prompt = Write-Prompt -Object $sl.PromptSymbols.StartSymbol -ForegroundColor $sl.Colors.PromptHighlightColor
 
     if (Test-Administrator) {
-        $prompt += Write-Prompt -Object " $($sl.PromptSymbols.ElevatedSymbol)" -ForegroundColor $sl.Colors.AdminIconForegroundColor
-        # $prompt += Write-Prompt -Object "root" -ForegroundColor $sl.Colors.PromptHighlightColor
-        # write in for folder
+        $prompt += Write-Prompt -Object "root" -ForegroundColor $sl.Colors.WithForegroundColor
         $prompt += Write-Prompt -Object " in " -ForegroundColor $sl.Colors.PromptForegroundColor
     }
     # write folder
-    $dir = Get-FullPath -dir $pwd
+    $dir += Split-Path -leaf -path (Get-Location)
+
+    if ($dir.Equals($env:USERNAME)) {
+        $dir = '~'
+    }
+
     $prompt += Write-Prompt -Object "$dir " -ForegroundColor $sl.Colors.AdminIconForegroundColor
-    # write on (git:branchname status)
+
     $status = Get-VCSStatus
     if ($status) {
-        $sl.GitSymbols.BranchSymbol = ''
+        $sl.GitSymbols.BranchSymbol = [char]::ConvertFromUtf32(0x00e0a0)
         $themeInfo = Get-VcsInfo -status ($status)
+
+        # git project folder
+        # $gitRoot = git rev-parse --show-toplevel
+        # $prompt += Write-Prompt -Object "at " -ForegroundColor $sl.Colors.PromptForegroundColor
+        # $prompt += Write-Prompt -Object "$gitRoot " -ForegroundColor $sl.Colors.AdminIconForegroundColor
+
+        # git changes
         $prompt += Write-Prompt -Object 'on ' -ForegroundColor $sl.Colors.PromptForegroundColor
-        $prompt += Write-Prompt -Object "$($themeInfo.VcInfo) " -ForegroundColor $themeInfo.BackgroundColor
+
+        $changes = ""
+        if ($status.hasWorking) {
+            $changes += "+"
+        }
+
+        if ($status.HasUntracked) {
+            $changes += "?"
+        }
+
+        if ($status.AheadBy -gt 0 -and -Not($status.BehindBy -gt 0)) {
+            $changes += $GitPromptSettings.BranchAheadStatusSymbol
+        }
+
+        if ($status.BehindBy -gt 0 -and -Not($status.AheadBy -gt 0)) {
+            $changes += $GitPromptSettings.BranchBehindStatusSymbol
+        }
+
+        if ($status.BehindBy -gt 0 -and $status.AheadBy -gt 0) {
+            $changes += $GitPromptSettings.BranchBehindAndAheadStatusSymbol
+        }
+
+        $changesBlock = ""
+        if ($status.hasWorking) {
+            $changesBlock = "[$($changes)] "
+        }
+
+        $prompt += Write-Prompt -Object "$($sl.GitSymbols.BranchSymbol) $($status.Branch)" -ForegroundColor $themeInfo.BackgroundColor
+        $prompt += Write-Prompt -Object " $($changesBlock)" -ForegroundColor $sl.Colors.WithForegroundColor
     }
 
     # write virtualenv
@@ -36,10 +74,8 @@ function Write-Theme {
     }
 
     # write [time]
-    # $timeStamp = Get-Date -Format T
-    # $prompt += Write-Prompt "[$timeStamp]" -ForegroundColor $sl.Colors.PromptForegroundColor
-    # check for elevated prompt
-
+    $timeStamp = Get-Date -Format T
+    $prompt += Write-Prompt "[$timeStamp]" -ForegroundColor $sl.Colors.PromptForegroundColor
 
     # check the last command state and indicate if failed
     $foregroundColor = $sl.Colors.PromptHighlightColor
