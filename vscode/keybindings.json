@@ -73,22 +73,52 @@
             "id": "focus",
             "value": [
                 {
-                    "editor.minimap.enabled": true,
-                    "workbench.statusBar.visible": true,
+                    "editor.lineHeight": 27,
                     "editor.lineNumbers": "on",
-                    "vim.disableExtension": true,
-                    "workbench.activityBar.visible": true,
+                    "editor.minimap.enabled": true,
                     "editor.renderWhitespace": "all",
+                    "vim.disableExtension": true,
+                    "workbench.statusBar.visible": true,
+                    "workbench.activityBar.visible": true,
                 },
                 {
-                    "editor.minimap.enabled": false,
-                    "workbench.statusBar.visible": false,
+                    "editor.lineHeight": 29,
                     "editor.lineNumbers": "off",
-                    "vim.disableExtension": false,
-                    "workbench.activityBar.visible": false,
+                    "editor.minimap.enabled": false,
                     "editor.renderWhitespace": "none",
+                    "vim.disableExtension": false,
+                    "workbench.statusBar.visible": false,
+                    "workbench.activityBar.visible": false,
                 }
             ]
         }
     },
+    {
+        "key": "ctrl+]",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+]",
+        "command": "workbench.action.nextSideBarView",
+        "when": "sideBarFocus"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.previousSideBarView",
+        "when": "sideBarFocus"
+    },
+    {
+        "key": "ctrl+]",
+        "command": "workbench.action.nextPanelView",
+        "when": "panelFocus"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.previousPanelView",
+        "when": "panelFocus"
+    }
 ]
