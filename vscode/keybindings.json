@@ -73,20 +73,20 @@
             "id": "focus",
             "value": [
                 {
+                    "editor.folding": true,
                     "editor.lineHeight": 27,
                     "editor.lineNumbers": "on",
                     "editor.minimap.enabled": true,
                     "editor.renderWhitespace": "all",
-                    "vim.disableExtension": true,
                     "workbench.statusBar.visible": true,
                     "workbench.activityBar.visible": true,
                 },
                 {
+                    "editor.folding": false,
                     "editor.lineHeight": 29,
                     "editor.lineNumbers": "off",
                     "editor.minimap.enabled": false,
                     "editor.renderWhitespace": "none",
-                    "vim.disableExtension": false,
                     "workbench.statusBar.visible": false,
                     "workbench.activityBar.visible": false,
                 }
@@ -120,5 +120,21 @@
         "key": "ctrl+[",
         "command": "workbench.action.previousPanelView",
         "when": "panelFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
     }
 ]
