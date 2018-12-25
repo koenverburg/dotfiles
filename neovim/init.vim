@@ -1,9 +1,10 @@
 " .vimrc
+" vim: ft=vim tab=2
 " Author: Koen Verburg <creativekoen@gmail.com>
 " Source: https://github.com/CreativeKoen/dotfiles
 
 " Plug --------------------------------------------------------------------- {{{
-let g:plugin_dir = expand('~/.neovim/cache/')
+let g:plugin_dir = expand('~/.neovim/plugin')
 
 set nocompatible
 filetype off
@@ -25,10 +26,10 @@ Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 
 " css
-Plug 'othree/csscomplete.vim'
+" Plug 'othree/csscomplete.vim'
 
 " graphql
-Plug 'jparise/vim-graphql'
+" Plug 'jparise/vim-graphql'
 
 
 " interface
@@ -36,11 +37,11 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'godlygeek/tabular'
 Plug 'kien/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
+" Plug 'tacahiroy/ctrlp-funky'
 Plug 'terryma/vim-multiple-cursors'
 
-Plug 'neomake/neomake'
-Plug 'sbdchd/neoformat'
+" Plug 'neomake/neomake'
+" Plug 'sbdchd/neoformat'
 
 Plug 'mattn/emmet-vim'
 
@@ -56,10 +57,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " misc
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 "Plug 'shougo/echodoc.vim'
-"Plug 'c0r73x/neotags.nvim'
-"Plug 'majutsushi/tagbar'
+" Plug 'c0r73x/neotags.nvim'
+" Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 
@@ -75,12 +76,8 @@ call plug#end()
 "   call dein#add('Shougo/neosnippet')
 "   call dein#add('Shougo/neosnippet-snippets')
 
-
-  " call dein#add('davidhalter/jedi')
   " call dein#add('Shougo/deoplete.nvim')
   " call dein#add('zchee/deoplete-jedi')
-  " call dein#add('padawan-php/deoplete-padawan', { 'build': 'composer install'})
-  " call dein#add('wokalski/autocomplete-flow')
 
   "call dein#add('autozimu/LanguageClient-neovim', { 'build': './install.sh'})
   "call dein#add('roxma/nvim-completion-manager', { 'build': 'npm install'})
@@ -98,7 +95,7 @@ let g:enable_italic_font = 1                                                    
  "}}}
 
 " Basic settings ----------------------------------------------------------- {{{
-set &runtimepath += '~/.neovim/cache/ale'
+" set &runtimepath += '~/.neovim/cache/ale'
 
 set termguicolors
 let ayucolor="mirage"   " dark | mirage | light
@@ -150,19 +147,19 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " }}}
 
 " tag bar ------------------------------------------------------------------ {{{
-  " nnoremap <silent> <F8> :TagbarToggle<CR>
+  nnoremap <silent> <F8> :TagbarToggle<CR>
 
-  " set regexpengine=1
-  " let g:neotags_enabled = 1
-  " let g:neotags_file = './tags'
-  " let g:neotags#python#order = 'mfc'
-  " let g:neotags#javascript#order = 'fcfmpv'
+  set regexpengine=1
+  let g:neotags_enabled = 1
+  let g:neotags_file = './tags'
+  let g:neotags#python#order = 'mfc'
+  let g:neotags#javascript#order = 'fcfmpv'
 
-  " highlight link PythonMethodTag Special
-  " highlight link PythonFunctionTag Special
-  " highlight link PythonClassTag Identifier
+  highlight link PythonMethodTag Special
+  highlight link PythonFunctionTag Special
+  highlight link PythonClassTag Identifier
 
-  " highlight link javascriptFunctionTag Identifier
+  highlight link javascriptFunctionTag Identifier
 
 " }}}
 
@@ -171,10 +168,9 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   let g:indentLine_enabled = 0
   let g:indentLine_setColors = 0
   let g:indentLine_leadingSpaceEnabled = 1
-  let g:indentLine_setConceal = 1;
-  let g:indentLine_leadingSpaceChar = '·'
-  "let g:indentLine_color_gui = #504945
-  "let g:indentLine_char = '|'
+"   let g:indentLine_setConceal = 1;
+"   let g:indentLine_color_gui = #504945
+"   let g:indentLine_char = '|'
 " }}}
 
 " plugin setting ----------------------------------------------------------- {{{
@@ -209,11 +205,11 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   nnoremap <leader>sd :DeleteSession<CR>
   nnoremap <leader>sc :CloseSession<CR>
 
-"   " ctrl p ignore
-"   let g:ctrlp_map = '<leader>t'
-"   let g:ctrlp_cmd = 'CtrlP'
-"   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']  " Windows
-"   let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\|vendor|bin\|public\'
+  " ctrl p ignore
+  let g:ctrlp_map = '<leader>t'
+  let g:ctrlp_cmd = 'CtrlP'
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']  " Windows
+  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\|vendor|bin\|public\'
 
 " }}}
 
@@ -442,15 +438,15 @@ let g:multi_cursor_exit_from_insert_mode=0
   let g:javascript_plugin_jsdoc = 1
 
 "   let g:javascript_conceal_function             = "ƒ"
-  let g:javascript_conceal_null                 = "ø"
-  let g:javascript_conceal_this                 = "@"
-  let g:javascript_conceal_return               = "⇚"
-  let g:javascript_conceal_undefined            = "¿"
-  let g:javascript_conceal_NaN                  = "ℕ"
-  let g:javascript_conceal_prototype            = "¶"
-  let g:javascript_conceal_static               = "•"
-  let g:javascript_conceal_super                = "Ω"
-  let g:javascript_conceal_arrow_function       = "⇒"
+"   let g:javascript_conceal_null                 = "ø"
+"   let g:javascript_conceal_this                 = "@"
+"   let g:javascript_conceal_return               = "⇚"
+"   let g:javascript_conceal_undefined            = "¿"
+"   let g:javascript_conceal_NaN                  = "ℕ"
+"   let g:javascript_conceal_prototype            = "¶"
+"   let g:javascript_conceal_static               = "•"
+"   let g:javascript_conceal_super                = "Ω"
+"   let g:javascript_conceal_arrow_function       = "⇒"
 " let g:javascript_conceal_noarg_arrow_function = ""
 " let g:javascript_conceal_underscore_arrow_function = ""
 
@@ -480,18 +476,18 @@ let g:multi_cursor_exit_from_insert_mode=0
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
 
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
+  " function! LinterStatus() abort
+  "   let l:counts = ale#statusline#Count(bufnr(''))
 
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
+  "   let l:all_errors = l:counts.error + l:counts.style_error
+  "   let l:all_non_errors = l:counts.total - l:all_errors
 
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
+  "   return l:counts.total == 0 ? 'OK' : printf(
+  "   \   '%dW %dE',
+  "   \   all_non_errors,
+  "   \   all_errors
+  "   \)
+  " endfunction
 
   function! AirlineInit()
     let g:airline_section_a = airline#section#create(['mode'])
@@ -502,10 +498,10 @@ endfunction
     let g:airline_section_y = airline#section#create(['filetype'])
     let g:airline_section_z = airline#section#create_right(['%l','%c'])
 
-    let g:airline_section_error = '%{LinterStatus()}'
+    " let g:airline_section_error = '%{LinterStatus()}'
   endfunction
-  autocmd VimEnter * call AirlineInit()
 
+  autocmd VimEnter * call AirlineInit()
 " }}}
 
 " Vim functions ------------------------------------------------------------ {{{
@@ -546,5 +542,5 @@ nnoremap <leader>2 :colorscheme one<cr>
 nnoremap <leader>3 :colorscheme gruvbox<cr>
 nnoremap <leader>3 :colorscheme ayu<cr>
 
-let g:python3_host_prog='C:\Users\<user>\AppData\Local\Programs\Python\Python36-32\python.exe'
-let g:python_host_prog='C:\Python27\python.exe'
+"let g:python3_host_prog='~\AppData\Local\Programs\Python\Python36-32\python.exe'
+let g:python_host_prog='C:\ProgramData\chocolatey\bin\python.exe'
