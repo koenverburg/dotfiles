@@ -18,6 +18,12 @@ $env:ConEmuANSI = $True # hack for normal powershell
 $ThemeSettings.Colors.GitForegroundColor = [ConsoleColor]::DarkGray
 $ThemeSettings.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray
 
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+
+if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Import-Module "C:\Users\$($env:USERNAME)\dotfiles\powershell\lowerUACL.ps1"
+}
+
 function which($name) {
     Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
 }
@@ -44,6 +50,10 @@ set-alias hosts Set-Hosts
 
 function whats {
     Start-Process -FilePath "C:\Users\$($env:USERNAME)\AppData\Local\WhatsApp\WhatsApp.exe"
+}
+
+function editLocal {
+    code "C:\Users\$($env:USERNAME)\dotfiles\overwrite\localProject.ps1"
 }
 
 Import-Module "C:\Users\$($env:USERNAME)\dotfiles\overwrite\localProject.ps1"
