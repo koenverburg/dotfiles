@@ -1,1 +1,1 @@
-Guifont DejaVu Sans Mono for Powerline:h10
+Guifont DejaVu Sans Mono for Powerline:h12
