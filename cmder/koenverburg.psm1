@@ -63,8 +63,14 @@ function Write-Theme {
             $changesBlock = "[$($changes)] "
         }
 
+        if ($status) {
+            $timeSinceLastCommit = Get-TimeSinceLastCommit
+        }
+
         $prompt += Write-Prompt -Object "$($sl.GitSymbols.BranchSymbol) $($status.Branch)" -ForegroundColor $themeInfo.BackgroundColor
         $prompt += Write-Prompt -Object " $($changesBlock)" -ForegroundColor $sl.Colors.WithForegroundColor
+        $prompt += Write-Prompt -Object "last commit " -ForegroundColor $sl.Colors.PromptBackgroundColor
+        $prompt += Write-Prompt -Object "$(timeSinceLastCommit)" -ForegroundColor $sl.Colors.PromptForegroundColor
     }
 
     # write virtualenv
@@ -75,7 +81,10 @@ function Write-Theme {
 
     # write [time]
     $timeStamp = Get-Date -Format T
-    $prompt += Write-Prompt "[$timeStamp]" -ForegroundColor $sl.Colors.PromptForegroundColor
+    $clock = [char]::ConvertFromUtf32(0x25F7)
+    $timestamp = "$clock $timeStamp"
+    $prompt += Set-CursorForRightBlockWrite -textLength $timestamp.Length
+    $prompt += Write-Prompt $timeStamp -ForegroundColor $sl.Colors.PromptBackgroundColor
 
     # check the last command state and indicate if failed
     $foregroundColor = $sl.Colors.PromptHighlightColor
