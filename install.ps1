@@ -20,7 +20,6 @@ $uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     )
 )
 
-
 New-Item -ItemType SymbolicLink -Path "C:\Users\$($env:USERNAME)\AppData\Local\nvim\ginit.vim" -Value ".\neovim\ginit.vim" -Force >> $null
 Write-Output "[i] Symlinked neovim ginit.vim"
 

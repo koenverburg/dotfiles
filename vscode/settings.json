@@ -7,37 +7,52 @@
     "window.menuBarVisibility": "toggle",
     "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
     "window.zoomLevel": 0,
+    // Workbench settings
+    "workbench.iconTheme": "ayu",
     "workbench.colorTheme": "Ayu Mirage Bordered",
     "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
     "workbench.editor.tabSizing": "shrink",
     "workbench.editor.tabCloseButton": "off",
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "breadcrumbs.enabled": true,
-    "explorer.openEditors.visible": 0,
+    // Editor
     "editor.snippetSuggestions": "top",
     "editor.cursorBlinking": "solid",
-    "editor.minimap.enabled": true,
-    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
-    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
     "editor.lineHeight": 27,
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
     "editor.renderWhitespace": "all",
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "editor.folding": true,
+    "editor.folding": false,
     "editor.tabCompletion": "on",
     "editor.suggest.localityBonus": true,
     "editor.showFoldingControls": "mouseover",
     "editor.matchBrackets": false,
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    // zen mode
+    "zenMode.restore": true,
+    "zenMode.hideTabs": false,
+    "zenMode.fullScreen": false,
+    "zenMode.centerLayout": false,
+    "zenMode.hideStatusBar": false,
     // misc stuff
-    "files.trimTrailingWhitespace": true,
+    "breadcrumbs.enabled": true,
+    "explorer.openEditors.visible": 0,
+    "typescript.referencesCodeLens.enabled": true,
+    "typescript.updateImportsOnFileMove.enabled": "never",
     "javascript.referencesCodeLens.enabled": true,
     "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
+    "files.trimTrailingWhitespace": true,
     "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
     //
-    // VIM CONFIG
+    // Vim config
     //
     // What key should <leader> map to in remappings?
+    "vim.disableExtension": true,
     "vim.leader": ",",
     // Option to delegate certain key combinations back to VSCode to be handled natively
     "vim.handleKeys": {
@@ -175,7 +190,7 @@
     // Use system clipboard for unnamed register.
     "vim.useSystemClipboard": false,
     // Override VSCode's copy command with our own copy command, which works better with VSCodeVim. Turn this off if copying is not working.
-    "vim.overrideCopy": true,
+    "vim.overrideCopy": false,
     // Non-recursive keybinding overrides to use for insert mode. Allows mapping to vim commands or vscode actions. See README for more.
     "vim.insertModeKeyBindingsNonRecursive": [],
     // Width to word-wrap to when using gq.
@@ -253,8 +268,14 @@
     "[javascript]": {
         "editor.formatOnSave": false
     },
+    "[javascriptreact]": {
+        "editor.formatOnSave": false
+    },
     "[typescript]": {
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": false,
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": false,
     },
     // excluding folders
     "files.exclude": {
@@ -266,22 +287,4 @@
         "**/node_modules": true,
         "**/flow-typed": true
     },
-    "vim.disableExtension": false,
-    "workbench.activityBar.visible": true,
-    "glean.jsModuleSystem": "commonjs",
-    "glean.switchToTarget": true,
-    "tslint.run": "onSave",
-    "tslint.autoFixOnSave": true,
-    "typescript.format.enable": true,
-    "typescript.format.insertSpaceAfterCommaDelimiter": true,
-    "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
-    "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
-    "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
-    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
-    "typescript.format.placeOpenBraceOnNewLineForFunctions": false,
-    "typescript.format.placeOpenBraceOnNewLineForControlBlocks": false
 }

@@ -73,68 +73,36 @@
             "id": "focus",
             "value": [
                 {
-                    "editor.folding": true,
-                    "editor.lineHeight": 27,
-                    "editor.lineNumbers": "on",
-                    "editor.minimap.enabled": true,
-                    "editor.renderWhitespace": "all",
                     "workbench.statusBar.visible": true,
+                    "editor.lineNumbers": "on",
+                    "vim.disableExtension": true,
                     "workbench.activityBar.visible": true,
+                    "editor.renderWhitespace": "all",
                 },
                 {
-                    "editor.folding": false,
-                    "editor.lineHeight": 29,
-                    "editor.lineNumbers": "off",
-                    "editor.minimap.enabled": false,
-                    "editor.renderWhitespace": "none",
                     "workbench.statusBar.visible": false,
+                    "editor.lineNumbers": "off",
+                    "vim.disableExtension": false,
                     "workbench.activityBar.visible": false,
+                    "editor.renderWhitespace": "none",
                 }
             ]
         }
     },
     {
-        "key": "ctrl+]",
-        "command": "workbench.action.nextEditor"
+        "key": "shift+alt+F3",
+        "command": "toggle",
+        "when": "editorTextFocus",
+        "args": {
+            "id": "focus",
+            "value": [
+                {
+                    "editor.minimap.enabled": true,
+                },
+                {
+                    "editor.minimap.enabled": false,
+                }
+            ]
+        }
     },
-    {
-        "key": "ctrl+[",
-        "command": "workbench.action.previousEditor"
-    },
-    {
-        "key": "ctrl+]",
-        "command": "workbench.action.nextSideBarView",
-        "when": "sideBarFocus"
-    },
-    {
-        "key": "ctrl+[",
-        "command": "workbench.action.previousSideBarView",
-        "when": "sideBarFocus"
-    },
-    {
-        "key": "ctrl+]",
-        "command": "workbench.action.nextPanelView",
-        "when": "panelFocus"
-    },
-    {
-        "key": "ctrl+[",
-        "command": "workbench.action.previousPanelView",
-        "when": "panelFocus"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "workbench.action.navigateLeft"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.navigateRight"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "workbench.action.navigateUp"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "workbench.action.navigateDown"
-    }
 ]
