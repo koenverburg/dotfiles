@@ -69,8 +69,8 @@ function Write-Theme {
 
         $prompt += Write-Prompt -Object "$($sl.GitSymbols.BranchSymbol) $($status.Branch)" -ForegroundColor $themeInfo.BackgroundColor
         $prompt += Write-Prompt -Object " $($changesBlock)" -ForegroundColor $sl.Colors.WithForegroundColor
-        $prompt += Write-Prompt -Object "last commit " -ForegroundColor $sl.Colors.PromptBackgroundColor
-        $prompt += Write-Prompt -Object "$(timeSinceLastCommit)" -ForegroundColor $sl.Colors.PromptForegroundColor
+        # $prompt += Write-Prompt -Object "last commit " -ForegroundColor $sl.Colors.PromptBackgroundColor
+        # $prompt += Write-Prompt -Object "$(timeSinceLastCommit)" -ForegroundColor $sl.Colors.PromptForegroundColor
     }
 
     # write virtualenv
@@ -79,11 +79,15 @@ function Write-Theme {
         $prompt += Write-Prompt -Object "$(Get-VirtualEnvName) " -ForegroundColor $themeInfo.VirtualEnvForegroundColor
     }
 
-    # write [time]
+    # write [time] and Battery level
     $timeStamp = Get-Date -Format T
     $clock = [char]::ConvertFromUtf32(0x25F7)
     $timestamp = "$clock $timeStamp"
-    $prompt += Set-CursorForRightBlockWrite -textLength $timestamp.Length
+    $batteryLevel = (Get-WmiObject -Class Win32_Battery).EstimatedChargeRemaining
+
+    # $remaningTime = (Get-WmiObject -Class Win32_Battery).EstimatedRunTime
+    $prompt += Set-CursorForRightBlockWrite -textLength 14 # time(10) + battery level(4)
+    $prompt += Write-Prompt -Object "$batteryLevel% " -ForegroundColor $sl.Colors.PromptBackgroundColor
     $prompt += Write-Prompt $timeStamp -ForegroundColor $sl.Colors.PromptBackgroundColor
 
     # check the last command state and indicate if failed
