@@ -26,7 +26,6 @@
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "editor.folding": false,
     "editor.tabCompletion": "on",
     "editor.suggest.localityBonus": true,
     "editor.showFoldingControls": "mouseover",

@@ -78,6 +78,7 @@
                     "vim.disableExtension": true,
                     "workbench.activityBar.visible": true,
                     "editor.renderWhitespace": "all",
+                    "breadcrumbs.enabled": true,
                 },
                 {
                     "workbench.statusBar.visible": false,
@@ -85,6 +86,7 @@
                     "vim.disableExtension": false,
                     "workbench.activityBar.visible": false,
                     "editor.renderWhitespace": "none",
+                    "breadcrumbs.enabled": false,
                 }
             ]
         }
