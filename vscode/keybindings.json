@@ -1,110 +1,125 @@
 [
-    {
-        "key": "alt+enter",
-        "command": "editor.action.quickFix",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+b",
-        "command": "editor.action.goToDeclaration",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+f7",
-        "command": "editor.action.referenceSearch.trigger",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+alt+n",
-        "command": "workbench.action.showAllSymbols"
-    },
-    {
-        "key": "ctrl+t",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+shift+t",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+f12",
-        "command": "workbench.action.gotoSymbol"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "editor.action.triggerParameterHints"
-    },
-    // subword jumping (camelHumps in resharper),
-    {
-        "key": "alt+left",
-        "command": "subwordNavigation.cursorSubwordLeft",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+right",
-        "command": "subwordNavigation.cursorSubwordRight",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+shift+left",
-        "command": "subwordNavigation.cursorSubwordLeftSelect",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+shift+right",
-        "command": "subwordNavigation.cursorSubwordRightSelect",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+backspace",
-        "command": "subwordNavigation.deleteSubwordLeft",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+delete",
-        "command": "subwordNavigation.deleteSubwordRight",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "shift+F3",
-        "command": "toggle",
-        "when": "editorTextFocus",
-        "args": {
-            "id": "focus",
-            "value": [
-                {
-                    "workbench.statusBar.visible": true,
-                    "editor.lineNumbers": "on",
-                    "vim.disableExtension": true,
-                    "workbench.activityBar.visible": true,
-                    "editor.renderWhitespace": "all",
-                    "breadcrumbs.enabled": true,
-                },
-                {
-                    "workbench.statusBar.visible": false,
-                    "editor.lineNumbers": "off",
-                    "vim.disableExtension": false,
-                    "workbench.activityBar.visible": false,
-                    "editor.renderWhitespace": "none",
-                    "breadcrumbs.enabled": false,
-                }
-            ]
+  {
+    "key": "alt+enter",
+    "command": "editor.action.quickFix",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "editor.action.goToDeclaration",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+f7",
+    "command": "editor.action.referenceSearch.trigger",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+n",
+    "command": "workbench.action.showAllSymbols"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+f12",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "editor.action.triggerParameterHints"
+  },
+  // subword jumping (camelHumps in resharper),
+  {
+    "key": "alt+left",
+    "command": "subwordNavigation.cursorSubwordLeft",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+right",
+    "command": "subwordNavigation.cursorSubwordRight",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+shift+left",
+    "command": "subwordNavigation.cursorSubwordLeftSelect",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+shift+right",
+    "command": "subwordNavigation.cursorSubwordRightSelect",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+backspace",
+    "command": "subwordNavigation.deleteSubwordLeft",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+delete",
+    "command": "subwordNavigation.deleteSubwordRight",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+F3",
+    "command": "toggle",
+    "when": "editorTextFocus",
+    "args": {
+      "id": "focus",
+      "value": [
+        {
+          "workbench.statusBar.visible": false,
+          "editor.lineNumbers": "off",
+          "workbench.activityBar.visible": false,
+          "editor.renderWhitespace": "none",
+          "breadcrumbs.enabled": false
+        },
+        {
+          "workbench.statusBar.visible": true,
+          "editor.lineNumbers": "on",
+          "workbench.activityBar.visible": true,
+          "editor.renderWhitespace": "all",
+          "breadcrumbs.enabled": true
         }
-    },
-    {
-        "key": "shift+alt+F3",
-        "command": "toggle",
-        "when": "editorTextFocus",
-        "args": {
-            "id": "focus",
-            "value": [
-                {
-                    "editor.minimap.enabled": true,
-                },
-                {
-                    "editor.minimap.enabled": false,
-                }
-            ]
+      ]
+    }
+  },
+  {
+    "key": "shift+alt+F3",
+    "command": "toggle",
+    "when": "editorTextFocus",
+    "args": {
+      "id": "focus",
+      "value": [
+        {
+          "editor.minimap.enabled": true
+        },
+        {
+          "editor.minimap.enabled": false
         }
-    },
+      ]
+    }
+  },
+  // vim move around
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown"
+  }
 ]
