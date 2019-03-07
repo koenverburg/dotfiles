@@ -7,9 +7,7 @@
   "window.menuBarVisibility": "toggle",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": 0,
-  // Workbench settings
-  "workbench.iconTheme": "ayu",
-  "workbench.colorTheme": "Ayu Mirage Bordered",
+  "workbench.colorTheme": "Andromeda",
   "workbench.statusBar.visible": false,
   "workbench.activityBar.visible": false,
   "workbench.editor.tabSizing": "shrink",
@@ -21,7 +19,7 @@
   "editor.minimap.enabled": false,
   "editor.lineHeight": 27,
   "editor.fontLigatures": true,
-  "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.renderWhitespace": "none",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
@@ -33,6 +31,7 @@
   "editor.lineNumbers": "off",
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.tabSize": 2,
+  "editor.glyphMargin": false,
   // zen mode
   "zenMode.restore": true,
   "zenMode.hideTabs": false,
