@@ -8,8 +8,8 @@
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Andromeda",
-  "workbench.statusBar.visible": false,
-  "workbench.activityBar.visible": false,
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -20,7 +20,7 @@
   "editor.lineHeight": 27,
   "editor.fontLigatures": true,
   "editor.fontFamily": "'Fira Code Retina', Consolas, 'Courier New', monospace",
-  "editor.renderWhitespace": "none",
+  "editor.renderWhitespace": "all",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
@@ -28,7 +28,7 @@
   "editor.suggest.localityBonus": true,
   "editor.showFoldingControls": "mouseover",
   "editor.matchBrackets": false,
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.tabSize": 2,
   "editor.glyphMargin": false,
@@ -39,7 +39,7 @@
   "zenMode.centerLayout": false,
   "zenMode.hideStatusBar": false,
   // misc stuff
-  "breadcrumbs.enabled": false,
+  "breadcrumbs.enabled": true,
   "explorer.openEditors.visible": 0,
   "typescript.referencesCodeLens.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "never",
@@ -81,6 +81,14 @@
   ],
   // Non-recursive remapped keys in normal mode. Allows mapping to vim commands or vscode actions. See README for more.
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["H"],
+      "after": ["HOME"]
+    },
+    {
+      "before": ["L"],
+      "after": ["END"]
+    },
     // map : to show command palette
     {
       "before": [":"],
@@ -257,7 +265,8 @@
     "**/flow-typed": true
   },
   "files.associations": {
-    "*.json": "jsonc"
+    "*.json": "jsonc",
+    "*.side": "jsonc"
   },
   "typescript.implementationsCodeLens.enabled": true,
   "cSpell.userWords": ["jquery", "nopcommerce"]
