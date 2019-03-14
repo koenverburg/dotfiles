@@ -3,9 +3,6 @@ Import-Module "C:\Users\$($env:USERNAME)\dotfiles\powershell\Helpers\Utils.ps1"
 Remove-Alias gs
 Remove-Alias gaa
 Remove-Alias gp
-Remove-Alias gc$pattern = "\/([A-Za-z]{0,4})?-?([0-9]{1,4})"
-
-
 Remove-Alias gcm
 Remove-Alias gc
 Remove-Alias gf
