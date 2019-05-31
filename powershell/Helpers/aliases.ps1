@@ -8,6 +8,20 @@ Remove-Alias gc
 Remove-Alias gf
 Remove-Alias gw
 Remove-Alias gpd
+Remove-Alias dswitch
+Remove-Alias gmdev
+
+function dswitch {
+  git checkout "feature/koenv/$args"
+}
+
+function gmdev {
+  git pull origin development
+}
+
+function gwmerge {
+  git commit --file .\.git\MERGE_MSG
+}
 
 function gf {
   git fetch --prune $args

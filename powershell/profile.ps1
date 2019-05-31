@@ -5,7 +5,6 @@ Import-Module "C:\Users\$($env:USERNAME)\dotfiles\powershell\Helpers\aliases.ps1
 
 Set-Alias vim nvim
 Set-Alias gvim nvim-qt
-Set-Alias touch New-Item
 
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope

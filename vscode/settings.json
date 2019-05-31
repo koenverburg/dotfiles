@@ -1,37 +1,98 @@
 // Place your settings in this file to overwrite the default settings
 {
+  // eslint
+  "eslint.packageManager": "yarn",
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": false,
+  // powershell as default shell, not that I use terminals in my ide but still.
+  "powershell.integratedConsole.showOnStartup": false,
+  "powershell.powerShellExePath": "C:\\WINDOWS\\SysWow64\\WindowsPowerShell\\v1.0\\powershell.exe",
+  // emmet
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  // formatting
+  "[scss]": {
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false
+  },
+  // excluding folders
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/flow-typed": true
+  },
+  "files.associations": {
+    "*.json": "jsonc",
+    "*.side": "jsonc"
+  },
+  "typescript.implementationsCodeLens.enabled": true,
+  "cSpell.userWords": [
+    "ecommerce",
+    "forin",
+    "jquery",
+    "nopcommerce",
+    "prefill",
+    "zipcode"
+  ],
   "git.detectSubmodules": false,
   "git.detectSubmodulesLimit": 9999,
+  // search
+  "search.location": "panel",
   // window Setting
   "window.titleBarStyle": "custom",
   "window.menuBarVisibility": "toggle",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Andromeda",
-  "workbench.statusBar.visible": true,
-  "workbench.activityBar.visible": true,
+  "workbench.iconTheme": "ayu",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
+  "workbench.statusBar.visible": false,
+  "workbench.activityBar.visible": false,
+  "workbench.editor.showIcons": false,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.sideBar.location": "left",
   // Editor
   "editor.snippetSuggestions": "top",
   "editor.cursorBlinking": "solid",
   "editor.minimap.enabled": false,
   "editor.lineHeight": 27,
+  "editor.lineNumbers": "off",
+  "editor.folding": false,
   "editor.fontLigatures": true,
   "editor.fontFamily": "'Fira Code Retina', Consolas, 'Courier New', monospace",
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.tabCompletion": "on",
   "editor.suggest.localityBonus": true,
-  "editor.showFoldingControls": "mouseover",
   "editor.matchBrackets": false,
-  "editor.lineNumbers": "on",
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.tabSize": 2,
   "editor.glyphMargin": false,
+  // gearon
+  "editor.occurrencesHighlight": true,
+  "editor.renderLineHighlight": "all",
+  // "javascript.validate.enable": false,
+  // "editor.suggestOnTriggerCharacters": false,
+  // "editor.quickSuggestions": false,
   // zen mode
   "zenMode.restore": true,
   "zenMode.hideTabs": false,
@@ -39,7 +100,7 @@
   "zenMode.centerLayout": false,
   "zenMode.hideStatusBar": false,
   // misc stuff
-  "breadcrumbs.enabled": true,
+  "breadcrumbs.enabled": false,
   "explorer.openEditors.visible": 0,
   "typescript.referencesCodeLens.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "never",
@@ -225,49 +286,6 @@
   // Use neovim on backend. (only works for Ex commands right now). You should restart VScode after enable/disabling this for the changes to take effect. NOTE: Neovim must be installed and neovimPath must be set the executable in order for this setting to work. Otherwise, vscodevim will crash.
   "vim.enableNeovim": false,
   // Path to run neovim executable. For example, /usr/bin/nvim, or
-  "vim.neovimPath": "nvim",
+  "vim.neovimPath": "nvim"
   // Get rid of that annoying message that shows up everytime you make a new file
-  // eslint
-  "eslint.packageManager": "yarn",
-  "eslint.alwaysShowStatus": false,
-  "eslint.autoFixOnSave": true,
-  // powershell as default shell, not that I use terminals in my ide but still.
-  "powershell.integratedConsole.showOnStartup": false,
-  "powershell.powerShellExePath": "C:\\WINDOWS\\SysWow64\\WindowsPowerShell\\v1.0\\powershell.exe",
-  // emmet
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
-  // formatting
-  "[scss]": {
-    "editor.formatOnSave": true
-  },
-  "[javascript]": {
-    "editor.formatOnSave": false
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "[typescript]": {
-    "editor.formatOnSave": false
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": false
-  },
-  // excluding folders
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/node_modules": true,
-    "**/flow-typed": true
-  },
-  "files.associations": {
-    "*.json": "jsonc",
-    "*.side": "jsonc"
-  },
-  "typescript.implementationsCodeLens.enabled": true,
-  "cSpell.userWords": ["jquery", "nopcommerce"]
 }
