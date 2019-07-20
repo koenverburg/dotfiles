@@ -5,13 +5,12 @@ Import-Module "C:\Users\$($env:USERNAME)\dotfiles\powershell\Helpers\aliases.ps1
 
 Set-Alias vim nvim
 Set-Alias gvim nvim-qt
-Set-Alias touch New-Item
 
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-Set-Theme koenverburg
+Set-Theme pure
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell
@@ -43,6 +42,11 @@ function elevateProcess {
 }
 
 set-alias sudo elevateProcess
+
+function quiet {
+  elevateProcess taskkill.exe "/IM teams.exe /F"
+}
+
 function Set-Hosts {
   sudo notepad "$($env:SystemRoot)\system32\drivers\etc\hosts"
 }

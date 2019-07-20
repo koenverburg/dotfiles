@@ -1,4 +1,8 @@
 New-Item -ItemType SymbolicLink -Path "C:\Users\$($env:USERNAME)\Documents\WindowsPowerShell\poshThemes\koenverburg.psm1" -Value ".\cmder\koenverburg.psm1" -Force >> $null
+New-Item -ItemType SymbolicLink -Path "C:\Users\$($env:USERNAME)\Documents\PowerShell\poshThemes\koenverburg.psm1" -Value ".\cmder\koenverburg.psm1" -Force >> $null
+
+New-Item -ItemType SymbolicLink -Path "C:\Users\$($env:USERNAME)\Documents\WindowsPowerShell\poshThemes\pure_koenverburg.psm1" -Value ".\cmder\pure_koenverburg.psm1" -Force >> $null
+New-Item -ItemType SymbolicLink -Path "C:\Users\$($env:USERNAME)\Documents\PowerShell\poshThemes\pure_koenverburg.psm1" -Value ".\cmder\pure_koenverburg.psm1" -Force >> $null
 Write-Output "[i] Create a a symlink for the cmder theme"
 
 .\ConEmu-Color-Themes\Install-ConEmuTheme.ps1 -ConfigPath "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" -Operation Add -ThemePathOrName ".\ConEmu-Color-Themes\themes\ayu Mirage.xml"
