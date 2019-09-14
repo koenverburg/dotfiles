@@ -60,9 +60,9 @@
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": 0,
   "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Andromeda Bordered",
-  "workbench.statusBar.visible": false,
-  "workbench.activityBar.visible": false,
+  "workbench.colorTheme": "Ayu Mirage Bordered",
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "off",
@@ -73,11 +73,10 @@
   "editor.cursorBlinking": "solid",
   "editor.minimap.enabled": false,
   "editor.lineHeight": 27,
-  "editor.lineNumbers": "off",
-  "editor.folding": false,
+  "editor.lineNumbers": "on",
   "editor.fontLigatures": true,
   "editor.fontFamily": "'Fira Code Retina', Consolas, 'Courier New', monospace",
-  "editor.renderWhitespace": "selection",
+  "editor.renderWhitespace": "all",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
@@ -86,7 +85,7 @@
   "editor.matchBrackets": false,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.tabSize": 2,
-  "editor.glyphMargin": false,
+  "editor.glyphMargin": true,
   // gearon
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
@@ -100,7 +99,7 @@
   "zenMode.centerLayout": false,
   "zenMode.hideStatusBar": false,
   // misc stuff
-  "breadcrumbs.enabled": false,
+  "breadcrumbs.enabled": true,
   "explorer.openEditors.visible": 0,
   "typescript.referencesCodeLens.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "never",
@@ -293,6 +292,7 @@
   ],
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "editor.folding": true
   // Get rid of that annoying message that shows up everytime you make a new file
 }
