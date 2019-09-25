@@ -34,7 +34,7 @@ function gw {
     git commit -m $args
   }
   else {
-    git commit -m "[$ticket] $args"
+    git commit -m "(#$ticket) $args"
   }
 }
 
