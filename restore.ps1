@@ -2,8 +2,6 @@ if (-not $env:HOME) {
   $env:HOME = "$($env:HOMEDRIVE)$($env:HOMEPATH)"
 }
 
-# Remove-Item "C:\Users\$($env:USERNAME)\dotfiles" -Force
-
 Remove-Item $env:HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 -Force
 Remove-Item $env:HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 -Force
 
@@ -24,7 +22,6 @@ Remove-Item "$env:HOME\Documents\Powershell\poshThemes\koenverburg.psm1" -Force
 
 Remove-Item "$env:HOME\Documents\WindowsPowerShell\poshThemes\pure_koenverburg.psm1" -Force
 Remove-Item "$env:HOME\Documents\Powershell\poshThemes\pure_koenverburg.psm1" -Force
-
 
 Remove-Item $env:LOCALAPPDATA\nvim\ginit.vim -Force
 Remove-Item $env:LOCALAPPDATA\nvim\init.vim -Force
