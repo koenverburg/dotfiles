@@ -1,0 +1,9 @@
+name: Build on a Windows Image
+on: [push]
+jobs:
+  build:
+    runs-on: mcr.microsoft.com/windows:1903
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run the bootstrap on windows
+      run: ./bootstrap.ps1
