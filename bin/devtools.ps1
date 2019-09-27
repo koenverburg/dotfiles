@@ -1,5 +1,5 @@
 # PowerShell Modules
-this will run under powershell 5
+# this will run under powershell 5
 if (!(Get-Module posh-git)) {
   Install-Module posh-git -Force
 }
@@ -46,7 +46,7 @@ StowFile $env:APPDATA\Code\User\keybindings.json (Get-Item ".\vscode\keybindings
 # Cmder config
 if (Test-Path "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml") {
   Remove-Item "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" -Force
-  StowFile "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" (Get-Item ".\cmder\setttings.xml").FullName
+  StowFile "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" (Get-Item ".\cmder\settings.xml").FullName
 }
 # .\ConEmu-Color-Themes\Install-ConEmuTheme.ps1 -ConfigPath "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" -Operation Add -ThemePathOrName ".\ConEmu-Color-Themes\themes\ayu Mirage.xml"
 
