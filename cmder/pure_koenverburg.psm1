@@ -32,16 +32,9 @@ function Write-Theme {
   $timeStamp = Get-Date -Format T
   $clock = [char]::ConvertFromUtf32(0x25F7)
   $timestamp = "$clock $timeStamp"
-  $batteryLevel = (Get-WmiObject -Class Win32_Battery).EstimatedChargeRemaining
+  # $batteryLevel = (Get-WmiObject -Class Win32_Battery).EstimatedChargeRemaining
 
-  if ($batteryLevel) {
-    $prompt += Set-CursorForRightBlockWrite -textLength 14 # time(10) + battery level(4)
-    $prompt += Write-Prompt -Object "$batteryLevel% " -ForegroundColor $sl.Colors.PromptBackgroundColor
-  }
-  else {
-    $prompt += Set-CursorForRightBlockWrite -textLength 11
-  }
-  $prompt += Write-Prompt $timeStamp -ForegroundColor $sl.Colors.PromptBackgroundColor
+  $prompt += Write-Prompt " $timeStamp" -ForegroundColor $sl.Colors.PromptBackgroundColor
 
   # New line
   $prompt += Set-Newline

@@ -1,7 +1,8 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
-Import-Module "C:\Users\$($env:USERNAME)\dotfiles\powershell\Helpers\aliases.ps1"
+Import-Module "C:\Users\$env:USERNAME\dotfiles\powershell\Helpers\aliases.ps1"
+Import-Module "C:\Users\$env:USERNAME\\dotfiles\overwrite\localProject.ps1"
 
 Set-Alias vim nvim
 Set-Alias gvim nvim-qt
@@ -24,6 +25,10 @@ if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administ
   Import-Module "C:\Users\$($env:USERNAME)\dotfiles\powershell\lowerUACL.ps1"
 }
 
+if (-not $env:HOME) {
+  $env:HOME = "$($env:HOMEDRIVE)$($env:HOMEPATH)"
+}
+
 function which($name) {
   Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
 }
@@ -43,7 +48,7 @@ function elevateProcess {
 
 set-alias sudo elevateProcess
 
-function quiet {
+function mute {
   elevateProcess taskkill.exe "/IM teams.exe /F"
 }
 
@@ -54,10 +59,9 @@ function Set-Hosts {
 set-alias hosts Set-Hosts
 
 function editLocal {
-  code "C:\Users\$($env:USERNAME)\dotfiles\overwrite\localProject.ps1"
+  code $env:HOME\dotfiles\overwrite\localProject.ps1
 }
 
-Import-Module "C:\Users\$($env:USERNAME)\dotfiles\overwrite\localProject.ps1"
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"

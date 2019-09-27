@@ -77,14 +77,18 @@
           "editor.lineNumbers": "off",
           "workbench.activityBar.visible": false,
           "editor.renderWhitespace": "none",
-          "breadcrumbs.enabled": false
+          "breadcrumbs.enabled": false,
+          "editor.glyphMargin": false,
+          "editor.folding": false
         },
         {
           "workbench.statusBar.visible": true,
           "editor.lineNumbers": "on",
           "workbench.activityBar.visible": true,
           "editor.renderWhitespace": "all",
-          "breadcrumbs.enabled": true
+          "breadcrumbs.enabled": true,
+          "editor.glyphMargin": true,
+          "editor.folding": true
         }
       ]
     }
