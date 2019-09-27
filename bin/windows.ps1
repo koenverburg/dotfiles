@@ -38,30 +38,27 @@ function PinToTaskBar($filePath) {
 
 # Install microsoft-windows-terminal
 # local path is for the config file (profiles.json)
-$terminalFolder = Get-ChildItem "C:\Program Files\WindowsApps\" -filter "Microsoft.WindowsTerminal_*" -Directory | ForEach-Object { $_.fullname }
-Write-Output $terminalFolder[0]
+# $terminalFolder = Get-ChildItem "C:\Program Files\WindowsApps\" -filter "Microsoft.WindowsTerminal_*" -Directory | ForEach-Object { $_.fullname }
+# Write-Output $terminalFolder[0]
 
-if ($terminalFolder[0]) {
-
-  New-Shortcut "$Home\Desktop\Windows-Terminal.lnk" "$terminalFolder[0]\WindowsTerminal.exe" "" "$terminalFolder[0]\Images\Square44x44Logo.scale-150.png,0"
-  # PinToTaskBar "$Home\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Insomnia\Insomnia.lnk" $terminalFolder[0]
-  # PinToTaskBar ""
-}
-
+# if ($terminalFolder[0]) {
+#   New-Shortcut "$Home\Desktop\Windows-Terminal.lnk" "$terminalFolder[0]\WindowsTerminal.exe" "" "$terminalFolder[0]\Images\Square44x44Logo.scale-150.png,0"
+#   # PinToTaskBar "$Home\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Insomnia\Insomnia.lnk" $terminalFolder[0]
+#   # PinToTaskBar ""
+# }
 
 # PinToTaskBar "C:\Users\Koen Verburg\Desktop\"
 # PinToTaskBar "C:\Users\$env:USERNAME"
 # Write-Output "Desktop shortcut (and taskbar pin): $Home\Desktop\Shell.lnk => $Env:ChocolateyInstall\bin\Console.exe"
 
 # used from https://github.com/jivkok/dotfiles/blob/master/windows/BoxStarter.psm1
-# Import-Module ".\Windows\BoxStarter.psm1"
+Import-Module ".\Windows\BoxStarter.psm1"
 
-# Set-TaskbarSmall
-# Restart-Explorer
-
+Set-TaskbarSmall
+Restart-Explorer
+Set-ExplorerOptions -showHidenFilesFoldersDrives $true -showProtectedOSFiles $true -showFileExtensions $true
 # Disable-ShutdownTracker
 # Disable-InternetExplorerESC
-# Set-ExplorerOptions -showHidenFilesFoldersDrives $true -showProtectedOSFiles $true -showFileExtensions $true
 
 # New-Item -ItemType SymbolicLink -Path "$StartUp" -Name "$name" -Value "$exePath"
 # Windows Terminal
