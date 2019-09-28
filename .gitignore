@@ -113,10 +113,8 @@ lib/
 data/
 database/*.sqlite
 database/*.sqlite3
-bin/
 public/
 dist/
 flow-typed/
-bin/ # webpack dlls
 .tmp/
 /overwrite

@@ -60,7 +60,7 @@
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": 0,
   "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Andromeda Bordered",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.statusBar.visible": false,
   "workbench.activityBar.visible": false,
   "workbench.editor.showIcons": false,
@@ -74,10 +74,9 @@
   "editor.minimap.enabled": false,
   "editor.lineHeight": 27,
   "editor.lineNumbers": "off",
-  "editor.folding": false,
   "editor.fontLigatures": true,
   "editor.fontFamily": "'Fira Code Retina', Consolas, 'Courier New', monospace",
-  "editor.renderWhitespace": "selection",
+  "editor.renderWhitespace": "none",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
@@ -87,6 +86,12 @@
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.tabSize": 2,
   "editor.glyphMargin": false,
+  "editor.folding": false,
+  "editor.rulers": [
+    80,
+    120,
+    200
+  ],
   // gearon
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
@@ -128,31 +133,56 @@
   "vim.insertModeKeyBindings": [
     // bind jj to <ESC> in insert mode
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     },
     {
-      "before": ["k", "k"],
-      "after": ["<Esc>"]
+      "before": [
+        "k",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     },
     {
-      "before": ["h", "h"],
-      "after": ["<Esc>"]
+      "before": [
+        "h",
+        "h"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   // Non-recursive remapped keys in normal mode. Allows mapping to vim commands or vscode actions. See README for more.
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["H"],
-      "after": ["HOME"]
+      "before": [
+        "H"
+      ],
+      "after": [
+        "HOME"
+      ]
     },
     {
-      "before": ["L"],
-      "after": ["END"]
+      "before": [
+        "L"
+      ],
+      "after": [
+        "END"
+      ]
     },
     // map : to show command palette
     {
-      "before": [":"],
+      "before": [
+        ":"
+      ],
       "after": [],
       "commands": [
         {
@@ -163,7 +193,10 @@
     },
     // ZZ save current file
     {
-      "before": ["Z", "Z"],
+      "before": [
+        "Z",
+        "Z"
+      ],
       "after": [],
       "commands": [
         {
@@ -178,7 +211,10 @@
     },
     // <leader>w : save current file
     {
-      "before": ["leader", "w"],
+      "before": [
+        "leader",
+        "w"
+      ],
       "after": [],
       "commands": [
         {
@@ -189,7 +225,10 @@
     },
     // <leader>c : uncomment/comment line
     {
-      "before": ["leader", "c"],
+      "before": [
+        "leader",
+        "c"
+      ],
       "after": [],
       "commands": [
         {
@@ -200,7 +239,9 @@
     },
     // vim multicursor select next match
     {
-      "before": ["<C-n>"],
+      "before": [
+        "<C-n>"
+      ],
       "after": [],
       "commands": [
         {
@@ -211,7 +252,9 @@
     },
     // vim multicursor like skip match
     {
-      "before": ["<C-x>"],
+      "before": [
+        "<C-x>"
+      ],
       "after": [],
       "commands": [
         {
@@ -288,11 +331,8 @@
   // Path to run neovim executable. For example, /usr/bin/nvim, or
   "vim.neovimPath": "nvim",
   "explorer.confirmDelete": false,
-  "azure.resourceFilter": [
-    "4c070d23-86f0-42a9-8f17-4e0f7f98e9ed/4d08bc9d-57bb-4f24-b2a5-54b88b80f1c5"
-  ],
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
   // Get rid of that annoying message that shows up everytime you make a new file
 }
