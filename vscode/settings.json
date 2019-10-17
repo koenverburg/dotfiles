@@ -332,6 +332,5 @@
   "explorer.confirmDelete": false,
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // Get rid of that annoying message that shows up everytime you make a new file
+  }
 }
