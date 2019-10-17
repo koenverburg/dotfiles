@@ -6,7 +6,7 @@
   "eslint.autoFixOnSave": false,
   // powershell as default shell, not that I use terminals in my ide but still.
   "powershell.integratedConsole.showOnStartup": false,
-  "powershell.powerShellExePath": "C:\\WINDOWS\\SysWow64\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "powershell.powerShellExePath": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
   // emmet
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
@@ -58,9 +58,8 @@
   "window.titleBarStyle": "custom",
   "window.menuBarVisibility": "toggle",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": 0,
   "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Ayu Mirage Bordered",
+  "workbench.colorTheme": "Andromeda Bordered",
   "workbench.statusBar.visible": false,
   "workbench.activityBar.visible": false,
   "workbench.editor.showIcons": false,
@@ -75,7 +74,7 @@
   "editor.lineHeight": 27,
   "editor.lineNumbers": "off",
   "editor.fontLigatures": true,
-  "editor.fontFamily": "'Fira Code Retina', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.renderWhitespace": "none",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
