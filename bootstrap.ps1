@@ -13,7 +13,14 @@ if (-not [environment]::Is64BitOperatingSystem) {
 if (-not $env:HOME) {
   $env:HOME = "$($env:HOMEDRIVE)$($env:HOMEPATH)"
 }
+elseif ($env:HOME -eq "H:\") {
+  $env:HOME = "C:$($env:HOMEPATH)"
+}
 
 . ".\bin\programs.ps1"
 . ".\bin\Settings\wallpaper.ps1"
 . ".\bin\devtools.ps1"
+
+RefreshEnv.cmd
+
+. ".\vscode\install.ps1"
