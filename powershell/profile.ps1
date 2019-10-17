@@ -48,8 +48,17 @@ function elevateProcess {
 
 set-alias sudo elevateProcess
 
-function mute {
+function teamsk {
   elevateProcess taskkill.exe "/IM teams.exe /F"
+  Clear-Host
+}
+
+function whats {
+  Start-Process "$env:LOCALAPPDATA\WhatsApp\WhatsApp.exe"
+}
+function whatsk {
+  elevateProcess taskkill.exe "/IM WhatsApp.exe /F"
+  Clear-Host
 }
 
 function Set-Hosts {
@@ -61,7 +70,6 @@ set-alias hosts Set-Hosts
 function editLocal {
   code $env:HOME\dotfiles\overwrite\localProject.ps1
 }
-
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
