@@ -16,7 +16,7 @@ function Get-Git-CurrentBranch {
 
 function Get-Current-Ticket {
   $branch = Get-Git-CurrentBranch
-  $pattern = "\/([A-Za-z]{0,4})?-?([0-9]{1,4})"
+  $pattern = "\/([0-9].*?)\-"
 
   if ($branch -match $pattern) {
     $project = $matches[1]
@@ -24,9 +24,6 @@ function Get-Current-Ticket {
 
     if ($project -eq "") {
       $ticket = $ticketNumber
-    }
-    else {
-      $ticket = "$project-$ticketNumber"
     }
 
     return $ticket
