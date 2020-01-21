@@ -1,7 +1,7 @@
 " .vimrc
 " vim: ft=vim tab=2
 " Author: Koen Verburg <creativekoen@gmail.com>
-" Source: https://github.com/CreativeKoen/dotfiles
+" Source: https://github.com/koenverburg/dotfiles
 
 " Plug --------------------------------------------------------------------- {{{
 let g:plugin_dir = expand('~/.neovim/plugin')
@@ -15,10 +15,7 @@ call plug#begin(g:plugin_dir)
 
 Plug 'vim-airline/vim-airline'                          " airline status bar
 Plug 'vim-airline/vim-airline-themes'                   " airline themes
-" Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
-Plug 'luochen1990/rainbow'                              " rainbow paranthesis
 Plug 'hzchirs/vim-material'                             " material color themes
-Plug 'junegunn/goyo.vim'                                " zen mode
 Plug 'gregsexton/MatchTag'                              " highlight matching html tags
 
 " ================= Functionalities ================= "
@@ -48,23 +45,24 @@ Plug 'elzr/vim-json'
 " other
 Plug 'tpope/vim-commentary'                             " better commenting
 Plug 'tpope/vim-sensible'                               " sensible defaults
-Plug 'lambdalisue/suda.vim'                             " save as sudo
+" Plug 'lambdalisue/suda.vim'                             " save as sudo
 Plug '907th/vim-auto-save'                              " auto save changes
-Plug 'mhinz/vim-startify'                               " cool start up screen
-Plug 'kristijanhusak/vim-carbon-now-sh'                 " lit code screenshots
+" Plug 'mhinz/vim-startify'                               " cool start up screen
+" Plug 'kristijanhusak/vim-carbon-now-sh'                 " lit code screenshots
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'tpope/vim-surround'                               " surround stuff with stuff
 Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
 Plug 'farmergreg/vim-lastplace'                         " open files at the last edited place
 Plug 'romainl/vim-cool'                                 " disable hl until another search is performed
-Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
-Plug 'majutsushi/tagbar'                                " a bar of tags
+" Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
+" Plug 'majutsushi/tagbar'                                " a bar of tags
 " Zen
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
 " interface
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
@@ -80,9 +78,8 @@ let g:enable_italic_font = 1                                                    
 " Basic settings ----------------------------------------------------------- {{{
 
 let g:material_style='oceanic'
-set background=dark
 colorscheme vim-material
-let g:airline_theme='material'
+
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
@@ -100,8 +97,9 @@ set clipboard+=unnamedplus                              " use system clipboard b
 filetype plugin indent on                               " enable indentations
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent              " tab key actions
 set incsearch ignorecase smartcase hlsearch             " highlight text while seaching
+set background=dark
 "set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
-"exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬"
+"exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬
 "set listchars=tab:▸\ ,eol:¬,trail:-
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set list
@@ -129,13 +127,13 @@ let maplocalleader = "\\"
 call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
 
 if has("multi_byte")
-    if &termencoding == ""
-        let &termencoding = &encoding
-    endif
-    set encoding=utf-8
-    setglobal fileencoding=utf-8
-    "setglobal bomb
-    set fileencodings=ucs-bom,utf-8,latin1
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
 endif
 
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -157,22 +155,45 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   let g:airline_theme = 'deus'
   let g:airline#extensions#tabline#enabled = 1
 
-"   " Nerdtree show hidden files
-  let NERDTreeShowHidden = 1
-  let NERDTreeShowLineNumbers = 0
-
   " ctrl p ignore
   let g:ctrlp_map = '<leader>t'
   let g:ctrlp_cmd = 'CtrlP'
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']  " Windows
   let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\|vendor|bin\|public\'
 
+  set signcolumn=yes
+  let g:conflict_marker_enable_mappings = 0
+  let g:gitgutter_sign_added = '│'
+  let g:gitgutter_sign_modified = '│'
+  let g:gitgutter_sign_removed = '│'
+  let g:gitgutter_sign_removed_first_line = '│'
+  let g:gitgutter_sign_modified_removed = '│'
+
+  let g:javascript_plugin_flow = 1
+  let g:javascript_plugin_jsdoc = 1
+  let g:jsx_ext_required = 1
+  let g:vim_json_syntax_conceal = 0
+  let g:tigris#enabled = 1
+
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#enabled = 1
+
+  let NERDTreeShowHidden = 1
+  let NERDTreeShowLineNumbers = 0
+
+  nnoremap <silent> <F4> :NERDTreeToggle<cr>
+  inoremap <silent> <F4> :NERDTreeToggle<cr>
+
+  nnoremap <silent> <F5> :NERDTreeFind<cr>
+  inoremap <silent> <F5> :NERDTreeFind<cr>
+
+  nnoremap <silent><leader>nn :NERDTreeToggle<cr>
+  inoremap <silent><leader>nn :NERDTreeToggle<cr>
+
+  autocmd BufEnter NERD_tree* :LeadingSpaceDisable
 " }}}
 
 " Conveniece mappings ------------------------------------------------------ {{{
-
-" zen mode
-nnoremap <silent> <leader>Z :Goyo 80%x80%<cr>
 
 " open a new tab
 nnoremap <c-t> :tabnew<cr>
@@ -180,18 +201,9 @@ nnoremap <c-t> :tabnew<cr>
 " sudo write
 command! W :w !sudo tee %
 
-" NERDTREE
-nnoremap <silent> <F4> :NERDTreeToggle<cr>
-nnoremap <silent> <F5> :NERDTreeFind<cr>
-autocmd BufEnter NERD_tree* :LeadingSpaceDisable
-
 " Tabs
 nnoremap <leader>( :tabprev<cr>
 nnoremap <leader>) :tabnext<cr>
-
-" Use sane regexes.
-nnoremap / /\v
-vnoremap / /\v
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
@@ -210,11 +222,28 @@ noremap H ^
 noremap L g_
 nnoremap <Tab> %
 
-" Easy buffer/pane navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+" emulate windows copy, cut behavior
+noremap <LeftRelease> "+y<LeftRelease>
+noremap <C-c> "+y<CR>
+noremap <C-x> "+d<CR>
+
+" switch between splits using ctrl + {h,j,k,l}
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+inoremap <C-h> <C-\><C-N><C-w>h
+inoremap <C-j> <C-\><C-N><C-w>j
+inoremap <C-k> <C-\><C-N><C-w>k
+inoremap <C-l> <C-\><C-N><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" select text via ctrl+shift+arrows in insert mode
+inoremap <C-S-left> <esc>vb
+inoremap <C-S-right> <esc>ve
 
 " faster saving
 nnoremap <leader>w :w<cr>
@@ -223,20 +252,9 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 " Save when losing focus
 au FocusLost * :wa
 
-" Resize splits when the window is resized
-au VimResized * exe
-normal! \<c-w>="
-
 " window resizing
 nnoremap <c-left> 5<c-w>>
 nnoremap <c-right> 5<c-w><
-
-" formatting, textmate-style
-nnoremap Q gqip
-
-" fast sourcing a line
-vnoremap <leader>S y:execute @@<cr>
-nnoremap <leader>S ^vg_y:execute @@<cr>
 
 " Select (charwise) the content of the current line, excluding indentation
 nnoremap VV ^vg_
@@ -251,7 +269,6 @@ nnoremap <leader>ev :vsp  $localappdata/nvim/init.vim<cr>
 "easy ecape w/ modding my keyboard
 inoremap jj <esc>
 
-
 " swap : and ; to make colon commands easer to type
 nnoremap ; :
 nnoremap : ;
@@ -263,6 +280,10 @@ call matchadd('ColorColumn', '\%81v', 100)
 " moving the tabs
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+
+" Python VirtualEnv
+"let g:python_host_prog =  expand('/usr/bin/python')
+let g:python3_host_prog = expand('C:\tools\python3\python.exe')
 
 " }}}
 
@@ -284,7 +305,7 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
     exe initial . "wincmd w"
   endfunction
 
-  nnoremap <F5> :call Rotate()<CR>
+  nnoremap <F6> :call Rotate()<CR>
 "}}}
 
 " Folding, gets it's own section ------------------------------------------- {{{
@@ -336,18 +357,6 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " }}}
 
-" Git ---------------------------------------------------------------------- {{{
-
-  set signcolumn=yes
-  let g:conflict_marker_enable_mappings = 0
-  let g:gitgutter_sign_added = '│'
-  let g:gitgutter_sign_modified = '│'
-  let g:gitgutter_sign_removed = '│'
-  let g:gitgutter_sign_removed_first_line = '│'
-  let g:gitgutter_sign_modified_removed = '│'
-
-" }}}
-
 " Nvim terminal ------------------------------------------------------------ {{{
 
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
@@ -356,20 +365,7 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " }}}
 
-" Javascript --------------------------------------------------------------- {{{
-
-  let g:javascript_plugin_flow = 1
-  let g:javascript_plugin_jsdoc = 1
-  let g:jsx_ext_required = 1
-  let g:vim_json_syntax_conceal = 0
-  let g:tigris#enabled = 1
-
-"}}}
-
 " Airline customization ---------------------------------------------------- {{{
-
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
 
   function! AirlineInit()
     let g:airline_section_a = airline#section#create(['mode'])
@@ -383,18 +379,3 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
   autocmd VimEnter * call AirlineInit()
 " }}}
-
-" Vim functions ------------------------------------------------------------ {{{
-
-" Make sure Vim returns to the same line when you reopen a file.
-" https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc#cl-175
-  augroup line_return
-    au!
-    au BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   execute 'normal! g`"zvzz' |
-      \ endif
-  augroup END
-
-" }}}
-
