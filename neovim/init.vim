@@ -1,5 +1,4 @@
 " .vimrc
-" vim: ft=vim tab=2
 " Author: Koen Verburg <creativekoen@gmail.com>
 " Source: https://github.com/koenverburg/dotfiles
 
@@ -12,22 +11,23 @@ filetype off
 call plug#begin(g:plugin_dir)
 
 " ================= looks and GUI stuff ================== "
-
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'                          " airline status bar
 Plug 'vim-airline/vim-airline-themes'                   " airline themes
-Plug 'hzchirs/vim-material'                             " material color themes
 Plug 'gregsexton/MatchTag'                              " highlight matching html tags
 
 " ================= Functionalities ================= "
 
 " auto completion, lang servers and stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'desmap/ale-sensible' | Plug 'w0rp/ale'
+Plug 'desmap/ale-sensible' | Plug 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
+Plug 'bkad/CamelCaseMotion'
 
 " search
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'                                " fuzzy search integration
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all', 'for': ['elixir', 'typescript'] }
+Plug 'junegunn/fzf.vim', { 'for': ['elixir', 'typescript'] }
+Plug 'mileszs/ack.vim', { 'for': ['elixir', 'typescript'] }
+" Plug 'kien/ctrlp.vim'
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'                               " actual snippets
@@ -45,17 +45,15 @@ Plug 'elzr/vim-json'
 " other
 Plug 'tpope/vim-commentary'                             " better commenting
 Plug 'tpope/vim-sensible'                               " sensible defaults
-" Plug 'lambdalisue/suda.vim'                             " save as sudo
-Plug '907th/vim-auto-save'                              " auto save changes
-" Plug 'mhinz/vim-startify'                               " cool start up screen
-" Plug 'kristijanhusak/vim-carbon-now-sh'                 " lit code screenshots
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'tpope/vim-surround'                               " surround stuff with stuff
+" Plug '907th/vim-auto-save'                              " auto save changes
 Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
 Plug 'farmergreg/vim-lastplace'                         " open files at the last edited place
 Plug 'romainl/vim-cool'                                 " disable hl until another search is performed
 " Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
-" Plug 'majutsushi/tagbar'                                " a bar of tags
+Plug 'majutsushi/tagbar', { 'for': ['python'] }
+Plug 'liuchengxu/vista.vim', { 'for': ['elixir', 'python'] }
 " Zen
 " Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
@@ -69,16 +67,17 @@ call plug#end()
 filetype plugin indent on                                                       "Enable plugins and indents by filetype
 syntax enable
 
+" set runtimepath^=expand('~/.neovim/plugin/vista.vim')
+
 let g:mapleader = ","                                                           "Change leader to a comma
 let g:enable_bold_font = 1                                                      "Enable bold font in colorscheme
-let g:enable_italic_font = 1                                                    "Enable italic font in colorscheme
+let g:enable_italic_font = 0                                                    "Enable italic font in colorscheme
 
  "}}}
 
 " Basic settings ----------------------------------------------------------- {{{
 
-let g:material_style='oceanic'
-colorscheme vim-material
+colorscheme gruvbox
 
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
@@ -90,12 +89,13 @@ autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=Green ctermbg=NONE
 
 set termguicolors                                       " Opaque Background
 set mouse=a                                             " enable mouse scrolling
-set clipboard+=unnamedplus                              " use system clipboard by default
-
+set clipboard+=unnamed,unnamedplus                      " use system clipboard by default
+" C-c and C-v - Copy/Paste to global clipboard
+vmap <C-c> "+yi
+imap <C-v> <esc>"+gpi
 " ===================== Other Configurations ===================== "
 
 filetype plugin indent on                               " enable indentations
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent              " tab key actions
 set incsearch ignorecase smartcase hlsearch             " highlight text while seaching
 set background=dark
 "set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
@@ -119,7 +119,7 @@ set undofile                                            " enable persistent undo
 set undodir=~/.nvim/tmp                                 " undo temp file directory
 set ttyfast                                             " faster scrolling
 set lazyredraw                                          " faster scrolling
-
+set nonumber
 " Leader
 let mapleader = ","
 let maplocalleader = "\\"
@@ -151,15 +151,9 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   " Json
   let g:vim_json_syntax_conceal = 0                                             " I want to see the quote's
 
-"   " Airline
-  let g:airline_theme = 'deus'
+  " Airline
+  let g:airline_theme = 'gruvbox'
   let g:airline#extensions#tabline#enabled = 1
-
-  " ctrl p ignore
-  let g:ctrlp_map = '<leader>t'
-  let g:ctrlp_cmd = 'CtrlP'
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']  " Windows
-  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\|vendor|bin\|public\'
 
   set signcolumn=yes
   let g:conflict_marker_enable_mappings = 0
@@ -191,6 +185,71 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   inoremap <silent><leader>nn :NERDTreeToggle<cr>
 
   autocmd BufEnter NERD_tree* :LeadingSpaceDisable
+
+  " WordJumping like in vscode and resharper
+  imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
+  imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
+
+  map <silent> w <Plug>CamelCaseMotion_w
+  map <silent> b <Plug>CamelCaseMotion_b
+  map <silent> e <Plug>CamelCaseMotion_e
+  map <silent> ge <Plug>CamelCaseMotion_ge
+  sunmap w
+  sunmap b
+  sunmap e
+  sunmap ge
+
+  " Tag bar
+  nmap <F8> :Vista<CR>
+
+  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+  let g:vista_default_executive = 'ctags'
+
+  " let g:vista_executive_for = {
+  "   \ 'javascript': 'ale',
+  "   \ 'typescript': 'ale',
+  "   " \ 'php': 'vim_lsp',
+  "   \ }
+
+  " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+  let g:vista#renderer#enable_icon = 1
+
+  " The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+  let g:vista#renderer#icons = {
+  \   "function": "\uf794",
+  \   "variable": "\uf71b",
+  \  }
+
+
+  " FZF
+  nnoremap <silent><leader>ff :FZF<cr>
+  inoremap <silent><leader>ff :FZF<cr>
+
+  " let $FZF_DEFAULT_OPTS .= '--color=bg:#20242C --border --layout=reverse'
+  " function! FloatingFZF()
+  "   let width = float2nr(&columns * 0.9)
+  "   let height = float2nr(&lines * 0.6)
+  "   let opts = { 'relative': 'editor',
+  "       \ 'row': (&lines - height) / 2,
+  "       \ 'col': (&columns - width) / 2,
+  "       \ 'width': width,
+  "       \ 'height': height,
+  "       \ 'style': 'minimal'
+  "       \}
+
+  "   let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+  "   call setwinvar(win, '&winhighlight', 'NormalFloat:TabLine')
+  " endfunction
+
+  " let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+  " Search
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+
+  cnoreabbrev Ack Ack!
+  nnoremap <Leader>a :Ack!<Space>
 " }}}
 
 " Conveniece mappings ------------------------------------------------------ {{{
