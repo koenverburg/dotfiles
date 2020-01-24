@@ -19,23 +19,22 @@ Plug 'gregsexton/MatchTag'                              " highlight matching htm
 " ================= Functionalities ================= "
 
 " auto completion, lang servers and stuff
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'desmap/ale-sensible' | Plug 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
 Plug 'bkad/CamelCaseMotion'
 
 " search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all', 'for': ['elixir', 'typescript'] }
-Plug 'junegunn/fzf.vim', { 'for': ['elixir', 'typescript'] }
-Plug 'mileszs/ack.vim', { 'for': ['elixir', 'typescript'] }
-" Plug 'kien/ctrlp.vim'
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all', 'for': ['elixir', 'typescript'] }
+" Plug 'junegunn/fzf.vim', { 'for': ['elixir', 'typescript'] }
+" Plug 'mileszs/ack.vim', { 'for': ['elixir', 'typescript'] }
 " snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'                               " actual snippets
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'                               " actual snippets
 
 " visual
 Plug 'alvan/vim-closetag'                               " auto close html tags
 Plug 'Yggdroot/indentLine'                              " show indentation lines
-Plug 'google/vim-searchindex'                           " add number of found matching search items
 
 " languages
 Plug 'sheerun/vim-polyglot'                             " many languages support
@@ -47,16 +46,15 @@ Plug 'tpope/vim-commentary'                             " better commenting
 Plug 'tpope/vim-sensible'                               " sensible defaults
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'tpope/vim-surround'                               " surround stuff with stuff
-" Plug '907th/vim-auto-save'                              " auto save changes
 Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
 Plug 'farmergreg/vim-lastplace'                         " open files at the last edited place
-Plug 'romainl/vim-cool'                                 " disable hl until another search is performed
-" Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
-Plug 'majutsushi/tagbar', { 'for': ['python'] }
-Plug 'liuchengxu/vista.vim', { 'for': ['elixir', 'python'] }
+
+" Plug 'majutsushi/tagbar', { 'for': ['python'] }
+" Plug 'liuchengxu/vista.vim', { 'for': ['elixir', 'typescript', 'javascript'] }
+
 " Zen
 " Plug 'junegunn/goyo.vim'
-" Plug 'junegunn/limelight.vim'
+Plug 'junegunn/limelight.vim'
 " interface
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
@@ -119,7 +117,15 @@ set undofile                                            " enable persistent undo
 set undodir=~/.nvim/tmp                                 " undo temp file directory
 set ttyfast                                             " faster scrolling
 set lazyredraw                                          " faster scrolling
-set nonumber
+
+" coc settings
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
 " Leader
 let mapleader = ","
 let maplocalleader = "\\"
@@ -155,7 +161,7 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   let g:airline_theme = 'gruvbox'
   let g:airline#extensions#tabline#enabled = 1
 
-  set signcolumn=yes
+
   let g:conflict_marker_enable_mappings = 0
   let g:gitgutter_sign_added = '│'
   let g:gitgutter_sign_modified = '│'
@@ -222,8 +228,8 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 
   " FZF
-  nnoremap <silent><leader>ff :FZF<cr>
-  inoremap <silent><leader>ff :FZF<cr>
+  " nnoremap <silent><leader>ff :FZF<cr>
+  " inoremap <silent><leader>ff :FZF<cr>
 
   " let $FZF_DEFAULT_OPTS .= '--color=bg:#20242C --border --layout=reverse'
   " function! FloatingFZF()
@@ -250,6 +256,28 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
   cnoreabbrev Ack Ack!
   nnoremap <Leader>a :Ack!<Space>
+" }}}
+
+" COC settings ------------------------------------------------------------- {{{
+  let g:coc_global_extensions = [ 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-actions', 'coc-cocActionsOpenFromSelected']
+  " , 'coc-elixir'
+
+  let g:coc_user_config = {}
+  let g:coc_user_config['coc.preferences.hoverTarget'] = 'echo'
+  let g:coc_user_config['signature.target'] = 'echo'
+
+  " nmap <silent> gd <Plug>(coc-definition)
+  " Remap for do codeAction of selected region
+  function! s:cocActionsOpenFromSelected(type) abort
+    execute 'CocCommand actions.open ' . a:type
+  endfunction
+  xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+  nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
+" }}}
+
+" Denite for fuzzy seearching {{{
+
 " }}}
 
 " Conveniece mappings ------------------------------------------------------ {{{
@@ -416,12 +444,15 @@ let g:python3_host_prog = expand('C:\tools\python3\python.exe')
 
 " }}}
 
-" Nvim terminal ------------------------------------------------------------ {{{
+"Auto cmd stuff ------------------------------------------------------------ {{{
 
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
   autocmd BufEnter term://* startinsert
   autocmd TermOpen * set bufhidden=hide
 
+
+  au BufNewFile,BufRead *.ts setlocal filetype=typescript
+  au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 " }}}
 
 " Airline customization ---------------------------------------------------- {{{
