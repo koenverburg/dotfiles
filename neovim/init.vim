@@ -25,9 +25,11 @@ Plug 'bkad/CamelCaseMotion'
 
 " search
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all', 'for': ['elixir', 'typescript'] }
-" Plug 'junegunn/fzf.vim', { 'for': ['elixir', 'typescript'] }
-" Plug 'mileszs/ack.vim', { 'for': ['elixir', 'typescript'] }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'brooth/far.vim'
+
 " snippets
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'                               " actual snippets
@@ -36,12 +38,22 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'alvan/vim-closetag'                               " auto close html tags
 Plug 'Yggdroot/indentLine'                              " show indentation lines
 
+
 " languages
-Plug 'sheerun/vim-polyglot'                             " many languages support
-Plug 'tpope/vim-liquid'                                 " liquid language support
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'elzr/vim-json'
+Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'elixir-lang/vim-elixir'
+Plug 'thinca/vim-ref'
+
+" Plug 'sheerun/vim-polyglot'                             " many languages support
+" Plug 'tpope/vim-liquid'                                 " liquid language support
 
 " other
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-commentary'                             " better commenting
 Plug 'tpope/vim-sensible'                               " sensible defaults
 Plug 'tpope/vim-fugitive'                               " git support
@@ -53,7 +65,7 @@ Plug 'farmergreg/vim-lastplace'                         " open files at the last
 " Plug 'liuchengxu/vista.vim', { 'for': ['elixir', 'typescript', 'javascript'] }
 
 " Zen
-" Plug 'junegunn/goyo.vim'
+"Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 " interface
 Plug 'editorconfig/editorconfig-vim'
@@ -76,12 +88,18 @@ let g:enable_italic_font = 0                                                    
 " Basic settings ----------------------------------------------------------- {{{
 
 colorscheme gruvbox
+syntax enable    " enable syntax highlighting
+
+filetype plugin indent on                               " enable indentations
+set background=dark
 
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
 highlight NonText guibg=none
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=Green ctermbg=NONE
+
+syntax enable    " enable syntax highlighting
 
 " ==================== general config ======================== "
 
@@ -93,38 +111,51 @@ vmap <C-c> "+yi
 imap <C-v> <esc>"+gpi
 " ===================== Other Configurations ===================== "
 
-filetype plugin indent on                               " enable indentations
-set incsearch ignorecase smartcase hlsearch             " highlight text while seaching
-set background=dark
-"set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
-"exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬
-"set listchars=tab:▸\ ,eol:¬,trail:-
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
-set list
-set fillchars+=vert:\▏                                  " requires a patched nerd font (try furaCode)
-set wrap breakindent                                    " wrap long lines to the width sset by tw
-set encoding=utf-8                                      " text encoding
-set number                                              " enable numbers on the left
-set title                                               " tab title as file file
-set conceallevel=2                                      " set this so we womt break indentation plugin
-set splitright                                          " open vertical split to the right
-set splitbelow                                          " open horizontal split to the bottom
-set tw=80                                               " auto wrap lines that are longer than that
 set emoji                                               " enable emojis
-let g:indentLine_setConceal = 0                         " actually fix the annoying markdown links conversion
-au BufEnter * set fo-=c fo-=r fo-=o                     " stop annying auto commenting on new lines
-set undofile                                            " enable persistent undo
-set undodir=~/.nvim/tmp                                 " undo temp file directory
-set ttyfast                                             " faster scrolling
-set lazyredraw                                          " faster scrolling
+set autoindent   " Copy indent from current line when starting a new line
+set showcmd      " display incomplete commands
+set showmode     " display the mode you're in
+set backspace=indent,eol,start " intuitive backspacing"
+set hidden       " Handle multiple buffers better
+set wildmenu     " enhanced command line completion
+set wildmode=list:longest " complete files like a shell
 
-" coc settings
-set hidden
-set nobackup
-set nowritebackup
+""" Search
+set ignorecase   " case-insensitive search
+set smartcase    " but case-sensitive if expression contains a capital letter
+set relativenumber " show relative line number
+set number         " show the line number of the current line
+set ruler        " show cursor position
+set incsearch    " highlight matches as you type
+set hlsearch     " highlight matches
+
+""" Regex
+set gdefault     " use global option in regex by default
+
+set wrap         " turn on line wrapping
+set scrolloff=3  " show 3 lines of context around cursor
+set display+=lastline " Display as much as possible of a window's last line
+set list         " show invisible characters
+set title        " show terminal title
+set visualbell   " no beeping
+
+"" Global tabs/spaces
+set smarttab     " use spaces instead of tabs
+set tabstop=2    " global tab width
+set shiftwidth=2
+set expandtab    " use spaces instead of tabs
+set laststatus=2 " Always show a status line
+
+set nobackup " no backups
+set nowritebackup " No backups
+set noswapfile " No swap files
+set autoread " Automatically re-read files changed outside of vim
+set encoding=utf-8
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+let g:indentLine_setConceal = 0                         " actually fix the annoying markdown links conversion
 
 " Leader
 let mapleader = ","
@@ -136,7 +167,7 @@ if has("multi_byte")
   if &termencoding == ""
     let &termencoding = &encoding
   endif
-  set encoding=utf-8
+
   setglobal fileencoding=utf-8
   "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
@@ -147,6 +178,33 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " }}}
 
 " plugin setting ----------------------------------------------------------- {{{
+
+" typescript and react
+" dark red
+  hi tsxTagName guifg=#E06C75
+
+  " orange
+  hi tsxCloseString guifg=#F99575
+  hi tsxCloseTag guifg=#F99575
+  hi tsxCloseTagName guifg=#F99575
+  hi tsxAttributeBraces guifg=#F99575
+  hi tsxEqual guifg=#F99575
+
+  " yellow
+  hi tsxAttrib guifg=#F8BD7F cterm=italic
+  " light-grey
+  hi tsxTypeBraces guifg=#999999
+  " dark-grey
+  hi tsxTypes guifg=#666666
+
+  hi ReactState guifg=#C176A7
+  hi ReactProps guifg=#D19A66
+  hi ApolloGraphQL guifg=#CB886B
+  hi Events ctermfg=204 guifg=#56B6C2
+  hi ReduxKeywords ctermfg=204 guifg=#C678DD
+  hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
+  hi WebBrowser ctermfg=204 guifg=#56B6C2
+  hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
 
   let g:indentLine_enabled = 0
   let g:indentLine_setColors = 0
@@ -181,12 +239,6 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   let NERDTreeShowHidden = 1
   let NERDTreeShowLineNumbers = 0
 
-  nnoremap <silent> <F4> :NERDTreeToggle<cr>
-  inoremap <silent> <F4> :NERDTreeToggle<cr>
-
-  nnoremap <silent> <F5> :NERDTreeFind<cr>
-  inoremap <silent> <F5> :NERDTreeFind<cr>
-
   nnoremap <silent><leader>nn :NERDTreeToggle<cr>
   inoremap <silent><leader>nn :NERDTreeToggle<cr>
 
@@ -214,7 +266,6 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   " let g:vista_executive_for = {
   "   \ 'javascript': 'ale',
   "   \ 'typescript': 'ale',
-  "   " \ 'php': 'vim_lsp',
   "   \ }
 
   " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
@@ -228,8 +279,8 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 
   " FZF
-  " nnoremap <silent><leader>ff :FZF<cr>
-  " inoremap <silent><leader>ff :FZF<cr>
+  nnoremap <silent><leader>ff :FZF<cr>
+  inoremap <silent><leader>ff :FZF<cr>
 
   " let $FZF_DEFAULT_OPTS .= '--color=bg:#20242C --border --layout=reverse'
   " function! FloatingFZF()
@@ -259,21 +310,19 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " }}}
 
 " COC settings ------------------------------------------------------------- {{{
-  let g:coc_global_extensions = [ 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-actions', 'coc-cocActionsOpenFromSelected']
-  " , 'coc-elixir'
+  let g:coc_global_extensions = [ 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-actions', 'coc-elixir']
 
-  let g:coc_user_config = {}
-  let g:coc_user_config['coc.preferences.hoverTarget'] = 'echo'
-  let g:coc_user_config['signature.target'] = 'echo'
+  " let g:coc_user_config = {}
+  " let g:coc_user_config['coc.preferences.hoverTarget'] = 'echo'
+  " let g:coc_user_config['signature.target'] = 'echo'
 
   " nmap <silent> gd <Plug>(coc-definition)
-  " Remap for do codeAction of selected region
-  function! s:cocActionsOpenFromSelected(type) abort
-    execute 'CocCommand actions.open ' . a:type
-  endfunction
-  xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-  nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-
+  " " Remap for do codeAction of selected region
+  " function! s:cocActionsOpenFromSelected(type) abort
+  "   execute 'CocCommand actions.open ' . a:type
+  " endfunction
+  " xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+  " nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 " }}}
 
 " Denite for fuzzy seearching {{{
@@ -450,9 +499,9 @@ let g:python3_host_prog = expand('C:\tools\python3\python.exe')
   autocmd BufEnter term://* startinsert
   autocmd TermOpen * set bufhidden=hide
 
+  autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
-  au BufNewFile,BufRead *.ts setlocal filetype=typescript
-  au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 " }}}
 
 " Airline customization ---------------------------------------------------- {{{

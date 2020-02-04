@@ -71,3 +71,4 @@ if (-not (Test-Path "C:\Users\$($env:USERNAME)\AppData\Local\nvim\autoload")) {
 
 StowFile $env:LOCALAPPDATA\nvim\ginit.vim (Get-Item ".\neovim\ginit.vim").FullName
 StowFile $env:LOCALAPPDATA\nvim\init.vim (Get-Item ".\neovim\init.vim").FullName
+StowFile "$env:LOCALAPPDATA\nvim\coc-settings.json" (Get-Item ".\neovim\coc-settings.json").FullName
