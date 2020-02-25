@@ -19,20 +19,17 @@ Plug 'bkad/CamelCaseMotion'
 
 " search
 " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
-Plug 'brooth/far.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " languages
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'elzr/vim-json'
 Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-lang/vim-elixir'
-" Plug 'thinca/vim-ref'
 
 " other
 Plug 'tpope/vim-projectionist'
@@ -45,10 +42,14 @@ Plug 'farmergreg/vim-lastplace'                         " open files at the last
 
 " Zen
 Plug 'junegunn/limelight.vim'
+
 " interface
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
+Plug 'kassio/neoterm'
+Plug 'janko/vim-test'
 
 call plug#end()
 

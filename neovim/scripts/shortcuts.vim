@@ -6,15 +6,15 @@ nnoremap <c-t> :tabnew<cr>
 command! W :w !sudo tee %
 
 " Tabs
-nnoremap <leader>( :tabprev<cr>
-nnoremap <leader>) :tabnext<cr>
+nnoremap <A>h :tabprev<cr>
+nnoremap <A>l :tabnext<cr>
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " quick scape to get out of hlsearch
-nnoremap <leader><space> :nohl<cr>
+nnoremap <leader><space> :nohlsearch<cr>
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -148,3 +148,28 @@ autocmd FileType html setl foldmethod=expr
 autocmd FileType html setl foldexpr=HTMLFolds()
 
 autocmd FileType javascript,json setl foldmethod=syntax
+
+" Testing
+" nmap <silent> t<C-n> :TestNearest<CR>
+" nmap <silent> t<C-f> :TestFile<CR>
+" nmap <silent> t<C-s> :TestSuite<CR>
+" nmap <silent> t<C-l> :TestLast<CR>
+" nmap <silent> t<C-g> :TestVisit<CR>
+
+" nnoremap <Leader>yt :vsplit<CR>:term yarn test<CR>
+function! SplitStrategy(cmd)
+  botright new | call termopen(a:cmd) | startinsert
+endfunction
+
+let g:test#custom_strategies = {'terminal_split': function('SplitStrategy')}
+let g:test#strategy = 'terminal_split'
+
+" NerdTree
+
+let g:NERDTreeIgnore = ['^node_modules$']
+let NERDTreeShowHidden = 1
+let NERDTreeShowLineNumbers = 0
+
+nnoremap <silent><leader>nn :NERDTreeToggle<cr>
+inoremap <silent><leader>nn :NERDTreeToggle<cr>
+let g:indentLine_fileTypeExclude = ["nerdtree"]

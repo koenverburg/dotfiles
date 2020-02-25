@@ -52,15 +52,13 @@
   ],
   "git.detectSubmodules": false,
   "git.detectSubmodulesLimit": 9999,
-  // search
-  "search.location": "panel",
   // window Setting
   "window.titleBarStyle": "custom",
   "window.zoomLevel": 0,
   "window.menuBarVisibility": "toggle",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Andromeda Bordered",
+  "workbench.colorTheme": "Solarized Light",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
@@ -332,5 +330,6 @@
   "explorer.confirmDelete": false,
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "editor.minimap.enabled": false
 }

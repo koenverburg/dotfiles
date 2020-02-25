@@ -6,7 +6,9 @@
     "typescript",
     "typescriptreact",
     "json",
-    "javascriptreact"
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
   ],
   "eslint.filetypes": [
     "javascript",

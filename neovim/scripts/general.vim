@@ -1,3 +1,7 @@
+function! s:has_plugin(plugin)
+  let lookup = 'g:plugs["' . a:plugin . '"]'
+  return exists(lookup)
+endfunction
 
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
@@ -73,4 +77,11 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 set undolevels=100
-let g:indentLine_setConceal = 0                         " actually fix the annoying markdown links conversion
+
+" Indenting
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char = '|'
+autocmd BufRead * :IndentLinesEnable
+
+" Tab switching
+nnoremap <C-Tab> :bn<CR>

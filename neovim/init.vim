@@ -2,12 +2,14 @@
 " Author: Koen Verburg <creativekoen@gmail.com>
 " Source: https://github.com/koenverburg/dotfiles
 
+
 source $localappdata/nvim/scripts/plugins.vim
 source $localappdata/nvim/scripts/general.vim
 source $localappdata/nvim/scripts/autocmd.vim
 source $localappdata/nvim/scripts/search.vim
-source $localappdata/nvim/scripts/ag.vim
+
 source $localappdata/nvim/scripts/shortcuts.vim
+source $localappdata/nvim/scripts/autocomplete.vim
 
 let g:enable_bold_font = 1                                                      "Enable bold font in colorscheme
 let g:enable_italic_font = 0                                                    "Enable italic font in colorscheme
@@ -75,15 +77,7 @@ syntax enable    " enable syntax highlighting
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
 
-  let NERDTreeShowHidden = 1
-  let NERDTreeShowLineNumbers = 0
-
-  nnoremap <silent><leader>nn :NERDTreeToggle<cr>
-  inoremap <silent><leader>nn :NERDTreeToggle<cr>
-
-  autocmd BufEnter NERD_tree* :LeadingSpaceDisable
-
-  " WordJumping like in vscode and resharper
+  " WordJumping like which resharper
   imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
   imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
 
@@ -96,22 +90,6 @@ syntax enable    " enable syntax highlighting
   sunmap e
   sunmap ge
 
-" }}}
-
-" COC settings ------------------------------------------------------------- {{{
-  let g:coc_global_extensions = [ 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-actions', 'coc-elixir']
-
-  " let g:coc_user_config = {}
-  " let g:coc_user_config['coc.preferences.hoverTarget'] = 'echo'
-  " let g:coc_user_config['signature.target'] = 'echo'
-
-  " nmap <silent> gd <Plug>(coc-definition)
-  " " Remap for do codeAction of selected region
-  " function! s:cocActionsOpenFromSelected(type) abort
-  "   execute 'CocCommand actions.open ' . a:type
-  " endfunction
-  " xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-  " nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 " }}}
 
 " Airline customization ---------------------------------------------------- {{{
