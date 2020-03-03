@@ -1,148 +1,52 @@
 " .vimrc
-" vim: ft=vim tab=2
 " Author: Koen Verburg <creativekoen@gmail.com>
-" Source: https://github.com/CreativeKoen/dotfiles
+" Source: https://github.com/koenverburg/dotfiles
 
-" Plug --------------------------------------------------------------------- {{{
-let g:plugin_dir = expand('~/.neovim/plugin')
 
-set nocompatible
-filetype off
+source $localappdata/nvim/scripts/plugins.vim
+source $localappdata/nvim/scripts/general.vim
+source $localappdata/nvim/scripts/autocmd.vim
+source $localappdata/nvim/scripts/search.vim
 
-call plug#begin(g:plugin_dir)
+source $localappdata/nvim/scripts/shortcuts.vim
+source $localappdata/nvim/scripts/autocomplete.vim
 
-" ================= looks and GUI stuff ================== "
-
-Plug 'vim-airline/vim-airline'                          " airline status bar
-Plug 'vim-airline/vim-airline-themes'                   " airline themes
-" Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
-Plug 'luochen1990/rainbow'                              " rainbow paranthesis
-Plug 'hzchirs/vim-material'                             " material color themes
-Plug 'junegunn/goyo.vim'                                " zen mode
-Plug 'gregsexton/MatchTag'                              " highlight matching html tags
-
-" ================= Functionalities ================= "
-
-" auto completion, lang servers and stuff
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'desmap/ale-sensible' | Plug 'w0rp/ale'
-
-" search
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'                                " fuzzy search integration
-Plug 'kien/ctrlp.vim'
-" snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'                               " actual snippets
-
-" visual
-Plug 'alvan/vim-closetag'                               " auto close html tags
-Plug 'Yggdroot/indentLine'                              " show indentation lines
-Plug 'google/vim-searchindex'                           " add number of found matching search items
-
-" languages
-Plug 'sheerun/vim-polyglot'                             " many languages support
-Plug 'tpope/vim-liquid'                                 " liquid language support
-Plug 'elzr/vim-json'
-
-" other
-Plug 'tpope/vim-commentary'                             " better commenting
-Plug 'tpope/vim-sensible'                               " sensible defaults
-Plug 'lambdalisue/suda.vim'                             " save as sudo
-Plug '907th/vim-auto-save'                              " auto save changes
-Plug 'mhinz/vim-startify'                               " cool start up screen
-Plug 'kristijanhusak/vim-carbon-now-sh'                 " lit code screenshots
-Plug 'tpope/vim-fugitive'                               " git support
-Plug 'tpope/vim-surround'                               " surround stuff with stuff
-Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
-Plug 'farmergreg/vim-lastplace'                         " open files at the last edited place
-Plug 'romainl/vim-cool'                                 " disable hl until another search is performed
-Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
-Plug 'majutsushi/tagbar'                                " a bar of tags
-" Zen
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-" interface
-Plug 'editorconfig/editorconfig-vim'
-Plug 'airblade/vim-gitgutter'
-
-call plug#end()
-
-filetype plugin indent on                                                       "Enable plugins and indents by filetype
-syntax enable
-
-let g:mapleader = ","                                                           "Change leader to a comma
 let g:enable_bold_font = 1                                                      "Enable bold font in colorscheme
-let g:enable_italic_font = 1                                                    "Enable italic font in colorscheme
-
- "}}}
-
-" Basic settings ----------------------------------------------------------- {{{
-
-let g:material_style='oceanic'
-set background=dark
-colorscheme vim-material
-let g:airline_theme='material'
-highlight Pmenu guibg=white guifg=black gui=bold
-highlight Comment gui=bold
-highlight Normal gui=none
-highlight NonText guibg=none
-autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=Green ctermbg=NONE
-
-" ==================== general config ======================== "
-
-set termguicolors                                       " Opaque Background
-set mouse=a                                             " enable mouse scrolling
-set clipboard+=unnamedplus                              " use system clipboard by default
-
-" ===================== Other Configurations ===================== "
-
-filetype plugin indent on                               " enable indentations
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent              " tab key actions
-set incsearch ignorecase smartcase hlsearch             " highlight text while seaching
-"set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
-"exec "set listchars=tab:▸\ ,trail:\uB7,nbsp:~,eol:¬"
-"set listchars=tab:▸\ ,eol:¬,trail:-
-set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
-set list
-set fillchars+=vert:\▏                                  " requires a patched nerd font (try furaCode)
-set wrap breakindent                                    " wrap long lines to the width sset by tw
-set encoding=utf-8                                      " text encoding
-set number                                              " enable numbers on the left
-set title                                               " tab title as file file
-set conceallevel=2                                      " set this so we womt break indentation plugin
-set splitright                                          " open vertical split to the right
-set splitbelow                                          " open horizontal split to the bottom
-set tw=80                                               " auto wrap lines that are longer than that
-set emoji                                               " enable emojis
-let g:indentLine_setConceal = 0                         " actually fix the annoying markdown links conversion
-au BufEnter * set fo-=c fo-=r fo-=o                     " stop annying auto commenting on new lines
-set undofile                                            " enable persistent undo
-set undodir=~/.nvim/tmp                                 " undo temp file directory
-set ttyfast                                             " faster scrolling
-set lazyredraw                                          " faster scrolling
-
-" Leader
+let g:enable_italic_font = 0                                                    "Enable italic font in colorscheme
 let mapleader = ","
-let maplocalleader = "\\"
 
-call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-
-if has("multi_byte")
-    if &termencoding == ""
-        let &termencoding = &encoding
-    endif
-    set encoding=utf-8
-    setglobal fileencoding=utf-8
-    "setglobal bomb
-    set fileencodings=ucs-bom,utf-8,latin1
-endif
-
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
-" }}}
+set background=dark
+colorscheme gruvbox
+syntax enable    " enable syntax highlighting
 
 " plugin setting ----------------------------------------------------------- {{{
+
+" typescript and react
+" dark red
+  hi tsxTagName guifg=#E06C75
+
+  " orange
+  hi tsxCloseString guifg=#F99575
+  hi tsxCloseTag guifg=#F99575
+  hi tsxCloseTagName guifg=#F99575
+  hi tsxAttributeBraces guifg=#F99575
+  hi tsxEqual guifg=#F99575
+
+  " yellow
+  hi tsxAttrib guifg=#F8BD7F cterm=italic
+  " light-grey
+  hi tsxTypeBraces guifg=#999999
+  " dark-grey
+  hi tsxTypes guifg=#666666
+
+  hi ReactState guifg=#C176A7
+  hi ReactProps guifg=#D19A66
+  hi ApolloGraphQL guifg=#CB886B
+  hi Events ctermfg=204 guifg=#56B6C2
+  hi ReduxKeywords ctermfg=204 guifg=#C678DD
+  hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
+  hi WebBrowser ctermfg=204 guifg=#56B6C2
+  hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
 
   let g:indentLine_enabled = 0
   let g:indentLine_setColors = 0
@@ -153,192 +57,10 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
   " Json
   let g:vim_json_syntax_conceal = 0                                             " I want to see the quote's
 
-"   " Airline
-  let g:airline_theme = 'deus'
+  " Airline
+  let g:airline_theme = 'gruvbox'
   let g:airline#extensions#tabline#enabled = 1
 
-"   " Nerdtree show hidden files
-  let NERDTreeShowHidden = 1
-  let NERDTreeShowLineNumbers = 0
-
-  " ctrl p ignore
-  let g:ctrlp_map = '<leader>t'
-  let g:ctrlp_cmd = 'CtrlP'
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']  " Windows
-  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|bower_components\|vendor|bin\|public\'
-
-" }}}
-
-" Conveniece mappings ------------------------------------------------------ {{{
-
-" zen mode
-nnoremap <silent> <leader>Z :Goyo 80%x80%<cr>
-
-" open a new tab
-nnoremap <c-t> :tabnew<cr>
-
-" sudo write
-command! W :w !sudo tee %
-
-" NERDTREE
-nnoremap <silent> <F4> :NERDTreeToggle<cr>
-nnoremap <silent> <F5> :NERDTreeFind<cr>
-autocmd BufEnter NERD_tree* :LeadingSpaceDisable
-
-" Tabs
-nnoremap <leader>( :tabprev<cr>
-nnoremap <leader>) :tabnext<cr>
-
-" Use sane regexes.
-nnoremap / /\v
-vnoremap / /\v
-
-" Keep search matches in the middle of the window.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" quick scape to get out of hlsearch
-nnoremap <leader><space> :nohl<cr>
-
-" Same when jumping around
-nnoremap g; g;zz
-nnoremap g, g,zz
-noremap <c-o> <c-o>zz
-
-" move faster from the begin of the line to the end of the line
-noremap H ^
-noremap L g_
-nnoremap <Tab> %
-
-" Easy buffer/pane navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-
-" faster saving
-nnoremap <leader>w :w<cr>
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
-
-" Save when losing focus
-au FocusLost * :wa
-
-" Resize splits when the window is resized
-au VimResized * exe
-normal! \<c-w>="
-
-" window resizing
-nnoremap <c-left> 5<c-w>>
-nnoremap <c-right> 5<c-w><
-
-" formatting, textmate-style
-nnoremap Q gqip
-
-" fast sourcing a line
-vnoremap <leader>S y:execute @@<cr>
-nnoremap <leader>S ^vg_y:execute @@<cr>
-
-" Select (charwise) the content of the current line, excluding indentation
-nnoremap VV ^vg_
-
-" insert mode completion
-inoremap <c-l> <c-x><c-l>
-inoremap <c-f> <c-x><c-f>
-
-" Quick edit vimrc
-nnoremap <leader>ev :vsp  $localappdata/nvim/init.vim<cr>
-
-"easy ecape w/ modding my keyboard
-inoremap jj <esc>
-
-
-" swap : and ; to make colon commands easer to type
-nnoremap ; :
-nnoremap : ;
-
-set colorcolumn=81
-hi ColorColumn ctermbg=green
-call matchadd('ColorColumn', '\%81v', 100)
-
-" moving the tabs
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
-
-" }}}
-
-" tabs manipulation -------------------------------------------------------- {{{
-  function! Rotate() " switch between horizontal and vertical split mode for open splits
-    " save the original position, jump to the first window
-    let initial = winnr()
-    exe 1 . "wincmd w"
-
-    wincmd l
-    if winnr() != 1
-      " succeeded moving to the right window
-      wincmd J                " make it the bot window
-    else
-      " cannot move to the right, so we are at the top
-      wincmd H                " make it the left window
-    endif
-    " restore cursor to the initial window
-    exe initial . "wincmd w"
-  endfunction
-
-  nnoremap <F5> :call Rotate()<CR>
-"}}}
-
-" Folding, gets it's own section ------------------------------------------- {{{
-
-  function! MyFoldText() " {{{
-      let line = getline(v:foldstart)
-      let nucolwidth = &fdc + &number * &numberwidth
-      let windowwidth = winwidth(0) - nucolwidth - 3
-      let foldedlinecount = v:foldend - v:foldstart
-
-      " expand tabs into spaces
-      let onetab = strpart('          ', 0, &tabstop)
-      let line = substitute(line, '\t', onetab, 'g')
-
-      let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-      " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines')
-      " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines   ')
-      let fillcharcount = windowwidth - len(line)
-      " return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
-      return line . '⋯'. repeat(" ",fillcharcount)
-  endfunction " }}}
-
-  set foldtext=MyFoldText()
-
-  autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
-  autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
-
-  " autocmd FileType vim setlocal fdc=1
-  set foldlevel=99
-
-  " Space to toggle folds.
-  nnoremap <Space> za
-  vnoremap <Space> za
-  autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType vim setlocal foldlevel=0
-
-  autocmd FileType javascript,html,css,scss,python setlocal foldlevel=99
-
-  autocmd FileType css,scss,json setlocal foldmethod=marker
-  autocmd FileType css,scss,json setlocal foldmarker={,}
-
-  let g:xml_syntax_folding = 1
-  autocmd FileType xml setl foldmethod=syntax
-
-  autocmd FileType html setl foldmethod=expr
-  autocmd FileType html setl foldexpr=HTMLFolds()
-
-  autocmd FileType javascript,json setl foldmethod=syntax
-
-" }}}
-
-" Git ---------------------------------------------------------------------- {{{
-
-  set signcolumn=yes
   let g:conflict_marker_enable_mappings = 0
   let g:gitgutter_sign_added = '│'
   let g:gitgutter_sign_modified = '│'
@@ -346,30 +68,31 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
   let g:gitgutter_sign_removed_first_line = '│'
   let g:gitgutter_sign_modified_removed = '│'
 
-" }}}
-
-" Nvim terminal ------------------------------------------------------------ {{{
-
-  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-  autocmd BufEnter term://* startinsert
-  autocmd TermOpen * set bufhidden=hide
-
-" }}}
-
-" Javascript --------------------------------------------------------------- {{{
-
   let g:javascript_plugin_flow = 1
   let g:javascript_plugin_jsdoc = 1
   let g:jsx_ext_required = 1
   let g:vim_json_syntax_conceal = 0
   let g:tigris#enabled = 1
 
-"}}}
-
-" Airline customization ---------------------------------------------------- {{{
-
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
+
+  " WordJumping like which resharper
+  imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
+  imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
+
+  map <silent> w <Plug>CamelCaseMotion_w
+  map <silent> b <Plug>CamelCaseMotion_b
+  map <silent> e <Plug>CamelCaseMotion_e
+  map <silent> ge <Plug>CamelCaseMotion_ge
+  sunmap w
+  sunmap b
+  sunmap e
+  sunmap ge
+
+" }}}
+
+" Airline customization ---------------------------------------------------- {{{
 
   function! AirlineInit()
     let g:airline_section_a = airline#section#create(['mode'])
@@ -383,18 +106,3 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
   autocmd VimEnter * call AirlineInit()
 " }}}
-
-" Vim functions ------------------------------------------------------------ {{{
-
-" Make sure Vim returns to the same line when you reopen a file.
-" https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc#cl-175
-  augroup line_return
-    au!
-    au BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   execute 'normal! g`"zvzz' |
-      \ endif
-  augroup END
-
-" }}}
-
