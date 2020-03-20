@@ -43,7 +43,7 @@ brew install rbenv
 rbenv init
 rbenv install 2.7.0
 rbenv shell 2.7.0
-npm install -g artillery serve
+npm install -g artillery serve pure-prompt
 # Search
 brew install the_silver_searcher
 brew install rg
