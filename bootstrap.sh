@@ -88,6 +88,7 @@ fi
 # Terminal setup
 ln -s ~/code/github/dotfiles/tmuxinator/ ~/.config/tmuxinator/
 ln -s ~/code/github/dotfiles/nvim/ ~/.config/nvim/
+ln -s ~/code/github/dotfiles/macos/.zshrc ~/.zshrc
 
 # VS code
 ln -s ˜/code/github/dotfiles/vscode/settings.json ˜/Library/Application\ Support/Code/User/settings.json
