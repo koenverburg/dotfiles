@@ -60,9 +60,9 @@
   "window.menuBarVisibility": "toggle",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Solarized Light",
-  "workbench.statusBar.visible": true,
-  "workbench.activityBar.visible": true,
+  "workbench.colorTheme": "morgan.codes",
+  "workbench.statusBar.visible": false,
+  "workbench.activityBar.visible": false,
   "workbench.editor.showIcons": false,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "off",
@@ -72,8 +72,8 @@
   "editor.snippetSuggestions": "top",
   "editor.cursorBlinking": "solid",
   "editor.lineHeight": 27,
-  "editor.lineNumbers": "on",
-  "editor.fontLigatures": true,
+  "editor.lineNumbers": "off",
+  "editor.fontLigatures": false,
   "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.renderWhitespace": "all",
   "editor.detectIndentation": false,
@@ -86,11 +86,7 @@
   "editor.tabSize": 2,
   "editor.glyphMargin": true,
   "editor.folding": true,
-  "editor.rulers": [
-    80,
-    120,
-    200
-  ],
+  "editor.rulers": [80, 120, 200],
   // gearon
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
@@ -132,56 +128,31 @@
   "vim.insertModeKeyBindings": [
     // bind jj to <ESC> in insert mode
     {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
     },
     {
-      "before": [
-        "k",
-        "k"
-      ],
-      "after": [
-        "<Esc>"
-      ]
+      "before": ["k", "k"],
+      "after": ["<Esc>"]
     },
     {
-      "before": [
-        "h",
-        "h"
-      ],
-      "after": [
-        "<Esc>"
-      ]
+      "before": ["h", "h"],
+      "after": ["<Esc>"]
     }
   ],
   // Non-recursive remapped keys in normal mode. Allows mapping to vim commands or vscode actions. See README for more.
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "H"
-      ],
-      "after": [
-        "HOME"
-      ]
+      "before": ["H"],
+      "after": ["HOME"]
     },
     {
-      "before": [
-        "L"
-      ],
-      "after": [
-        "END"
-      ]
+      "before": ["L"],
+      "after": ["END"]
     },
     // map : to show command palette
     {
-      "before": [
-        ":"
-      ],
+      "before": [":"],
       "after": [],
       "commands": [
         {
@@ -192,10 +163,7 @@
     },
     // ZZ save current file
     {
-      "before": [
-        "Z",
-        "Z"
-      ],
+      "before": ["Z", "Z"],
       "after": [],
       "commands": [
         {
@@ -210,10 +178,7 @@
     },
     // <leader>w : save current file
     {
-      "before": [
-        "leader",
-        "w"
-      ],
+      "before": ["leader", "w"],
       "after": [],
       "commands": [
         {
@@ -224,10 +189,7 @@
     },
     // <leader>c : uncomment/comment line
     {
-      "before": [
-        "leader",
-        "c"
-      ],
+      "before": ["leader", "c"],
       "after": [],
       "commands": [
         {
@@ -238,9 +200,7 @@
     },
     // vim multicursor select next match
     {
-      "before": [
-        "<C-n>"
-      ],
+      "before": ["<C-n>"],
       "after": [],
       "commands": [
         {
@@ -251,9 +211,7 @@
     },
     // vim multicursor like skip match
     {
-      "before": [
-        "<C-x>"
-      ],
+      "before": ["<C-x>"],
       "after": [],
       "commands": [
         {
@@ -333,5 +291,9 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": true,
+  "elixir.projectPath": "",
+  "elixirLS.projectDir": "",
+  "languageServerCredo.executablePath": "",
+  "editor.fontSize": 13
 }

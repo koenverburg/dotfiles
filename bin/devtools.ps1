@@ -1,16 +1,16 @@
 # PowerShell Modules
 # this will run under powershell 5
-if (!(Get-Module posh-git)) {
-  Install-Module posh-git -Force
-}
+# if (!(Get-Module posh-git)) {
+#   Install-Module posh-git -Force
+# }
 
-if (!(Get-Module oh-my-posh)) {
-  Install-Module oh-my-posh -Force
-}
+# if (!(Get-Module oh-my-posh)) {
+#   Install-Module oh-my-posh -Force
+# }
 
-if (!(Get-Module Get-ChildItemColor)) {
-  Install-Module -Name Get-ChildItemColor -Force
-}
+# if (!(Get-Module Get-ChildItemColor)) {
+#   Install-Module -Name Get-ChildItemColor -Force
+# }
 
 # this will be installed under pwsh 6 core
 if (Get-Command 'pwsh.exe') {
@@ -35,27 +35,21 @@ if ($terminalFolder) {
   StowFile "$env:LOCALAPPDATA\$cleanTerminalPath\LocalState\profiles.json" (Get-Item ".\Terminal\profiles.json").FullName
 }
 
-# vs Code
+# # vs Code
 StowFile $env:APPDATA\Code\User\settings.json (Get-Item ".\vscode\settings.json").FullName
 StowFile $env:APPDATA\Code\User\keybindings.json (Get-Item ".\vscode\keybindings.json").FullName
 
-# vs code Insiders Dont know if i'm keeping vscode insiders since my neovim is working again
-# Install visualstudiocode-insiders $true
-# StowFile "$env:APPDATA\Code - Insiders\User\settings.json" (Get-Item ".\vscode\settings.json").FullName
-# StowFile "$env:APPDATA\Code - Insiders\User\keybindings.json" (Get-Item ".\vscode\keybindings.json").FullName
+# # vs code Insiders Dont know if i'm keeping vscode insiders since my neovim is working again
+# # Install visualstudiocode-insiders $true
+# # StowFile "$env:APPDATA\Code - Insiders\User\settings.json" (Get-Item ".\vscode\settings.json").FullName
+# # StowFile "$env:APPDATA\Code - Insiders\User\keybindings.json" (Get-Item ".\vscode\keybindings.json").FullName
 
 # Cmder config
 if (Test-Path "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml") {
   Remove-Item "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" -Force
   StowFile "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" (Get-Item ".\cmder\settings.xml").FullName
 }
-# .\ConEmu-Color-Themes\Install-ConEmuTheme.ps1 -ConfigPath "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" -Operation Add -ThemePathOrName ".\ConEmu-Color-Themes\themes\ayu Mirage.xml"
-
-# oh my posh theme
-StowFile "$env:HOME\Documents\WindowsPowerShell\poshThemes\koenverburg.psm1" (Get-Item ".\cmder\koenverburg.psm1").FullName
-StowFile "$env:HOME\Documents\Powershell\poshThemes\koenverburg.psm1" (Get-Item ".\cmder\koenverburg.psm1").FullName
-StowFile "$env:HOME\Documents\WindowsPowerShell\poshThemes\pure_koenverburg.psm1" (Get-Item ".\cmder\pure_koenverburg.psm1").FullName
-StowFile "$env:HOME\Documents\Powershell\poshThemes\pure_koenverburg.psm1" (Get-Item ".\cmder\pure_koenverburg.psm1").FullName
+.\ConEmu-Color-Themes\Install-ConEmuTheme.ps1 -ConfigPath "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml" -Operation Add -ThemePathOrName ".\ConEmu-Color-Themes\themes\ayu Mirage.xml"
 
 # Neovim
 if (-not (Test-Path "C:\Users\$($env:USERNAME)\AppData\Local\nvim\autoload")) {
@@ -70,5 +64,14 @@ if (-not (Test-Path "C:\Users\$($env:USERNAME)\AppData\Local\nvim\autoload")) {
   )
 }
 
-StowFile $env:LOCALAPPDATA\nvim\ginit.vim (Get-Item ".\neovim\ginit.vim").FullName
-StowFile $env:LOCALAPPDATA\nvim\init.vim (Get-Item ".\neovim\init.vim").FullName
+# StowFile $env:LOCALAPPDATA\nvim\ginit.vim (Get-Item ".\neovim\ginit.vim").FullName
+# StowFile $env:LOCALAPPDATA\nvim\init.vim (Get-Item ".\neovim\init.vim").FullName
+
+StowFile $env:LOCALAPPDATA\nvim\scripts\autocmd.vim (Get-Item ".\neovim\scripts\autocmd.vim").FullName
+StowFile $env:LOCALAPPDATA\nvim\scripts\general.vim (Get-Item ".\neovim\scripts\general.vim").FullName
+StowFile $env:LOCALAPPDATA\nvim\scripts\plugins.vim (Get-Item ".\neovim\scripts\plugins.vim").FullName
+StowFile $env:LOCALAPPDATA\nvim\scripts\search.vim (Get-Item ".\neovim\scripts\search.vim").FullName
+StowFile $env:LOCALAPPDATA\nvim\scripts\shortcuts.vim (Get-Item ".\neovim\scripts\shortcuts.vim").FullName
+StowFile $env:LOCALAPPDATA\nvim\scripts\autocomplete.vim (Get-Item ".\neovim\scripts\autocomplete.vim").FullName
+
+StowFile "$env:LOCALAPPDATA\nvim\coc-settings.json" (Get-Item ".\neovim\coc-settings.json").FullName
