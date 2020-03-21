@@ -11,7 +11,7 @@ Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-Set-Theme pure
+Set-Theme Darkblood
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell

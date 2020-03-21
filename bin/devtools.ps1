@@ -28,10 +28,10 @@ StowFile $env:HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 (Get-It
 $terminalFolder = Get-ChildItem "C:\Users\$($env:USERNAME)\AppData\Local\Packages" -filter "Microsoft.WindowsTerminal_*" -Directory | ForEach-Object { $_.fullname }
 if ($terminalFolder) {
   $cleanTerminalPath = $terminalFolder.Substring("C:\Users\$env:USERNAME\AppData\Local\".Length)
-  if (Test-Path "$env:LOCALAPPDATA\$cleanTerminalPath\RoamingState\profiles.json") {
-    Remove-Item "$env:LOCALAPPDATA\$cleanTerminalPath\RoamingState\profiles.json" -Force
+  if (Test-Path "$env:LOCALAPPDATA\$cleanTerminalPath\LocalState\profiles.json") {
+    Remove-Item "$env:LOCALAPPDATA\$cleanTerminalPath\LocalState\profiles.json" -Force
   }
-  StowFile "$env:LOCALAPPDATA\$cleanTerminalPath\RoamingState\profiles.json" (Get-Item ".\Terminal\profiles.json").FullName
+  StowFile "$env:LOCALAPPDATA\$cleanTerminalPath\LocalState\profiles.json" (Get-Item ".\Terminal\profiles.json").FullName
 }
 
 # vs Code
