@@ -16,6 +16,7 @@ if (!(Get-Module Get-ChildItemColor)) {
 if (Get-Command 'pwsh.exe') {
   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module posh-git -Force'
   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module oh-my-posh -Force'
+  start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module pure-pwsh -Force'
   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module Get-ChildItemColor -Force -AllowClobber'
   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck'
 }

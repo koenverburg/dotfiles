@@ -1,5 +1,5 @@
 Import-Module posh-git
-Import-Module oh-my-posh
+# Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
 Import-Module "C:\Users\$env:USERNAME\dotfiles\powershell\Helpers\aliases.ps1"
 Import-Module "C:\Users\$env:USERNAME\\dotfiles\overwrite\localProject.ps1"
@@ -11,7 +11,8 @@ Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-Set-Theme Darkblood
+# Set-Theme Darkblood
+Import-Module pure-pwsh
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell
