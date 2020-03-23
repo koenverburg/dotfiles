@@ -67,6 +67,9 @@ if (-not (Test-Path "C:\Users\$($env:USERNAME)\AppData\Local\nvim\autoload")) {
 # StowFile $env:LOCALAPPDATA\nvim\ginit.vim (Get-Item ".\neovim\ginit.vim").FullName
 # StowFile $env:LOCALAPPDATA\nvim\init.vim (Get-Item ".\neovim\init.vim").FullName
 
+# new config
+StowFile $env:LOCALAPPDATA\nvim\init.vim (Get-Item ".\nvim\init.vim").FullName
+
 StowFile $env:LOCALAPPDATA\nvim\scripts\autocmd.vim (Get-Item ".\neovim\scripts\autocmd.vim").FullName
 StowFile $env:LOCALAPPDATA\nvim\scripts\general.vim (Get-Item ".\neovim\scripts\general.vim").FullName
 StowFile $env:LOCALAPPDATA\nvim\scripts\plugins.vim (Get-Item ".\neovim\scripts\plugins.vim").FullName
