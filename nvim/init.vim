@@ -11,6 +11,7 @@ call plug#begin(g:plugin_dir)
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ayu-theme/ayu-vim'
+Plug 'chriskempson/base16-vim'
 
 " Move to and from Tmux panes and Vim panes
 Plug 'christoomey/vim-tmux-navigator'
@@ -18,6 +19,12 @@ Plug 'christoomey/vim-tmux-navigator'
 " Language Support
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
+Plug 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'othree/yajs.vim'
+Plug 'herringtondarkholme/yats.vim'
+
 "Plug 'slashmili/alchemist.vim'
 
 " Airline themes
@@ -43,6 +50,10 @@ Plug 'junegunn/fzf.vim'
 
 " Find in files
 Plug 'mileszs/ack.vim'
+
+" View indenting
+Plug 'Yggdroot/indentLine'
+
 call plug#end()
 
 set background=dark
@@ -65,10 +76,6 @@ set clipboard+=unnamed,unnamedplus                      " use system clipboard b
 " Viewing folders and files
 set wildmode=list:longest,full
 
-
-set ignorecase
-set smartcase
-
 " Highlight the line where the cursor is on
 set cursorline
 
@@ -88,6 +95,8 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 set smarttab
+set ignorecase
+set smartcase
 
 " Automatic indentation because I'm not going to do that myself
 set autoindent
@@ -129,10 +138,30 @@ inoremap jj <esc>
 nnoremap ; :
 nnoremap : ;
 
+" oplit pane switching
+" using ctrl + {h,j,k,l}
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+inoremap <C-h> <C-\><C-N><C-w>h
+inoremap <C-j> <C-\><C-N><C-w>j
+inoremap <C-k> <C-\><C-N><C-w>k
+inoremap <C-l> <C-\><C-N><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Tab Switching (Keeping in mind that ctrl/cmd+t is reserved for terminal
+" tabs)
+nnoremap <a-t> :tabnew<cr>
+nnoremap <a-h> :tabprev<cr>
+nnoremap <a-l> :tabnext<cr>
+
 " Faster saving
 inoremap <leader>w :w<cr>
 nnoremap <leader>w :w<cr>
-
 
 " quickly cancel search highlighting
 nnoremap <leader><space> :nohlsearch<cr>
@@ -143,7 +172,7 @@ vnoremap <leader>s :'<,'>!sort -f<cr>
 " Quickly insert a timestamp
 nnoremap tt "=strftime("%F %T%z")<CR>p
 
-" Toggle quickfix windown
+" Toggle quickfix window
 nnoremap <leader><leader> :call ToggleQuickfix()<cr>
 function! ToggleQuickfix()
   for buffer in tabpagebuflist()
@@ -157,26 +186,33 @@ function! ToggleQuickfix()
   copen
 endfunction
 
-
 " PLUGIN Settings
 
-" Colorscheme setting for in the terminal
-" let g:solarized_termcolors=256
+" Indenting
+let g:indentLine_enable = 0
+let g:indentLine_setColors = 0
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_char = '|'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_fileTypeExclude = ["nerdtree"]
+autocmd BufRead * :IndentLinesEnable
 
+" View json properly
+let g:vim_json_syntax_conceal = 0
+
+" Git shortcuts
 nnoremap <leader>gs :Gstatus<cr>
 
 " FZF
 if executable('fzf')
-    nnoremap <leader>t :FZF<cr>
+  nnoremap <leader>t :FZF<cr>
 endif
 
-
-" [mileszs/ack.vim]
+" Find in files
 if executable('rg')
   let g:ackprg = '/usr/local/bin/rg --vimgrep'
   nnoremap <leader>ff :Ack!
 endif
-
 
 let g:NERDTreeIgnore = ['^node_modules$', 'deps', '_build', '.elixir_ls']
 let NERDTreeShowHidden = 1
@@ -185,14 +221,12 @@ let NERDTreeShowLineNumbers = 0
 nnoremap <silent><leader>a :NERDTreeToggle<cr>
 inoremap <silent><leader>a :NERDTreeToggle<cr>
 
-
 " Stealing this one from https://github.com/dduan/dotfiles/blob/master/nvim/init.vim#L150
 " Close vim if the last window open is NerdTree
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
 " Airline theme
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
