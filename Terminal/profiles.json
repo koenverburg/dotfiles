@@ -181,7 +181,7 @@
       "cursorColor": "#FFFFFF",
       "cursorHeight": 25,
       "cursorShape": "vintage",
-      "fontFace": "Cascadia Code",
+      "fontFace": "Fira Code",
       "fontSize": 10,
       "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
       "historySize": 9001,
@@ -192,7 +192,7 @@
       "snapOnInput": true,
       "startingDirectory": "%USERPROFILE%",
       "tabTitle": "\ud83d\ude31",
-      "useAcrylic": true
+      "useAcrylic": false
     },
     {
       "acrylicOpacity": 0.5,
