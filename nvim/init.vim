@@ -33,6 +33,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
+" Able to change '"[{()}]
+Plug 'tpope/vim-surround'
+
 " Convenience for commenting things in and out
 Plug 'scrooloose/nerdcommenter'
 
@@ -45,6 +48,10 @@ Plug 'jiangmiao/auto-pairs'
 " Fuzzy finder
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
+" Linting error support for js,ts and elixir
+Plug 'desmap/ale-sensible'
+Plug 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
 
 " Find in files
 Plug 'mileszs/ack.vim'
