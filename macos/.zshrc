@@ -73,4 +73,4 @@ prompt pure
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
-export PATH=$PATH:"$HOME/.kiex/elixirs/elixir-1.8.2/bin":$HOME/.kerl/21.3/bin #"$HOME/usr/local/lib/ruby/gems/2.7.0/bin"
+export PATH=$PATH:"$HOME/.kiex/elixirs/elixir-1.10.2/bin":$HOME/.kerl/21.3/bin #"$HOME/usr/local/lib/ruby/gems/2.7.0/bin"
