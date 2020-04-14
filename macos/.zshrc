@@ -39,8 +39,16 @@ alias eq='cd ~/code/gitlab/equalture/'
 # git aliases
 alias gf='git fetch --prune'
 alias gs='git status -sb'
-alias gl='git log --oneline'
-alias gp='git push origin'
+alias glo='git log --oneline'
+alias gl='git log'
+alias gpd='git pull'
+alias gpo='git push origin'
+
+# docker
+alias dlsc='docker container ls -a' # -a because I want to see ALL
+alias dlsi='docker images -a' # -a because I want to see ALL
+alias dps='docker ps'
+alias dcud='docker-compose up -d'
 
 # #Aliases for ls
 alias ll='ls -lh'
