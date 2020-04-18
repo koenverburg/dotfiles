@@ -1,17 +1,16 @@
 // Place your settings in this file to overwrite the default settings
 {
-  // eslint
-  "eslint.packageManager": "yarn",
-  "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": false,
   // powershell as default shell, not that I use terminals in my ide but still.
   "powershell.integratedConsole.showOnStartup": false,
-  "powershell.powerShellExePath": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
   // emmet
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "html.eex": "html"
   },
   // formatting
+  "[handlebars]": {
+    "editor.formatOnSave": false
+  },
   "[scss]": {
     "editor.formatOnSave": true
   },
@@ -29,6 +28,9 @@
     "editor.formatOnSave": false,
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
   // excluding folders
   "files.exclude": {
     "**/.git": true,
@@ -37,7 +39,9 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/node_modules": true,
-    "**/flow-typed": true
+    "**/flow-typed": true,
+    "**/_build": true,
+    "**/deps": true
   },
   "files.associations": {
     "*.json": "jsonc",
@@ -61,8 +65,8 @@
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.iconTheme": "vscode-icons",
   "workbench.colorTheme": "morgan.codes",
-  "workbench.statusBar.visible": false,
-  "workbench.activityBar.visible": false,
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "off",
@@ -72,7 +76,7 @@
   "editor.snippetSuggestions": "top",
   "editor.cursorBlinking": "solid",
   "editor.lineHeight": 27,
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
   "editor.fontLigatures": false,
   "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.renderWhitespace": "all",
@@ -291,9 +295,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.minimap.enabled": true,
-  "elixir.projectPath": "",
-  "elixirLS.projectDir": "",
-  "languageServerCredo.executablePath": "",
+  "editor.minimap.enabled": false,
   "editor.fontSize": 13
 }
