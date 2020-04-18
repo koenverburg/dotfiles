@@ -12,12 +12,14 @@ Remove-Alias dswitch
 Remove-Alias gmdev
 
 function gf { git fetch --prune $args }
-function gc { git checkout $args }
-function gcd { git checkout development $args }
-function gcm { git checkout master $args }
-function gcc { git checkout canary $args }
+function gco { git checkout $args }
+function gcob { git checkout -b $args }
+function gcod { git checkout development $args }
+function gcom { git checkout master $args }
 function gs { git status -sb $args }
 function gaa { git add --all $args }
+function gl { git log $args }
+function glo { git log --oneline $args }
 
 function gpo {
   $CurrentBranch = Get-Git-CurrentBranch
