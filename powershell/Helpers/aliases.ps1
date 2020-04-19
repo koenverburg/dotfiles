@@ -1,15 +1,4 @@
-Import-Module "C:\Users\$($env:USERNAME)\dotfiles\powershell\Helpers\Utils.ps1"
-
-Remove-Alias gs
-Remove-Alias gaa
-Remove-Alias gp
-Remove-Alias gcm
-Remove-Alias gc
-Remove-Alias gf
-Remove-Alias gw
-Remove-Alias gpd
-Remove-Alias dswitch
-Remove-Alias gmdev
+Import-Module "$home\code\github\dotfiles\powershell\Helpers\Utils.ps1"
 
 function gf { git fetch --prune $args }
 function gco { git checkout $args }
