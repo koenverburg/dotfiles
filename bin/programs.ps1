@@ -1,8 +1,8 @@
 Install GoogleChrome
-Install 7zip
+# Install 7zip
 Install curl
-Install greenshot
-Install filezilla
+# Install greenshot
+# Install filezilla
 Install firefox
 Install Ruby
 Install nodejs
@@ -13,6 +13,6 @@ Install python3
 # Install cmake
 Install neovim
 Install cmder
-Install yarn $true
+Install yarn
 Install powershell-core
 Install vscode
