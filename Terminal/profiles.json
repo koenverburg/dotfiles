@@ -177,7 +177,7 @@
       "acrylicOpacity": 1,
       "closeOnExit": true,
       "colorScheme": "One Half Dark",
-      "commandline": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
+      "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
       "cursorColor": "#FFFFFF",
       "cursorHeight": 25,
       "cursorShape": "vintage",

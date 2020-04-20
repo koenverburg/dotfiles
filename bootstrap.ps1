@@ -17,10 +17,10 @@ elseif ($env:HOME -eq "H:\") {
   $env:HOME = "C:$($env:HOMEPATH)"
 }
 
-# . ".\bin\programs.ps1"
+. ".\bin\programs.ps1"
 # . ".\bin\Settings\wallpaper.ps1"
 . ".\bin\devtools.ps1"
 
-# RefreshEnv.cmd
+RefreshEnv.cmd
 
-# . ".\vscode\install.ps1"
+. ".\vscode\install.ps1"

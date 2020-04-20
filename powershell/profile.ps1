@@ -1,8 +1,8 @@
 Import-Module posh-git
-# Import-Module oh-my-posh
+Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
-Import-Module "C:\Users\$env:USERNAME\dotfiles\powershell\Helpers\aliases.ps1"
-Import-Module "C:\Users\$env:USERNAME\\dotfiles\overwrite\localProject.ps1"
+Import-Module "$home\code\github\dotfiles\powershell\Helpers\aliases.ps1"
+Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
 
 Set-Alias vim nvim
 Set-Alias gvim nvim-qt
@@ -11,8 +11,7 @@ Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
-# Set-Theme Darkblood
-Import-Module pure-pwsh
+Set-Theme Darkblood
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell
@@ -23,7 +22,7 @@ $ThemeSettings.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
 if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-  Import-Module "C:\Users\$($env:USERNAME)\dotfiles\powershell\lowerUACL.ps1"
+  Import-Module "$home\code\github\dotfiles\powershell\lowerUACL.ps1"
 }
 
 if (-not $env:HOME) {
