@@ -49,6 +49,7 @@ alias dlsc='docker container ls -a' # -a because I want to see ALL
 alias dlsi='docker images -a' # -a because I want to see ALL
 alias dps='docker ps'
 alias dcud='docker-compose up -d'
+alias dockerclean='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 
 # #Aliases for ls
 alias ll='ls -lh'
