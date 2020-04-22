@@ -43,6 +43,7 @@ alias glo='git log --oneline'
 alias gl='git log'
 alias gpd='git pull'
 alias gpo='git push origin'
+alias gpuo='git push -u origin'
 
 # docker
 alias dlsc='docker container ls -a' # -a because I want to see ALL
@@ -56,6 +57,14 @@ alias ll='ls -lh'
 alias l='ls -lhA'
 alias lsa='ls -a'
 alias rm='rm -i'
+
+alias own=private_repo()
+
+function private_repo() {
+  git config user.name = "Koen Verburg"
+  git config user.email = "creativekoen@gmail.com"
+}
+
 ## NVM
 # export NVM_DIR=~/.nvm
 #source $(brew --prefix nvm)/nvm.sh
