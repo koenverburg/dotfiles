@@ -116,6 +116,8 @@ set undodir=/tmp
 " accelerated scrolling
 set scrolljump=-15
 
+set number
+
 " See help fo
 set formatoptions=qrnj1
 

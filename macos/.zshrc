@@ -39,14 +39,32 @@ alias eq='cd ~/code/gitlab/equalture/'
 # git aliases
 alias gf='git fetch --prune'
 alias gs='git status -sb'
-alias gl='git log --oneline'
-alias gp='git push origin'
+alias glo='git log --oneline'
+alias gl='git log'
+alias gpd='git pull'
+alias gpo='git push origin'
+alias gpuo='git push -u origin'
+
+# docker
+alias dlsc='docker container ls -a' # -a because I want to see ALL
+alias dlsi='docker images -a' # -a because I want to see ALL
+alias dps='docker ps'
+alias dcud='docker-compose up -d'
+alias dockerclean='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 
 # #Aliases for ls
 alias ll='ls -lh'
 alias l='ls -lhA'
 alias lsa='ls -a'
 alias rm='rm -i'
+
+alias own=private_repo()
+
+function private_repo() {
+  git config user.name = "Koen Verburg"
+  git config user.email = "creativekoen@gmail.com"
+}
+
 ## NVM
 # export NVM_DIR=~/.nvm
 #source $(brew --prefix nvm)/nvm.sh
@@ -65,4 +83,4 @@ prompt pure
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
-export PATH=$PATH:"$HOME/.kiex/elixirs/elixir-1.8.2/bin":$HOME/.kerl/21.3/bin #"$HOME/usr/local/lib/ruby/gems/2.7.0/bin"
+export PATH=$PATH:"$HOME/.kiex/elixirs/elixir-1.10.2/bin":$HOME/.kerl/21.3/bin #"$HOME/usr/local/lib/ruby/gems/2.7.0/bin"
