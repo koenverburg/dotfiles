@@ -10,7 +10,7 @@ Install elixir
 Install python3
 # Install mingw
 # Install ctags
-# Install make
+Install make
 # Install cmake
 Install neovim
 Install cmder
