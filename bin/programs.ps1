@@ -6,6 +6,7 @@ Install curl
 Install firefox
 Install Ruby
 Install nodejs
+Install elixir
 Install python3
 # Install mingw
 # Install ctags
