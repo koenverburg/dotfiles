@@ -29,7 +29,7 @@ function gw {
   }
 }
 
-function dswitch { git checkout "feature/koenv/$args" }
+function dswitch { git checkout "feature/$args" }
 function gmdev { git pull origin development }
 function gwmerge { git commit --file .\.git\MERGE_MSG }
 
