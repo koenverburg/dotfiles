@@ -33,10 +33,6 @@ function dswitch { git checkout "feature/$args" }
 function gmdev { git pull origin development }
 function gwmerge { git commit --file .\.git\MERGE_MSG }
 
-function team {
-  Start-Process -FilePath "C:\Users\koenv\AppData\Local\Microsoft\Teams\Update.exe --processStart 'Teams.exe'"
-}
-
 function myproject {
   git config user.name "Koen Verburg"
   git config user.email "creativekoen@gmail.com"
