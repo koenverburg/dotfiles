@@ -18,9 +18,8 @@ elseif ($env:HOME -eq "H:\") {
 }
 
 . ".\bin\programs.ps1"
-# . ".\bin\Settings\wallpaper.ps1"
 . ".\bin\devtools.ps1"
+. ".\vscode\install.ps1"
+# . ".\bin\Settings\wallpaper.ps1"
 
 RefreshEnv.cmd
-
-. ".\vscode\install.ps1"
