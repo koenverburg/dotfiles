@@ -59,13 +59,13 @@ Plug 'mileszs/ack.vim'
 " View indenting
 Plug 'Yggdroot/indentLine'
 
-" add the 'end' to def methods
+" add the 'end' to def methods, this if for elixir
 Plug 'tpope/vim-endwise'
 
 call plug#end()
 
 set background=dark
-colorscheme one
+colorscheme gruvbox
 
 let mapleader = ","
 
@@ -246,6 +246,7 @@ let g:NERDTreeIgnore = ['^node_modules$', 'deps', '_build', '.elixir_ls']
 let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
 
+nnoremap <silent><leader>nt :NERDTreeFind<cr>
 nnoremap <silent><leader>a :NERDTreeToggle<cr>
 inoremap <silent><leader>a :NERDTreeToggle<cr>
 
