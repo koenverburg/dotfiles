@@ -10,6 +10,7 @@ Install cmder
 Install yarn
 Install vscode
 Install powershell-core
+Install alacritty
 
 # Install 7zip
 # Install filezilla
