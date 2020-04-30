@@ -23,19 +23,19 @@ function StowFile([String]$link, [String]$target) {
       return
     }
     else {
-      Write-Verbose "[!] $($file.FullName) already linked"
+      Write-Output "[!] $($file.FullName) already linked"
       return
     }
   }
   else {
     $folder = Split-Path $link
     if (-not (Test-Path $folder)) {
-      Write-Verbose "[i] Creating folder $folder"
+      Write-Output "[i] Creating folder $folder"
       New-Item -Type Directory -Path $folder
     }
   }
 
-  Write-Verbose "[i] Creating link $link to $target"
+  Write-Output "[i] Creating link $link to $target"
   (New-Item -Path $link -ItemType SymbolicLink -Value $target -ErrorAction Continue).Target
 }
 
@@ -53,7 +53,7 @@ function Stow([String]$package, [String]$target) {
 
 function Install([String]$package, [bool]$beta = $false, [bool]$skipCheckSum = $false) {
   if (-not ((choco list $package --exact --local-only --limitoutput) -like "$package*")) {
-    Write-Verbose "[i] Installing package $package"
+    Write-Output "[i] Installing package $package"
     if ($beta) {
       choco install $package -y --pre
     }
@@ -68,6 +68,6 @@ function Install([String]$package, [bool]$beta = $false, [bool]$skipCheckSum = $
     }
   }
   else {
-    Write-Verbose "[i] Package $package already installed"
+    Write-Output "[i] Package $package already installed"
   }
 }
