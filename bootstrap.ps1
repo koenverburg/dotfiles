@@ -6,7 +6,7 @@ Set-StrictMode -version Latest
 
 # Sanity Check
 if (-not [environment]::Is64BitOperatingSystem) {
-  Write-Error "Only 64 bit Windows is supported"
+  Write-Error "[!] Only 64 bit Windows is supported"
   exit
 }
 
@@ -18,8 +18,7 @@ elseif ($env:HOME -eq "H:\") {
 }
 
 . ".\bin\programs.ps1"
-. ".\bin\devtools.ps1"
+. ".\bin\symlinks.ps1"
 . ".\vscode\install.ps1"
-# . ".\bin\Settings\wallpaper.ps1"
 
 RefreshEnv.cmd
