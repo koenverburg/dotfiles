@@ -48,14 +48,10 @@ function elevateProcess {
 
 set-alias sudo elevateProcess
 
-function teamsk {
-  elevateProcess taskkill.exe "/IM teams.exe /F"
-  Clear-Host
-}
-
 function whats {
   Start-Process "$env:LOCALAPPDATA\WhatsApp\WhatsApp.exe"
 }
+
 function whatsk {
   elevateProcess taskkill.exe "/IM WhatsApp.exe /F"
   Clear-Host
