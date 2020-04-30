@@ -1,19 +1,19 @@
 Install GoogleChrome
-# Install 7zip
-Install curl
-# Install greenshot
-# Install filezilla
 Install firefox
 Install Ruby
 Install nodejs
-Install elixir
+Install elixir #includes erlang,mix
 Install python3
-# Install mingw
-# Install ctags
 Install make
-# Install cmake
 Install neovim
 Install cmder
 Install yarn
-Install powershell-core
 Install vscode
+Install powershell-core
+
+# Install 7zip
+# Install filezilla
+# Install curl
+# Install mingw
+# Install ctags
+# Install cmake
