@@ -1,13 +1,23 @@
 // Place your settings in this file to overwrite the default settings
 {
-  // powershell as default shell, not that I use terminals in my ide but still.
-  "powershell.integratedConsole.showOnStartup": false,
   // emmet
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "html.eex": "html"
   },
   // formatting
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[pythonn]": {
+    "editor.formatOnSave": true,
+    "python.linting.pylintArgs": [
+      "--indent-string=\"  \""
+    ]
+  },
+  "[powershell]": {
+    "editor.formatOnSave": false
+  },
   "[handlebars]": {
     "editor.formatOnSave": false
   },
@@ -47,15 +57,7 @@
     "*.json": "jsonc",
     "*.side": "jsonc"
   },
-  "typescript.implementationsCodeLens.enabled": true,
-  "cSpell.userWords": [
-    "ecommerce",
-    "forin",
-    "jquery",
-    "nopcommerce",
-    "prefill",
-    "zipcode"
-  ],
+  "files.trimTrailingWhitespace": true,
   "git.detectSubmodules": false,
   "git.detectSubmodulesLimit": 9999,
   // window Setting
@@ -63,60 +65,55 @@
   "window.zoomLevel": 0,
   "window.menuBarVisibility": "toggle",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
-  "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "morgan.codes",
+  "workbench.iconTheme": "vs-seti",
+  "workbench.colorTheme": "Gruvbox Dark Medium",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
   "workbench.editor.tabSizing": "shrink",
-  "workbench.editor.tabCloseButton": "off",
+  "workbench.editor.tabCloseButton": "left",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.sideBar.location": "left",
+  "explorer.confirmDelete": false,
   // Editor
+  "editor.rulers": [
+    80,
+    120
+  ],
   "editor.snippetSuggestions": "top",
   "editor.cursorBlinking": "solid",
   "editor.lineHeight": 27,
   "editor.lineNumbers": "on",
-  "editor.fontLigatures": false,
+  "editor.fontLigatures": true,
   "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.renderWhitespace": "all",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "editor.tabCompletion": "on",
+  "editor.tabCompletion": "onlySnippets",
   "editor.suggest.localityBonus": true,
-  "editor.matchBrackets": false,
+  "editor.matchBrackets": "always",
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.tabSize": 2,
-  "editor.glyphMargin": true,
-  "editor.folding": true,
-  "editor.rulers": [80, 120, 200],
-  // gearon
+  "editor.glyphMargin": false,
+  "editor.folding": false, // I what to see all
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
+  "editor.minimap.enabled": false,
   // "javascript.validate.enable": false,
   // "editor.suggestOnTriggerCharacters": false,
   // "editor.quickSuggestions": false,
-  // zen mode
-  "zenMode.restore": true,
-  "zenMode.hideTabs": false,
-  "zenMode.fullScreen": false,
-  "zenMode.centerLayout": false,
-  "zenMode.hideStatusBar": false,
   // misc stuff
-  "breadcrumbs.enabled": true,
+  "breadcrumbs.enabled": false, // Still taking up space
   "explorer.openEditors.visible": 0,
   "typescript.referencesCodeLens.enabled": true,
+  "typescript.implementationsCodeLens.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "never",
   "javascript.referencesCodeLens.enabled": true,
   "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
-  "files.trimTrailingWhitespace": true,
-  "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
-  //
   // Vim config
-  //
-  // What key should <leader> map to in remappings?
   "vim.disableExtension": false,
+  // What key should <leader> map to in remappings?
   "vim.leader": ",",
   // Option to delegate certain key combinations back to VSCode to be handled natively
   "vim.handleKeys": {
@@ -132,31 +129,56 @@
   "vim.insertModeKeyBindings": [
     // bind jj to <ESC> in insert mode
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     },
     {
-      "before": ["k", "k"],
-      "after": ["<Esc>"]
+      "before": [
+        "k",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     },
     {
-      "before": ["h", "h"],
-      "after": ["<Esc>"]
+      "before": [
+        "h",
+        "h"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   // Non-recursive remapped keys in normal mode. Allows mapping to vim commands or vscode actions. See README for more.
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["H"],
-      "after": ["HOME"]
+      "before": [
+        "H"
+      ],
+      "after": [
+        "HOME"
+      ]
     },
     {
-      "before": ["L"],
-      "after": ["END"]
+      "before": [
+        "L"
+      ],
+      "after": [
+        "END"
+      ]
     },
     // map : to show command palette
     {
-      "before": [":"],
+      "before": [
+        ":"
+      ],
       "after": [],
       "commands": [
         {
@@ -167,7 +189,10 @@
     },
     // ZZ save current file
     {
-      "before": ["Z", "Z"],
+      "before": [
+        "Z",
+        "Z"
+      ],
       "after": [],
       "commands": [
         {
@@ -182,7 +207,10 @@
     },
     // <leader>w : save current file
     {
-      "before": ["leader", "w"],
+      "before": [
+        "leader",
+        "w"
+      ],
       "after": [],
       "commands": [
         {
@@ -193,7 +221,10 @@
     },
     // <leader>c : uncomment/comment line
     {
-      "before": ["leader", "c"],
+      "before": [
+        "leader",
+        "c"
+      ],
       "after": [],
       "commands": [
         {
@@ -204,7 +235,9 @@
     },
     // vim multicursor select next match
     {
-      "before": ["<C-n>"],
+      "before": [
+        "<C-n>"
+      ],
       "after": [],
       "commands": [
         {
@@ -215,7 +248,9 @@
     },
     // vim multicursor like skip match
     {
-      "before": ["<C-x>"],
+      "before": [
+        "<C-x>"
+      ],
       "after": [],
       "commands": [
         {
@@ -230,9 +265,9 @@
   // Color of the search highlight.
   "vim.searchHighlightColor": "rgba(150, 150, 255, 0.3)",
   // Use system clipboard for unnamed register.
-  "vim.useSystemClipboard": false,
+  "vim.useSystemClipboard": true,
   // Override VSCode's copy command with our own copy command, which works better with VSCodeVim. Turn this off if copying is not working.
-  "vim.overrideCopy": false,
+  "vim.overrideCopy": true,
   // Non-recursive keybinding overrides to use for insert mode. Allows mapping to vim commands or vscode actions. See README for more.
   "vim.insertModeKeyBindingsNonRecursive": [],
   // Width to word-wrap to when using gq.
@@ -242,7 +277,7 @@
   // Number of lines to scroll with CTRL-U and CTRL-D commands.
   "vim.scroll": 20,
   // Show the text of any command you are in the middle of writing.
-  "vim.showcmd": true,
+  "vim.showcmd": false,
   // keywords contain alphanumeric characters and '_'
   "vim.iskeyword": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   // Ignore case in search patterns.
@@ -250,25 +285,7 @@
   // Override the 'ignorecase' option if the search pattern contains upper case characters.
   "vim.smartcase": true,
   // Enable the EasyMotion plugin for Vim.
-  "vim.easymotion": true,
-  // Set a custom background color for EasyMotion markers.
-  "vim.easymotionMarkerBackgroundColor": "#000000",
-  // // Set a custom color for the text on one character long markers.
-  "vim.easymotionMarkerForegroundColorOneChar": "#ff0000",
-  // // Set a custom color for the text on two character long markers.
-  "vim.easymotionMarkerForegroundColorTwoChar": "#ffa500",
-  // Set the width (in pixels) allocated to each character in the match.
-  "vim.easymotionMarkerWidthPerChar": 8,
-  // Set the height of the marker.
-  "vim.easymotionMarkerHeight": 14,
-  // Set the font family of the marker text.
-  "vim.easymotionMarkerFontFamily": "Consolas",
-  // Set the font size of the marker text.
-  "vim.easymotionMarkerFontSize": "14",
-  // Set the font weight of the marker text.
-  "vim.easymotionMarkerFontWeight": "normal",
-  // Set the Y offset of the marker text (the distance from the top).
-  "vim.easymotionMarkerYOffset": 11,
+  "vim.easymotion": false,
   // Enable the Surround plugin for Vim.
   "vim.surround": true,
   // Show all matches of the most recent search pattern
@@ -285,16 +302,8 @@
   "vim.visualstar": false,
   // Uses a hack to move around folds properly
   "vim.foldfix": false,
-  // Get rid of that annoying pop up that shows up everytime you type gc or gb
-  // "vim.disableAnnoyingGcMessage": false,
   // Use neovim on backend. (only works for Ex commands right now). You should restart VScode after enable/disabling this for the changes to take effect. NOTE: Neovim must be installed and neovimPath must be set the executable in order for this setting to work. Otherwise, vscodevim will crash.
   "vim.enableNeovim": false,
   // Path to run neovim executable. For example, /usr/bin/nvim, or
   "vim.neovimPath": "nvim",
-  "explorer.confirmDelete": false,
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.minimap.enabled": false,
-  "editor.fontSize": 13
 }
