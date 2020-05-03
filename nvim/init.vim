@@ -255,7 +255,7 @@ inoremap <silent><leader>a :NERDTreeToggle<cr>
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Airline theme
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
