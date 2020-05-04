@@ -185,9 +185,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Tab Switching (ctrl+shift+{t,h,l})
-nnoremap <C-S-t> :tabnew<cr>
-nnoremap <C-S-h> :tabprev<cr>
-nnoremap <C-S-l> :tabnext<cr>
+nnoremap <S-t> :tabnew<cr>
+nnoremap <S-h> :tabprev<cr>
+nnoremap <S-l> :tabnext<cr>
 
 " Faster saving
 inoremap <leader>w :w<cr>
