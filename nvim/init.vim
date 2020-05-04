@@ -62,6 +62,9 @@ Plug 'Yggdroot/indentLine'
 " add the 'end' to def methods, this if for elixir
 Plug 'tpope/vim-endwise'
 
+" WordJumping like resharper
+Plug 'bkad/CamelCaseMotion'
+
 call plug#end()
 
 set background=dark
