@@ -189,6 +189,10 @@ nnoremap <S-t> :tabnew<cr>
 nnoremap <S-h> :tabprev<cr>
 nnoremap <S-l> :tabnext<cr>
 
+" window resizing
+nnoremap <c-left> 5<c-w>>
+nnoremap <c-right> 5<c-w><
+
 " Faster saving
 inoremap <leader>w :w<cr>
 nnoremap <leader>w :w<cr>
