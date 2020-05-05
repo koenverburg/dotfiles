@@ -184,10 +184,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Tab Switching (ctrl+shift+{t,h,l})
-nnoremap <S-t> :tabnew<cr>
-nnoremap <S-h> :tabprev<cr>
-nnoremap <S-l> :tabnext<cr>
+" Tab Switching (shift+{t,h,l})
+nnoremap <leader><S-t> :tabnew<cr>
+nnoremap <leader><S-h> :tabprev<cr>
+nnoremap <leader><S-l> :tabnext<cr>
 
 " window resizing
 nnoremap <c-left> 5<c-w>>
