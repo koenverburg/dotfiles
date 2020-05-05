@@ -148,8 +148,8 @@ nnoremap j gj
 nnoremap k gk
 
 " Faster moving from beginning to end of a line
-noremap H ˆ
-noremap L g_
+nnoremap H ^
+nnoremap L g_
 
 " Jumping from the beginning of a []{}() to the end
 nnoremap <Tab> %
