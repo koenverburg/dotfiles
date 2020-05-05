@@ -253,7 +253,7 @@ let g:NERDTreeIgnore = ['^node_modules$', 'deps', '_build', '.elixir_ls']
 let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
 
-nnoremap <silent><leader>nt :NERDTreeFind<cr>
+nnoremap <silent><leader>nn :NERDTree<cr>
 nnoremap <silent><leader>a :NERDTreeToggle<cr>
 inoremap <silent><leader>a :NERDTreeToggle<cr>
 
