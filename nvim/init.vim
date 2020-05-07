@@ -3,6 +3,8 @@
 " Source: https://github.com/koenverburg/dotfiles
 " Rewrite date 20 March 2020
 
+" Plugins Section --------------------------------------------------------- {{{
+
 let g:plugin_dir = expand('~/.config/nvim/plugins')
 
 call plug#begin(g:plugin_dir)
@@ -66,6 +68,10 @@ Plug 'tpope/vim-endwise'
 Plug 'bkad/CamelCaseMotion'
 
 call plug#end()
+
+" ------------------------------------------------------------------------- }}}
+
+" General Settings --------------------------------------------------------- {{{
 
 set background=dark
 colorscheme gruvbox
@@ -140,7 +146,9 @@ if (empty($TMUX))
   endif
 endif
 
-" MAPPINGS
+" ------------------------------------------------------------------------- }}}
+
+" Key Mappings ------------------------------------------------------------ {{{
 
 " This is for etter vertial movement for wrapped lines
 " Dont like wrapped lines but sometimes you have to wrapped it
@@ -220,7 +228,9 @@ function! ToggleQuickfix()
   copen
 endfunction
 
-" PLUGIN Settings
+" ------------------------------------------------------------------------- }}}
+
+" Plugin Setting ---------------------------------------------------------- {{{
 
 " Indenting
 let g:indentLine_enable = 0
@@ -281,3 +291,37 @@ sunmap w
 sunmap b
 sunmap e
 sunmap ge
+
+set colorcolumn=81
+hi ColorColumn ctermbg=green
+call matchadd('ColorColumn', '\%81v', 100)
+
+" ------------------------------------------------------------------------- }}}
+
+" Folding ----------------------------------------------------------------- {{{
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType vim setlocal foldlevel=0
+
+function! MyFoldText()
+    let line = getline(v:foldstart)
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines')
+    " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines   ')
+    " let fillcharcount = windowwidth - len(line)
+    " return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
+    return line . '⋯'. repeat(" ",fillcharcount)
+endfunction
+
+" ------------------------------------------------------------------------- }}}
