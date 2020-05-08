@@ -1,7 +1,6 @@
 " .My Vimrc
 " Author: Koen Verburg <creativekoen@gmail.com>
 " Source: https://github.com/koenverburg/dotfiles
-" Rewrite date 20 March 2020
 
 " Plugins Section --------------------------------------------------------- {{{
 
