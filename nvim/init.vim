@@ -267,8 +267,7 @@ let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
 
 nnoremap <silent><leader>nn :NERDTree<cr>
-nnoremap <silent><leader>a :NERDTreeToggle<cr>
-inoremap <silent><leader>a :NERDTreeToggle<cr>
+nnoremap <silent><C-p> :NERDTreeToggle<cr>
 
 " Stealing this one from https://github.com/dduan/dotfiles/blob/master/nvim/init.vim#L150
 " Close vim if the last window open is NerdTree
