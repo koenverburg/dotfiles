@@ -10,7 +10,7 @@
     "typescript.tsx",
     "graphql"
   ],
-  "eslint.filetypes": [
+  "tslint.filetypes": [
     "javascript",
     "typescript",
     "typescriptreact",
