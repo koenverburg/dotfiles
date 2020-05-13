@@ -1,7 +1,6 @@
 " .My Vimrc
 " Author: Koen Verburg <creativekoen@gmail.com>
 " Source: https://github.com/koenverburg/dotfiles
-" Rewrite date 20 March 2020
 
 " Plugins Section --------------------------------------------------------- {{{
 
@@ -24,6 +23,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'othree/yajs.vim'
 Plug 'herringtondarkholme/yats.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 "Plug 'slashmili/alchemist.vim'
 
@@ -43,7 +44,6 @@ Plug 'scrooloose/nerdcommenter'
 
 " File tree
 Plug 'scrooloose/nerdtree'
-
 " Auto close parens, braces, brackets, etc
 Plug 'jiangmiao/auto-pairs'
 
@@ -195,7 +195,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Tab Switching (shift+{t,h,l})
+" Tab Switching (shift+{t,h,l}
 nnoremap <leader><S-t> :tabnew<cr>
 nnoremap <leader><S-h> :tabprev<cr>
 nnoremap <leader><S-l> :tabnext<cr>
@@ -266,8 +266,8 @@ let g:NERDTreeIgnore = ['^node_modules$', 'deps', '_build', '.elixir_ls']
 let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
 
-nnoremap <silent><leader>nn :NERDTree<cr>
 nnoremap <silent><C-p> :NERDTreeToggle<cr>
+nnoremap <silent><leader>nf :NERDTreeFind<cr>
 
 " Stealing this one from https://github.com/dduan/dotfiles/blob/master/nvim/init.vim#L150
 " Close vim if the last window open is NerdTree
