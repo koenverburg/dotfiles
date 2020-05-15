@@ -2,7 +2,7 @@
 " Author: Koen Verburg <creativekoen@gmail.com>
 " Source: https://github.com/koenverburg/dotfiles
 
-" Plugins Section --------------------------------------------------------- {{{
+" Plugins Section ---------------------------------------------------------
 
 let g:plugin_dir = expand('~/.config/nvim/plugins')
 
@@ -72,9 +72,9 @@ Plug 'bkad/CamelCaseMotion'
 
 call plug#end()
 
-" ------------------------------------------------------------------------- }}}
+" -------------------------------------------------------------------------
 
-" General Settings --------------------------------------------------------- {{{
+" General Settings ---------------------------------------------------------
 
 set background=dark
 colorscheme gruvbox
@@ -149,9 +149,9 @@ if (empty($TMUX))
   endif
 endif
 
-" ------------------------------------------------------------------------- }}}
+" -------------------------------------------------------------------------
 
-" Key Mappings ------------------------------------------------------------ {{{
+" Key Mappings ------------------------------------------------------------
 
 " This is for etter vertial movement for wrapped lines
 " Dont like wrapped lines but sometimes you have to wrapped it
@@ -231,9 +231,9 @@ function! ToggleQuickfix()
   copen
 endfunction
 
-" ------------------------------------------------------------------------- }}}
+" -------------------------------------------------------------------------
 
-" Plugin Setting ---------------------------------------------------------- {{{
+" Plugin Setting ----------------------------------------------------------
 
 " Indenting
 let g:indentLine_enable = 0
@@ -298,37 +298,9 @@ set colorcolumn=81
 hi ColorColumn ctermbg=green
 call matchadd('ColorColumn', '\%81v', 100)
 
-" ------------------------------------------------------------------------- }}}
+" -------------------------------------------------------------------------
 
-" Folding ----------------------------------------------------------------- {{{
-
-" Space to toggle folds.
-nnoremap <Space> za
-vnoremap <Space> za
-autocmd FileType vim setlocal foldmethod=marker
-autocmd FileType vim setlocal foldlevel=0
-
-function! MyFoldText()
-    let line = getline(v:foldstart)
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
-
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
-
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines')
-    " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines   ')
-    " let fillcharcount = windowwidth - len(line)
-    " return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
-    return line . '⋯'. repeat(" ",fillcharcount)
-endfunction
-
-" ------------------------------------------------------------------------- }}}
-
-" coc {{{
+" coc
 set hidden
 
 " Some servers have issues with backup files, see #649.
@@ -369,11 +341,11 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" if exists('*complete_info')
+"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+"   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -483,4 +455,3 @@ let g:coc_global_extensions = [
   \ ]
 
   "\ 'coc-prettier',
-" }}}
