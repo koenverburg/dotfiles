@@ -1,5 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
+  "code-eol.newlineCharacter": "¬",
+  "code-eol.returnCharacter": "¤",
+  "code-eol.crlfCharacter": "¤¬",
   // emmet
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
