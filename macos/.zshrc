@@ -59,6 +59,8 @@ alias l='ls -lhA'
 alias lsa='ls -a'
 alias rm='rm -i'
 
+alias weather='curl http://wttr.in'
+
 alias own=private_repo()
 
 function private_repo() {
