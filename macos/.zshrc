@@ -26,6 +26,7 @@ alias mux='tmuxinator'
 alias mjr='make jerry-run'
 alias mjrs='make jerry-replserver'
 alias mt='make test'
+alias rat='eq;make test-all;'
 
 # Yarn Aliases
 alias ys='yarn serve'
@@ -34,8 +35,9 @@ alias ye='yarn export'
 
 # project jumping
 alias eqj='cd ~/code/gitlab/equalture/components/jerry'
+alias eqj='cd ~/code/gitlab/equalture/components/jerry'
 alias eq='cd ~/code/gitlab/equalture/'
-alias rat='eq;make test-all;'
+alias dot='cd ~/code/github/dotfiles'
 
 # git aliases
 alias gf='git fetch --prune'
