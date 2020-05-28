@@ -35,6 +35,7 @@ alias ye='yarn export'
 # project jumping
 alias eqj='cd ~/code/gitlab/equalture/components/jerry'
 alias eq='cd ~/code/gitlab/equalture/'
+alias rat='eq;make test-all;'
 
 # git aliases
 alias gf='git fetch --prune'
