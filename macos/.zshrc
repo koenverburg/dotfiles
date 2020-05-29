@@ -32,6 +32,7 @@ alias rat='eq;make test-all;'
 alias ys='yarn serve'
 alias yd='yarn dist'
 alias ye='yarn export'
+alias killbill='rm -f ./yarn.lock;rm -rf ./node_modules;yarn install'
 
 # project jumping
 alias eqj='cd ~/code/gitlab/equalture/components/jerry'
