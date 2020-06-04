@@ -11,7 +11,7 @@ Install vscode
 Install powershell-core
 Install alacritty
 
-Uninstall cmder
+Uninstall elixir #includes erlang,mix
 # Install 7zip
 # Install filezilla
 # Install curl
