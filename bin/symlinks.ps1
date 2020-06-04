@@ -14,6 +14,7 @@ if (!(Get-Module Get-ChildItemColor)) {
 
 # this will be installed under pwsh 6 core
 if (Get-Command 'pwsh.exe') {
+  start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module windows-screenfetch -Force'
   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module posh-git -Force'
   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module oh-my-posh -Force'
   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module Get-ChildItemColor -Force -AllowClobber'
