@@ -38,12 +38,13 @@ brew install watchman
 brew install tmux
 brew install git
 brew install node
+brew install deno # node but then better
 brew install yarn
 brew install rbenv
 rbenv init
 rbenv install 2.7.0
 rbenv shell 2.7.0
-npm install -g artillery serve pure-prompt
+npm install -g artillery serve
 # Search
 brew install the_silver_searcher
 brew install rg
@@ -76,16 +77,16 @@ gem install tmuxinator
 gem install foreman
 
 # neovim setups (partly)
-# Neovim
+Neovim
 if [ -e "$HOME/.config/nvim/autoload/plug.vim" ]; then
   echo "vim plug exists for neovim, skipping ..."
 else
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-# symlink all the dotfiles
+# Symlink all the dotfiles
 
-# Terminal setup
+Terminal setup
 ln -s ~/code/github/dotfiles/tmuxinator/ ~/.config/tmuxinator/
 ln -s ~/code/github/dotfiles/nvim ~/.config/nvim
 ln -s ~/code/github/dotfiles/macos/.zshrc ~/.zshrc
@@ -94,3 +95,5 @@ ln -s ~/code/github/dotfiles/macos/.zshrc ~/.zshrc
 ln -s ˜/code/github/dotfiles/vscode/settings.json ˜/Library/Application\ Support/Code/User/settings.json
 ln -s ˜/code/github/dotfiles/vscode/keybindings.json ˜/Library/Application\ Support/Code/User/keybindings.json
 while read line; do code --install-extension $line; done < vscode/extensions.txt
+
+ln -s ~/code/github/dotfiles/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
