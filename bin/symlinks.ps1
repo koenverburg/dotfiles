@@ -1,24 +1,24 @@
 # PowerShell Modules
 # this will run under powershell 5
-# if (!(Get-Module posh-git)) {
-#   Install-Module posh-git -Force
-# }
+if (!(Get-Module posh-git)) {
+  Install-Module posh-git -Force
+}
 
-# if (!(Get-Module oh-my-posh)) {
-#   Install-Module oh-my-posh -Force
-# }
+if (!(Get-Module oh-my-posh)) {
+  Install-Module oh-my-posh -Force
+}
 
-# if (!(Get-Module Get-ChildItemColor)) {
-#   Install-Module -Name Get-ChildItemColor -Force
-# }
+if (!(Get-Module Get-ChildItemColor)) {
+  Install-Module -Name Get-ChildItemColor -Force
+}
 
-# # this will be installed under pwsh 6 core
-# if (Get-Command 'pwsh.exe') {
-#   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module posh-git -Force'
-#   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module oh-my-posh -Force'
-#   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module Get-ChildItemColor -Force -AllowClobber'
-#   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck'
-# }
+# this will be installed under pwsh 6 core
+if (Get-Command 'pwsh.exe') {
+  start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module posh-git -Force'
+  start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module oh-my-posh -Force'
+  start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module Get-ChildItemColor -Force -AllowClobber'
+  start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck'
+}
 
 # Powershell Profile(s)
 StowFile $env:HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 (Get-Item ".\powershell\profile.ps1").FullName
