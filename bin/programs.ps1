@@ -2,7 +2,7 @@ Install GoogleChrome
 Install firefox
 Install Ruby
 Install nodejs
-Install elixir #includes erlang,mix
+Install deno
 Install python3
 Install make
 Install neovim
