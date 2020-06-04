@@ -83,8 +83,8 @@ colors:
     white: "0xffffff"
 
 key_bindings:
-  - { key: N, mods: Control, action: SpawnNewInstance }
-  - { key: M, mods: Control, action: Minimize }
+  - { key: N, mods: Alt, action: SpawnNewInstance }
+  - { key: M, mods: Alt, action: Minimize }
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 #key_bindings:
