@@ -1,22 +1,25 @@
 # The DotFiles
 
-So we will have a collections of configs in this repo for: powershell, neovim and vscode
-Things you might find here are my neovim config, ps functions for easy jumping to project folders and keybinds/plugins that I use in vs code
+This repo will have a collections of configs in this repo for: powershell, Neovim and vscode, scripts that automate some repetitive stuff
 
 ### Getting Started
 
-open up a Admin Powershell window and run the following
+Open up a Admin Powershell window and run the following
 
 ```powershell
+ # This is for powershell to know that RemoteSigned scripts are fine
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+
+# Downloading Choco
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
 # close and spin up a new terminal
 choco install git -y
-# close and spin up a new terminal
-cd ~/your/code/dir
-# or
-cd C:\code\github # I work with different services so mine word be C:\code\github
-git clone --recurse-submodules https://github.com/koenverburg/dotfiles.git
+
+# Close and spin up a new terminal, this one doesn't have to be elevated
+cd ~/code/github
+git clone https://github.com/koenverburg/dotfiles.git
+
 cd dotfiles
 .\bootstrap.ps1
 ```
