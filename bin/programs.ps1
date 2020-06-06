@@ -1,17 +1,26 @@
+# browsers
 Install GoogleChrome
 Install firefox
-Install Ruby
-Install nodejs
-Install deno
-Install python3
-Install make
+
+# Programs
 Install neovim
-Install yarn
 Install vscode
 Install powershell-core
 Install alacritty
 
+# Programming languages / Runtimes
+Install deno
+Install Ruby
+Install nodejs
+Install python3
+
+# CLI tools
+Install ripgrep
+Install make
+Install yarn
+
 Uninstall elixir #includes erlang,mix
+
 # Install 7zip
 # Install filezilla
 # Install curl
