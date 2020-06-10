@@ -35,6 +35,7 @@ brew cask install alacritty
 # Development stuff
 brew install go
 brew install watchman
+brew install neofetch
 brew install tmux
 brew install git
 brew install node
