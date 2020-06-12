@@ -9,9 +9,6 @@
     "html.eex": "html"
   },
   // formatting
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[pythonn]": {
     "editor.formatOnSave": true,
     "python.linting.pylintArgs": [
@@ -35,7 +32,6 @@
   },
   "[typescript]": {
     "editor.formatOnSave": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
     "editor.formatOnSave": false,
@@ -66,10 +62,9 @@
   // window Setting
   "window.titleBarStyle": "custom",
   "window.zoomLevel": 0,
-  "window.menuBarVisibility": "toggle",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.iconTheme": "vs-seti",
-  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
@@ -87,7 +82,7 @@
   "editor.cursorBlinking": "solid",
   "editor.lineHeight": 27,
   "editor.lineNumbers": "on",
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.renderWhitespace": "all",
   "editor.detectIndentation": false,
