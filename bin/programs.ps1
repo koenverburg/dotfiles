@@ -13,6 +13,7 @@ Install deno
 Install Ruby
 Install nodejs
 Install python3
+Install golang
 
 # CLI tools
 Install ripgrep
