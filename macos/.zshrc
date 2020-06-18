@@ -57,14 +57,14 @@ alias dcud='docker-compose up -d'
 alias dcd='docker-compose down'
 alias dockerclean='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 
-# #Aliases for ls
+# Aliases for ls
 alias ll='ls -lh'
 alias l='ls -lhA'
 alias lsa='ls -a'
 alias rm='rm -i'
 
 alias weather='curl http://wttr.in'
-
+alias t=/usr/local/Cellar/tilt/0.14.1/bin/tilt
 alias own=private_repo()
 
 function private_repo() {
@@ -90,4 +90,5 @@ prompt pure
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 [[ -s "$HOME/.kiex/scripts/kiex" ]] && source "$HOME/.kiex/scripts/kiex"
-export PATH=$PATH:"$HOME/.kiex/elixirs/elixir-1.10.2/bin":$HOME/.kerl/21.3/bin #"$HOME/usr/local/lib/ruby/gems/2.7.0/bin"
+export PATH=$PATH:"$HOME/.kiex/elixirs/elixir-1.10.2/bin":$HOME/.kerl/21.3/bin:/usr/local/Cellar/tilt/0.14.1/bin/
+#"$HOME/usr/local/lib/ruby/gems/2.7.0/bin"
