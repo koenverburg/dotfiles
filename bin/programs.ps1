@@ -9,6 +9,7 @@ Install microsoft-windows-terminal
 Install powershell-core
 Install alacritty
 Install notion
+Install insomnia-rest-api-client
 
 # Programming languages / Runtimes
 Install deno
