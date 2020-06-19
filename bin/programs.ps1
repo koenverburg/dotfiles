@@ -5,6 +5,7 @@ Install firefox
 # Programs
 Install neovim
 Install vscode
+Install microsoft-windows-terminal
 Install powershell-core
 Install alacritty
 
