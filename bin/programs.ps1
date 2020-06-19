@@ -8,6 +8,7 @@ Install vscode
 Install microsoft-windows-terminal
 Install powershell-core
 Install alacritty
+Install notion
 
 # Programming languages / Runtimes
 Install deno
