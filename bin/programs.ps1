@@ -15,6 +15,7 @@ Install insomnia-rest-api-client
 Install deno
 Install Ruby
 Install nodejs
+Install python2
 Install python3
 Install golang
 
