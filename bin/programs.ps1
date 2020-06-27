@@ -5,7 +5,6 @@ Install firefox
 # Programs
 Install neovim
 Install vscode
-Install microsoft-windows-terminal
 Install powershell-core
 Install alacritty
 Install notion
@@ -24,14 +23,13 @@ Install ripgrep
 Install make
 Install yarn
 
-Uninstall elixir #includes erlang,mix
-
 # Install 7zip
 # Install filezilla
 # Install curl
 # Install mingw
 # Install ctags
 # Install cmake
+
 RefreshEnv.cmd
 
 npm install -g serve neovim
