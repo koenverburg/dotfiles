@@ -15,11 +15,18 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
 
 # close and spin up a new terminal
 choco install git -y
-
+choco feature enable -n allowGlobalConfirmation
 # Close and spin up a new terminal, this one doesn't have to be elevated
 cd ~/code/github
 git clone https://github.com/koenverburg/dotfiles.git
 
 cd dotfiles
 .\bootstrap.ps1
+```
+
+
+### Upgrading
+
+```powershell
+cup all -y
 ```
