@@ -37,3 +37,12 @@ function myproject {
   git config user.name "Koen Verburg"
   git config user.email "creativekoen@gmail.com"
 }
+
+function cpanel {
+  $wtProfile = "Powershell"
+  wt -p $wtProfile -d $args `; split-pane -V -p $wtProfile -d $args `; split-pane -H -p $wtProfile -d $args
+}
+
+function dot {
+  Set-Location "~/code/github/dotfiles"
+}
