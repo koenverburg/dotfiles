@@ -235,6 +235,9 @@ endfunction
 
 " Plugin Setting ----------------------------------------------------------
 
+ let g:python_host_prog  = 'C:\Python27\python.exe'
+ let g:python3_host_prog  = 'C:\Python38\python.exe'
+
 " Indenting
 let g:indentLine_enable = 0
 let g:indentLine_setColors = 0
@@ -450,7 +453,6 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-html',
   \ 'coc-json',
-  \ 'coc-elixir',
   \ 'coc-python'
   \ ]
 
