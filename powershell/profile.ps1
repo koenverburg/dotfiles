@@ -6,7 +6,6 @@ Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
 
 Set-Alias vim nvim
 Set-Alias gvim nvim-qt
-Set-Alias python3 python
 
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
@@ -24,6 +23,10 @@ $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Pri
 
 if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
   Import-Module "$home\code\github\dotfiles\powershell\lowerUACL.ps1"
+  Clear-Host
+  Write-Output "Running as Administrator"
+} else {
+  Clear-Host
 }
 
 if (-not $env:HOME) {
