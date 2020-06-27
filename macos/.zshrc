@@ -23,10 +23,7 @@ alias vim=/usr/local/bin/nvim
 alias mux='tmuxinator'
 
 # Make aliases
-alias mjr='make jerry-run'
-alias mjrs='make jerry-replserver'
 alias mt='make test'
-alias rat='eq;make test-all;'
 
 # Yarn Aliases
 alias ys='yarn serve'
@@ -35,9 +32,6 @@ alias ye='yarn export'
 alias killbill='rm -f ./yarn.lock;rm -rf ./node_modules;yarn install'
 
 # project jumping
-alias eqj='cd ~/code/gitlab/equalture/components/jerry'
-alias eqj='cd ~/code/gitlab/equalture/components/jerry'
-alias eq='cd ~/code/gitlab/equalture/'
 alias dot='cd ~/code/github/dotfiles'
 
 # git aliases
