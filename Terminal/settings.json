@@ -21,14 +21,17 @@
   "profiles": {
     "defaults": {
       // Put settings here that you want to apply to all profiles.
-      "name": "test"
+      "name": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+      "padding": "2, 2, 2, 2",
+      "fontFace": "Fira Code"
     },
     "list": [
       {
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
         "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore"
+        "source": "Windows.Terminal.PowershellCore",
+        "colorScheme": "Subliminal"
       },
       {
         // Make changes here to the powershell.exe profile.
@@ -54,7 +57,29 @@
   },
   // Add custom color schemes to this array.
   // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
-  "schemes": [],
+  "schemes": [
+    {
+      "name": "Subliminal",
+      "black": "#7f7f7f",
+      "red": "#e15a60",
+      "green": "#a9cfa4",
+      "yellow": "#ffe2a9",
+      "blue": "#6699cc",
+      "purple": "#f1a5ab",
+      "cyan": "#5fb3b3",
+      "white": "#d4d4d4",
+      "brightBlack": "#7f7f7f",
+      "brightRed": "#e15a60",
+      "brightGreen": "#a9cfa4",
+      "brightYellow": "#ffe2a9",
+      "brightBlue": "#6699cc",
+      "brightPurple": "#f1a5ab",
+      "brightCyan": "#5fb3b3",
+      "brightWhite": "#d4d4d4",
+      "background": "#282c35",
+      "foreground": "#d4d4d4"
+    }
+  ],
   // Add custom keybindings to this array.
   // To unbind a key combination from your defaults.json, set the command to "unbound".
   // To learn more about keybindings, visit https://aka.ms/terminal-keybindings
