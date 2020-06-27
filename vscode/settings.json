@@ -9,7 +9,7 @@
     "html.eex": "html"
   },
   // formatting
-  "[pythonn]": {
+  "[python]": {
     "editor.formatOnSave": true,
     "python.linting.pylintArgs": [
       "--indent-string=\"  \""
@@ -64,7 +64,7 @@
   "window.zoomLevel": 0,
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.iconTheme": "vs-seti",
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "Solarized Light",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
@@ -84,7 +84,7 @@
   "editor.lineNumbers": "on",
   "editor.fontLigatures": false,
   "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "selection",
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
@@ -98,6 +98,9 @@
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
   "editor.minimap.enabled": false,
+  "editor.tokenColorCustomizations": {
+    "enabled": true
+  },
   // "javascript.validate.enable": false,
   // "editor.suggestOnTriggerCharacters": false,
   // "editor.quickSuggestions": false,
@@ -304,4 +307,5 @@
   "vim.enableNeovim": false,
   // Path to run neovim executable. For example, /usr/bin/nvim, or
   "vim.neovimPath": "nvim",
+  "go.formatTool": "goimports",
 }
