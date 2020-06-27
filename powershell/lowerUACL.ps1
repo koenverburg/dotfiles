@@ -45,7 +45,6 @@ Function Set-UACLevel() {
     Set-RegistryValue -Key $Key -Name $ConsentPromptBehaviorAdmin_Name -Value $ConsentPromptBehaviorAdmin_Value
     Set-RegistryValue -Key $Key -Name $PromptOnSecureDesktop_Name -Value $PromptOnSecureDesktop_Value
     Get-UACLevel
-    Clear-Host;
 }
 
 Set-UACLevel
