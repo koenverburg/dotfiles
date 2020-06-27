@@ -32,3 +32,11 @@ Uninstall elixir #includes erlang,mix
 # Install mingw
 # Install ctags
 # Install cmake
+RefreshEnv.cmd
+
+npm install -g serve neovim
+py -2 -m pip install --upgrade pip
+py -3 -m pip install --upgrade pip
+py -2 -m pip install pynvim
+py -3 -m pip install pynvim
+gem install neovim
