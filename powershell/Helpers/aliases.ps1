@@ -43,6 +43,13 @@ function cpanel {
   wt -p $wtProfile -d $args `; split-pane -V -p $wtProfile -d $args `; split-pane -H -p $wtProfile -d $args
 }
 
+# folder jumping
 function dot {
   Set-Location "~/code/github/dotfiles"
 }
+
+# yarn aliases
+function ys { yarn serve }
+function yt { yarn test }
+function yd { yarn dist }
+function y { yarn }
