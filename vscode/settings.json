@@ -64,7 +64,7 @@
   "window.zoomLevel": 0,
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.iconTheme": "vs-seti",
-  "workbench.colorTheme": "Solarized Light",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.statusBar.visible": true,
   "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
@@ -94,7 +94,7 @@
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.tabSize": 2,
   "editor.glyphMargin": false,
-  "editor.folding": false, // I what to see all
+  "editor.folding": true, // I what to see all
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
   "editor.minimap.enabled": false,
