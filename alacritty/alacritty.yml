@@ -4,13 +4,13 @@ window:
     columns: 140
     lines: 38
   padding:
-    x: 10
-    y: 10
+    x: 5
+    y: 5
   decorations: full
 scrolling:
   history: 10000
   multiplier: 3
-background_opacity: .9
+background_opacity: 1
 dynamic_title: true
 
 # Startup Mode (changes require restart)
@@ -84,7 +84,6 @@ colors:
 
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
-  - { key: M, mods: Alt, action: Minimize }
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 #key_bindings:
