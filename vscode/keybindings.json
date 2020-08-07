@@ -89,5 +89,16 @@
   {
     "key": "ctrl+j",
     "command": "workbench.action.navigateDown"
+  },
+  // Sort Lines
+  {
+    "key": "f9",
+    "command": "-sortLines.sortLines",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "f4",
+    "command": "sortLines.sortLinesLineLength",
+    "when": "editorTextFocus"
   }
 ]
