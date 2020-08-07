@@ -23,7 +23,9 @@ Install ripgrep
 Install make
 Install yarn
 
-# Install 7zip
+# Misc
+Install 7zip
+
 # Install filezilla
 # Install curl
 # Install mingw
