@@ -1,6 +1,7 @@
 Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
+Import-Module PSReadline
 Import-Module "$home\code\github\dotfiles\powershell\Helpers\aliases.ps1"
 Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
 
