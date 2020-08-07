@@ -94,7 +94,7 @@
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.tabSize": 2,
   "editor.glyphMargin": false,
-  "editor.folding": false, // I what to see all
+  "editor.folding": true, // I what to see all
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
   "editor.minimap.enabled": false,
