@@ -84,7 +84,7 @@ colors:
 
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
-  - { key: M, mods: Alt, action: Minimize }
+  - { key: Return, mods: Alt, action: ToggleFullscreen }
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 #key_bindings:
@@ -153,7 +153,6 @@ key_bindings:
 #- { key: Minus,    mods: Control,                 action: DecreaseFontSize }
 
 # (Windows only)
-#- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
 # (macOS only)
 #- { key: K,      mods: Command, mode: ~Vi, chars: "\x0c"            }
