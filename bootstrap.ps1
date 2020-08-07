@@ -22,3 +22,10 @@ elseif ($env:HOME -eq "H:\") {
 . ".\vscode\install.ps1"
 
 RefreshEnv.cmd
+
+if(-not (Test-Path ".\overwrite")) {
+  mkdir .\overwrite
+  touch .\overwrite\localProject.ps1
+} else {
+  Write-Output "Overwrite folder in place"
+}
