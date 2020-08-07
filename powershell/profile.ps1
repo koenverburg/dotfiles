@@ -12,6 +12,8 @@ Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
+New-Alias open ii
+
 Set-Theme Darkblood
 
 Start-SshAgent
@@ -33,6 +35,11 @@ if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administ
 if (-not $env:HOME) {
   $env:HOME = "$($env:HOMEDRIVE)$($env:HOMEPATH)"
 }
+
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+# Autocompletion for arrow keys
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 function which($name) {
   Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
