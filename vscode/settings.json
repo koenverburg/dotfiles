@@ -1,12 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
-  "code-eol.newlineCharacter": "¬",
-  "code-eol.returnCharacter": "¤",
-  "code-eol.crlfCharacter": "¤¬",
   // emmet
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
-    "html.eex": "html"
   },
   // formatting
   "[python]": {
@@ -50,67 +46,99 @@
     "**/node_modules": true,
     "**/flow-typed": true,
     "**/_build": true,
-    "**/deps": true
   },
   "files.associations": {
     "*.json": "jsonc",
     "*.side": "jsonc"
   },
-  "files.trimTrailingWhitespace": true,
-  "git.detectSubmodules": false,
-  "git.detectSubmodulesLimit": 9999,
+  "vim.scroll": 20,
+  "vim.history": 50,
+  "vim.textwidth": 80,
+  "vim.timeout": 1000,
+  "vim.showcmd": false,
+  "vim.surround": true,
+  "vim.foldfix": false,
+  "vim.smartcase": true,
+  "vim.hlsearch": false,
+  "vim.incsearch": true,
+  "vim.ignorecase": true,
+  "vim.autoindent": true,
+  "vim.useCtrlKeys": true,
+  "vim.easymotion": false,
+  "vim.visualstar": false,
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "nvim",
+  "vim.overrideCopy": false,
+  "vim.useSystemClipboard": true,
+  "vim.startInInsertMode": false,
+  "vim.insertModeKeyBindingsNonRecursive": [],
+  "vim.iskeyword": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "vim.searchHighlightColor": "rgba(150, 150, 255, 0.3)",
+  // go
+  "go.formatTool": "goimports",
+  // code eol
+  "code-eol.crlfCharacter": "¤¬",
+  "code-eol.returnCharacter": "¤",
+  "code-eol.newlineCharacter": "¬",
+  // csharp
+  "csharp.suppressHiddenDiagnostics": true,
+  "csharp.suppressProjectJsonWarning": true,
+  "csharp.suppressDotnetInstallWarning": true,
+  "csharp.supressBuildAssetsNotification": true,
+  "csharp.suppressDotnetRestoreNotification": true,
   // window Setting
-  "window.titleBarStyle": "custom",
   "window.zoomLevel": 0,
+  "window.titleBarStyle": "custom",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
-  "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Gruvbox Dark Medium",
   "workbench.statusBar.visible": true,
-  "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
+  "workbench.sideBar.location": "left",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
+  "workbench.colorTheme": "Gruvbox Dark Medium",
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.sideBar.location": "left",
-  "explorer.confirmDelete": false,
   // Editor
   "editor.rulers": [
     80,
     120
   ],
-  "editor.snippetSuggestions": "top",
-  "editor.cursorBlinking": "solid",
+  "editor.tabSize": 2,
   "editor.lineHeight": 27,
   "editor.lineNumbers": "on",
-  "editor.fontLigatures": false,
-  "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
-  "editor.renderWhitespace": "selection",
-  "editor.detectIndentation": false,
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.tabCompletion": "onlySnippets",
-  "editor.suggest.localityBonus": true,
-  "editor.matchBrackets": "always",
-  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-  "editor.tabSize": 2,
   "editor.glyphMargin": false,
-  "editor.folding": true, // I what to see all
+  "editor.formatOnPaste": true,
+  "editor.fontLigatures": false,
+  "explorer.confirmDelete": false,
+  "editor.minimap.enabled": false,
+  "editor.cursorBlinking": "solid",
+  "editor.matchBrackets": "always",
+  "editor.detectIndentation": false,
+  "editor.snippetSuggestions": "top",
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
-  "editor.minimap.enabled": false,
+  "editor.suggest.localityBonus": true,
+  "editor.renderWhitespace": "selection",
+  "editor.tabCompletion": "onlySnippets",
+  "editor.folding": false, // I what to see all
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.tokenColorCustomizations": {
     "enabled": true
   },
-  // "javascript.validate.enable": false,
-  // "editor.suggestOnTriggerCharacters": false,
-  // "editor.quickSuggestions": false,
   // misc stuff
-  "breadcrumbs.enabled": false, // Still taking up space
+  "git.detectSubmodules": false,
+  "git.detectSubmodulesLimit": 9999,
   "explorer.openEditors.visible": 0,
+  "files.trimTrailingWhitespace": true,
   "typescript.referencesCodeLens.enabled": true,
-  "typescript.implementationsCodeLens.enabled": true,
-  "typescript.updateImportsOnFileMove.enabled": "never",
   "javascript.referencesCodeLens.enabled": true,
+  "typescript.implementationsCodeLens.enabled": true,
+  "breadcrumbs.enabled": false, // Still taking up space
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "powershell.integratedConsole.focusConsoleOnExecute": false,
   "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
   // Vim config
   "vim.disableExtension": false,
@@ -261,51 +289,4 @@
       ]
     }
   ],
-  // Enable some vim ctrl key commands that override otherwise common operations, like ctrl+c
-  "vim.useCtrlKeys": true,
-  // Color of the search highlight.
-  "vim.searchHighlightColor": "rgba(150, 150, 255, 0.3)",
-  // Use system clipboard for unnamed register.
-  "vim.useSystemClipboard": true,
-  // Override VSCode's copy command with our own copy command, which works better with VSCodeVim. Turn this off if copying is not working.
-  "vim.overrideCopy": true,
-  // Non-recursive keybinding overrides to use for insert mode. Allows mapping to vim commands or vscode actions. See README for more.
-  "vim.insertModeKeyBindingsNonRecursive": [],
-  // Width to word-wrap to when using gq.
-  "vim.textwidth": 80,
-  // Timeout in milliseconds for remapped commands
-  "vim.timeout": 1000,
-  // Number of lines to scroll with CTRL-U and CTRL-D commands.
-  "vim.scroll": 20,
-  // Show the text of any command you are in the middle of writing.
-  "vim.showcmd": false,
-  // keywords contain alphanumeric characters and '_'
-  "vim.iskeyword": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-  // Ignore case in search patterns.
-  "vim.ignorecase": true,
-  // Override the 'ignorecase' option if the search pattern contains upper case characters.
-  "vim.smartcase": true,
-  // Enable the EasyMotion plugin for Vim.
-  "vim.easymotion": false,
-  // Enable the Surround plugin for Vim.
-  "vim.surround": true,
-  // Show all matches of the most recent search pattern
-  "vim.hlsearch": false,
-  // Show where a / search matches as you type it.
-  "vim.incsearch": true,
-  // How much search or command history should be remembered
-  "vim.history": 50,
-  // Indent code automatically.
-  "vim.autoindent": true,
-  // Start in Insert Mode.
-  "vim.startInInsertMode": false,
-  // In visual mode, start a search with * or # using the current selection
-  "vim.visualstar": false,
-  // Uses a hack to move around folds properly
-  "vim.foldfix": false,
-  // Use neovim on backend. (only works for Ex commands right now). You should restart VScode after enable/disabling this for the changes to take effect. NOTE: Neovim must be installed and neovimPath must be set the executable in order for this setting to work. Otherwise, vscodevim will crash.
-  "vim.enableNeovim": false,
-  // Path to run neovim executable. For example, /usr/bin/nvim, or
-  "vim.neovimPath": "nvim",
-  "go.formatTool": "goimports",
 }

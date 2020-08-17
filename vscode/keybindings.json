@@ -100,5 +100,14 @@
     "key": "f4",
     "command": "sortLines.sortLinesLineLength",
     "when": "editorTextFocus"
+  },
+  // grow selection
+  {
+    "key": "ctrl+alt+up",
+    "command": "extension.refactorix.grow-selection"
+  },
+  {
+    "key": "ctrl+alt+down",
+    "command": "extension.refactorix.shrink-selection"
   }
 ]
