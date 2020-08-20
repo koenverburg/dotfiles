@@ -22,6 +22,7 @@ Install golang
 Install ripgrep
 Install make
 Install yarn
+Install terraform
 
 # Misc
 Install 7zip
