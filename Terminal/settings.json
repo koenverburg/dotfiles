@@ -13,7 +13,7 @@
   "copyOnSelect": false,
   // If enabled, formatted data is also copied to your clipboard
   "copyFormatting": false,
-  "theme": "dark",
+  "theme": "light",
   // A profile specifies a command to execute paired with information about how it should look and feel.
   // Each one of them will appear in the 'New Tab' dropdown,
   //   and can be invoked from the commandline with `wt.exe -p xxx`
@@ -31,7 +31,7 @@
         "hidden": false,
         "name": "PowerShell",
         "source": "Windows.Terminal.PowershellCore",
-        "colorScheme": "Argonaut"
+        "colorScheme": "Gruvbox Dark"
       },
       {
         // Make changes here to the powershell.exe profile.
@@ -58,6 +58,27 @@
   // Add custom color schemes to this array.
   // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
   "schemes": [
+    {
+      "name": "Gruvbox Dark",
+      "black": "#1e1e1e",
+      "red": "#be0f17",
+      "green": "#868715",
+      "yellow": "#cc881a",
+      "blue": "#377375",
+      "purple": "#a04b73",
+      "cyan": "#578e57",
+      "white": "#978771",
+      "brightBlack": "#7f7061",
+      "brightRed": "#f73028",
+      "brightGreen": "#aab01e",
+      "brightYellow": "#f7b125",
+      "brightBlue": "#719586",
+      "brightPurple": "#c77089",
+      "brightCyan": "#7db669",
+      "brightWhite": "#e6d4a3",
+      "background": "#1e1e1e",
+      "foreground": "#e6d4a3"
+    },
     {
       "name": "Subliminal",
       "black": "#7f7f7f",
