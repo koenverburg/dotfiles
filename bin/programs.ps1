@@ -35,7 +35,7 @@ Install 7zip
 
 RefreshEnv.cmd
 
-npm install -g serve neovim
+npm install -g serve neovim wikit
 py -2 -m pip install --upgrade pip
 py -3 -m pip install --upgrade pip
 py -2 -m pip install pynvim
