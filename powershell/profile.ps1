@@ -9,7 +9,7 @@ Import-Module "$home\code\github\dotfiles\powershell\Aliases\frontend.ps1"
 Import-Module "$home\code\github\dotfiles\powershell\Aliases\git.ps1"
 Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
 
-Set-Theme Darkblood
+Set-Theme Pure
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell
