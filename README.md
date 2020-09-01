@@ -7,8 +7,7 @@ This repo will have a collections of configs in this repo for: powershell, Neovi
 Open up a Admin Powershell window and run the following
 
 ```powershell
- # This is for powershell to know that RemoteSigned scripts are fine
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force
 
 # Downloading Choco
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
