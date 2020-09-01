@@ -7,11 +7,11 @@ window:
     x: 5
     y: 5
   decorations: full
+  dynamic_title: true
 scrolling:
   history: 10000
   multiplier: 3
 background_opacity: 1
-dynamic_title: true
 
 # Startup Mode (changes require restart)
 startup_mode: Windowed
