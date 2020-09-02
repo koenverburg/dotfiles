@@ -101,6 +101,11 @@
     "command": "sortLines.sortLinesLineLength",
     "when": "editorTextFocus"
   },
+  // Better Align, Terraform
+  {
+    "key": "f3",
+    "command": "wwm.aligncode"
+  },
   // grow selection
   {
     "key": "ctrl+alt+up",
