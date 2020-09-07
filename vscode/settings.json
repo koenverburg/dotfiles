@@ -5,6 +5,9 @@
     "javascript": "javascriptreact"
   },
   // formatting
+  "[go]": {
+    "editor.formatOnSave": false
+  },
   "[python]": {
     "editor.formatOnSave": true,
     "python.linting.pylintArgs": ["--indent-string=\"  \""]
