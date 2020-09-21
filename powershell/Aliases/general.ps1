@@ -7,6 +7,9 @@ Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
 New-Alias open ii
 
+# GO
+function grm { go run main.go }
+
 function cpanel {
   $wtProfile = "Powershell"
   wt -p $wtProfile -d $args `; split-pane -V -p $wtProfile -d $args `; split-pane -H -p $wtProfile -d $args
