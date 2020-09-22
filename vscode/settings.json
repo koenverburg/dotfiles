@@ -2,6 +2,7 @@
 {
   // emmet
   "emmet.includeLanguages": {
+    "razor": "html",
     "javascript": "javascriptreact"
   },
   // formatting
@@ -24,20 +25,28 @@
     "editor.formatOnSave": true
   },
   "[javascript]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modifications"
   },
   "[javascriptreact]": {
-    "editor.formatOnSave": false
+    "editor.showUnused": true,
+    "editor.formatOnSave": false,
+    "editor.formatOnSaveMode": "modifications"
   },
   "[typescript]": {
-    "editor.formatOnSave": false
+    "editor.showUnused": true,
+    "editor.formatOnSave": false,
+    "editor.formatOnSaveMode": "modifications",
   },
   "[typescriptreact]": {
+    "editor.showUnused": true,
     "editor.formatOnSave": false,
+    "editor.formatOnSaveMode": "modifications",
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
+    "source.fixAll.tslint": true,
+    "source.organizeImports": false
   },
   // excluding folders
   "files.exclude": {
@@ -126,7 +135,7 @@
   "editor.suggest.localityBonus": true,
   "editor.renderWhitespace": "selection",
   "editor.tabCompletion": "onlySnippets",
-  "editor.folding": false, // I what to see all
+  "editor.folding": true, // I what to see all
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.tokenColorCustomizations": {
@@ -292,5 +301,12 @@
         }
       ]
     }
+  ],
+  "cSpell.userWords": [
+    "Umbraco",
+    "XSRF",
+    "bedankt",
+    "recaptcha",
+    "uwork"
   ]
 }
