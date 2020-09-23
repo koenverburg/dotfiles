@@ -26,8 +26,6 @@ Plug 'herringtondarkholme/yats.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-"Plug 'slashmili/alchemist.vim'
-
 " Airline themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -63,9 +61,6 @@ Plug 'mileszs/ack.vim'
 
 " View indenting
 Plug 'Yggdroot/indentLine'
-
-" add the 'end' to def methods, this if for elixir
-Plug 'tpope/vim-endwise'
 
 " WordJumping like resharper
 Plug 'bkad/CamelCaseMotion'
