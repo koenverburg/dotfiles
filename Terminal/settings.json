@@ -5,7 +5,7 @@
   "copyFormatting": false,
   "showTabsInTitlebar": true,
   "showTerminalTitleInTitlebar": true,
-  "theme": "light",
+  "theme": "dark",
   "tabWidthMode": "titleLength",
   "profiles": {
     "defaults": {
