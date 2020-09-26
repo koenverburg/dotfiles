@@ -12,9 +12,6 @@ call plug#begin(g:plugin_dir)
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 
-" Move to and from Tmux panes and Vim panes
-Plug 'christoomey/vim-tmux-navigator'
-
 " Language Support
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
@@ -448,7 +445,6 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-html',
   \ 'coc-json',
-  \ 'coc-python'
   \ ]
 
   "\ 'coc-prettier',
