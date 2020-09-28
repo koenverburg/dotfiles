@@ -13,7 +13,8 @@ Install insomnia-rest-api-client
 # Programming languages / Runtimes
 Install deno
 Install Ruby
-Install nodejs
+Install nodejs-lts
+Uninstall nodejs
 Install python2
 Install python3
 Install golang
