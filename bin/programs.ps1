@@ -26,7 +26,7 @@ Install terraform
 
 # Misc
 Install 7zip
-
+Install bind-toolsonly # big
 # Install filezilla
 # Install curl
 # Install mingw
