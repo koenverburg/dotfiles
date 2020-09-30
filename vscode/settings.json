@@ -11,7 +11,9 @@
   },
   "[python]": {
     "editor.formatOnSave": true,
-    "python.linting.pylintArgs": ["--indent-string=\"  \""]
+    "python.linting.pylintArgs": [
+      "--indent-string=\"  \""
+    ]
   },
   "[powershell]": {
     "editor.formatOnSave": false
@@ -108,10 +110,13 @@
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   // Editor
-  "editor.rulers": [80, 120],
+  "editor.rulers": [
+    80,
+    120
+  ],
   "editor.tabSize": 2,
   "editor.lineHeight": 27,
   "editor.lineNumbers": "on",
@@ -166,31 +171,56 @@
   "vim.insertModeKeyBindings": [
     // bind jj to <ESC> in insert mode
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     },
     {
-      "before": ["k", "k"],
-      "after": ["<Esc>"]
+      "before": [
+        "k",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     },
     {
-      "before": ["h", "h"],
-      "after": ["<Esc>"]
+      "before": [
+        "h",
+        "h"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   // Non-recursive remapped keys in normal mode. Allows mapping to vim commands or vscode actions. See README for more.
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["H"],
-      "after": ["HOME"]
+      "before": [
+        "H"
+      ],
+      "after": [
+        "HOME"
+      ]
     },
     {
-      "before": ["L"],
-      "after": ["END"]
+      "before": [
+        "L"
+      ],
+      "after": [
+        "END"
+      ]
     },
     // map : to show command palette
     {
-      "before": [":"],
+      "before": [
+        ":"
+      ],
       "after": [],
       "commands": [
         {
@@ -201,7 +231,10 @@
     },
     // ZZ save current file
     {
-      "before": ["Z", "Z"],
+      "before": [
+        "Z",
+        "Z"
+      ],
       "after": [],
       "commands": [
         {
@@ -216,7 +249,10 @@
     },
     // <leader>w : save current file
     {
-      "before": ["leader", "w"],
+      "before": [
+        "leader",
+        "w"
+      ],
       "after": [],
       "commands": [
         {
@@ -227,7 +263,10 @@
     },
     // <leader>c : uncomment/comment line
     {
-      "before": ["leader", "c"],
+      "before": [
+        "leader",
+        "c"
+      ],
       "after": [],
       "commands": [
         {
@@ -238,7 +277,9 @@
     },
     // vim multicursor select next match
     {
-      "before": ["<C-n>"],
+      "before": [
+        "<C-n>"
+      ],
       "after": [],
       "commands": [
         {
@@ -249,7 +290,9 @@
     },
     // vim multicursor like skip match
     {
-      "before": ["<C-x>"],
+      "before": [
+        "<C-x>"
+      ],
       "after": [],
       "commands": [
         {
