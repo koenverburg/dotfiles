@@ -29,3 +29,9 @@ function Get-Current-Ticket {
     return $ticket
   }
 }
+
+function boot {
+  $firstTab = '--title "Dotfiles" -p "Powershell" ; split-pane -p "Powershell" ; split-pane -H -p "Powershell"'
+  $secondTab = 'new-tab --title "MTS" -p "Powershell" ; split-pane -p "Powershell" ; split-pane -H -p "Powershell"'
+  start wt "$firstTab `; $secondTab"
+}
