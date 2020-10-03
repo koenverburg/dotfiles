@@ -9,12 +9,6 @@
   "[go]": {
     "editor.formatOnSave": true
   },
-  "[python]": {
-    "editor.formatOnSave": true,
-    "python.linting.pylintArgs": [
-      "--indent-string=\"  \""
-    ]
-  },
   "[powershell]": {
     "editor.formatOnSave": false
   },
@@ -141,9 +135,11 @@
   "editor.tokenColorCustomizations": {
     "enabled": true
   },
-  // misc stuff
+  // Git
   "git.detectSubmodules": false,
   "git.detectSubmodulesLimit": 9999,
+  "gitlens.codeLens.enabled": false,
+  // misc stuff
   "explorer.openEditors.visible": 0,
   "files.trimTrailingWhitespace": true,
   "typescript.referencesCodeLens.enabled": true,
