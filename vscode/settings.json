@@ -42,6 +42,9 @@
     "source.fixAll.tslint": true,
     "source.organizeImports": false
   },
+  "[xml]": {
+    "editor.formatOnSave": false
+  },
   // excluding folders
   "files.exclude": {
     "**/.git": true,
@@ -83,10 +86,6 @@
   "vim.searchHighlightColor": "rgba(150, 150, 255, 0.3)",
   // go
   "go.formatTool": "goimports",
-  // code eol
-  "code-eol.crlfCharacter": "↵",
-  "code-eol.returnCharacter": "⇠",
-  "code-eol.newlineCharacter": "¬",
   // csharp
   "csharp.suppressHiddenDiagnostics": true,
   "csharp.suppressProjectJsonWarning": true,
@@ -104,8 +103,9 @@
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.pinnedTabSizing": "shrink",
   // Editor
   "editor.rulers": [
     80,
@@ -299,9 +299,12 @@
     }
   ],
   "cSpell.userWords": [
+    "Outsystems",
     "Umbraco",
     "XSRF",
     "bedankt",
+    "childaid",
+    "organisation",
     "recaptcha",
     "uwork"
   ]
