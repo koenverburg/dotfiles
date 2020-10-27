@@ -103,16 +103,17 @@
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.editor.pinnedTabSizing": "shrink",
+  "workbench.editor.pinnedTabSizing": "compact",
   // Editor
   "editor.rulers": [
     80,
     120
   ],
+  "editor.fontSize": 15,
   "editor.tabSize": 2,
-  "editor.lineHeight": 27,
+  "editor.lineHeight": 29,
   "editor.lineNumbers": "on",
   "editor.formatOnSave": true,
   "editor.glyphMargin": false,
@@ -129,7 +130,7 @@
   "editor.suggest.localityBonus": true,
   "editor.renderWhitespace": "selection",
   "editor.tabCompletion": "onlySnippets",
-  "editor.folding": true, // I what to see all
+  "editor.folding": false, // I what to see all
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.tokenColorCustomizations": {
@@ -299,11 +300,13 @@
     }
   ],
   "cSpell.userWords": [
+    "Cust",
     "Outsystems",
     "Umbraco",
     "XSRF",
     "bedankt",
     "childaid",
+    "datalayer",
     "organisation",
     "recaptcha",
     "uwork"
