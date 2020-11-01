@@ -30,7 +30,7 @@ Install 7zip
 Install bind-toolsonly # big
 # Install filezilla
 # Install curl
-# Install mingw
+Install mingw
 # Install ctags
 # Install cmake
 
