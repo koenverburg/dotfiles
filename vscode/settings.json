@@ -58,35 +58,9 @@
     "*.side": "jsonc",
     "*.config": "xml"
   },
-  "vim.scroll": 20,
-  "vim.history": 50,
-  "vim.textwidth": 80,
-  "vim.timeout": 1000,
-  "vim.showcmd": false,
-  "vim.surround": true,
-  "vim.foldfix": false,
-  "vim.smartcase": true,
-  "vim.hlsearch": false,
-  "vim.incsearch": true,
-  "vim.ignorecase": true,
-  "vim.autoindent": true,
-  "vim.useCtrlKeys": true,
-  "vim.easymotion": false,
-  "vim.visualstar": false,
-  "vim.enableNeovim": true,
-  "vim.neovimPath": "nvim",
-  "vim.overrideCopy": false,
-  "vim.useSystemClipboard": true,
-  "vim.startInInsertMode": false,
-  "vim.insertModeKeyBindingsNonRecursive": [],
-  "vim.iskeyword": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-  "vim.searchHighlightColor": "rgba(150, 150, 255, 0.3)",
+  // "vscode-neovim.neovimPath": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
   // go
   "go.formatTool": "goimports",
-  // code eol
-  "code-eol.crlfCharacter": "↵",
-  "code-eol.returnCharacter": "⇠",
-  "code-eol.newlineCharacter": "¬",
   // csharp
   "csharp.suppressHiddenDiagnostics": true,
   "csharp.suppressProjectJsonWarning": true,
@@ -100,11 +74,10 @@
   "workbench.statusBar.visible": true,
   "workbench.editor.showIcons": false,
   "workbench.sideBar.location": "left",
-  "workbench.iconTheme": "vscode-icons",
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   // Editor
   "editor.rulers": [
@@ -149,160 +122,13 @@
   "typescript.updateImportsOnFileMove.enabled": "never",
   "powershell.integratedConsole.focusConsoleOnExecute": false,
   "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
-  // Vim config
-  "vim.disableExtension": false,
-  // What key should <leader> map to in remappings?
-  "vim.leader": ",",
-  // Option to delegate certain key combinations back to VSCode to be handled natively
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false,
-    "<C-w>": false,
-    "<C-c>": false,
-    "<C-v>": false,
-    "<C-b>": false,
-    "<C-o>": false
-  },
-  // Remapped keys in insert mode. Allows mapping to vim commands or vscode actions. See README for more.
-  "vim.insertModeKeyBindings": [
-    // bind jj to <ESC> in insert mode
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    },
-    {
-      "before": [
-        "k",
-        "k"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    },
-    {
-      "before": [
-        "h",
-        "h"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
-  // Non-recursive remapped keys in normal mode. Allows mapping to vim commands or vscode actions. See README for more.
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "H"
-      ],
-      "after": [
-        "HOME"
-      ]
-    },
-    {
-      "before": [
-        "L"
-      ],
-      "after": [
-        "END"
-      ]
-    },
-    // map : to show command palette
-    {
-      "before": [
-        ":"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.showCommands",
-          "args": []
-        }
-      ]
-    },
-    // ZZ save current file
-    {
-      "before": [
-        "Z",
-        "Z"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.files.save",
-          "args": []
-        },
-        {
-          "command": "workbench.action.closeActiveEditor",
-          "args": []
-        }
-      ]
-    },
-    // <leader>w : save current file
-    {
-      "before": [
-        "leader",
-        "w"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.files.save",
-          "args": []
-        }
-      ]
-    },
-    // <leader>c : uncomment/comment line
-    {
-      "before": [
-        "leader",
-        "c"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.action.commentLine",
-          "args": []
-        }
-      ]
-    },
-    // vim multicursor select next match
-    {
-      "before": [
-        "<C-n>"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.action.addSelectionToNextFindMatch",
-          "args": []
-        }
-      ]
-    },
-    // vim multicursor like skip match
-    {
-      "before": [
-        "<C-x>"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.action.moveSelectionToNextFindMatch",
-          "args": []
-        }
-      ]
-    }
-  ],
   "cSpell.userWords": [
+    "Deduplication",
     "Umbraco",
     "XSRF",
     "bedankt",
     "recaptcha",
     "uwork"
-  ]
+  ],
+  "javascript.updateImportsOnFileMove.enabled": "never"
 }
