@@ -1,12 +1,15 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 window:
+  position:
+    x: 300
+    y: 120
   dimensions:
     columns: 140
-    lines: 38
+    lines: 40
   padding:
-    x: 5
-    y: 5
-  decorations: full
+    x: 3
+    y: 3
+  decorations: none
   dynamic_title: true
 scrolling:
   history: 10000
