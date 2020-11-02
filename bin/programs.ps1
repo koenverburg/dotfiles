@@ -26,11 +26,13 @@ Install yarn
 Install terraform
 
 # Misc
+Install qutebrowser
+Install vifm
 Install 7zip
 Install bind-toolsonly # big
+Install mingw
 # Install filezilla
 # Install curl
-Install mingw
 # Install ctags
 # Install cmake
 
