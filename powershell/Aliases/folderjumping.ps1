@@ -4,8 +4,18 @@ function dot {
 }
 
 function projects {
-  $firstTab = '--title "Dotfiles" -p "Powershell" -d "$HOME\code\github\dotfiles"'
-  $secondTab = '--title "site" -p "Powershell" -d "$HOME\code\github\koenverburg.dev"'
-  $thirdTab = '--title "Github readme" -p "Powershell" -d "$HOME\code\github\koenverburg"'
-  Start-Process wt "$firstTab `; $secondTab `; $thirdTab";
+  $dotsTitle = "Dotfiles"
+  $dotsPath = $(Resolve-Path ~\code\github\dotfiles).Path
+
+  $obsidianTitle = "obsidian"
+  $obsidianPath = $(Resolve-Path ~\code\github\dotfiles).Path
+
+  $tabs = "--title="$($dotsTitle)" -d="$($dotsPath)""
+
+    # "--title=""$obsidianTitle"" -d=""$obsidianPath""";
+
+  wt.exe "$($tabs -Join " ``; ")"
+    # --title="site" -d=$(Resolve-Path ~\code\github\koenverburg.dev).Path `;
+    # --title="obsidian" -d=$(Resolve-Path ~\code\github\obsidian).Path `;
+    # --title="Readme" -d=$(Resolve-Path ~\code\github\koenverburg).Path `;
 }
