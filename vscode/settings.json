@@ -27,10 +27,11 @@
     "editor.formatOnSave": false,
     "editor.formatOnSaveMode": "modifications"
   },
+  "javascript.updateImportsOnFileMove.enabled": "never",
   "[typescript]": {
     "editor.showUnused": true,
     "editor.formatOnSave": false,
-    "editor.formatOnSaveMode": "modifications",
+    "editor.formatOnSaveMode": "modifications"
   },
   "[typescriptreact]": {
     "editor.showUnused": true,
@@ -140,5 +141,4 @@
     "recaptcha",
     "uwork"
   ],
-  "javascript.updateImportsOnFileMove.enabled": "never"
 }
