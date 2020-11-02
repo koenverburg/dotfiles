@@ -4,9 +4,10 @@ Import-Module Get-ChildItemColor
 Import-Module PSReadline
 
 # Aliases
-Import-Module "$home\code\github\dotfiles\powershell\Aliases\general.ps1"
 Import-Module "$home\code\github\dotfiles\powershell\Aliases\folderjumping.ps1"
-Import-Module "$home\code\github\dotfiles\powershell\Aliases\frontend.ps1"
+Import-Module "$home\code\github\dotfiles\powershell\Aliases\general.ps1"
+Import-Module "$home\code\github\dotfiles\powershell\Aliases\shutup.ps1"
+Import-Module "$home\code\github\dotfiles\powershell\Aliases\poweruser.ps1"
 Import-Module "$home\code\github\dotfiles\powershell\Aliases\git.ps1"
 Import-Module "$home\code\github\dotfiles\powershell\Aliases\terraform.ps1"
 Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
