@@ -42,8 +42,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " WordJumping like with resharper
-imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
-imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
+imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_w
+imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_b
 
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
