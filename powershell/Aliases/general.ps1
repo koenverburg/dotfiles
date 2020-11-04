@@ -5,10 +5,6 @@ Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
 New-Alias open ii
-function cpanel {
-  $wtProfile = "Powershell"
-  wt -p $wtProfile -d $args `; split-pane -V -p $wtProfile -d $args `; split-pane -H -p $wtProfile -d $args
-}
 
 function which($name) {
   Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
