@@ -38,7 +38,7 @@ Install mingw
 
 RefreshEnv.cmd
 
-npm install -g serve neovim wikit
+npm install -g serve neovim wikit npkill
 py -2 -m pip install --upgrade pip
 py -3 -m pip install --upgrade pip
 py -2 -m pip install pynvim
