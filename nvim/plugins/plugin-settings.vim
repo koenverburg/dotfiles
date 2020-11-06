@@ -29,8 +29,8 @@ let g:NERDTreeIgnore = ['^node_modules$', 'deps', '_build', '.elixir_ls']
 let NERDTreeShowHidden = 1
 let NERDTreeShowLineNumbers = 0
 
-nnoremap <silent><C-p> :NERDTreeToggle<cr>
-nnoremap <silent><leader>nf :NERDTreeFind<cr>
+" nnoremap <silent><C-p> :NERDTreeToggle<cr>
+" nnoremap <silent><leader>nf :NERDTreeFind<cr>
 
 " Stealing this one from https://github.com/dduan/dotfiles/blob/master/nvim/init.vim#L150
 " Close vim if the last window open is NerdTree
