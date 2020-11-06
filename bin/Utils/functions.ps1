@@ -44,7 +44,7 @@ function Stow([String]$package, [String]$target) {
     Write-Error "[!] Could not define the target link folder of $package"
   }
 
-  Get-ChildItem $DotFilesPath\$package | ForEach-Object {
+  Get-ChildItem $package | ForEach-Object {
     if (-not $_.PSIsContainer) {
       StowFile (Join-Path -Path $target -ChildPath $_.Name) $_.FullName
     }
