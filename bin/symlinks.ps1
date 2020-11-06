@@ -54,10 +54,19 @@ if (-not (Test-Path "C:\Users\$($env:USERNAME)\AppData\Local\nvim\autoload")) {
 } else {
   Write-Output "[!] Neovim plug is already installed"
 }
+
 # symlinking the config
 StowFile $env:LOCALAPPDATA\nvim\init.vim (Get-Item ".\nvim\init.vim").FullName
+StowFile $env:LOCALAPPDATA\nvim\ginit.vim (Get-Item ".\nvim\ginit.vim").FullName
+
 # language server
-# StowFile "$env:LOCALAPPDATA\nvim\coc-settings.json" (Get-Item ".\neovim\coc-settings.json").FullName
+StowFile "$env:LOCALAPPDATA\nvim\coc-settings.json" (Get-Item ".\nvim\coc-settings.json").FullName
+
+# All the other files
+Stow ".\nvim\core" "$env:LOCALAPPDATA\nvim\core"
+Stow ".\nvim\config" "$env:LOCALAPPDATA\nvim\config"
+Stow ".\nvim\plugins" "$env:LOCALAPPDATA\nvim\plugins"
+Stow ".\nvim\settings" "$env:LOCALAPPDATA\nvim\settings"
 
 # Alacritty
 StowFile $env:APPDATA\alacritty\alacritty.yml (Get-Item ".\alacritty\alacritty.yml").FullName
