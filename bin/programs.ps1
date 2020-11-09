@@ -29,8 +29,9 @@ Install terraform
 Install qutebrowser
 Install vifm
 Install 7zip
-Install bind-toolsonly # big
-Install mingw
+Install bind-toolsonly # clitool: big
+Install mingw # gcc, need to compile treesitter
+Install llvm # clang, need to compile treesitter
 # Install filezilla
 # Install curl
 # Install ctags
