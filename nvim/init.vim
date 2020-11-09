@@ -13,5 +13,7 @@ source $HOME/code/github/dotfiles/nvim/settings/general.vim
 source $HOME/code/github/dotfiles/nvim/config/keybindings.vim
 
 " Plugins
-source $HOME/code/github/dotfiles/nvim/plugins/plugin-settings.vim
-source $HOME/code/github/dotfiles/nvim/plugins/coc.vim
+" source $HOME/code/github/dotfiles/nvim/plugins/plugin-settings.vim
+source $HOME/code/github/dotfiles/nvim/plugins/treesitter.vim
+source $HOME/code/github/dotfiles/nvim/plugins/lspconfig.vim
+" source $HOME/code/github/dotfiles/nvim/plugins/coc.vim

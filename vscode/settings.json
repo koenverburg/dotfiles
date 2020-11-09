@@ -81,7 +81,7 @@
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.pinnedTabSizing": "compact",
   // Editor
