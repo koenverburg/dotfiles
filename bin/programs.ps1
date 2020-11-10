@@ -40,6 +40,10 @@ Install llvm # clang, need to compile treesitter
 RefreshEnv.cmd
 
 npm install -g serve neovim wikit npkill
+
+# Langague Server stuff for NeoVim
+npm install -g vim-language-server typescript-language-server vscode-html-languageserver-bin yaml-language-server
+
 py -2 -m pip install --upgrade pip
 py -3 -m pip install --upgrade pip
 py -2 -m pip install pynvim
