@@ -10,8 +10,16 @@ Plug 'sainnhe/forest-night'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'pierreglaser/folding-nvim', { 'for': ['lua', 'c', 'cpp', 'go'] } " LSP-powered folding
+" Plug 'nvim-lua/lsp-status.nvim'  " lsp items in the statusbar
+
+" Research
+" Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/completion-treesitter' " tree-sitter source for completion-nvim
+" Plug 'steelsojka/completion-buffers' " buffer source for completion-nvim
+
 Plug '9mm/vim-closer'
+Plug 'tpope/vim-surround' " Able to change '"[{()}]
 
 " Language Support
 " Plug 'elzr/vim-json'
@@ -27,9 +35,6 @@ Plug '9mm/vim-closer'
 
 " WordJumping like resharper
 Plug 'bkad/CamelCaseMotion'
-
-" Able to change '"[{()}]
-" Plug 'tpope/vim-surround'
 
 " Convenience for commenting things in and out
 " Plug 'scrooloose/nerdcommenter'
