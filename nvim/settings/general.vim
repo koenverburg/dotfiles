@@ -54,12 +54,11 @@ set scrolljump=-15
 
 set number
 set hidden
-
 " set nobackup
 " set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
