@@ -32,8 +32,9 @@ Install 7zip
 # Stuff for neovim
 Install mingw # gcc, need to compile treesitter
 Install llvm # clang, need to compile treesitter
-Install bat
-Install ripgrep
+Install bat # code preview for telescope (Neovim Plugin)
+Install fzf # fuzzy finder
+Install ripgrep # find in files
 
 # cname, mx, dns tooling
 Install bind-toolsonly # clitool: big
