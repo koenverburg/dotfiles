@@ -15,15 +15,15 @@
 nnoremap <leader>gs :Gstatus<cr>
 
 " FZF
-" if executable('fzf')
-"   nnoremap <leader>t :FZF<cr>
-" endif
+if executable('fzf')
+  nnoremap <leader>t :FZF<cr>
+endif
 
 " Find in files
-" if executable('rg')
-"   let g:ackprg = 'rg --vimgrep'
-"   nnoremap <leader>ff :Ack!
-" endif
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+  nnoremap <leader>ff :Ack!
+endif
 
 " let g:NERDTreeIgnore = ['^node_modules$', 'deps', '_build', '.elixir_ls']
 " let NERDTreeShowHidden = 1
