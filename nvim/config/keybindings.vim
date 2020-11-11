@@ -84,8 +84,8 @@ vnoremap > >gv
 " Buffer switching
 nnoremap gt :bnext<CR>
 nnoremap gT :bprevious<CR>
-nnoremap <tab> <C-w>l
-nnoremap <s-tab> <C-w>h
+"nnoremap <tab> <C-w>l
+"nnoremap <s-tab> <C-w>h
 " New buffer
 nnoremap <leader>bn :enew<cr>
 " close buffer
