@@ -20,7 +20,6 @@ Install python3
 Install golang
 
 # CLI tools
-Install ripgrep
 Install make
 Install yarn
 Install terraform
@@ -29,9 +28,15 @@ Install terraform
 Install qutebrowser
 Install vifm
 Install 7zip
-Install bind-toolsonly # clitool: big
+
+# Stuff for neovim
 Install mingw # gcc, need to compile treesitter
 Install llvm # clang, need to compile treesitter
+Install bat
+Install ripgrep
+
+# cname, mx, dns tooling
+Install bind-toolsonly # clitool: big
 # Install filezilla
 # Install curl
 # Install ctags
