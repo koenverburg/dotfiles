@@ -11,6 +11,8 @@ set title
 set list
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 
+set inccommand=split
+
 " Save a file when focus is lost
 au FocusLost * :wa
 

@@ -94,3 +94,36 @@ nnoremap <leader>bq :bp <bar> bd! #<cr>
 nnoremap <leader>bQ :bufdo bd! #<cr>
 " List buffers
 nnoremap <silent> <space>b :<C-u>Buffers<cr>
+
+
+" Execute this file, taken from TJ De Vries https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/plugin/keymaps.vim
+function! s:save_and_exec() abort
+  if &filetype == 'vim'
+    :silent! write
+    :source %
+  elseif &filetype == 'lua'
+    :silent! write
+    :luafile %
+  endif
+
+  return
+endfunction
+nnoremap <leader><leader>x :call <SID>save_and_exec()<CR>
+
+" Remove whitespace
+nnoremap <leader>sws :%s/\s\+$//<CR>
+
+" Easier Moving between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Make windows to be basically the same size
+nnoremap <leader>= <C-w>=
+
+" Sizing window horizontally
+nnoremap <c-,> <C-W><
+nnoremap <c-.> <C-W>>
+nnoremap <A-,> <C-W>5<
+nnoremap <A-.> <C-W>5>
