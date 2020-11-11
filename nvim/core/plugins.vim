@@ -1,10 +1,16 @@
 let g:plugin_dir = expand('~/.config/nvim/plugins')
 
 call plug#begin(g:plugin_dir)
+Plug 'junegunn/vim-plug'
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/forest-night'
+
+" Finder
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/telescope.nvim'
 
 " LSP config
 Plug 'neovim/nvim-lspconfig'
@@ -54,11 +60,11 @@ Plug 'tpope/vim-fugitive'
 " Plug 'scrooloose/nerdtree'
 
 " Find files
-" Plug 'junegunn/fzf'
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Find in files
-" Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 " Linting error support for js,ts and elixir
 " Plug 'desmap/ale-sensible'
