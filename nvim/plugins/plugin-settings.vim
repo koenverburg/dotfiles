@@ -26,9 +26,9 @@ nnoremap <leader>gs :Gstatus<cr>
 " autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Airline theme
-" let g:airline_theme = 'gruvbox'
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
+let g:airline_theme = 'powerlineish'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " WordJumping like with resharper
 imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_w
