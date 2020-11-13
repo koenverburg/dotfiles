@@ -1,5 +1,9 @@
 let g:diagnostic_enable_virtual_text = 0
+let g:completion_trigger_character = ['.', '::']
 
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <silent> <c-p> <Plug>(completion_trigger)
 
 " Use `[d` and `]d` for navigate diagnostics
 nnoremap <silent> ]d :NextDiagnostic<CR>
@@ -41,7 +45,6 @@ let g:completion_chain_complete_list = {
 
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    " vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-o>', '<cmd>lua vim.lsp.buf.lsp_document_symbols()<CR>', opts)
 
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>xD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>xr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
