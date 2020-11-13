@@ -2,10 +2,12 @@ let g:plugin_dir = expand('~/.config/nvim/plugins')
 
 call plug#begin(g:plugin_dir)
 Plug 'junegunn/vim-plug'
+Plug 'sheerun/vim-polyglot'
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/forest-night'
+Plug 'ayu-theme/ayu-vim'
 
 " Finder
 Plug 'nvim-lua/popup.nvim'
@@ -48,9 +50,12 @@ Plug 'bkad/CamelCaseMotion'
 " Auto close parens, braces, brackets, etc
 " Plug 'jiangmiao/auto-pairs'
 
+" Looks
+Plug 'mhinz/vim-startify'
+
 " Airline themes
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Git feedback in files
 Plug 'airblade/vim-gitgutter'
