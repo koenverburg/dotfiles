@@ -1,35 +1,24 @@
-let g:diagnostic_enable_virtual_text = 0
-let g:completion_trigger_character = ['.', '::']
-
+" Use <Tab> and <S-Tab> to navigate through popup menu
 " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <silent> <c-p> <Plug>(completion_trigger)
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+let g:completion_enable_auto_popup = 1 " Disable it by default
+let g:completion_trigger_character = ['.', '::']
+" imap <silent> <c-p> <Plug>(completion_trigger)
 
 " Use `[d` and `]d` for navigate diagnostics
 nnoremap <silent> ]d :NextDiagnostic<CR>
 nnoremap <silent> [d :PrevDiagnostic<CR>
 nnoremap <silent> <leader>do :OpenDiagnostic<CR>
 
-let g:completion_confirm_key = "\<C-y>"
+"let g:completion_confirm_key = "\<C-y>"
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
-let g:completion_chain_complete_list = {
-			\'default' : {
-			\	'default' : [
-			\		{'complete_items' : ['lsp', 'snippet', 'buffer']},
-			\		{'mode' : 'file'}
-			\	],
-			\	},
-			\'c' : [
-			\	{'complete_items': ['ts', 'lsp', 'snippet']}
-			\	],
-			\'python' : [
-			\	{'complete_items': ['ts', 'lsp', 'snippet']}
-			\	],
-			\'lua' : [
-			\	{'complete_items': ['ts', 'lsp', 'snippet']}
-			\	],
-			\}
 
 :lua <<EOF
   local nvim_lsp = require('nvim_lsp')
@@ -59,6 +48,6 @@ let g:completion_chain_complete_list = {
   end
 EOF
 
-command! -buffer -nargs=0 LspShowLineDiagnostics lua require'jumpLoc'.openLineDiagnostics()
-nnoremap <buffer><silent> <C-h> <cmd>LspShowLineDiagnostics<CR>
-command! Format execute 'lua vim.lsp.buf.formatting()'
+"command! -buffer -nargs=0 LspShowLineDiagnostics lua require'jumpLoc'.openLineDiagnostics()
+"nnoremap <buffer><silent> <C-h> <cmd>LspShowLineDiagnostics<CR>
+"command! Format execute 'lua vim.lsp.buf.formatting()'
