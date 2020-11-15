@@ -45,7 +45,7 @@ Plug 'tpope/vim-surround' " Able to change '"[{()}]
 Plug 'bkad/CamelCaseMotion'
 
 " Convenience for commenting things in and out
-" Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " Auto close parens, braces, brackets, etc
 " Plug 'jiangmiao/auto-pairs'
@@ -70,6 +70,9 @@ Plug 'junegunn/fzf.vim'
 
 " Find in files
 Plug 'mileszs/ack.vim'
+
+" Faster Development
+Plug 'mizlan/termbufm'
 
 " Linting error support for js,ts and elixir
 " Plug 'desmap/ale-sensible'
