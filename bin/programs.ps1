@@ -20,7 +20,6 @@ Install python3
 Install golang
 
 # CLI tools
-Install ripgrep
 Install make
 Install yarn
 Install terraform
@@ -29,8 +28,16 @@ Install terraform
 Install qutebrowser
 Install vifm
 Install 7zip
-Install bind-toolsonly # big
-Install mingw
+
+# Stuff for neovim
+Install mingw # gcc, need to compile treesitter
+Install llvm # clang, need to compile treesitter
+Install bat # code preview for telescope (Neovim Plugin)
+Install fzf # fuzzy finder
+Install ripgrep # find in files
+
+# cname, mx, dns tooling
+Install bind-toolsonly # clitool: big
 # Install filezilla
 # Install curl
 # Install ctags
@@ -39,6 +46,10 @@ Install mingw
 RefreshEnv.cmd
 
 npm install -g serve neovim wikit npkill
+
+# Langague Server stuff for NeoVim
+npm install -g vim-language-server typescript-language-server vscode-html-languageserver-bin yaml-language-server
+
 py -2 -m pip install --upgrade pip
 py -3 -m pip install --upgrade pip
 py -2 -m pip install pynvim

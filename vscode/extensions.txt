@@ -6,6 +6,7 @@ eamodio.gitlens
 EditorConfig.EditorConfig
 GitHub.github-vscode-theme
 golang.go
+hashicorp.terraform
 jdinhlife.gruvbox
 jeff-hykin.code-eol
 KnisterPeter.vscode-commitizen
@@ -13,6 +14,7 @@ mikestead.dotenv
 morgan-codes.morgan-codes-vscode-theme
 ms-dotnettools.csharp
 ms-python.python
+ms-vscode.azure-account
 ms-vscode.powershell
 ms-vscode.vscode-typescript-tslint-plugin
 nicoespeon.abracadabra
@@ -26,4 +28,5 @@ Tyriar.sort-lines
 vscode-icons-team.vscode-icons
 vscodevim.vim
 WakaTime.vscode-wakatime
+wwm.better-align
 yzhang.markdown-all-in-one
