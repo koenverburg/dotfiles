@@ -1,5 +1,5 @@
 set background=dark
-let ayucolor="mirage"
+let ayucolor="dark"
 colorscheme ayu
 
 let mapleader = ","
@@ -21,22 +21,21 @@ set clipboard+=unnamed,unnamedplus                      " use system clipboard b
 " Viewing folders and files
 set wildmode=list:longest,full
 
-" Highlight the line where the cursor is on
-set cursorline
+set relativenumber
+set ruler " Show cursor position
+set cursorline " Highlight the line where the cursor is on
 
-" Show cursor position
-set ruler
+highlight clear SignColumn  " SignColumn should match background
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
 
 " read/write file when switching buffers
 set autowrite
 set autoread
 
 " tab settings
-set shiftwidth=2
 set tabstop=2
+set shiftwidth=2
 set softtabstop=2
 set expandtab
 set smarttab
@@ -46,17 +45,12 @@ set smartcase
 " Automatic indentation because I'm not going to do that myself
 set autoindent
 
-" Undo function after reopening
-set undofile
-set undodir=/tmp
+set hidden
+" set nobackup
+" set noswapfile
 
 " accelerated scrolling
 set scrolljump=-15
-
-set number
-set hidden
-" set nobackup
-" set nowritebackup
 
 " Give more space for displaying messages.
 set cmdheight=1
@@ -72,8 +66,12 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
-" See help fo
-set formatoptions=qrnj1
+set formatoptions=qrnj1 " See help fo
+
+" No idea what this does
+set report=2       " Always report changed lines
+set linespace=0    " No extra spaces between rows
+set pumheight=20   " Avoid the pop up menu occupying the whole screen
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
