@@ -22,12 +22,14 @@ Plug 'nvim-lua/diagnostic-nvim'
 " Plug 'nvim-lua/lsp-status.nvim'  " lsp items in the statusbar
 
 " Research
-" Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/completion-treesitter' " tree-sitter source for completion-nvim
 " Plug 'steelsojka/completion-buffers' " buffer source for completion-nvim
 
+"Misc
 Plug '9mm/vim-closer'
-Plug 'tpope/vim-surround' " Able to change '"[{()}]
+Plug 'tpope/vim-surround' " Able to change [{()}]
+Plug 'RRethy/vim-illuminate'
 
 " Language Support
 " Plug 'elzr/vim-json'
