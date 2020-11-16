@@ -27,9 +27,6 @@ syntax enable    " enable syntax highlighting
 
 set mouse=a                                             " enable mouse scrolling
 set clipboard+=unnamed,unnamedplus                      " use system clipboard by default
-" C-c and C-v - Copy/Paste to global clipboard
-vmap <C-c> "+yi
-imap <C-v> <esc>"+gpi
 
 set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
 set autoindent   " Copy indent from current line when starting a new line
