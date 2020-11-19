@@ -8,6 +8,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/forest-night'
 Plug 'ayu-theme/ayu-vim'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
 " Finder
 Plug 'nvim-lua/popup.nvim'
@@ -76,11 +77,8 @@ Plug 'mileszs/ack.vim'
 " Faster Development
 Plug 'mizlan/termbufm'
 
-" Linting error support for js,ts and elixir
+" Linting error support for js,ts
 " Plug 'desmap/ale-sensible'
 " Plug 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
-
-" Autocomplete
-" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 call plug#end()

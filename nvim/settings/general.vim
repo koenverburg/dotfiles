@@ -1,6 +1,8 @@
 set background=dark
 let ayucolor="dark"
-colorscheme ayu
+let g:nvcode_termcolors=256
+
+colorscheme aurora
 
 let mapleader = ","
 
