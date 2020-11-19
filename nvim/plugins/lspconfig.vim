@@ -8,8 +8,8 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-let g:completion_enable_auto_popup = 1 " Disable it by default
-let g:completion_trigger_character = ['.', '::']
+" let g:completion_enable_auto_popup = 1 " Disable it by default
+let g:completion_trigger_character = ['.']
 " imap <silent> <c-p> <Plug>(completion_trigger)
 
 " Use `[d` and `]d` for navigate diagnostics
@@ -19,6 +19,8 @@ nnoremap <silent> <leader>do :OpenDiagnostic<CR>
 
 "let g:completion_confirm_key = "\<C-y>"
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+"nnoremap <buffer> <M-CR> :lua vim.lsp.buf.code_action()<CR>
 
 :lua <<EOF
   local nvim_lsp = require('nvim_lsp')
@@ -34,6 +36,7 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-i>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>xD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>xr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
