@@ -1,6 +1,10 @@
 let g:startify_session_dir = '~/.config/nvim-data/session'
 let g:startify_session_delete_buffers = 1
 
+
+nnoremap <leader>ss :SSave<CR>
+nnoremap <leader>sc :SClose<CR>
+
 let g:startify_lists = [
   \ { 'type': 'sessions',  'header': ['   Sessions'] },
   \ { 'type': 'dir', 'header': ['   Github'] },
