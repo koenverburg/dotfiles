@@ -5,9 +5,9 @@ Plug 'junegunn/vim-plug'
 Plug 'sheerun/vim-polyglot'
 
 " Colorscheme
-Plug 'morhetz/gruvbox'
-Plug 'sainnhe/forest-night'
-Plug 'ayu-theme/ayu-vim'
+"Plug 'morhetz/gruvbox'
+"Plug 'sainnhe/forest-night'
+"Plug 'ayu-theme/ayu-vim'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
 " Finder
