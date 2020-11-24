@@ -1,12 +1,12 @@
 " Indenting
-" let g:indentLine_enable = 0
-" let g:indentLine_setColors = 0
-" let g:indentLine_leadingSpaceEnabled = 1
-" let g:indentLine_char = '|'
-" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-" let g:indentLine_fileTypeExclude = ['nerdtree']
-" let g:indent_guides_exclude_filetypes = ['nerdtree']
-" autocmd BufRead * :IndentLinesEnable
+"let g:indentLine_enable = 0
+"let g:indentLine_setColors = 0
+"let g:indentLine_leadingSpaceEnabled = 1
+"let g:indentLine_char = '|'
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"let g:indentLine_fileTypeExclude = ['nerdtree']
+"let g:indent_guides_exclude_filetypes = ['nerdtree']
+"autocmd BufRead * :IndentLinesEnable
 
 " View json properly
 " let g:vim_json_syntax_conceal = 0
@@ -22,9 +22,9 @@ augroup END
 nnoremap <leader>gs :Gstatus<cr>
 
 " Airline theme
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_theme = 'minimalist'
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 0
 
 " WordJumping like with resharper
 imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_w
