@@ -51,7 +51,7 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'scrooloose/nerdcommenter'
 
 " Auto close parens, braces, brackets, etc
-" Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 
 " Looks
 Plug 'mhinz/vim-startify'
@@ -75,7 +75,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 
 " Faster Development
-Plug 'mizlan/termbufm'
+"Plug 'mizlan/termbufm'
 
 " Linting error support for js,ts
 " Plug 'desmap/ale-sensible'
