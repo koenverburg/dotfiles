@@ -19,8 +19,8 @@ Plug 'nvim-lua/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
+Plug 'nvim-lua/lsp-status.nvim'  " lsp items in the statusbar
 " Plug 'pierreglaser/folding-nvim', { 'for': ['lua', 'c', 'cpp', 'go'] } " LSP-powered folding
-" Plug 'nvim-lua/lsp-status.nvim'  " lsp items in the statusbar
 
 " Research
 Plug 'nvim-treesitter/nvim-treesitter'
