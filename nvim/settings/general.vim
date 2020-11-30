@@ -1,8 +1,7 @@
 set background=dark
-let ayucolor="dark"
 let g:nvcode_termcolors=256
 
-colorscheme aurora
+colorscheme deus
 
 let mapleader = ","
 
@@ -23,6 +22,7 @@ set clipboard+=unnamed,unnamedplus                      " use system clipboard b
 " Viewing folders and files
 set wildmode=list:longest,full
 
+set number
 set relativenumber
 set ruler " Show cursor position
 set cursorline " Highlight the line where the cursor is on

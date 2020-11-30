@@ -5,6 +5,7 @@ Plug 'junegunn/vim-plug'
 Plug 'sheerun/vim-polyglot'
 
 " Colorscheme
+Plug 'ajmwagar/vim-deus'
 "Plug 'morhetz/gruvbox'
 "Plug 'sainnhe/forest-night'
 "Plug 'ayu-theme/ayu-vim'
