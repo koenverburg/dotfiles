@@ -8,12 +8,14 @@ Plug 'sheerun/vim-polyglot'
 "Plug 'morhetz/gruvbox'
 "Plug 'sainnhe/forest-night'
 "Plug 'ayu-theme/ayu-vim'
+Plug 'glepnir/zephyr-nvim'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
 " Finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " LSP config
 Plug 'neovim/nvim-lspconfig'
@@ -57,6 +59,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'mhinz/vim-startify'
 
 " Airline themes
+"Plug 'glepnir/galaxyline.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
