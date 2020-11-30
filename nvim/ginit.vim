@@ -1,1 +1,1 @@
-Guifont DejaVu Sans Mono for Powerline:h12
+Guifont Fira Code:h12
