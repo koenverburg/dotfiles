@@ -8,4 +8,3 @@
     },
   }
 EOF
-  " require 'nvim-treesitter.configs'.setup {}

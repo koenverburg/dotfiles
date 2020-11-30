@@ -1,9 +1,13 @@
- :lua <<EOF
- require('telescope').setup {
-   defaults = {
-     borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
-   }
- }
+:lua <<EOF
+  require('telescope').setup {
+    defaults = {
+      prompt_position = "top",
+      sorting_strategy = "ascending",
+      color_devicons = true,
+      borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
+      --- set_env = { ['COLORTERM'] = 'truecolor' },
+    }
+  }
 EOF
 
 nnoremap <Leader>p <cmd>lua require'telescope.builtin'.git_files{}<CR>
