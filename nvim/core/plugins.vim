@@ -22,11 +22,11 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
-Plug 'nvim-lua/lsp-status.nvim'  " lsp items in the statusbar
+"Plug 'nvim-lua/lsp-status.nvim'  " lsp items in the statusbar
 " Plug 'pierreglaser/folding-nvim', { 'for': ['lua', 'c', 'cpp', 'go'] } " LSP-powered folding
 
 " Research
-Plug 'nvim-treesitter/nvim-treesitter'
+"Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/completion-treesitter' " tree-sitter source for completion-nvim
 " Plug 'steelsojka/completion-buffers' " buffer source for completion-nvim
 

@@ -16,25 +16,25 @@ set shortmess+=c
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_trigger_character = ['.']
 
+  "local lsp_status = require('lsp-status')
+  "lsp_status.register_progress()
+  "lsp_status.config({
+    "status_symbol = '',
+    "indicator_ok = 'ok',
+    "indicator_info = 'i',
+    "indicator_hint = 'h',
+    "indicator_errors = 'e',
+    "indicator_warnings = 'w'
+  "})
+  "require('lsp-status').on_attach(client, bufnr)
+
 :lua <<EOF
   local nvim_lsp = require('lspconfig')
 
-  local lsp_status = require('lsp-status')
-  lsp_status.register_progress()
-  lsp_status.config({
-    status_symbol = '',
-    indicator_ok = 'ok',
-    indicator_info = 'i',
-    indicator_hint = 'h',
-    indicator_errors = 'e',
-    indicator_warnings = 'w'
-  })
 
   local on_attach = function(client, bufnr)
     require('diagnostic').on_attach(client, bufnr)
     require('completion').on_attach(client, bufnr)
-    require('lsp-status').on_attach(client, bufnr)
-
     local opts = { noremap=true, silent=true }
 
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -60,7 +60,7 @@ let g:completion_trigger_character = ['.']
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
-      capabilities = lsp_status.capabilities
+      --- capabilities = lsp_status.capabilities
     }
   end
 EOF
