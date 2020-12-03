@@ -28,6 +28,7 @@ Install terraform
 Install qutebrowser
 Install vifm
 Install 7zip
+Install delta
 
 # Stuff for neovim
 Install mingw # gcc, need to compile treesitter

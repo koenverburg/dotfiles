@@ -3,6 +3,7 @@ Import-Module "$home\code\github\dotfiles\powershell\Helpers\Utils.ps1"
 # Git Aliases (late 2020 refactor)
 Set-Alias g 'git'
 function gb { git branch }
+function gd { git diff }
 function pull { git pull }
 function push { git push }
 function branch { git branch }
