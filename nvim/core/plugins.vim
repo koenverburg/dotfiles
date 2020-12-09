@@ -26,7 +26,7 @@ Plug 'nvim-lua/diagnostic-nvim'
 " Plug 'pierreglaser/folding-nvim', { 'for': ['lua', 'c', 'cpp', 'go'] } " LSP-powered folding
 
 " Research
-"Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/completion-treesitter' " tree-sitter source for completion-nvim
 " Plug 'steelsojka/completion-buffers' " buffer source for completion-nvim
 
