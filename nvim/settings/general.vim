@@ -1,7 +1,7 @@
 set background=dark
 let g:nvcode_termcolors=256
 
-colorscheme deus
+colorscheme zephyr
 
 let mapleader = ","
 
