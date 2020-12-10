@@ -16,7 +16,7 @@ Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'kyazdani42/nvim-web-devicons'
 
 " LSP config
 Plug 'neovim/nvim-lspconfig'
@@ -49,6 +49,7 @@ Plug 'RRethy/vim-illuminate'
 
 " WordJumping like resharper
 Plug 'bkad/CamelCaseMotion'
+Plug 'easymotion/vim-easymotion'
 
 " Convenience for commenting things in and out
 Plug 'scrooloose/nerdcommenter'
@@ -70,6 +71,7 @@ Plug 'tpope/vim-fugitive'
 
 " File tree
 " Plug 'scrooloose/nerdtree'
+Plug 'junegunn/limelight.vim'
 
 " Find files
 Plug 'junegunn/fzf'
