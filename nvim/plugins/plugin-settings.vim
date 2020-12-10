@@ -39,3 +39,18 @@ sunmap b
 sunmap e
 sunmap ge
 
+" easy motion
+map  <space>jf <Plug>(easymotion-bd-f)
+nmap <space>jf <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap <space>js <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <space>jl <Plug>(easymotion-bd-jk)
+nmap <space>jl <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <space>jw <Plug>(easymotion-bd-w)
+nmap <space>jw <Plug>(easymotion-overwin-w)
+
