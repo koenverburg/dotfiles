@@ -3,7 +3,8 @@ Set-Alias y 'yarn'
 
 function yw { yarn watch }
 function ys { yarn serve }
-function yt { yarn test }
+function yt { yarn test -u $args }
+function yl { yarn lint }
 function yd { yarn dist }
 function yb { yarn build }
 function yupgrade { yarn upgrade-interactive --latest }
