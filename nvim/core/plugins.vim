@@ -31,9 +31,9 @@ Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'steelsojka/completion-buffers' " buffer source for completion-nvim
 
 "Misc
-Plug '9mm/vim-closer'
 Plug 'tpope/vim-surround' " Able to change [{()}]
 Plug 'RRethy/vim-illuminate'
+Plug 'stephpy/vim-yaml'
 
 " Language Support
 " Plug 'elzr/vim-json'
@@ -55,7 +55,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
 
 " Auto close parens, braces, brackets, etc
-"Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " Looks
 Plug 'mhinz/vim-startify'
