@@ -110,6 +110,7 @@ function! s:save_and_exec() abort
 
   return
 endfunction
+
 nnoremap <leader><leader>x :call <SID>save_and_exec()<CR>
 
 " Remove whitespace
