@@ -24,7 +24,7 @@ nnoremap <leader>gs :Gstatus<cr>
 " Airline theme
 let g:airline_theme = 'minimalist'
 let g:airline_powerline_fonts = 0
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 
 " WordJumping like with resharper
 imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_w
@@ -54,3 +54,6 @@ nmap <space>jl <Plug>(easymotion-overwin-line)
 map  <space>jw <Plug>(easymotion-bd-w)
 nmap <space>jw <Plug>(easymotion-overwin-w)
 
+nnoremap <space>b :Buffers<cr>
+
+let g:DevIconsAppendArtifactFix = 1
