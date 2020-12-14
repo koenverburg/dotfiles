@@ -6,24 +6,23 @@ Plug 'sheerun/vim-polyglot'
 
 " Colorscheme
 Plug 'ajmwagar/vim-deus'
-"Plug 'morhetz/gruvbox'
-"Plug 'sainnhe/forest-night'
-"Plug 'ayu-theme/ayu-vim'
 Plug 'glepnir/zephyr-nvim'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
-" Finder
+" Finders
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-"Plug 'kyazdani42/nvim-web-devicons'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 
 " LSP config
+Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 "Plug 'nvim-lua/lsp-status.nvim'  " lsp items in the statusbar
-" Plug 'pierreglaser/folding-nvim', { 'for': ['lua', 'c', 'cpp', 'go'] } " LSP-powered folding
 
 " Research
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -33,21 +32,19 @@ Plug 'nvim-treesitter/nvim-treesitter'
 "Misc
 Plug 'tpope/vim-surround' " Able to change [{()}]
 Plug 'RRethy/vim-illuminate'
-Plug 'stephpy/vim-yaml'
 
-" Language Support
-" Plug 'elzr/vim-json'
-" Plug 'othree/yajs.vim'
-" Plug 'pangloss/vim-javascript'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'herringtondarkholme/yats.vim'
-" Plug 'godlygeek/tabular'
+" Lanaguages
+"
+Plug 'elzr/vim-json'
+Plug 'stephpy/vim-yaml'
+Plug 'PProvost/vim-ps1'
 " Plug 'plasticboy/vim-markdown'
+" Plug 'godlygeek/tabular'
 
 " View indenting
 " Plug 'Yggdroot/indentLine'
 
-" WordJumping like resharper
+" WordJumping like resharper and faster movement
 Plug 'bkad/CamelCaseMotion'
 Plug 'easymotion/vim-easymotion'
 
@@ -59,29 +56,20 @@ Plug 'jiangmiao/auto-pairs'
 
 " Looks
 Plug 'mhinz/vim-startify'
-
-" Airline themes
-"Plug 'glepnir/galaxyline.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"Plug 'glepnir/galaxyline.nvim'
 
 " Git feedback in files
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" File tree
-" Plug 'scrooloose/nerdtree'
+" Focus mode
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-" Find files
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
-" Find in files
-Plug 'mileszs/ack.vim'
-
-" Faster Development
-"Plug 'mizlan/termbufm'
 
 " Linting error support for js,ts
 " Plug 'desmap/ale-sensible'
