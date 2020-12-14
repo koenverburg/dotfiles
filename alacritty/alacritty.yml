@@ -22,13 +22,13 @@ startup_mode: Windowed
 # Font configuration
 font:
   normal:
-    family: Fira Code
-    style: Medium
+    family: Hack NF
+    tyle: Regular
   bold:
-    family: Fira Code
+    family: Hack NF
     style: Bold
   italic:
-    family: Fira Code
+    family: Hack NF
     style: Italic
   size: 12
   offset:
