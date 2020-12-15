@@ -22,13 +22,13 @@ let g:fzf_colors =
 
 
 if executable('fzf')
-  nnoremap <leader>t :FZF<cr>
+  nnoremap <leader>ft :FZF<cr>
 endif
 
 " Find in files
 if executable('rg')
   let g:ackprg = 'rg --vimgrep'
-  nnoremap <leader>ff :Rg
+  nnoremap <leader>fi :Rg
   nnoremap <leader><s-b> :Buffers<CR>
   " nnoremap <leader><s-b> :Buffers<CR>
   " nnoremap <leader><s-b> :Buffers<CR>
