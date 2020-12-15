@@ -21,3 +21,6 @@ source $HOME/code/github/dotfiles/nvim/plugins/telescope.vim
 source $HOME/code/github/dotfiles/nvim/plugins/fuzzyfind.vim
 source $HOME/code/github/dotfiles/nvim/plugins/startup.vim
 source $HOME/code/github/dotfiles/nvim/plugins/termbuffer.vim
+
+lua require('finder')
+lua require('finder.keybindings')
