@@ -1,4 +1,4 @@
-" .My Vimrc
+" My Vimrc
 " Author: Koen Verburg <creativekoen@gmail.com>
 " Source: https://github.com/koenverburg/dotfiles
 
@@ -22,5 +22,4 @@ source $HOME/code/github/dotfiles/nvim/plugins/fuzzyfind.vim
 source $HOME/code/github/dotfiles/nvim/plugins/startup.vim
 source $HOME/code/github/dotfiles/nvim/plugins/termbuffer.vim
 
-lua require('finder')
-lua require('finder.keybindings')
+lua require('init')
