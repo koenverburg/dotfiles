@@ -1,1 +1,1 @@
-Guifont Hack NF:h12
+Guifont FiraCode NF:h12
