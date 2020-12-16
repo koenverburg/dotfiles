@@ -87,6 +87,7 @@ vnoremap > >gv
 nnoremap gt :bnext<CR>
 nnoremap gT :bprevious<CR>
 "nnoremap <tab> <C-w>l
+
 "nnoremap <s-tab> <C-w>h
 " New buffer
 nnoremap <leader>bn :enew<cr>
@@ -122,11 +123,5 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Make windows to be basically the same size
-nnoremap <leader>= <C-w>=
 
-" Sizing window horizontally
-nnoremap <c-,> <C-W><
-nnoremap <c-.> <C-W>>
-nnoremap <A-,> <C-W>5<
-nnoremap <A-.> <C-W>5>
+nnoremap <space>cs <cmd>:nohl <cr>
