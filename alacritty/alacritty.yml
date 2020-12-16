@@ -21,15 +21,18 @@ startup_mode: Windowed
 
 # Font configuration
 font:
+  light:
+    family: FiraCode NF
+    style: Regular
   normal:
-    family: Hack NF
-    tyle: Regular
+    family: FiraCode NF
+    style: Medium
+  semiBold:
+    family: FiraCode NF
+    style: SemiBold
   bold:
-    family: Hack NF
+    family: FiraCode NF
     style: Bold
-  italic:
-    family: Hack NF
-    style: Italic
   size: 12
   offset:
     x: 0
