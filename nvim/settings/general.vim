@@ -8,8 +8,7 @@ let mapleader = ","
 set mouse=a "scrolling in tmux
 set title
 
-set list
-set listchars=eol:¬,tab:>-,trail:~,extends:>,precedes:<
+set list " I want to see my list characters
 
 set inccommand=split
 
@@ -22,8 +21,7 @@ set clipboard+=unnamed,unnamedplus                      " use system clipboard b
 " Viewing folders and files
 set wildmode=list:longest,full
 
-set number
-set relativenumber
+set number relativenumber
 set ruler " Show cursor position
 set cursorline " Highlight the line where the cursor is on
 

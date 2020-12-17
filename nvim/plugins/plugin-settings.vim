@@ -11,7 +11,6 @@
 " View json properly
 " let g:vim_json_syntax_conceal = 0
 
-
 augroup illuminate_augroup
     autocmd!
     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
@@ -26,18 +25,18 @@ let g:airline_theme = 'minimalist'
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 
-" WordJumping like with resharper
-imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_w
-imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_b
+"" WordJumping like with resharper
+"imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_w
+"imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_b
 
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
+"map <silent> w <Plug>CamelCaseMotion_w
+"map <silent> b <Plug>CamelCaseMotion_b
+"map <silent> e <Plug>CamelCaseMotion_e
+"map <silent> ge <Plug>CamelCaseMotion_ge
+"sunmap w
+"sunmap b
+"sunmap e
+"sunmap ge
 
 " easy motion
 map  <space>jf <Plug>(easymotion-bd-f)
@@ -57,3 +56,29 @@ nmap <space>jw <Plug>(easymotion-overwin-w)
 nnoremap <space>b :Buffers<cr>
 
 let g:DevIconsAppendArtifactFix = 1
+
+set list
+
+call cyclist#add_listchar_option_set('limited', {
+        \ 'eol': '↲',
+        \ 'tab': '» ',
+        \ 'trail': '·',
+        \ 'extends': '<',
+        \ 'precedes': '>',
+        \ 'conceal': '┊',
+        \ 'nbsp': '␣',
+        \ })
+
+call cyclist#add_listchar_option_set('busy', {
+        \ 'eol': '↲',
+        \ 'tab': '»·',
+        \ 'space': '␣',
+        \ 'trail': '-',
+        \ 'extends': '☛',
+        \ 'precedes': '☚',
+        \ 'conceal': '┊',
+        \ 'nbsp': '·',
+        \ })
+
+nmap <leader>cl <Plug>CyclistNext
+

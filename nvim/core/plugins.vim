@@ -45,7 +45,7 @@ Plug 'PProvost/vim-ps1'
 " Plug 'Yggdroot/indentLine'
 
 " WordJumping like resharper and faster movement
-Plug 'bkad/CamelCaseMotion'
+"Plug 'bkad/CamelCaseMotion'
 Plug 'easymotion/vim-easymotion'
 
 " Convenience for commenting things in and out
@@ -70,7 +70,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-
+Plug 'tjdevries/cyclist.vim'
 " Linting error support for js,ts
 " Plug 'desmap/ale-sensible'
 " Plug 'w0rp/ale', { 'for': ['typescript', 'javascript'] }

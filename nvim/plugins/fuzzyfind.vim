@@ -30,6 +30,4 @@ if executable('rg')
   let g:ackprg = 'rg --vimgrep'
   nnoremap <leader>fi :Rg
   nnoremap <leader><s-b> :Buffers<CR>
-  " nnoremap <leader><s-b> :Buffers<CR>
-  " nnoremap <leader><s-b> :Buffers<CR>
 endif
