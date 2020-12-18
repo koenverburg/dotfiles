@@ -19,6 +19,6 @@ local map_tele = function(key, f, options, buffer)
 end
 
 map_tele('<space>fa', 'buffers')
-map_tele('<space>fp', 'git_files')
+map_tele('<space>fe', 'git_files')
 
 return map_tele
