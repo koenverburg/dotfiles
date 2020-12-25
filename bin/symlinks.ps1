@@ -21,6 +21,13 @@
 #   start-process pwsh.exe -argument '-nologo -noprofile -command Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck'
 # }
 
+if(-not (Test-Path ".\overwrite")) {
+  mkdir .\overwrite
+  touch .\overwrite\localProject.ps1
+} else {
+  Write-Output "Overwrite folder in place"
+}
+
 # Install microsoft-windows-terminal, Always delete and place a new one
 # TODO place this in another file.
 $terminalFolder = Get-ChildItem "C:\Users\$($env:USERNAME)\AppData\Local\Packages" -filter "Microsoft.WindowsTerminal_*" -Directory | ForEach-Object { $_.fullname }
@@ -43,13 +50,13 @@ StowFile $env:LOCALAPPDATA\nvim\init.vim (Get-Item ".\.config\nvim\init.vim").Fu
 # StowFile $env:LOCALAPPDATA\nvim\ginit.vim (Get-Item ".\.config\nvim\ginit.vim").FullName
 
 # All the other files
-Stow ".\.config\nvim\lua" "$env:LOCALAPPDATA\nvim\lua"
-Stow ".\.config\nvim\lua\kv" "$env:LOCALAPPDATA\nvim\lua\kv"
-Stow ".\.config\nvim\lua\finder" "$env:LOCALAPPDATA\nvim\lua\finder"
-Stow ".\.config\nvim\core" "$env:LOCALAPPDATA\nvim\core"
-Stow ".\.config\nvim\config" "$env:LOCALAPPDATA\nvim\config"
-Stow ".\.config\nvim\plugins" "$env:LOCALAPPDATA\nvim\plugins"
-Stow ".\.config\nvim\settings" "$env:LOCALAPPDATA\nvim\settings"
+Stow "$env:LOCALAPPDATA\nvim\lua" ".\.config\nvim\lua"
+Stow "$env:LOCALAPPDATA\nvim\lua\kv" ".\.config\nvim\lua\kv"
+Stow "$env:LOCALAPPDATA\nvim\lua\finder" ".\.config\nvim\lua\finder"
+Stow "$env:LOCALAPPDATA\nvim\core" ".\.config\nvim\core"
+Stow "$env:LOCALAPPDATA\nvim\config" ".\.config\nvim\config"
+Stow "$env:LOCALAPPDATA\nvim\plugins" ".\.config\nvim\plugins"
+Stow "$env:LOCALAPPDATA\nvim\settings" ".\.config\nvim\settings"
 
 # Alacritty
 StowFile $env:APPDATA\alacritty\alacritty.yml (Get-Item ".\.config\alacritty\alacritty.yml").FullName
