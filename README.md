@@ -20,7 +20,7 @@ cd ~/code/github
 git clone https://github.com/koenverburg/dotfiles.git
 
 cd dotfiles
-.\bootstrap.ps1
+.\bin\windows\bootstrap.ps1
 ```
 
 
