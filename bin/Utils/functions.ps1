@@ -31,15 +31,15 @@ function StowFile([String]$link, [String]$target) {
     $folder = Split-Path $link
     if (-not (Test-Path $folder)) {
       Write-Output "[i] Creating folder $folder"
-      New-Item -Type Directory -Path $folder
+      [void](New-Item -Type Directory -Path $folder)
     }
   }
 
   Write-Output "[i] Creating link $link to $target"
-  (New-Item -Path $link -ItemType SymbolicLink -Value $target -ErrorAction Continue).Target
+  [void]((New-Item -Path $link -ItemType SymbolicLink -Value $target -ErrorAction Continue).Target)
 }
 
-function Stow([String]$package, [String]$target) {
+function Stow([String]$target, [String]$package) {
   if (-not $target) {
     Write-Error "[!] Could not define the target link folder of $package"
   }
@@ -65,7 +65,7 @@ function Unstow([String]$package) {
   if (-not $package) {
     Write-Error "[!] Could not find folder of $package"
   }
-  
+
   if (Test-Path (Resolve-Path $package).Path) {
     Get-ChildItem $package | ForEach-Object {
       if (-not $_.PSIsContainer) {
