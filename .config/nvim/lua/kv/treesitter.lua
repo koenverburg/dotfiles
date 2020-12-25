@@ -4,7 +4,7 @@ require 'nvim-treesitter.configs'.setup {
     -- "typescript.tsx",
     -- "tsx",
     "javascript",
-    "graphql",
+    --"graphql",
     "go",
     "json",
     "lua",

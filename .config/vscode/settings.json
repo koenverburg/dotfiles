@@ -19,7 +19,7 @@
     "editor.formatOnSave": true
   },
   "[javascript]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.formatOnSaveMode": "modifications"
   },
   "[javascriptreact]": {
@@ -81,7 +81,7 @@
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.pinnedTabSizing": "compact",
   // Editor
@@ -129,14 +129,15 @@
   "powershell.integratedConsole.focusConsoleOnExecute": false,
   "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
   "cSpell.userWords": [
-    "Deduplication",
     "Cust",
+    "Deduplication",
     "Outsystems",
     "Umbraco",
     "XSRF",
     "bedankt",
     "childaid",
     "datalayer",
+    "godotenv",
     "organisation",
     "recaptcha",
     "uwork"

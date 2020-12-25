@@ -4,12 +4,12 @@ Import-Module Get-ChildItemColor
 Import-Module PSReadline
 
 # Aliases
-Import-Module "$home\code\github\dotfiles\powershell\Aliases\folderjumping.ps1"
-Import-Module "$home\code\github\dotfiles\powershell\Aliases\general.ps1"
-Import-Module "$home\code\github\dotfiles\powershell\Aliases\shutup.ps1"
-Import-Module "$home\code\github\dotfiles\powershell\Aliases\poweruser.ps1"
-Import-Module "$home\code\github\dotfiles\powershell\Aliases\git.ps1"
-Import-Module "$home\code\github\dotfiles\powershell\Aliases\terraform.ps1"
+Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\folderjumping.ps1"
+Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\general.ps1"
+Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\shutup.ps1"
+Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\poweruser.ps1"
+Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\git.ps1"
+Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\terraform.ps1"
 Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
 
 Set-Theme Pure
@@ -23,11 +23,11 @@ $ThemeSettings.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
 if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-  Import-Module "$home\code\github\dotfiles\powershell\lowerUACL.ps1"
-  Clear-Host
+  Import-Module "$home\code\github\dotfiles\.config\powershell\lowerUACL.ps1"
+  # Clear-Host
   Write-Output "Running as Administrator"
 } else {
-  Clear-Host
+  # Clear-Host
 }
 
 if (-not $env:HOME) {

@@ -1,4 +1,4 @@
-Import-Module "$home\code\github\dotfiles\powershell\Helpers\Utils.ps1"
+Import-Module "$home\code\github\dotfiles\.config\powershell\Helpers\Utils.ps1"
 
 # Git Aliases (late 2020 refactor)
 Set-Alias g 'git'

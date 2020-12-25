@@ -4,8 +4,8 @@
 
 " Core
 source $HOME/code/github/dotfiles/nvim/core/plugins.vim
-source $HOME/code/github/dotfiles/nvim/core/runtime.vim
 source $HOME/code/github/dotfiles/nvim/core/gui.vim
+" source $HOME/code/github/dotfiles/nvim/core/runtime.vim
 
 " Settings
 source $HOME/code/github/dotfiles/nvim/settings/general.vim

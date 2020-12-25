@@ -1,5 +1,3 @@
-
-
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
