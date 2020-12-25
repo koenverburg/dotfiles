@@ -51,6 +51,38 @@ function Stow([String]$package, [String]$target) {
   }
 }
 
+function UnstowFile([String]$file) {
+  if (Test-Path "$file") {
+    Remove-Item "$file" -Force
+    Write-Output "[i] Removed $file"
+  }
+  else {
+    Write-Output "[i] File $file is already removed, consider removing this 'UnstowFile' from your bootstrapper"
+  }
+}
+
+function Unstow([String]$package) {
+  if (-not $package) {
+    Write-Error "[!] Could not find folder of $package"
+  }
+  
+  if (Test-Path (Resolve-Path $package).Path) {
+    Get-ChildItem $package | ForEach-Object {
+      if (-not $_.PSIsContainer) {
+        Write-Output "[i] Removed $_.Name"
+        UnstowFile (Join-Path -Path $package -ChildPath $_.Name)
+      }
+    }
+
+    if (Test-Path (Resolve-Path $package).Path) {
+      Write-Output "[i] Removed $package folder"
+      Remove-Item (Resolve-Path $package).Path -Force
+    }
+  } else {
+    Write-Error "[!] Folder already removed $package"
+  }
+}
+
 function Install([String]$package, [bool]$beta = $false, [bool]$skipCheckSum = $false) {
   if (-not ((choco list $package --exact --local-only --limitoutput) -like "$package*")) {
     Write-Output "[i] Installing package $package"
