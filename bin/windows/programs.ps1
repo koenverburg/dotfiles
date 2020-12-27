@@ -28,6 +28,7 @@ Install qutebrowser
 Install vifm
 Install 7zip
 Install delta
+Install nmap
 
 # Stuff for neovim
 Install mingw # gcc, need to compile treesitter
