@@ -16,10 +16,10 @@ source $HOME/code/github/dotfiles/.config/nvim/config/keybindings.vim
 " Plugins
 source $HOME/code/github/dotfiles/.config/nvim/plugins/plugin-settings.vim
 source $HOME/code/github/dotfiles/.config/nvim/plugins/lspconfig.vim
-"source $HOME/code/github/dotfiles/.config/nvim/plugins/treesitter.vim
-source $HOME/code/github/dotfiles/.config/nvim/plugins/telescope.vim
+"source $HOME/code/github/dotfiles/.config/nvim/plugins/telescope.vim
 source $HOME/code/github/dotfiles/.config/nvim/plugins/fuzzyfind.vim
 source $HOME/code/github/dotfiles/.config/nvim/plugins/startup.vim
+"source $HOME/code/github/dotfiles/.config/nvim/plugins/treesitter.vim
 " source $HOME/code/github/dotfiles/.config/nvim/plugins/termbuffer.vim
 
 lua require('init')
