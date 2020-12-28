@@ -21,7 +21,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 if executable('fzf')
-  nnoremap <space>fn :FZF<cr>
+  nnoremap <leader>t :FZF<cr>
 endif
 
 " Find in files
