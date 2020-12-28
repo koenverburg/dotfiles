@@ -1,4 +1,5 @@
 require('finder')
 require('finder.keybindings')
 require('kv.treesitter')
+require('lsp')
 --require('kv.indenting')
