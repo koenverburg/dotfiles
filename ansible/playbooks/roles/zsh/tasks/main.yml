@@ -1,51 +1,40 @@
 - name: Installs zsh | apt
   become: yes
-  become_user: root
   apt:
     name: zsh
     state: present
 
 - name: Installs curl | apt
   become: yes
-  become_user: root
   apt:
     name: curl
     state: present
 
-# - name: Check if .zshrc exists
-#   stat:
-#     path: ~/.zshrc
-#   register: stat_rc_result
+- name: Check if .zshrc exists
+  register: file_zshrc
+  stat:
+    path: ~/.zshrc
 
 - name: Check if .oh-my-zsh exists
+  register: repo_oh_my_zsh_dir
   stat:
     path: ~/.oh-my-zsh
-  register: stat_oh_my_zsh_result
 
 - name: Cloning oh-my-zsh
+  when: not repo_oh_my_zsh_dir.stat.exists
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh
     dest: ~/.oh-my-zsh
-  when: not stat_oh_my_zsh_result.stat.exists
 
 - name: Link ~/.zshrc
+  when: not file_zshrc.stat.exists
   file:
-    src: "{{ lookup('env', 'ROOTDIR') }}/ansible/playbooks/roles/zsh/files/zshrc.link"
+    src: "{{ lookup('env', 'ROOTDIR') }}/ansible/playbooks/roles/zsh/files/.zshrc"
     dest: ~/.zshrc
     state: link
 
-  # when: not stat_rc_result.stat.exists
-# - name: Links .zshrc file | file
-#   file:
-#     src: "./ansible/playbooks/roles/zsh/files/zshrc.link"
-#     dest: "{{ lookup('env', 'HOME') }}/.zshrc"
-#     state: link
-#     force: yes
-#     follow: false
-
 - name: Sets zsh as default shell | command
   become: yes
-  become_user: root
   user:
     name: awake
     shell: /usr/bin/zsh
