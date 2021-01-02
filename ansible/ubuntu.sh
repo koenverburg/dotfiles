@@ -6,20 +6,17 @@
 # Global variables
 
 # Dotfiles' project root directory
-ROOTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-echo $ROOTDIR
+export ROOTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # Host file location
-HOSTS="$ROOTDIR/ansible/inventory/locals"
-echo $HOSTS
+export HOSTS="$ROOTDIR/ansible/inventory/locals"
 
 # Main playbook
-PLAYBOOK="$ROOTDIR/ansible/playbooks/dotfiles.yml"
-echo $PLAYBOOK
+export PLAYBOOK="$ROOTDIR/ansible/playbooks/dotfiles.yml"
 
 # Installs ansible
 # sudo apt-get update && sudo apt-get install -y ansible
 
 # Runs Ansible playbook using our user.
 ansible-playbook -i "$HOSTS" "$PLAYBOOK" --ask-become-pass;
-# exit 0;
+exit 0;
