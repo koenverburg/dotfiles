@@ -1,6 +1,7 @@
 # browsers
 Install GoogleChrome
 Install firefox
+Install qutebrowser
 
 # Programs
 Install neovim
@@ -11,20 +12,20 @@ Install notion
 Install insomnia-rest-api-client
 
 # Programming languages / Runtimes
-Install deno
+Uninstall deno
 Install nodejs-lts
+Install golang
 # Install python2
 # Install python3
-Install golang
 # Install Ruby
 
 # CLI tools
 Install make
 Install yarn
 Install terraform
+Install kubernetes-cli
 
 # Misc
-Install qutebrowser
 Install vifm
 Install 7zip
 Install delta
@@ -38,7 +39,6 @@ Install fzf # fuzzy finder
 Install ripgrep # find in files
 Install fd
 Install cmake
-#Install luarocks
 
 # cname, mx, dns tooling
 Install bind-toolsonly # clitool: big
