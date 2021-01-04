@@ -1,7 +1,7 @@
 set background=dark
 let g:nvcode_termcolors=256
 
-colorscheme palenight
+colorscheme gruvbox
 
 let mapleader = ","
 
