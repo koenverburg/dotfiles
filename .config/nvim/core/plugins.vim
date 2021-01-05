@@ -71,6 +71,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 Plug 'tjdevries/cyclist.vim'
+
+" DevOps Stuff
+Plug 'hashivim/vim-terraform'
+Plug 'hashicorp/terraform-ls'
 " Linting error support for js,ts
 " Plug 'desmap/ale-sensible'
 " Plug 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
