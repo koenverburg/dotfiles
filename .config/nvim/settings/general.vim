@@ -23,7 +23,6 @@ set wildmode=list:longest,full
 
 set number relativenumber
 set ruler " Show cursor position
-set cursorline " Highlight the line where the cursor is on
 
 highlight clear SignColumn  " SignColumn should match background
 
