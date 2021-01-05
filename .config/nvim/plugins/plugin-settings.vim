@@ -16,10 +16,6 @@ augroup illuminate_augroup
     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
 augroup END
 
-
-" Git shortcuts
-nnoremap <leader>gs :Gstatus<cr>
-
 " Airline theme
 let g:airline_theme = 'minimalist'
 let g:airline_powerline_fonts = 0
@@ -53,8 +49,6 @@ nmap <space>jl <Plug>(easymotion-overwin-line)
 map  <space>jw <Plug>(easymotion-bd-w)
 nmap <space>jw <Plug>(easymotion-overwin-w)
 
-nnoremap <space>b :Buffers<cr>
-
 let g:DevIconsAppendArtifactFix = 1
 
 set list
@@ -62,20 +56,20 @@ set list
 call cyclist#add_listchar_option_set('limited', {
         \ 'eol': '↲',
         \ 'tab': '» ',
-        \ 'trail': '·',
+        \ 'trail': '␣',
         \ 'extends': '<',
         \ 'precedes': '>',
         \ 'conceal': '┊',
-        \ 'nbsp': '␣',
+        \ 'nbsp': '·',
         \ })
 
 call cyclist#add_listchar_option_set('busy', {
         \ 'eol': '↲',
         \ 'tab': '»·',
-        \ 'space': '␣',
+        \ 'space': '·',
         \ 'trail': '-',
-        \ 'extends': '☛',
-        \ 'precedes': '☚',
+        \ 'extends': '<',
+        \ 'precedes': '>',
         \ 'conceal': '┊',
         \ 'nbsp': '·',
         \ })
