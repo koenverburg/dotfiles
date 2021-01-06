@@ -95,6 +95,10 @@ visual('<C>rr', ":<,'>s/")
 normal(';', ':')
 normal(':', ';')
 
+-- FZF
+normal('<leader>t', ':FZF<cr>')
+normal('<space>ff', ':Rg')
+
 -- What is time?>
 normal('tt', '"=strftime("%F %T%z")<CR>')
 

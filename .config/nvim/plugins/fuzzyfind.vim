@@ -20,12 +20,12 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-if executable('fzf')
-  nnoremap <leader>t :FZF<cr>
-endif
+"if executable('fzf')
+  "nnoremap <leader>t :FZF<cr>
+"endif
 
+let g:ackprg = 'rg --vimgrep'
 " Find in files
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-  nnoremap <space>sf :Rg
-endif
+"if executable('rg')
+  "nnoremap <space>sf :Rg
+"endif
