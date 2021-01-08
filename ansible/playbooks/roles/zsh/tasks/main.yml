@@ -2,7 +2,7 @@
   become: yes
   apt:
     name: zsh
-    state: present
+    state: absent
 
 - name: Installs curl | apt
   become: yes
@@ -31,10 +31,10 @@
   file:
     src: "{{ lookup('env', 'ROOTDIR') }}/ansible/playbooks/roles/zsh/files/.zshrc"
     dest: ~/.zshrc
-    state: link
+    state: absent
 
-- name: Sets zsh as default shell | command
+- name: Sets Bash as default shell | command
   become: yes
   user:
     name: awake
-    shell: /usr/bin/zsh
+    shell: /usr/bin/bash
