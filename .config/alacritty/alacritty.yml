@@ -51,8 +51,10 @@ selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
 cursor:
-  style: Underline
+  style: Block
   unfocused_hollow: true
+  thickness: 0.1
+live_config_reload: true
 
 shell:
   program: pwsh.exe
