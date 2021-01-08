@@ -1,0 +1,24 @@
+- name: "nvim | Installing dependencies"
+  become: yes
+  apt:
+    name:
+      [
+        cmake,
+        gcc,
+        g++,
+        unzip,
+        ninja-build,
+        gettext,
+        libtool,
+        libtool-bin,
+        autoconf,
+        automake,
+        pkg-config,
+      ]
+    #python-dev
+    #python-pip
+    #python3-dev
+    #python3-pip
+    state: present
+- name: "nvim | install neovim nightly"
+  become: yes

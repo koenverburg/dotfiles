@@ -1,6 +1,9 @@
-- name: Set up local workstation
+- name: Set up local (ubuntu) workstation
   hosts: local
   roles:
     - role: zsh
       tags:
         - zsh
+    - role: nvim
+      tags:
+        - nvim
