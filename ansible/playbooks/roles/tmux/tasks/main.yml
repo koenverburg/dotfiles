@@ -1,0 +1,12 @@
+- name: Installing Tmux | api
+  become: yes
+  apt:
+    name: tmux
+    state: present
+
+- name: Link ~/.tmux.conf
+  file:
+    src: "{{ lookup('env', 'ROOTDIR') }}/ansible/playbooks/roles/tmux/files/.tmux.conf"
+    dest: ~/.tmux.conf
+    state: link
+
