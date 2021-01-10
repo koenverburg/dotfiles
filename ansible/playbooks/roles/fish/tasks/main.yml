@@ -1,0 +1,41 @@
+- name: Installing Fish Shell | apt
+  become: yes
+  apt:
+    name: fish
+    state: present
+
+- name: Link ~/config.fish
+  file:
+    src: "{{ lookup('env', 'ROOTDIR') }}/ansible/playbooks/roles/fish/files/config.fish"
+    dest: ~/.config/fish/config.fish
+    state: link
+
+- name: Sets Fish as default shell | command
+  become: yes
+  user:
+    name: awake
+    shell: /usr/bin/fish
+
+- name: Check if oh-my-fish is installed
+  stat:
+    path: '/etc/omf.installed'
+  register: omf
+
+- name: Clone oh-my-fish repo
+  git:
+    repo: 'https://github.com/oh-my-fish/oh-my-fish'
+    dest: '/tmp/omf'
+    clone: yes
+  when: not omf.stat.exists
+
+- name: Install oh-my-fish
+  become: true
+  command: fish -c "/tmp/omf/bin/install"
+  when: not omf.stat.exists
+
+- name: Mark oh-my-fish installed with /etc/omf.installed
+  become: yes
+  when: not omf.stat.exists
+  file:
+    path: /etc/omf.installed
+    state: touch
