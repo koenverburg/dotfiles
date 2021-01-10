@@ -1,6 +1,9 @@
 - name: Set up local workstation
   hosts: local
   roles:
-    - role: zsh
+    - role: fish
       tags:
-        - zsh
+        - fish
+    - role: tmux
+      tags:
+        - tmux
