@@ -1,3 +1,12 @@
+vim.g.diagnostic_insert_delay = 1
+vim.g.diagnostic_show_sign = 1
+vim.g.diagnostic_enable_ale = 0
+vim.g.diagnostic_enable_virtual_text = 1
+vim.g.completion_enable_auto_paren = 1 -- Complete parentheses for functions
+--vim.g.completion_confirm_key = "\<C-y>" -- Work with vim-endwise
+--vim.g.completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+vim.g.completion_trigger_character = '.'
+
 --"local lsp_status = require('lsp-status')
 --"lsp_status.register_progress()
 --"lsp_status.config({

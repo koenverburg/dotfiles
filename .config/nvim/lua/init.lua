@@ -1,5 +1,9 @@
+require('settings')
 require('config')
 require('binds')
+require('fzf')
+require('plugins.settings')
+require('plugins.startup')
 
 -- disable baked in plugins
 vim.g.loaded_gzip              = 1
