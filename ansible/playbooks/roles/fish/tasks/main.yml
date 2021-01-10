@@ -33,6 +33,11 @@
   command: fish -c "/tmp/omf/bin/install"
   when: not omf.stat.exists
 
+- name: Install oh-my-fish
+  become: true
+  command: omf install pure
+  when: not omf.stat.exists
+
 - name: Mark oh-my-fish installed with /etc/omf.installed
   become: yes
   when: not omf.stat.exists
