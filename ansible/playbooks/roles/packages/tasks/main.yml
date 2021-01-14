@@ -1,0 +1,20 @@
+- name: Install a list of packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items:
+    - git
+    - bat
+    - fzf
+    - rg
+    - delta
+    - 7zip
+    - nmap
+    - node
+    - yarn
+    - terraform
+    - golang
+    - lua
+    - firefox
+    # - alacritty
