@@ -46,7 +46,7 @@ StowFile $env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profi
 ## Neovim
 
 # symlinking the config
-StowFile $env:LOCALAPPDATA\nvim\init.vim (Get-Item ".\.config\nvim\init.vim").FullName
+StowFile $env:LOCALAPPDATA\nvim\init.lua (Get-Item ".\.config\nvim\init.lua").FullName
 # StowFile $env:LOCALAPPDATA\nvim\ginit.vim (Get-Item ".\.config\nvim\ginit.vim").FullName
 
 # All the other files
@@ -54,10 +54,10 @@ Stow "$env:LOCALAPPDATA\nvim\lua" ".\.config\nvim\lua"
 Stow "$env:LOCALAPPDATA\nvim\lua\kv" ".\.config\nvim\lua\kv"
 Stow "$env:LOCALAPPDATA\nvim\lua\finder" ".\.config\nvim\lua\finder"
 Stow "$env:LOCALAPPDATA\nvim\lua\plugins" ".\.config\nvim\lua\plugins"
-Stow "$env:LOCALAPPDATA\nvim\core" ".\.config\nvim\core"
-Stow "$env:LOCALAPPDATA\nvim\config" ".\.config\nvim\config"
-Stow "$env:LOCALAPPDATA\nvim\plugins" ".\.config\nvim\plugins"
-Stow "$env:LOCALAPPDATA\nvim\settings" ".\.config\nvim\settings"
+# Stow "$env:LOCALAPPDATA\nvim\core" ".\.config\nvim\core"
+# Stow "$env:LOCALAPPDATA\nvim\config" ".\.config\nvim\config"
+# Stow "$env:LOCALAPPDATA\nvim\plugins" ".\.config\nvim\plugins"
+# Stow "$env:LOCALAPPDATA\nvim\settings" ".\.config\nvim\settings"
 
 # Alacritty
 StowFile $env:APPDATA\alacritty\alacritty.yml (Get-Item ".\.config\alacritty\alacritty.yml").FullName
