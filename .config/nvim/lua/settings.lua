@@ -1,6 +1,6 @@
 vim.o.ruler = true
 vim.o.background = 'dark'
--- vim.cmd('colo seti')
+vim.cmd('colo zephyr')
 
 vim.g.mapleader = ','
 vim.b.mapleader = ','
@@ -38,7 +38,6 @@ vim.o.backspace = 'indent,eol,start'
 vim.o.inccommand = 'split'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.cmdheight = 1
--- vim.o.statusline = ' %f%m%=%Y '
 
 vim.cmd [[ highlight clear SignColumn ]]
 vim.o.clipboard = vim.o.clipboard .. 'unnamed,unnamedplus'
