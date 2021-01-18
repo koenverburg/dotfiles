@@ -1,90 +1,85 @@
-local repo = 'https://github.com/wbthomason/packer.nvim'
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
-
-vim.o.packpath = vim.o.packpath .. vim.fn.stdpath('data')
+local repo = 'https://github.com/savq/paq-nvim.git'
+local install_path = vim.fn.stdpath('data') .. '/site/pack/paq/opt/paq-nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  print 'Downloading Packer..'
+  print 'Downloading Plugin Manager..'
   vim.api.nvim_command(string.format('!git clone %s "%s"', repo, install_path))
 end
 
-vim.api.nvim_command 'packadd packer.nvim'
--- require('packer').init()
-return require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
-  use 'junegunn/vim-plug'
-  use 'sheerun/vim-polyglot'
+vim.api.nvim_command [[ packadd paq-nvim ]]
 
-  -- Colorscheme
-  use 'trusktr/seti.vim'
-  use 'ajmwagar/vim-deus'
-  use 'glepnir/zephyr-nvim'
-  use 'christianchiarulli/nvcode-color-schemes.vim'
+local paq = require'paq-nvim'.paq
+paq 'savq/paq-nvim'
 
-  -- Finders
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-  use 'mileszs/ack.vim'
-  use 'junegunn/fzf'
-  use 'junegunn/fzf.vim'
-  use 'gfanto/fzf-lsp.nvim'
+-- Colorscheme
+paq 'trusktr/seti.vim'
+paq 'ajmwagar/vim-deus'
+paq 'glepnir/zephyr-nvim'
+paq 'christianchiarulli/nvcode-color-schemes.vim'
 
-  -- LSP config
-  use 'neovim/nvim-lsp'
-  use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
-  use 'nvim-lua/diagnostic-nvim'
+-- Finders
+paq 'nvim-lua/popup.nvim'
+paq 'nvim-lua/plenary.nvim'
+paq 'nvim-telescope/telescope.nvim'
+paq 'mileszs/ack.vim'
+paq 'junegunn/fzf'
+paq 'junegunn/fzf.vim'
+-- paq 'gfanto/fzf-lsp.nvim'
 
-  use 'nvim-treesitter/nvim-treesitter'
+-- LSP config
+paq 'neovim/nvim-lsp'
+paq 'neovim/nvim-lspconfig'
+paq 'nvim-lua/completion-nvim'
+paq 'nvim-lua/diagnostic-nvim'
 
-  --Misc
-  use 'tpope/vim-surround' -- Able to change [{()}]
-  use 'RRethy/vim-illuminate'
+paq 'nvim-treesitter/nvim-treesitter'
+paq 'sheerun/vim-polyglot'
 
-  -- Lanaguages
-  use 'elzr/vim-json'
-  use 'stephpy/vim-yaml'
-  use 'PProvost/vim-ps1'
-  --  use 'plasticboy/vim-markdown'
-  --  use 'godlygeek/tabular'
+--Misc
+paq 'tpope/vim-surround' -- Able to change [{()}]
+paq 'RRethy/vim-illuminate'
 
-  -- View indenting
-  --  use 'Yggdroot/indentLine'
+-- Lanaguages
+paq 'elzr/vim-json'
+paq 'stephpy/vim-yaml'
+paq 'PProvost/vim-ps1'
 
-  -- WordJumping like resharper and faster movement
-  -- use 'bkad/CamelCaseMotion'
-  use 'easymotion/vim-easymotion'
+--  paq 'plasticboy/vim-markdown'
+--  paq 'godlygeek/tabular'
 
-  -- Convenience for commenting things in and out
-  use 'scrooloose/nerdcommenter'
+-- View indenting
+--  paq 'Yggdroot/indentLine'
 
-  -- Auto close parens, braces, brackets, etc
-  use 'jiangmiao/auto-pairs'
+-- WordJumping like resharper and faster movement
+-- paq 'bkad/CamelCaseMotion'
+paq 'easymotion/vim-easymotion'
 
-  -- Looks
-  use 'mhinz/vim-startify'
-  use 'ryanoasis/vim-devicons'
-  use 'kyazdani42/nvim-web-devicons'
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
-  -- use 'glepnir/galaxyline.nvim'
+-- Convenience for commenting things in and out
+paq 'scrooloose/nerdcommenter'
 
-  -- Git feedback in files
-  use 'airblade/vim-gitgutter'
-  use 'tpope/vim-fugitive'
+-- Auto close parens, braces, brackets, etc
+paq 'jiangmiao/auto-pairs'
 
-  -- Focus mode
-  use 'junegunn/goyo.vim'
-  use 'junegunn/limelight.vim'
+-- Looks
+paq 'mhinz/vim-startify'
+paq 'ryanoasis/vim-devicons'
+paq 'kyazdani42/nvim-web-devicons'
+paq 'vim-airline/vim-airline'
+paq 'vim-airline/vim-airline-themes'
 
-  -- use 'tjdevries/cyclist.vim'
+-- Git feedback in files
+paq 'airblade/vim-gitgutter'
+paq 'tpope/vim-fugitive'
 
-  -- DevOps Stuff
-  use 'hashivim/vim-terraform'
-  use 'hashicorp/terraform-ls'
-  -- Linting error support for js,ts
-  --  use 'desmap/ale-sensible'
-  --  use 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
+-- Focus mode
+paq 'junegunn/goyo.vim'
+paq 'junegunn/limelight.vim'
 
+-- paq 'tjdevries/cyclist.vim'
 
-end)
+-- DevOps Stuff
+paq 'hashivim/vim-terraform'
+paq 'hashicorp/terraform-ls'
+
+-- Linting error support for js,ts
+--  paq 'desmap/ale-sensible'
+--  paq 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
