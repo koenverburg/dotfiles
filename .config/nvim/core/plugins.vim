@@ -5,6 +5,7 @@ Plug 'junegunn/vim-plug'
 Plug 'sheerun/vim-polyglot'
 
 " Colorscheme
+Plug 'trusktr/seti.vim'
 Plug 'ajmwagar/vim-deus'
 Plug 'glepnir/zephyr-nvim'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
@@ -13,9 +14,10 @@ Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
+Plug 'gfanto/fzf-lsp.nvim'
 
 " LSP config
 Plug 'neovim/nvim-lsp'
@@ -70,7 +72,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-Plug 'tjdevries/cyclist.vim'
+"Plug 'tjdevries/cyclist.vim'
 
 " DevOps Stuff
 Plug 'hashivim/vim-terraform'

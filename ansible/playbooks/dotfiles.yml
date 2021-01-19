@@ -1,9 +1,12 @@
 - name: Set up local (ubuntu) workstation
   hosts: local
   roles:
-    - role: zsh
+    - role: fish
       tags:
-        - zsh
+        - fish
     - role: nvim
       tags:
         - nvim
+    - role: tmux
+      tags:
+        - tmux

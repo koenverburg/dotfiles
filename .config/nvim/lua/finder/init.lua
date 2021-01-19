@@ -72,6 +72,15 @@ function M.git_files()
   require('telescope.builtin').git_files(opts)
 end
 
+function M.grep()
+  local opts = themes.get_dropdown {
+    winblend = 0,
+    shorten_path = false,
+  }
+
+  require('telescope.builtin').grep_files()
+end
+
 function M.buffers()
   -- TODO: when confirming a file make it that you jump to that buffer and not open it in the current buffer
   require('telescope.builtin').buffers {
