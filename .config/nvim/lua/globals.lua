@@ -1,6 +1,6 @@
 vim.o.ruler = true
 vim.o.background = 'dark'
-vim.cmd('colo zephyr')
+vim.cmd('colo nord')
 
 vim.g.mapleader = ','
 vim.b.mapleader = ','
