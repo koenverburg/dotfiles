@@ -4,9 +4,9 @@
     - role: fish
       tags:
         - fish
-    - role: nvim
-      tags:
-        - nvim
     - role: tmux
       tags:
         - tmux
+    - role: nvim
+      tags:
+        - nvim
