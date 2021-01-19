@@ -61,7 +61,6 @@ visual('>', '>gv')
 -- quickly cancel search highlighting
 normal('<leader><space>', ':nohl<cr>')
 
-
 -- Quiting and saving
 -- window resizing
 normal('<c-left>', '5<c-w>>')
@@ -106,6 +105,13 @@ normal('<leader>sc', ':SClose<cr>')
 -- What is time?>
 normal('tt', '"=strftime("%F %T%z")<CR>')
 
+-- rename
+normal('<leader>wr', ':%s/')
+
+-- Move whole lines
+visual('J', ":m '>+1<CR>gv=gv")
+visual('K', ":m '<-2<CR>gv=gv")
+
 -- easymotion
 --normal('<space>jf', '<Plug>(easymotion-overwin-f)')
 --vim.cmd [[ map <space>jf <Plug>(easymotion-bd-f) ]]
@@ -118,6 +124,19 @@ normal('tt', '"=strftime("%F %T%z")<CR>')
 -- Move to word
 --normal('<space>jw', '<Plug>(easymotion-overwin-w)')
 --vim.cmd [[ map <space>jw <Plug>(easymotion-bd-w) ]]
+
+function togglezen()
+    w.list           = not w.list
+    w.number         = not w.number
+    w.relativenumber = not w.relativenumber
+    w.cursorline     = not w.cursorline
+    w.cursorcolumn   = not w.cursorcolumn
+    w.colorcolumn    = w.colorcolumn == '0' and '80' or '0'
+    o.laststatus     = o.laststatus == 2 and 0 or 2
+    o.ruler          = not o.ruler
+end
+
+normal('<A-z>', 'lua togglezen()')
 
 return {
   normal,

@@ -72,13 +72,22 @@ function M.git_files()
   require('telescope.builtin').git_files(opts)
 end
 
-function M.grep()
+function M.grep_string()
   local opts = themes.get_dropdown {
     winblend = 0,
     shorten_path = false,
   }
 
-  require('telescope.builtin').grep_files()
+  require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})
+end
+
+function M.grep_current_word()
+  local opts = themes.get_dropdown {
+    winblend = 0,
+    shorten_path = false,
+  }
+
+  require('telescope.builtin').grep_string({ search = vim.fn.expand("<cword>") })
 end
 
 function M.buffers()
