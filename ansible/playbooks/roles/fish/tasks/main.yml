@@ -4,7 +4,21 @@
     name: fish
     state: present
 
+- name: Check if Fish is already setup
+  become: yes
+  register: fish_local
+  stat:
+    path: "~/.config/fish"
+
+- name: Create fish folder in ~/.config file
+  when: not fish_local.stat.exists
+  become: yes
+  file:
+    path: ~/.config/fish
+    state: directory
+
 - name: Link ~/config.fish
+  become: yes
   file:
     src: "{{ lookup('env', 'ROOTDIR') }}/ansible/playbooks/roles/fish/files/config.fish"
     dest: ~/.config/fish/config.fish
@@ -18,13 +32,14 @@
 
 - name: Check if oh-my-fish is installed
   stat:
-    path: '/etc/omf.installed'
+    path: "/etc/omf.installed"
   register: omf
 
 - name: Clone oh-my-fish repo
+  become: yes
   git:
-    repo: 'https://github.com/oh-my-fish/oh-my-fish'
-    dest: '/tmp/omf'
+    repo: "https://github.com/oh-my-fish/oh-my-fish"
+    dest: "/tmp/omf"
     clone: yes
   when: not omf.stat.exists
 

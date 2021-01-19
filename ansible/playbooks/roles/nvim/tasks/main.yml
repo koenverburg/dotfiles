@@ -1,24 +1,62 @@
-- name: "nvim | Installing dependencies"
+- name: Check if Neovim is already cloned
   become: yes
-  apt:
-    name:
-      [
-        cmake,
-        gcc,
-        g++,
-        unzip,
-        ninja-build,
-        gettext,
-        libtool,
-        libtool-bin,
-        autoconf,
-        automake,
-        pkg-config,
-      ]
-    #python-dev
-    #python-pip
-    #python3-dev
-    #python3-pip
-    state: present
-- name: "nvim | install neovim nightly"
+  register: neovim_local
+  stat:
+    path: "~/neovim"
+
+- name: Clone Neovim repository
   become: yes
+  when: not neovim_local.stat.exists
+  git:
+    repo: "https://github.com/neovim/neovim.git"
+    dest: "~/neovim"
+    clone: yes
+
+- name: Make | clean dist folder
+  become: yes
+  when: not neovim_local.stat.exists
+  shell: |
+    cd ~/neovim
+    sudo make distclean
+
+- name: Make | build release
+  become: yes
+  when: not neovim_local.stat.exists
+  shell: |
+    cd ~/neovim
+    sudo make CMAKE_BUILD_TYPE=Release
+
+- name: Make | Install
+  become: yes
+  when: not neovim_local.stat.exists
+  shell: |
+    cd ~/neovim
+    sudo make install
+
+# - name: Create nvim in ~/.config file
+#   # when: not nvim.stat.exists
+#   become: yes
+#   file:
+#     path: ~/.config/nvim
+#     state: directory
+# - name: Symlink init.lua
+#   # when: not nvim.stat.exists
+#   become: yes
+#   file:
+#     src: "{{ lookup('env', 'ROOTDIR') }}/.config/nvim/init.lua"
+#     dest: ~/.config/nvim/init.lua
+#     state: link
+# - name: Symlink `nvim\lua`
+#   # when: not nvim.stat.exists
+#   become: yes
+#   file:
+#     src: "{{ lookup('env', 'ROOTDIR') }}/.config/nvim/init.lua"
+#     dest: ~/.config/nvim/init.lua
+#     state: link
+# - name: Symlink lua folder
+#   # when: not nvim.stat.exists
+#   become: yes
+#   file:
+#     src: "{{ lookup('env', 'ROOTDIR') }}/.config/nvim/lua"
+#     dest: ~/.config/nvim/lua
+#     state: link

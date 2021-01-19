@@ -1,14 +1,8 @@
-- name: Installs zsh | apt
+- name: Remove zsh | apt
   become: yes
   apt:
     name: zsh
     state: absent
-
-- name: Installs curl | apt
-  become: yes
-  apt:
-    name: curl
-    state: present
 
 - name: Check if .zshrc exists
   register: file_zshrc
@@ -20,17 +14,16 @@
   stat:
     path: ~/.oh-my-zsh
 
-- name: Cloning oh-my-zsh
-  when: not repo_oh_my_zsh_dir.stat.exists
-  git:
-    repo: https://github.com/robbyrussell/oh-my-zsh
-    dest: ~/.oh-my-zsh
-
-- name: Link ~/.zshrc
-  when: not file_zshrc.stat.exists
+- name: Removing cloned oh-my-zsh
+  when: repo_oh_my_zsh_dir.stat.exists
   file:
-    src: "{{ lookup('env', 'ROOTDIR') }}/ansible/playbooks/roles/zsh/files/.zshrc"
-    dest: ~/.zshrc
+    path: ~/.oh-my-zsh
+    state: absent
+
+- name: Remove linked ~/.zshrc
+  when: file_zshrc.stat.exists
+  file:
+    path: ~/.zshrc
     state: absent
 
 - name: Sets Bash as default shell | command

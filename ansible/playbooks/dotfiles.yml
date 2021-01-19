@@ -1,6 +1,9 @@
 - name: Set up local (ubuntu) workstation
   hosts: local
   roles:
+    - role: zsh
+      tags:
+        - zsh
     - role: fish
       tags:
         - fish

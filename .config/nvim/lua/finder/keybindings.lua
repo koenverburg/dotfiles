@@ -21,9 +21,11 @@ end
 map_tele('<space>fa', 'buffers')
 map_tele('<space>fe', 'git_files')
 map_tele('<space>ap', 'fuzzy')
+map_tele('<space>ps', 'grep_string')
+map_tele('<space>cw', 'grep_current_word')
+
 map_tele('<space>gr', 'lsp_references')
 map_tele('<space>gs', 'lsp_document_syms')
-map_tele('<space>gg', 'grep')
 --map_tele('<space>cx', 'lsp_code_actions')
 
 return map_tele
