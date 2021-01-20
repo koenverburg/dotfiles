@@ -58,7 +58,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: pwsh.exe
+  program: wsl.exe
 
 # Colors (Nord)
 colors:
