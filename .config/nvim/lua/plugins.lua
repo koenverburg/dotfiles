@@ -6,7 +6,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 vim.cmd [[ packadd paq-nvim ]]
-local paq = require'paq-nvim'.paq
+local paq = require('paq-nvim').paq
 
 paq 'savq/paq-nvim'
 -- paq 'tweekmonster/startuptime.vim'
@@ -56,6 +56,7 @@ paq 'jiangmiao/auto-pairs'
 paq 'mhinz/vim-startify'
 paq 'ryanoasis/vim-devicons'
 paq 'kyazdani42/nvim-web-devicons'
+paq 'hoob3rt/lualine.nvim'
 
 -- Git feedback in files
 -- paq 'airblade/vim-gitgutter'
