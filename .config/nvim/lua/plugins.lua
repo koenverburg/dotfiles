@@ -28,6 +28,10 @@ paq 'neovim/nvim-lspconfig'
 paq 'nvim-lua/completion-nvim'
 paq 'nvim-lua/diagnostic-nvim'
 
+-- Snippets
+--paq 'SirVer/ultisnips'
+--paq 'honza/vim-snippets'
+
 paq 'nvim-treesitter/nvim-treesitter'
 
 -- Misc
@@ -60,6 +64,7 @@ paq 'hoob3rt/lualine.nvim'
 
 -- Git feedback in files
 -- paq 'airblade/vim-gitgutter'
+paq 'mhinz/vim-signify'
 paq 'tpope/vim-fugitive'
 
 -- Focus mode
