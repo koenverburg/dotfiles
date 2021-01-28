@@ -33,30 +33,8 @@
     cd ~/neovim
     sudo make install
 
-# - name: Create nvim in ~/.config file
-#   # when: not nvim.stat.exists
-#   become: yes
-#   file:
-#     path: ~/.config/nvim
-#     state: directory
-# - name: Symlink init.lua
-#   # when: not nvim.stat.exists
-#   become: yes
-#   file:
-#     src: "{{ lookup('env', 'ROOTDIR') }}/.config/nvim/init.lua"
-#     dest: ~/.config/nvim/init.lua
-#     state: link
-# - name: Symlink `nvim\lua`
-#   # when: not nvim.stat.exists
-#   become: yes
-#   file:
-#     src: "{{ lookup('env', 'ROOTDIR') }}/.config/nvim/init.lua"
-#     dest: ~/.config/nvim/init.lua
-#     state: link
-# - name: Symlink lua folder
-#   # when: not nvim.stat.exists
-#   become: yes
-#   file:
-#     src: "{{ lookup('env', 'ROOTDIR') }}/.config/nvim/lua"
-#     dest: ~/.config/nvim/lua
-#     state: link
+- name: Symlink Nvim config
+  become: yes
+  shell: |
+    ln -s "{{ lookup('env', 'ROOTDIR') }}/.config/nvim" ~/.config/nvim
+
