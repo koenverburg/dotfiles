@@ -34,7 +34,5 @@
     sudo make install
 
 - name: Symlink Nvim config
-  become: yes
-  shell: |
-    ln -s "{{ lookup('env', 'ROOTDIR') }}/.config/nvim" ~/.config/nvim
+  file: src="{{ lookup('env', 'ROOTDIR') }}/.config/nvim" dest=~/.config/nvim state=link
 
