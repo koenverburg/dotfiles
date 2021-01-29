@@ -45,6 +45,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- The langauges servers
+-- TODO add terraformls + lua if unix
 local servers = {'vimls', 'tsserver', 'html', 'gopls', 'yamlls'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
