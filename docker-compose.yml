@@ -1,0 +1,13 @@
+version: "3"
+services:
+  ubuntu-dotfiles:
+    environment:
+      - CI=1
+      - BUILDKIT=1
+    build:
+      context: .
+      dockerfile: ubuntu.dockerfile
+    container_name: ubuntu-dotfiles
+    image: koenverburg/dotfiles/ubuntu-docker
+    volumes:
+      - .:/usr/src/
