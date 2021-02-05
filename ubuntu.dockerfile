@@ -1,6 +1,9 @@
 FROM ubuntu:20.04
 SHELL ["/bin/bash", "-c"]
 
+# sed wheel      ALL=(ALL) ALL in /etc/sudoers
+# then add awake to wheel group
+
 MAINTAINER Koen Verburg <creativekoen@gmail.com>
 
 RUN apt-get update && \
