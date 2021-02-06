@@ -17,9 +17,9 @@ end
 local on_attach = function(client)
   require('completion').on_attach(client)
 
-  mapper('n', 'gD',  '<Cmd>lua vim.lsp.buf.declaration()<CR>')
-  mapper('n', 'gd',  '<Cmd>lua vim.lsp.buf.definition()<CR>')
-  mapper('n', '<c-]>',  '<Cmd>lua vim.lsp.buf.definition()<CR>')
+  mapper('n', 'gD',  '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  mapper('n', 'gd',  '<cmd>lua vim.lsp.buf.definition()<CR>')
+  mapper('n', '<c-]>',  '<cmd>lua vim.lsp.buf.definition()<CR>')
 
   mapper('n', 'gi',  '<cmd>lua vim.lsp.buf.implementation()<CR>')
   mapper('n', 'gr',  '<cmd>lua vim.lsp.buf.references()<CR>')
@@ -29,7 +29,7 @@ local on_attach = function(client)
   mapper('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
 
   mapper('n', 'H', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-  mapper('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+  --mapper('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
 
   mapper('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
   mapper('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')

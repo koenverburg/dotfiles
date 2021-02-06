@@ -87,8 +87,8 @@ normal('/', '/\v')
 visual('/', '/\v')
 
 -- Replace
-normal('<C-r>', ":%s/")
-visual('<C>rr', ":<,'>s/")
+normal('<leader>r', ":%s/")
+visual('<leader>rr', ":<,'>s/")
 
 -- Swap : and ; to make colon commands easer to type
 normal(';', ':')
@@ -102,15 +102,14 @@ normal('<space>ff', ':Rg ')
 normal('<leader>ss', ':SSave<cr>')
 normal('<leader>sc', ':SClose<cr>')
 
--- What is time?>
+-- What is time?
 normal('tt', '"=strftime("%F %T%z")<CR>')
-
--- rename
-normal('<leader>wr', ':%s/')
 
 -- Move whole lines
 visual('J', ":m '>+1<CR>gv=gv")
 visual('K', ":m '<-2<CR>gv=gv")
+
+normal('<C-b>', ':NERDTreeToggle<cr>')
 
 -- easymotion
 --normal('<space>jf', '<Plug>(easymotion-overwin-f)')
@@ -136,7 +135,7 @@ function togglezen()
     o.ruler          = not o.ruler
 end
 
-normal('<A-z>', 'lua togglezen()')
+normal('<A-f>', 'lua togglezen()')
 
 return {
   normal,

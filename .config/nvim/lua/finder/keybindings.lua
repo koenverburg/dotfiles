@@ -26,6 +26,6 @@ map_tele('<space>cw', 'grep_current_word')
 
 map_tele('<space>gr', 'lsp_references')
 map_tele('<space>gs', 'lsp_document_syms')
---map_tele('<space>cx', 'lsp_code_actions')
+map_tele('<space>cx', 'lsp_code_actions')
 
 return map_tele

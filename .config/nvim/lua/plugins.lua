@@ -36,18 +36,20 @@ return require('packer').startup {
     use 'glepnir/zephyr-nvim'
     use 'christianchiarulli/nvcode-color-schemes.vim'
 
-    -- Finders
+    -- Finders / UI
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'junegunn/fzf'
     use 'junegunn/fzf.vim'
+    use 'scrooloose/nerdtree'
 
     -- LSP config
     use 'neovim/nvim-lsp'
     use 'neovim/nvim-lspconfig'
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/diagnostic-nvim'
+    use 'onsails/lspkind-nvim'
 
     -- Snippets
     --use 'SirVer/ultisnips'
@@ -63,6 +65,8 @@ return require('packer').startup {
     use 'elzr/vim-json'
     use 'stephpy/vim-yaml'
     use 'PProvost/vim-ps1'
+    use 'hashivim/vim-terraform'
+    use 'hashicorp/terraform-ls'
 
     --  use 'plasticboy/vim-markdown'
     --  use 'godlygeek/tabular'
@@ -91,13 +95,10 @@ return require('packer').startup {
     -- Focus mode
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
-
-    -- DevOps Stuff
-    use 'hashivim/vim-terraform'
-    use 'hashicorp/terraform-ls'
+    use 'kyazdani42/nvim-tree.lua' 
 
     -- Linting error support for js,ts
+    --  use 'w0rp/ale'
     --  use 'desmap/ale-sensible'
-    --  use 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
   end
 }
