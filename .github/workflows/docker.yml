@@ -11,16 +11,18 @@ jobs:
           access_token: ${{ github.token }}
 
       - uses: actions/checkout@v2
+
       - name: Pull docker image
         run: docker-compose pull
 
       - name: Build Ubuntu Docker Image
         run: docker-compose up --build --exit-code-from ubuntu-dotfiles
-      # - name: Push to GitHub Packages
-      #   uses: docker/build-push-action@v1
-      #   with:
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-      #     registry: docker.pkg.github.com
-      #     repository: koenverburg/dotfiles/ubuntu-dotfiles
-      #     tag_with_ref: true
+
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: koenverburg/dotfiles/ubuntu-dotfiles
+          tag_with_ref: true
