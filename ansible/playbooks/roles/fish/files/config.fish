@@ -53,4 +53,5 @@ alias rm="rm -i"
 
 alias weather="curl http://wttr.in"
 #alias t=/usr/local/Cellar/tilt/0.14.1/bin/tilt
+export PATH="$PATH:/usr/bin"
 
