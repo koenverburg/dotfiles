@@ -5,3 +5,7 @@
     - role: fish
     - role: tmux
     - role: nvim
+    - role: docker
+    - role: kubernetes
+    - role: migibert.terraform
+    - role: fubarhouse.golang
