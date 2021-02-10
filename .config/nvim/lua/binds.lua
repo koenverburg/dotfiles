@@ -83,6 +83,7 @@ normal('<leader><S-t>', ':tabnew<cr>')
 visual('<leader>s', ":'<,'>!sort -f<cr>")
 
 -- Searching
+normal('?', '?\v')
 normal('/', '/\v')
 visual('/', '/\v')
 
@@ -110,6 +111,11 @@ visual('J', ":m '>+1<CR>gv=gv")
 visual('K', ":m '<-2<CR>gv=gv")
 
 normal('<C-b>', ':NERDTreeToggle<cr>')
+
+-- sain undo and redo
+normal('<C-z>', '<Esc>')
+normal('<C-y>', '<Esc><C-r>')
+
 
 -- easymotion
 --normal('<space>jf', '<Plug>(easymotion-overwin-f)')
