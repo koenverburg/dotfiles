@@ -15,14 +15,10 @@ jobs:
       - name: Pull docker image
         run: docker-compose pull
 
-      - name: Build Ubuntu Docker Image
-        run: docker-compose up --build --exit-code-from ubuntu-dotfiles
-
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
+      - name: Build and push
+        uses: docker/build-push-action@v2
         with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          push: true
+          tags: koenverburg/dotfiles/ubuntu-dotfiles
           registry: docker.pkg.github.com
-          repository: koenverburg/dotfiles/ubuntu-dotfiles
-          tag_with_ref: true
+          build-args: docker-compose up --build --exit-code-from ubuntu-dotfiles
