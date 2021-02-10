@@ -27,5 +27,4 @@ jobs:
         with:
           push: true
           tags: koenverburg/dotfiles/ubuntu-dotfiles
-          registry: docker.pkg.github.com
           build-args: docker-compose up --build --exit-code-from ubuntu-dotfiles
