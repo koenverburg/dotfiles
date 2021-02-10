@@ -18,6 +18,7 @@
     state: directory
 
 - name: Link ~/config.fish
+  when: not fish_local.stat.exists
   become: yes
   file:
     src: "{{ lookup('env', 'ROOTDIR') }}/ansible/playbooks/roles/fish/files/config.fish"
@@ -50,7 +51,7 @@
 
 - name: Install oh-my-fish
   become: true
-  command: omf install pure
+  command: fish -c "omf install pure"
   when: not omf.stat.exists
 
 - name: Mark oh-my-fish installed with /etc/omf.installed
