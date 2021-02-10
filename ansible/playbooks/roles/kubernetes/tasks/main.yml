@@ -1,0 +1,21 @@
+- name: Kubernetes | Add an apt signing key for Kubernetes
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Kubernetes | Adding apt repository for Kubernetes
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    filename: kubernetes.list
+
+- name: Kubernetes | Install Kubernetes binaries
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+      - kubelet
+      - kubeadm
+      - kubectl
