@@ -37,7 +37,7 @@ jobs:
       - name: Build and push
         uses: docker/bake-action@master
         with:
-          push: false
-          files: |
+          push: true
+          Files: |
             ./docker-compose.yml
             ${{ steps.docker_meta.outputs.bake-file }}
