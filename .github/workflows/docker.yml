@@ -25,6 +25,5 @@ jobs:
       - name: Build and push
         uses: docker/bake-action@master
         with:
-          files: ./docker-compose.yml
-          targets: release
           push: true
+          files: ./docker-compose.yml
