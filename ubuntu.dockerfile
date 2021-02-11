@@ -28,4 +28,6 @@ RUN mkdir /home/conrad/dotfiles
 COPY  --chown=conrad:users . ./home/conrad/dotfiles
 WORKDIR /home/conrad/dotfiles
 
-RUN "./ansible/ubuntu.sh"
+RUN chmod +x ./ansible/ubuntu.sh
+RUN ./ansible/ubuntu.sh
+
