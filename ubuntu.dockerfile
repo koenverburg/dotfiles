@@ -28,4 +28,4 @@ RUN mkdir /home/conrad/dotfiles
 COPY  --chown=conrad:users . ./home/conrad/dotfiles
 WORKDIR /home/conrad/dotfiles
 
-ENTRYPOINT ["bash", "./ansible/ubuntu.sh"]
+RUN "./ansible/ubuntu.sh"
