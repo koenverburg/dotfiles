@@ -10,19 +10,18 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
 
       - name: Docker meta
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
           images: |
-            koenverburg/dotfiles/ubuntu-dotfiles
             ghcr.io/koenverburg/dotfiles/ubuntu-dotfiles
           tag-sha: true
-          #tag-semver: |
-            #{{version}}
-            #{{major}}.{{minor}}
 
       - name: Login to GitHub Packages Docker Registry
         uses: docker/login-action@v1
@@ -38,6 +37,7 @@ jobs:
         uses: docker/bake-action@master
         with:
           push: true
+          targets: image-all
           Files: |
             ./docker-compose.yml
             ${{ steps.docker_meta.outputs.bake-file }}
