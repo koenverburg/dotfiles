@@ -18,3 +18,13 @@ Set-Alias vf 'vifm'
 Set-Alias n 'nvim'
 Set-Alias vim 'nvim'
 Set-Alias gvim 'nvim-qt'
+
+# Docker
+function dst { # Docker Status
+  docker container ls -a;
+  docker images -a;
+  docker ps;
+}
+
+function dcud { docker-compose up -d }
+function dcd { docker-compose down }
