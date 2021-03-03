@@ -3,32 +3,21 @@ local sorters = require('telescope.sorters')
 
 require 'telescope'.setup {
   defaults = {
-    winblend = 0,
-    border = true,
-    preview_cutoff = 120,
+    file_sorter = require('telescope.sorters').get_fzy_sorter,
 
-    prompt_position = 'top',
-    scroll_strategy = 'cycle',
-    layout_strategy = 'horizontal',
-    sorting_strategy = 'ascending',
     color_devicons = true,
 
-    layout_defaults = {
-      horizontal = {
-        width_padding = 0.1,
-        height_padding = 0.1,
-        preview_width = 0.6,
-      },
-      vertical = {
-        width_padding = 0.05,
-        height_padding = 1,
-        preview_height = 0.5,
-      }
-    },
-
     borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
+  },
+  extensions = {
+    fzy_native = {
+      override_generic_sorter = true,
+      override_file_sorter = true,
+    }
   }
 }
+
+require('telescope').load_extension('fzy_native')
 
 local M = {}
 
@@ -51,7 +40,7 @@ function M.lsp_references()
   require('telescope.builtin').lsp_references(opts)
 end
 
-function M.fuzzy()
+function M.find_files()
   local opts = {
     winblend = 10,
     prompt_position = 'bottom',
@@ -60,16 +49,6 @@ function M.fuzzy()
   }
 
   require('telescope.builtin').find_files(opts)
-end
-
-function M.git_files()
-  local opts = themes.get_dropdown {
-    winblend = 0,
-    previewer = false,
-    shorten_path = false,
-  }
-
-  require('telescope.builtin').git_files(opts)
 end
 
 function M.grep_string()
@@ -96,6 +75,25 @@ function M.buffers()
     shorten_path = false,
     scroll_strategy = 'cycle',
   }
+end
+
+function M.git_files()
+  local opts = {
+    winblend = 0,
+    shorten_path = false,
+  }
+
+  require('telescope.builtin').git_files(opts)
+end
+
+function M.git_branches() 
+    require("telescope.builtin").git_branches({
+        attach_mappings = function(prompt_bufnr, map) 
+            map('i', '<c-d>', actions.git_delete_branch)
+            map('n', '<c-d>', actions.git_delete_branch)
+            return true
+        end
+    })
 end
 
 --function M.builtin()

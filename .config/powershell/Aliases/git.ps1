@@ -9,10 +9,12 @@ function push { git push }
 function branch { git branch }
 function s { git status -sb }
 function gf { git fetch --prune }
+function grevertlast { git reset --soft HEAD~1 }
 function cob { git checkout -b $args }
 function cod { git checkout develop $args }
-function codm { git checkout development $args }
 function com { git checkout master $args }
+function codm { git checkout development $args }
+function comi { git checkout main $args }
 function gaa { git add --all $args }
 
 function co {
