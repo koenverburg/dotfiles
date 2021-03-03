@@ -5,6 +5,7 @@ require('binds')
 
 require('core.lsp')
 require('core.treesitter')
+require('core.statusline')
 
 require('plugins.startup')
 require('plugins.config')

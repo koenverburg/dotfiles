@@ -21,11 +21,12 @@ end
 map_tele('<space>fa', 'buffers')
 map_tele('<space>fe', 'git_files')
 map_tele('<space>ap', 'fuzzy')
-map_tele('<space>ps', 'grep_string')
-map_tele('<space>cw', 'grep_current_word')
+map_tele('<space>gw', 'grep_string')
+map_tele('<space>gcw', 'grep_current_word')
 
+-- TODO: move these to the binds file???
 map_tele('<space>gr', 'lsp_references')
-map_tele('<space>gs', 'lsp_document_syms')
-map_tele('<space>cx', 'lsp_code_actions')
+map_tele('<space>gs', 'lsp_document_syms') -- outline
+map_tele('<space>ca', 'lsp_code_actions')
 
 return map_tele

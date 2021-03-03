@@ -45,11 +45,12 @@ return require('packer').startup {
     use 'scrooloose/nerdtree'
 
     -- LSP config
-    use 'neovim/nvim-lsp'
     use 'neovim/nvim-lspconfig'
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/diagnostic-nvim'
-    use 'onsails/lspkind-nvim'
+    use 'wbthomason/lsp-status.nvim'
+    --use 'onsails/lspkind-nvim'
+    --use 'tjdevries/complextras.nvim'
 
     -- Snippets
     --use 'SirVer/ultisnips'
@@ -73,7 +74,7 @@ return require('packer').startup {
 
     -- WordJumping like resharper and faster movement
     -- use 'bkad/CamelCaseMotion'
-    -- use 'easymotion/vim-easymotion'
+    use 'easymotion/vim-easymotion'
 
     -- Convenience for commenting things in and out
     use 'scrooloose/nerdcommenter'
@@ -85,7 +86,7 @@ return require('packer').startup {
     use 'mhinz/vim-startify'
     use 'ryanoasis/vim-devicons'
     use 'kyazdani42/nvim-web-devicons'
-    use 'hoob3rt/lualine.nvim'
+    use 'tjdevries/express_line.nvim'
 
     -- Git feedback in files
     -- use 'airblade/vim-gitgutter'
@@ -98,7 +99,7 @@ return require('packer').startup {
     use 'kyazdani42/nvim-tree.lua' 
 
     -- Linting error support for js,ts
-    --  use 'w0rp/ale'
+    use 'w0rp/ale'
     --  use 'desmap/ale-sensible'
   end
 }
