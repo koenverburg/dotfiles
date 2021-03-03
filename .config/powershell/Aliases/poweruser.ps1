@@ -9,11 +9,15 @@ function yd { yarn dist }
 function yb { yarn build }
 function yupgrade { yarn upgrade-interactive --latest }
 
+# Alacritty
+function apwr {
+  alacritty.exe -o shell.program=pwsh.exe
+}
+
 # GO
 function grm { go run main.go }
 
 # VIM
-
 Set-Alias vf 'vifm'
 Set-Alias n 'nvim'
 Set-Alias vim 'nvim'
