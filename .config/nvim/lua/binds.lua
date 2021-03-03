@@ -116,13 +116,13 @@ normal('<C-b>', ':NERDTreeToggle<cr>')
 normal('<C-z>', '<Esc>')
 normal('<C-y>', '<Esc><C-r>')
 
-
 -- easymotion
 --normal('<space>jf', '<Plug>(easymotion-overwin-f)')
 --vim.cmd [[ map <space>jf <Plug>(easymotion-bd-f) ]]
 -- two character search
---normal('<space>js', '<Plug>(easymotion-overwin-f2)')
---vim.cmd [[ map <space>js <Plug>(easymotion-bd-f2) ]]
+normal('<space>js', '<Plug>(easymotion-overwin-f2)')
+vim.cmd [[ map <space>js <Plug>(easymotion-bd-f2) ]]
+
 -- Move to line
 --normal('<space>jl', '<Plug>(easymotion-overwin-line)')
 --vim.cmd [[ map <space>jl <Plug>(easymotion-bd-line) ]]
@@ -130,21 +130,9 @@ normal('<C-y>', '<Esc><C-r>')
 --normal('<space>jw', '<Plug>(easymotion-overwin-w)')
 --vim.cmd [[ map <space>jw <Plug>(easymotion-bd-w) ]]
 
-function togglezen()
-    w.list           = not w.list
-    w.number         = not w.number
-    w.relativenumber = not w.relativenumber
-    w.cursorline     = not w.cursorline
-    w.cursorcolumn   = not w.cursorcolumn
-    w.colorcolumn    = w.colorcolumn == '0' and '80' or '0'
-    o.laststatus     = o.laststatus == 2 and 0 or 2
-    o.ruler          = not o.ruler
-end
-
-normal('<A-f>', 'lua togglezen()')
-
 return {
   normal,
   visual,
-  insert
+  insert,
+  toggleLines
 }
