@@ -21,10 +21,10 @@ normal('<C-k>', '<C-W><C-K>')
 normal('<C-l>', '<C-W><C-L>')
 normal('<C-h>', '<C-W><C-H>')
 -- alt version
-normal('<A-j>', '<C-W><C-J>')
-normal('<A-k>', '<C-W><C-K>')
-normal('<A-l>', '<C-W><C-L>')
-normal('<A-h>', '<C-W><C-H>')
+--normal('<A-j>', '<C-W><C-J>')
+--normal('<A-k>', '<C-W><C-K>')
+--normal('<A-l>', '<C-W><C-L>')
+--normal('<A-h>', '<C-W><C-H>')
 
 -- Better jk
 normal('j', 'gj')
@@ -46,9 +46,6 @@ normal('N', 'Nzzzv')
 
 -- Git shortcuts
 normal('<leader>gs', ':Gstatus<cr>')
-
--- list buffers
-normal('<space>b', ':Buffers<cr>')
 
 -- Quickly return to normal mode
 insert('jj', '<esc>')
@@ -95,16 +92,9 @@ visual('<leader>rr', ":<,'>s/")
 normal(';', ':')
 normal(':', ';')
 
--- FZF
-normal('<leader>t', ':FZF<cr>')
-normal('<space>ff', ':Rg ')
-
 -- sessions
 normal('<leader>ss', ':SSave<cr>')
 normal('<leader>sc', ':SClose<cr>')
-
--- What is time?
-normal('tt', '"=strftime("%F %T%z")<CR>')
 
 -- Move whole lines
 visual('J', ":m '>+1<CR>gv=gv")
@@ -115,7 +105,6 @@ normal('<C-b>', ':NERDTreeToggle<cr>')
 -- sain undo and redo
 normal('<C-z>', '<Esc>')
 normal('<C-y>', '<Esc><C-r>')
-
 
 -- easymotion
 --normal('<space>jf', '<Plug>(easymotion-overwin-f)')

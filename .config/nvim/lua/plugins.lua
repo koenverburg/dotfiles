@@ -40,8 +40,7 @@ return require('packer').startup {
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
+    use 'nvim-telescope/telescope-fzy-native.nvim'
     use 'scrooloose/nerdtree'
 
     -- LSP config
