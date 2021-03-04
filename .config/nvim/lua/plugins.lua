@@ -90,7 +90,8 @@ return require('packer').startup {
 
     -- Git feedback in files
     -- use 'airblade/vim-gitgutter'
-    use 'mhinz/vim-signify'
+    --use 'mhinz/vim-signify'
+    use 'lewis6991/gitsigns.nvim'
     use 'tpope/vim-fugitive'
 
     -- Focus mode
