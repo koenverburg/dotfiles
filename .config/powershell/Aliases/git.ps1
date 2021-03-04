@@ -47,6 +47,10 @@ function gw {
   }
 }
 
+function gbf {
+  git branch | fzf | % { git checkout $_.Trim() }
+}
+
 function myproject {
   git config user.name "Koen Verburg"
   git config user.email "creativekoen@gmail.com"
