@@ -5,6 +5,15 @@ target "ubuntu" {
   context = "./"
   dockerfile = "ubuntu.dockerfile"
   tags = [
-    "ghcr.io/koenverburg/dotfiles/ubuntu-dotfiles"
+    "ghcr.io/koenverburg/dotfiles/ubuntu"
+  ]
+}
+
+target "helios" {
+  inherits = ["ghaction-docker-meta"]
+  context = "./"
+  dockerfile = "helios.dockerfile"
+  tags = [
+    "ghcr.io/koenverburg/dotfiles/helios"
   ]
 }
