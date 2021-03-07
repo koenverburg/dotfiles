@@ -1,4 +1,4 @@
-- name: Install a list of packages
+- name: General | Install a list of packages
   apt:
     state: present
     name:
@@ -7,7 +7,6 @@
       - ca-certificates
       - postgresql
       - postgresql-contrib
-      - bat
       - fzf
       - tmux
       - delta
@@ -22,3 +21,4 @@
       - gettext
       - make
       - cmake
+      - luarocks
