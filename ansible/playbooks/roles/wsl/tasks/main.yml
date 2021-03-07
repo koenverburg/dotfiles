@@ -1,0 +1,13 @@
+- name: wsl | creating /etc/shadow
+  shell: |
+    pwconv
+    chmod 0744 /etc/shadow
+
+- name: wsl | creating /etc/gshadow
+  shell: |
+    grpconv
+    chmod 0744 /etc/gshadow
+
+- name: wsl | Deleting the resolv.conf to let windows create its own
+  shell: |
+    rm /etc/resolv.conf
