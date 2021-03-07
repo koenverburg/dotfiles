@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.10
 SHELL ["/bin/bash", "-c"]
 
 LABEL Auther = "Koen Verburg <creativekoen@gmail.com>"
@@ -12,22 +12,27 @@ RUN apt-get update && \
   libc6-dev \
   make \
   git \
-  python-apt \
+  # python-apt \
   python3-apt \
   python3.8 \
   ansible
 
-RUN useradd -ms /bin/bash conrad
-# RUN adduser conrad sudo
-RUN gpasswd -a conrad root
-RUN echo 'conrad ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN useradd -ms /bin/bash conrad && \
 
-# USER conrad
+  adduser conrad root && \
+  gpasswd -a conrad root && \
+
+  adduser conrad sudo && \
+  gpasswd -a conrad sudo && \
+  echo 'sudo ALL=(ALL) ALL' >> /etc/sudoers && \
+  echo 'conrad ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN mkdir /home/conrad/dotfiles
 COPY  --chown=conrad:users . ./home/conrad/dotfiles
+
+USER conrad
 WORKDIR /home/conrad/dotfiles
 
-RUN chmod +x ./ansible/ubuntu.sh
-RUN ./ansible/ubuntu.sh
+RUN chmod +x ./ansible/ubuntu.sh && sudo ./ansible/ubuntu.sh
+
 
