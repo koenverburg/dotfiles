@@ -32,6 +32,6 @@ COPY  --chown=helios:users . ./home/helios/dotfiles
 USER helios
 WORKDIR /home/helios/dotfiles
 
-RUN chmod +x ./ansible/helios.sh && sudo ./ansible/ubuntu.sh
+RUN chmod +x ./ansible/helios.sh && sudo ./ansible/helios.sh
 
 
