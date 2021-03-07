@@ -27,6 +27,13 @@ jobs:
         with:
           version: latest
 
+      - name: Docker meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          tag-sha: true
+          images: |
+            ghcr.io/koenverburg/dotfiles/ubuntu
+
       - name: Build and push
         uses: docker/bake-action@master
         with:
@@ -59,6 +66,13 @@ jobs:
         uses: docker/setup-buildx-action@v1
         with:
           version: latest
+
+      - name: Docker meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          tag-sha: true
+          images: |
+            ghcr.io/koenverburg/dotfiles/ubuntu
 
       - name: Build and push
         uses: docker/bake-action@master
