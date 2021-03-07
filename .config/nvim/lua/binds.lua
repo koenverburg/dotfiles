@@ -15,16 +15,15 @@ local insert = function(key, func)
   bind('i', key, func)
 end
 
+local terminal = function(key, func)
+  bind('t', key, func)
+end
+
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
 normal('<C-k>', '<C-W><C-K>')
 normal('<C-l>', '<C-W><C-L>')
 normal('<C-h>', '<C-W><C-H>')
--- alt version
---normal('<A-j>', '<C-W><C-J>')
---normal('<A-k>', '<C-W><C-K>')
---normal('<A-l>', '<C-W><C-L>')
---normal('<A-h>', '<C-W><C-H>')
 
 -- Better jk
 normal('j', 'gj')
@@ -73,9 +72,6 @@ insert('<leader>w', ':w<cr>')
 -- Creating a new tab
 normal('<leader><S-t>', ':tabnew<cr>')
 
--- utils?
--- TODO find a better name for these things
-
 -- Credo wants this, sort aliases in alphabetical order
 visual('<leader>s', ":'<,'>!sort -f<cr>")
 
@@ -102,9 +98,15 @@ visual('K', ":m '<-2<CR>gv=gv")
 
 normal('<C-b>', ':NERDTreeToggle<cr>')
 
--- sain undo and redo
-normal('<C-z>', '<Esc>')
-normal('<C-y>', '<Esc><C-r>')
+normal('<A-d>', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('pwsh')<cr> ]])
+normal('<A-l>', ':Lspsaga open_floaterm lazygit<cr>')
+terminal('<A-d>', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
+
+-- focus mode with Goyo and limelight
+normal('<leader>gy', ':Goyo 120<cr>')
+
+-- Open a Markdown File in Typora
+normal('<leader>tmp', [[ :call jobstart('typora '.. expand('%:p'))<cr> ]])
 
 -- easymotion
 --normal('<space>jf', '<Plug>(easymotion-overwin-f)')

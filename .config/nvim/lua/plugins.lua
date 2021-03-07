@@ -34,7 +34,7 @@ return require('packer').startup {
 
     -- Colorscheme
     use 'glepnir/zephyr-nvim'
-    use 'christianchiarulli/nvcode-color-schemes.vim'
+    --use 'christianchiarulli/nvcode-color-schemes.vim'
 
     -- Finders / UI
     use 'nvim-lua/popup.nvim'
@@ -48,18 +48,20 @@ return require('packer').startup {
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/diagnostic-nvim'
     use 'wbthomason/lsp-status.nvim'
-    --use 'onsails/lspkind-nvim'
-    --use 'tjdevries/complextras.nvim'
+    use 'onsails/lspkind-nvim'
+    use 'glepnir/lspsaga.nvim'
+    --use 'tjdevries/nlua.nvim'
 
     -- Snippets
     --use 'SirVer/ultisnips'
-    --use 'honza/vim-snippets'
 
     use 'nvim-treesitter/nvim-treesitter'
 
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
+    use 'tpope/vim-fugitive'
     use 'RRethy/vim-illuminate'
+    use 'jiangmiao/auto-pairs'
 
     -- Lanaguages
     use 'elzr/vim-json'
@@ -69,38 +71,30 @@ return require('packer').startup {
     use 'hashicorp/terraform-ls'
     use 'ekalinin/Dockerfile.vim'
 
-    --  use 'plasticboy/vim-markdown'
-    --  use 'godlygeek/tabular'
+    --  Markdown
+    use 'Iron-E/nvim-libmodal'
+    use 'Iron-E/nvim-typora'
+    use 'plasticboy/vim-markdown'
+    use 'godlygeek/tabular'
 
-    -- WordJumping like resharper and faster movement
-    -- use 'bkad/CamelCaseMotion'
     use 'easymotion/vim-easymotion'
+    -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Convenience for commenting things in and out
     use 'scrooloose/nerdcommenter'
 
-    -- Auto close parens, braces, brackets, etc
-    use 'jiangmiao/auto-pairs'
-
     -- Looks
     use 'mhinz/vim-startify'
-    use 'ryanoasis/vim-devicons'
-    use 'kyazdani42/nvim-web-devicons'
     use 'tjdevries/express_line.nvim'
-
-    -- Git feedback in files
-    -- use 'airblade/vim-gitgutter'
-    --use 'mhinz/vim-signify'
-    use 'lewis6991/gitsigns.nvim'
-    use 'tpope/vim-fugitive'
+    use 'kyazdani42/nvim-web-devicons'
+    use 'ryanoasis/vim-devicons'
+    use 'airblade/vim-gitgutter'
 
     -- Focus mode
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
-    use 'kyazdani42/nvim-tree.lua' 
 
-    -- Linting error support for js,ts
+    -- linting
     use 'w0rp/ale'
-    --  use 'desmap/ale-sensible'
   end
 }

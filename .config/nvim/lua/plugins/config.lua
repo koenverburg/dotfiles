@@ -15,3 +15,14 @@ vim.g.ale_echo_msg_warning_str = 'W'
 vim.g.ale_echo_msg_format = '[%linter%] %s [%severity%]'
 vim.g.ale_sign_error = '●'
 vim.g.ale_sign_warning = '.'
+
+-- focus mode
+vim.cmd [[ autocmd! User GoyoEnter Limelight ]]
+vim.cmd [[ autocmd! User GoyoLeave Limelight! ]]
+
+-- Markdown
+vim.g.vim_markdown_frontmatter = 1
+vim.g.vim_markdown_folding_disabled = 1
+
+-- json
+vim.g.vim_json_syntax_conceal = 0

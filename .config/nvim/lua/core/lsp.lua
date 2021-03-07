@@ -9,7 +9,7 @@ vim.g.completion_enable_auto_paren = 1 -- Complete parentheses for functions
 vim.g.completion_trigger_keyword_length = 2
 vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
 local lsp_status = require('lsp-status')
 lsp_status.register_progress()
 
@@ -21,63 +21,52 @@ lsp_status.config({
   indicator_ok = 'Ok',
 })
 
-local mapper = function(mode, key, command)
+local mapper = function(mode, key, action)
+  local command = string.format("<cmd>lua %s()<cr>", action)
   vim.api.nvim_buf_set_keymap(0, mode, key, command, {noremap=true, silent=true})
 end
+
+-- lsp saga
+vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
 
 local on_attach = function(client)
   require('completion').on_attach(client)
   lsp_status.on_attach(client)
 
-  mapper('n', 'gD',  '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  mapper('n', 'gd',  '<cmd>lua vim.lsp.buf.definition()<CR>')
-  mapper('n', '<c-]>',  '<cmd>lua vim.lsp.buf.definition()<CR>')
+  mapper('n', 'gD',  'vim.lsp.buf.declaration')
+  mapper('n', 'gd',  'vim.lsp.buf.definition')
+  --mapper('n', '<c-]>',  'vim.lsp.buf.definition')
 
-  mapper('n', 'gi',  '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  mapper('n', 'gr',  '<cmd>lua vim.lsp.buf.references()<CR>')
-  mapper('n', 'gx',  '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  mapper('n', 'gi',  'vim.lsp.buf.implementation')
+  --mapper('n', 'gr',  'vim.lsp.buf.references')
 
-  mapper('n', 'gds', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-  mapper('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+  mapper('n', 'gds', 'vim.lsp.buf.document_symbol')
+  mapper('n', 'gW', 'vim.lsp.buf.workspace_symbol')
 
-  mapper('n', 'gk', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-  mapper('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-  mapper('n', '<s-n>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  -- lsp saga
+  mapper('n', '<c-k>', 'vim.lsp.buf.hover')
+  mapper('n', '<leader>ca',  "require('lspsaga.codeaction').code_action")
+  mapper('i', '<leader>ca',  "require('lspsaga.codeaction').code_action")
+  mapper('i', 'gs',  "require('lspsaga.signaturehelp').signature_help")
+  mapper('n', 'gr', "require('lspsaga.rename').rename")
 
-  mapper('n', '<leader>rd', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  mapper('n', '<leader>sd', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+  mapper('n', '<leader>sd', "require('lspsaga.diagnostic').show_line_diagnostics")
+  mapper('n', '[e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_prev")
+  mapper('n', ']e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_next")
 end
 
 -- The langauges servers
--- TODO add lua if unix
-local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'terraformls', 'gopls'}
+local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'cssls', 'terraformls', 'gopls'}
+
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = lsp_status.capabilities
   }
 end
 
---local codelens_capabilities = vim.lsp.protocol.make_client_capabilities()
---codelens_capabilities.textDocument.codeLens = {
-  --dynamicRegistration = false,
---}
-
---nvim_lsp.gopls.setup {
+--require('nlua.lsp.nvim').setup(lspconfig, {
   --on_attach = on_attach,
-  --capabilities = codelens_capabilities,
+  --capabilities = lsp_status.capabilities
+--})
 
-  --settings = {
-    --gopls = {
-      --codelenses = { test = true },
-    --}
-  --}
---}
-
-
--- CodeLens
---vim.lsp.handlers["textDocument/codeLens"] = function(err, _, result)
-  --print("Code Lens...")
-  --P(result)
-  --print("...Code Lens")
---end
