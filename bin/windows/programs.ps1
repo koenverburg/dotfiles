@@ -10,6 +10,7 @@ Install powershell-core
 Install alacritty
 Install notion
 Install insomnia-rest-api-client
+Install typora
 
 # Programming languages / Runtimes
 Uninstall deno
@@ -20,28 +21,25 @@ Install golang
 # Install Ruby
 
 # CLI tools
-Install make
 Install yarn
 Install terraform
 Install kubernetes-cli
-
-# Misc
 Install vifm
 Install 7zip
 Install delta
-Install nmap
-
-# Stuff for neovim
+Install lazygit
+Install fzf # fuzzy finder
 Install mingw # gcc, need to compile treesitter
 Install llvm # clang, need to compile treesitter
-Install bat # code preview for telescope (Neovim Plugin)
-Install fzf # fuzzy finder
-Install ripgrep # find in files
-Install fd
+Install make
 Install cmake
+Install bat # code preview for telescope (Neovim Plugin)
+Install ripgrep # find in files
+Unistall fd
 
 # cname, mx, dns tooling
 Install bind-toolsonly # clitool: big
+Install nmap # Network Mapper
 # Install filezilla
 # Install curl
 # Install ctags
@@ -53,7 +51,7 @@ RefreshEnv.cmd
 npm install -g serve neovim wikit npkill
 
 # Langague Server stuff for NeoVim
-npm install -g vim-language-server typescript-language-server vscode-html-languageserver-bin yaml-language-server graphql-language-service-server
+npm install -g vim-language-server typescript-language-server vscode-html-languageserver-bin yaml-language-server graphql-language-service-server @stoplight/spectral vscode-css-languageserver-bin
 
 # py -2 -m pip install --upgrade pip
 # py -3 -m pip install --upgrade pip
