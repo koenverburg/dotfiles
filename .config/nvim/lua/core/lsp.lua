@@ -44,7 +44,7 @@ local on_attach = function(client)
   mapper('n', 'gW', 'vim.lsp.buf.workspace_symbol')
 
   -- lsp saga
-  mapper('n', '<c-k>', 'vim.lsp.buf.hover')
+  mapper('n', '<c-K>', 'vim.lsp.buf.hover')
   mapper('n', '<leader>ca',  "require('lspsaga.codeaction').code_action")
   mapper('i', '<leader>ca',  "require('lspsaga.codeaction').code_action")
   mapper('i', 'gs',  "require('lspsaga.signaturehelp').signature_help")
@@ -56,7 +56,7 @@ local on_attach = function(client)
 end
 
 -- The langauges servers
-local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'cssls', 'terraformls', 'gopls'}
+local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'terraformls', 'gopls'}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
