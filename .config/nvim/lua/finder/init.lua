@@ -50,15 +50,20 @@ function M.find_files_dotfiles()
     prompt_position = 'bottom',
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
-
-    width = .45,
-    layout_strategy = 'horizontal',
-    layout_config = {
-      preview_width = 0.45,
-    }
   }
 
   require('telescope.builtin').git_files(opts)
+end
+
+function M.live_grep_custom()
+  local opts = {
+    shorten_path = false,
+    prompt_position = 'bottom',
+    scroll_strategy = 'cycle',
+    sorting_strategy = 'descending',
+  }
+
+  require('telescope.builtin').live_grep(opts)
 end
 
 

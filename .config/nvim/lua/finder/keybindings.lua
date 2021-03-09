@@ -19,7 +19,7 @@ local map_tele = function(key, f, options, buffer)
 end
 
 map_tele('<space>ff', 'find_files')
-map_tele('<space>fg', 'live_grep')
+map_tele('<space>fg', 'live_grep_custom')
 -- FIX Needs to focus on the file not open in the current buffer
 --map_tele('<space>fb', 'buffers')
 
