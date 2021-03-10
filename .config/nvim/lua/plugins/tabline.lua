@@ -30,24 +30,22 @@ end
 
 vim.o.tabline = tab.minimal()
 
-vim.cmd [=[augroup TabLineAutoSetup]=]
-vim.cmd [=[ au!]=]
-vim.cmd [=[ autocmd BufWinEnter,WinEnter * :lua vim.o.tabline = :lua require("plugins.tabline").minimal() ]=]
-
-vim.cmd [=[augroup END]=]
+--vim.cmd [=[augroup TabLineAutoSetup]=]
+--vim.cmd [=[ au!]=]
+--vim.cmd [=[ autocmd BufWinEnter,WinEnter * <cmd>lua vim.o.tabline = :lua require("plugins.tabline").minimal() ]=]
+--vim.cmd [=[augroup END]=]
 --vim.cmd [[doautocmd BufWinEnter]]
 
-
 --require('plenary.reload').reload_module('tabline', true)
-require('plugins.tabline').minimal()
+--require('plugins.tabline').minimal()
 
-return setmetatable({}, {
-  __index = function(_, k)
+--return setmetatable({}, {
+  --__index = function(_, k)
 
-    if tab[k] then
-      return tab[k]
-    else
-      return require('plugins.tabline')[k]
-    end
-  end
-})
+    --if tab[k] then
+      --return tab[k]
+    --else
+      --return require('plugins.tabline')[k]
+    --end
+  --end
+--})

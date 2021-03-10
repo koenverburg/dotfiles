@@ -19,6 +19,8 @@ local terminal = function(key, func)
   bind('t', key, func)
 end
 
+normal('<leader><leader>x', [[ <cmd>lua require('utils').save_and_execute()<CR> ]])
+
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
 normal('<C-k>', '<C-W><C-K>')

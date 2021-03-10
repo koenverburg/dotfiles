@@ -9,6 +9,7 @@ require('core.statusline')
 
 require('plugins.startup')
 require('plugins.config')
+require('plugins.tabline')
 
 -- TODO refactor this
 require('finder.init')
