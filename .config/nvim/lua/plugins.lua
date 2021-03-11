@@ -34,7 +34,7 @@ return require('packer').startup {
 
     -- Colorscheme
     use 'glepnir/zephyr-nvim'
-    --use 'christianchiarulli/nvcode-color-schemes.vim'
+    use 'christianchiarulli/nvcode-color-schemes.vim'
 
     -- Finders / UI
     use 'nvim-lua/popup.nvim'

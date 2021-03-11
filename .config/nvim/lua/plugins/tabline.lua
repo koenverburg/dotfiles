@@ -1,7 +1,8 @@
 -- N . <filename> (N)
-local tab = {}
+local fmt = string.format
+local M = {}
 
-function tab.minimal()
+function M.minimal()
   local line = ''
   local currentTab = vim.fn.tabpagenr()
   local tabs = vim.fn.tabpagenr('$')
@@ -11,41 +12,42 @@ function tab.minimal()
     local buffer_list   = vim.fn.tabpagebuflist(index)
     local buffer_number = buffer_list[window_number]
 
-    local name = vim.fn.fnamemodify(vim.fn.bufname(buffer_number), ':t')
+    local name_normal = vim.fn.fnamemodify(vim.fn.bufname(buffer_number), ':t')
     local paneCount = buffer_list
 
     if index == currentTab then
-      activeSign = ' ●'
+      name = name_normal
+      activeSign = '●'
     else
-      activeSign = ''
+      name = name_normal
+      activeSign = ' '
     end
 
-    tab = index .. activeSign ..  ' '  .. name .. ' ' -- .. ' (' ..  #buffer_list .. ') '
+    if #buffer_list > 1 then
+      pane_count = fmt('(%s)', #buffer_list)
+    else
+      pane_count = ''
+    end
+
+    tab = fmt('%s %s %s %s', index, activeSign, name, pane_count)
+
     line = line .. tab
   end
 
-  print('trigger' .. currentTab)
-  return line
+  vim.o.tabline = line
 end
 
-vim.o.tabline = tab.minimal()
+vim.cmd([[autocmd BufWinEnter,WinEnter * silent! lua require'plugins.tabline'.minimal()]])
 
---vim.cmd [=[augroup TabLineAutoSetup]=]
---vim.cmd [=[ au!]=]
---vim.cmd [=[ autocmd BufWinEnter,WinEnter * <cmd>lua vim.o.tabline = :lua require("plugins.tabline").minimal() ]=]
---vim.cmd [=[augroup END]=]
---vim.cmd [[doautocmd BufWinEnter]]
+return setmetatable({}, {
+  __index = function(_, k)
 
---require('plenary.reload').reload_module('tabline', true)
---require('plugins.tabline').minimal()
+    if M[k] then
+      return M[k]
+    else
+      return require('telescope.builtin')[k]
+    end
+  end
+})
 
---return setmetatable({}, {
-  --__index = function(_, k)
 
-    --if tab[k] then
-      --return tab[k]
-    --else
-      --return require('plugins.tabline')[k]
-    --end
-  --end
---})
