@@ -21,21 +21,6 @@ require('telescope').load_extension('fzy_native')
 
 local M = {}
 
--- port to lsp saga
---function M.lsp_code_actions()
-  --local opts = themes.get_dropdown {
-    --previewer = false,
-  --}
-
-  --require('telescope.builtin').lsp_code_actions()
---end
-
-
---function M.lsp_document_syms()
-  --local opts = themes.get_dropdown { }
-  --require('telescope.builtin').lsp_document_symbols(opts)
---end
-
 function M.lsp_references()
   local opts = themes.get_dropdown { }
   require('telescope.builtin').lsp_references(opts)
