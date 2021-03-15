@@ -53,7 +53,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: wsl.exe
+  program: pwsh.exe
 
 # Colors (Gruvbox dark)
 colors:
