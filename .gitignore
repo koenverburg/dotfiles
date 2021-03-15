@@ -2,3 +2,4 @@ overwrite/
 *.log
 packer_compiled.vim
 .env
+*.tar
