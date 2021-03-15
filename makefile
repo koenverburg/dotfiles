@@ -1,14 +1,12 @@
 clean:
 	bash ./clean.sh
 
-pull-ubuntu:
-	docker-compose pull
-
-build-ubuntu:
-	docker-compose up --build
-
 bake:
-	docker buildx bake -f ./docker-bake.hcl
+	docker buildx bake -f ./docker-bake.hcl --push ubuntu
+
+bake-wsl:
+	docker buildx bake -f ./docker-bake.hcl --push helios
+
 
 push:
 	export DOCKER_META_IMAGES="ghcr.io/koenverburg/dotfiles/ubuntu-dotfiles" 
