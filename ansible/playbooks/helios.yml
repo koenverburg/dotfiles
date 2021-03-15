@@ -10,4 +10,4 @@
     - role: kubernetes
     - role: migibert.terraform
     - role: fubarhouse.golang
-    - role: language-servers
+    # - role: language-servers
