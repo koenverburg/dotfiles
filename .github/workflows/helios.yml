@@ -1,5 +1,9 @@
 name: Custom WSL Distro Pipeline
-on: workflow_dispatch
+
+on: 
+  registry_package:
+    action:
+      - updated
 
 jobs:
   Helios:
