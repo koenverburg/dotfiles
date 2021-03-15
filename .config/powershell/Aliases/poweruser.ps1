@@ -14,6 +14,10 @@ function apwr {
   alacritty.exe -o shell.program=pwsh.exe
 }
 
+function editdot {
+  alacritty.exe -o shell.program="pwsh.exe --command cd ~/code/github/dotfiles;nvim"
+}
+
 # GO
 function grm { go run main.go }
 
