@@ -33,9 +33,10 @@ Install mingw # gcc, need to compile treesitter
 Install llvm # clang, need to compile treesitter
 Install make
 Install cmake
+Install ninja
 Install bat # code preview for telescope (Neovim Plugin)
 Install ripgrep # find in files
-Unistall fd
+Uninstall fd
 
 # cname, mx, dns tooling
 Install bind-toolsonly # clitool: big
