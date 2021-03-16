@@ -1,13 +1,21 @@
 - name: wsl | creating /etc/shadow
+  become: yes
+  become_user: root
   shell: |
     pwconv
     chmod 0744 /etc/shadow
 
 - name: wsl | creating /etc/gshadow
+  become: yes
+  become_user: root
   shell: |
     grpconv
     chmod 0744 /etc/gshadow
 
-- name: wsl | Deleting the resolv.conf to let windows create its own
-  shell: |
-    rm /etc/resolv.conf
+#- name: wsl | Deleting the resolv.conf to let windows create its own
+  #become: yes
+  #become_user: root
+  #file:
+    #state: absent
+    #path: /etc/resolv.conf
+
