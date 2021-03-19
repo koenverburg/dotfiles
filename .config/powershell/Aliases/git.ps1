@@ -47,8 +47,13 @@ function gw {
   }
 }
 
-function gbf {
-  git branch | fzf | % { git checkout $_.Trim() }
+function fgb {
+  git branch -a | fzf | % { git checkout $_.Trim() }
+}
+
+function fg {
+  # fzf -m is for multipe files using tab
+  git ls-files -m -o --exclude-standard | fzf -m | % { git add $_.Trim() }
 }
 
 function myproject {

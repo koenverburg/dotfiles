@@ -4,15 +4,23 @@ local sorters = require('telescope.sorters')
 require 'telescope'.setup {
   defaults = {
     file_sorter = require('telescope.sorters').get_fzy_sorter,
-
     color_devicons = true,
 
     borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
   },
   extensions = {
     fzy_native = {
-      override_generic_sorter = true,
       override_file_sorter = true,
+      override_generic_sorter = true,
+    },
+    fzf_writer = {
+      minimum_grep_characters = 2,
+      minimum_files_characters = 2,
+
+      -- Disabled by default.
+      -- Will probably slow down some aspects of the sorter, but can make color highlights.
+      -- I will work on this more later.
+      use_highlighter = true,
     }
   }
 }
@@ -61,7 +69,7 @@ function M.find_files()
     sorting_strategy = 'descending',
   }
 
-  require('telescope.builtin').find_files(opts)
+  require('telescope').extensions.fzf_writer.files(opts)
 end
 
 function M.buffers()

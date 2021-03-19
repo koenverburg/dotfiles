@@ -110,6 +110,10 @@ normal('<leader>gy', ':Goyo 120<cr>')
 -- Open a Markdown File in Typora
 normal('<leader>tmp', [[ :call jobstart('typora '.. expand('%:p'))<cr> ]])
 
+-- unsure about the bindings, thinking mvp
+normal('pg', ':res +5<cr>')
+normal('ps', ':res -5<cr>')
+
 -- easymotion
 --normal('<space>jf', '<Plug>(easymotion-overwin-f)')
 --vim.cmd [[ map <space>jf <Plug>(easymotion-bd-f) ]]
