@@ -3,8 +3,8 @@ name: Custom WSL Distro Pipeline
 on:
   push
   #registry_package:
-    #action:
-      #- updated
+  #action:
+  #- updated
 
 jobs:
   Helios:
@@ -29,7 +29,6 @@ jobs:
 
       - name: run Helios detached
         run: |
-          docker login ghcr.io -u ${{ github.repository_owner }} --password ${{ secrets.GHCR_TOKEN }}
           docker run --detach --name helios-runner https://ghcr.io/koenverburg/dotfiles/helios
           docker export --output=helios-wsl-install.tar helios-runner
 
