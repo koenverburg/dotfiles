@@ -7,7 +7,9 @@ bake:
 bake-wsl:
 	docker buildx bake -f ./docker-bake.hcl --push helios
 
-
-push:
-	export DOCKER_META_IMAGES="ghcr.io/koenverburg/dotfiles/ubuntu-dotfiles" 
-	docker buildx bake -f ./docker-bake.hcl --push build --print
+export-tar:
+	docker run --detach --name helios-runner ghcr.io/koenverburg/dotfiles/helios
+	docker export --output=helios-wsl-install.tar helios-runner
+	# docker stop $ancestorId
+	# docker rm $ancestorId
+	# docker rmi ghcr.io/koenverburg/dotfiles/helios
