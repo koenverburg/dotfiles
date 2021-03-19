@@ -52,7 +52,8 @@ function fgb {
 }
 
 function fg {
-  git ls-files -m -o --exclude-standard | fzf | % { git add $_.Trim() }
+  # fzf -m is for multipe files using tab
+  git ls-files -m -o --exclude-standard | fzf -m | % { git add $_.Trim() }
 }
 
 function myproject {
