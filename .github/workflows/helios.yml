@@ -29,7 +29,7 @@ jobs:
 
       - name: run Helios detached
         run: |
-          docker run --detach --name helios-runner https://ghcr.io/koenverburg/dotfiles/helios
+          docker run -d --name helios-runner ghcr.io/koenverburg/dotfiles/helios
           docker export --output=helios-wsl-install.tar helios-runner
 
       - uses: marvinpinto/action-automatic-releases@latest
