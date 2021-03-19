@@ -39,7 +39,7 @@ jobs:
         with:
           push: true
           targets: ubuntu
-          Files: |
+          files: |
             ./docker-bake.hcl
             ${{ steps.docker_meta.outputs.bake-file }}
   helios:
