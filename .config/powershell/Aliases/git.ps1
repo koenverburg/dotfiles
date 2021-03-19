@@ -51,6 +51,10 @@ function fgb {
   git branch -a | fzf | % { git checkout $_.Trim() }
 }
 
+function fg {
+  git ls-files -m -o --exclude-standard | fzf | % { git add $_.Trim() }
+}
+
 function myproject {
   git config user.name "Koen Verburg"
   git config user.email "creativekoen@gmail.com"
