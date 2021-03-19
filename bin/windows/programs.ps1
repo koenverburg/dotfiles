@@ -16,6 +16,7 @@ Install typora
 Uninstall deno
 Install nodejs-lts
 Install golang
+Install lua
 # Install python2
 # Install python3
 # Install Ruby
@@ -27,16 +28,14 @@ Install kubernetes-cli
 Install vifm
 Install 7zip
 Install delta
-Install lazygit
-Install fzf # fuzzy finder
 Install mingw # gcc, need to compile treesitter
 Install llvm # clang, need to compile treesitter
 Install make
 Install cmake
 Install ninja
 Install bat # code preview for telescope (Neovim Plugin)
+Install fzf # fuzzy finder
 Install ripgrep # find in files
-Uninstall fd
 
 # cname, mx, dns tooling
 Install bind-toolsonly # clitool: big
