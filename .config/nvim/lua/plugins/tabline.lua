@@ -24,7 +24,7 @@ function M.minimal()
     end
 
     if #buffer_list > 1 then
-      pane_count = fmt('(%s)', #buffer_list)
+      pane_count = fmt('(%s) ', #buffer_list)
     else
       pane_count = ''
     end
