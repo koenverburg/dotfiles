@@ -32,6 +32,7 @@ alias dot="cd ~/code/github/dotfiles"
 alias gf="git fetch --prune"
 alias gs="git status -sb"
 alias glo="git log --oneline"
+alias gd="git diff"
 alias gl="git log"
 alias gpd="git pull"
 alias gpo="git push origin"
@@ -53,4 +54,6 @@ alias rm="rm -i"
 
 alias weather="curl http://wttr.in"
 #alias t=/usr/local/Cellar/tilt/0.14.1/bin/tilt
+
+export PATH="$PATH:/usr/bin"
 

@@ -52,6 +52,7 @@ StowFile $env:LOCALAPPDATA\nvim\init.lua (Get-Item ".\.config\nvim\init.lua").Fu
 # All the other files
 Stow "$env:LOCALAPPDATA\nvim\lua" ".\.config\nvim\lua"
 Stow "$env:LOCALAPPDATA\nvim\lua\core" ".\.config\nvim\lua\core"
+Stow "$env:LOCALAPPDATA\nvim\lua\utils" ".\.config\nvim\lua\utils"
 Stow "$env:LOCALAPPDATA\nvim\lua\plugins" ".\.config\nvim\lua\plugins"
 Stow "$env:LOCALAPPDATA\nvim\lua\finder" ".\.config\nvim\lua\finder"
 

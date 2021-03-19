@@ -1,7 +1,8 @@
-- name: Set up local (ubuntu) workstation
+- name: Setting up WSL Distro
   hosts: local
   roles:
     - role: packages
+    - role: wsl
     - role: fish
     - role: tmux
     - role: nvim

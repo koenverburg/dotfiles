@@ -36,68 +36,65 @@ return require('packer').startup {
     use 'glepnir/zephyr-nvim'
     use 'christianchiarulli/nvcode-color-schemes.vim'
 
-    -- Finders
+    -- Finders / UI
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
+    use 'nvim-telescope/telescope-fzy-native.nvim'
+    use 'scrooloose/nerdtree'
 
     -- LSP config
-    use 'neovim/nvim-lsp'
     use 'neovim/nvim-lspconfig'
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/diagnostic-nvim'
+    use 'wbthomason/lsp-status.nvim'
+    use 'onsails/lspkind-nvim'
+    use 'glepnir/lspsaga.nvim'
+    --use 'tjdevries/nlua.nvim'
 
     -- Snippets
     --use 'SirVer/ultisnips'
-    --use 'honza/vim-snippets'
 
     use 'nvim-treesitter/nvim-treesitter'
 
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
+    use 'tpope/vim-fugitive'
     use 'RRethy/vim-illuminate'
+    use 'jiangmiao/auto-pairs'
 
     -- Lanaguages
     use 'elzr/vim-json'
     use 'stephpy/vim-yaml'
     use 'PProvost/vim-ps1'
+    use 'hashivim/vim-terraform'
+    use 'hashicorp/terraform-ls'
+    use 'ekalinin/Dockerfile.vim'
 
-    --  use 'plasticboy/vim-markdown'
-    --  use 'godlygeek/tabular'
+    --  Markdown
+    use 'Iron-E/nvim-libmodal'
+    use 'Iron-E/nvim-typora'
+    use 'plasticboy/vim-markdown'
+    use 'godlygeek/tabular'
 
-    -- WordJumping like resharper and faster movement
-    -- use 'bkad/CamelCaseMotion'
-    -- use 'easymotion/vim-easymotion'
+    use 'easymotion/vim-easymotion'
+    -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Convenience for commenting things in and out
     use 'scrooloose/nerdcommenter'
 
-    -- Auto close parens, braces, brackets, etc
-    use 'jiangmiao/auto-pairs'
-
     -- Looks
     use 'mhinz/vim-startify'
-    use 'ryanoasis/vim-devicons'
+    use 'tjdevries/express_line.nvim'
     use 'kyazdani42/nvim-web-devicons'
-    use 'hoob3rt/lualine.nvim'
-
-    -- Git feedback in files
-    -- use 'airblade/vim-gitgutter'
-    use 'mhinz/vim-signify'
-    use 'tpope/vim-fugitive'
+    use 'ryanoasis/vim-devicons'
+    use 'airblade/vim-gitgutter'
 
     -- Focus mode
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
 
-    -- DevOps Stuff
-    use 'hashivim/vim-terraform'
-    use 'hashicorp/terraform-ls'
-
-    -- Linting error support for js,ts
-    --  use 'desmap/ale-sensible'
-    --  use 'w0rp/ale', { 'for': ['typescript', 'javascript'] }
+    -- linting
+    use 'w0rp/ale'
   end
 }

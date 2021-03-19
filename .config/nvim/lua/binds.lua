@@ -15,16 +15,17 @@ local insert = function(key, func)
   bind('i', key, func)
 end
 
+local terminal = function(key, func)
+  bind('t', key, func)
+end
+
+normal('<leader><leader>x', [[ <cmd>lua require('utils').save_and_execute()<CR> ]])
+
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
 normal('<C-k>', '<C-W><C-K>')
 normal('<C-l>', '<C-W><C-L>')
 normal('<C-h>', '<C-W><C-H>')
--- alt version
-normal('<A-j>', '<C-W><C-J>')
-normal('<A-k>', '<C-W><C-K>')
-normal('<A-l>', '<C-W><C-L>')
-normal('<A-h>', '<C-W><C-H>')
 
 -- Better jk
 normal('j', 'gj')
@@ -46,9 +47,6 @@ normal('N', 'Nzzzv')
 
 -- Git shortcuts
 normal('<leader>gs', ':Gstatus<cr>')
-
--- list buffers
-normal('<space>b', ':Buffers<cr>')
 
 -- Quickly return to normal mode
 insert('jj', '<esc>')
@@ -76,48 +74,49 @@ insert('<leader>w', ':w<cr>')
 -- Creating a new tab
 normal('<leader><S-t>', ':tabnew<cr>')
 
--- utils?
--- TODO find a better name for these things
-
 -- Credo wants this, sort aliases in alphabetical order
 visual('<leader>s', ":'<,'>!sort -f<cr>")
 
 -- Searching
+normal('?', '?\v')
 normal('/', '/\v')
 visual('/', '/\v')
 
 -- Replace
-normal('<C-r>', ":%s/")
-visual('<C>rr', ":<,'>s/")
+normal('<leader>r', ":%s/")
+visual('<leader>rr', ":<,'>s/")
 
 -- Swap : and ; to make colon commands easer to type
 normal(';', ':')
 normal(':', ';')
 
--- FZF
-normal('<leader>t', ':FZF<cr>')
-normal('<space>ff', ':Rg ')
-
 -- sessions
 normal('<leader>ss', ':SSave<cr>')
 normal('<leader>sc', ':SClose<cr>')
-
--- What is time?>
-normal('tt', '"=strftime("%F %T%z")<CR>')
-
--- rename
-normal('<leader>wr', ':%s/')
 
 -- Move whole lines
 visual('J', ":m '>+1<CR>gv=gv")
 visual('K', ":m '<-2<CR>gv=gv")
 
+normal('<C-b>', ':NERDTreeToggle<cr>')
+
+normal('<A-d>', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('pwsh')<cr> ]])
+normal('<A-l>', ':Lspsaga open_floaterm lazygit<cr>')
+terminal('<A-d>', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
+
+-- focus mode with Goyo and limelight
+normal('<leader>gy', ':Goyo 120<cr>')
+
+-- Open a Markdown File in Typora
+normal('<leader>tmp', [[ :call jobstart('typora '.. expand('%:p'))<cr> ]])
+
 -- easymotion
 --normal('<space>jf', '<Plug>(easymotion-overwin-f)')
 --vim.cmd [[ map <space>jf <Plug>(easymotion-bd-f) ]]
 -- two character search
---normal('<space>js', '<Plug>(easymotion-overwin-f2)')
---vim.cmd [[ map <space>js <Plug>(easymotion-bd-f2) ]]
+normal('<space>js', '<Plug>(easymotion-overwin-f2)')
+vim.cmd [[ map <space>js <Plug>(easymotion-bd-f2) ]]
+
 -- Move to line
 --normal('<space>jl', '<Plug>(easymotion-overwin-line)')
 --vim.cmd [[ map <space>jl <Plug>(easymotion-bd-line) ]]
@@ -125,21 +124,9 @@ visual('K', ":m '<-2<CR>gv=gv")
 --normal('<space>jw', '<Plug>(easymotion-overwin-w)')
 --vim.cmd [[ map <space>jw <Plug>(easymotion-bd-w) ]]
 
-function togglezen()
-    w.list           = not w.list
-    w.number         = not w.number
-    w.relativenumber = not w.relativenumber
-    w.cursorline     = not w.cursorline
-    w.cursorcolumn   = not w.cursorcolumn
-    w.colorcolumn    = w.colorcolumn == '0' and '80' or '0'
-    o.laststatus     = o.laststatus == 2 and 0 or 2
-    o.ruler          = not o.ruler
-end
-
-normal('<A-z>', 'lua togglezen()')
-
 return {
   normal,
   visual,
-  insert
+  insert,
+  toggleLines
 }

@@ -1,21 +1,24 @@
-- name: Install a list of packages
+- name: General | Install a list of packages
   apt:
-    name: "{{ item }}"
-    update_cache: yes
     state: present
-  with_items:
-    - git
-    - bat
-    - fzf
-    - rg
-    - delta
-    - 7zip
-    - nmap
-    - node
-    - yarn
-    - terraform
-    - golang
-    - lua
-    - firefox
-    - ranger
-    # - alacritty
+    name:
+      - git
+      - wget
+      - ca-certificates
+      - postgresql
+      - postgresql-contrib
+      - fzf
+      - tmux
+      - delta
+      - nmap
+      - nodejs
+      - yarn
+      - ansible
+      - lua5.3
+      - pkg-config
+      - libtool-bin
+      - unzip
+      - gettext
+      - make
+      - cmake
+      - luarocks

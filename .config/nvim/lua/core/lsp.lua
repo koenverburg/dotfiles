@@ -1,54 +1,72 @@
-vim.g.diagnostic_insert_delay = 1
 vim.g.diagnostic_show_sign = 1
 vim.g.diagnostic_enable_ale = 0
+vim.g.diagnostic_insert_delay = 0
 vim.g.diagnostic_enable_virtual_text = 1
+
+vim.g.completion_confirm_key = ""
+vim.g.completion_trigger_character = {'.'}
 vim.g.completion_enable_auto_paren = 1 -- Complete parentheses for functions
---vim.g.completion_enable_snippet = 'UltiSnips'
-vim.g.completion_confirm_key = "\\<C-y>"
-vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
-vim.g.completion_trigger_character = '.'
+vim.g.completion_trigger_keyword_length = 2
+vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
+local lsp_status = require('lsp-status')
+lsp_status.register_progress()
 
-local on_attach = function(client, bufnr)
-  require('completion').on_attach(client, bufnr)
-  local opts = { noremap=true, silent=true }
+lsp_status.config({
+  indicator_errors = 'E',
+  indicator_warnings = 'W',
+  indicator_info = 'i',
+  indicator_hint = '?',
+  indicator_ok = 'Ok',
+})
 
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD',  '<Cmd>lua vim.lsp.buf.declaration()<CR>'     , opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd',  '<Cmd>lua vim.lsp.buf.definition()<CR>'      , opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi',  '<cmd>lua vim.lsp.buf.implementation()<CR>'  , opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr',  '<cmd>lua vim.lsp.buf.references()<CR>'      , opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gx',  '<cmd>lua vim.lsp.buf.code_action()<CR>'     , opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gds', '<cmd>lua vim.lsp.buf.document_symbol()<CR>' , opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gws', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
+local mapper = function(mode, key, action)
+  local command = string.format("<cmd>lua %s()<cr>", action)
+  vim.api.nvim_buf_set_keymap(0, mode, key, command, {noremap=true, silent=true})
+end
 
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>sh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+-- lsp saga
+vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
 
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>xr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>xd', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opts)
-  --buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  --buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  --buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  --buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  --buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  --buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  --buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  --buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  --buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  --buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  --buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  --buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+local on_attach = function(client)
+  require('completion').on_attach(client)
+  lsp_status.on_attach(client)
+
+  mapper('n', 'gD',  'vim.lsp.buf.declaration')
+  mapper('n', 'gd',  'vim.lsp.buf.definition')
+  --mapper('n', '<c-]>',  'vim.lsp.buf.definition')
+
+  mapper('n', 'gi',  'vim.lsp.buf.implementation')
+  --mapper('n', 'gr',  'vim.lsp.buf.references')
+
+  mapper('n', 'gds', 'vim.lsp.buf.document_symbol')
+  mapper('n', 'gW', 'vim.lsp.buf.workspace_symbol')
+
+  -- lsp saga
+  mapper('n', '<c-K>', 'vim.lsp.buf.hover')
+  mapper('n', '<leader>ca',  "require('lspsaga.codeaction').code_action")
+  mapper('i', '<leader>ca',  "require('lspsaga.codeaction').code_action")
+  mapper('i', 'gs',  "require('lspsaga.signaturehelp').signature_help")
+  mapper('n', 'gr', "require('lspsaga.rename').rename")
+
+  mapper('n', '<leader>sd', "require('lspsaga.diagnostic').show_line_diagnostics")
+  mapper('n', '[e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_prev")
+  mapper('n', ']e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_next")
 end
 
 -- The langauges servers
--- TODO add terraformls + lua if unix
-local servers = {'vimls', 'tsserver', 'html', 'gopls', 'yamlls'}
+local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'terraformls', 'gopls'}
+
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  lspconfig[lsp].setup {
     on_attach = on_attach,
+    capabilities = lsp_status.capabilities
   }
 end
+
+--require('nlua.lsp.nvim').setup(lspconfig, {
+  --on_attach = on_attach,
+  --capabilities = lsp_status.capabilities
+--})
+

@@ -9,12 +9,30 @@ function yd { yarn dist }
 function yb { yarn build }
 function yupgrade { yarn upgrade-interactive --latest }
 
+# Alacritty
+function apwr {
+  alacritty.exe -o shell.program=pwsh.exe
+}
+
+function editdot {
+  alacritty.exe -o shell.program="pwsh.exe --command cd ~/code/github/dotfiles;nvim"
+}
+
 # GO
 function grm { go run main.go }
 
 # VIM
-
 Set-Alias vf 'vifm'
 Set-Alias n 'nvim'
 Set-Alias vim 'nvim'
 Set-Alias gvim 'nvim-qt'
+
+# Docker
+function dst { # Docker Status
+  docker container ls -a;
+  docker images -a;
+  docker ps;
+}
+
+function dcud { docker-compose up -d }
+function dcd { docker-compose down }

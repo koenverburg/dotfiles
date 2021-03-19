@@ -5,10 +5,11 @@ require('binds')
 
 require('core.lsp')
 require('core.treesitter')
+require('core.statusline')
 
 require('plugins.startup')
 require('plugins.config')
-require('plugins.fzf')
+require('plugins.tabline')
 
 -- TODO refactor this
 require('finder.init')
