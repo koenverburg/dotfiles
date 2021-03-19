@@ -1,10 +1,7 @@
 name: Custom WSL Distro Pipeline
 
 on:
-  push
-  #registry_package:
-  #action:
-  #- updated
+  workflow_dispatch:
 
 jobs:
   Helios:
