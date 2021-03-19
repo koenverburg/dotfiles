@@ -47,8 +47,8 @@ function gw {
   }
 }
 
-function gbf {
-  git branch | fzf | % { git checkout $_.Trim() }
+function fgb {
+  git branch -a | fzf | % { git checkout $_.Trim() }
 }
 
 function myproject {
