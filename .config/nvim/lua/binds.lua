@@ -101,7 +101,7 @@ visual('K', ":m '<-2<CR>gv=gv")
 normal('<C-b>', ':NERDTreeToggle<cr>')
 
 normal('<A-d>', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('pwsh')<cr> ]])
-normal('<A-l>', ':Lspsaga open_floaterm lazygit<cr>')
+normal('<A-t>', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('yarn test ' .. expand('%'))<cr> ]])
 terminal('<A-d>', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
 -- focus mode with Goyo and limelight
