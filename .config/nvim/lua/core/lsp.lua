@@ -38,7 +38,7 @@ local on_attach = function(client)
   --mapper('n', '<c-]>',  'vim.lsp.buf.definition')
 
   mapper('n', 'gi',  'vim.lsp.buf.implementation')
-  --mapper('n', 'gr',  'vim.lsp.buf.references')
+  mapper('n', '<c-r>',  'vim.lsp.buf.references')
 
   mapper('n', 'gds', 'vim.lsp.buf.document_symbol')
   mapper('n', 'gW', 'vim.lsp.buf.workspace_symbol')
