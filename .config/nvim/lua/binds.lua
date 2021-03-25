@@ -114,19 +114,10 @@ normal('<leader>tmp', [[ :call jobstart('typora '.. expand('%:p'))<cr> ]])
 normal('pg', ':res +5<cr>')
 normal('ps', ':res -5<cr>')
 
--- easymotion
---normal('<space>jf', '<Plug>(easymotion-overwin-f)')
---vim.cmd [[ map <space>jf <Plug>(easymotion-bd-f) ]]
--- two character search
-normal('<space>js', '<Plug>(easymotion-overwin-f2)')
-vim.cmd [[ map <space>js <Plug>(easymotion-bd-f2) ]]
+-- Create Function docs
+normal('gcj', ':ProDoc'<CR>
+normal('gcc', ':ProComment'<CR>
 
--- Move to line
---normal('<space>jl', '<Plug>(easymotion-overwin-line)')
---vim.cmd [[ map <space>jl <Plug>(easymotion-bd-line) ]]
--- Move to word
---normal('<space>jw', '<Plug>(easymotion-overwin-w)')
---vim.cmd [[ map <space>jw <Plug>(easymotion-bd-w) ]]
 
 return {
   normal,

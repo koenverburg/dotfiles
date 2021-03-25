@@ -56,6 +56,8 @@ return require('packer').startup {
     -- Snippets
     --use 'SirVer/ultisnips'
 
+    -- Utils
+    use 'glepnir/prodoc.nvim'
     use 'nvim-treesitter/nvim-treesitter'
 
     -- Misc
@@ -73,12 +75,9 @@ return require('packer').startup {
     use 'ekalinin/Dockerfile.vim'
 
     --  Markdown
-    use 'Iron-E/nvim-libmodal'
-    use 'Iron-E/nvim-typora'
     use 'plasticboy/vim-markdown'
     use 'godlygeek/tabular'
 
-    use 'easymotion/vim-easymotion'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Convenience for commenting things in and out
