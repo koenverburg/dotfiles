@@ -1,6 +1,6 @@
 vim.o.ruler = true
 vim.o.background = 'dark'
-vim.g.gruvbox_italic = 1
+vim.g.gruvbox_italic = 0
 vim.cmd('colorscheme gruvbox')
 
 vim.g.mapleader = ','
@@ -44,4 +44,5 @@ vim.cmd [[ highlight clear SignColumn ]]
 vim.o.clipboard = vim.o.clipboard .. 'unnamed,unnamedplus'
 vim.o.equalalways = true -- Auto-resize windows
 vim.o.termguicolors = true
+vim.o.showtabline = 2
 
