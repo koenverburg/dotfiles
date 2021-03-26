@@ -8,7 +8,6 @@ vim.b.mapleader = ','
 
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.wo.signcolumn = 'number'
 vim.wo.wrap = false
 vim.wo.list = true
 
@@ -40,9 +39,9 @@ vim.o.inccommand = 'split'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.cmdheight = 1
 
-vim.cmd [[ highlight clear SignColumn ]]
 vim.o.clipboard = vim.o.clipboard .. 'unnamed,unnamedplus'
-vim.o.equalalways = true -- Auto-resize windows
 vim.o.termguicolors = true
 vim.o.showtabline = 2
+--vim.o.equalalways = true -- Auto-resize windows
 
+vim.cmd [[ highlight clear SignColumn ]]

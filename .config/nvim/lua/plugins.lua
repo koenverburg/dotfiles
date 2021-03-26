@@ -1,8 +1,7 @@
--- On ly required if you have packer in your `opt` pack
+-- Only required if you have packer in your `opt` pack
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 if not packer_exists then
-  -- TODO: Maybe handle windows better?
   if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
     return
   end
@@ -88,7 +87,7 @@ return require('packer').startup {
     use 'tjdevries/express_line.nvim'
     use 'kyazdani42/nvim-web-devicons'
     use 'ryanoasis/vim-devicons'
-    use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
 
     -- Focus mode
     use 'junegunn/goyo.vim'
