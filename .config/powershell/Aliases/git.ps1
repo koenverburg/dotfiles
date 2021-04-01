@@ -48,12 +48,12 @@ function gw {
 }
 
 function fgb {
-  git branch -a | fzf | % { git checkout $_.Trim() }
+  git branch -a | fzf --layout=reverse --margin=5 | % { git checkout $_.Trim() }
 }
 
 function fg {
   # fzf -m is for multipe files using tab
-  git ls-files -m -o --exclude-standard | fzf -m | % { git add $_.Trim() }
+  git ls-files -m -o --exclude-standard | fzf -m --layout=reverse --margin=5 -m | % { git add $_.Trim() }
 }
 
 function myproject {
