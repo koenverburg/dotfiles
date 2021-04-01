@@ -59,7 +59,6 @@ visual('>', '>gv')
 -- quickly cancel search highlighting
 normal('<leader><space>', ':nohl<cr>')
 
--- Quiting and saving
 -- window resizing
 normal('<c-left>', '5<c-w>>')
 normal('<c-right>', '5<c-w><')
@@ -68,23 +67,18 @@ normal('<c-right>', '5<c-w><')
 normal('<leader>w', ':w<cr>')
 insert('<leader>w', ':w<cr>')
 
--- Remove whitespace
---[[normal('<leader>sws', ":%s/\s\+$//<cr>")]]
-
 -- Creating a new tab
 normal('<leader><S-t>', ':tabnew<cr>')
 
--- Credo wants this, sort aliases in alphabetical order
+-- Credo, sort aliases in alphabetical order
 visual('<leader>s', ":'<,'>!sort -f<cr>")
 
 -- Searching
-normal('?', '?\v')
 normal('/', '/\v')
 visual('/', '/\v')
 
 -- Replace
-normal('<leader>r', ":%s/")
-visual('<leader>rr', ":<,'>s/")
+normal('<leader>rr', ":%s/")
 
 -- Swap : and ; to make colon commands easer to type
 normal(';', ':')
@@ -94,7 +88,7 @@ normal(':', ';')
 normal('<leader>ss', ':SSave<cr>')
 normal('<leader>sc', ':SClose<cr>')
 
--- Move whole lines
+-- Move whole lines, kudos @theprimeagen
 visual('J', ":m '>+1<CR>gv=gv")
 visual('K', ":m '<-2<CR>gv=gv")
 
@@ -107,7 +101,7 @@ terminal('<A-d>', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_term
 -- focus mode with Goyo and limelight
 normal('<leader>gy', ':Goyo 120<cr>')
 
--- Open a Markdown File in Typora
+-- Open a Markdown File in Typora, TODO: remove typora dep, in favor of obsidian
 normal('<leader>tmp', [[ :call jobstart('typora '.. expand('%:p'))<cr> ]])
 
 -- unsure about the bindings, thinking mvp
@@ -115,9 +109,8 @@ normal('pg', ':res +5<cr>')
 normal('ps', ':res -5<cr>')
 
 -- Create Function docs
-normal('gcj', ':ProDoc'<CR>
-normal('gcc', ':ProComment'<CR>
-
+normal('gcj', ':ProDoc<cr>')
+normal('gcc', ':ProComment<cr>')
 
 return {
   normal,

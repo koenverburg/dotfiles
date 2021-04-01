@@ -1,5 +1,5 @@
 local map_tele = function(key, f, options, buffer)
-  local mode = "n"
+  local mode = 'n'
   local rhs = string.format(
     "<cmd>lua require('finder')['%s'](%s)<CR>",
     f,
@@ -25,7 +25,6 @@ map_tele('<space>fg', 'live_grep_custom')
 
 map_tele('<space>t' , 'git_files')
 map_tele('<space>ed' , 'find_files_dotfiles')
---map_tele('<space>gb', 'git_branches')
 
 -- lsp
 map_tele('<leader>fr', 'lsp_references')
