@@ -12,7 +12,8 @@ Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\git.ps1"
 Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\terraform.ps1"
 Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
 
-Set-Theme Pure
+#Set-Theme Pure
+Set-PoshPrompt -Theme star
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell
