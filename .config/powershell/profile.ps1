@@ -1,4 +1,3 @@
-Import-Module posh-git
 Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
 Import-Module PSReadline
@@ -17,9 +16,6 @@ Set-PoshPrompt -Theme star
 
 Start-SshAgent
 $env:ConEmuANSI = $True # hack for normal powershell
-
-$ThemeSettings.Colors.GitForegroundColor = [ConsoleColor]::DarkGray
-$ThemeSettings.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray
 
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
