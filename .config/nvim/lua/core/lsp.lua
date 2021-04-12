@@ -44,7 +44,7 @@ local on_attach = function(client)
   mapper('n', 'gW', 'vim.lsp.buf.workspace_symbol')
 
   -- lsp saga
-  mapper('n', '<c-K>', 'vim.lsp.buf.hover')
+  mapper('n', '<space>h', 'vim.lsp.buf.hover')
   mapper('n', '<leader>ca',  "require('lspsaga.codeaction').code_action")
   mapper('i', '<leader>ca',  "require('lspsaga.codeaction').code_action")
   mapper('i', 'gs',  "require('lspsaga.signaturehelp').signature_help")
