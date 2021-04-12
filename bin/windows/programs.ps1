@@ -10,16 +10,17 @@ Install powershell-core
 Install alacritty
 Install notion
 Install insomnia-rest-api-client
-Install typora
+Uninstall typora
+Install responsively
 
 # Programming languages / Runtimes
 Uninstall deno
 Install nodejs-lts
 Install golang
 Install lua
-# Install python2
-# Install python3
-# Install Ruby
+Install python
+Install rust
+Install Ruby
 
 # CLI tools
 Install yarn
@@ -53,8 +54,8 @@ npm install -g serve neovim wikit npkill
 # Langague Server stuff for NeoVim
 npm install -g vim-language-server typescript-language-server vscode-html-languageserver-bin yaml-language-server graphql-language-service-server @stoplight/spectral vscode-css-languageserver-bin
 
-# py -2 -m pip install --upgrade pip
-# py -3 -m pip install --upgrade pip
-# py -2 -m pip install pynvim
-# py -3 -m pip install pynvim
+pip install --upgrade pip
+pip install Commitizen
+pip install pre-commit
+# pip install pynvim
 # gem install neovim
