@@ -13,12 +13,10 @@ Import-Module "$home\code\github\dotfiles\.config\powershell\prompt.ps1"
 
 prompt;
 
-
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 # Autocompletion for arrow keys
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
-
 
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
