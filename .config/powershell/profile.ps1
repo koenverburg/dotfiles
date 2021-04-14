@@ -11,8 +11,6 @@ Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\terraform.p
 Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
 Import-Module "$home\code\github\dotfiles\.config\powershell\prompt.ps1"
 
-prompt;
-
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 # Autocompletion for arrow keys
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
@@ -36,3 +34,5 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
+Set-PoshPrompt -Theme "$home\code\github\dotfiles\.config\powershell\prompt.omp.json"
