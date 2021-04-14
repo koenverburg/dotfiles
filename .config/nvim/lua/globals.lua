@@ -1,7 +1,6 @@
 vim.o.ruler = true
 vim.o.background = 'dark'
-vim.g.gruvbox_italic = 0
-vim.cmd('colorscheme gruvbox')
+vim.cmd('colorscheme zephyr')
 
 vim.g.mapleader = ','
 vim.b.mapleader = ','
