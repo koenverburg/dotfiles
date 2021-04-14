@@ -18,3 +18,10 @@ function prompt {
 
     return "~ "
 }
+
+function info {
+  # Log pwd
+  # log git status
+  # log time
+  # log uptime
+}
