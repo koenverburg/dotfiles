@@ -1,0 +1,31 @@
+- name: Language Servers | vim-language-server
+  shell: |
+    npm install -g vim-language-server
+
+- name: Language Servers | typescript-language-server
+  shell: |
+    npm install -g typescript-language-server
+
+- name: Language Servers | vscode-html-languageserver-bin
+  shell: |
+    npm install -g vscode-html-languageserver-bin
+
+- name: Language Servers | yaml-language-server
+  shell: |
+    npm install -g yaml-language-server
+
+- name: Language Servers | graphql-language-service-server
+  shell: |
+    npm install -g graphql-language-service-server
+
+- name: Language Servers | vscode-css-languageserver-bin
+  shell: |
+    npm install -g vscode-css-languageserver-bin
+
+- name: Language Servers | lua-lsp
+  shell: |
+    luarocks install --server=http://luarocks.org/dev lua-lsp
+
+- name: Language Servers | Go lsp
+  shell: |
+    go get golang.org/x/tools/gopls@latest
