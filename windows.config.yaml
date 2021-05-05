@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf 
+
+#- create:
+    #- ~/downloads
+    #- ~/.vim/undo-history
+
+#- shell:
+  #- [git submodule update --init --recursive, Installing submodules]
