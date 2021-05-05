@@ -45,6 +45,7 @@ local on_attach = function(client)
 end
 
 -- The langauges servers
+-- TODO abstract this to /ftplugin/:lsp.lua
 local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'terraformls', 'gopls'}
 
 for _, lsp in ipairs(servers) do
@@ -53,7 +54,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require('nlua.lsp.nvim').setup(lspconfig, {
-  on_attach = on_attach,
-})
+--require('nlua.lsp.nvim').setup(lspconfig, {
+  --on_attach = on_attach,
+--})
 
