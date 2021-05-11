@@ -35,7 +35,7 @@ normal('N', 'Nzzzv')
 normal('<leader>gs', ':Gstatus<cr>')
 
 -- Quickly return to normal mode
-insert('jj', '<esc>')
+insert('jk', '<esc>')
 
 -- keep text selected after indentation
 visual('<', '<gv')
