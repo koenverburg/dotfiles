@@ -23,6 +23,7 @@ Install rust
 Install Ruby
 
 # CLI tools
+Install hyperfine
 Install yarn
 Install terraform
 Install kubernetes-cli
