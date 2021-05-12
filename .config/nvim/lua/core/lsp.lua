@@ -31,6 +31,11 @@ vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
 
 local on_attach = function(client)
   require('completion').on_attach(client)
+  require('lspkind').init()
+
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
   lsp_status.on_attach(client)
 
   mapper('n', 'gD',  'vim.lsp.buf.declaration')
