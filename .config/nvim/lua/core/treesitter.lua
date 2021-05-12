@@ -1,18 +1,18 @@
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
-    -- "typescript",
-    -- "typescript.tsx",
-    -- "tsx",
-    "javascript",
-    --"graphql",
-    "go",
-    "json",
-    "lua",
-    "css",
+    "yaml",
+    "tsx",
+    "typescript",
+    "graphql",
     "jsdoc",
+    "javascript",
     "html",
-  }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    "json",
+    "css",
+    "lua",
+    "go",
+  },
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true,
   },
 }

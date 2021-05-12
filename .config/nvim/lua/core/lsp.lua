@@ -10,16 +10,6 @@ vim.g.completion_trigger_keyword_length = 2
 vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 
 local lspconfig = require('lspconfig')
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
-
-lsp_status.config({
-  indicator_errors = 'E',
-  indicator_warnings = 'W',
-  indicator_info = 'i',
-  indicator_hint = '?',
-  indicator_ok = 'Ok',
-})
 
 local mapper = function(mode, key, action)
   local command = string.format("<cmd>lua %s()<cr>", action)
@@ -36,11 +26,9 @@ local on_attach = function(client)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-  lsp_status.on_attach(client)
-
   mapper('n', 'gD',  'vim.lsp.buf.declaration')
   mapper('n', 'gd',  'vim.lsp.buf.definition')
-  --mapper('n', '<c-]>',  'vim.lsp.buf.definition')
+  mapper('n', '<c-]>',  'vim.lsp.buf.definition')
 
   mapper('n', 'gi',  'vim.lsp.buf.implementation')
   mapper('n', '<c-r>',  'vim.lsp.buf.references')
@@ -61,17 +49,16 @@ local on_attach = function(client)
 end
 
 -- The langauges servers
+-- TODO abstract this to /ftplugin/:lsp.lua
 local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'terraformls', 'gopls'}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
-    capabilities = lsp_status.capabilities
   }
 end
 
 --require('nlua.lsp.nvim').setup(lspconfig, {
   --on_attach = on_attach,
-  --capabilities = lsp_status.capabilities
 --})
 

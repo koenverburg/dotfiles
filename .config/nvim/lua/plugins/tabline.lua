@@ -1,53 +1,55 @@
 -- N . <filename> (N)
+local fn = vim.fn
 local fmt = string.format
-local M = {}
 
-function M.minimal()
+local function minimal()
+  local options = {
+    show_index = true,
+    no_name = '[No Name]'
+  }
   local line = ''
-  local currentTab = vim.fn.tabpagenr()
-  local tabs = vim.fn.tabpagenr('$')
+  for index = 1, fn.tabpagenr('$') do
+    local winnumber = fn.tabpagewinnr(index)
+    local buffer_list = fn.tabpagebuflist(index)
+    local buffnumber = buffer_list[winnumber]
+    local buffer_name = fn.bufname(buffnumber)
+    local buffer_modified = fn.getbufvar(buffnumber, "&mod")
 
-  for index = 1, tabs do
-    local window_number = vim.fn.tabpagewinnr(index)
-    local buffer_list   = vim.fn.tabpagebuflist(index)
-    local buffer_number = buffer_list[window_number]
-
-    local name_normal = vim.fn.fnamemodify(vim.fn.bufname(buffer_number), ':t')
-    local paneCount = buffer_list
-
-    if index == currentTab then
-      name = name_normal
-      activeSign = '●'
+    line = line .. '%' .. index .. 'T'
+    if index == fn.tabpagenr() then
+        line = line
     else
-      name = name_normal
-      activeSign = ' '
+        line = line
+    end
+
+    line = line .. ' '
+    if options.show_index then
+        line = line .. index .. ':'
     end
 
     if #buffer_list > 1 then
-      pane_count = fmt('(%s) ', #buffer_list)
-    else
-      pane_count = ''
+      line = line .. fmt('(%s) ', #buffer_list)
     end
 
-    tab = fmt('%s %s %s %s', index, activeSign, name, pane_count)
+    if buffer_name ~= '' then
+        line = line .. fn.fnamemodify(buffer_name, ':t') .. '  '
+      else
+        line = line .. options.no_name .. ' '
+    end
 
-    line = line .. tab
+    if buffer_modified == 1 then
+        line = line .. '● '
+    end
   end
 
-  vim.o.tabline = line
+  line = line -- .. '%#TabLineFill#'
+  return line
 end
 
-vim.cmd([[autocmd BufWinEnter,WinEnter * silent! lua require'plugins.tabline'.minimal()]])
-
-return setmetatable({}, {
-  __index = function(_, k)
-
-    if M[k] then
-      return M[k]
-    else
-      return require('telescope.builtin')[k]
-    end
-  end
-})
+function _G.tabline()
+  return minimal()
+end
 
 
+vim.o.showtabline = 2
+vim.o.tabline = '%!v:lua.tabline()'
