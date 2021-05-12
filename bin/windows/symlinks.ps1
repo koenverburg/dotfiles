@@ -40,24 +40,24 @@ if ($terminalFolder) {
 }
 
 # Powershell Profile(s)
-StowFile $env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 (Get-Item ".\.config\powershell\profile.ps1").FullName
-StowFile $env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 (Get-Item ".\.config\powershell\profile.ps1").FullName # powershell 5, no need for it
+# StowFile $env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 (Get-Item ".\.config\powershell\profile.ps1").FullName
+# StowFile $env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 (Get-Item ".\.config\powershell\profile.ps1").FullName # powershell 5, no need for it
 
 ## Neovim
 
 # symlinking the config
-StowFile $env:LOCALAPPDATA\nvim\init.lua (Get-Item ".\.config\nvim\init.lua").FullName
+# StowFile $env:LOCALAPPDATA\nvim\init.lua (Get-Item ".\.config\nvim\init.lua").FullName
 # StowFile $env:LOCALAPPDATA\nvim\ginit.vim (Get-Item ".\.config\nvim\ginit.vim").FullName
 
 # All the other files
-Stow "$env:LOCALAPPDATA\nvim\lua" ".\.config\nvim\lua"
-Stow "$env:LOCALAPPDATA\nvim\lua\core" ".\.config\nvim\lua\core"
-Stow "$env:LOCALAPPDATA\nvim\lua\utils" ".\.config\nvim\lua\utils"
-Stow "$env:LOCALAPPDATA\nvim\lua\plugins" ".\.config\nvim\lua\plugins"
-Stow "$env:LOCALAPPDATA\nvim\lua\finder" ".\.config\nvim\lua\finder"
+#Stow "$env:LOCALAPPDATA\nvim\lua" ".\.config\nvim\lua"
+#Stow "$env:LOCALAPPDATA\nvim\lua\core" ".\.config\nvim\lua\core"
+#Stow "$env:LOCALAPPDATA\nvim\lua\utils" ".\.config\nvim\lua\utils"
+#Stow "$env:LOCALAPPDATA\nvim\lua\plugins" ".\.config\nvim\lua\plugins"
+#Stow "$env:LOCALAPPDATA\nvim\lua\finder" ".\.config\nvim\lua\finder"
 
 # Alacritty
-StowFile $env:APPDATA\alacritty\alacritty.yml (Get-Item ".\.config\alacritty\alacritty.yml").FullName
+#StowFile $env:APPDATA\alacritty\alacritty.yml (Get-Item ".\.config\alacritty\alacritty.yml").FullName
 
 # vs Code
 StowFile $env:APPDATA\Code\User\settings.json (Get-Item ".\.config\vscode\settings.json").FullName
