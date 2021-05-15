@@ -8,6 +8,9 @@ function yl { yarn lint }
 function yd { yarn dist }
 function yb { yarn build }
 function yupgrade { yarn upgrade-interactive --latest }
+function yi {
+  yarn install --frozen-lockfile
+}
 
 # Alacritty
 function apwr {
@@ -36,3 +39,8 @@ function dst { # Docker Status
 
 function dcud { docker-compose up -d }
 function dcd { docker-compose down }
+
+
+# Make
+
+Set-Alias m 'make'

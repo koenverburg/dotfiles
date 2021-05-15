@@ -5,7 +5,9 @@
   "copyFormatting": false,
   "showTabsInTitlebar": true,
   "showTerminalTitleInTitlebar": true,
-  "theme": "dark",
+  "alwaysShowTabs": false,
+  "showTabsOnBottom": true,
+  "theme": "light",
   "tabWidthMode": "titleLength",
   "profiles": {
     "defaults": {
@@ -47,6 +49,12 @@
         "hidden": false,
         "name": "Ubuntu",
         "source": "Windows.Terminal.Wsl"
+      },
+      {
+          "guid": "{ad7218f0-2e16-5e65-af7f-1a501e686772}",
+          "hidden": false,
+          "name": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+          "source": "Windows.Terminal.Wsl"
       }
     ]
   },

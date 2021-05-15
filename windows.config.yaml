@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    #~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf 
+    ~/AppData/local/nvim: .config/nvim
+    ~/AppData/Roaming/alacritty/alacritty.yml: .config/alacritty/alacritty.yml
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1: .config/powershell/profile.ps1
+    ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: .config/powershell/profile.ps1
+    ~/AppData/Roaming/Code/User/settings.json: .config/vscode/settings.json
+    ~/AppData/Roaming/Code/User/keybindings.json: .config/vscode/keybindings.json
+#- create:
+    #- ~/downloads
+    #- ~/.vim/undo-history
+
+#- shell:
+  #- [git submodule update --init --recursive, Installing submodules]

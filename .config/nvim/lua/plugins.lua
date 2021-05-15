@@ -42,6 +42,7 @@ return require('packer').startup {
     use 'nvim-telescope/telescope-fzf-writer.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'scrooloose/nerdtree'
 
     -- LSP config

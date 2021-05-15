@@ -1,23 +1,9 @@
 -- This file will contain all the keybindings for nvim
-local bind = function(mode, key, func)
-  vim.api.nvim_set_keymap(mode, key, func, {noremap = true, silent = true})
-end
-
-local normal = function(key, func)
-  bind('n', key, func)
-end
-
-local visual = function(key, func)
-  bind('v', key, func)
-end
-
-local insert = function(key, func)
-  bind('i', key, func)
-end
-
-local terminal = function(key, func)
-  bind('t', key, func)
-end
+local utils = require('conrad.utils')
+local normal = utils.normal
+local visual = utils.visual
+local insert = utils.insert
+local terminal = utils.terminal
 
 normal('<leader><leader>x', [[ <cmd>lua require('utils').save_and_execute()<CR> ]])
 
@@ -49,7 +35,7 @@ normal('N', 'Nzzzv')
 normal('<leader>gs', ':Gstatus<cr>')
 
 -- Quickly return to normal mode
-insert('jj', '<esc>')
+insert('jk', '<esc>')
 
 -- keep text selected after indentation
 visual('<', '<gv')
@@ -62,6 +48,8 @@ normal('<leader><space>', ':nohl<cr>')
 -- window resizing
 normal('<c-left>', '5<c-w>>')
 normal('<c-right>', '5<c-w><')
+normal('<c-up>', ':resize +5<cr>')
+normal('<c-down>', ':resize -5<cr>')
 
 -- Faster saving
 normal('<leader>w', ':w<cr>')

@@ -2,8 +2,7 @@
 {
   // emmet
   "emmet.includeLanguages": {
-    "razor": "html",
-    "javascript": "javascriptreact"
+    "razor": "html"
   },
   // formatting
   "[go]": {
@@ -17,6 +16,9 @@
   },
   "[scss]": {
     "editor.formatOnSave": true
+  },
+  "[svg]": {
+    "editor.formatOnSave": false
   },
   "[javascript]": {
     "editor.formatOnSave": false,
@@ -35,7 +37,7 @@
   },
   "[typescriptreact]": {
     "editor.showUnused": true,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "modifications",
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
@@ -71,8 +73,6 @@
   "csharp.suppressDotnetInstallWarning": true,
   "csharp.supressBuildAssetsNotification": true,
   "csharp.suppressDotnetRestoreNotification": true,
-  // window Setting
-  "window.zoomLevel": 0,
   "window.titleBarStyle": "custom",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.statusBar.visible": true,
@@ -81,7 +81,7 @@
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.pinnedTabSizing": "compact",
   // Editor
@@ -98,7 +98,6 @@
   "editor.formatOnPaste": true,
   "editor.fontLigatures": false,
   "explorer.confirmDelete": false,
-  "editor.minimap.enabled": false,
   "editor.cursorBlinking": "solid",
   "editor.matchBrackets": "always",
   "editor.detectIndentation": false,
@@ -106,7 +105,7 @@
   "editor.occurrencesHighlight": true,
   "editor.renderLineHighlight": "all",
   "editor.suggest.localityBonus": true,
-  "editor.renderWhitespace": "selection",
+  "editor.renderWhitespace": "all",
   "editor.tabCompletion": "onlySnippets",
   "editor.folding": false, // I what to see all
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
@@ -142,4 +141,6 @@
     "recaptcha",
     "uwork"
   ],
+  "editor.minimap.enabled": false,
+  "files.autoSave": "onFocusChange",
 }
