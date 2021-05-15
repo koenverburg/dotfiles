@@ -48,6 +48,8 @@ normal('<leader><space>', ':nohl<cr>')
 -- window resizing
 normal('<c-left>', '5<c-w>>')
 normal('<c-right>', '5<c-w><')
+normal('<c-up>', ':resize +5<cr>')
+normal('<c-down>', ':resize -5<cr>')
 
 -- Faster saving
 normal('<leader>w', ':w<cr>')
