@@ -75,6 +75,7 @@ return require('packer').startup {
     use 'hashivim/vim-terraform'
     use 'hashicorp/terraform-ls'
     use 'ekalinin/Dockerfile.vim'
+    use 'jidn/vim-dbml'
 
     --  Markdown
     use 'plasticboy/vim-markdown'
