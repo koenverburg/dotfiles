@@ -89,16 +89,9 @@ terminal('<A-d>', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_term
 -- focus mode with Goyo and limelight
 normal('<leader>gy', ':Goyo 120<cr>')
 
--- Open a Markdown File in Typora, TODO: remove typora dep, in favor of obsidian
-normal('<leader>tmp', [[ :call jobstart('typora '.. expand('%:p'))<cr> ]])
-
--- unsure about the bindings, thinking mvp
-normal('pg', ':res +5<cr>')
-normal('ps', ':res -5<cr>')
-
--- Create Function docs
-normal('gcj', ':ProDoc<cr>')
-normal('gcc', ':ProComment<cr>')
+-- Commenting
+normal('<space>dc', ':ProDoc<cr>')
+normal('<space>c', ':Commentary<cr>')
 
 return {
   normal,
