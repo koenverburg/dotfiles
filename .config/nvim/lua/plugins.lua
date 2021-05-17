@@ -39,10 +39,10 @@ return require('packer').startup {
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-fzf-writer.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
-    use 'JoosepAlviste/nvim-ts-context-commentstring'
+    use 'nvim-telescope/telescope-fzf-writer.nvim'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
     use 'scrooloose/nerdtree'
 
     -- LSP config
@@ -64,6 +64,7 @@ return require('packer').startup {
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
     use 'tpope/vim-fugitive'
+    use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
     use 'jiangmiao/auto-pairs'
 
@@ -81,15 +82,14 @@ return require('packer').startup {
 
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
-    -- Convenience for commenting things in and out
-    use 'scrooloose/nerdcommenter'
-
     -- Looks
     use 'mhinz/vim-startify'
     use 'tjdevries/express_line.nvim'
+    use 'lewis6991/gitsigns.nvim'
+
+    -- icons
     use 'kyazdani42/nvim-web-devicons'
     use 'ryanoasis/vim-devicons'
-    use 'lewis6991/gitsigns.nvim'
 
     -- Focus mode
     use 'junegunn/goyo.vim'
