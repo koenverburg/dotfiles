@@ -16,6 +16,16 @@ local mapper = function(mode, key, action)
   vim.api.nvim_buf_set_keymap(0, mode, key, command, {noremap=true, silent=true})
 end
 
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    virtual_text = false,
+ }
+)
+
 -- lsp saga
 vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
 
@@ -23,8 +33,8 @@ local on_attach = function(client)
   require('completion').on_attach(client)
   require('lspkind').init()
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   mapper('n', 'gD',  'vim.lsp.buf.declaration')
   mapper('n', 'gd',  'vim.lsp.buf.definition')
