@@ -1,28 +1,27 @@
 # The DotFiles
 
-This repo will have a collections of configs in this repo for: powershell, Neovim and vscode, scripts that automate some repetitive stuff
+This repo will have a collections of configs of powershell, fish, Neovim and tmux, probably more. This is consantly changing and can be broken. [Pilfer](https://lite.duckduckgo.com/lite?q=Pilfer) at your own risk.
 
 ### Getting Started
 
+#### Windows
 Open up a Admin Powershell window and run the following
 
 ```powershell
-Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
 
 # Downloading Choco
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # close and spin up a new terminal
-choco install git -y
+choco install git python -y
 choco feature enable -n allowGlobalConfirmation
-# Close and spin up a new terminal, this one doesn't have to be elevated
+
 cd ~/code/github
 git clone https://github.com/koenverburg/dotfiles.git
-
 cd dotfiles
-.\bin\windows\bootstrap.ps1
+./install.ps1
 ```
-
 
 ### Upgrading
 
