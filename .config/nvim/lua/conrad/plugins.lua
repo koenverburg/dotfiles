@@ -33,7 +33,6 @@ return require('packer').startup {
 
     -- Colorscheme
     use 'glepnir/zephyr-nvim'
-    use {'maaslalani/nordbuddy', 'tjdevries/colorbuddy.nvim'}
 
     -- Finders / UI
     use 'nvim-lua/popup.nvim'
@@ -48,7 +47,6 @@ return require('packer').startup {
     -- LSP config
     use 'neovim/nvim-lspconfig'
     use 'nvim-lua/completion-nvim'
-    -- use 'nvim-lua/diagnostic-nvim' -- this is deprecated
     use 'onsails/lspkind-nvim'
     use 'glepnir/lspsaga.nvim'
     --use 'tjdevries/nlua.nvim'
@@ -59,6 +57,9 @@ return require('packer').startup {
     -- Utils
     use 'glepnir/prodoc.nvim'
     use 'nvim-treesitter/nvim-treesitter'
+    use 'phaazon/hop.nvim'
+    use 'unblevable/quick-scope'
+    use 'rmagatti/alternate-toggler'
 
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
