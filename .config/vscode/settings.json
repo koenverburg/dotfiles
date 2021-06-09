@@ -81,7 +81,7 @@
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "GitHub Dark Default",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.pinnedTabSizing": "compact",
   // Editor
@@ -106,8 +106,7 @@
   "editor.renderLineHighlight": "all",
   "editor.suggest.localityBonus": true,
   "editor.renderWhitespace": "all",
-  "editor.tabCompletion": "onlySnippets",
-  "editor.folding": false, // I what to see all
+  "editor.tabCompletion": "onlySnippets", // I what to see all
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.tokenColorCustomizations": {
@@ -143,4 +142,7 @@
   ],
   "editor.minimap.enabled": false,
   "files.autoSave": "onFocusChange",
+  "eslint.format.enable": true,
+  "extensions.ignoreRecommendations": true,
+  "go.toolsManagement.autoUpdate": true,
 }
