@@ -33,6 +33,7 @@ return require('packer').startup {
 
     -- Colorscheme
     use 'glepnir/zephyr-nvim'
+    use { 'briones-gabriel/darcula-solid.nvim', requires = 'rktjmp/lush.nvim' }
 
     -- Finders / UI
     use 'nvim-lua/popup.nvim'
@@ -40,9 +41,11 @@ return require('packer').startup {
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
     use 'nvim-telescope/telescope-fzf-writer.nvim'
+    use 'scrooloose/nerdtree'
+
+    -- treesitter
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
-    use 'scrooloose/nerdtree'
 
     -- LSP config
     use 'neovim/nvim-lspconfig'
