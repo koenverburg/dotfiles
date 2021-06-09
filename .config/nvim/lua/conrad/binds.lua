@@ -18,7 +18,7 @@ telescope_map('<space>ed' , 'find_files_dotfiles')
 telescope_map('<leader>fr', 'lsp_references')
 telescope_map('<c-d>', 'lsp_document_symbols')
 
--- normal('<leader><leader>x', '<cmd>lua' .. utils.save_and_execute() .. '<CR>')
+normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
@@ -105,6 +105,12 @@ normal('<leader>gy', ':Goyo 120<cr>')
 -- Commenting
 normal('<space>dc', ':ProDoc<cr>')
 normal('<space>c', ':Commentary<cr>')
+
+-- word hopping
+normal('<leader>wj', ':HopWord<cr>')
+
+-- Toggle Alternate
+normal('<leader>ta', ':ToggleAlternate<cr>')
 
 return {
   normal,
