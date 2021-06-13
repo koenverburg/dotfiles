@@ -54,9 +54,6 @@ return require('packer').startup {
     use 'glepnir/lspsaga.nvim'
     --use 'tjdevries/nlua.nvim'
 
-    -- Snippets
-    --use 'SirVer/ultisnips'
-
     -- Utils
     use 'glepnir/prodoc.nvim'
     use 'nvim-treesitter/nvim-treesitter'
@@ -102,5 +99,9 @@ return require('packer').startup {
 
     -- linting
     use 'w0rp/ale'
+
+    -- Snippets
+    use 'norcalli/snippets.nvim'
+
   end
 }
