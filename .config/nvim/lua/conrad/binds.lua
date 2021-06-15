@@ -107,7 +107,7 @@ normal('<space>dc', ':ProDoc<cr>')
 normal('<space>c', ':Commentary<cr>')
 
 -- word hopping
-normal('<leader>wj', ':HopWord<cr>')
+normal('<leader>hj', ':HopWord<cr>')
 
 -- Toggle Alternate
 normal('<leader>ta', ':ToggleAlternate<cr>')
