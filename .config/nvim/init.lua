@@ -15,4 +15,5 @@ require('conrad.plugins.startup')
 require('conrad.plugins.config')
 require('conrad.plugins.tabline')
 require('conrad.plugins.gitsigns')
+require('conrad.plugins.formatting')
 

@@ -97,8 +97,8 @@ return require('packer').startup {
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
 
-    -- linting
-    use 'w0rp/ale'
+    -- Formatting
+    use 'mhartington/formatter.nvim'
 
     -- Snippets
     use 'norcalli/snippets.nvim'

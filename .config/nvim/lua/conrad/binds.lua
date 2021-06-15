@@ -112,6 +112,9 @@ normal('<leader>wj', ':HopWord<cr>')
 -- Toggle Alternate
 normal('<leader>ta', ':ToggleAlternate<cr>')
 
+-- Formatting
+normal('<leader>=', ':Format<cr>')
+
 return {
   normal,
   visual,
