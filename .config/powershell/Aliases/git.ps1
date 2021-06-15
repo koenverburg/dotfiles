@@ -54,6 +54,8 @@ function fgb {
 function fg {
   # fzf -m is for multipe files using tab
   git ls-files -m -o --exclude-standard | fzf -m --layout=reverse --margin=5 -m | % { git add $_.Trim() }
+  git status -sb;
+  cz commit;
 }
 
 function myproject {
