@@ -65,8 +65,8 @@ normal('<c-up>', ':resize +5<cr>')
 normal('<c-down>', ':resize -5<cr>')
 
 -- Faster saving
-normal('<leader>w', ':w<cr>')
-insert('<leader>w', ':w<cr>')
+-- normal('<leader>w', ':w<cr>')
+-- insert('<leader>w', ':w<cr>')
 
 -- Creating a new tab
 normal('<leader><S-t>', ':tabnew<cr>')
