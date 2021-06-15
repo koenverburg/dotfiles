@@ -3,6 +3,19 @@ require('snippets').use_suggested_mappings()
 local snippets = require'snippets'
 local U = require'snippets.utils'
 snippets.snippets = {
+  scss = {
+    debug = U.match_indentation [[
+* {
+  background-color: rgba(0,0,0, .05);
+}
+    ]]
+  };
+
+  typescriptreact = {
+
+    log = [[ console.log(${1}) ]]
+
+  };
 
   -- ts = {
   --   react = [[
