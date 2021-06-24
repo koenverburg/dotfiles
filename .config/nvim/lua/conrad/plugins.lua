@@ -69,7 +69,7 @@ return require('packer').startup {
     use 'tpope/vim-fugitive'
     use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
-    use 'jiangmiao/auto-pairs'
+    -- use 'jiangmiao/auto-pairs' -- not working in lua???
     -- use 'tjdevries/astronauta.nvim'
 
     -- Lanaguages
