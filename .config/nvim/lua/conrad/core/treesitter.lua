@@ -18,6 +18,8 @@ require('nvim-treesitter.configs').setup {
   context_commentstring = {
     enable = true,
     config = {
+      yml = '# ',
+      yaml = '# ',
       css = '// %s',
       scss = '// %s',
       tsx = {

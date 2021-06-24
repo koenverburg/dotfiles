@@ -65,8 +65,8 @@ normal('<c-up>', ':resize +5<cr>')
 normal('<c-down>', ':resize -5<cr>')
 
 -- Faster saving
-normal('<leader>w', ':w<cr>')
-insert('<leader>w', ':w<cr>')
+-- normal('<leader>w', ':w<cr>')
+-- insert('<leader>w', ':w<cr>')
 
 -- Creating a new tab
 normal('<leader><S-t>', ':tabnew<cr>')
@@ -107,10 +107,13 @@ normal('<space>dc', ':ProDoc<cr>')
 normal('<space>c', ':Commentary<cr>')
 
 -- word hopping
-normal('<leader>wj', ':HopWord<cr>')
+normal('<leader>hj', ':HopWord<cr>')
 
 -- Toggle Alternate
 normal('<leader>ta', ':ToggleAlternate<cr>')
+
+-- Formatting
+normal('<leader>=', ':Format<cr>')
 
 return {
   normal,

@@ -54,9 +54,6 @@ return require('packer').startup {
     use 'glepnir/lspsaga.nvim'
     --use 'tjdevries/nlua.nvim'
 
-    -- Snippets
-    --use 'SirVer/ultisnips'
-
     -- Utils
     use 'glepnir/prodoc.nvim'
     use 'nvim-treesitter/nvim-treesitter'
@@ -100,7 +97,11 @@ return require('packer').startup {
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
 
-    -- linting
-    use 'w0rp/ale'
+    -- Formatting
+    use 'mhartington/formatter.nvim'
+
+    -- Snippets
+    use 'norcalli/snippets.nvim'
+
   end
 }
