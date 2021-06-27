@@ -1,13 +1,14 @@
 -- This file will contain all the keybindings for nvim
-local utils = require('conrad.utils')
-local normal = utils.normal
-local visual = utils.visual
-local insert = utils.insert
-local terminal = utils.terminal
+local utils         = require('conrad.utils')
+local normal        = utils.normal
+local visual        = utils.visual
+local insert        = utils.insert
+local terminal      = utils.terminal
 local telescope_map = utils.telescope_map
 
 telescope_map('<space>ff', 'find_files')
 telescope_map('<space>fg', 'live_grep_custom')
+telescope_map('<space>fd', 'grep_string')
 -- FIX Needs to focus on the file not open in the current buffer
 --telescope_map('<space>fb', 'buffers')
 
@@ -118,6 +119,5 @@ normal('<leader>=', ':Format<cr>')
 return {
   normal,
   visual,
-  insert,
-  toggleLines
+  insert
 }

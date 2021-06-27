@@ -5,8 +5,8 @@ local builtin = require('el.builtin')
 local sections = require('el.sections')
 local extensions = require('el.extensions')
 
-local get_lsp_client = function (msg)
-  msg = msg or 'No lsp'
+local get_lsp_client = function()
+  msg = nil
 
   local buffer_filetype = vim.api.nvim_buf_get_option(0, 'filetype')
   local clients = vim.lsp.get_active_clients()
@@ -18,7 +18,7 @@ local get_lsp_client = function (msg)
   for _, client in ipairs(clients) do
     local filetypes = client.config.filetypes
     if filetypes and vim.fn.index(filetypes, buffer_filetype) ~= -1 then
-      return client.name
+      return 'lsp: ' .. client.name .. ' '
     end
   end
 
@@ -33,11 +33,9 @@ require('el').setup {
       },
 
       -- ' ',
-
       -- extensions.git_icon,
 
       -- ' ',
-
       -- extensions.git_branch,
 
       sections.split,
@@ -50,7 +48,7 @@ require('el').setup {
 
       sections.split,
 
-      'LSP: ' .. get_lsp_client() .. ' ',
+      get_lsp_client(),
 
       builtin.filetype,
 

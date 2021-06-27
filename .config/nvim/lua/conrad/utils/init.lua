@@ -41,8 +41,8 @@ function M.telescope_map(key, f, options, buffer)
   )
 
   local options = {
-    noremap = true,
     silent = true,
+    noremap = true,
   }
 
   if not buffer then
