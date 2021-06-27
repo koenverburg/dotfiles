@@ -8,7 +8,6 @@
     - ~/.config/alacritty
 
 - link:
-    #~/tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf 
     ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf 
     ~/.config/nvim: .config/nvim
     ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.yml
@@ -18,5 +17,5 @@
 
 
 - shell:
-  #- [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --init --recursive, Installing submodules]
   - [apt install ruby -y]
