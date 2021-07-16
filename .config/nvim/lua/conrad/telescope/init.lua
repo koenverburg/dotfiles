@@ -3,29 +3,23 @@ local sorters = require('telescope.sorters')
 
 require 'telescope'.setup {
   defaults = {
-    file_sorter = require('telescope.sorters').get_fzy_sorter,
     color_devicons = true,
 
     borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
   },
   extensions = {
-    fzy_native = {
-      override_file_sorter = true,
-      override_generic_sorter = true,
-    },
-    fzf_writer = {
-      minimum_grep_characters = 2,
-      minimum_files_characters = 2,
-
-      -- Disabled by default.
-      -- Will probably slow down some aspects of the sorter, but can make color highlights.
-      -- I will work on this more later.
-      use_highlighter = true,
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_file_sorter = true,     -- override the file sorter
+      override_generic_sorter = false, -- override the generic sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
     }
   }
 }
 
-require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('fzf')
+-- require('telescope').load_extension('snippets')
 
 local M = {}
 
@@ -40,7 +34,7 @@ function M.find_files_dotfiles()
     prompt_title = "~ Dotfiles ~",
     shorten_path = false,
     cwd = "~/code/github/dotfiles",
-    prompt_position = 'bottom',
+    -- prompt_position = 'bottom',
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
   }
@@ -51,7 +45,8 @@ end
 function M.live_grep_custom()
   local opts = {
     shorten_path = false,
-    prompt_position = 'bottom',
+    -- prompt_position = 'bottom',
+    -- layout_config.prompt_position
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
   }
@@ -64,12 +59,12 @@ function M.find_files()
   local opts = {
     winblend = 10,
     previewer = false,
-    prompt_position = 'bottom',
+    -- prompt_position = 'bottom',
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
   }
 
-  require('telescope').extensions.fzf_writer.files(opts)
+  require('telescope.builtin').find_files(opts)
 end
 
 function M.buffers()

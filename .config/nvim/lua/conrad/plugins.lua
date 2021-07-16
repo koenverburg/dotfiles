@@ -35,12 +35,11 @@ return require('packer').startup {
     use 'glepnir/zephyr-nvim'
     use { 'briones-gabriel/darcula-solid.nvim', requires = 'rktjmp/lush.nvim' }
 
-    -- Finders / UI
-    use 'nvim-lua/popup.nvim'
-    use 'nvim-lua/plenary.nvim'
+    -- Telescope
     use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-fzy-native.nvim'
-    use 'nvim-telescope/telescope-fzf-writer.nvim'
+    -- use 'nvim-telescope/telescope-snippets.nvim'
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
     use 'scrooloose/nerdtree'
 
     -- treesitter
@@ -55,6 +54,8 @@ return require('packer').startup {
     --use 'tjdevries/nlua.nvim'
 
     -- Utils
+    use 'nvim-lua/popup.nvim'
+    use 'nvim-lua/plenary.nvim'
     use 'glepnir/prodoc.nvim'
     use 'nvim-treesitter/nvim-treesitter'
     use 'phaazon/hop.nvim'
@@ -66,6 +67,7 @@ return require('packer').startup {
     use 'tpope/vim-fugitive'
     use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
+
     -- use 'jiangmiao/auto-pairs' -- not working in lua???
     -- use 'tjdevries/astronauta.nvim'
 
@@ -79,19 +81,20 @@ return require('packer').startup {
     use 'jidn/vim-dbml'
 
     --  Markdown
-    use 'plasticboy/vim-markdown'
     use 'godlygeek/tabular'
+    use 'plasticboy/vim-markdown'
+    use 'dhruvasagar/vim-table-mode'
 
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Looks
     use 'mhinz/vim-startify'
-    use 'tjdevries/express_line.nvim'
     use 'lewis6991/gitsigns.nvim'
+    use 'tjdevries/express_line.nvim'
 
-    -- icons
-    use 'kyazdani42/nvim-web-devicons'
+    -- Icons
     use 'ryanoasis/vim-devicons'
+    use 'kyazdani42/nvim-web-devicons'
 
     -- Focus mode
     use 'junegunn/goyo.vim'
