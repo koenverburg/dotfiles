@@ -22,7 +22,7 @@ brew tap caskroom/versions
 brew cask install firefox
 brew cask install google-chrome
 
-Other stuff
+# Other stuff
 brew cask install spotify
 brew cask install alacritty
 
