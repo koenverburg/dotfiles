@@ -1,7 +1,6 @@
 [
   {
     "key": "alt+enter",
-    "command": "editor.action.quickFix",
     "when": "editorTextFocus"
   },
   {

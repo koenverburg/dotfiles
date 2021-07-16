@@ -1,0 +1,39 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- create:
+    - ~/.config/alacritty
+    - ~/.config/yabai
+    - ~/.config/limelight
+    - ~/.config/skhd
+
+- link:
+    ~/.tmux.conf: ./ansible/playbooks/roles/tmux/files/.tmux.conf 
+    ~/.config/nvim: ./.config/nvim
+    ~/.config/alacritty/alacritty.yml: ./.config/alacritty/alacritty.yml
+    ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
+    ~/.config/yabai/yabairc: ./.config/yabai/yabairc
+    ~/.config/limelight/limelightrc: ./.config/limelight/limelightrc
+    ~/.config/skhd/skhdrc: ./.config/skhd/skhdrc
+
+    # ~/Library/Application Support/Code/User/settings.json: .config/vscode/settings.json
+    # ~/Library/Application Support/Code/User/keybindings.json: .config/vscode/keybindings.json
+
+
+- shell:
+    # - [git submodule update --init --recursive, Installing submodules]
+    # - [brew tap homebrew/cask-fonts]
+    # - [brew install cask font-hack-nerd-font]
+    # - [brew install neovim --head]
+    # - [brew install lua fzf bat delta ninja libtool automake cmake pkg-config gettext] # neovim development
+    # - [brew install node yarn]
+    # # language servers for nvim lsp
+    # - [npm i -g typescript-language-server]
+    # - [npm i -g vscode-html-languageserver-bin]
+    # - [npm i -g yaml-language-server]
+    # - [npm i -g graphql-language-service-server]
+    # - [npm i -g @stoplight/spectral]
+    # - [npm i -g vscode-css-languageserver-bin]
