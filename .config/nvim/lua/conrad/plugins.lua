@@ -37,10 +37,9 @@ return require('packer').startup {
 
     -- Telescope
     use 'nvim-telescope/telescope.nvim'
-    -- use 'nvim-telescope/telescope-snippets.nvim'
+    use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-    use 'scrooloose/nerdtree'
+    use 'scrooloose/nerdtree' -- trying to phase this one out
 
     -- treesitter
     use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -67,16 +66,15 @@ return require('packer').startup {
     use 'tpope/vim-fugitive'
     use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
-
-    -- use 'jiangmiao/auto-pairs' -- not working in lua???
+    -- use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
     -- use 'tjdevries/astronauta.nvim'
 
     -- Lanaguages
     use 'elzr/vim-json'
     use 'stephpy/vim-yaml'
     use 'PProvost/vim-ps1'
-    use 'hashivim/vim-terraform'
-    use 'hashicorp/terraform-ls'
+    -- use 'hashivim/vim-terraform'
+    -- use 'hashicorp/terraform-ls'
     use 'ekalinin/Dockerfile.vim'
     use 'jidn/vim-dbml'
 
