@@ -15,7 +15,6 @@
     #~/AppData/Roaming/Code/User/settings.json: .config/vscode/settings.json
     #~/AppData/Roaming/Code/User/keybindings.json: .config/vscode/keybindings.json
 
-
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [apt install ruby -y]

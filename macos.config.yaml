@@ -24,16 +24,16 @@
 
 
 - shell:
-    # - [git submodule update --init --recursive, Installing submodules]
-    # - [brew tap homebrew/cask-fonts]
-    # - [brew install cask font-hack-nerd-font]
-    # - [brew install neovim --head]
-    # - [brew install lua fzf bat delta ninja libtool automake cmake pkg-config gettext] # neovim development
-    # - [brew install node yarn]
-    # # language servers for nvim lsp
-    # - [npm i -g typescript-language-server]
-    # - [npm i -g vscode-html-languageserver-bin]
-    # - [npm i -g yaml-language-server]
-    # - [npm i -g graphql-language-service-server]
-    # - [npm i -g @stoplight/spectral]
-    # - [npm i -g vscode-css-languageserver-bin]
+    - [git submodule update --init --recursive, Installing submodules]
+    - [brew tap homebrew/cask-fonts]
+    - [brew install cask font-hack-nerd-font]
+    - [brew install neovim --head]
+    - [brew install lua fzf bat delta ninja libtool automake cmake pkg-config gettext] # neovim development
+    - [brew install node yarn]
+    # language servers for nvim lsp
+    - [npm i -g typescript-language-server]
+    - [npm i -g vscode-html-languageserver-bin]
+    - [npm i -g yaml-language-server]
+    - [npm i -g graphql-language-service-server]
+    - [npm i -g @stoplight/spectral]
+    - [npm i -g vscode-css-languageserver-bin]
