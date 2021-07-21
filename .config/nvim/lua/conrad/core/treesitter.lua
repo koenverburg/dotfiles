@@ -22,7 +22,15 @@ require('nvim-treesitter.configs').setup {
       yaml = '# ',
       css = '// %s',
       scss = '// %s',
+      js = '// %s',
       tsx = {
+        __default = '// %s',
+        jsx_element = '{/* %s */}',
+        jsx_fragment = '{/* %s */}',
+        jsx_attribute = '// %s',
+        comment = '// %s'
+      },
+      jsx = {
         __default = '// %s',
         jsx_element = '{/* %s */}',
         jsx_fragment = '{/* %s */}',
@@ -55,6 +63,7 @@ require('nvim-treesitter.configs').setup {
         ["<leader>A"] = "@parameter.inner",
       },
     },
+    -- revise these commands
     move = {
       enable = true,
       set_jumps = false, -- whether to set jumps in the jumplist
