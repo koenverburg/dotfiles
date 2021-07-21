@@ -1,0 +1,70 @@
+name: Regression Pipeline
+
+on: push
+
+jobs:
+  Ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.7.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Install Dependencies
+        run: | 
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends
+          sudo apt-get install g++
+          sudo apt-get install sudo
+          sudo apt-get install gcc
+          sudo apt-get install apt-utils
+          sudo apt-get install libc6-dev
+          sudo apt-get install make
+          sudo apt-get install git
+          sudo apt-get install python3-apt
+          sudo apt-get install python3.8
+          sudo apt-get install ansible
+
+      - name: Setup
+        run: ./install
+
+  Windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.7.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Setup
+        run: ./install.ps1
+
+  Macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.7.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Setup
+        run: ./macos.install
