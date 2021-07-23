@@ -13,3 +13,6 @@ export-tar:
 	# docker stop $ancestorId
 	# docker rm $ancestorId
 	# docker rmi ghcr.io/koenverburg/dotfiles/helios
+
+snapshot-macos:
+	brew bundle dump
