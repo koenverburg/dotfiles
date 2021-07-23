@@ -66,6 +66,7 @@ return require('packer').startup {
     use 'tpope/vim-fugitive'
     use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
+    use 'lukas-reineke/indent-blankline.nvim'
     -- use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
     -- use 'tjdevries/astronauta.nvim'
 
