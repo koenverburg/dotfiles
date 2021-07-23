@@ -9,6 +9,7 @@
     - ~/.config/yabai
     - ~/.config/limelight
     - ~/.config/skhd
+    - ~/.hammerspoon
 
 - link:
     ~/.tmux.conf: ./ansible/playbooks/roles/tmux/files/.tmux.conf 
@@ -18,6 +19,7 @@
     ~/.config/yabai/yabairc: ./.config/yabai/yabairc
     ~/.config/limelight/limelightrc: ./.config/limelight/limelightrc
     ~/.config/skhd/skhdrc: ./.config/skhd/skhdrc
+    ~/.hammerspoon/init.lua: ./.config/hammerspoon/init.lua
 
     # ~/Library/Application Support/Code/User/settings.json: .config/vscode/settings.json
     # ~/Library/Application Support/Code/User/keybindings.json: .config/vscode/keybindings.json
