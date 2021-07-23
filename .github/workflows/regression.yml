@@ -33,7 +33,7 @@ jobs:
           sudo apt-get install ansible
 
       - name: Setup
-        run: ./install
+        run: sudo bash ./install
 
   Windows:
     runs-on: windows-latest
@@ -67,4 +67,4 @@ jobs:
           fetch-depth: 1
 
       - name: Setup
-        run: ./macos.install
+        run: sudo bash ./macos.install
