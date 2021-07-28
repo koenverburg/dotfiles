@@ -1,0 +1,6 @@
+name: dot
+root: ~/code/github/dotfiles
+
+windows:
+  - editor: nvim
+  - cli: clear;echo "ready"

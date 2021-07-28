@@ -3,3 +3,4 @@ overwrite/
 packer_compiled.vim
 .env
 *.tar
+.config/tmuxinator/work.*.yml
