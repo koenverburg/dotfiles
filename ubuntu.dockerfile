@@ -34,8 +34,8 @@ COPY  --chown=conrad:users . ./home/conrad/dotfiles
 USER conrad
 WORKDIR /home/conrad/dotfiles
 
-# RUN chmod +x ./ansible/ubuntu.sh && sudo ./ansible/ubuntu.sh
+RUN chmod +x ./ansible/ubuntu.sh && sudo ./ansible/ubuntu.sh
 
-RUN sudo rm ~/.config/fish/config.fish && sudo bash ./install
+# RUN sudo rm ~/.config/fish/config.fish && sudo bash ./install
 
 

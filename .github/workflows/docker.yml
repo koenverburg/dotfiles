@@ -1,5 +1,7 @@
 name: Docker Pipeline
-on: push
+
+on:
+  workflow_dispatch:
 
 jobs:
   ubuntu:

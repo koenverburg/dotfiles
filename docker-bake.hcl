@@ -10,11 +10,11 @@ target "helios" {
 }
 
 # Ra is the god of the sun in Egypt
-target "ra" {
+target "mars" {
   inherits = ["ghaction-docker-meta"]
   context = "./"
   dockerfile = "ubuntu.dockerfile"
   tags = [
-    "ghcr.io/koenverburg/dotfiles/ra-ubuntu"
+    "ghcr.io/koenverburg/dotfiles/mars-ubuntu"
   ]
 }
