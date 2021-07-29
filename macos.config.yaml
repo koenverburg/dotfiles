@@ -12,14 +12,14 @@
     - ~/.hammerspoon
 
 - link:
-    ~/.tmux.conf: ./ansible/playbooks/roles/tmux/files/.tmux.conf
-    ~/.config/nvim: ./.config/nvim
-    ~/.config/alacritty/alacritty.yml: ./.config/alacritty/alacritty.yml
-    ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
-    ~/.config/yabai/yabairc: ./.config/yabai/yabairc
-    ~/.config/limelight/limelightrc: ./.config/limelight/limelightrc
-    ~/.config/skhd/skhdrc: ./.config/skhd/skhdrc
-    ~/.hammerspoon/init.lua: ./.config/hammerspoon/init.lua
+    ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf
+    ~/.config/nvim: .config/nvim
+    ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.yml
+    ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
+    ~/.config/yabai/yabairc: .config/yabai/yabairc
+    ~/.config/limelight/limelightrc: .config/limelight/limelightrc
+    ~/.config/skhd/skhdrc: .config/skhd/skhdrc
+    ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
 
     # ~/Library/Application Support/Code/User/settings.json: .config/vscode/settings.json
     # ~/Library/Application Support/Code/User/keybindings.json: .config/vscode/keybindings.json
