@@ -11,7 +11,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     signs = true,
     underline = true,
-    virtual_text = false,
+    virtual_text = true,
     update_in_insert = false,
   }
 )
@@ -19,9 +19,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- lsp saga
 vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
 
-vim.lsp.handlers["textDocument/codeLens"] = function(err, _, result, client_id, bufnr)
-  vim.lsp.codelens.on_codelens(err, _, result, client_id, bufnr)
-end
 
 -- The langauges servers
 local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'terraformls'}

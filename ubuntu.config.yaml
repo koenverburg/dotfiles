@@ -1,5 +1,10 @@
+- create:
+  - ~/.config/alacritty
+  - ~/code/tools
+
 - defaults:
   link:
+    create: true
     relink: true
 
 - shell:
@@ -8,18 +13,16 @@
   - [apt install fish -y]
   - [apt install nodejs -y]
   - [apt install ansible -y]
-  # - [apt install alacritty -y]
+  - [make neovim-linux]
 
-- clean: ['~']
+# - clean: ['~']
 
-- create:
-  - ~/.config/alacritty
+# - link:
+#   ~/.tmux.conf: ./ansible/playbooks/roles/tmux/files/.tmux.conf 
+#   ~/.config/nvim: ./.config/nvim
+#   ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
+#   ~/.config/alacritty/alacritty.yml: ./.config/alacritty/alacritty.yml
 
-- link:
-  ~/.tmux.conf: ./ansible/playbooks/roles/tmux/files/.tmux.conf 
-  ~/.config/nvim: ./.config/nvim
-  ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
-  ~/.config/alacritty/alacritty.yml: ./.config/alacritty/alacritty.yml
   #~/AppData/Roaming/Code/User/settings.json: .config/vscode/settings.json
   #~/AppData/Roaming/Code/User/keybindings.json: .config/vscode/keybindings.json
 

@@ -1,40 +1,37 @@
--- require('planery.reload').reload_module('popup')
-
--- local popup = require('popup')
-
--- popup.create('Hello World', {
---   results = {
---     minheight = 10,
---     minwidth = 0.8
---   },
---   line = 8,
---   col = 55,
---   -- padding = { 0, 0, 0, 0 },
---   borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
---   -- borderchars = {"━", "┃", "━", "┃", "┏", "┓", "┛", "┗"}
---   -- borderchars = {"═", "║", "═", "║", "╔", "╗", "╝", "╚"}
--- })
+local border_opts = {
+  topleft  = "┌",
+  topright = "┐",
+  top      = "─",
+  left     = "│",
+  right    = "│",
+  botright = "┘",
+  botleft  = "└",
+  bot      = "─"
+}
 
 
+local createPopup = function(name)
+  local plenary_window = require('plenary.window.float').percentage_range_window(0.5, 0.2, nil, border_opts)
+  vim.api.nvim_buf_set_option(plenary_window.bufnr, 'buftype', 'prompt')
 
-local plenary_window = require('plenary.window.float').percentage_range_window(0.5, 0.2)
-vim.api.nvim_buf_set_option(plenary_window.bufnr, 'buftype', 'prompt')
+  vim.fn.prompt_setprompt(plenary_window.bufnr, name) 
 
-vim.fn.prompt_setprompt(plenary_window.bufnr, 'scope:')
+  vim.fn.prompt_setcallback(plenary_window.bufnr, function(text)
+    vim.api.nvim_win_close(plenary_window.win_id, true)
 
-vim.fn.prompt_setcallback(plenary_window.bufnr, function(text)
-  vim.api.nvim_win_close(plenary_window.win_id, true)
-  print(text)
+    if text ~= "" then
+      return text
+    else
+      print "No input given!"
+    end
+  end)
 
-  -- if text ~= "" then
-  --   vim.schedule(function()
-  --     vim.api.nvim_buf_delete(plenary_window.bufnr, { force = true })
+  vim.cmd [[ startinsert ]]
+end
 
-  --     vim.lsp.buf.rename(text)
-  --   end)
-  -- else
-  --   print "Nothing to rename!"
-  -- end
-end)
 
-vim.cmd [[ startinsert ]]
+-- createPopup('prefix:')
+-- createPopup('scope:')
+-- createPopup('title:')
+-- createPopup('body:')
+-- createPopup('tags:')
