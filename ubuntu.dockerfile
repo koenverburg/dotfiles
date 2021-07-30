@@ -1,7 +1,7 @@
 FROM ubuntu:20.10
 SHELL ["/bin/bash", "-c"]
 
-LABEL Auther = "Koen Verburg <creativekoen@gmail.com>"
+LABEL Author = "Koen Verburg <creativekoen@gmail.com>"
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
@@ -15,7 +15,8 @@ RUN apt-get update && \
   # python-apt \
   python3-apt \
   python3.8 \
-  ansible
+  ansible \
+  fish
 
 RUN useradd -ms /bin/bash conrad && \
 
@@ -34,5 +35,7 @@ USER conrad
 WORKDIR /home/conrad/dotfiles
 
 RUN chmod +x ./ansible/ubuntu.sh && sudo ./ansible/ubuntu.sh
+
+# RUN sudo rm ~/.config/fish/config.fish && sudo bash ./install
 
 

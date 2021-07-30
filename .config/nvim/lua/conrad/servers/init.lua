@@ -11,13 +11,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     signs = true,
     underline = true,
-    virtual_text = false,
+    virtual_text = true,
     update_in_insert = false,
   }
 )
 
 -- lsp saga
 vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
+
 
 -- The langauges servers
 local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'terraformls'}
