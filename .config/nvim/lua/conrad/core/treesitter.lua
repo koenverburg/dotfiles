@@ -8,11 +8,11 @@ require('nvim-treesitter.configs').setup {
     "typescript",
     "graphql",
     "jsdoc",
-    -- "javascript",
+    "javascript",
     "html",
     "json",
     "css",
-    -- "lua",
+    "lua",
     "go",
   },
   context_commentstring = {

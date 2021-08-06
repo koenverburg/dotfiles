@@ -119,6 +119,9 @@ normal('<leader>ta', ':ToggleAlternate<cr>')
 -- Formatting
 normal('<leader>=', ':Format<cr>')
 
+-- Refactoring
+visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
+
 return {
   normal,
   visual,
