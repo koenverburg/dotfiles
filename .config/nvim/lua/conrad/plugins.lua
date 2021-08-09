@@ -2,7 +2,7 @@
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 if not packer_exists then
-  if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
+  if vim.fn.input('Download Packer? (y for yes)') ~= 'y' then
     return
   end
 
@@ -20,7 +20,7 @@ if not packer_exists then
   ))
 
   print(out)
-  print("Downloading packer.nvim...")
+  print('Downloading packer.nvim...')
   print("( You'll need to restart now )")
 
   return
@@ -39,6 +39,10 @@ return require('packer').startup {
     use 'nvim-telescope/telescope.nvim'
     use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use 'tami5/sql.nvim'
+    use 'nvim-telescope/telescope-frecency.nvim'
+
+    -- Old
     use 'scrooloose/nerdtree' -- trying to phase this one out
 
     -- treesitter
@@ -60,6 +64,7 @@ return require('packer').startup {
     use 'phaazon/hop.nvim'
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
+    use 'ThePrimeagen/refactoring.nvim'
     use {
       'lazytanuki/nvim-mapper', config = function()
         require('nvim-mapper').setup {

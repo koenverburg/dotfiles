@@ -1,6 +1,14 @@
 name: dot
-root: ~/code/github/dotfiles
 
 windows:
-  - editor: nvim
-  - cli: clear;echo "ready"
+  - editor:
+      root: ~/code/github/dotfiles
+
+  - cli:
+      root: ~/code/github/dotfiles
+
+  - notes:
+      root: ~/code/github/obsidian
+
+  - site:
+      root: ~/code/github/site

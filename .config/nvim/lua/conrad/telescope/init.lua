@@ -12,7 +12,7 @@ require 'telescope'.setup {
       fuzzy = true,                    -- false will only do exact matching
       override_file_sorter = true,     -- override the file sorter
       override_generic_sorter = false, -- override the generic sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+      case_mode = 'smart_case',        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
     }
   }
@@ -20,6 +20,7 @@ require 'telescope'.setup {
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('mapper')
+require('telescope').load_extension('frecency')
 -- require('telescope').load_extension('snippets')
 
 local M = {}
@@ -32,9 +33,9 @@ end
 
 function M.find_files_dotfiles()
   local opts = {
-    prompt_title = "~ Dotfiles ~",
+    prompt_title = '~ Dotfiles ~',
     shorten_path = false,
-    cwd = "~/code/github/dotfiles",
+    cwd = '~/code/github/dotfiles',
     -- prompt_position = 'bottom',
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
