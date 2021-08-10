@@ -15,6 +15,7 @@
     ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf
     ~/.config/nvim: .config/nvim
     ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.yml
+    ~/.gitconfig: .config/gitconfig/.gitconfig
     ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
     ~/.config/yabai/yabairc: .config/yabai/yabairc
     ~/.config/limelight/limelightrc: .config/limelight/limelightrc
