@@ -65,6 +65,13 @@ return require('packer').startup {
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
+    use {
+      'lazytanuki/nvim-mapper', config = function()
+        require('nvim-mapper').setup {
+          search_path = os.getenv('HOME') .. 'AppData/local/nvim/lua'
+        }
+      end
+    }
 
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
