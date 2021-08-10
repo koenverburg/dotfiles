@@ -16,7 +16,7 @@
     ~/.config/alacritty/alacritty.yml: ./.config/alacritty/alacritty.yml
 
 - shell:
-  # - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --init --recursive, Installing submodules]
   - sudo apt-get install git make cmake gcc ninja-build -y # Neovim stuff
   - sudo apt-get install ruby python3 nodejs golang -y # Languages I write in
   # - sudo apt-get install terraform ansible -y # Automation tooling
