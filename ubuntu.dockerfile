@@ -1,22 +1,17 @@
-FROM ubuntu:20.10
+FROM ubuntu:21.04
 SHELL ["/bin/bash", "-c"]
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 LABEL Author = "Koen Verburg <creativekoen@gmail.com>"
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
-  g++ \
-  sudo \
-  gcc \
   apt-utils \
   libc6-dev \
-  make \
-  git \
-  # python-apt \
-  python3-apt \
-  python3.8 \
-  ansible \
-  fish
+  python3 \
+  sudo \
+  git
 
 RUN useradd -ms /bin/bash conrad && \
 
@@ -34,8 +29,4 @@ COPY  --chown=conrad:users . ./home/conrad/dotfiles
 USER conrad
 WORKDIR /home/conrad/dotfiles
 
-RUN chmod +x ./ansible/ubuntu.sh && sudo ./ansible/ubuntu.sh
-
-# RUN sudo rm ~/.config/fish/config.fish && sudo bash ./install
-
-
+RUN bash ./install -vv

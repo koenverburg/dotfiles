@@ -9,7 +9,6 @@ target "helios" {
   ]
 }
 
-# Ra is the god of the sun in Egypt
 target "mars" {
   inherits = ["ghaction-docker-meta"]
   context = "./"

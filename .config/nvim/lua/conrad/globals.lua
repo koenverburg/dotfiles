@@ -1,6 +1,6 @@
 vim.o.ruler = true
 vim.o.background = 'dark'
-vim.cmd('colorscheme zephyr')
+vim.cmd('colorscheme darcula-solid')
 
 vim.g.mapleader = ','
 vim.b.mapleader = ','
