@@ -8,6 +8,12 @@
 	name = Koen Verburg
 	email = creativekoen@gmail.com
 
+; [pull]
+;   rebase = true
+
+[push]
+  default = current
+
 [pager]
     diff = delta
     log = delta
@@ -31,3 +37,31 @@
     hunk-header-file-style = red
     hunk-header-line-number-style = "#067a00"
     hunk-header-style = file line-number syntax
+
+[alias]
+  cedit = commit --amend
+
+  # pretty log
+  plog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+
+  # Taken from https://twitter.com/jsatk/status/1424954792032423937
+  # All credits got to Jesse Atkinson - https://github.com/jsatk/dotfiles/blob/ck/tag-git/gitconfig#L110-L123
+  #
+  # Usage is `git work <new-branch-name>`
+  # Inside Nvim with Fugitive :G work <new-branch-name>
+  #
+  # - Cuts a new branch.
+	# - Sets the default destination of `pull` to whatever branch we're cutting from
+	#   (typically `master`).
+	# - Sets the default destination of `push` to the branch we're creating.
+	#
+	# Since we have `pull.rebase = true` this means that every `pull` will rebase
+	# this branche's commits on top of the branch we cut from.  Meaning that after
+	# we do a `git pull` in order to push we have to do a force push which is
+	# dangerous when collaborating.  In order to avoid awful situations use `git
+	# push --force-with-lease` which I have aliased to `git please`.  (The
+	# --force-with-lease flag prevents you from force pushing over the top of a
+	# colleagues commits if they commited on top of you and you haven't pulled
+	# those commits.)
+	work = !sh -c 'git fetch && git checkout @{upstream} -tb \"$@\"' _
+
