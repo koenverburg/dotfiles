@@ -33,12 +33,13 @@ return require('packer').startup {
 
     -- Colorscheme
     use 'glepnir/zephyr-nvim'
+    use { 'tjdevries/gruvbuddy.nvim', requires = 'tjdevries/colorbuddy.vim' }
     use { 'briones-gabriel/darcula-solid.nvim', requires = 'rktjmp/lush.nvim' }
 
     -- Telescope
     use 'nvim-telescope/telescope.nvim'
     use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'tami5/sql.nvim'
     use 'nvim-telescope/telescope-frecency.nvim'
 
@@ -57,6 +58,7 @@ return require('packer').startup {
     --use 'tjdevries/nlua.nvim'
 
     -- Utils
+    use 'tjdevries/cyclist.vim'
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'glepnir/prodoc.nvim'
@@ -78,9 +80,8 @@ return require('packer').startup {
     use 'tpope/vim-fugitive'
     use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
-    use 'lukas-reineke/indent-blankline.nvim'
+    use 'tjdevries/astronauta.nvim'
     -- use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
-    -- use 'tjdevries/astronauta.nvim'
 
     -- Lanaguages
     use 'elzr/vim-json'

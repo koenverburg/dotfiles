@@ -1,4 +1,5 @@
 FROM ubuntu:21.04
+
 SHELL ["/bin/bash", "-c"]
 
 ENV DEBIAN_FRONTEND=noninteractive

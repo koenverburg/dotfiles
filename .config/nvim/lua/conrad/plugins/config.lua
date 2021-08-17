@@ -15,6 +15,3 @@ vim.g.vim_markdown_folding_disabled = 1
 
 -- json
 vim.g.vim_json_syntax_conceal = 0
-
--- Indent lines
-vim.g.indent_blankline_space_char = '.'

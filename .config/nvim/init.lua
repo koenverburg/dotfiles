@@ -1,6 +1,9 @@
 -- My Vimrc
 -- Author: Koen Verburg <creativekoen@gmail.com>
 -- Source: https://github.com/koenverburg/dotfiles
+
+vim.cmd [[runtime plugin/astronauta.vim]]
+
 require('conrad.plugins')
 require('conrad.globals')
 require('conrad.binds')

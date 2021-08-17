@@ -1,11 +1,13 @@
 vim.o.ruler = true
 vim.o.background = 'dark'
-vim.cmd('colorscheme darcula-solid')
+
+require('colorbuddy').colorscheme('gruvbuddy')
+-- vim.cmd('colorscheme zephyr')
 
 vim.g.mapleader = ','
 vim.b.mapleader = ','
 
-vim.g.hidden = true
+vim.g.nohidden = true
 vim.g.nobackup= true
 vim.b.noswapfile = true
 vim.g.undordir='~/.config/nvim/undodir'
