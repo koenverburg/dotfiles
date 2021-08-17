@@ -7,7 +7,7 @@ function gd { git diff }
 function pull { git pull }
 function push { git push }
 function branch { git branch }
-function s { git status -sb }
+function s { git status -s }
 function gf { git fetch --prune }
 function grevertlast { git reset --soft HEAD~1 }
 function cob { git checkout -b $args }
