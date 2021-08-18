@@ -19,26 +19,30 @@ require 'telescope'.setup {
 }
 
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('mapper')
 require('telescope').load_extension('frecency')
+-- require('telescope').load_extension('mapper')
 -- require('telescope').load_extension('snippets')
 
 local M = {}
 
 function M.lsp_references()
-  local opts = themes.get_dropdown { }
+  local opts = themes.get_dropdown {
+    previewer = false,
+    prompt_position = 'top',
+  }
   require('telescope.builtin').lsp_references(opts)
 end
 
 
 function M.find_files_dotfiles()
   local opts = {
+    -- previewer = false,
+    prompt_position = 'top',
     prompt_title = '~ Dotfiles ~',
-    shorten_path = false,
     cwd = '~/code/github/dotfiles',
-    -- prompt_position = 'bottom',
-    scroll_strategy = 'cycle',
-    sorting_strategy = 'descending',
+    -- shorten_path = false,
+    -- scroll_strategy = 'cycle',
+    -- sorting_strategy = 'descending',
   }
 
   require('telescope.builtin').git_files(opts)
@@ -86,6 +90,12 @@ function M.git_files()
   }
 
   require('telescope.builtin').git_files(opts)
+end
+
+function M.get_frecency()
+  local opts = {}
+
+  require('telescope').extensions.frecency.frecency()
 end
 
 return setmetatable({}, {
