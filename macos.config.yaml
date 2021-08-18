@@ -14,7 +14,7 @@
 - link:
     ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf
     ~/.config/nvim: .config/nvim
-    ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.yml
+    ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.macos.yml
     ~/.gitconfig: .config/gitconfig/.gitconfig
     ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
     ~/.config/yabai/yabairc: .config/yabai/yabairc
