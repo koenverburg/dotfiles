@@ -1,8 +1,5 @@
 # vim:vim: set tabstop=2:softtabstop=2:shiftwidth=2:noexpandtab
 
-clean:
-	bash ./clean.sh
-
 bake-ubuntu:
 	docker buildx bake -f ./docker-bake.hcl ubuntu
 
@@ -17,7 +14,7 @@ neovim-linux:
 	cd ~/code/tools/neovim
 	sudo make
 	sudo make install
+	cd -
 	# sudo make distclean
 	# sudo make CMAKE_BUILD_TYPE=release
 	# sudo make install
-	cd -
