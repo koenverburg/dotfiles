@@ -18,10 +18,29 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - sudo apt-get install git make cmake gcc ninja-build -y # Neovim stuff
-  - sudo apt-get install ruby python3 nodejs golang rust -y # Languages I write in
-  # - sudo apt-get install terraform ansible -y # Automation tooling
-  - sudo apt-get install fish tmux -y # Shell goodies
+
+  # Neovim stuff
+  - sudo apt-get install git
+  - sudo apt-get install make
+  - sudo apt-get install cmake
+  - sudo apt-get install gcc
+  - sudo apt-get install ninja-build
+  - sudo apt-get install ruby
+
+  # Languages I write in
+  - sudo apt-get install python3
+  - sudo apt-get install nodejs
+  - sudo apt-get install golang
+  - sudo apt-get install rust
+
+  # Automation tooling
+  - sudo apt-get install terraform
+  - sudo apt-get install ansible
+
+  # Shell goodies
+  - sudo apt-get install fis
+  - sudo apt-get install tmux
+
   # - cargo install git-delta
   # - make neovim-linux
 
