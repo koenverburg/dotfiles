@@ -1,5 +1,6 @@
 Import-Module Get-ChildItemColor
 Import-Module PSReadline
+Import-Module oh-my-posh
 
 # Aliases
 Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\folderjumping.ps1"

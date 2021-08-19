@@ -22,7 +22,7 @@
   - sudo apt-get install ruby python3 nodejs golang rust -y # Languages I write in
   # - sudo apt-get install terraform ansible -y # Automation tooling
   - sudo apt-get install fish tmux -y # Shell goodies
-  - cargo install git-delta
+  # - cargo install git-delta
   # - make neovim-linux
 
   #~/AppData/Roaming/Code/User/settings.json: .config/vscode/settings.json

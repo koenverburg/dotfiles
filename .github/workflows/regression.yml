@@ -6,7 +6,7 @@ jobs:
   # nixos - Jupiter
 
   # Mars
-  Ubuntu:
+  ubuntu:
     runs-on: ubuntu-latest
 
     steps:
@@ -40,36 +40,37 @@ jobs:
         with:
           tag-sha: true
           images: |
-            ghcr.io/koenverburg/dotfiles/mars-ubuntu
+            ghcr.io/koenverburg/dotfiles/workspace-ubuntu
 
       - name: Build and push
         uses: docker/bake-action@master
         with:
           push: true
-          targets: mars
+          targets: ubuntu
           files: |
             ./docker-bake.hcl
             ${{ steps.docker_meta.outputs.bake-file }}
 
-  # Saturnus
-  # Windows:
-  #   runs-on: windows-latest
+  Windows:
+    runs-on: windows-latest
 
-  #   steps:
-  #     - name: Cancel Previous Runs
-  #       uses: styfle/cancel-workflow-action@0.7.0
-  #       with:
-  #         access_token: ${{ github.token }}
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.7.0
+        with:
+          access_token: ${{ github.token }}
 
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 1
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
 
-  #     - name: Setup
-  #       run: ./install.ps1
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
 
-  # Atlas
+      - name: Setup
+        run: ./install.ps1
+
   macos:
     runs-on: macos-latest
 
@@ -88,4 +89,4 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Setup
-        run: sudo bash ./macos.install
+        run: bash ./macos.install
