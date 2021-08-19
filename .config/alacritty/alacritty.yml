@@ -60,7 +60,9 @@ colors:
   # Default colors
   primary:
     # hard contrast: background = '#1d2021'
-    background: '#282828'
+    # default background: '#282828'
+    # 282c34
+    background: '#282c34'
     # soft contrast: background = '#32302f'
     foreground: '#ebdbb2'
 

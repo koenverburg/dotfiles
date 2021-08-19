@@ -52,17 +52,19 @@ cursor:
   thickness: 0.1
 live_config_reload: true
 
-# shell:
-#   program: pwsh.exe
+shell:
+  program: pwsh.exe
 
 # Colors (Gruvbox dark)
 colors:
   # Default colors
   primary:
     # hard contrast: background = '#1d2021'
-    background: "#282828"
+    # default background: '#282828'
+    # 282c34
+    background: '#282c34'
     # soft contrast: background = '#32302f'
-    foreground: "#ebdbb2"
+    foreground: '#ebdbb2'
 
   # Normal colors
   normal:
