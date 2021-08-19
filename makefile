@@ -6,10 +6,7 @@ bake-ubuntu:
 bake-wsl:
 	docker buildx bake -f ./docker-bake.hcl --push helios
 
-snapshot-macos:
-	brew bundle dump
-
-neovim-linux:
+neovim:
 	git clone https://github.com/neovim/neovim.git ~/code/tools/neovim
 	cd ~/code/tools/neovim
 	sudo make
@@ -18,3 +15,6 @@ neovim-linux:
 	# sudo make distclean
 	# sudo make CMAKE_BUILD_TYPE=release
 	# sudo make install
+
+snapshot-macos:
+	brew bundle dump

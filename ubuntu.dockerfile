@@ -31,3 +31,5 @@ USER conrad
 WORKDIR /home/conrad/dotfiles
 
 RUN bash ./install -vv
+
+RUN make neovim

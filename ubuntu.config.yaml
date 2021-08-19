@@ -44,5 +44,3 @@
   # Other tooling
   - cargo install git-delta
 
-  # Neovim
-  - make neovim-linux
