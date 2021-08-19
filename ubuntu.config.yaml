@@ -20,26 +20,26 @@
   - [git submodule update --init --recursive, Installing submodules]
 
   # Neovim stuff
-  - sudo apt-get install git
-  - sudo apt-get install make
-  - sudo apt-get install cmake
-  - sudo apt-get install gcc
-  - sudo apt-get install ninja-build
-  - sudo apt-get install ruby
+  - sudo apt-get install -y git
+  - sudo apt-get install -y make
+  - sudo apt-get install -y cmake
+  - sudo apt-get install -y gcc
+  - sudo apt-get install -y ninja-build
+  - sudo apt-get install -y ruby
 
   # Languages I write in
-  - sudo apt-get install python3
-  - sudo apt-get install nodejs
-  - sudo apt-get install golang
-  - sudo apt-get install rust
+  - sudo apt-get install -y python3
+  - sudo apt-get install -y nodejs
+  - sudo apt-get install -y golang
+  - sudo apt-get install -y rust
 
   # Automation tooling
-  - sudo apt-get install terraform
-  - sudo apt-get install ansible
+  - sudo apt-get install -y terraform
+  - sudo apt-get install -y ansible
 
   # Shell goodies
-  - sudo apt-get install fis
-  - sudo apt-get install tmux
+  - sudo apt-get install -y fis
+  - sudo apt-get install -y tmux
 
   # - cargo install git-delta
   # - make neovim-linux
