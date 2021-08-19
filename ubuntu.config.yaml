@@ -41,9 +41,8 @@
   - sudo apt-get install -y fish
   - sudo apt-get install -y tmux
 
-  # - cargo install git-delta
-  # - make neovim-linux
+  # Other tooling
+  - cargo install git-delta
 
-  #~/AppData/Roaming/Code/User/settings.json: .config/vscode/settings.json
-  #~/AppData/Roaming/Code/User/keybindings.json: .config/vscode/keybindings.json
-
+  # Neovim
+  - make neovim-linux
