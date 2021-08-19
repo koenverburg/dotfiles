@@ -31,14 +31,14 @@
   - sudo apt-get install -y python3
   - sudo apt-get install -y nodejs
   - sudo apt-get install -y golang
-  - sudo apt-get install -y rust
+  - sudo apt-get install -y rustc
 
   # Automation tooling
-  - sudo apt-get install -y terraform
+  # - sudo apt-get install -y terraform
   - sudo apt-get install -y ansible
 
   # Shell goodies
-  - sudo apt-get install -y fis
+  - sudo apt-get install -y fish
   - sudo apt-get install -y tmux
 
   # - cargo install git-delta
