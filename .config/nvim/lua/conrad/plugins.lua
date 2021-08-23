@@ -55,6 +55,7 @@ return require('packer').startup {
     use 'nvim-lua/completion-nvim'
     use 'onsails/lspkind-nvim'
     use 'glepnir/lspsaga.nvim'
+    use 'ray-x/lsp_signature.nvim'
     --use 'tjdevries/nlua.nvim'
 
     -- Utils

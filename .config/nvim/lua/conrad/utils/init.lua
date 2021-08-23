@@ -2,11 +2,8 @@ local Mapper = require 'nvim-mapper'
 local M = {}
 
 function M.bind(mode, keys, func)
-  vim.api.nvim_set_keymap(mode, keys, func, {noremap = true, silent = true})
-
-  -- Mapper.map_virtual(mode, keys, '', {}, category, unique_identifier, description)
+  vim.api.nvim_set_keymap(mode, keys, func, {noremap = true, silent = true}) -- Mapper.map_virtual(mode, keys, '', {}, category, unique_identifier, description)
 end
-
 function M.normal(key, func)
   M.bind('n', key, func)
 end
@@ -73,8 +70,9 @@ function lsp_map(mode, key, action)
 end
 
 function M.on_attach(client)
-  require('completion').on_attach(client)
   require('lspkind').init()
+  require('lsp_signature').on_attach()
+  require('completion').on_attach(client)
 
   -- local capabilities = vim.lsp.protocol.make_client_capabilities()
   -- capabilities.textDocument.completion.completionItem.snippetSupport = true
