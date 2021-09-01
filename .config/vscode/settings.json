@@ -37,7 +37,7 @@
   },
   "[typescriptreact]": {
     "editor.showUnused": true,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.formatOnSaveMode": "modifications",
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
@@ -130,6 +130,7 @@
     "Cust",
     "Deduplication",
     "Outsystems",
+    "Typedefs",
     "Umbraco",
     "XSRF",
     "bedankt",
@@ -144,5 +145,5 @@
   "files.autoSave": "onFocusChange",
   "eslint.format.enable": true,
   "extensions.ignoreRecommendations": true,
-  "go.toolsManagement.autoUpdate": true,
+  "go.toolsManagement.autoUpdate": true
 }
