@@ -4,14 +4,13 @@ local sorters = require('telescope.sorters')
 require 'telescope'.setup {
   defaults = {
     color_devicons = true,
-
     borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
   },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
       override_file_sorter = true,     -- override the file sorter
-      override_generic_sorter = false, -- override the generic sorter
+      override_generic_sorter = true, -- override the generic sorter
       case_mode = 'smart_case',        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
     }
@@ -19,9 +18,12 @@ require 'telescope'.setup {
 }
 
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('frecency')
 -- require('telescope').load_extension('mapper')
 -- require('telescope').load_extension('snippets')
+
+if not vim.fn.has('win64') then
+  require('telescope').load_extension('frecency')
+end
 
 local M = {}
 
@@ -64,8 +66,8 @@ end
 function M.find_files()
   local opts = {
     winblend = 10,
-    previewer = false,
-    -- prompt_position = 'bottom',
+    previewer = true,
+    prompt_position = 'top',
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
   }
@@ -85,8 +87,9 @@ end
 function M.git_files()
   local opts = {
     winblend = 0,
-    previewer = false,
-    shorten_path = false
+    previewer = true,
+    shorten_path = false,
+    prompt_position = 'top'
   }
 
   require('telescope.builtin').git_files(opts)

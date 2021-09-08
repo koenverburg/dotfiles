@@ -110,6 +110,7 @@ normal('<leader>gy', ':Goyo 120<cr>')
 -- Commenting
 normal('<space>dc', ':ProDoc<cr>')
 normal('<space>c', ':Commentary<cr>')
+visual('<space>c', ':Commentary<cr>')
 
 -- word hopping
 normal('<leader>hj', ':HopWord<cr>')
