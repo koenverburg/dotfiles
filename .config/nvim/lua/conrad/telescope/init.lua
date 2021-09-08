@@ -1,3 +1,4 @@
+local table = require('table')
 local themes = require('telescope.themes')
 local sorters = require('telescope.sorters')
 
@@ -38,13 +39,13 @@ end
 
 function M.find_files_dotfiles()
   local opts = {
-    -- previewer = false,
-    prompt_position = 'top',
     prompt_title = '~ Dotfiles ~',
     cwd = '~/code/github/dotfiles',
-    -- shorten_path = false,
-    -- scroll_strategy = 'cycle',
-    -- sorting_strategy = 'descending',
+    previewer = true,
+    layout_strategy= 'horizontal',
+    layout_config = {
+      prompt_position = 'top',
+    }
   }
 
   require('telescope.builtin').git_files(opts)
@@ -53,8 +54,6 @@ end
 function M.live_grep_custom()
   local opts = {
     shorten_path = false,
-    -- prompt_position = 'bottom',
-    -- layout_config.prompt_position
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
   }

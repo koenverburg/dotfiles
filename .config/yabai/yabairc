@@ -26,6 +26,7 @@ yabai -m rule --add app="^Docker Desktop$" manage=off
 yabai -m rule --add app="^Installer$" manage=off
 yabai -m rule --add app="^NordPass$" manage=off
 yabai -m rule --add app="^PowerPoint$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
 
 #find ~/Library/Parallels/Applications\ Menus/ -maxdepth 3 -type f | awk -F'/' '{ print $NF; }' | awk '{$1=$1};1' | sort | uniq | tr "\n" "\0" | xargs -0 -I{} yabai -m rule --add app="^{}\$" title=".*" manage=on
 
