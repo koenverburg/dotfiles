@@ -8,7 +8,7 @@
         {
           "type": "path",
           "style": "plain",
-          "foreground": "#56B6C2",
+          "foreground": "#f85149",
           "properties": {
             "style": "folder"
           }
@@ -16,7 +16,7 @@
         {
           "type": "git",
           "style": "plain",
-          "foreground": "#D0666F",
+          "foreground": "#a371f7",
           "properties": {
             "branch_icon": "",
             "display_status": true,
@@ -27,7 +27,7 @@
         {
           "type": "exit",
           "style": "plain",
-          "foreground": "#DCB977",
+          "foreground": "#388bfd",
           "properties": {
             "prefix": "\u2717",
             "display_exit_code": false
@@ -36,7 +36,7 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#98C379",
+          "foreground": "#388bfd",
           "properties": {
             "prefix": "",
             "text": "#",

@@ -145,5 +145,6 @@
   "files.autoSave": "onFocusChange",
   "eslint.format.enable": true,
   "extensions.ignoreRecommendations": true,
-  "go.toolsManagement.autoUpdate": true
+  "go.toolsManagement.autoUpdate": true,
+  "redhat.telemetry.enabled": true
 }
