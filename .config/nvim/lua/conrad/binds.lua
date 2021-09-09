@@ -9,6 +9,8 @@ local telescope_map = utils.telescope_map
 telescope_map('<space>gw', 'get_worktrees')
 telescope_map('<space>cwt', 'create_worktree')
 
+telescope_map('<leader><space>h', 'help_tags')
+
 telescope_map('<space>ff', 'find_files')
 telescope_map('<space>fg', 'live_grep_custom')
 -- telescope_map('<space>fd', 'grep_string')

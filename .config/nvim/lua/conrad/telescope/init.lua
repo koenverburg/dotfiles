@@ -65,13 +65,12 @@ end
 
 function M.find_files()
   local opts = {
-    winblend = 10,
     previewer = true,
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
     layout_strategy= 'horizontal',
     layout_config = {
-      prompt_position = 'top',
+      prompt_position = 'bottom',
     }
   }
 
@@ -80,7 +79,6 @@ end
 
 function M.buffers()
   local opts = themes.get_dropdown {
-    winblend = 0,
     previewer = false,
     shorten_path = false
   }
@@ -89,12 +87,10 @@ end
 
 function M.git_files()
   local opts = {
-    winblend = 0,
-    shorten_path = false,
     previewer = false,
-    layout_strategy= 'horizontal',
+    layout_strategy = 'horizontal',
     layout_config = {
-      prompt_position = 'top',
+      prompt_position = 'bottom',
     }
   }
 
