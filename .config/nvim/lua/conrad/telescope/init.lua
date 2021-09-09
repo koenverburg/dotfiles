@@ -31,7 +31,9 @@ local M = {}
 function M.lsp_references()
   local opts = themes.get_dropdown {
     previewer = false,
-    prompt_position = 'top',
+    layout_config = {
+      prompt_position = 'top',
+    }
   }
   require('telescope.builtin').lsp_references(opts)
 end
@@ -61,14 +63,16 @@ function M.live_grep_custom()
   require('telescope.builtin').live_grep(opts)
 end
 
-
 function M.find_files()
   local opts = {
     winblend = 10,
     previewer = true,
-    prompt_position = 'top',
     scroll_strategy = 'cycle',
     sorting_strategy = 'descending',
+    layout_strategy= 'horizontal',
+    layout_config = {
+      prompt_position = 'top',
+    }
   }
 
   require('telescope.builtin').find_files(opts)
@@ -86,9 +90,12 @@ end
 function M.git_files()
   local opts = {
     winblend = 0,
-    previewer = true,
     shorten_path = false,
-    prompt_position = 'top'
+    previewer = false,
+    layout_strategy= 'horizontal',
+    layout_config = {
+      prompt_position = 'top',
+    }
   }
 
   require('telescope.builtin').git_files(opts)

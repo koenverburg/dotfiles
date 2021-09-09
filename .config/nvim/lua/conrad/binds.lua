@@ -13,7 +13,7 @@ telescope_map('<space>ff', 'find_files')
 telescope_map('<space>fg', 'live_grep_custom')
 -- telescope_map('<space>fd', 'grep_string')
 telescope_map('<space>fc', 'get_frecency')
--- FIX Needs to focus on the file not open in the current buffer
+-- TODO Needs to focus on the file not open in the current buffer
 --telescope_map('<space>fb', 'buffers')
 
 telescope_map('<space>t' , 'git_files')

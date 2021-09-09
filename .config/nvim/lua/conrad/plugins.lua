@@ -34,14 +34,18 @@ return require('packer').startup {
     -- Colorscheme
     use 'glepnir/zephyr-nvim'
     use { 'tjdevries/gruvbuddy.nvim', requires = 'tjdevries/colorbuddy.vim' }
+    use 'Yagua/nebulous.nvim'
     use { 'briones-gabriel/darcula-solid.nvim', requires = 'rktjmp/lush.nvim' }
 
     -- Telescope
     use 'nvim-telescope/telescope.nvim'
-    use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use 'tami5/sql.nvim'
-    use 'nvim-telescope/telescope-frecency.nvim'
+
+    if not vim.fn.has('win64') then
+      use 'tami5/sql.nvim'
+      use 'nvim-telescope/telescope-frecency.nvim'
+      use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
+    end
 
     -- Old
     use 'scrooloose/nerdtree' -- trying to phase this one out
@@ -68,6 +72,7 @@ return require('packer').startup {
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
+    use 'TimUntersberger/neogit'
     use {
       'lazytanuki/nvim-mapper', config = function()
         require('nvim-mapper').setup {
