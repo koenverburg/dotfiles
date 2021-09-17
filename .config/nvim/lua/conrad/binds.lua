@@ -26,6 +26,7 @@ telescope_map('<leader>fr', 'lsp_references')
 telescope_map('<c-d>', 'lsp_document_symbols')
 
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
+normal('<leader><leader>c', "<cmd>lua require'conrad.plugins.complexity'.foo()<cr>")
 
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')

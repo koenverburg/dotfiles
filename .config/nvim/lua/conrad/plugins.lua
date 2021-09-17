@@ -51,6 +51,8 @@ return require('packer').startup {
     use 'scrooloose/nerdtree' -- trying to phase this one out
 
     -- treesitter
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
@@ -67,7 +69,6 @@ return require('packer').startup {
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'glepnir/prodoc.nvim'
-    use 'nvim-treesitter/nvim-treesitter'
     use 'phaazon/hop.nvim'
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
