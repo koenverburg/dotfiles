@@ -87,14 +87,6 @@ local function setVirtualText(node)
   end
 end
 
-function M.showDebug()
-  node = ts_utils.get_node_at_cursor();
-  print("current type")
-  print(node:type());
-  print("parent type")
-  print(node:parent():type());
-end
-
 function M.showContext()
   -- if node == nil then
   --   -- Clear the existing.
@@ -136,5 +128,5 @@ end
 
 return M
 
--- vim.cmd [[ autocmd CursorMoved * :lua require ''.showContext() ]]
--- vim.cmd [[ autocmd CursorMovedI * lua require 'nvim_context_vt'.showContext() ]]
+ vim.cmd [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.showContext() ]]
+ vim.cmd [[ autocmd CursorMovedI * lua require 'conrad.core.virtualtext'.showContext() ]]
