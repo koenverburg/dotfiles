@@ -18,16 +18,16 @@ startup_mode: Windowed
 # Font configuration
 font:
   light:
-    family: Hack Nerd Font
+    family: Hack
     style: Regular
   normal:
-    family: Hack Nerd Font
+    family: Hack
     style: Regular
   # semiBold:
   #   family: Hack Nerd Font
   #   style: SemiBold
   bold:
-    family: Hack Nerd Font
+    family: Hac 
     style: Bold
 
   size: 13.5
