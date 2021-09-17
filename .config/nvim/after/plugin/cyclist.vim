@@ -39,3 +39,4 @@ call cyclist#add_listchar_option_set('limited', {
 "         \ })
 
 nmap <leader>cl <Plug>CyclistNext
+let context_vt_namespace = nvim_create_namespace('context_vt')

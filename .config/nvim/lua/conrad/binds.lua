@@ -27,6 +27,8 @@ telescope_map('<c-d>', 'lsp_document_symbols')
 
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 
+normal('<leader>vt', "<cmd>lua require'conrad.core.virtualtext'.showContext()<cr>")
+
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
 normal('<C-k>', '<C-W><C-K>')
@@ -125,6 +127,9 @@ normal('<leader>=', ':Format<cr>')
 
 -- Refactoring
 visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
+
+
+normal('<leader>gg', ':Neogit<cr>')
 
 return {
   normal,

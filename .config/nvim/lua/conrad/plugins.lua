@@ -51,6 +51,7 @@ return require('packer').startup {
     use 'scrooloose/nerdtree' -- trying to phase this one out
 
     -- treesitter
+    use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
@@ -67,18 +68,30 @@ return require('packer').startup {
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'glepnir/prodoc.nvim'
-    use 'nvim-treesitter/nvim-treesitter'
     use 'phaazon/hop.nvim'
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
-    use 'TimUntersberger/neogit'
-    -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
+    -- use {
+    --   'sindrets/diffview.nvim', config = function ()
+    --     require('diffview').setup()
+    --   end
+    -- }
+    use 'sindrets/diffview.nvim'
     use {
-      'sindrets/diffview.nvim', config = function ()
-        require('diffview').setup()
+      'TimUntersberger/neogit', config = function ()
+        require('neogit').setup {
+          commit_popup = {
+            kind = 'tab',
+            -- kind = 'split_above'
+          },
+          integrations = {
+            diffview = true
+          },
+        }
       end
     }
+    -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- use {
     --   'lazytanuki/nvim-mapper', config = function()
@@ -129,6 +142,7 @@ return require('packer').startup {
 
     -- Snippets
     use 'norcalli/snippets.nvim'
+    use 'L3MON4D3/luaSnip'
 
   end
 }
