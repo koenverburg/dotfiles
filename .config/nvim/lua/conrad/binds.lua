@@ -115,7 +115,7 @@ normal('<space>c', ':Commentary<cr>')
 visual('<space>c', ':Commentary<cr>')
 
 -- word hopping
-normal('<leader>hj', ':HopWord<cr>')
+normal('<leader>mv', ':HopWord<cr>')
 
 -- Toggle Alternate
 normal('<leader>ta', ':ToggleAlternate<cr>')
