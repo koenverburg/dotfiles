@@ -1,4 +1,3 @@
--- local Mapper = require 'nvim-mapper'
 local M = {}
 
 function M.bind(mode, keys, func)
@@ -7,18 +6,6 @@ end
 function M.normal(key, func)
   M.bind('n', key, func)
 end
-
--- function M.normalTest(key, func, category, unique_identifier, description)
---   category = category or ''
-
---   unique_identifier = unique_identifier or mode .. keys
-
---   description = description or ''
-
---   M.bind('n', key, func)
-
---   Mapper.map_virtual('n', key, '', {}, category, unique_identifier, description)
--- end
 
 function M.visual(key, func)
   M.bind('v', key, func)
