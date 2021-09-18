@@ -1,8 +1,7 @@
 vim.o.ruler = true
 vim.o.background = 'dark'
 
-require('colorbuddy').colorscheme('gruvbuddy')
--- vim.cmd('colorscheme zephyr')
+require('colorbuddy').colorscheme('nebulous')
 
 vim.g.mapleader = ','
 vim.b.mapleader = ','

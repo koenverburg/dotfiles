@@ -33,24 +33,25 @@ return require('packer').startup {
 
     -- Colorscheme
     use 'glepnir/zephyr-nvim'
-    use { 'tjdevries/gruvbuddy.nvim', requires = 'tjdevries/colorbuddy.vim' }
     use 'Yagua/nebulous.nvim'
+    use { 'tjdevries/gruvbuddy.nvim', requires = 'tjdevries/colorbuddy.vim' }
     use { 'briones-gabriel/darcula-solid.nvim', requires = 'rktjmp/lush.nvim' }
 
     -- Telescope
     use 'nvim-telescope/telescope.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
 
     if not vim.fn.has('win64') then
       use 'tami5/sql.nvim'
       use 'nvim-telescope/telescope-frecency.nvim'
-      use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
     end
 
     -- Old
     use 'scrooloose/nerdtree' -- trying to phase this one out
 
     -- treesitter
+    use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
@@ -67,19 +68,38 @@ return require('packer').startup {
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'glepnir/prodoc.nvim'
-    use 'nvim-treesitter/nvim-treesitter'
     use 'phaazon/hop.nvim'
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
-    use 'TimUntersberger/neogit'
+    -- use {
+    --   'sindrets/diffview.nvim', config = function ()
+    --     require('diffview').setup()
+    --   end
+    -- }
+    use 'sindrets/diffview.nvim'
     use {
-      'lazytanuki/nvim-mapper', config = function()
-        require('nvim-mapper').setup {
-          search_path = os.getenv('HOME') .. 'AppData/local/nvim/lua'
+      'TimUntersberger/neogit', config = function ()
+        require('neogit').setup {
+          commit_popup = {
+            kind = 'tab',
+            -- kind = 'split_above'
+          },
+          integrations = {
+            diffview = true
+          },
         }
       end
     }
+    -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
+
+    -- use {
+    --   'lazytanuki/nvim-mapper', config = function()
+    --     require('nvim-mapper').setup {
+    --       search_path = os.getenv('HOME') .. 'AppData/local/nvim/lua'
+    --     }
+    --   end
+    -- }
 
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
@@ -103,7 +123,6 @@ return require('packer').startup {
     use 'plasticboy/vim-markdown'
     use 'dhruvasagar/vim-table-mode'
 
-    -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Looks
     use 'mhinz/vim-startify'
@@ -123,6 +142,7 @@ return require('packer').startup {
 
     -- Snippets
     use 'norcalli/snippets.nvim'
+    use 'L3MON4D3/luaSnip'
 
   end
 }
