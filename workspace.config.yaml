@@ -1,0 +1,39 @@
+- clean: ["~"]
+
+- create:
+    - ~/code/tools
+
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- link:
+    ~/.gitconfig: .config/gitconfig/.gitconfig
+    ~/.tmux.conf: ./ansible/playbooks/roles/tmux/files/.tmux.conf
+    ~/.config/nvim: ./.config/nvim
+    ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - fish -c 'omf install'
+
+    # Neovim stuff
+    # - sudo apt-get install -y git
+    # - sudo apt-get install -y make
+    # - sudo apt-get install -y cmake
+    # - sudo apt-get install -y gcc
+    # - sudo apt-get install -y ninja-build
+    # - sudo apt-get install -y ruby
+
+    # Languages I write in
+    # - sudo apt-get install -y python3
+    # - sudo apt-get install -y nodejs
+    # - sudo apt-get install -y golang
+
+    # Automation tooling
+    # - sudo apt-get install -y terraform
+    # - sudo apt-get install -y ansible
+
+    # Other tooling
+    - cargo install git-delta

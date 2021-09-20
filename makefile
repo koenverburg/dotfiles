@@ -18,3 +18,6 @@ neovim:
 
 snapshot-macos:
 	brew bundle dump
+
+build-workspace:
+	docker build --file workspace.dockerfile --tag wksp .
