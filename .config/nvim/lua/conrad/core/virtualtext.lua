@@ -128,5 +128,5 @@ end
 
 return M
 
- vim.cmd [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.showContext() ]]
- vim.cmd [[ autocmd CursorMovedI * lua require 'conrad.core.virtualtext'.showContext() ]]
+-- vim.cmd [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.showContext() ]]
+-- vim.cmd [[ autocmd CursorMovedI * lua require 'conrad.core.virtualtext'.showContext() ]]
