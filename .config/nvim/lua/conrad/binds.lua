@@ -109,7 +109,9 @@ normal('<A-t>', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('yar
 terminal('<A-d>', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
 -- focus mode with Goyo and limelight
-normal('<leader>gy', ':Goyo 120<cr>')
+normal('<leader>gy', ':Goyo10<cr>')
+normal('<leader>ll', ':Limelight<cr>')
+normal('<leader>lx', ':Limelight!<cr>')
 
 -- Commenting
 normal('<space>dc', ':ProDoc<cr>')
@@ -123,7 +125,7 @@ normal('<leader>mv', ':HopWord<cr>')
 normal('<leader>ta', ':ToggleAlternate<cr>')
 
 -- Formatting
-normal('<leader>=', ':Format<cr>')
+normal('<leader>f', ':Format<cr>')
 
 -- Refactoring
 visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
