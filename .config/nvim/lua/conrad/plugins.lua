@@ -51,6 +51,7 @@ return require('packer').startup {
     use 'scrooloose/nerdtree' -- trying to phase this one out
 
     -- treesitter
+    use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
