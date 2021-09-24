@@ -28,8 +28,8 @@ telescope_map('<c-d>', 'lsp_document_symbols')
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 
 normal('<leader>vt', "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
-vim.cmd [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
-vim.cmd [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
+vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
+vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
 
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
