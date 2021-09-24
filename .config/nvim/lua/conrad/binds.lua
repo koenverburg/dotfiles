@@ -28,6 +28,10 @@ telescope_map('<c-d>', 'lsp_document_symbols')
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 normal('<leader><leader>c', "<cmd>lua require'conrad.plugins.complexity'.foo()<cr>")
 
+normal('<leader>vt', "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
+vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
+vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
+
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
 normal('<C-k>', '<C-W><C-K>')
@@ -108,7 +112,9 @@ normal('<A-t>', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('yar
 terminal('<A-d>', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
 -- focus mode with Goyo and limelight
-normal('<leader>gy', ':Goyo 120<cr>')
+normal('<leader>gy', ':Goyo10<cr>')
+normal('<leader>ll', ':Limelight<cr>')
+normal('<leader>lx', ':Limelight!<cr>')
 
 -- Commenting
 normal('<space>dc', ':ProDoc<cr>')
@@ -116,16 +122,18 @@ normal('<space>c', ':Commentary<cr>')
 visual('<space>c', ':Commentary<cr>')
 
 -- word hopping
-normal('<leader>hj', ':HopWord<cr>')
+normal('<leader>mv', ':HopWord<cr>')
 
 -- Toggle Alternate
 normal('<leader>ta', ':ToggleAlternate<cr>')
 
 -- Formatting
-normal('<leader>=', ':Format<cr>')
+normal('<leader>f', ':Format<cr>')
 
 -- Refactoring
 visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
+
+normal('<leader>gg', ':Neogit<cr>')
 
 return {
   normal,

@@ -1,23 +1,11 @@
-local Mapper = require 'nvim-mapper'
 local M = {}
 
 function M.bind(mode, keys, func)
-  vim.api.nvim_set_keymap(mode, keys, func, {noremap = true, silent = true}) -- Mapper.map_virtual(mode, keys, '', {}, category, unique_identifier, description)
+  vim.api.nvim_set_keymap(mode, keys, func, {noremap = true, silent = true})
 end
+
 function M.normal(key, func)
   M.bind('n', key, func)
-end
-
-function M.normalTest(key, func, category, unique_identifier, description)
-  category = category or ''
-
-  unique_identifier = unique_identifier or mode .. keys
-
-  description = description or ''
-
-  M.bind('n', key, func)
-
-  Mapper.map_virtual('n', key, '', {}, category, unique_identifier, description)
 end
 
 function M.visual(key, func)
@@ -88,7 +76,7 @@ function M.on_attach(client)
   lsp_map('n', 'gW', 'vim.lsp.buf.workspace_symbol')
 
   -- lsp saga
-  lsp_map('n', '<space>h', 'vim.lsp.buf.hover')
+  lsp_map('n', '<space>h', "require('lspsaga.hover').handler")
   lsp_map('n', '<leader>ca',  "require('lspsaga.codeaction').code_action")
   lsp_map('i', '<leader>ca',  "require('lspsaga.codeaction').code_action")
   lsp_map('i', 'gs',  "require('lspsaga.signaturehelp').signature_help")
