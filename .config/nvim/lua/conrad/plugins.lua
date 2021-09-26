@@ -135,8 +135,8 @@ return require('packer').startup {
     use 'kyazdani42/nvim-web-devicons'
 
     -- Focus mode
-    use 'junegunn/goyo.vim'
-    use 'junegunn/limelight.vim'
+    use 'folke/twilight.nvim'
+    use 'folke/zen-mode.nvim'
 
     -- Formatting
     use 'mhartington/formatter.nvim'
