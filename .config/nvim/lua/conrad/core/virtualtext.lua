@@ -16,11 +16,15 @@ local function P(value)
   print(vim.inspect(value))
 end
 
+-- local Helpers = {}
+
+-- function Helpers.DetermineIfStatementScore(node)
+--   print('hii from helpers')
+-- end
+
 local score_table = {
-  if_statement = function()
-    print("hii")
-  end,
-  return_statement = 1
+  return_statement = 1,
+  if_statement = 1, -- Helpers.DetermineIfStatementScore(node),
 }
 
 local function calculateScore(node)
@@ -28,37 +32,43 @@ local function calculateScore(node)
   local node_type = node:type()
 
   if not vim.tbl_contains(vim.tbl_keys(score_table), node_type) then
+    print("not in dict")
     return
   end
 
   if type(score_table[node_type] == 'function') then
-    print("calling nested function")
-    score_table[node_type]()
+    result = result + tonumber(score_table[node_type])
   else
-    result = result + score_table[node_type]
+    result = result + tonumber(score_table[node_type])
   end
 
   print(result)
+
+  return result
 end
 
 
 local function loopOverChildren(node)
+  local m = 0
   local child_nodes = ts_utils.get_named_children(node)
   if not child_nodes then return end
 
   for _, key in ipairs(child_nodes) do
     if key:type() == 'block' then
       for _, j in ipairs(ts_utils.get_named_children(key)) do
-        calculateScore(j)
+        m = m + tonumber(calculateScore(j))
       end
+    else
+      print("found " .. key:type())
     end
   end
 
+  return m
 end
 
-local function setVirtualText(node)
+local function setVirtualText(node, score)
   local targetLineNumber = node:start();
-  local virtualText = " Helloo virtual text"
+  local virtualText = " CC: " .. score
   vim.api.nvim_buf_set_virtual_text(0, ns, targetLineNumber, {{ virtualText, 'Comment' }}, {})
 end
 
@@ -71,8 +81,8 @@ function M.show()
   end
 
   if vim.tbl_contains(method_start_targets, node:type()) then
-    setVirtualText(node)
-    loopOverChildren(node)
+    local score = loopOverChildren(node)
+    setVirtualText(node, score)
   end
 end
 
