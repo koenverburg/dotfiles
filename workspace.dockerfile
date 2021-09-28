@@ -28,11 +28,14 @@ RUN apt-get update && \
   rustc \
   sudo
 
-RUN  git clone https://github.com/neovim/neovim.git && \
-  cd neovim && \
-  make && \
-  make install && \
-  cd ../ && rm -rf nvim
+RUN add-apt-repository --yes ppa:neovim-ppa/unstable && \
+    apt-get install -y neovim
+
+# RUN  git clone https://github.com/neovim/neovim.git && \
+#   cd neovim && \
+#   make && \
+#   make install && \
+#   cd ../ && rm -rf nvim
 
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
