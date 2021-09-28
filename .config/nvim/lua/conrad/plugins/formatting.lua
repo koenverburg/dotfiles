@@ -9,7 +9,7 @@ local eslint = {
   end
 }
 
-require('formatter').setup({
+require'formatter'.setup({
   logging = false,
   filetype = {
 

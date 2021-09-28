@@ -1,5 +1,5 @@
-require('zen-mode').setup()
-require('twilight').setup {
+require'zen-mode'.setup()
+require'twilight'.setup {
   context = 2,
   expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
     -- Lua
