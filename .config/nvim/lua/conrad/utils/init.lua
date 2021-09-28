@@ -1,8 +1,9 @@
 local M = {}
 
 function M.bind(mode, keys, func)
-  vim.api.nvim_set_keymap(mode, keys, func, {noremap = true, silent = true}) -- Mapper.map_virtual(mode, keys, '', {}, category, unique_identifier, description)
+  vim.api.nvim_set_keymap(mode, keys, func, {noremap = true, silent = true})
 end
+
 function M.normal(key, func)
   M.bind('n', key, func)
 end

@@ -11,6 +11,7 @@ RUN apt-get update && \
   apt-utils \
   automake \
   build-essential \
+  pkg-config \
   cargo \
   cmake \
   coreutils \

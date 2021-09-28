@@ -1,0 +1,14 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+
+customCommands:
+  - key: "C"
+    command: "cz"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true
+
+gui:
+  showCommandLog: false

@@ -42,15 +42,16 @@ return require('packer').startup {
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
 
-    if not vim.fn.has('win64') then
-      use 'tami5/sql.nvim'
-      use 'nvim-telescope/telescope-frecency.nvim'
-    end
+    -- if not vim.fn.has('win64') then
+    --   use 'tami5/sql.nvim'
+    --   use 'nvim-telescope/telescope-frecency.nvim'
+    -- end
 
     -- Old
     use 'scrooloose/nerdtree' -- trying to phase this one out
 
     -- treesitter
+    use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
@@ -72,25 +73,6 @@ return require('packer').startup {
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
-    -- use {
-    --   'sindrets/diffview.nvim', config = function ()
-    --     require('diffview').setup()
-    --   end
-    -- }
-    use 'sindrets/diffview.nvim'
-    use {
-      'TimUntersberger/neogit', config = function ()
-        require('neogit').setup {
-          commit_popup = {
-            kind = 'tab',
-            -- kind = 'split_above'
-          },
-          integrations = {
-            diffview = true
-          },
-        }
-      end
-    }
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- use {
@@ -134,8 +116,8 @@ return require('packer').startup {
     use 'kyazdani42/nvim-web-devicons'
 
     -- Focus mode
-    use 'junegunn/goyo.vim'
-    use 'junegunn/limelight.vim'
+    use 'folke/twilight.nvim'
+    use 'folke/zen-mode.nvim'
 
     -- Formatting
     use 'mhartington/formatter.nvim'

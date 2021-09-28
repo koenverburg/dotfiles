@@ -1,132 +1,89 @@
-local ts_utils = require 'nvim-treesitter.ts_utils';
-
-local opts = {}
-
-local targets = {
-  'function',
-  'method_declaration',
-  'function_declaration',
-  'function_definition',
-  'local_function',
-  'arrow_function',
-  'method_definition',
-  'arguments',
-
-  'if_statement',
-  'if_expression',
-
-  'switch_expression',
-
-  'class_declaration',
-  'struct_expression',
-
-  'test_expression',
-
-  'while_expression',
-  'while_statement',
-
-  'for_expression',
-  'foreach_statement',
-  'for_statement',
-  'for_in_statement',
-
-  -- rust
-  'match_expression',
-  'if_let_expression',
-  'tuple_struct_pattern',
-  'while_let_expression',
-  'for_expression',
-  'loop_expression',
-  'function_item',
-  'struct_item',
-
-  -- ruby target
-  'class',
-  'module',
-  'method',
-  'do_block',
-  'if',
-  'while',
-  'for',
-
-  -- typescript
-  'interface_declaration',
-  'enum_declaration',
-
-  -- Go,
-  'identifier',
-  'source_file'
-}
-
+local ts_utils = require 'nvim-treesitter.ts_utils'
+local ns = vim.api.nvim_create_namespace('ns')
 local M = {}
 
-function M.setup(user_opts)
-	opts = vim.tbl_extend('force', opts, user_opts or {})
+local method_start_targets = {
+  -- Lua
+  'function',
+  'function_name',
+  'local_function',
+
+  -- Go,
+  'function_declaration',
+}
+
+local function P(value)
+  print(vim.inspect(value))
 end
 
-local function setVirtualText(node)
-  if vim.tbl_contains(targets, node:type()) then
-    local targetLineNumber = node:start();
+-- local Helpers = {}
 
-    print(targetlinenumber)
+-- function Helpers.DetermineIfStatementScore(node)
+--   print('hii from helpers')
+-- end
 
-    local virtualText
+local score_table = {
+  return_statement = 1,
+  if_statement = 1, -- Helpers.DetermineIfStatementScore(node),
+}
 
-    if opts.custom_text_handler then
-      virtualText = opts.custom_text_handler(node)
-    else
-      virtualText = " ### " .. "Helloo virtual text"
-    end
+local function calculateScore(node)
+  local result = 0
+  local node_type = node:type()
 
-    -- Add a guard here to allow users to filter which node to show virtual text
-    if not virtualText then
-      return
-    end
-
-    vim.api.nvim_buf_set_virtual_text(0, vim.g.context_vt_namespace, targetLineNumber, {{ virtualText, 'Comment' }}, {});
-  end
-end
-
-function M.showContext()
-  -- if node == nil then
-  --   -- Clear the existing.
-  --   -- Get the node at the current position.
-  --   -- node = ts_utils.get_node_at_cursor();
-  -- end
-
-  -- vim.api.nvim_buf_clear_namespace(0, vim.g.context_vt_namespace, 0, -1);
-  -- node = ts_utils.root();
-  local bufnr = vim.fn.bufnr()
-  print(bufnr)
-
-  local parser = vim.treesitter.get_parser(bufnr, "go")
-  local tstree = parser.parse()
-
-  local node = tstree:root()
-
-  if not node then
+  if not vim.tbl_contains(vim.tbl_keys(score_table), node_type) then
+    print("not in dict")
     return
   end
 
-  print(vim.inspect(node))
+  if type(score_table[node_type] == 'function') then
+    result = result + tonumber(score_table[node_type])
+  else
+    result = result + tonumber(score_table[node_type])
+  end
 
-  -- local parentNode = node:parent();
+  print(result)
 
-  -- setVirtualText(node)
-
-  -- if not parentNode then
-  --   return
-  -- end
-
-  -- setVirtualText(parentNode)
-
-  -- if parentNode and not (parentNode:type() == 'program') then
-  --   M.showContext(parentNode);
-  -- end
+  return result
 end
 
 
-return M
+local function loopOverChildren(node)
+  local m = 0
+  local child_nodes = ts_utils.get_named_children(node)
+  if not child_nodes then return end
 
- vim.cmd [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.showContext() ]]
- vim.cmd [[ autocmd CursorMovedI * lua require 'conrad.core.virtualtext'.showContext() ]]
+  for _, key in ipairs(child_nodes) do
+    if key:type() == 'block' then
+      for _, j in ipairs(ts_utils.get_named_children(key)) do
+        m = m + tonumber(calculateScore(j))
+      end
+    else
+      print("found " .. key:type())
+    end
+  end
+
+  return m
+end
+
+local function setVirtualText(node, score)
+  local targetLineNumber = node:start();
+  local virtualText = " CC: " .. score
+  vim.api.nvim_buf_set_virtual_text(0, ns, targetLineNumber, {{ virtualText, 'Comment' }}, {})
+end
+
+function M.show()
+  local node = ts_utils.get_node_at_cursor()
+
+  if not node then
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    return
+  end
+
+  if vim.tbl_contains(method_start_targets, node:type()) then
+    local score = loopOverChildren(node)
+    setVirtualText(node, score)
+  end
+end
+
+return M

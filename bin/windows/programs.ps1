@@ -48,15 +48,7 @@ Install nmap # Network Mapper
 
 RefreshEnv.cmd
 
-#luarocks install --server=http://luarocks.org/dev lua-lsp
-
-npm install -g serve neovim wikit npkill
+npm install -g serve neovim wikit npkill commitizen cz-emoji
 
 # Langague Server stuff for NeoVim
 npm install -g vim-language-server typescript-language-server vscode-html-languageserver-bin yaml-language-server graphql-language-service-server @stoplight/spectral vscode-css-languageserver-bin
-
-# pip install --upgrade pip
-# pip install Commitizen
-# pip install pre-commit
-# pip install pynvim
-# gem install neovim

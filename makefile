@@ -17,6 +17,7 @@ neovim:
 	# sudo make install
 
 snapshot-macos:
+	rm brewfile
 	brew bundle dump
 
 build-workspace:

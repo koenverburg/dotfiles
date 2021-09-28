@@ -7,19 +7,13 @@
 set -g theme_short_path yes
 set -x EDITOR nvim
 
-# set ANDROID_HOME ~/tools/cmdline-tools $ANDROID_HOME
-# set PATH $ANDROID_HOME/emulator $PATH
-# set PATH $ANDROID_HOME/tools $PATH
-# set PATH $ANDROID_HOME/tools/bin $PATH
-# set PATH $ANDROID_HOME/platform-tools $PATH
-
 set GOPATH /usr/local/bin/go $GOPATH
 set PATH /usr/local/bin/go $PATH
 set PATH ~/go/bin $PATH
 set PATH ~/.cargo/bin $PATH
-# set PATH ~/tools/cmdline-tools $PATH
-set NVM_DIR="$HOME/.nvm" $NVM_DIR
-
 
 # Docker Aliases
 # docker ps -a --filter status=exited --format {{.ID}} | xargs docker rm
+
+# Set Node Version on startup
+bass source ~/.nvm/nvm.sh ';' nvm use 14.15.4
