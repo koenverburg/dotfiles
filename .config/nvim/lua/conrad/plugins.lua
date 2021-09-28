@@ -42,10 +42,10 @@ return require('packer').startup {
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
 
-    if not vim.fn.has('win64') then
-      use 'tami5/sql.nvim'
-      use 'nvim-telescope/telescope-frecency.nvim'
-    end
+    -- if not vim.fn.has('win64') then
+    --   use 'tami5/sql.nvim'
+    --   use 'nvim-telescope/telescope-frecency.nvim'
+    -- end
 
     -- Old
     use 'scrooloose/nerdtree' -- trying to phase this one out
@@ -73,25 +73,6 @@ return require('packer').startup {
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
-    -- use {
-    --   'sindrets/diffview.nvim', config = function ()
-    --     require('diffview').setup()
-    --   end
-    -- }
-    use 'sindrets/diffview.nvim'
-    use {
-      'TimUntersberger/neogit', config = function ()
-        require('neogit').setup {
-          commit_popup = {
-            kind = 'tab',
-            -- kind = 'split_above'
-          },
-          integrations = {
-            diffview = true
-          },
-        }
-      end
-    }
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- use {

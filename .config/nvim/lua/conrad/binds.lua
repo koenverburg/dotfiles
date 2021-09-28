@@ -29,8 +29,8 @@ normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<c
 normal('<leader><leader>c', "<cmd>lua require'conrad.plugins.complexity'.foo()<cr>")
 
 -- normal('<leader>vt', "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
--- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
--- vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
+vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
+vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
 
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
@@ -107,9 +107,8 @@ visual('K', ":m '<-2<CR>gv=gv")
 
 normal('<C-b>', ':NERDTreeToggle<cr>')
 
-normal('<A-d>', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('pwsh')<cr> ]])
-normal('<A-t>', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('yarn test ' .. vim.fn.expand('%'))<cr> ]])
-terminal('<A-d>', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
+normal('<leader>gg', [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('lazygit')<cr> ]])
+terminal('<leader>gg', [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
 -- Focus mode
 normal('<leader><space>f', ':ZenMode<cr>')
@@ -132,7 +131,7 @@ normal('<leader>ta', ':ToggleAlternate<cr>')
 -- Refactoring
 visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
 
-normal('<leader>gg', ':Neogit<cr>')
+-- normal('<leader>gg', ':Neogit<cr>')
 
 return {
   normal,
