@@ -1,7 +1,8 @@
 Import-Module "$home\code\github\dotfiles\.config\powershell\Helpers\Utils.ps1"
 
-# Git Aliases (late 2020 refactor)
+# Git Aliases
 Set-Alias g 'git'
+Set-Alias lg 'lazygit'
 function gb { git branch }
 function gd { git diff }
 function pull { git pull }
