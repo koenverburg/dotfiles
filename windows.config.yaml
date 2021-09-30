@@ -11,7 +11,8 @@
     ~/AppData/Roaming/Code/User/keybindings.json: .config/vscode/keybindings.json
     ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1: .config/powershell/profile.ps1
     ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: .config/powershell/profile.ps1
+    ~/AppData/Roaming/lazygit/config.yml: .config/lazygit/config.yml
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [./bootstrap.ps1 programs]
+    # - [./bootstrap.ps1 programs]

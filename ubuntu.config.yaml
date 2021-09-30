@@ -15,6 +15,7 @@
     ~/.config/nvim: ./.config/nvim
     ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
     ~/.config/alacritty/alacritty.yml: ./.config/alacritty/alacritty.yml
+    ~/.config/lazygit/config.yml: .config/lazygit/config.yml
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
