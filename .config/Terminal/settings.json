@@ -29,22 +29,26 @@
         }
     ],
     "alwaysOnTop": false,
-    "alwaysShowTabs": false,
+    "alwaysShowTabs": true,
     "copyFormatting": "none",
     "copyOnSelect": true,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "disableAnimations": true,
     "profiles": 
     {
         "defaults": 
         {
-            "fontFace": "FiraCode NF",
+            "font": 
+            {
+                "face": "FiraCode NF"
+            },
             "name": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
             "padding": "2, 2, 2, 2"
         },
         "list": 
         [
             {
-                "colorScheme": "Github",
+                "colorScheme": "Gruvbox Dark",
                 "cursorShape": "underscore",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
@@ -128,6 +132,29 @@
             "yellow": "#C19C00"
         },
         {
+            "background": "#010409",
+            "black": "#010409",
+            "blue": "#388BFD",
+            "brightBlack": "#808080",
+            "brightBlue": "#388BFD",
+            "brightCyan": "#EA6045",
+            "brightGreen": "#2EA043",
+            "brightPurple": "#A371F7",
+            "brightRed": "#F85149",
+            "brightWhite": "#F0F6FC",
+            "brightYellow": "#BB8009",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#EA6045",
+            "foreground": "#F0F6FC",
+            "green": "#2EA043",
+            "name": "Github",
+            "purple": "#A371F7",
+            "red": "#F85149",
+            "selectionBackground": "#FFFFFF",
+            "white": "#F0F6FC",
+            "yellow": "#BB8009"
+        },
+        {
             "background": "#282C34",
             "black": "#1E1E1E",
             "blue": "#377375",
@@ -141,7 +168,7 @@
             "brightYellow": "#F7B125",
             "cursorColor": "#FFFFFF",
             "cyan": "#578E57",
-            "foreground": "#ebdbb2",
+            "foreground": "#EBDBB2",
             "green": "#868715",
             "name": "Gruvbox Dark",
             "purple": "#A04B73",
@@ -310,33 +337,10 @@
             "selectionBackground": "#FFFFFF",
             "white": "#C0C0C0",
             "yellow": "#808000"
-        },
-        {
-            "background": "#010409",
-            "black": "#010409",
-            "blue": "#388bfd",
-            "brightBlack": "#808080",
-            "brightBlue": "#388bfd",
-            "brightCyan": "#ea6045",
-            "brightGreen": "#2ea043",
-            "brightPurple": "#a371f7",
-            "brightRed": "#f85149",
-            "brightWhite": "#f0f6fc",
-            "brightYellow": "#bb8009",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#ea6045",
-            "foreground": "#f0f6fc",
-            "green": "#2ea043",
-            "name": "Github",
-            "purple": "#a371f7",
-            "red": "#f85149",
-            "selectionBackground": "#FFFFFF",
-            "white": "#f0f6fc",
-            "yellow": "#bb8009"
         }
     ],
     "showTabsInTitlebar": true,
-    "showTerminalTitleInTitlebar": true,
-    "tabWidthMode": "compact",
+    "showTerminalTitleInTitlebar": false,
+    "tabWidthMode": "titleLength",
     "theme": "dark"
 }
