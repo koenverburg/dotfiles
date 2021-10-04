@@ -1,0 +1,102 @@
+[
+  {
+    "type": "brightnessDown",
+    "width": 32,
+    "bordered": false,
+    "align": "left"
+  },
+  {
+    "type": "brightnessUp",
+    "width": 32,
+    "bordered": false,
+    "align": "left"
+  },
+  {
+    "type": "dnd",
+    "align": "left",
+    "width": 38
+  },
+  {
+    "type": "darkMode",
+    "align": "left",
+    "width": 28
+  },
+  {
+    "type": "shellScriptTitledButton",
+    "width": 80,
+    "align": "left",
+    "bordered": false,
+    "refreshInterval": 5,
+    "source": {
+      "inline": "~/code/github/dotfiles/script/pomo.sh"
+    }
+  },
+  // Spotify
+  {
+    "type": "appleScriptTitledButton",
+    "source": {
+      "inline": "if application \"Spotify\" is running then\rtell application \"Spotify\"\rif player state is playing then\rreturn (get artist of current track) & \" – \" & (get name of current track)\relse\rreturn \"\"\rend if\rend tell\rend if\rreturn \"\"\r"
+    },
+    "action": "appleScript",
+    "actionAppleScript": {
+      "inline": "if application \"Spotify\" is running then\rtell application \"Spotify\"\rif player state is playing then\rnext track\rend if\rend tell\rend if\r"
+    },
+    "refreshInterval": 1,
+    "image": {
+      "base64": "iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURUdwTB3WXx3UXh3VXx7XYBkXFRpVLRyURmIaeAQAAAAEdFJOUwDDO3fSqUUkAAABbklEQVRIx61VbW6DMAztoAeYNA7ApB6gkzhAWS24wIAL0HABaK6/pHFNEhy8TXu/kPzkPD/8cTj8K7KPAqB+K5NhQPCUrABCXe7HOUYYZxgVRLiG8RfY4DUgFFtC7cffAfZTFBwBdhWEKfgEq4ocEjgj4ZQifO6/QG9kkETp1dDeVWfRKx3XYSW0LoqY5kCElXDrQkyeCCuh6WL0M4nIWQIyzqixdfKU1koFDKvyCA8NJMzU4xiD+b4kfHRpsIyKc6hBwjVptFHVY51EMAINNDFGJITKDNQcdpX74Hz0CQ3rY5qwMp4EIxrlafzrsYZ2Veb0DkRgfNCUok4Y1fqEijfyi2b8RE9beWqa48Y/uvCNMcH9btfUi+/CGLR1vhL6Zz9N/vBlaCU+7lwY/cmJ67Ryen/2tj23PLqJBodZH8vgj544vOL4pxfI5acrSFxi8hrkU9TSKr78ZpnL50A8KPJJEo+afBblwyqf5j/iGys5j6ScrST2AAAAAElFTkSuQmCC"
+    }
+  },
+  {
+    "type": "weather",
+    "align": "right",
+    "icon_type": "images",
+    "api_key": "ca93a0bb8cdb428552660d83249e4bc9",
+    "bordered": false
+  },
+  {
+    "type": "battery",
+    "align": "right",
+    "bordered": false
+  },
+  {
+    "type": "timeButton",
+    "formatTemplate": "HH:mm",
+    "align": "right",
+    "bordered": false,
+    "longAction": "shellScript",
+    "longExecutablePath": "/usr/bin/pmset",
+    "longShellArguments": [
+      "sleepnow"
+    ]
+  },
+  {
+    "type": "volumeDown",
+    "bordered": false,
+    "align": "right",
+    "width": 28
+  },
+  {
+    "type": "volumeUp",
+    "bordered": false,
+    "align": "right",
+    "width": 28
+  },
+  {
+    "type": "play",
+    "align": "right",
+    "width": 38,
+    "bordered": false
+  },
+  {
+    "type": "sleep",
+    "align": "right",
+    "width": 38,
+    "action": "shellScript",
+    "executablePath": "/bin/bash",
+    "shellArguments": [
+      "-c",
+      "osascript -e 'tell application \"System Events\" to keystroke \"q\" using {control down, command down}'"
+    ],
+    "bordered": false
+  }
+]
