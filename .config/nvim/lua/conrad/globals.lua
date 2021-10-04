@@ -51,3 +51,13 @@ vim.o.showtabline = 2
 --vim.o.equalalways = true -- Auto-resize windows
 
 vim.cmd [[ highlight clear SignColumn ]]
+
+-- vim.opt.shadafile = "NONE"
+vim.g.loaded_gzip = false
+vim.g.loaded_matchit = false
+vim.g.loaded_netrwPlugin = false
+vim.g.loaded_tarPlugin = false
+vim.g.loaded_zipPlugin = false
+vim.g.loaded_man = false
+vim.g.loaded_2html_plugin = false
+vim.g.loaded_remote_plugins = false

@@ -42,13 +42,8 @@ return require('packer').startup {
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
 
-    -- if not vim.fn.has('win64') then
-    --   use 'tami5/sql.nvim'
-    --   use 'nvim-telescope/telescope-frecency.nvim'
-    -- end
-
     -- Old
-    use 'scrooloose/nerdtree' -- trying to phase this one out
+    use 'scrooloose/nerdtree'
 
     -- treesitter
     use 'nvim-treesitter/playground'
@@ -73,6 +68,12 @@ return require('packer').startup {
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
+    use {
+      'lewis6991/impatient.nvim',
+      config = function()
+        require'impatient'
+      end
+    }
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- use {
@@ -126,5 +127,10 @@ return require('packer').startup {
     use 'norcalli/snippets.nvim'
     use 'L3MON4D3/luaSnip'
 
-  end
+  end,
+  config = {
+    -- Move to lua dir so impatient.nvim can cache it
+    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+  }
 }
+
