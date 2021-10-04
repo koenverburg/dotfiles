@@ -22,27 +22,51 @@ end
 --   print('hii from helpers')
 -- end
 
-local score_table = {
-  return_statement = 1,
+local nodes_table = {
+  var_declaration = 1,
+  short_var_declaration = 1,
+
   if_statement = 1, -- Helpers.DetermineIfStatementScore(node),
 }
 
-local function calculateScore(node)
+local edges_table = {
+  return_statement = 1,
+}
+
+-- M = (E − N) + 2
+--
+-- E = the number of edges of the graph.
+-- N = the number of nodes of the graph.
+
+-- Edges are number of exit paths of the method
+local function calculateEdges(node)
   local result = 0
   local node_type = node:type()
 
-  if not vim.tbl_contains(vim.tbl_keys(score_table), node_type) then
-    print("not in dict")
-    return
+  if not vim.tbl_contains(vim.tbl_keys(edges_table), node_type) then
+    return 0
   end
 
-  if type(score_table[node_type] == 'function') then
-    result = result + tonumber(score_table[node_type])
-  else
-    result = result + tonumber(score_table[node_type])
+  -- if type(edges_table[node_type] == 'function') then
+  --   P(edges_table[node_type]())
+  -- end
+
+  result = result + tonumber(edges_table[node_type])
+  -- print(result)
+
+  return result
+end
+
+-- Edges are number of exit paths of the method
+local function calculateNodes(node)
+  local result = 0
+  local node_type = node:type()
+
+  if not vim.tbl_contains(vim.tbl_keys(nodes_table), node_type) then
+    return 0
   end
 
-  print(result)
+  result = result + tonumber(nodes_table[node_type])
 
   return result
 end
@@ -50,18 +74,31 @@ end
 
 local function loopOverChildren(node)
   local m = 0
+  local edges = 0
+  local nodes = 0
   local child_nodes = ts_utils.get_named_children(node)
   if not child_nodes then return end
 
   for _, key in ipairs(child_nodes) do
     if key:type() == 'block' then
       for _, j in ipairs(ts_utils.get_named_children(key)) do
-        m = m + tonumber(calculateScore(j))
+        local raw_edges= calculateEdges(j)
+
+        if raw_edges ~= nil then
+          edges = tonumber(raw_edges)
+        end
+
+        local raw_nodes = calculateEdges(j)
+        if raw_nodes ~= nil then
+          nodes = tonumber(raw_nodes)
+        end
       end
-    else
-      print("found " .. key:type())
     end
   end
+
+  m = edges - nodes + 2
+
+  print(m .. ' = ' .. edges .. 'E' .. ' - ' .. nodes .. 'N' .. ' + 2')
 
   return m
 end
