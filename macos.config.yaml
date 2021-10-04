@@ -22,7 +22,7 @@
     ~/.config/skhd/skhdrc: .config/skhd/skhdrc
     ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
     ~/.slate.js: .config/slate/.slate.js
-    "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml 
+    "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
     "~/Library/Application Support/mtmr/items.json": .config/mtmr/items.json
 
     # ~/Library/Application Support/Code/User/settings.json: .config/vscode/settings.json
