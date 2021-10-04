@@ -131,8 +131,6 @@ normal('<leader>ta', ':ToggleAlternate<cr>')
 -- Refactoring
 visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
 
--- normal('<leader>gg', ':Neogit<cr>')
-
 return {
   normal,
   visual,
