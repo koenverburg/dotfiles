@@ -76,6 +76,13 @@ normal('<c-right>', '5<c-w><')
 normal('<c-up>', ':resize +5<cr>')
 normal('<c-down>', ':resize -5<cr>')
 
+-- window resizing (macos binds)
+normal('<a-left>', '5<c-w>>')
+normal('<a-right>', '5<c-w><')
+normal('<a-up>', ':resize +5<cr>')
+normal('<a-down>', ':resize -5<cr>')
+
+
 -- Faster saving
 -- normal('<leader>w', ':w<cr>')
 -- insert('<leader>w', ':w<cr>')
