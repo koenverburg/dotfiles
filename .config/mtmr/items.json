@@ -28,7 +28,7 @@
     "bordered": false,
     "refreshInterval": 5,
     "source": {
-      "inline": "~/code/github/dotfiles/script/pomo.sh"
+      "inline": "~/code/github/dotfiles/scripts/pomo.sh"
     }
   },
   // Spotify
