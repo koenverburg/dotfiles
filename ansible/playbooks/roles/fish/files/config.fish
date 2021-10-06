@@ -16,4 +16,6 @@ set PATH ~/.cargo/bin $PATH
 # docker ps -a --filter status=exited --format {{.ID}} | xargs docker rm
 
 # Set Node Version on startup
-bass source ~/.nvm/nvm.sh ';' nvm use 14.15.4
+if test (uname) = Darwin
+  bass source ~/.nvm/nvm.sh ';' nvm use 14.15.4
+end

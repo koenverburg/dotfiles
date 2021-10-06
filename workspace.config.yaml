@@ -17,7 +17,7 @@
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - fish -c 'omf install'
-    - fish -c 'omf install bass'
+    # - fish -c 'omf install bass'
 
     # Neovim stuff
     # - sudo apt-get install -y git
@@ -38,3 +38,4 @@
 
     # Other tooling
     - cargo install git-delta
+    # - nvm install 14.15.4

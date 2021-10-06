@@ -3,6 +3,7 @@ FROM ubuntu:21.04
 SHELL ["/bin/bash", "-c"]
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV NODE_VERSION=latest
 
 LABEL Author = "Koen Verburg <creativekoen@gmail.com>"
 
@@ -46,6 +47,7 @@ RUN  git clone https://github.com/neovim/neovim.git && \
 
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+# RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
 RUN apt-get install --yes \
   bat \
@@ -85,5 +87,7 @@ RUN nvim --headless +PackerInstall +qall
 
 WORKDIR /root
 ENV shell "/usr/bin/fish"
+
+SHELL ["/usr/bin/fish"]
 
 CMD "/usr/bin/fish"
