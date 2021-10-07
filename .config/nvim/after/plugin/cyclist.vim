@@ -27,6 +27,7 @@ call cyclist#add_listchar_option_set('limited', {
   \ 'nbsp': '␣',
   \ })
 
+
 " call cyclist#add_listchar_option_set('busy', {
 "         \ 'eol': '↲',
 "         \ 'tab': '»·',
@@ -37,5 +38,7 @@ call cyclist#add_listchar_option_set('limited', {
 "         \ 'conceal': '┊',
 "         \ 'nbsp': '☠',
 "         \ })
+
+call cyclist#activate_listchars('default')
 
 nmap <leader>cl <Plug>CyclistNext
