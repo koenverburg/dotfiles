@@ -1,2 +1,2 @@
-#!/bin/fish
+#!/bin/bash
 pomo
