@@ -65,21 +65,21 @@ function M.on_attach(client)
   -- local capabilities = vim.lsp.protocol.make_client_capabilities()
   -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-  lsp_map('n', 'gD',  'vim.lsp.buf.declaration')
-  lsp_map('n', 'gd',  'vim.lsp.buf.definition')
-  lsp_map('n', '<c-]>',  'vim.lsp.buf.definition')
+  lsp_map('n', 'gD', 'vim.lsp.buf.declaration')
+  lsp_map('n', 'gd', 'vim.lsp.buf.definition')
+  lsp_map('n', '<c-]>', 'vim.lsp.buf.definition')
 
-  lsp_map('n', 'gi',  'vim.lsp.buf.implementation')
-  lsp_map('n', '<c-r>',  'vim.lsp.buf.references')
+  lsp_map('n', 'gi', 'vim.lsp.buf.implementation')
+  lsp_map('n', '<c-r>', 'vim.lsp.buf.references')
 
   lsp_map('n', 'gds', 'vim.lsp.buf.document_symbol')
   lsp_map('n', 'gW', 'vim.lsp.buf.workspace_symbol')
+  lsp_map('n', 'K', 'vim.lsp.buf.hover')
 
   -- lsp saga
-  lsp_map('n', '<space>h', "require('lspsaga.hover').handler")
-  lsp_map('n', '<leader>ca',  "require('lspsaga.codeaction').code_action")
-  lsp_map('i', '<leader>ca',  "require('lspsaga.codeaction').code_action")
-  lsp_map('i', 'gs',  "require('lspsaga.signaturehelp').signature_help")
+  lsp_map('n', '<leader>ca', "require('lspsaga.codeaction').code_action")
+  lsp_map('i', '<leader>ca', "require('lspsaga.codeaction').code_action")
+  lsp_map('i', 'gs', "require('lspsaga.signaturehelp').signature_help")
   lsp_map('n', 'gr', "require('lspsaga.rename').rename")
 
   lsp_map('n', '<leader>sd', "require('lspsaga.diagnostic').show_line_diagnostics")

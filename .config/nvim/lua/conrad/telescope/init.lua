@@ -9,55 +9,62 @@ require 'telescope'.setup {
   },
   extensions = {
     fzf = {
-      fuzzy = true,                    -- false will only do exact matching
+      fuzzy = false,                    -- false will only do exact matching
       override_file_sorter = true,     -- override the file sorter
       override_generic_sorter = true, -- override the generic sorter
-      case_mode = 'smart_case',        -- or "ignore_case" or "respect_case"
+      case_mode = 'ignore_case',        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
     }
   }
 }
 
 require('telescope').load_extension('fzf')
--- require('telescope').load_extension('mapper')
--- require('telescope').load_extension('snippets')
-
-if not vim.fn.has('win64') then
-  require('telescope').load_extension('frecency')
-end
 
 local M = {}
 
-function M.lsp_references()
-  local opts = themes.get_dropdown {
-    previewer = false,
+function M.my_lsp_references()
+  local opts = {
+    layout_strategy= 'vertical',
     layout_config = {
-      prompt_position = 'top',
+      prompt_position = 'bottom',
     }
   }
   require('telescope.builtin').lsp_references(opts)
 end
 
+function M.my_lsp_document_symbols()
+  local opts = {
+    layout_strategy= 'vertical',
+    layout_config = {
+      prompt_position = 'bottom',
+    }
+  }
+  require('telescope.builtin').lsp_document_symbols(opts)
+end
 
 function M.find_files_dotfiles()
   local opts = {
     prompt_title = '~ Dotfiles ~',
     cwd = '~/code/github/dotfiles',
-    previewer = true,
+    -- previewer = true,
     layout_strategy= 'horizontal',
     layout_config = {
-      prompt_position = 'top',
+      prompt_position = 'bottom',
     }
   }
 
   require('telescope.builtin').git_files(opts)
 end
 
-function M.live_grep_custom()
+function M.my_live_grep()
   local opts = {
-    shorten_path = false,
-    scroll_strategy = 'cycle',
-    sorting_strategy = 'descending',
+    -- shorten_path = false,
+    -- scroll_strategy = 'cycle',
+    -- sorting_strategy = 'descending',
+    layout_strategy= 'horizontal',
+    layout_config = {
+      prompt_position = 'bottom',
+    }
   }
 
   require('telescope.builtin').live_grep(opts)
@@ -65,10 +72,7 @@ end
 
 function M.find_files()
   local opts = {
-    previewer = true,
-    scroll_strategy = 'cycle',
-    sorting_strategy = 'descending',
-    layout_strategy= 'horizontal',
+    layout_strategy= 'vertical',
     layout_config = {
       prompt_position = 'bottom',
     }
@@ -77,30 +81,16 @@ function M.find_files()
   require('telescope.builtin').find_files(opts)
 end
 
-function M.buffers()
-  local opts = themes.get_dropdown {
-    previewer = false,
-    shorten_path = false
-  }
-  require('telescope.builtin').buffers(opts)
-end
-
 function M.git_files()
   local opts = {
     previewer = false,
-    layout_strategy = 'horizontal',
+    layout_strategy= 'horizontal',
     layout_config = {
       prompt_position = 'bottom',
     }
   }
 
   require('telescope.builtin').git_files(opts)
-end
-
-function M.get_frecency()
-  local opts = {}
-
-  require('telescope').extensions.frecency.frecency()
 end
 
 return setmetatable({}, {

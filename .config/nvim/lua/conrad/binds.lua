@@ -12,25 +12,20 @@ telescope_map('<space>cwt', 'create_worktree')
 telescope_map('<leader><space>h', 'help_tags')
 
 telescope_map('<space>ff', 'find_files')
-telescope_map('<space>fg', 'live_grep_custom')
--- telescope_map('<space>fd', 'grep_string')
-telescope_map('<space>fc', 'get_frecency')
--- TODO Needs to focus on the file not open in the current buffer
---telescope_map('<space>fb', 'buffers')
+telescope_map('<space>fg', 'my_live_grep')
 
 telescope_map('<space>t' , 'git_files')
 telescope_map('<space>ed' , 'find_files_dotfiles')
 
 -- lsp
-telescope_map('<leader>fr', 'lsp_references')
-telescope_map('<c-d>', 'lsp_document_symbols')
+telescope_map('<leader>fr', 'my_lsp_references')
+telescope_map('<c-d>', 'my_lsp_document_symbols')
 
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
-normal('<leader><leader>c', "<cmd>lua require'conrad.plugins.complexity'.foo()<cr>")
+-- normal('<leader><leader>c', "<cmd>lua require'conrad.plugins.complexity'.foo()<cr>")
 
--- normal('<leader>vt', "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
-vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
-vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
+-- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
+-- vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
 
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
@@ -55,9 +50,6 @@ normal('<Tab>', '%')
 -- Keep search matches in the middle of the window
 normal('n', 'nzzzv')
 normal('N', 'Nzzzv')
-
--- Git shortcuts
-normal('<leader>gs', ':Gstatus<cr>')
 
 -- Quickly return to normal mode
 insert('jk', '<esc>')
@@ -93,12 +85,9 @@ normal('<leader><S-t>', ':tabnew<cr>')
 -- Credo, sort aliases in alphabetical order
 visual('<leader>s', ":'<,'>!sort -f<cr>")
 
--- Searching
-normal('/', '/\v')
-visual('/', '/\v')
-
 -- Replace
 normal('<leader>rr', ":%s/")
+visual('<leader>rr', "'>s/")
 
 -- Swap : and ; to make colon commands easer to type
 normal(';', ':')
@@ -111,6 +100,16 @@ normal('<leader>sc', ':SClose<cr>')
 -- Move whole lines, kudos @theprimeagen
 visual('J', ":m '>+1<CR>gv=gv")
 visual('K', ":m '<-2<CR>gv=gv")
+
+-- Copy from cursor position to end of the line
+normal('Y', 'y$')
+
+-- Concat lines below on current line
+normal('J', 'mzJ`z')
+
+-- Undo until , .
+insert(',', ',<c-g>u')
+insert('.', '.<c-g>u')
 
 normal('<C-b>', ':NERDTreeToggle<cr>')
 
