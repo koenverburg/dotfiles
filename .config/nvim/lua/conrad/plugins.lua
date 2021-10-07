@@ -60,6 +60,7 @@ return require('packer').startup {
     --use 'tjdevries/nlua.nvim'
 
     -- Utils
+    use 'google/vim-searchindex'
     use 'tjdevries/cyclist.vim'
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
@@ -76,14 +77,6 @@ return require('packer').startup {
     }
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
-    -- use {
-    --   'lazytanuki/nvim-mapper', config = function()
-    --     require('nvim-mapper').setup {
-    --       search_path = os.getenv('HOME') .. 'AppData/local/nvim/lua'
-    --     }
-    --   end
-    -- }
-
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
     use 'tpope/vim-fugitive'
@@ -96,8 +89,6 @@ return require('packer').startup {
     use 'elzr/vim-json'
     use 'stephpy/vim-yaml'
     use 'PProvost/vim-ps1'
-    -- use 'hashivim/vim-terraform'
-    -- use 'hashicorp/terraform-ls'
     use 'ekalinin/Dockerfile.vim'
     use 'jidn/vim-dbml'
 
@@ -124,8 +115,8 @@ return require('packer').startup {
     use 'mhartington/formatter.nvim'
 
     -- Snippets
-    use 'norcalli/snippets.nvim'
-    use 'L3MON4D3/luaSnip'
+    -- use 'norcalli/snippets.nvim'
+    -- use 'L3MON4D3/luaSnip'
 
   end,
   config = {

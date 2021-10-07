@@ -6,11 +6,11 @@ require('colorbuddy').colorscheme('nebulous')
 vim.g.mapleader = ','
 vim.b.mapleader = ','
 
-vim.g.nohidden = true
+vim.g.hidden = true
 vim.g.nobackup= true
 vim.b.noswapfile = true
-vim.g.undordir='~/.config/nvim/undodir'
 vim.g.undofile = true
+vim.g.undordir='~/.config/nvim/undodir'
 
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -48,16 +48,6 @@ vim.o.cmdheight = 1
 vim.o.clipboard = vim.o.clipboard .. 'unnamed,unnamedplus'
 vim.o.termguicolors = true
 vim.o.showtabline = 2
---vim.o.equalalways = true -- Auto-resize windows
 
 vim.cmd [[ highlight clear SignColumn ]]
-
--- vim.opt.shadafile = "NONE"
-vim.g.loaded_gzip = false
-vim.g.loaded_matchit = false
-vim.g.loaded_netrwPlugin = false
-vim.g.loaded_tarPlugin = false
-vim.g.loaded_zipPlugin = false
-vim.g.loaded_man = false
-vim.g.loaded_2html_plugin = false
-vim.g.loaded_remote_plugins = false
+vim.cmd [[ set noshowmode ]]
