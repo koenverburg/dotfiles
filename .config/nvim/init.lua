@@ -4,6 +4,7 @@
 
 vim.cmd [[runtime plugin/astronauta.vim]]
 
+require('conrad.disable_builtin')
 require('conrad.plugins')
 require('conrad.globals')
 require('conrad.binds')
@@ -19,5 +20,3 @@ require('conrad.plugins.config')
 require('conrad.plugins.tabline')
 require('conrad.plugins.gitsigns')
 require('conrad.plugins.formatting')
--- require('conrad.plugins.gitfast')
-
