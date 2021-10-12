@@ -32,11 +32,11 @@ require('el').setup {
         format_string = ' %s '
       },
 
-      -- ' ',
-      -- extensions.git_icon,
+      ' ',
+      extensions.git_icon,
 
-      -- ' ',
-      -- extensions.git_branch,
+      ' ',
+      extensions.git_branch,
 
       sections.split,
 

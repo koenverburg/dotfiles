@@ -18,7 +18,15 @@ require 'telescope'.setup {
   }
 }
 
+require('git-worktree').setup()
+-- change_directory_command = <str> -- default: "cd",
+-- update_on_change = <boolean> -- default: true,
+-- update_on_change_command = <str> -- default: "e .",
+-- clearjumps_on_change = <boolean> -- default: true,
+-- autopush = <boolean> -- default: false,
+
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('git_worktree')
 
 local M = {}
 
@@ -91,6 +99,10 @@ function M.git_files()
   }
 
   require('telescope.builtin').git_files(opts)
+end
+
+function M.git_worktrees()
+  require('telescope').extensions.git_worktree.git_worktrees()
 end
 
 return setmetatable({}, {
