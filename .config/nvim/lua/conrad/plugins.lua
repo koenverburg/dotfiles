@@ -40,7 +40,7 @@ return require('packer').startup {
     -- Telescope
     use 'nvim-telescope/telescope.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use { 'ThePrimeagen/git-worktree.nvim', as = 'gitworktree' }
+    use 'ThePrimeagen/git-worktree.nvim'
 
     -- Old
     use 'scrooloose/nerdtree'

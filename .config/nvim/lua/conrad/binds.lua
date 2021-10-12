@@ -15,6 +15,7 @@ telescope_map('<space>ff', 'find_files')
 telescope_map('<space>fg', 'my_live_grep')
 
 telescope_map('<space>t' , 'git_files')
+telescope_map('<space>gw' , 'git_worktrees')
 telescope_map('<space>ed' , 'find_files_dotfiles')
 
 -- Search for a work
