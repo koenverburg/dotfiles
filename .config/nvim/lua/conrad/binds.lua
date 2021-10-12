@@ -17,9 +17,13 @@ telescope_map('<space>fg', 'my_live_grep')
 telescope_map('<space>t' , 'git_files')
 telescope_map('<space>ed' , 'find_files_dotfiles')
 
+-- Search for a work
+telescope_map('<space>sg' , 'my_string_grep')
+
 -- lsp
 telescope_map('<leader>fr', 'my_lsp_references')
 telescope_map('<c-d>', 'my_lsp_document_symbols')
+-- telescope_map('<leader>ca', 'lsp_code_actions')
 
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 -- normal('<leader><leader>c', "<cmd>lua require'conrad.plugins.complexity'.foo()<cr>")

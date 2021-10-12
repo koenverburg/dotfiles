@@ -56,6 +56,21 @@ function M.find_files_dotfiles()
   require('telescope.builtin').git_files(opts)
 end
 
+
+function M.my_string_grep()
+  local query = vim.fn.input('Search for > ')
+
+  local opts = {
+    search = query,
+    layout_strategy= 'horizontal',
+    layout_config = {
+      prompt_position = 'bottom',
+    }
+  }
+
+  require('telescope.builtin').grep_string(opts)
+end
+
 function M.my_live_grep()
   local opts = {
     -- shorten_path = false,

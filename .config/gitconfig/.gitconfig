@@ -1,43 +1,40 @@
 [user]
-	name = Koen Verburg
-	email = creativekoen@gmail.com
+  name = Koen Verburg
+  email = creativekoen@gmail.com
 
 [core]
   editor = nvim
 
 [github]
-	name = Koen Verburg
-	email = creativekoen@gmail.com
-
-; [pull]
-;   rebase = true
+  name = Koen Verburg
+  email = creativekoen@gmail.com
 
 [push]
   default = current
 
 [pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
 
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+  diffFilter = delta --color-only --features=interactive
 
 [delta]
-    features = decorations
+  features = decorations
 
 [delta "interactive"]
-    keep-plus-minus-markers = false
+  keep-plus-minus-markers = false
 
 [delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    hunk-header-decoration-style = blue box
-    hunk-header-file-style = red
-    hunk-header-line-number-style = "#067a00"
-    hunk-header-style = file line-number syntax
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
 
 [alias]
   cedit = commit --amend
@@ -65,4 +62,5 @@
 	# colleagues commits if they commited on top of you and you haven't pulled
 	# those commits.)
 	; work = !sh -c 'git fetch && git checkout @{upstream} -tb \"$@\"' _
+  refresh = !sh -c "git checkout master;git pull;git checkout"
 

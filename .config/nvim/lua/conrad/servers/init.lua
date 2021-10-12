@@ -17,15 +17,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 -- lsp saga
-vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
+-- vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
 
 
 -- The langauges servers
-local servers = {'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'terraformls'}
+local servers = {'gopls', 'vimls', 'tsserver', 'html', 'yamlls', 'graphql', 'terraformls'}
 
-lspconfig.gopls.setup {
-  on_attach = utils.on_attach,
-}
+-- lspconfig.gopls.setup {
+--   on_attach = utils.on_attach,
+-- }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
