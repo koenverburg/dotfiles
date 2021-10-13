@@ -137,7 +137,7 @@ normal('<leader>mv', ':HopWord<cr>')
 normal('<leader>ta', ':ToggleAlternate<cr>')
 
 -- Formatting
--- normal('<leader>f', ':Format<cr>')
+normal('<leader>=', ':Format<cr>')
 
 -- Refactoring
 visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
