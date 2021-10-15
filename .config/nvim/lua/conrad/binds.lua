@@ -22,7 +22,7 @@ telescope_map('<space>ed' , 'find_files_dotfiles')
 telescope_map('<space>sg' , 'my_string_grep')
 
 -- lsp
-telescope_map('<leader>fr', 'my_lsp_references')
+telescope_map('<c-r>', 'my_lsp_references')
 telescope_map('<c-d>', 'my_lsp_document_symbols')
 -- telescope_map('<leader>ca', 'lsp_code_actions')
 
@@ -137,7 +137,7 @@ normal('<leader>mv', ':HopWord<cr>')
 normal('<leader>ta', ':ToggleAlternate<cr>')
 
 -- Formatting
--- normal('<leader>f', ':Format<cr>')
+normal('<leader>=', ':Format<cr>')
 
 -- Refactoring
 visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
