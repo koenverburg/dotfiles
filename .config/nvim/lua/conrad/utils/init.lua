@@ -58,7 +58,6 @@ function lsp_map(mode, key, action)
 end
 
 function M.on_attach(client)
-  require('lspkind').init()
   require('lsp_signature').on_attach()
 
   -- local capabilities = vim.lsp.protocol.make_client_capabilities()

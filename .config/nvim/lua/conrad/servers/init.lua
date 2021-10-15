@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local utils = require('conrad.utils')
+local lspkind = require('lspkind')
 local lspconfig = require('lspconfig')
 
 cmp.setup({
@@ -30,6 +31,9 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }), { 'i', 's' })
+  },
+  formatting = {
+    format = lspkind.cmp_format(),
   },
   sources = {
     { name = 'nvim_lsp' },

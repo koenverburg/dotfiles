@@ -38,7 +38,7 @@ vim.bo.autoindent = true
 vim.cmd('language en_US.utf-8')
 
 vim.o.termguicolors = true
-vim.o.completeopt = 'menuone,noinsert,noselect,'
+vim.o.completeopt = 'menu,menuone,noselect,noinsert'
 vim.o.backspace = 'indent,eol,start'
 
 vim.o.inccommand = 'split'
