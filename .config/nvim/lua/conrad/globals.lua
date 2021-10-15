@@ -2,6 +2,15 @@ vim.o.ruler = true
 vim.o.background = 'dark'
 
 require('colorbuddy').colorscheme('nebulous')
+require('nebulous').setup({
+  variant = 'night',
+  italic = {
+    comments   = false,
+    keywords   = false,
+    functions  = false,
+    variables  = false,
+  }
+})
 
 vim.g.mapleader = ','
 vim.b.mapleader = ','
