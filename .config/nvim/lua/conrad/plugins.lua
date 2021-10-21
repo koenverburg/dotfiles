@@ -74,7 +74,6 @@ return require('packer').startup {
     use {
       'lewis6991/impatient.nvim',
       config = function()
-        require'impatient'
         require('impatient')
       end
     }
@@ -124,13 +123,18 @@ return require('packer').startup {
     use 'mhartington/formatter.nvim'
 
     -- Snippets
-    -- use 'norcalli/snippets.nvim'
-    -- use 'L3MON4D3/luaSnip'
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
 
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it
-    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
   }
 }
 
