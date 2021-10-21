@@ -9,6 +9,9 @@
   name = Koen Verburg
   email = creativekoen@gmail.com
 
+[includeIf "gitdir:~/code/bitbucket/"]
+  path = ~/code/bitbucket/.gitconfig
+
 [push]
   default = current
 
