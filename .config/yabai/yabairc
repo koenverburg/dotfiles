@@ -1,10 +1,11 @@
 #!/usr/bin/env sh
+
 #YABAI STUFF
 
 # bsp or float (default: bsp)
 yabai -m config layout bsp
 
-# My custom space names for my 3 monitor setup. These names are used in some of my scripts.
+# My custom space names for my 2 monitor setup. These names are used in some of my scripts.
 # yabai -m space 1 --label one
 # yabai -m space 2 --label two
 # yabai -m space 3 --label three
@@ -46,16 +47,10 @@ yabai -m config window_topmost off
 ## WITH SIP ENABLED (Installed Limelight seperately, Don't need this)
 yabai -m config window_border off
 
-## WTIH SIP DISABLED (Limelight build into Yabai, enable it here)
-#yabai -m config window_border on
-#yabai -m config window_border_width 3
-#yabai -m config active_window_border_color 0xFF40FF00
-#yabai -m config normal_window_border_color 0x00FFFFFF
-#yabai -m config insert_feedback_color        0xffd75f5f
-
 ## some other settings
 yabai -m config auto_balance off
-yabai -m config split_ratio 0.50
+yabai -m config split_ratio 0.61
+
 # # set mouse interaction modifier key (default: fn)
 yabai -m config mouse_modifier ctrl
 # set modifier + right-click drag to resize window (default: resize)
@@ -69,10 +64,10 @@ yabai -m config mouse_action1 move
 
 ## Change how yabai looks
 yabai -m config layout bsp
-yabai -m config top_padding 2
-yabai -m config bottom_padding 2
-yabai -m config left_padding 2
-yabai -m config right_padding 2
+yabai -m config top_padding 8
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
 yabai -m config window_gap 10
 
 #Limelight addon (Kill it and start it each time Yabai starts)
@@ -80,6 +75,7 @@ killall limelight &>/dev/null
 ~/code/tools/limelight/bin/limelight &>/dev/null &
 
 # #Ubersicht widget bar stuff
+
 #yabai -m signal --add event=space_changed \
 #action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"'"
 #yabai -m signal --add event=display_changed \
