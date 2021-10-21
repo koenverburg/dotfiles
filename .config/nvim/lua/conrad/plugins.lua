@@ -41,6 +41,10 @@ return require('packer').startup {
     use 'nvim-telescope/telescope.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'ThePrimeagen/git-worktree.nvim'
+    use {
+      'nvim-telescope/telescope-frecency.nvim',
+      requires = {"tami5/sqlite.lua"}
+    }
 
     -- Old
     use 'scrooloose/nerdtree'

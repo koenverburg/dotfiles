@@ -14,6 +14,19 @@ require 'telescope'.setup {
       override_generic_sorter = true, -- override the generic sorter
       case_mode = 'ignore_case',        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
+    },
+    frecency = {
+      -- db_root = "home/my_username/path/to/db_root",
+      -- show_scores = false,
+      -- show_unindexed = true,
+      -- ignore_patterns = {"*.git/*", "*/tmp/*"},
+      -- disable_devicons = false,
+      workspaces = {
+        ["glass"]    = "~/code/bitbucket/glass",
+        ["checkout"]    = "~/code/bitbucket/checkout",
+        ["dotfiles"]    = "~/code/github/dotfiles",
+        -- ["diva"]    = "~/code/github/dotfiles",
+      }
     }
   }
 }
@@ -26,6 +39,7 @@ require('git-worktree').setup()
 -- autopush = <boolean> -- default: false,
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('frecency')
 require('telescope').load_extension('git_worktree')
 require('telescope').load_extension('session-lens')
 
@@ -122,6 +136,18 @@ function M.git_files()
   }
 
   require('telescope.builtin').git_files(opts)
+end
+
+function M.frecency_files()
+  local opts = {
+    previewer = false,
+    layout_strategy= 'horizontal',
+    layout_config = {
+      prompt_position = 'bottom',
+    }
+  }
+
+  require('telescope').extensions.frecency.frecency()
 end
 
 function M.git_worktrees()

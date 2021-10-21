@@ -16,6 +16,7 @@ telescope_map('<space>fg', 'my_live_grep')
 telescope_map('<leader><s>', 'buffers')
 
 telescope_map('<space>t' , 'git_files')
+telescope_map('<c-t>' , 'frecency_files')
 telescope_map('<space>gw' , 'git_worktrees')
 telescope_map('<space>ed' , 'find_files_dotfiles')
 
