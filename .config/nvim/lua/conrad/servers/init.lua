@@ -6,14 +6,7 @@ local lspconfig = require('lspconfig')
 cmp.setup({
   snippet = {
     expand = function(args)
-      -- For `vsnip` user.
-      -- vim.fn["vsnip#anonymous"](args.body)
-
-      -- For `luasnip` user.
-      -- require('luasnip').lsp_expand(args.body)
-
-      -- For `ultisnips` user.
-      -- vim.fn["UltiSnips#Anon"](args.body)
+      vim.fn["vsnip#anonymous"](args.body)
     end,
   },
   mapping = {
@@ -32,22 +25,18 @@ cmp.setup({
       select = true,
     }), { 'i', 's' })
   },
+  experimental = {
+    native_menu = false,
+    ghost_text = true
+  },
   formatting = {
     format = lspkind.cmp_format(),
   },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'treesitter' },
-
-    -- For vsnip user.
-    -- { name = 'vsnip' },
-
-    -- For luasnip user.
-    -- { name = 'luasnip' },
-
-    -- For ultisnips user.
-    -- { name = 'ultisnips' },
-
+    { name = 'path' },
+    { name = 'vsnip' },
     { name = 'buffer' },
   }
 })

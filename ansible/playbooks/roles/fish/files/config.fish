@@ -4,18 +4,16 @@
 # set -g theme_color_scheme base16
 # set -g theme_nerd_fonts yes
 # set -g theme_date_format "+%a %H:%M"
+set -g theme_git_worktree_support yes
 set -g theme_short_path yes
-set -x EDITOR nvim
+# set -x EDITOR nvim
 
 set GOPATH /usr/local/bin/go $GOPATH
 set PATH /usr/local/bin/go $PATH
 set PATH ~/go/bin $PATH
 set PATH ~/.cargo/bin $PATH
 
-# Docker Aliases
-# docker ps -a --filter status=exited --format {{.ID}} | xargs docker rm
-
 # Set Node Version on startup
 if test (uname) = Darwin
-  bass source ~/.nvm/nvm.sh ';' nvm use 14.15.4
+ bass source ~/.nvm/nvm.sh ';' nvm use 14.15.4
 end

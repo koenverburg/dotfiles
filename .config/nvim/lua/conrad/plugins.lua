@@ -41,6 +41,10 @@ return require('packer').startup {
     use 'nvim-telescope/telescope.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'ThePrimeagen/git-worktree.nvim'
+    use {
+      'nvim-telescope/telescope-frecency.nvim',
+      requires = {"tami5/sqlite.lua"}
+    }
 
     -- Old
     use 'scrooloose/nerdtree'
@@ -74,18 +78,26 @@ return require('packer').startup {
     use {
       'lewis6991/impatient.nvim',
       config = function()
-        require'impatient'
+        require('impatient')
       end
     }
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
+    -- sessions
+    use {
+      'rmagatti/session-lens',
+      requires = {'rmagatti/auto-session'},
+      config = function()
+        require('session-lens').setup()
+      end
+    }
+
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
-    use 'tpope/vim-fugitive'
     use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
     use 'tjdevries/astronauta.nvim'
-    -- use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
+    use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
 
     -- Lanaguages
     use 'elzr/vim-json'
@@ -99,9 +111,7 @@ return require('packer').startup {
     use 'plasticboy/vim-markdown'
     use 'dhruvasagar/vim-table-mode'
 
-
     -- Looks
-    use 'mhinz/vim-startify'
     use 'lewis6991/gitsigns.nvim'
     use 'tjdevries/express_line.nvim'
 
@@ -117,13 +127,18 @@ return require('packer').startup {
     use 'mhartington/formatter.nvim'
 
     -- Snippets
-    -- use 'norcalli/snippets.nvim'
-    -- use 'L3MON4D3/luaSnip'
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
 
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it
-    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua',
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
   }
 }
 
