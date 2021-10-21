@@ -4,3 +4,4 @@ overwrite/
 *.tar
 .config/tmuxinator/work.*.yml
 .config/nvim/plugin/packer_compiled.lua
+node_modules/
