@@ -13,6 +13,7 @@ telescope_map('<leader><space>h', 'help_tags')
 
 telescope_map('<space>ff', 'find_files')
 telescope_map('<space>fg', 'my_live_grep')
+telescope_map('<leader><s>', 'buffers')
 
 telescope_map('<space>t' , 'git_files')
 telescope_map('<space>gw' , 'git_worktrees')
@@ -20,17 +21,21 @@ telescope_map('<space>ed' , 'find_files_dotfiles')
 
 -- Search for a work
 telescope_map('<space>sg' , 'my_string_grep')
+telescope_map('<space>ls' , 'session_lens')
 
 -- lsp
 telescope_map('<c-r>', 'my_lsp_references')
 telescope_map('<c-d>', 'my_lsp_document_symbols')
--- telescope_map('<leader>ca', 'lsp_code_actions')
+telescope_map('<leader>cx', 'lsp_code_actions')
 
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 -- normal('<leader><leader>c', "<cmd>lua require'conrad.plugins.complexity'.foo()<cr>")
 
 -- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
 -- vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
+
+-- This is so I can quickly quite out of vim without having to close all the buffers
+normal('<leader>q', '<cmd>qall<cr>')
 
 -- Easier Moving between splits
 normal('<C-j>', '<C-W><C-J>')
@@ -68,12 +73,6 @@ visual('>', '>gv')
 normal('<leader><space>', ':nohl<cr>')
 
 -- window resizing
-normal('<c-left>', '5<c-w>>')
-normal('<c-right>', '5<c-w><')
-normal('<c-up>', ':resize +5<cr>')
-normal('<c-down>', ':resize -5<cr>')
-
--- window resizing (macos binds)
 normal('<a-left>', '5<c-w>>')
 normal('<a-right>', '5<c-w><')
 normal('<a-up>', ':resize +5<cr>')

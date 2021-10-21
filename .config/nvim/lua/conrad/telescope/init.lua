@@ -27,8 +27,16 @@ require('git-worktree').setup()
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('git_worktree')
+require('telescope').load_extension('session-lens')
 
 local M = {}
+
+function M.session_lens()
+  local opts = {
+    previewer = false
+  }
+  require('session-lens').search_session(opts)
+end
 
 function M.my_lsp_references()
   local opts = {

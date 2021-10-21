@@ -75,17 +75,26 @@ return require('packer').startup {
       'lewis6991/impatient.nvim',
       config = function()
         require'impatient'
+        require('impatient')
       end
     }
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
+    -- sessions
+    use {
+      'rmagatti/session-lens',
+      requires = {'rmagatti/auto-session'},
+      config = function()
+        require('session-lens').setup()
+      end
+    }
+
     -- Misc
     use 'tpope/vim-surround' -- Able to change [{()}]""''
-    use 'tpope/vim-fugitive'
     use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
     use 'tjdevries/astronauta.nvim'
-    -- use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
+    use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
 
     -- Lanaguages
     use 'elzr/vim-json'
@@ -99,9 +108,7 @@ return require('packer').startup {
     use 'plasticboy/vim-markdown'
     use 'dhruvasagar/vim-table-mode'
 
-
     -- Looks
-    use 'mhinz/vim-startify'
     use 'lewis6991/gitsigns.nvim'
     use 'tjdevries/express_line.nvim'
 
