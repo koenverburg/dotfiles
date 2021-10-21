@@ -21,16 +21,16 @@
     "align": "left",
     "width": 28
   },
-  {
-    "type": "shellScriptTitledButton",
-    "width": 80,
-    "align": "left",
-    "bordered": false,
-    "refreshInterval": 5,
-    "source": {
-      "inline": "~/code/github/dotfiles/scripts/pomo.sh"
-    }
-  },
+  // {
+  //   "type": "shellScriptTitledButton",
+  //   "width": 80,
+  //   "align": "left",
+  //   "bordered": false,
+  //   "refreshInterval": 5,
+  //   "source": {
+  //     "inline": "~/code/github/dotfiles/scripts/pomo.sh"
+  //   }
+  // },
   // Spotify
   {
     "type": "appleScriptTitledButton",
