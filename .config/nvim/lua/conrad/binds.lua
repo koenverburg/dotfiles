@@ -13,7 +13,7 @@ telescope_map('<leader><space>h', 'help_tags')
 
 telescope_map('<space>ff', 'find_files')
 telescope_map('<space>fg', 'my_live_grep')
-telescope_map('<leader><s>', 'buffers')
+telescope_map('<leader>z', 'buffers')
 
 telescope_map('<space>t' , 'git_files')
 telescope_map('<c-t>' , 'frecency_files')
@@ -34,6 +34,11 @@ normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<c
 
 -- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
 -- vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
+
+-- Harpoon
+normal('<c-m>', '<cmd>lua require("harpoon.mark").add_file()<cr>')
+normal('<c-f>', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
+-- normal('<c-a>', '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 
 -- This is so I can quickly quite out of vim without having to close all the buffers
 normal('<leader>q', '<cmd>qall<cr>')

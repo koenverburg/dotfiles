@@ -61,7 +61,7 @@ return require('packer').startup {
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/nvim-cmp'
-    use 'glepnir/lspsaga.nvim'
+    use 'tami5/lspsaga.nvim'
     use 'ray-x/lsp_signature.nvim'
     --use 'tjdevries/nlua.nvim'
 
@@ -75,6 +75,7 @@ return require('packer').startup {
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
+    use 'ThePrimeagen/harpoon'
     use {
       'lewis6991/impatient.nvim',
       config = function()
