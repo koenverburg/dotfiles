@@ -30,10 +30,10 @@ telescope_map('<c-d>', 'my_lsp_document_symbols')
 telescope_map('<leader>cx', 'lsp_code_actions')
 
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
--- normal('<leader><leader>c', "<cmd>lua require'conrad.plugins.complexity'.foo()<cr>")
+normal('<leader><leader>c', "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
 
--- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
--- vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
+vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
+vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
 
 -- Harpoon
 normal('<c-m>', '<cmd>lua require("harpoon.mark").add_file()<cr>')
