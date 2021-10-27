@@ -54,6 +54,7 @@ return require('packer').startup {
     use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
+    use 'tpope/vim-commentary'
 
     -- LSP config
     use 'neovim/nvim-lspconfig'
@@ -94,11 +95,15 @@ return require('packer').startup {
     }
 
     -- Misc
-    use 'tpope/vim-surround' -- Able to change [{()}]""''
-    use 'tpope/vim-commentary'
     use 'RRethy/vim-illuminate'
     use 'tjdevries/astronauta.nvim'
     use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
+    use {
+      'blackCauldron7/surround.nvim',
+      config = function()
+        require'surround'.setup {mappings_style = 'surround'}
+      end
+    }
 
     -- Lanaguages
     use 'elzr/vim-json'
