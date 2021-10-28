@@ -67,6 +67,7 @@ return require('packer').startup {
     --use 'tjdevries/nlua.nvim'
 
     -- Utils
+    use 'matbme/JABS.nvim'
     use 'google/vim-searchindex'
     use 'tjdevries/cyclist.vim'
     use 'nvim-lua/popup.nvim'
