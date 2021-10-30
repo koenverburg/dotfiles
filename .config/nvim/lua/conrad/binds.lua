@@ -49,6 +49,12 @@ normal('<C-k>', '<C-W><C-K>')
 normal('<C-l>', '<C-W><C-L>')
 normal('<C-h>', '<C-W><C-H>')
 
+-- Easier moving of panes
+-- normal('<C-S-j>', '<C-W>J')
+-- normal('<C-S-K>', '<C-W>K')
+-- normal('<C-S-L>', '<C-W>L')
+-- normal('<C-S-H>', '<C-W>H')
+
 -- Better jk
 normal('j', 'gj')
 normal('k', 'gk')
@@ -136,7 +142,8 @@ normal('<space>c', ':Commentary<cr>')
 visual('<space>c', ':Commentary<cr>')
 
 -- word hopping
-normal('<leader>mv', ':HopWord<cr>')
+normal('<leader>jf', ':HopWord<cr>')
+-- normal('jf', ':HopWord<cr>')
 
 -- Toggle Alternate
 normal('<leader>ta', ':ToggleAlternate<cr>')
