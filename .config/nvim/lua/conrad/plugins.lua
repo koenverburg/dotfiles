@@ -54,6 +54,7 @@ return require('packer').startup {
     use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
+    use 'tpope/vim-commentary'
 
     -- LSP config
     use 'neovim/nvim-lspconfig'
@@ -61,11 +62,12 @@ return require('packer').startup {
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/nvim-cmp'
-    use 'glepnir/lspsaga.nvim'
+    use 'tami5/lspsaga.nvim'
     use 'ray-x/lsp_signature.nvim'
     --use 'tjdevries/nlua.nvim'
 
     -- Utils
+    use 'matbme/JABS.nvim'
     use 'google/vim-searchindex'
     use 'tjdevries/cyclist.vim'
     use 'nvim-lua/popup.nvim'
@@ -75,6 +77,7 @@ return require('packer').startup {
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
+    use 'ThePrimeagen/harpoon'
     use {
       'lewis6991/impatient.nvim',
       config = function()
@@ -93,11 +96,16 @@ return require('packer').startup {
     }
 
     -- Misc
-    use 'tpope/vim-surround' -- Able to change [{()}]""''
-    use 'tpope/vim-commentary'
+    use 'edluffy/specs.nvim'
     use 'RRethy/vim-illuminate'
     use 'tjdevries/astronauta.nvim'
     use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
+    use {
+      'blackCauldron7/surround.nvim',
+      config = function()
+        require'surround'.setup {mappings_style = 'surround'}
+      end
+    }
 
     -- Lanaguages
     use 'elzr/vim-json'

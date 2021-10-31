@@ -70,18 +70,24 @@ function M.on_attach(client)
   lsp_map('n', 'gi', 'vim.lsp.buf.implementation')
   
   -- lsp saga
+  lsp_map('n', 'K', "require('lspsaga.hover').render_hover_doc")
   lsp_map('n', 'gr', "require('lspsaga.rename').rename")
+
   lsp_map('n', '<leader>ca', "require('lspsaga.codeaction').code_action")
   lsp_map('i', '<leader>ca', "require('lspsaga.codeaction').code_action")
+
+  lsp_map("n", "gx", "Lspsaga code_action<cr>")
+  lsp_map("x", "gx", ":<c-u>Lspsaga range_code_action<cr>")
+
   -- Moved to telescope for these
   -- lsp_map('n', '<c-r>', 'vim.lsp.buf.references')
   -- lsp_map('n', 'gds', 'vim.lsp.buf.document_symbol')
   -- lsp_map('n', 'gW', 'vim.lsp.buf.workspace_symbol')
 
 
-  -- lsp_map('n', '<leader>sd', "require('lspsaga.diagnostic').show_line_diagnostics")
-  -- lsp_map('n', '[e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_prev")
-  -- lsp_map('n', ']e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_next")
+  lsp_map('n', '<leader>sd', "require('lspsaga.diagnostic').show_line_diagnostics")
+  lsp_map('n', '[e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_prev")
+  lsp_map('n', ']e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_next")
 end
 
 return setmetatable({}, {

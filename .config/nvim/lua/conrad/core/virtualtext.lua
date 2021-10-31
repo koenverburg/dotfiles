@@ -10,6 +10,8 @@ local method_start_targets = {
 
   -- Go,
   'function_declaration',
+  -- 'if_statement',
+  -- 'return_statement',
 }
 
 local function P(value)
@@ -27,6 +29,8 @@ local nodes_table = {
   short_var_declaration = 1,
 
   if_statement = 1, -- Helpers.DetermineIfStatementScore(node),
+  binary_expression = 1,
+  parenthesized_expression = 1
 }
 
 local edges_table = {
@@ -47,12 +51,7 @@ local function calculateEdges(node)
     return 0
   end
 
-  -- if type(edges_table[node_type] == 'function') then
-  --   P(edges_table[node_type]())
-  -- end
-
   result = result + tonumber(edges_table[node_type])
-  -- print(result)
 
   return result
 end
@@ -68,9 +67,10 @@ local function calculateNodes(node)
 
   result = result + tonumber(nodes_table[node_type])
 
+  P(nodes_table[node_type])
+
   return result
 end
-
 
 local function loopOverChildren(node)
   local m = 0
@@ -82,7 +82,7 @@ local function loopOverChildren(node)
   for _, key in ipairs(child_nodes) do
     if key:type() == 'block' then
       for _, j in ipairs(ts_utils.get_named_children(key)) do
-        local raw_edges= calculateEdges(j)
+        local raw_edges = calculateEdges(j)
 
         if raw_edges ~= nil then
           edges = tonumber(raw_edges)
