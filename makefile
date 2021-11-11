@@ -10,8 +10,11 @@ snapshot-macos:
 	rm brewfile
 	brew bundle dump
 
+bootstrap-macos:
+	bash ansible/macos.sh
+
+build-macos:
+	docker build --file macos.dockerfile --tag regression-macos .
+
 build-workspace:
 	docker build --file workspace.dockerfile --tag wksp .
-
-bootstrap-mac:
-	bash ansible/macos.sh
