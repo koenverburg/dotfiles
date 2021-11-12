@@ -1,0 +1,33 @@
+- name:  Brew | Install zsh
+  tags:
+    - zsh
+  shell: |
+    brew install zsh
+
+- name: Check if there is a local copy of oh-my-zsh
+  tags:
+    - zsh
+  register: ohmyzsh_local
+  stat:
+    path: "~/.oh-my-zsh"
+
+- name:  Shell | Install oh-my-zsh
+  when: not ohmyzsh_local.stat.exists
+  tags:
+    - zsh
+  shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# - name:  Shell | set zsh as default chell
+#   tags:
+#     - zsh
+#   shell: |
+#     chsh -s $(which zsh)
+
+- name: Git | Cloning oh-my-zsh autosuggestions
+  tags:
+    - zsh
+    - zsh-plugin
+  shell: |
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
