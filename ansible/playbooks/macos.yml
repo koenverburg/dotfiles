@@ -1,4 +1,0 @@
-- name: Setting up a new mac
-  hosts: local
-  tasks:
-    - include: roles/nvim/tasks/macos.yml
