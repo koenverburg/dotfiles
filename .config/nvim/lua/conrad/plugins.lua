@@ -73,9 +73,9 @@ return require('packer').startup {
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'glepnir/prodoc.nvim'
-    use 'phaazon/hop.nvim'
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
+    use 'phaazon/hop.nvim'
     use 'ThePrimeagen/refactoring.nvim'
     use 'ThePrimeagen/harpoon'
     use {
@@ -84,6 +84,7 @@ return require('packer').startup {
         require('impatient')
       end
     }
+
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- sessions
