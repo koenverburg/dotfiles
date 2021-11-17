@@ -1,54 +1,46 @@
-- name: Check if .config is already exists
-  register: config_local
-  stat:
-    path: "~/.config"
-
-- name: Check if .config is already exists
-  when: not config_local.stat.exists
-  shell: mkdir ~/.config
-
-- name: Check if .config/nvim is already exists
-  register: n_config_local
-  stat:
-    path: "~/.config/nvim"
-
-- name: Check if .config/nvim is already exists
-  when: not n_config_local.stat.exists
-  shell: mkdir ~/.config/nvim
-
-- name: Check if Neovim is already cloned
+- name: Check if there is a local copy of neovim 
+  tags:
+    - neovim
   register: neovim_local
   stat:
-    path: "~/neovim"
+    path: "~/tools/neovim"
 
-- name: Clone Neovim repository
+- name: Git | Pull latest changes if local copy exists
+  when: neovim_local.stat.exists
+  tags:
+    - neovim
+  shell: |
+    cd ~/tools/neovim
+    git pull
+
+- name: Git | Clone Neovim repository
   when: not neovim_local.stat.exists
+  tags:
+    - neovim
   git:
     repo: "https://github.com/neovim/neovim.git"
-    dest: "~/neovim"
+    dest: "~/tools/neovim"
     clone: yes
 
-- name: Make | clean dist folder
-  when: not neovim_local.stat.exists
-  shell: |
-    cd ~/neovim
-    sudo make distclean
+# - name: Apt | install all deps for neovim
+#   tags:
+#     - neovim
+#   shell: |
+#     brew install ninja libtool automake cmake pkg-config gettext curl
 
 - name: Make | build release
-  when: not neovim_local.stat.exists
+  tags:
+    - neovim
+  # when: not neovim_local.stat.exists
   shell: |
-    cd ~/neovim
-    sudo make CMAKE_BUILD_TYPE=Release
+    cd ~/tools/neovim
+    sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
 
 - name: Make | Install
-  when: not neovim_local.stat.exists
+  tags:
+    - neovim
+  # when: not neovim_local.stat.exists
   shell: |
-    cd ~/neovim
+    cd ~/tools/neovim
     sudo make install
 
-# - name: Symlink Nvim config
-#   become_user: conrad
-#   file:
-#     src: "{{ lookup('env', 'ROOTDIR') }}/.config/nvim"
-#     dest: ~/.config/nvim
-#     state: link
