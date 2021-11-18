@@ -1,4 +1,4 @@
-FROM ubuntu:21.04
+FROM ubuntu:focal
 
 SHELL ["/bin/bash", "-c"]
 
@@ -10,7 +10,11 @@ LABEL Author = "Koen Verburg <creativekoen@gmail.com>"
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
   apt-utils \
-  # software-properties-common \
+  software-properties-common
+
+RUN apt-add-repository -y ppa:ansible/ansible
+
+RUN apt-get install -y --no-install-recommends \
   automake \
   build-essential \
   pkg-config \
@@ -36,24 +40,20 @@ RUN apt-get update && \
   g++ \
   unzip \
   curl \
-  doxygen
+  doxygen \
+  bat \
+  # ripgrep \
+  tmux \
+  ansible
 
-RUN  git clone https://github.com/neovim/neovim.git && \
-  cd neovim && \
-  sudo make distclean && \
-  sudo make CMAKE_BUILD_TYPE=Release && \
-  sudo make install && \
-  cd ../ # && rm -rf nvim
+# RUN  git clone https://github.com/neovim/neovim.git && \
+#   cd neovim && \
+#   sudo make distclean && \
+#   sudo make CMAKE_BUILD_TYPE=Release && \
+#   sudo make install && \
+#   cd ../ # && rm -rf nvim
 
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-
-RUN apt-get install --yes \
-  bat \
-  ripgrep \
-  fish\
-  tmux
 
 RUN npm install --global vim-language-server \
   typescript-language-server \
@@ -62,8 +62,6 @@ RUN npm install --global vim-language-server \
   graphql-language-service-server \
   @stoplight/spectral \
   vscode-css-languageserver-bin
-
-RUN fish -c 'curl -L https://get.oh-my.fish | source - --noninteractive'
 
 # RUN useradd -ms /bin/fish conrad && \
 
@@ -80,14 +78,17 @@ COPY . /root/code/github/dotfiles
 
 RUN cd /root/code/github/dotfiles && sudo bash ./workspace.install
 
-RUN nvim --headless +PackerInstall +qall
+RUN cd /root/code/github/dotfiles && sudo bash ./ansible/ubuntu.sh
+
+# RUN nvim --headless +PackerInstall +qall
 
 # USER conrad
 # WORKDIR /home/conrad/dotfiles
 
-WORKDIR /root
-ENV shell "/usr/bin/fish"
+WORKDIR /root/code
 
-SHELL ["/usr/bin/fish"]
+# ENV shell "/usr/bin/fish"
 
-CMD "/usr/bin/fish"
+# SHELL ["/usr/bin/fish"]
+
+CMD "/usr/bin/bash"
