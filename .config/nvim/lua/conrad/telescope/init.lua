@@ -24,8 +24,7 @@ require 'telescope'.setup {
       workspaces = {
         ["glass"]    = "~/code/bitbucket/glass",
         ["checkout"]    = "~/code/bitbucket/checkout",
-        ["dotfiles"]    = "~/code/github/dotfiles",
-        ["diva"]    = "~/code/github/dotfiles",
+        ["dotfiles"]    = "~/code/github/dotfiles"
       }
     }
   }
