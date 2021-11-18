@@ -3,10 +3,7 @@ name: Regression Pipeline
 on: push
 
 jobs:
-  # nixos - Jupiter
-
-  # Mars
-  ubuntu:
+  ubuntu-wksp:
     runs-on: ubuntu-latest
 
     steps:
@@ -51,42 +48,42 @@ jobs:
             ./docker-bake.hcl
             ${{ steps.docker_meta.outputs.bake-file }}
 
-  Windows:
-    runs-on: windows-latest
+  # Windows:
+  #   runs-on: windows-latest
 
-    steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.7.0
-        with:
-          access_token: ${{ github.token }}
+  #   steps:
+  #     - name: Cancel Previous Runs
+  #       uses: styfle/cancel-workflow-action@0.7.0
+  #       with:
+  #         access_token: ${{ github.token }}
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 1
 
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+  #     - name: Checkout submodules
+  #       run: git submodule update --init --recursive
 
-      - name: Setup
-        run: ./install.ps1
+  #     - name: Setup
+  #       run: ./install.ps1
 
-  macos:
-    runs-on: macos-latest
+  # macos:
+  #   runs-on: macos-latest
 
-    steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.7.0
-        with:
-          access_token: ${{ github.token }}
+  #   steps:
+  #     - name: Cancel Previous Runs
+  #       uses: styfle/cancel-workflow-action@0.7.0
+  #       with:
+  #         access_token: ${{ github.token }}
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 1
 
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
+  #     - name: Checkout submodules
+  #       run: git submodule update --init --recursive
 
-      - name: Setup
-        run: bash ./macos.install
+  #     - name: Setup
+  #       run: bash ./macos.install
