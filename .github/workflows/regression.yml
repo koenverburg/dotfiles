@@ -37,13 +37,13 @@ jobs:
         with:
           tag-sha: true
           images: |
-            ghcr.io/koenverburg/dotfiles/workspace-ubuntu
+            ghcr.io/koenverburg/dotfiles/workspace
 
       - name: Build and push
         uses: docker/bake-action@master
         with:
           push: true
-          targets: ubuntu
+          targets: wksp
           files: |
             ./docker-bake.hcl
             ${{ steps.docker_meta.outputs.bake-file }}
