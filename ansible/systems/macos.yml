@@ -1,5 +1,5 @@
 - name: Setting up a new mac
   hosts: local
   tasks:
-    - include: tasks/macos/neovim.yml
-    - include: tasks/macos/zsh.yml
+    - include: ../tasks/macos/neovim.yml
+    - include: ../tasks/macos/zsh.yml
