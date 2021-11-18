@@ -68,22 +68,28 @@ jobs:
   #     - name: Setup
   #       run: ./install.ps1
 
-  # macos:
-  #   runs-on: macos-latest
+  macos:
+    runs-on: macos-latest
 
-  #   steps:
-  #     - name: Cancel Previous Runs
-  #       uses: styfle/cancel-workflow-action@0.7.0
-  #       with:
-  #         access_token: ${{ github.token }}
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.7.0
+        with:
+          access_token: ${{ github.token }}
 
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 1
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
 
-  #     - name: Checkout submodules
-  #       run: git submodule update --init --recursive
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
 
-  #     - name: Setup
-  #       run: bash ./macos.install
+      - name: Install Brew
+        run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      - name: Setup Ansible
+        run: bash ./ansible/macos.sh
+
+      - name: Symlink Configs
+        run: bash ./macos.install
