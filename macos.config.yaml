@@ -16,7 +16,7 @@
     ~/.config/nvim: .config/nvim
     ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.macos.yml
     ~/.gitconfig: .config/gitconfig/.gitconfig
-    ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
+    # ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
     ~/.config/yabai/yabairc: .config/yabai/yabairc
     ~/.config/limelight/limelightrc: .config/limelight/limelightrc
     ~/.config/skhd/skhdrc: .config/skhd/skhdrc
