@@ -97,7 +97,8 @@ return require('packer').startup {
     }
 
     -- Misc
-    use 'edluffy/specs.nvim'
+    use 'ldelossa/calltree.nvim'
+    -- use 'edluffy/specs.nvim'
     use 'RRethy/vim-illuminate'
     use 'tjdevries/astronauta.nvim'
     use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
