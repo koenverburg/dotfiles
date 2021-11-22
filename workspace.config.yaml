@@ -12,11 +12,11 @@
     ~/.gitconfig: .config/gitconfig/.gitconfig
     ~/.tmux.conf: ./ansible/playbooks/roles/tmux/files/.tmux.conf
     ~/.config/nvim: ./.config/nvim
-    ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
+    # ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - fish -c 'omf install'
+    # - fish -c 'omf install'
     # - fish -c 'omf install bass'
 
     # Neovim stuff

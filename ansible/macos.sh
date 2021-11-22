@@ -1,1 +1,1 @@
-ansible-playbook -i ./ansible/inventory/locals ./ansible/macos.yml # --ask-become-pass;
+ansible-playbook -i ./ansible/inventory/locals ./ansible/systems/macos.yml # --ask-become-pass;

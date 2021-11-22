@@ -9,3 +9,12 @@ target "ubuntu" {
   ]
 }
 
+target "wksp" {
+  inherits = ["ghaction-docker-meta"]
+  context = "./"
+  dockerfile = "workspace.dockerfile"
+  tags = [
+    "ghcr.io/koenverburg/dotfiles/workspace"
+  ]
+}
+

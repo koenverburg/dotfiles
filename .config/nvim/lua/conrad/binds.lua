@@ -29,6 +29,14 @@ telescope_map('<c-r>', 'my_lsp_references')
 telescope_map('<c-d>', 'my_lsp_document_symbols')
 telescope_map('<leader>cx', 'lsp_code_actions')
 
+-- Refactoring
+telescope_map('<leader>re', 'refactors')
+normal('<leader>rd', [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
+
+-- Find 'n Replace
+normal('<leader>fr', ":%s/")
+visual('<leader>fr', "'>s/")
+
 normal('<leader><leader>x', "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 normal('<leader><leader>c', "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
 
@@ -101,10 +109,6 @@ normal('<leader><S-t>', ':tabnew<cr>')
 -- Credo, sort aliases in alphabetical order
 visual('<leader>s', ":'<,'>!sort -f<cr>")
 
--- Replace
-normal('<leader>rr', ":%s/")
-visual('<leader>rr', "'>s/")
-
 -- Swap : and ; to make colon commands easer to type
 normal(';', ':')
 normal(':', ';')
@@ -143,7 +147,6 @@ visual('<space>c', ':Commentary<cr>')
 
 -- word hopping
 normal('<leader>jf', ':HopWord<cr>')
--- normal('jf', ':HopWord<cr>')
 
 -- Toggle Alternate
 normal('<leader>ta', ':ToggleAlternate<cr>')
@@ -151,8 +154,6 @@ normal('<leader>ta', ':ToggleAlternate<cr>')
 -- Formatting
 normal('<leader>=', ':Format<cr>')
 
--- Refactoring
-visual('<Leader>re', [[ <Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
 
 return {
   normal,
