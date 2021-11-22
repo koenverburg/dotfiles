@@ -96,7 +96,7 @@
   "editor.formatOnSave": true,
   "editor.glyphMargin": false,
   "editor.formatOnPaste": true,
-  "editor.fontLigatures": false,
+  "editor.fontLigatures": true,
   "explorer.confirmDelete": false,
   "editor.cursorBlinking": "solid",
   "editor.matchBrackets": "always",
@@ -146,5 +146,8 @@
   "eslint.format.enable": true,
   "extensions.ignoreRecommendations": true,
   "go.toolsManagement.autoUpdate": true,
-  "redhat.telemetry.enabled": true
+  "redhat.telemetry.enabled": true,
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
