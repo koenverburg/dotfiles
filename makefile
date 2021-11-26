@@ -1,10 +1,10 @@
 # vim:vim: set tabstop=2:softtabstop=2:shiftwidth=2:noexpandtab
 
-bake-ubuntu:
-	docker buildx bake -f ./docker-bake.hcl ubuntu
+# bake-ubuntu:
+# 	docker buildx bake -f ./docker-bake.hcl ubuntu
 
-bake-wsl:
-	docker buildx bake -f ./docker-bake.hcl --push helios
+# bake-wsl:
+# 	docker buildx bake -f ./docker-bake.hcl --push helios
 
 snapshot-macos:
 	rm brewfile
@@ -18,3 +18,6 @@ build-macos:
 
 build-workspace:
 	docker build --file workspace.dockerfile --tag wksp .
+
+# run-wksp:
+# 	docker container run wksp --attach
