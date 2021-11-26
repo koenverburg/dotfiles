@@ -18,17 +18,17 @@ startup_mode: Windowed
 # Font configuration
 font:
   light:
-    family: Hack NF
+    family: FiraCode NF
     style: Regular
   normal:
-    family: Hack NF
+    family: FiraCode NF
     style: Regular
-  # semiBold:
-  #   family: Hack NF
-  #   style: SemiBold
+  semiBold:
+    family: FiraCode NF
+    style: Medium
   bold:
-    family: Hack NF
-    style: Bold
+    family: FiraCode NF
+    style: SemiBold
 
   size: 13.5
 
