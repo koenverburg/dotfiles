@@ -12,6 +12,9 @@ require('nebulous').setup({
   }
 })
 
+-- vim.cmd [[ highlight Normal guibg=none ]]
+-- vim.cmd [[ highlight NonText guibg=none ]]
+
 vim.g.mapleader = ','
 vim.b.mapleader = ','
 
