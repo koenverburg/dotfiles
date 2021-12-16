@@ -22,11 +22,11 @@
     dest: "~/tools/neovim"
     clone: yes
 
-- name: Brew | install all deps for neovim
-  tags:
-    - neovim
-  shell: |
-    brew install ninja libtool automake cmake pkg-config gettext curl
+# - name: Brew | install all deps for neovim
+#   tags:
+#     - neovim
+#   shell: |
+#     brew install ninja libtool automake cmake pkg-config gettext curl
 
 - name: Make | build release
   tags:
