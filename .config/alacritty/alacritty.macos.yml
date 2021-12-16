@@ -1,5 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-background_opacity: 1
+background_opacity: 0.8
 window:
   dimensions:
     columns: 140
