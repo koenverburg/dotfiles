@@ -12,8 +12,8 @@ require('nebulous').setup({
   }
 })
 
--- vim.cmd [[ highlight Normal guibg=none ]]
--- vim.cmd [[ highlight NonText guibg=none ]]
+vim.cmd [[ highlight NonText guibg=none ]]
+vim.cmd [[ highlight Normal guibg=none ]]
 
 vim.g.mapleader = ','
 vim.b.mapleader = ','
@@ -24,8 +24,8 @@ vim.b.noswapfile = true
 vim.g.undofile = true
 vim.g.undordir='~/.config/nvim/undodir'
 
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.wo.number = false
+vim.wo.relativenumber = false
 vim.wo.wrap = false
 vim.wo.list = true
 
