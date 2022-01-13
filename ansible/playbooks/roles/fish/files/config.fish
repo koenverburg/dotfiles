@@ -13,6 +13,8 @@ set PATH /usr/local/bin/go $PATH
 set PATH ~/go/bin $PATH
 set PATH ~/.cargo/bin $PATH
 
+alias python="python3"
+
 # Set Node Version on startup
 if test (uname) = Darwin
  bass source ~/.nvm/nvm.sh ';' nvm use 14.15.4
