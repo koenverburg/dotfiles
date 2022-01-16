@@ -15,18 +15,6 @@ require 'telescope'.setup {
       case_mode = 'ignore_case',        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
     },
-    frecency = {
-      -- db_root = "home/my_username/path/to/db_root",
-      -- show_scores = false,
-      -- show_unindexed = true,
-      -- ignore_patterns = {"*.git/*", "*/tmp/*"},
-      -- disable_devicons = false,
-      workspaces = {
-        ["glass"]    = "~/code/bitbucket/glass",
-        ["checkout"]    = "~/code/bitbucket/checkout",
-        ["dotfiles"]    = "~/code/github/dotfiles"
-      }
-    }
   }
 }
 
@@ -38,7 +26,6 @@ require('git-worktree').setup()
 -- autopush = <boolean> -- default: false,
 
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('frecency')
 require('telescope').load_extension('git_worktree')
 require('telescope').load_extension('session-lens')
 
