@@ -2,4 +2,4 @@
   hosts: local
   tasks:
     - include: ../tasks/macos/neovim.yml
-    - include: ../tasks/macos/zsh.yml
+    # - include: ../tasks/macos/zsh.yml

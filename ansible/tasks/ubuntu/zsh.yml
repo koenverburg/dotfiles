@@ -1,0 +1,24 @@
+- name: install dependencies
+  become: yes
+  package:
+    name: zsh
+    state: present
+
+- name: set default shell
+  become: yes
+  shell: chsh -s $(which zsh)
+
+- name: Check if there is a local copy of oh-my-zsh
+  register: ohmyzsh_local
+  stat:
+    path: "~/.oh-my-zsh"
+
+- name:  Shell | Install oh-my-zsh
+  when: not ohmyzsh_local.stat.exists
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+- name: Cloning oh-my-zsh autosuggestions
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+    clone: yes
