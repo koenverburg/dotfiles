@@ -154,6 +154,8 @@ normal('<leader>ta', ':ToggleAlternate<cr>')
 -- Formatting
 normal('<leader>=', ':Format<cr>')
 
+-- Rapid movement
+normal('<s-a>', ':edit %:h<cr>')
 
 return {
   normal,
