@@ -100,7 +100,6 @@ return require('packer').startup {
     use 'ldelossa/calltree.nvim'
     -- use 'edluffy/specs.nvim'
     use 'RRethy/vim-illuminate'
-    use 'tjdevries/astronauta.nvim'
     use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
     use {
       'blackCauldron7/surround.nvim',
