@@ -8,7 +8,7 @@ call cyclist#add_listchar_option_set('default', {
   \ 'eol': '↲',
   \ 'tab': '» ',
   \ 'trail': '·',
-  \ 'space': '·',
+  \ 'space': ' ',
   \ 'extends': '<',
   \ 'precedes': '>',
   \ 'conceal': '┊',
