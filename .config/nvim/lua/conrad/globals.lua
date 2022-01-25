@@ -24,7 +24,7 @@ vim.b.noswapfile = true
 vim.g.undofile = true
 vim.g.undordir='~/.config/nvim/undodir'
 
-vim.wo.number = false
+vim.wo.number = true
 vim.wo.relativenumber = false
 vim.wo.wrap = false
 vim.wo.list = true

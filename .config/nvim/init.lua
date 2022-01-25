@@ -2,8 +2,7 @@
 -- Author: Koen Verburg <creativekoen@gmail.com>
 -- Source: https://github.com/koenverburg/dotfiles
 
-vim.cmd [[runtime plugin/astronauta.vim]]
-require "impatient"
+require('impatient')
 
 require('conrad.disable_builtin')
 require('conrad.plugins')
