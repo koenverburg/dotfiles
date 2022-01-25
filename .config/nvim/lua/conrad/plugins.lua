@@ -39,12 +39,9 @@ return require('packer').startup {
 
     -- Telescope
     use 'nvim-telescope/telescope.nvim'
-    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'ThePrimeagen/git-worktree.nvim'
-    use {
-      'nvim-telescope/telescope-frecency.nvim',
-      requires = {"tami5/sqlite.lua"}
-    }
+    use 'nvim-telescope/telescope-ui-select.nvim'
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- Old
     use 'scrooloose/nerdtree'
@@ -97,7 +94,7 @@ return require('packer').startup {
     }
 
     -- Misc
-    use 'ldelossa/calltree.nvim'
+    -- use 'ldelossa/calltree.nvim'
     -- use 'edluffy/specs.nvim'
     use 'RRethy/vim-illuminate'
     use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
