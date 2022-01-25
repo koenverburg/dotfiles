@@ -1,5 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-background_opacity: 0.8
+background_opacity: 1
 window:
   dimensions:
     columns: 140
@@ -20,10 +20,10 @@ startup_mode: Windowed
 font:
   light:
     family: FiraCode Nerd Font
-    style: light
+    style: Light
   normal:
     family: FiraCode Nerd Font
-    style: medium
+    style: Medium
   semiBold:
     family: FiraCode Nerd Font
     style: SemiBold
@@ -31,7 +31,7 @@ font:
     family: FiraCode Nerd Font
     style: Bold
 
-  size: 13.5
+  size: 15
 
   offset:
     x: 0
