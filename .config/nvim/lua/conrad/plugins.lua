@@ -135,7 +135,7 @@ return require('packer').startup {
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/vim-vsnip-integ'
 
-    use '~/code/github/minimal-tabline.nvim'
+    use 'koenverburg/minimal-tabline.nvim'
 
   end,
   config = {
