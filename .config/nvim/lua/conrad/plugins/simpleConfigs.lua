@@ -1,1 +1,1 @@
-require('calltree').setup({})
+require('minimal-tabline').setup()
