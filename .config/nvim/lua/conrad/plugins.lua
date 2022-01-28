@@ -61,7 +61,6 @@ return require('packer').startup {
     use 'hrsh7th/nvim-cmp'
     use 'tami5/lspsaga.nvim'
     use 'ray-x/lsp_signature.nvim'
-    --use 'tjdevries/nlua.nvim'
 
     -- Utils
     use 'matbme/JABS.nvim'
@@ -135,6 +134,8 @@ return require('packer').startup {
     -- Snippets
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/vim-vsnip-integ'
+
+    use '~/code/github/minimal-tabline.nvim'
 
   end,
   config = {
