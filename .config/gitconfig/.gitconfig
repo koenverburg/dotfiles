@@ -1,6 +1,5 @@
 [user]
   name = Koen Verburg
-  email = creativekoen@gmail.com
 
 [core]
   editor = nvim
@@ -12,7 +11,10 @@
 [includeIf "gitdir:~/code/bitbucket/"]
   path = ~/code/bitbucket/.gitconfig
 
-[includeIf "gitdir:~/code/worktrees/*"]
+[includeIf "gitdir:~/code/worktrees/"]
+  path = ~/code/bitbucket/.gitconfig
+
+[includeIf "gitdir:~/code/worktrees/checkout-bare"]
   path = ~/code/bitbucket/.gitconfig
 
 [push]
