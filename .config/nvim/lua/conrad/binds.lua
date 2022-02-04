@@ -141,7 +141,7 @@ normal('<leader><space>f', ':ZenMode<cr>')
 normal('<leader><space>ll', ':Twilight<cr>')
 
 -- Commenting
-normal('<space>dc', ':ProDoc<cr>')
+-- normal('<space>dc', ':ProDoc<cr>')
 normal('<space>c', ':Commentary<cr>')
 visual('<space>c', ':Commentary<cr>')
 
