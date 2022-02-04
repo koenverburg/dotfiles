@@ -63,12 +63,13 @@ return require('packer').startup {
     use 'ray-x/lsp_signature.nvim'
 
     -- Utils
-    use 'matbme/JABS.nvim'
+    -- use 'matbme/JABS.nvim'
+    use 'ellisonleao/glow.nvim'
     use 'google/vim-searchindex'
     use 'tjdevries/cyclist.vim'
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
-    use 'glepnir/prodoc.nvim'
+    -- use 'glepnir/prodoc.nvim'
     use 'unblevable/quick-scope'
     use 'rmagatti/alternate-toggler'
     use 'phaazon/hop.nvim'
@@ -96,7 +97,7 @@ return require('packer').startup {
     -- use 'ldelossa/calltree.nvim'
     -- use 'edluffy/specs.nvim'
     use 'RRethy/vim-illuminate'
-    use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
+    -- use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
     use {
       'blackCauldron7/surround.nvim',
       config = function()
@@ -110,6 +111,7 @@ return require('packer').startup {
     use 'PProvost/vim-ps1'
     use 'ekalinin/Dockerfile.vim'
     use 'jidn/vim-dbml'
+    use 'skanehira/preview-uml.vim'
 
     --  Markdown
     use 'godlygeek/tabular'
