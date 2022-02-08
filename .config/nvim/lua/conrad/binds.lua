@@ -93,11 +93,10 @@ visual('>', '>gv')
 normal('<leader><space>', ':nohl<cr>')
 
 -- window resizing
-normal('<a-left>', '5<c-w>>')
-normal('<a-right>', '5<c-w><')
+normal('<a-left>', '5<c-w><')
+normal('<a-right>', '5<c-w>>')
 normal('<a-up>', ':resize +5<cr>')
 normal('<a-down>', ':resize -5<cr>')
-
 
 -- Faster saving
 -- normal('<leader>w', ':w<cr>')

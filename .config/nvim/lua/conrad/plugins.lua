@@ -56,9 +56,9 @@ return require('packer').startup {
     -- LSP config
     use 'neovim/nvim-lspconfig'
     use 'onsails/lspkind-nvim'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-nvim-lsp'
     use 'tami5/lspsaga.nvim'
     use 'ray-x/lsp_signature.nvim'
 
@@ -116,6 +116,7 @@ return require('packer').startup {
     -- Looks
     use 'lewis6991/gitsigns.nvim'
     use 'tjdevries/express_line.nvim'
+    use 'koenverburg/minimal-tabline.nvim'
 
     -- Icons
     use 'ryanoasis/vim-devicons'
@@ -129,11 +130,7 @@ return require('packer').startup {
     use 'mhartington/formatter.nvim'
 
     -- Snippets
-    use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/vim-vsnip-integ'
-
-    use 'koenverburg/minimal-tabline.nvim'
-
+    use 'L3MON4D3/LuaSnip'
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it

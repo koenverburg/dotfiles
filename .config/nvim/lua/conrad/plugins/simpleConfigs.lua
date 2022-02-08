@@ -1,1 +1,0 @@
-require('minimal-tabline').setup()
