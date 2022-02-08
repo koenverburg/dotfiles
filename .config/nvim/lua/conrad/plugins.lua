@@ -75,12 +75,7 @@ return require('packer').startup {
     use 'phaazon/hop.nvim'
     use 'ThePrimeagen/refactoring.nvim'
     use 'ThePrimeagen/harpoon'
-    use {
-      'lewis6991/impatient.nvim',
-      config = function()
-        require('impatient')
-      end
-    }
+    use 'lewis6991/impatient.nvim'
 
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 

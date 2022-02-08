@@ -3,6 +3,7 @@
 -- Source: https://github.com/koenverburg/dotfiles
 
 require('impatient')
+require('packer_compiled')
 
 require('conrad.disable_builtin')
 require('conrad.plugins')
