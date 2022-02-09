@@ -1,4 +1,7 @@
+require('Comment').setup()
+require('session-lens').setup()
 require('minimal-tabline').setup()
+require('surround').setup({ mappings_style = 'surround' })
 
 vim.cmd [[ augroup illuminate_augroup ]]
 vim.cmd [[ autocmd! ]]
