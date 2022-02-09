@@ -46,7 +46,7 @@ normal('<leader><leader>c', "<cmd>lua require'conrad.core.virtualtext'.show()<cr
 -- Harpoon
 normal('<c-m>', '<cmd>lua require("harpoon.mark").add_file()<cr>')
 normal('<c-f>', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
--- normal('<c-a>', '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
+normal('<c-a>', '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 
 -- This is so I can quickly quite out of vim without having to close all the buffers
 normal('<leader>q', '<cmd>qall<cr>')

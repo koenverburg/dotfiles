@@ -1,16 +1,11 @@
 -- Only required if you have packer in your `opt` pack
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
-
 if not packer_exists then
   if vim.fn.input('Download Packer? (y for yes)') ~= 'y' then
     return
   end
 
-  local directory = string.format(
-    '%s/site/pack/packer/opt/',
-    vim.fn.stdpath('data')
-  )
-
+  local directory = string.format('%s/site/pack/packer/opt/', vim.fn.stdpath('data'))
   vim.fn.mkdir(directory, 'p')
 
   local out = vim.fn.system(string.format(
@@ -51,7 +46,6 @@ return require('packer').startup {
     use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
-    use 'tpope/vim-commentary'
 
     -- LSP config
     use 'neovim/nvim-lspconfig'
@@ -63,50 +57,37 @@ return require('packer').startup {
     use 'ray-x/lsp_signature.nvim'
 
     -- Utils
-    -- use 'matbme/JABS.nvim'
+    use 'phaazon/hop.nvim'
     use 'ellisonleao/glow.nvim'
-    use 'google/vim-searchindex'
-    use 'tjdevries/cyclist.vim'
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
-    -- use 'glepnir/prodoc.nvim'
+    use 'tjdevries/cyclist.vim'
     use 'unblevable/quick-scope'
+    use 'google/vim-searchindex'
+    use 'lewis6991/impatient.nvim'
     use 'rmagatti/alternate-toggler'
-    use 'phaazon/hop.nvim'
     use 'ThePrimeagen/refactoring.nvim'
     use 'ThePrimeagen/harpoon'
-    use 'lewis6991/impatient.nvim'
-
+    use 'numToStr/Comment.nvim'
+    -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- sessions
-    use {
-      'rmagatti/session-lens',
-      requires = {'rmagatti/auto-session'},
-      config = function()
-        require('session-lens').setup()
-      end
-    }
+    use 'rmagatti/session-lens'
+    use 'rmagatti/auto-session'
 
     -- Misc
-    -- use 'ldelossa/calltree.nvim'
-    -- use 'edluffy/specs.nvim'
     use 'RRethy/vim-illuminate'
+    use 'blackCauldron7/surround.nvim'
     -- use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
-    use {
-      'blackCauldron7/surround.nvim',
-      config = function()
-        require'surround'.setup {mappings_style = 'surround'}
-      end
-    }
 
     -- Lanaguages
     use 'elzr/vim-json'
+    use 'jidn/vim-dbml'
     use 'stephpy/vim-yaml'
     use 'PProvost/vim-ps1'
     use 'ekalinin/Dockerfile.vim'
-    use 'jidn/vim-dbml'
-    use 'skanehira/preview-uml.vim'
+    use 'skanehira/preview-uml.vim' -- requires plantuml server to run via docker/podman
 
     --  Markdown
     use 'godlygeek/tabular'
