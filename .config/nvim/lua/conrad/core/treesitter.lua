@@ -20,21 +20,24 @@ require('nvim-treesitter.configs').setup {
     config = {
       yml = '# ',
       yaml = '# ',
+
       css = '// %s',
       scss = '// %s',
+
       js = '// %s',
+      ts = '// %s',
       tsx = {
         __default = '// %s',
         jsx_element = '{/* %s */}',
         jsx_fragment = '{/* %s */}',
-        jsx_attribute = '// %s',
+        jsx_attribute = '{/* %s */}',
         comment = '// %s'
       },
       jsx = {
         __default = '// %s',
         jsx_element = '{/* %s */}',
         jsx_fragment = '{/* %s */}',
-        jsx_attribute = '// %s',
+        jsx_attribute = '{/* %s */}',
         comment = '// %s'
       }
     }
