@@ -63,3 +63,5 @@ vim.o.showtabline = 2
 
 vim.cmd [[ highlight clear SignColumn ]]
 vim.cmd [[ set noshowmode ]]
+
+vim.cmd [[ set colorcolumn=81 ]]
