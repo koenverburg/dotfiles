@@ -1,42 +1,19 @@
-local eslint = {
-  -- eslint
-  function()
-    return {
-      exe = 'eslint_d',
-      args = {'--stdin', '--fix-to-stdout', '--stdin-filename', vim.api.nvim_buf_get_name(0) },
-      stdin = true
-    }
-  end
-}
-
-local prettier = function()
-  return {
-    exe = "prettier",
-    args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-    stdin = true,
-  }
+local ok, ls = pcall(require, "null-ls")
+if not ok then
+	return
 end
 
-require'formatter'.setup({
-  logging = false,
-  filetype = {
-    json = { prettier },
-    html = { prettier },
-    css = { prettier },
-    scss = { prettier },
-    markdown = { prettier },
-    typescript = { eslint },
-    typescriptreact = { eslint },
-    javascript = { eslint },
-    javascriptreact = { eslint },
-    -- lua = {
-    --     function()
-    --       return {
-    --         exe = "luafmt",
-    --         args = {"--indent-count", 2, "--stdin"},
-    --         stdin = true
-    --       }
-    --     end
-    --   }
-  }
+local spell = ls.builtins.completion
+local formatting = ls.builtins.formatting
+local diagnostics = ls.builtins.diagnostics
+
+ls.setup({
+	sources = {
+		-- completion.spell,
+		-- formatting.eslint,
+		formatting.gofmt,
+		formatting.stylua, -- install with cargo install stylua
+		formatting.prettier,
+		formatting.standardjs,
+	},
 })

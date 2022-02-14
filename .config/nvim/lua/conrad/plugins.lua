@@ -69,6 +69,7 @@ return require('packer').startup {
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
     use 'ThePrimeagen/harpoon'
+    use "jose-elias-alvarez/null-ls.nvim"
     use 'numToStr/Comment.nvim'
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
@@ -107,9 +108,6 @@ return require('packer').startup {
     -- Focus mode
     use 'folke/twilight.nvim'
     use 'folke/zen-mode.nvim'
-
-    -- Formatting
-    use 'mhartington/formatter.nvim'
 
     -- Snippets
     use 'L3MON4D3/LuaSnip'
