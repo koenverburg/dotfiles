@@ -64,6 +64,7 @@ return require('packer').startup {
     use 'tjdevries/cyclist.vim'
     use 'unblevable/quick-scope'
     use 'google/vim-searchindex'
+    use 'ruifm/gitlinker.nvim'
     use 'lewis6991/impatient.nvim'
     use 'rmagatti/alternate-toggler'
     use 'ThePrimeagen/refactoring.nvim'
