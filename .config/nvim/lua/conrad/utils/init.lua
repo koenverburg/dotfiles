@@ -64,15 +64,12 @@ function M.on_attach(client)
     client.resolved_capabilities.document_formatting = false
   end
 
-  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-
   lsp_map('n', 'K', 'vim.lsp.buf.hover')
   lsp_map('n', 'gD', 'vim.lsp.buf.declaration')
   lsp_map('n', 'gd', 'vim.lsp.buf.definition')
   lsp_map('n', '<c-]>', 'vim.lsp.buf.definition')
   lsp_map('n', 'gi', 'vim.lsp.buf.implementation')
-  
+
   -- lsp saga
   lsp_map('n', 'K', "require('lspsaga.hover').render_hover_doc")
   lsp_map('n', 'gr', "require('lspsaga.rename').rename")
@@ -87,7 +84,6 @@ function M.on_attach(client)
   -- lsp_map('n', '<c-r>', 'vim.lsp.buf.references')
   -- lsp_map('n', 'gds', 'vim.lsp.buf.document_symbol')
   -- lsp_map('n', 'gW', 'vim.lsp.buf.workspace_symbol')
-
 
   lsp_map('n', '<leader>sd', "require('lspsaga.diagnostic').show_line_diagnostics")
   lsp_map('n', '[e', "require('lspsaga.diagnostic').lsp_jump_diagnostic_prev")

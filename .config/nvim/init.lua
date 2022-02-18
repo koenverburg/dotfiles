@@ -11,7 +11,7 @@ require('conrad.globals')
 require('conrad.binds')
 
 require('conrad.telescope')
-require('conrad.servers')
+require('conrad.lsp')
 
 require('conrad.core.treesitter')
 require('conrad.core.statusline')
