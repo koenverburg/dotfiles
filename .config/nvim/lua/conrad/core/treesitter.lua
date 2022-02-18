@@ -1,7 +1,6 @@
 require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-  },
+  highlight = { enable = true },
+  indent = { enable = true },
   ensure_installed = {
     "yaml",
     "tsx",
@@ -12,7 +11,7 @@ require('nvim-treesitter.configs').setup {
     "html",
     "json",
     "css",
-    "lua",
+    -- "lua",
     "go",
   },
   context_commentstring = {
