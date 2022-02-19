@@ -136,7 +136,8 @@ normal("J", "mzJ`z")
 insert(",", ",<c-g>u")
 insert(".", ".<c-g>u")
 
-normal("<C-b>", ":NERDTreeToggle<cr>")
+-- File Tree
+normal("<C-b>", ":NvimTreeToggle<cr>")
 
 normal("<leader>gg", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('lazygit')<cr> ]])
 terminal("<leader>gg", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
