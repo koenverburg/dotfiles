@@ -40,11 +40,11 @@ visual("<leader>fr", "'>s/")
 normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
 
-vim.api.nvim_command [[ autocmd BufEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
-vim.api.nvim_command [[ autocmd BufWinEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
-vim.api.nvim_command [[ autocmd TabEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
-vim.api.nvim_command [[ autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
-vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.plugins.inlays'.show() ]]
+-- vim.api.nvim_command [[ autocmd BufEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
+-- vim.api.nvim_command [[ autocmd BufWinEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
+-- vim.api.nvim_command [[ autocmd TabEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
+-- vim.api.nvim_command [[ autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
+-- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.plugins.inlays'.show() ]]
 
 -- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
 -- vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
