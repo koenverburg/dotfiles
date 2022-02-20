@@ -38,9 +38,6 @@ return require('packer').startup {
     use 'nvim-telescope/telescope-ui-select.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-    -- Old
-    use 'scrooloose/nerdtree'
-
     -- treesitter
     use 'nvim-treesitter/playground'
     use 'nvim-treesitter/nvim-treesitter'
@@ -57,6 +54,7 @@ return require('packer').startup {
     use 'ray-x/lsp_signature.nvim'
 
     -- Utils
+    use 'kyazdani42/nvim-tree.lua'
     use 'phaazon/hop.nvim'
     use 'ellisonleao/glow.nvim'
     use 'nvim-lua/popup.nvim'

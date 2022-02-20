@@ -1,4 +1,5 @@
 require('Comment').setup()
+require('nvim-tree').setup()
 require('session-lens').setup()
 require('minimal-tabline').setup()
 require('surround').setup({ mappings_style = 'surround' })
