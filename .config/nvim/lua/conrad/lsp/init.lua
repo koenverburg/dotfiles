@@ -5,7 +5,6 @@ local lspconfig = require('lspconfig')
 
 cmp.setup({
   snippet = {
-  -- REQUIRED - you must specify a snippet engine
     expand = function(args)
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
@@ -35,10 +34,10 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'treesitter' },
     { name = 'path' },
     { name = 'buffer' },
-    -- { name = 'luasnip' }
   }
 })
 
