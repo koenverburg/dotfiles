@@ -3,6 +3,17 @@ local utils = require('conrad.utils')
 local lspkind = require('lspkind')
 local lspconfig = require('lspconfig')
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(vim.lsp.handlers["textDocument/publishDiagnostics"], {
+    signs = {
+      severity_limit = "Error",
+    },
+    underline = {
+      severity_limit = "Warning",
+    },
+    virtual_text = true,
+  })
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -58,7 +69,17 @@ local servers = {
       },
     },
   },
-  tsserver = {},
+  tsserver = {
+    cmd = { "typescript-language-server", "--stdio" },
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
+  },
   html = { cmd = { 'vscode-html-language-server', '--stdio' } },
   cssls = { cmd = { 'vscode-css-language-server', '--stdio' } }
 }

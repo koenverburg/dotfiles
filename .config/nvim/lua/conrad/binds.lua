@@ -1,5 +1,5 @@
 -- This file will contain all the keybindings for nvim
-local utils = require("conrad.utils")
+local utils = require "conrad.utils"
 local normal = utils.normal
 local visual = utils.visual
 local insert = utils.insert
@@ -163,8 +163,13 @@ normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.formatting()<cr> ]])
 -- Rapid movement
 normal("<s-a>", ":edit %:h<cr>")
 
+-- Snippets
+insert("<c-k>", [[ <cmd>lua require('conrad.setup.snippets').ExpandOrJump()<cr> ]])
+insert("<c-j>", [[ <cmd>lua require('conrad.setup.snippets').JumpBack()<cr> ]])
+insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> ]])
+
 return {
-	normal,
-	visual,
-	insert,
+  normal,
+  visual,
+  insert,
 }

@@ -20,3 +20,4 @@ require('conrad.plugins.startup')
 require('conrad.plugins.config')
 require('conrad.plugins.gitsigns')
 require('conrad.plugins.formatting')
+
