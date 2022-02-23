@@ -14,8 +14,8 @@ require("conrad.telescope")
 require("conrad.lsp")
 
 require("conrad.core.treesitter")
-require("conrad.core.statusline")
 
+-- Move all of these to after/plugin
 require("conrad.plugins.startup")
 require("conrad.plugins.config")
 require("conrad.plugins.gitsigns")
