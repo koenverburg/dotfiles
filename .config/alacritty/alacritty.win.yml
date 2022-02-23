@@ -17,6 +17,9 @@ startup_mode: Windowed
 
 # Font configuration
 font:
+  italic:
+    family: FiraCode NF
+    style: Regular
   light:
     family: FiraCode NF
     style: Regular
@@ -30,7 +33,7 @@ font:
     family: FiraCode NF
     style: SemiBold
 
-  size: 13.5
+  size: 12.5
 
   offset:
     x: 0
