@@ -56,27 +56,27 @@ live_config_reload: true
 schemes:
   github: &github
     primary:
-      background: '#0b1015'
+      background: "#0b1015"
       # background: '#2d333b'
-      foreground: '#adbac7'
+      foreground: "#adbac7"
     normal:
-      black:   '#2d333b'
-      red:     '#f47067'
-      green:   '#8ddb8c'
-      yellow:  '#f69d50'
-      blue:    '#6cb6ff'
-      magenta: '#dcbdfb'
-      cyan:    '#96d0ff'
-      white:   '#adbac7'
+      black: "#2d333b"
+      red: "#f47067"
+      green: "#8ddb8c"
+      yellow: "#f69d50"
+      blue: "#6cb6ff"
+      magenta: "#dcbdfb"
+      cyan: "#96d0ff"
+      white: "#adbac7"
     bright:
-      black:   '#768390'
-      red:     '#f47067'
-      green:   '#8ddb8c'
-      yellow:  '#f69d50'
-      blue:    '#6cb6ff'
-      magenta: '#dcbdfb'
-      cyan:    '#96d0ff'
-      white:   '#adbac7'
+      black: "#768390"
+      red: "#f47067"
+      green: "#8ddb8c"
+      yellow: "#f69d50"
+      blue: "#6cb6ff"
+      magenta: "#dcbdfb"
+      cyan: "#96d0ff"
+      white: "#adbac7"
   selection:
     text: "0xffffff"
     background: "0xdc3232"
@@ -88,4 +88,6 @@ colors: *github
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
   - { key: Return, mods: Alt, action: ToggleFullscreen }
-
+  - { key: F, mods: Alt, action: IncreaseFontSize }
+  - { key: D, mods: Alt, action: DecreaseFontSize }
+  - { key: S, mods: Alt, action: ResetFontSize }
