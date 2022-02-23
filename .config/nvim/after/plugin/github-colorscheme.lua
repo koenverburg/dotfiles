@@ -15,4 +15,3 @@
 -- Color.new('brown',     '#a3685a')
 -- Color.new('seagreen',  '#698b69')
 -- Color.new('turquoise', '#698b69')
-

@@ -60,8 +60,8 @@ local frontend = {
 ls.snippets = {
 	typescript = frontend,
 	javascript = frontend,
-  lua = {
-    snip("req", "local ${1} = require(\"${2}\")"),
-    snip("lm", "local M = {}")
-  }
+	lua = {
+		snip("req", 'local ${1} = require("${2}")'),
+		snip("lm", "local M = {}"),
+	},
 }

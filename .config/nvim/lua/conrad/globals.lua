@@ -1,28 +1,28 @@
 vim.o.ruler = true
-vim.o.background = 'dark'
+vim.o.background = "dark"
 
-require('colorbuddy').colorscheme('nebulous')
-require('nebulous').setup({
-  variant = 'night',
-  italic = {
-    comments   = false,
-    keywords   = false,
-    functions  = false,
-    variables  = false,
-  }
+require("colorbuddy").colorscheme("nebulous")
+require("nebulous").setup({
+	variant = "night",
+	italic = {
+		comments = false,
+		keywords = false,
+		functions = false,
+		variables = false,
+	},
 })
 
-vim.cmd [[ highlight NonText guibg=none ]]
-vim.cmd [[ highlight Normal guibg=none ]]
+vim.cmd([[ highlight NonText guibg=none ]])
+vim.cmd([[ highlight Normal guibg=none ]])
 
-vim.g.mapleader = ','
-vim.b.mapleader = ','
+vim.g.mapleader = ","
+vim.b.mapleader = ","
 
 vim.g.hidden = true
-vim.g.nobackup= true
+vim.g.nobackup = true
 vim.b.noswapfile = true
 vim.g.undofile = true
-vim.g.undordir='~/.config/nvim/undodir'
+vim.g.undordir = "~/.config/nvim/undodir"
 
 vim.wo.number = true
 vim.wo.relativenumber = false
@@ -47,17 +47,17 @@ vim.bo.expandtab = true
 vim.o.autoindent = true
 vim.bo.autoindent = true
 
-vim.cmd('language en_US.utf-8')
+vim.cmd("language en_US.utf-8")
 
 vim.o.termguicolors = true
-vim.o.completeopt = 'menu,menuone,noselect,noinsert'
-vim.o.backspace = 'indent,eol,start'
+vim.o.completeopt = "menu,menuone,noselect,noinsert"
+vim.o.backspace = "indent,eol,start"
 
-vim.o.inccommand = 'split'
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.o.inccommand = "split"
+vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.cmdheight = 1
 
-vim.o.clipboard = vim.o.clipboard .. 'unnamed,unnamedplus'
+vim.o.clipboard = vim.o.clipboard .. "unnamed,unnamedplus"
 vim.o.termguicolors = true
 vim.o.showtabline = 2
 
@@ -66,7 +66,7 @@ vim.o.showtabline = 2
 -- vim.cmd [[ set foldmethod=expr ]]
 -- vim.cmd [[ set foldexpr=nvim_treesitter#foldexpr() ]]
 
-vim.cmd [[ highlight clear SignColumn ]]
-vim.cmd [[ set noshowmode ]]
+vim.cmd([[ highlight clear SignColumn ]])
+vim.cmd([[ set noshowmode ]])
 
-vim.cmd [[ set colorcolumn=81 ]]
+vim.cmd([[ set colorcolumn=81 ]])
