@@ -19,5 +19,7 @@ build-macos:
 build-workspace:
 	docker build --file workspace.dockerfile --tag wksp .
 
+lint-nvim:
+	cd .config/nvim && stylua **/**/**/*.lua
 # run-wksp:
 # 	docker container run wksp --attach
