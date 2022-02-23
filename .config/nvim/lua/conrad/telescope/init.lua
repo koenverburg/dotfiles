@@ -15,6 +15,9 @@ require("telescope").setup {
       case_mode = "ignore_case", -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     },
+    file_browser = {
+      theme = 'ivy'
+    },
   },
 }
 
@@ -28,6 +31,7 @@ require("git-worktree").setup()
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "git_worktree"
 require("telescope").load_extension "session-lens"
+require("telescope").load_extension "file_browser"
 
 local M = {}
 
@@ -123,18 +127,6 @@ function M.git_files()
   require("telescope.builtin").git_files(opts)
 end
 
-function M.frecency_files()
-  local opts = {
-    previewer = false,
-    layout_strategy = "horizontal",
-    layout_config = {
-      prompt_position = "bottom",
-    },
-  }
-
-  require("telescope").extensions.frecency.frecency()
-end
-
 function M.git_worktrees()
   require("telescope").extensions.git_worktree.git_worktrees()
 end
@@ -143,6 +135,10 @@ local function refactor(prompt_bufnr)
   local content = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
   require("telescope.actions").close(prompt_bufnr)
   require("refactoring").refactor(content.value)
+end
+
+function M.browser()
+  require("telescope").extensions.file_browser.file_browser()
 end
 
 function M.refactors()

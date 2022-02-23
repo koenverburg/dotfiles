@@ -34,6 +34,7 @@ return require("packer").startup {
     use "nvim-telescope/telescope.nvim"
     use "ThePrimeagen/git-worktree.nvim"
     use "nvim-telescope/telescope-ui-select.nvim"
+    use "nvim-telescope/telescope-file-browser.nvim"
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
     -- treesitter
@@ -95,7 +96,8 @@ return require("packer").startup {
 
     -- Looks
     use "lewis6991/gitsigns.nvim"
-    use "tjdevries/express_line.nvim"
+    use "nvim-lualine/lualine.nvim"
+    -- use "tjdevries/express_line.nvim"
     use "koenverburg/minimal-tabline.nvim"
 
     -- Icons

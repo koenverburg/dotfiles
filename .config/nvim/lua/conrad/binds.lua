@@ -16,13 +16,16 @@ telescope_map("<space>fg", "my_live_grep")
 telescope_map("<leader>z", "buffers")
 
 telescope_map("<space>t", "git_files")
-telescope_map("<c-t>", "frecency_files")
+-- telescope_map("<c-t>", "frecency_files")
 telescope_map("<space>gw", "git_worktrees")
 telescope_map("<space>ed", "find_files_dotfiles")
 
 -- Search for a work
 telescope_map("<space>sg", "my_string_grep")
 telescope_map("<space>ls", "session_lens")
+
+-- File browser
+telescope_map("<space>fb", "browser")
 
 -- lsp
 telescope_map("<c-r>", "my_lsp_references")
