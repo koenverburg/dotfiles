@@ -6,7 +6,10 @@ require("impatient")
 require("packer_compiled")
 
 require("conrad.disable_builtin")
-require("conrad.plugins")
+
+require("conrad.bootstrap")
+require("conrad.packer")
+
 require("conrad.globals")
 require("conrad.binds")
 
