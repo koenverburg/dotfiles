@@ -20,5 +20,3 @@ require("conrad.core.treesitter")
 
 -- Move all of these to after/plugin
 require("conrad.plugins.config")
-require("conrad.plugins.gitsigns")
-require("conrad.plugins.formatting")

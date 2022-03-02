@@ -1,5 +1,21 @@
+-- local function Load(module)
+--   local ok, pkg = pcall(require, module)
+--
+--   if not ok then
+--     print(string.format("Failed to load '%s'", module))
+--     return
+--   end
+--
+--   return
+-- end
+
+
 return require("packer").startup {
   function(use)
+    -- local function useAndLoad(pkg, module_name)
+    --   use(pkg)
+    --   Load(module)
+    -- end
     -- use 'tweekmonster/startuptime.vim'
     use { "wbthomason/packer.nvim", opt = true }
 
