@@ -1,9 +1,6 @@
-version: "3"
+version: "3.8"
 services:
-  ubuntu-dotfiles:
-    environment:
-      - CI=1
-      - BUILDKIT=1
+  nvim:
     build:
       context: .
       dockerfile: ubuntu.dockerfile
