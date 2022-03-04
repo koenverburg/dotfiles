@@ -11,7 +11,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     underline = {
       severity_limit = "Warning",
     },
-    virtual_text = true,
+    virtual_text = false,
   })
 
 cmp.setup {
@@ -62,11 +62,11 @@ local servers = {
     settings = {
       gopls = {
         codelenses = {
-          references = true,
           test = true,
           tidy = true,
-          upgrade_dependency = true,
           generate = true,
+          references = true,
+          upgrade_dependency = true,
         },
         gofumpt = true,
       },
