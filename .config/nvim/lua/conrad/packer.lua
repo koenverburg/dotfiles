@@ -49,6 +49,7 @@ return require("packer").startup {
     use "j-hui/fidget.nvim"
 
     -- Utils
+    use 'windwp/nvim-autopairs'
     use "kyazdani42/nvim-tree.lua"
     use "phaazon/hop.nvim"
     use "ellisonleao/glow.nvim"
@@ -64,7 +65,7 @@ return require("packer").startup {
     use "ThePrimeagen/harpoon"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
-    use 'sunjon/shade.nvim'
+    -- use 'sunjon/shade.nvim'
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
@@ -74,8 +75,6 @@ return require("packer").startup {
 
     -- Misc
     use "RRethy/vim-illuminate"
-    use "blackCauldron7/surround.nvim"
-    -- use 'jiangmiao/auto-pairs' -- not working in lua??? -- fix this during the stream
 
     -- Lanaguages
     use "elzr/vim-json"
@@ -102,7 +101,7 @@ return require("packer").startup {
 
     -- Focus mode
     use "folke/twilight.nvim"
-    use "folke/zen-mode.nvim"
+    -- use "folke/zen-mode.nvim"
 
     -- Snippets
     use "L3MON4D3/LuaSnip"
