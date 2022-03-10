@@ -21,6 +21,7 @@ return require("packer").startup {
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "JoosepAlviste/nvim-ts-context-commentstring"
+    use 'narutoxy/dim.lua'
 
     -- LSP config
     use "neovim/nvim-lspconfig"
