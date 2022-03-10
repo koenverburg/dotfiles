@@ -57,31 +57,44 @@ local function tableToString(value)
   return r
 end
 
+vim.o.listchars = tableToString(default_list)
+
+local function is_empty(v)
+  return v == nil or v == ''
+end
+
 function M.setup(options)
   options = options or {}
 
-  M.options = vim.tbl_deep_extend("force", {
-    enable = true,
-    defaults = {
-      eol = "↲",
-      tab = "» ",
-      trail = "·",
-      space = "·",
-      nbsp = "☠",
-      -- nbsp = '␣',
-      extends = "#",
-      precedes = "…",
-      conceal = "┊",
-    },
-  }, options)
+  -- M.options = vim.tbl_extend("force", {
+  --   enabled = true,
+  --   defaults = {
+  --     eol = "↲",
+  --     tab = "» ",
+  --     trail = "·",
+  --     space = "·",
+  --     nbsp = "☠",
+  --     -- nbsp = '␣',
+  --     -- extends = "#",
+  --     -- precedes = "…",
+  --     -- conceal = "┊",
+  --   },
+  -- }, options)
 
-  if not M.options.enabled then
-    print('not enabled')
+  if not options.enabled then
+    print "not enabled"
     return
   end
-  print('enabled')
 
-  vim.o.listchars = tableToString(default_list)
+  print "enabled"
+  print is_empty(options.defaults)
+
+  if not is_empty(options.defaults) then
+    vim.o.listchars = tableToString(options.defaults)
+  else
+    vim.o.listchars = tableToString(default_list)
+  end
+
 end
 
 return M
