@@ -16,6 +16,8 @@ require("nebulous").setup {
 -- vim.cmd([[ highlight NonText guibg=none ]])
 -- vim.cmd([[ highlight Normal guibg=none ]])
 
+vim.o.signcolumn = 'yes'
+
 vim.g.mapleader = ","
 vim.b.mapleader = ","
 
