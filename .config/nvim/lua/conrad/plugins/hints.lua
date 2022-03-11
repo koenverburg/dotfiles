@@ -1,111 +1,81 @@
-local ts_utils = require "nvim-treesitter.ts_utils"
-
-local function P(value)
-  print(vim.inspect(value))
-  return value
-end
+require "nvim-treesitter"
+local utils = require "conrad.utils"
+local ts_parsers = require "nvim-treesitter.parsers"
 
 local M = {}
-local api, util = vim.api, vim.lsp.util
+local ns = vim.api.nvim_create_namespace "conrad/hints"
 
-local ns = api.nvim_create_namespace "conrad/hints"
+local function get_hover_params(node, bufnr)
+  local fn = vim.uri_from_bufnr(bufnr)
 
-function M.setup_autocmd()
-  api.nvim_command "augroup hints"
-  api.nvim_command 'autocmd BufEnter,BufWinEnter,TabEnter,BufWritePost *.ts,*.tsx,*.js,*.jsx :lua require"conrad.plugins.inlays".show()'
-  api.nvim_command "augroup END"
+  return {
+    textDocument = { uri = fn },
+    position = { line = node.line, character = node.character },
+    bufnr = bufnr,
+  }
 end
 
-local function setVirtualText(node, text)
-  local targetLineNumber = node:start()
-  local virtualText = " << " .. text
-  api.nvim_buf_set_virtual_text(0, ns, targetLineNumber, { { virtualText, "Comment" } }, {})
-end
+local attached_buffers = {}
+function M.show()
+  local buf_number = vim.api.nvim_buf_get_number "%"
 
-local lsp_proto = require "vim.lsp.protocol"
-
--- the symbol kinds which are valid scopes
-local scope_kinds = {
-  Class = true,
-  Function = true,
-  Method = true,
-  Struct = true,
-  Enum = true,
-  Interface = true,
-  Namespace = true,
-  Module = true,
-}
-
-local function filter(list, test)
-  local result = {}
-  for i, v in ipairs(list) do
-    if test(i, v) then
-      table.insert(result, v)
-    end
+  if attached_buffers[buf_number] then
+    return
   end
+  attached_buffers[buf_number] = true
 
-  return result
-end
+  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
 
-local function extract_symbols(items, _result)
-  local result = _result or {}
-  if items == nil then
-    return result
-  end
-  for _, item in ipairs(items) do
-    local kind = lsp_proto.SymbolKind[item.kind] or "Unknown"
-    local sym_range = nil
-    if item.location then -- Item is a SymbolInformation
-      sym_range = item.location.range
-    elseif item.range then -- Item is a DocumentSymbol
-      sym_range = item.range
-    end
+  local query = {
+    go = [[
+    (short_var_declaration) @vars
+  ]],
+    typescript = [[
+    (variable_declarator) @declvars
+  ]],
+  }
 
-    if sym_range then
-      sym_range.start.line = sym_range.start.line + 1
-      sym_range["end"].line = sym_range["end"].line + 1
-    end
+  -- (var_declaration) @vars
 
-    table.insert(result, {
-      filename = item.location and vim.uri_to_fname(item.location.uri) or nil,
-      range = sym_range,
-      kind = kind,
-      text = item.name,
-      raw_item = item,
-    })
-
-    if item.children then
-      extract_symbols(item.children, result)
-    end
-  end
-
-  return result
-end
-
-local function handler(_, result)
-  if type(result) ~= "table" then
-    print "no results"
+  if not query[lang] then
+    print(string.format("Unsupported languages found: %s", lang))
     return
   end
 
-  local r = filter(extract_symbols(result), function(_, v)
-    return scope_kinds[v.kind]
-  end)
-  print(vim.inspect(r))
+  local matches = utils.get_query_matches(bufnr, query[lang])
+  if matches == nil then
+    return
+  end
+
+  local results = {}
+  for _, match, metadata in matches do
+    utils.P(getmetatable(match[1]))
+    table.insert(results, {
+      node_type = match[1]:type(),
+      start_line = match[1]:start(),
+    })
+  end
+
+  for _, v in ipairs(results) do
+    utils.setVirtualText(ns, v.start_line, v.node_type, "--")
+  end
+
+  -- utils.P(getmetatable(captures[1]))
+  -- utils.P(lsp_proto.SymbolKind[node:symbol()] or "Unknown")
 end
 
-function M.show()
-  -- local node = ts_utils.get_node_at_cursor()
-  -- if not node then
-  --   vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-  --   return
-  -- end
-  -- P(node:type())
+-- function M.setup()
+--   local group = vim.api.nvim_create_augroup("conradhints", { clear = true })
+--
+--   vim.api.nvim_create_autocmd("BufEnter", {
+--     buffer = 0,
+--     group = group,
+--     callback = function()
+--       M.show()
+--     end,
+--   })
+-- end
 
-  local params = { textDocument = util.make_text_document_params() }
-  vim.lsp.buf_request(0, "textDocument/documentSymbol", params, handler)
-
-  -- setVirtualText(node, "hii")
-end
+vim.api.nvim_command [[ autocmd BufEnter * :lua require('conrad.plugins.hints').show() ]]
 
 return M
