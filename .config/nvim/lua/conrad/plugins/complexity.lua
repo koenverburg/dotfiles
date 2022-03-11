@@ -1,39 +1,52 @@
-local parsers = require "nvim-treesitter.parsers"
-local ts_utils = require "nvim-treesitter.ts_utils"
+require "nvim-treesitter"
+local utils = require "conrad.utils"
+local ts_parsers = require "nvim-treesitter.parsers"
 
 local M = {}
+local ns = vim.api.nvim_create_namespace "conrad/hints"
 
-function M.get_root(bufnr, filetype)
-  local parser = parsers.get_parser(bufnr or 0, filetype)
-  return parser:parse()[1]:root()
-end
+local attached_buffers = {}
+function M.show()
+  local buf_number = vim.api.nvim_buf_get_number "%"
 
-function M.createQuery(bufnr, filetype, query)
-  return setmetatable({
-    query = query,
-    bufnr = bufnr,
-    root = M.get_root(bufnr, filetype),
-    filetype = filetype,
-  }, self)
-end
+  if attached_buffers[buf_number] then
+    return
+  end
+  attached_buffers[buf_number] = true
 
-function M.foo()
-  local bufnr = vim.fn.bufnr()
-  local filetype = vim.bo[bufnr].filetype
+  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
 
-  -- local parser = M._get_query_text("query")
-  local parser = vim.treesitter.get_parser(bufnr, "go")
+  local query = {
+    go = [[
+    (function_declaration) @functions
+  ]],
+    -- typescript = [[]],
+  }
 
-  local tree = parser:parse()
-
-  if tree == nil then
-    error "Unable to get query information for filetype"
+  if not query[lang] then
+    print(string.format("Unsupported languages found: %s", lang))
+    return
   end
 
-  print(vim.inspect(parser))
-  -- print((tree))
-  -- print(vim.inspect(query.root))
-  -- print(vim.inspect(x))
+  local matches = utils.get_query_matches(bufnr, query[lang])
+  if matches == nil then
+    return
+  end
+
+  local results = {}
+  for _, match, metadata in matches do
+    table.insert(results, {
+      node_type = match[1]:type(),
+      start_line = match[1]:start(),
+    })
+  end
+
+  for _, v in ipairs(results) do
+    utils.setVirtualText(ns, v.start_line, v.node_type, "--")
+  end
+
+  -- utils.P(getmetatable(captures[1]))
+  -- utils.P(lsp_proto.SymbolKind[node:symbol()] or "Unknown")
 end
 
 return M
