@@ -5,15 +5,31 @@ local ts_parsers = require "nvim-treesitter.parsers"
 local M = {}
 local ns = vim.api.nvim_create_namespace "conrad/hints"
 
-local function get_hover_params(node, bufnr)
-  local fn = vim.uri_from_bufnr(bufnr)
+-- local function get_hover_params(line, bufnr)
+--   local fn = vim.uri_from_bufnr(bufnr)
+--   return {
+--     textDocument = { uri = fn },
+--     position = { line = line }, --, character = node.character },
+--     bufnr = bufnr,
+--   }
+-- end
 
-  return {
-    textDocument = { uri = fn },
-    position = { line = node.line, character = node.character },
-    bufnr = bufnr,
-  }
-end
+-- local function handler(_, method, result)
+--   if not (result and result.contents) then
+--     print "no results"
+--     return
+--   end
+--
+--   local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+--   markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+--
+--   if vim.tbl_isempty(markdown_lines) then
+--     print "No lines"
+--     return
+--   end
+--
+--   utils.P(markdown_lines)
+-- end
 
 local attached_buffers = {}
 function M.show()
@@ -49,10 +65,10 @@ function M.show()
 
   local results = {}
   for _, match, metadata in matches do
-    utils.P(getmetatable(match[1]))
     table.insert(results, {
       node_type = match[1]:type(),
       start_line = match[1]:start(),
+      -- kind = vim.lsp.protocol.SymbolKind[match[1]:symbol()] or "Unknown"
     })
   end
 
