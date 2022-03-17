@@ -49,15 +49,21 @@ function M.show()
 
   local results = {}
   for _, match, metadata in matches do
-    utils.P(getmetatable(match[1]))
+    -- utils.P(getmetatable(match[1]))
     table.insert(results, {
       node_type = match[1]:type(),
       start_line = match[1]:start(),
+
+      kind = vim.lsp.protocol.SymbolKind[match[1]:symbol()] or "ahii",
+
+      range= match[1]:range(),
+      symbol = match[1]:symbol(),
     })
   end
 
   for _, v in ipairs(results) do
-    utils.setVirtualText(ns, v.start_line, v.node_type, "--")
+    utils.P(v)
+    utils.setVirtualText(ns, v.start_line, v.kind, "--")
   end
 
   -- utils.P(getmetatable(captures[1]))
@@ -75,7 +81,6 @@ end
 --     end,
 --   })
 -- end
-
-vim.api.nvim_command [[ autocmd BufEnter * :lua require('conrad.plugins.hints').show() ]]
+-- vim.api.nvim_command [[ autocmd BufEnter * :lua require('conrad.plugins.hints').show() ]]
 
 return M
