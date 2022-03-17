@@ -171,6 +171,9 @@ insert("<c-k>", [[ <cmd>lua require('conrad.setup.snippets').ExpandOrJump()<cr> 
 insert("<c-j>", [[ <cmd>lua require('conrad.setup.snippets').JumpBack()<cr> ]])
 insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> ]])
 
+-- Quick folding
+normal('<space>f', 'za<cr>')
+
 return {
 	normal,
 	visual,
