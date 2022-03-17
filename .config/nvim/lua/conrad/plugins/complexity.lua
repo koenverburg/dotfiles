@@ -1,9 +1,11 @@
 require "nvim-treesitter"
+
+local lsp_proto = vim.lsp.protocol
 local utils = require "conrad.utils"
 local ts_parsers = require "nvim-treesitter.parsers"
 
 local M = {}
-local ns = vim.api.nvim_create_namespace "conrad/hints"
+local ns = vim.api.nvim_create_namespace "conrad/complexity"
 
 local attached_buffers = {}
 function M.show()
