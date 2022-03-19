@@ -1,17 +1,17 @@
 vim.o.ruler = true
 vim.o.background = "dark"
 
-require("colorbuddy").colorscheme "nebulous"
-require("nebulous").setup {
-  variant = "night",
-  -- variant = "quasar",
-  italic = {
-    comments = false,
-    keywords = false,
-    functions = false,
-    variables = false,
-  },
-}
+require("colorbuddy").colorscheme "gruvbuddy"
+-- require("nebulous").setup {
+--   variant = "night",
+--   -- variant = "quasar",
+--   italic = {
+--     comments = false,
+--     keywords = false,
+--     functions = false,
+--     variables = false,
+--   },
+-- }
 
 -- vim.cmd([[ highlight NonText guibg=none ]])
 -- vim.cmd([[ highlight Normal guibg=none ]])
@@ -63,6 +63,10 @@ vim.o.cmdheight = 1
 vim.o.clipboard = vim.o.clipboard .. "unnamed,unnamedplus"
 vim.o.termguicolors = true
 vim.o.showtabline = 2
+
+vim.cmd [[ set laststatus=3 ]]
+-- vim.cmd [[ hightlight WinSeparator guibg=none ]]
+
 
 -- folding
 -- vim.cmd [[ set foldlevel=99 ]]
