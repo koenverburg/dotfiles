@@ -10,8 +10,8 @@ local method_start_targets = {
 
   -- Go,
   "function_declaration",
-  -- 'if_statement',
-  -- 'return_statement',
+  'if_statement',
+  'return_statement',
 }
 
 local function P(value)

@@ -21,6 +21,7 @@ return require("packer").startup {
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "JoosepAlviste/nvim-ts-context-commentstring"
+    use 'narutoxy/dim.lua'
 
     -- LSP config
     use "neovim/nvim-lspconfig"
@@ -49,6 +50,8 @@ return require("packer").startup {
     use "ThePrimeagen/harpoon"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
+    use 'toppair/reach.nvim'
+    use 'anuvyklack/pretty-fold.nvim'
     -- use 'sunjon/shade.nvim'
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
@@ -76,7 +79,7 @@ return require("packer").startup {
     -- Looks
     use "lewis6991/gitsigns.nvim"
     use "nvim-lualine/lualine.nvim"
-    -- use "tjdevries/express_line.nvim"
+    use "tjdevries/express_line.nvim"
     use "koenverburg/minimal-tabline.nvim"
 
     -- Icons

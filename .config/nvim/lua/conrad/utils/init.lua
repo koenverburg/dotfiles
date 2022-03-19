@@ -20,6 +20,16 @@ function M.terminal(key, func)
   M.bind("t", key, func)
 end
 
+function M.close()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(win)
+    if config.relative ~= "" then
+      vim.api.nvim_win_close(win, false)
+      print("Closing window", win)
+    end
+  end
+end
+
 function M.save_and_execute()
   local filetype = vim.bo.filetype
 
@@ -88,6 +98,41 @@ function M.on_attach(client)
   lsp_map("n", "<leader>sd", "require('lspsaga.diagnostic').show_line_diagnostics")
   lsp_map("n", "[e", "require('lspsaga.diagnostic').lsp_jump_diagnostic_prev")
   lsp_map("n", "]e", "require('lspsaga.diagnostic').lsp_jump_diagnostic_next")
+end
+
+function M.is_empty(v)
+  return v == nil or v == ""
+end
+
+function M.P(value)
+  print(vim.inspect(value))
+  return value
+end
+
+function M.setVirtualText(ns, line, text, prefix)
+  local virtualText = string.format(" %s", text)
+
+  if not M.is_empty(prefix) then
+    virtualText = string.format(" %s %s", prefix, text)
+  end
+
+  vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, "Comment" } }, {})
+end
+
+function M.get_query_matches(bufnr, query)
+  local tree = vim.treesitter.get_parser(bufnr)
+
+  if not tree then
+    return nil
+  end
+
+  local ast = tree:parse()
+  local root = ast[1]:root()
+
+  local parsed = vim.treesitter.parse_query(tree:lang(), query)
+  local results = parsed:iter_matches(root, bufnr)
+
+  return results
 end
 
 return setmetatable({}, {
