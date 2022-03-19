@@ -1,17 +1,17 @@
 vim.o.ruler = true
 vim.o.background = "dark"
 
-require("colorbuddy").colorscheme "gruvbuddy"
--- require("nebulous").setup {
---   variant = "night",
---   -- variant = "quasar",
---   italic = {
---     comments = false,
---     keywords = false,
---     functions = false,
---     variables = false,
---   },
--- }
+require("colorbuddy").colorscheme "nebulous"
+require("nebulous").setup {
+  variant = "night",
+  -- variant = "quasar",
+  italic = {
+    comments = false,
+    keywords = false,
+    functions = false,
+    variables = false,
+  },
+}
 
 -- vim.cmd([[ highlight NonText guibg=none ]])
 -- vim.cmd([[ highlight Normal guibg=none ]])
