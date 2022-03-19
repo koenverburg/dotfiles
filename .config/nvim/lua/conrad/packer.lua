@@ -79,7 +79,7 @@ return require("packer").startup {
     -- Looks
     use "lewis6991/gitsigns.nvim"
     use "nvim-lualine/lualine.nvim"
-    -- use "tjdevries/express_line.nvim"
+    use "tjdevries/express_line.nvim"
     use "koenverburg/minimal-tabline.nvim"
 
     -- Icons
