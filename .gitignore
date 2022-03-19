@@ -3,5 +3,6 @@ overwrite/
 .env
 *.tar
 .config/tmuxinator/work.*.yml
-.config/nvim/plugin/packer_compiled.lua
+.config/nvim/lua/packer_compiled.lua
 node_modules/
+packer_compiled.lua
