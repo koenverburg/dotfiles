@@ -13,7 +13,7 @@ Remove-Item $nvimPathZip
 
 # underscore the current release
 Rename-Item -Path $nvimPathCurrent -NewName $nvimPathCurrentTemp
-Move-Item -Path "$nvimLatestPath\Neovim" -Destination $nvimPathCurrent
+Move-Item -Path "$nvimLatestPath\nvim-win64" -Destination $nvimPathCurrent
 Remove-Item $nvimLatestPath
 Remove-Item $nvimPathCurrentTemp
 
