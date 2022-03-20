@@ -86,6 +86,10 @@ visual("L", "g_")
 -- Jumping from the beginning of a []{}() to the end
 normal("<Tab>", "%")
 
+-- Splits
+normal("sh","<cmd>sp<cr>")
+normal("sv","<cmd>vsp<cr>")
+
 -- Keep search matches in the middle of the window
 normal("n", "nzzzv")
 normal("N", "Nzzzv")
@@ -113,6 +117,9 @@ normal("<a-down>", ":resize -5<cr>")
 
 -- Creating a new tab
 normal("<leader><S-t>", ":tabnew<cr>")
+
+-- Tab movement
+normal("<S-Tab>",":tabnext<cr>")
 
 -- Credo, sort aliases in alphabetical order
 visual("<leader>s", ":'<,'>!sort -f<cr>")
