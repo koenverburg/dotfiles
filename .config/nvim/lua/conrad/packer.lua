@@ -52,6 +52,7 @@ return require("packer").startup {
     use "numToStr/Comment.nvim"
     use 'toppair/reach.nvim'
     use 'anuvyklack/pretty-fold.nvim'
+    use 'rcarriga/nvim-notify'
     -- use 'sunjon/shade.nvim'
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
@@ -81,6 +82,7 @@ return require("packer").startup {
     use "nvim-lualine/lualine.nvim"
     use "tjdevries/express_line.nvim"
     use "koenverburg/minimal-tabline.nvim"
+    use "koenverburg/virtual-types.nvim"
 
     -- Icons
     use "ryanoasis/vim-devicons"
