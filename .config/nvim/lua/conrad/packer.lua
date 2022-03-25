@@ -1,4 +1,4 @@
-return require("packer").startup {
+return require("packer").startup{
   function(use)
     -- use 'tweekmonster/startuptime.vim'
     use { "wbthomason/packer.nvim", opt = true }
@@ -21,7 +21,6 @@ return require("packer").startup {
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "JoosepAlviste/nvim-ts-context-commentstring"
-    use 'narutoxy/dim.lua'
 
     -- LSP config
     use "neovim/nvim-lspconfig"
@@ -53,6 +52,7 @@ return require("packer").startup {
     use 'toppair/reach.nvim'
     use 'anuvyklack/pretty-fold.nvim'
     use 'rcarriga/nvim-notify'
+    use 'simrat39/symbols-outline.nvim'
     -- use 'sunjon/shade.nvim'
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement

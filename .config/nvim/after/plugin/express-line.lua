@@ -1,3 +1,4 @@
+local utils = require "conrad.utils"
 local helper = require "el.helper"
 local subscribe = require "el.subscribe"
 local extensions = require "el.extensions"
@@ -16,6 +17,10 @@ end)
 local shortened_file = function(_, buffer)
   if buffer.name == "" then
     return builtin.file(_, buffer)
+  end
+
+  if string.len(vim.fn.fnamemodify(buffer.name, ":.")) > 50 then
+    return vim.fn.fnamemodify(buffer.name, ":t")
   end
 
   return vim.fn.fnamemodify(buffer.name, ":.")

@@ -1,6 +1,6 @@
 # The DotFiles
 
-This repo will have a collections of configs of powershell, fish, Neovim and tmux, probably more. This is consantly changing and can be broken. [Pilfer](https://lite.duckduckgo.com/lite?q=Pilfer) at your own risk.
+This repo will have a collections of configs of powershell, fish, Neovim and tmux, probably more. This is consantly changing and can be broken. [Pilfer](https://www.collinsdictionary.com/dictionary/english/pilfer) at your own risk.
 
 ### Getting Started
 
