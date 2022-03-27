@@ -2,8 +2,10 @@
 -- Author: Koen Verburg <creativekoen@gmail.com>
 -- Source: https://github.com/koenverburg/dotfiles
 
-require("impatient")
-require("packer_compiled")
+local u = require('conrad.utils')
+
+u.loadable("impatient")
+u.loadable("packer_compiled")
 
 require("conrad.disable_builtin")
 
