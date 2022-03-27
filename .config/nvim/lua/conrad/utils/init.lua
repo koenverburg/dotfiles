@@ -135,8 +135,8 @@ function M.get_query_matches(bufnr, query)
   return results
 end
 
-function M.loadable(module)
-  local module, ok = pcall(module)
+function M.loadable(name)
+  local module, ok = pcall(name)
   if ok then
     return module
   end
