@@ -5,6 +5,8 @@ require("minimal-tabline").setup()
 
 require("Comment").setup() -- The bindings need to updated from this plugin
 
+vim.notify = require('notify')
+
 require("nvim-autopairs").setup()
 local Rule = require "nvim-autopairs.rule"
 local npairs = require "nvim-autopairs"
