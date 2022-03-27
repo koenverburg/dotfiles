@@ -135,6 +135,13 @@ function M.get_query_matches(bufnr, query)
   return results
 end
 
+function M.loadable(module)
+  local module, ok = pcall(module)
+  if ok then
+    return module
+  end
+end
+
 return setmetatable({}, {
   __index = function(_, k)
     if M[k] then
