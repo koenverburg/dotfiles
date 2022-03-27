@@ -1,6 +1,7 @@
 name: Regression Pipeline
 
-on: push
+on:
+  workflow_dispatch:
 
 jobs:
   ubuntu-wksp:
