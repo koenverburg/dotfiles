@@ -9,22 +9,22 @@
     - ~/.config/yabai
     - ~/.config/limelight
     - ~/.config/skhd
-    - ~/.hammerspoon
+    # - ~/.hammerspoon
 
 - link:
     ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf
     ~/.config/nvim: .config/nvim
     ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.macos.yml
     ~/.gitconfig: .config/gitconfig/.gitconfig
-    # ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
     ~/.config/yabai/yabairc: .config/yabai/yabairc
     ~/.config/limelight/limelightrc: .config/limelight/limelightrc
     ~/.config/skhd/skhdrc: .config/skhd/skhdrc
     ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
     ~/.slate.js: .config/slate/.slate.js
     "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
-    # "~/Library/Application Support/mtmr/items.json": .config/mtmr/items.json
 
+    # ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
+    # "~/Library/Application Support/mtmr/items.json": .config/mtmr/items.json
     # ~/Library/Application Support/Code/User/settings.json: .config/vscode/settings.json
     # ~/Library/Application Support/Code/User/keybindings.json: .config/vscode/keybindings.json
 
