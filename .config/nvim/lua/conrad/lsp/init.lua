@@ -73,7 +73,7 @@ local servers = {
     },
   },
   tsserver = {
-    cmd = { "typescript-language-server", "--stdio" },
+    root_dir = vim.loop.cwd,
     filetypes = {
       "javascript",
       "javascriptreact",
@@ -95,7 +95,6 @@ for name, opts in pairs(servers) do
     client.setup(vim.tbl_extend("force", {
       flags = { debounce_text_changes = 150 },
       on_attach = utils.on_attach,
-      -- on_init = on_init_common,
       capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     }, opts))
   end
