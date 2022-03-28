@@ -137,10 +137,13 @@ function M.get_query_matches(bufnr, query)
 end
 
 function M.loadable(name)
-  local module, ok = pcall(name)
-  if ok then
-    return module
+  local ok, module = pcall(require, name)
+
+  if not ok then
+    vim.notify('Failed to load ' .. name)
+    return
   end
+  return module
 end
 
 return setmetatable({}, {
