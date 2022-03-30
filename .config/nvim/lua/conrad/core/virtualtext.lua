@@ -18,17 +18,11 @@ local function P(value)
   print(vim.inspect(value))
 end
 
--- local Helpers = {}
-
--- function Helpers.DetermineIfStatementScore(node)
---   print('hii from helpers')
--- end
-
 local nodes_table = {
   var_declaration = 1,
   short_var_declaration = 1,
 
-  if_statement = 1, -- Helpers.DetermineIfStatementScore(node),
+  if_statement = 1,
   binary_expression = 1,
   parenthesized_expression = 1,
 }

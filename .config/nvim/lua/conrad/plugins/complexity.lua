@@ -10,7 +10,7 @@ local ns = vim.api.nvim_create_namespace "conrad/complexity"
 local attached_buffers = {}
 
 function M.show()
-  local buf_number = vim.api.nvim_buf_get_number "%"
+  local buf_number = vim.api.nvim_get_current_buf()
 
   if attached_buffers[buf_number] then
     return

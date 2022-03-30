@@ -60,7 +60,7 @@ end
 vim.o.listchars = tableToString(default_list)
 
 local function is_empty(v)
-  return v == nil or v == ''
+  return v == nil or v == ""
 end
 
 function M.setup(options)
@@ -86,15 +86,11 @@ function M.setup(options)
     return
   end
 
-  print "enabled"
-  print is_empty(options.defaults)
-
   if not is_empty(options.defaults) then
     vim.o.listchars = tableToString(options.defaults)
   else
     vim.o.listchars = tableToString(default_list)
   end
-
 end
 
 return M
