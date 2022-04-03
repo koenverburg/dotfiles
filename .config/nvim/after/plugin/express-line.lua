@@ -63,16 +63,17 @@ local generator = function(window, buffer)
   table.insert(segments, sections.collapse_builtin(builtin.help_list, builtin.readonly_list))
   table.insert(segments, " ")
   table.insert(segments, builtin.filetype)
-  table.insert(
-    segments,
-    subscribe.buf_autocmd("el_git_status", "BufWritePost", function(window, buffer)
-      local changes = extensions.git_changes(window, buffer)
-      if changes then
-        return " " .. changes .. " "
-      end
-    end)
-  )
-
+  table.insert(segments, " ")
+  -- table.insert(
+  --   segments,
+  --   subscribe.buf_autocmd("el_git_status", "BufWritePost", function(window, buffer)
+  --     local changes = extensions.git_changes(window, buffer)
+  --     if changes then
+  --       return " " .. changes .. " "
+  --     end
+  --   end)
+  -- )
+  --
   return segments
 end
 

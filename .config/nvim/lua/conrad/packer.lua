@@ -30,6 +30,7 @@ return require("packer").startup{
     use "hrsh7th/cmp-nvim-lsp"
     use "tami5/lspsaga.nvim"
     use "ray-x/lsp_signature.nvim"
+    use 'nvim-lua/lsp_extensions.nvim'
     use "j-hui/fidget.nvim"
 
     -- Utils
