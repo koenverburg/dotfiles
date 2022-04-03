@@ -87,8 +87,10 @@ visual("L", "g_")
 normal("<Tab>", "%")
 
 -- Splits
-normal("sh",":sp<cr>|<c-w>j")
-normal("sv",":vsp<cr>|<c-w>l")
+normal("sh", ":sp<cr>|<c-w>j")
+normal("sv", ":vsp<cr>|<c-w>l")
+normal("<leader>sh", ":sp<cr>|<c-w>j|:Telescope find_files<cr>")
+normal("<leader>sv", ":vsp<cr>|<c-w>l|:Telescope find_files<cr>")
 
 -- Keep search matches in the middle of the window
 normal("n", "nzzzv")
