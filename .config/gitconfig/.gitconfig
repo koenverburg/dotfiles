@@ -57,4 +57,6 @@
 
   refresh = !sh -c "git checkout main;git pull;git checkout -"
   lint = !sh -c "git show --pretty="" --name-only HEAD --diff-filter=d | grep '.ts\\|.js\\|.tsx|\\.jsx' | xargs npx eslint_d"
+  changedfiles = !git --no-pager diff main...HEAD --name-only --diff-filter=d '*.js' '*.jsx' '*.ts' '*.tsx'
+  changedtests = !git --no-pager diff main...HEAD --name-only --diff-filter=d '*.spec.js' '*.spec.jsx' '*.spec.ts' '*.spec.tsx'
 
