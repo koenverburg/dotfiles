@@ -87,8 +87,10 @@ visual("L", "g_")
 normal("<Tab>", "%")
 
 -- Splits
-normal("sh","<cmd>sp<cr>")
-normal("sv","<cmd>vsp<cr>")
+normal("sh", ":sp<cr>|<c-w>j")
+normal("sv", ":vsp<cr>|<c-w>l")
+normal("<leader>sh", ":sp<cr>|<c-w>j|:Telescope find_files<cr>")
+normal("<leader>sv", ":vsp<cr>|<c-w>l|:Telescope find_files<cr>")
 
 -- Keep search matches in the middle of the window
 normal("n", "nzzzv")
@@ -116,7 +118,7 @@ normal("<a-down>", ":resize -5<cr>")
 -- insert('<leader>w', ':w<cr>')
 
 -- Creating a new tab
-normal("<leader><S-t>", ":tabnew<cr>")
+normal("<leader>T", ":tabnew<cr>")
 
 -- Tab movement
 normal("<S-Tab>",":tabnext<cr>")
@@ -180,6 +182,8 @@ insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> 
 
 -- Quick folding
 normal('<space>f', 'za<cr>')
+
+-- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
 return {
 	normal,

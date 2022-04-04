@@ -9,11 +9,10 @@ require("telescope").setup {
   },
   extensions = {
     fzf = {
-      fuzzy = false, -- false will only do exact matching
+      fuzzy = true, -- false will only do exact matching
       override_file_sorter = true, -- override the file sorter
       override_generic_sorter = true, -- override the generic sorter
-      case_mode = "ignore_case", -- or "ignore_case" or "respect_case"
-      -- the default case_mode is "smart_case"
+      case_mode = "ignore_case", -- or "ignore_case" or "respect_case", the default case_mode is "smart_case"
     },
     file_browser = {
       theme = 'ivy'
@@ -106,7 +105,7 @@ end
 
 function M.find_files()
   local opts = {
-    layout_strategy = "vertical",
+    layout_strategy = "horizontal",
     layout_config = {
       prompt_position = "bottom",
     },
