@@ -13,10 +13,10 @@ require("nebulous").setup {
   },
 }
 
-vim.cmd([[ highlight NonText guibg=none ]])
-vim.cmd([[ highlight Normal guibg=none ]])
+vim.cmd [[ highlight NonText guibg=none ]]
+vim.cmd [[ highlight Normal guibg=none ]]
 
-vim.o.signcolumn = 'number'
+vim.o.signcolumn = "number"
 
 vim.g.mapleader = ","
 vim.b.mapleader = ","
@@ -67,10 +67,12 @@ vim.o.showtabline = 2
 vim.cmd [[ set laststatus=3 ]]
 -- vim.cmd [[ hightlight WinSeparator guibg=none ]]
 
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "manual"
+vim.opt.foldcolumn = "1"
 -- folding
-vim.cmd [[ set foldlevel=99 ]]
-vim.cmd [[ set foldmethod=marker ]]
--- vim.cmd [[ set foldexpr=nvim_treesitter#foldexpr() ]]
+-- vim.cmd [[ set foldlevel=99 ]]
+-- vim.cmd [[ set foldmethod=manual ]]
 
 vim.cmd [[ highlight clear SignColumn ]]
 vim.cmd [[ set noshowmode ]]
