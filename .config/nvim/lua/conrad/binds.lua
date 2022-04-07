@@ -1,5 +1,5 @@
 -- This file will contain all the keybindings for nvim
-local utils = require("conrad.utils")
+local utils = require "conrad.utils"
 local normal = utils.normal
 local visual = utils.visual
 local insert = utils.insert
@@ -43,7 +43,12 @@ visual("<leader>fr", "'>s/")
 normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
 normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
 
--- vim.api.nvim_command [[ autocmd BufEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
+
+-- Folding using Treesitter
+normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
+vim.api.nvim_command [[ autocmd BufEnter *.ts,*.tsx,*.go :lua require 'conrad.plugins.folds'.main() ]]
+-- vim.api.nvim_command [[ autocmd BufLeave *.ts,*.tsx,*.js,*.jsx,*.go :lua require 'conrad.plugins.folds'.teardown() ]]
+
 -- vim.api.nvim_command [[ autocmd BufWinEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
 -- vim.api.nvim_command [[ autocmd TabEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
 -- vim.api.nvim_command [[ autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
@@ -58,6 +63,7 @@ normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
 normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 
 -- This is so I can quickly quite out of vim without having to close all the buffers
+-- normal("<leader>bd", "<cmd>qall<cr>") -- delete all buffers
 normal("<leader>q", "<cmd>qall<cr>")
 
 -- Easier Moving between splits
@@ -121,7 +127,7 @@ normal("<a-down>", ":resize -5<cr>")
 normal("<leader>T", ":tabnew<cr>")
 
 -- Tab movement
-normal("<S-Tab>",":tabnext<cr>")
+normal("<S-Tab>", ":tabnext<cr>")
 
 -- Credo, sort aliases in alphabetical order
 visual("<leader>s", ":'<,'>!sort -f<cr>")
@@ -181,12 +187,12 @@ insert("<c-j>", [[ <cmd>lua require('conrad.setup.snippets').JumpBack()<cr> ]])
 insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> ]])
 
 -- Quick folding
-normal('<space>f', 'za<cr>')
+normal("<space>f", "za<cr>")
 
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
 return {
-	normal,
-	visual,
-	insert,
+  normal,
+  visual,
+  insert,
 }
