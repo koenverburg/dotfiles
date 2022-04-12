@@ -12,9 +12,9 @@ local Rule = require "nvim-autopairs.rule"
 local npairs = require "nvim-autopairs"
 npairs.add_rule(Rule("<", ">"))
 
-require("reach").setup {
-  notifications = false,
-}
+-- require("reach").setup {
+--   notifications = false,
+-- }
 
 require("conrad.plugins.charlist").setup({
   enabled = true
