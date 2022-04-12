@@ -40,6 +40,7 @@ return require("packer").startup{
     use "ellisonleao/glow.nvim"
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
+    use 'stevearc/dressing.nvim'
     -- use "tjdevries/cyclist.vim"
     use "unblevable/quick-scope"
     use "google/vim-searchindex"

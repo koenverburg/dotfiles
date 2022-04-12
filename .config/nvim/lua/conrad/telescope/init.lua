@@ -1,4 +1,5 @@
 local table = require "table"
+local utils = require "conrad.utils"
 local themes = require "telescope.themes"
 local sorters = require "telescope.sorters"
 
@@ -76,17 +77,24 @@ function M.find_files_dotfiles()
 end
 
 function M.my_string_grep()
-  local query = vim.fn.input "Search for > "
-
-  local opts = {
-    search = query,
-    layout_strategy = "horizontal",
-    layout_config = {
-      prompt_position = "bottom",
-    },
+  local input = {
+    prompt = "string grep",
+    default = node_text or ""
   }
 
-  require("telescope.builtin").grep_string(opts)
+  local function string_grep_proxy(value)
+    local opts = {
+      search = value,
+      layout_strategy = "horizontal",
+      layout_config = {
+        prompt_position = "bottom",
+      },
+    }
+
+    require("telescope.builtin").grep_string(opts)
+  end
+
+  utils.inputOrUI(input, string_grep_proxy)
 end
 
 function M.my_live_grep()

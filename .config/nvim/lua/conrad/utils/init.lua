@@ -30,6 +30,17 @@ function M.close()
   end
 end
 
+function M.inputOrUI(opts, callback)
+  opts = opts or { default = "", prompt = "prompt" }
+
+  if not vim.ui.input then
+    local value = vim.fn.input(opts.prompt .. ": ", opts.default)
+    callback(value)
+  else
+    vim.ui.input(opts, callback)
+  end
+end
+
 function M.save_and_execute()
   local filetype = vim.bo.filetype
 
