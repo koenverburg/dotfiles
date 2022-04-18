@@ -5,6 +5,7 @@ return require("packer").startup{
 
     -- Colorscheme
     use "glepnir/zephyr-nvim"
+    use "Shatur/neovim-ayu"
     use "Yagua/nebulous.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
     use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
