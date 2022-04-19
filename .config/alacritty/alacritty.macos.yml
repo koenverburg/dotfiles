@@ -6,7 +6,7 @@ window:
   padding:
     x: 3
     y: 3
-  decorations: none
+  # decorations: none
   opacity: 0.8
   dynamic_title: true
 scrolling:
