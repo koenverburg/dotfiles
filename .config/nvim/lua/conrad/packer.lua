@@ -5,6 +5,7 @@ return require("packer").startup{
 
     -- Colorscheme
     use "glepnir/zephyr-nvim"
+    use "Shatur/neovim-ayu"
     use "Yagua/nebulous.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
     use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
@@ -41,6 +42,7 @@ return require("packer").startup{
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
     use 'stevearc/dressing.nvim'
+    use 'glepnir/smartinput.nvim'
     -- use "tjdevries/cyclist.vim"
     use "unblevable/quick-scope"
     use "google/vim-searchindex"
@@ -51,11 +53,9 @@ return require("packer").startup{
     use "ThePrimeagen/harpoon"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
-    use 'toppair/reach.nvim'
-    use 'anuvyklack/pretty-fold.nvim'
     use 'rcarriga/nvim-notify'
     use 'simrat39/symbols-outline.nvim'
-    -- use 'sunjon/shade.nvim'
+    use 'sunjon/shade.nvim'
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 

@@ -1,17 +1,11 @@
 vim.o.ruler = true
 vim.o.background = "dark"
 
-require("colorbuddy").colorscheme "nebulous"
-require("nebulous").setup {
-  variant = "night",
-  -- variant = "quasar",
-  italic = {
-    comments = false,
-    keywords = false,
-    functions = false,
-    variables = false,
-  },
-}
+require('ayu').setup({
+  mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+})
+
+vim.cmd [[ colorscheme ayu-dark ]]
 
 vim.cmd [[ highlight NonText guibg=none ]]
 vim.cmd [[ highlight Normal guibg=none ]]

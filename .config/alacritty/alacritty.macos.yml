@@ -7,7 +7,7 @@ window:
     x: 3
     y: 3
   # decorations: none
-  opacity: 0.8
+  opacity: 1
   dynamic_title: true
 scrolling:
   history: 10000
@@ -18,19 +18,19 @@ startup_mode: Windowed
 
 # Font configuration
 font:
-  light:
-    family: FiraCode Nerd Font
-    style: Light
-  normal:
-    family: FiraCode Nerd Font
-    style: Medium
-  semiBold:
-    family: FiraCode Nerd Font
-    style: SemiBold
-  bold:
-    family: FiraCode Nerd Font
-    style: Bold
-
+  # light:
+  #   family: FiraCode Nerd Font
+  #   style: Light
+  # normal:
+  #   family: FiraCode Nerd Font
+  #   style: Medium
+  # semiBold:
+  #   family: FiraCode Nerd Font
+  #   style: SemiBold
+  # bold:
+  #   family: FiraCode Nerd Font
+  #   style: Bold
+  #
   size: 15
 
   offset:
@@ -54,6 +54,34 @@ cursor:
 live_config_reload: true
 
 schemes:
+  # Colors (Ayu Dark)
+  ayu: &ayu # Default colors
+    primary:
+      background: "0x0f1419"
+      foreground: "0xe6e1cf"
+
+    # Normal colors
+    normal:
+      black: "0x000000"
+      red: "0xf34a4a"
+      green: "0xbae67e"
+      yellow: "0xffee99"
+      blue: "0x73d0ff"
+      magenta: "0xd4bfff"
+      cyan: "0x83CEC6"
+      white: "0xf2f2f2"
+
+    # Bright colors
+    bright:
+      black: "0x737d87"
+      red: "0xff3333"
+      green: "0xc2d94c"
+      yellow: "0xe7c547"
+      blue: "0x59c2ff"
+      magenta: "0xb77ee0"
+      cyan: "0x5ccfe6"
+      white: "0xffffff"
+
   github: &github
     primary:
       background: "#0b1015"
@@ -83,7 +111,7 @@ schemes:
     white: "0xffffff"
 
 # Colors Github theme (dimmed)
-colors: *github
+colors: *ayu
 
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
