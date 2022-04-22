@@ -12,15 +12,16 @@ local Rule = require "nvim-autopairs.rule"
 local npairs = require "nvim-autopairs"
 npairs.add_rule(Rule("<", ">"))
 
-require('smartinput').setup {
-  -- your rule here
-  ['go'] = { ';',':=', ';'},
-  ['typescript'] = {' >', '=>', '>'}
+require("smartinput").setup {
+  ["go"] = { ";", ":=", ";" },
+  ["typescript"] = { " >", "=>", ">" },
+  ["markdown"] = { "_", "__", "_" },
+  ["markdown"] = { "**", "****", "**" },
 }
 
-require("conrad.plugins.charlist").setup({
-  enabled = true
-})
+require("conrad.plugins.charlist").setup {
+  enabled = true,
+}
 
 -- require('shade').setup({
 --   overlay_opacity = 50,
