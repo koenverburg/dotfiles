@@ -45,7 +45,6 @@ function M.dim(buf, lnum)
     hl_eol = true,
     priority = 10000,
   })
-  -- vim.api.nvim_buf_add_highlight(buf, ns, "Twilight", lnum, 0, -1)
 end
 
 function M.is_empty_line(buf, line)
@@ -73,15 +72,17 @@ function M.scope()
   end
 
   for i = 0, node:start()-1 do
-    M.dim(0, i)
+    if not M.is_empty_line(0, i) then
+      M.dim(0, i)
+    end
   end
 
   for j = node:end_()+1, end_of_file do
-    M.dim(0, j)
+    if not M.is_empty_line(0, j) then
+      M.dim(0, j)
+    end
   end
 
-  -- utils.P(node)
-  -- utils.P(node:end_())
   utils.setVirtualText(ns, node:start(), "hii", "--")
 end
 
