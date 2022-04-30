@@ -131,6 +131,15 @@ function M.setVirtualText(ns, line, text, prefix)
   vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, "Comment" } }, {})
 end
 
+function M.contains(table, element)
+  for _, value in pairs(table) do
+    if value == element then
+      return true
+    end
+  end
+  return false
+end
+
 function M.get_query_matches(bufnr, query)
   local tree = vim.treesitter.get_parser(bufnr)
 

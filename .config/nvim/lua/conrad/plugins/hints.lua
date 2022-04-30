@@ -1,5 +1,9 @@
 require "nvim-treesitter"
 local utils = require "conrad.utils"
+local ts_helpers = require "conrad.utils.treesitter"
+
+local ts_utils = require "nvim-treesitter.ts_utils"
+local ts_locals = require "nvim-treesitter.locals"
 local ts_parsers = require "nvim-treesitter.parsers"
 
 local P = utils.P
@@ -32,6 +36,54 @@ local ns = vim.api.nvim_create_namespace "conrad/hints"
 --
 --   utils.P(markdown_lines)
 -- end
+
+function M.dim(buf, lnum)
+  pcall(vim.api.nvim_buf_set_extmark, buf, ns, lnum, 0, {
+    end_line = lnum + 1,
+    end_col = 0,
+    hl_group = "Comment",
+    hl_eol = true,
+    priority = 10000,
+  })
+  -- vim.api.nvim_buf_add_highlight(buf, ns, "Twilight", lnum, 0, -1)
+end
+
+function M.is_empty_line(buf, line)
+  local lines = vim.api.nvim_buf_get_lines(buf, line, line + 1, false)
+
+  if vim.fn.trim(lines[1]) == "" then
+    return true
+  end
+
+  return false
+end
+
+function M.scope()
+  local end_of_file = vim.fn.line('$')
+
+  local node = ts_helpers.get_function_node({
+    "function_declaration",
+    "method_declaration",
+    "func_literal"
+  })
+
+  if not node then
+    print("no node")
+    return
+  end
+
+  for i = 0, node:start()-1 do
+    M.dim(0, i)
+  end
+
+  for j = node:end_()+1, end_of_file do
+    M.dim(0, j)
+  end
+
+  -- utils.P(node)
+  -- utils.P(node:end_())
+  utils.setVirtualText(ns, node:start(), "hii", "--")
+end
 
 local attached_buffers = {}
 function M.show()
