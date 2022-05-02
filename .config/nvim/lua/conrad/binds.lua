@@ -157,6 +157,9 @@ insert(".", ".<c-g>u")
 -- File Tree
 normal("<C-b>", ":NvimTreeToggle<cr>")
 
+normal("<leader>gt", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal()<cr> ]])
+terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
+
 normal("<leader>gg", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('lazygit')<cr> ]])
 terminal("<leader>gg", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
