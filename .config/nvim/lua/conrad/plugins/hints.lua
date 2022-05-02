@@ -57,9 +57,19 @@ function M.is_empty_line(buf, line)
   return false
 end
 
-function M.scope()
+function M.enable()
+  vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+  M.peepsight()
+end
+
+function M.disable()
+  vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+end
+
+function M.peepsight()
   local end_of_file = vim.fn.line('$')
 
+  -- Abstract this to config for other languages, typescript, groovy, yaml, lua
   local node = ts_helpers.get_function_node({
     "function_declaration",
     "method_declaration",
@@ -67,23 +77,22 @@ function M.scope()
   })
 
   if not node then
-    print("no node")
     return
   end
 
+  -- Dim above function range
   for i = 0, node:start()-1 do
     if not M.is_empty_line(0, i) then
       M.dim(0, i)
     end
   end
 
+  -- Dim below function range
   for j = node:end_()+1, end_of_file do
     if not M.is_empty_line(0, j) then
       M.dim(0, j)
     end
   end
-
-  utils.setVirtualText(ns, node:start(), "hii", "--")
 end
 
 local attached_buffers = {}
