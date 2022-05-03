@@ -71,9 +71,18 @@ function M.peepsight()
 
   -- Abstract this to config for other languages, typescript, groovy, yaml, lua
   local node = ts_helpers.get_function_node({
+    -- go
     "function_declaration",
     "method_declaration",
-    "func_literal"
+    "func_literal",
+
+    -- typescript
+    "arrow_function",
+    "function_declaration",
+    "generator_function_declaration",
+
+    -- Yaml
+    -- "block_node"
   })
 
   if not node then
