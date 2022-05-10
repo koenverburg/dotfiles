@@ -83,16 +83,15 @@ return require("packer").startup{
     use "lewis6991/gitsigns.nvim"
     use "nvim-lualine/lualine.nvim"
     use "tjdevries/express_line.nvim"
-    use "koenverburg/minimal-tabline.nvim"
-    use "koenverburg/virtual-types.nvim"
 
     -- Icons
     use "ryanoasis/vim-devicons"
     use "kyazdani42/nvim-web-devicons"
 
-    -- Focus mode
-    use "folke/twilight.nvim"
-    -- use "folke/zen-mode.nvim"
+    -- My plugins
+    use "koenverburg/minimal-tabline.nvim"
+    use "koenverburg/peepsight.nvim"
+    -- use "koenverburg/virtual-types.nvim"
 
     -- Snippets
     use "L3MON4D3/LuaSnip"

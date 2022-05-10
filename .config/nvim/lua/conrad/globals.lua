@@ -10,7 +10,7 @@ vim.cmd [[ colorscheme ayu-dark ]]
 vim.cmd [[ highlight NonText guibg=none ]]
 vim.cmd [[ highlight Normal guibg=none ]]
 
-vim.o.signcolumn = "number"
+-- vim.o.signcolumn = "number"
 
 vim.g.mapleader = ","
 vim.b.mapleader = ","

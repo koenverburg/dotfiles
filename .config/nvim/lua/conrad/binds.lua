@@ -46,7 +46,7 @@ normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr
 -- Folding using Treesitter
 normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
 
-vim.api.nvim_command [[ autocmd BufWritePost,CursorMoved,CursorMovedI,WinScrolled * :lua require 'conrad.plugins.hints'.enable() ]]
+-- vim.api.nvim_command [[ autocmd BufWritePost,CursorMoved,CursorMovedI,WinScrolled * :lua require 'conrad.plugins.hints'.enable() ]]
 -- vim.api.nvim_command [[ autocmd CursorMoved, CursorMovedI *.ts,*.tsx,*.go,*.lua :lua require 'conrad.plugins.hints'.enable() ]]
 -- vim.api.nvim_command [[ autocmd BufLeave *.ts,*.tsx,*.js,*.jsx,*.go :lua require 'conrad.plugins.folds'.teardown() ]]
 
