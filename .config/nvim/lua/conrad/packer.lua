@@ -21,6 +21,7 @@ return require("packer").startup{
     use "nvim-treesitter/playground"
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-textobjects"
+    use "LinArcX/telescope-command-palette.nvim"
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- LSP config
