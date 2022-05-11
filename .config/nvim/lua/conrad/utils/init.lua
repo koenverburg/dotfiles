@@ -80,7 +80,7 @@ end
 
 function M.on_attach(client)
   require("lsp_signature").on_attach()
-  require("virtualtypes").on_attach()
+  -- require("virtualtypes").on_attach()
 
   if client.name == "tsserver" or client.name == "gopls" then
     client.resolved_capabilities.document_formatting = false

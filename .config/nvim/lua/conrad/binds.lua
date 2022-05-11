@@ -36,6 +36,9 @@ telescope_map("<leader>cx", "lsp_code_actions")
 telescope_map("<leader>re", "refactors")
 normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
 
+-- Command Palette
+normal('<space>cp', "<cmd>Telescope command_palette<cr>")
+
 -- Find 'n Replace
 normal("<leader>fr", ":%s/")
 visual("<leader>fr", "'>s/")
@@ -45,18 +48,6 @@ normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr
 
 -- Folding using Treesitter
 normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
-
--- vim.api.nvim_command [[ autocmd BufWritePost,CursorMoved,CursorMovedI,WinScrolled * :lua require 'conrad.plugins.hints'.enable() ]]
--- vim.api.nvim_command [[ autocmd CursorMoved, CursorMovedI *.ts,*.tsx,*.go,*.lua :lua require 'conrad.plugins.hints'.enable() ]]
--- vim.api.nvim_command [[ autocmd BufLeave *.ts,*.tsx,*.js,*.jsx,*.go :lua require 'conrad.plugins.folds'.teardown() ]]
-
--- vim.api.nvim_command [[ autocmd BufWinEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
--- vim.api.nvim_command [[ autocmd TabEnter *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
--- vim.api.nvim_command [[ autocmd BufWritePost *.ts,*.tsx,*.js,*.jsx :lua require 'conrad.plugins.inlays'.show() ]]
--- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.plugins.inlays'.show() ]]
-
--- vim.api.nvim_command [[ autocmd CursorMoved * :lua require 'conrad.core.virtualtext'.show() ]]
--- vim.api.nvim_command [[ autocmd CursorMovedI * :lua require 'conrad.core.virtualtext'.show() ]]
 
 -- Harpoon
 normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')

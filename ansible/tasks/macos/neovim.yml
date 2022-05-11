@@ -3,14 +3,14 @@
     - neovim
   register: neovim_local
   stat:
-    path: "~/tools/neovim"
+    path: "~/code/tools/neovim"
 
 - name: Git | Pull latest changes if local copy exists
   when: neovim_local.stat.exists
   tags:
     - neovim
   shell: |
-    cd ~/tools/neovim
+    cd ~/code/tools/neovim
     git pull
 
 - name: Git | Clone Neovim repository
@@ -19,21 +19,21 @@
     - neovim
   git:
     repo: "https://github.com/neovim/neovim.git"
-    dest: "~/tools/neovim"
+    dest: "~/code/tools/neovim"
     clone: yes
 
-# - name: Brew | install all deps for neovim
-#   tags:
-#     - neovim
-#   shell: |
-#     brew install ninja libtool automake cmake pkg-config gettext curl
+- name: Brew | install all deps for neovim
+  tags:
+    - neovim
+  shell: |
+    brew install ninja libtool automake cmake pkg-config gettext curl
 
 - name: Make | build release
   tags:
     - neovim
   # when: not neovim_local.stat.exists
   shell: |
-    cd ~/tools/neovim
+    cd ~/code/tools/neovim
     sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
 
 - name: Make | Install
@@ -41,6 +41,6 @@
     - neovim
   # when: not neovim_local.stat.exists
   shell: |
-    cd ~/tools/neovim
+    cd ~/code/tools/neovim
     sudo make install
 
