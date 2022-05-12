@@ -41,6 +41,21 @@ function M.inputOrUI(opts, callback)
   end
 end
 
+function M.PopUpSearch()
+  local opts ={
+    prompt = "Search For",
+    default = ""
+  }
+
+  function proxy(value)
+    if value == nil or value == "" then return end
+
+    vim.cmd('/' .. value)
+  end
+
+  M.inputOrUI(opts, proxy)
+end
+
 function M.save_and_execute()
   local filetype = vim.bo.filetype
 
