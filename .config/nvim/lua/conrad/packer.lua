@@ -1,4 +1,4 @@
-return require("packer").startup{
+return require("packer").startup {
   function(use)
     -- use 'tweekmonster/startuptime.vim'
     use { "wbthomason/packer.nvim", opt = true }
@@ -7,6 +7,7 @@ return require("packer").startup{
     use "glepnir/zephyr-nvim"
     use "Shatur/neovim-ayu"
     use "Yagua/nebulous.nvim"
+    use "doums/darcula"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
     use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
 
@@ -21,7 +22,6 @@ return require("packer").startup{
     use "nvim-treesitter/playground"
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-textobjects"
-    use "LinArcX/telescope-command-palette.nvim"
     use "JoosepAlviste/nvim-ts-context-commentstring"
 
     -- LSP config
@@ -32,19 +32,18 @@ return require("packer").startup{
     use "hrsh7th/cmp-nvim-lsp"
     use "tami5/lspsaga.nvim"
     use "ray-x/lsp_signature.nvim"
-    use 'nvim-lua/lsp_extensions.nvim'
+    use "nvim-lua/lsp_extensions.nvim"
     use "j-hui/fidget.nvim"
 
     -- Utils
-    use 'windwp/nvim-autopairs'
+    use "windwp/nvim-autopairs"
     use "kyazdani42/nvim-tree.lua"
     use "phaazon/hop.nvim"
     use "ellisonleao/glow.nvim"
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
-    use 'stevearc/dressing.nvim'
-    use 'glepnir/smartinput.nvim'
-    -- use "tjdevries/cyclist.vim"
+    use "stevearc/dressing.nvim"
+    use "glepnir/smartinput.nvim"
     use "unblevable/quick-scope"
     use "google/vim-searchindex"
     use "ruifm/gitlinker.nvim"
@@ -54,9 +53,9 @@ return require("packer").startup{
     use "ThePrimeagen/harpoon"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
-    use 'rcarriga/nvim-notify'
-    use 'simrat39/symbols-outline.nvim'
-    use 'sunjon/shade.nvim'
+    use "rcarriga/nvim-notify"
+    use "simrat39/symbols-outline.nvim"
+    use "sunjon/shade.nvim"
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
@@ -92,6 +91,7 @@ return require("packer").startup{
     -- My plugins
     use "koenverburg/minimal-tabline.nvim"
     use "koenverburg/peepsight.nvim"
+    use "koenverburg/cmd-palette.nvim"
     -- use "koenverburg/virtual-types.nvim"
 
     -- Snippets

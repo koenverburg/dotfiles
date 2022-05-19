@@ -37,7 +37,7 @@ telescope_map("<leader>re", "refactors")
 normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
 
 -- Command Palette
-normal('<space>cp', "<cmd>Telescope command_palette<cr>")
+normal("<space>cp", "<cmd>CmdPalette<cr>")
 
 -- Find 'n Replace
 normal("<leader>fr", ":%s/")
@@ -48,6 +48,7 @@ normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr
 
 -- Folding using Treesitter
 normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
+
 
 -- Harpoon
 normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
