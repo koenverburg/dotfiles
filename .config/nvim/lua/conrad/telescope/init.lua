@@ -18,12 +18,6 @@ require("telescope").setup {
     file_browser = {
       theme = 'ivy'
     },
-    command_palette = {
-      {"Focus",
-        {"PeepsightEnable", ":PeepsightEnable"},
-        {"PeepsightDisable", ":PeepsightDisable"}
-      }
-    }
   },
 }
 
@@ -38,7 +32,6 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "git_worktree"
 require("telescope").load_extension "session-lens"
 require("telescope").load_extension "file_browser"
-require('telescope').load_extension "command_palette"
 
 local M = {}
 

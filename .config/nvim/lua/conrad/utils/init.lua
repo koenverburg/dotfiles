@@ -70,16 +70,17 @@ end
 
 function M.telescope_map(key, f, options, buffer)
   local mode = "n"
-  local rhs = string.format(
-    "<cmd>lua require('conrad.telescope')['%s'](%s)<CR>",
-    f,
-    options and vim.inspect(options, { newline = "" }) or ""
-  )
 
   local options = {
     silent = true,
     noremap = true,
   }
+
+  local rhs = string.format(
+    "<cmd>lua require('conrad.telescope')['%s'](%s)<CR>",
+    f,
+    options and vim.inspect(options, { newline = "" }) or ""
+  )
 
   if not buffer then
     vim.api.nvim_set_keymap(mode, key, rhs, options)
