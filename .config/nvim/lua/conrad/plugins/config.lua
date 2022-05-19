@@ -23,12 +23,19 @@ require("conrad.plugins.charlist").setup {
   enabled = true,
 }
 
--- require('shade').setup({
---   overlay_opacity = 50,
---   opacity_step = 1,
---   keys = {
---     brightness_up    = '<C-Up>',
---     brightness_down  = '<C-Down>',
---     toggle           = '<Leader>s',
---   }
--- })
+require('cmd-palette').setup({
+  { label = "PeepsightToggle", cmd = "Peepsight" },
+  -- { label = "Greeting", callback = function() print("Hello, Koen") end },
+})
+
+require('peepsight').setup(nil, {
+  -- go
+  "function_declaration",
+  "method_declaration",
+  "func_literal",
+
+  -- JavaScript / TypeScript
+  "arrow_function",
+  "function_declaration",
+  "generator_function_declaration",
+})
