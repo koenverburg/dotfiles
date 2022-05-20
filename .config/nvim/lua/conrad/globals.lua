@@ -1,16 +1,17 @@
 vim.o.ruler = true
 vim.o.background = "dark"
-
+--
 require('ayu').setup({
-  mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+  mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
 })
+vim.cmd [[ colorscheme ayu-mirage ]]
+-- vim.cmd [[ colorscheme darcula ]]
+-- require('colorbuddy').colorscheme('gruvbuddy')
 
-vim.cmd [[ colorscheme ayu-dark ]]
+-- vim.cmd [[ highlight NonText guibg=none ]]
+-- vim.cmd [[ highlight Normal guibg=none ]]
 
-vim.cmd [[ highlight NonText guibg=none ]]
-vim.cmd [[ highlight Normal guibg=none ]]
-
--- vim.o.signcolumn = "number"
+vim.o.signcolumn = "yes"
 
 vim.g.mapleader = ","
 vim.b.mapleader = ","
@@ -22,6 +23,7 @@ vim.g.undofile = true
 vim.g.undordir = "~/.config/nvim/undodir"
 
 vim.wo.number = true
+vim.g.cursorline = true
 vim.wo.relativenumber = false
 vim.wo.wrap = true
 vim.wo.list = true
@@ -63,7 +65,7 @@ vim.cmd [[ set laststatus=3 ]]
 
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "manual"
-vim.opt.foldcolumn = "1"
+-- vim.opt.foldcolumn = "1"
 -- folding
 -- vim.cmd [[ set foldlevel=99 ]]
 -- vim.cmd [[ set foldmethod=manual ]]
