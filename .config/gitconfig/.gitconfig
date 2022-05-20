@@ -60,3 +60,5 @@
   changedfiles = !git --no-pager diff main...HEAD --name-only --diff-filter=d '*.js' '*.jsx' '*.ts' '*.tsx'
   changedtests = !git --no-pager diff main...HEAD --name-only --diff-filter=d '*.spec.js' '*.spec.jsx' '*.spec.ts' '*.spec.tsx'
 
+[init]
+	defaultBranch = main

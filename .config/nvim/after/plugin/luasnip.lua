@@ -18,9 +18,10 @@ local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
-function snip(name, value)
-	return ls.parser.parse_snippet(name, value)
-end
+-- local snip = function(name, value)
+-- 	return ls.parser.parse_snippet(name, value)
+-- end
+local snip = ls.parser.parse_snippet
 
 local frontend = {
 	snip("shrug", "// ¯\\_(ツ)_/¯ ${1}"),
@@ -34,6 +35,7 @@ local frontend = {
 	snip("impo", "import { ${1} } from '${2}'"),
 
 	snip("func", "function ${1}() {\n${2}\n}"),
+  snip("cst", "const ${1} = ${2}"),
 
 	s(
 		"fmt2",
