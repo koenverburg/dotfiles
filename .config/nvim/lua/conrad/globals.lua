@@ -2,9 +2,9 @@ vim.o.ruler = true
 vim.o.background = "dark"
 --
 require('ayu').setup({
-  mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+  mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
 })
-vim.cmd [[ colorscheme ayu-mirage ]]
+vim.cmd [[ colorscheme ayu-dark ]]
 -- vim.cmd [[ colorscheme darcula ]]
 -- require('colorbuddy').colorscheme('gruvbuddy')
 
@@ -74,6 +74,8 @@ vim.cmd [[ highlight clear SignColumn ]]
 vim.cmd [[ set noshowmode ]]
 
 vim.cmd [[ set colorcolumn=120 ]]
+
+vim.cmd [[ set winbar=%=%m\ %f ]]
 
 vim.cmd [[ augroup illuminate_augroup ]]
 vim.cmd [[ autocmd! ]]
