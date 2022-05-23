@@ -85,59 +85,18 @@ function M.show()
   local results = {}
   for _, match, metadata in matches do
     index = 1
+    utils.P(match)
+    -- utils.P(match[index]:named())
 
-    if match[index] then
-      utils.P(match)
-      utils.P(match[index]:named())
-      -- utils.P(getmetatable(match[index]))
-      -- utils.P(getmetatable(metadata))
-    else
-      index = 2
-    end
+    -- do while match[index] is true
+    -- if match[index+1] is nil then end is reached -> exit func
+    -- repeat
+    --   utils.P(match)
+    --   utils.P(match[index]:named())
+    --   index = index + 1
+    -- until next(match) == nil
 
-    if match[index] then
-      utils.P(match)
-      utils.P(match[index]:named())
-      -- utils.P(getmetatable(match[index]))
-      -- utils.P(getmetatable(metadata))
-    else
-      index = 3
-    end
-
-    if match[index] then
-      utils.P(match)
-      utils.P(match[index]:named())
-      -- utils.P(getmetatable(match[index]))
-      -- utils.P(getmetatable(metadata))
-    else
-      index = 4
-    end
-
-    if match[index] then
-      utils.P(match)
-      utils.P(match[index]:named())
-      -- utils.P(getmetatable(match[index]))
-      -- utils.P(getmetatable(metadata))
-    else
-      index = 5
-    end
-
-    if match[index] then
-      utils.P(match)
-      utils.P(match[index]:named())
-      -- utils.P(getmetatable(match[index]))
-      -- utils.P(getmetatable(metadata))
-    end
-    -- utils.P(match[1]:named())
-    -- utils.P(match[3])
-    -- utils.P(match[4])
-
-    -- utils.P(vim.lsp.protocol.SymbolKind[match[1]:symbol()] or "Unknown")
-    -- if match[1]:symbol() == nil then
-    --   symbol = vim.lsp.protocol.SymbolKind[match[1]:symbol()]
-    -- else
-    --   symbol = "Unknown"
-    -- end
+    --   utils.P(match[index]:named())
 
     -- table.insert(results, {
     --   node_type = match[1]:type(),
@@ -146,7 +105,7 @@ function M.show()
     -- })
   end
 
-  utils.P(results)
+  -- utils.P(results)
 
   -- for _, v in ipairs(results) do
   --   utils.setVirtualText(ns, v.start_line, v.node_type, "--")
