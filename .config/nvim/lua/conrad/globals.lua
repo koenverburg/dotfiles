@@ -75,7 +75,7 @@ vim.cmd [[ set noshowmode ]]
 
 vim.cmd [[ set colorcolumn=120 ]]
 
-vim.cmd [[ set winbar=%=%m\ %f ]]
+vim.cmd [[ set winbar=%m\ %f ]]
 
 vim.cmd [[ augroup illuminate_augroup ]]
 vim.cmd [[ autocmd! ]]
