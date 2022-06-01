@@ -4,7 +4,7 @@ require("session-lens").setup()
 
 require("Comment").setup() -- The bindings need to updated from this plugin
 
-vim.notify = require "notify"
+-- vim.notify = require "notify"
 
 require("nvim-autopairs").setup()
 local Rule = require "nvim-autopairs.rule"
@@ -25,8 +25,8 @@ require("conrad.plugins.charlist").setup {
 require("minimal-tabline").setup({
   enable = true,
   file_name = false,
-  tab_index = true,
-  pane_count = true,
+  tab_index = false,
+  pane_count = false,
   modified_sign = true,
   no_name = '[No Name]'
 })
@@ -48,3 +48,4 @@ require('peepsight').setup(nil, {
   "function_declaration",
   "generator_function_declaration",
 })
+

@@ -4,12 +4,11 @@ return require("packer").startup {
     use { "wbthomason/packer.nvim", opt = true }
 
     -- Colorscheme
-    use "glepnir/zephyr-nvim"
-    use "Shatur/neovim-ayu"
-    use "Yagua/nebulous.nvim"
     use "doums/darcula"
+    use "Shatur/neovim-ayu"
+    use "glepnir/zephyr-nvim"
+    use "Yagua/nebulous.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
-    use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
@@ -36,6 +35,7 @@ return require("packer").startup {
     use "j-hui/fidget.nvim"
 
     -- Utils
+    use "sindrets/diffview.nvim"
     use "windwp/nvim-autopairs"
     use "kyazdani42/nvim-tree.lua"
     use "phaazon/hop.nvim"
@@ -55,7 +55,7 @@ return require("packer").startup {
     use "numToStr/Comment.nvim"
     use "rcarriga/nvim-notify"
     use "simrat39/symbols-outline.nvim"
-    use "sunjon/shade.nvim"
+    -- use "sunjon/shade.nvim"
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
@@ -72,7 +72,6 @@ return require("packer").startup {
     use "stephpy/vim-yaml"
     use "PProvost/vim-ps1"
     use "ekalinin/Dockerfile.vim"
-    use "skanehira/preview-uml.vim" -- requires plantuml server to run via docker/podman
 
     --  Markdown
     use "godlygeek/tabular"
@@ -81,7 +80,7 @@ return require("packer").startup {
 
     -- Looks
     use "lewis6991/gitsigns.nvim"
-    use "nvim-lualine/lualine.nvim"
+    -- use "nvim-lualine/lualine.nvim"
     use "tjdevries/express_line.nvim"
 
     -- Icons
