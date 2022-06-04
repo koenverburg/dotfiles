@@ -4,7 +4,7 @@ require("session-lens").setup()
 
 require("Comment").setup() -- The bindings need to updated from this plugin
 
-vim.notify = require "notify"
+-- vim.notify = require "notify"
 
 require("nvim-autopairs").setup()
 local Rule = require "nvim-autopairs.rule"
@@ -33,10 +33,19 @@ require("minimal-tabline").setup({
 
 require('cmd-palette').setup({
   { label = "Peepsight", cmd = "Peepsight" },
-  -- { label = "Greeting", callback = function() print("Hello, Koen") end },
+  { label = "quite", callback = function()
+    vim.cmd [[ set nonumber ]]
+    vim.o.signcolumn = "no"
+    end
+  },
+  { label = "reset", callback = function()
+    vim.cmd [[ set number ]]
+    vim.o.signcolumn = "yes"
+    end
+  },
 })
 
-require('peepsight').setup(nil, {
+require('peepsight').setup({
   -- go
   "function_declaration",
   "method_declaration",

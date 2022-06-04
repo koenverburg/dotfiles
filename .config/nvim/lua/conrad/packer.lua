@@ -89,14 +89,13 @@ return require("packer").startup {
     use "kyazdani42/nvim-web-devicons"
 
     -- My plugins
-    use "koenverburg/minimal-tabline.nvim"
     use "koenverburg/peepsight.nvim"
+    use "koenverburg/minimal-tabline.nvim"
     use "koenverburg/cmd-palette.nvim"
-    -- use "koenverburg/virtual-types.nvim"
 
     -- Snippets
-    use "L3MON4D3/LuaSnip"
-    use "saadparwaiz1/cmp_luasnip"
+    -- use "L3MON4D3/LuaSnip"
+    -- use "saadparwaiz1/cmp_luasnip"
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it
