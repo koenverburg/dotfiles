@@ -23,9 +23,9 @@ vim.g.undofile = true
 vim.g.undordir = "~/.config/nvim/undodir"
 
 vim.wo.number = true
-vim.g.cursorline = true
+vim.o.cursorline = true
 vim.wo.relativenumber = false
-vim.wo.wrap = true
+vim.o.nowrap = true
 vim.wo.list = true
 
 vim.o.tabstop = 2
@@ -73,9 +73,9 @@ vim.opt.foldmethod = "manual"
 vim.cmd [[ highlight clear SignColumn ]]
 vim.cmd [[ set noshowmode ]]
 
-vim.cmd [[ set colorcolumn=120 ]]
+vim.cmd [[ set colorcolumn=80,120 ]]
 
-vim.cmd [[ set winbar=%m\ %f ]]
+vim.cmd [[ set winbar=%m\ %t ]]
 
 vim.cmd [[ augroup illuminate_augroup ]]
 vim.cmd [[ autocmd! ]]
