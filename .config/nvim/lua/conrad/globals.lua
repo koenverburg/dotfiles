@@ -1,15 +1,20 @@
-vim.o.ruler = true
-vim.o.background = "dark"
---
-require('ayu').setup({
-  mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-})
-vim.cmd [[ colorscheme ayu-dark ]]
--- vim.cmd [[ colorscheme darcula ]]
--- require('colorbuddy').colorscheme('gruvbuddy')
+vim.cmd [[ highlight clear SignColumn ]]
+vim.cmd [[ set noshowmode ]]
+
+vim.cmd [[ set colorcolumn=80,120 ]]
+
+vim.cmd [[ set winbar=%m\ %t ]]
+
+vim.cmd [[ augroup illuminate_augroup ]]
+vim.cmd [[ autocmd! ]]
+vim.cmd [[ autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline ]]
+vim.cmd [[ augroup END ]]
 
 -- vim.cmd [[ highlight NonText guibg=none ]]
 -- vim.cmd [[ highlight Normal guibg=none ]]
+
+vim.o.ruler = true
+vim.o.background = "dark"
 
 vim.o.signcolumn = "yes"
 
@@ -23,9 +28,9 @@ vim.g.undofile = true
 vim.g.undordir = "~/.config/nvim/undodir"
 
 vim.wo.number = true
-vim.g.cursorline = true
+vim.o.cursorline = true
 vim.wo.relativenumber = false
-vim.wo.wrap = true
+vim.o.nowrap = true
 vim.wo.list = true
 
 vim.o.tabstop = 2
@@ -70,17 +75,6 @@ vim.opt.foldmethod = "manual"
 -- vim.cmd [[ set foldlevel=99 ]]
 -- vim.cmd [[ set foldmethod=manual ]]
 
-vim.cmd [[ highlight clear SignColumn ]]
-vim.cmd [[ set noshowmode ]]
-
-vim.cmd [[ set colorcolumn=120 ]]
-
-vim.cmd [[ set winbar=%m\ %f ]]
-
-vim.cmd [[ augroup illuminate_augroup ]]
-vim.cmd [[ autocmd! ]]
-vim.cmd [[ autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline ]]
-vim.cmd [[ augroup END ]]
 
 vim.g.DevIconsAppendArtifactFix = 1
 

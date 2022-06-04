@@ -25,8 +25,8 @@ require("conrad.plugins.charlist").setup {
 require("minimal-tabline").setup({
   enable = true,
   file_name = false,
-  tab_index = true,
-  pane_count = true,
+  tab_index = false,
+  pane_count = false,
   modified_sign = true,
   no_name = '[No Name]'
 })
@@ -57,3 +57,4 @@ require('peepsight').setup({
   "function_declaration",
   "generator_function_declaration",
 })
+

@@ -2,39 +2,53 @@ require "nvim-treesitter"
 
 local lsp_proto = vim.lsp.protocol
 local utils = require "conrad.utils"
+local ts_helpers = require "conrad.utils.treesitter"
 local ts_parsers = require "nvim-treesitter.parsers"
+
+local P = utils.P
 
 local M = {}
 local ns = vim.api.nvim_create_namespace "conrad/complexity"
-
-local attached_buffers = {}
+--
+-- local attached_buffers = {}
 
 function M.show()
-  local buf_number = vim.api.nvim_get_current_buf()
+  -- local buf_number = vim.api.nvim_get_current_buf()
+  --
+  -- if attached_buffers[buf_number] then
+  --   return
+  -- end
+  -- attached_buffers[buf_number] = true
 
-  if attached_buffers[buf_number] then
-    return
-  end
-  attached_buffers[buf_number] = true
+  -- local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
 
-  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
+  -- local query = {
+  --   go = [[
+  --   (function_declaration) @functions
+  -- ]],
+  --   typescript = [[
+  --     (arrow_function) @funcs
+  --     (function_declaration) @funcs
+  --     (return_statement) @edges
+  --
+  --     (if_statement) @ifstatements
+  --     (binary_expression) @expressions
+  --     (unary_expression) @expressions
+  --
+  --     (parenthesized_expression) @test
+  --   ]],
+  -- }
 
-  local query = {
-    go = [[
-    (function_declaration) @functions
-  ]],
-    typescript = [[
-      (arrow_function) @funcs
-      (function_declaration) @funcs
-      (return_statement) @edges
+  local node = ts_helpers.get_node({
+    "function_declaration",
+    "method_declaration",
+    "func_literal",
+  })
 
-      (if_statement) @ifstatements
-      (binary_expression) @expressions
-      (unary_expression) @expressions
-
-      (parenthesized_expression) @test
-    ]],
-  }
+  P(node)
+  P(node.__tostring(node))
+  -- P(node._rawquery(node))
+  P(getmetatable(node))
 
   -- LabelStatement: 1,
   -- BreakStatement: 1,
@@ -72,20 +86,21 @@ function M.show()
   -- StringCallExpression: 0,
   -- Comment: 0
 
-  if not query[lang] then
-    print(string.format("Unsupported languages found: %s", lang))
-    return
-  end
-
-  local matches = utils.get_query_matches(bufnr, query[lang])
-  if matches == nil then
-    return
-  end
-
-  local results = {}
-  for _, match, metadata in matches do
-    index = 1
-    utils.P(match)
+  -- if not query[lang] then
+  --   print(string.format("Unsupported languages found: %s", lang))
+  --   return
+  -- end
+  --
+  -- local matches = utils.get_query_matches(bufnr, query[lang])
+  -- if matches == nil then
+  --   return
+  -- end
+  --
+  -- local results = {}
+  -- for _, match, metadata in matches do
+  --   index = 1
+  --   utils.P(match)
+  -- end
     -- utils.P(match[index]:named())
 
     -- do while match[index] is true
@@ -103,7 +118,6 @@ function M.show()
     --   start_line = match[1]:start(),
     --   -- symbol = symbol
     -- })
-  end
 
   -- utils.P(results)
 

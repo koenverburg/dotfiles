@@ -18,7 +18,7 @@ function M.walk_tree(node, types)
 end
 
 
-function M.get_function_node(queries)
+function M.get_node(queries)
   local cursor_node = ts_utils.get_node_at_cursor()
 
   local node = M.walk_tree(cursor_node, queries)

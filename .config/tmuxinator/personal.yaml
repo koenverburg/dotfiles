@@ -1,0 +1,26 @@
+name: dot
+
+windows:
+  - dotfiles:
+      root: ~/code/github/dotfiles
+
+  - bot:
+      root: ~/code/github/node-bot
+
+  - hydra:
+      root: ~/code/github/hydra
+
+  - peepsight:
+      root: ~/code/github/peepsight.nvim
+
+  - minimal-tabline:
+      root: ~/code/github/minimal-tabline.nvim
+
+  - flashlight:
+      root: ~/code/github/flashlight.nvim
+
+  - notes:
+      root: ~/code/github/obsidian
+
+  - site:
+      root: ~/code/github/site
