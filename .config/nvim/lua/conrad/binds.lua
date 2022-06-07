@@ -44,7 +44,7 @@ normal("<leader>fr", ":%s/")
 visual("<leader>fr", "'>s/")
 
 normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
-normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
+-- normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
 
 -- Folding using Treesitter
 normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
@@ -161,9 +161,8 @@ normal("<leader><space>f", ":ZenMode<cr>")
 normal("<leader><space>ll", ":Twilight<cr>")
 
 -- Commenting
--- normal('<space>dc', ':ProDoc<cr>')
-normal("<space>c", ":Commentary<cr>")
-visual("<space>c", ":Commentary<cr>")
+normal("<space>C", [[ <cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr> ]])
+-- visual("<space>c", ":Commentary<cr>")
 
 -- word hopping
 normal("<leader>jf", ":HopWord<cr>")

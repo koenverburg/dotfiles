@@ -1,3 +1,5 @@
+vim.cmd "language en_US.utf-8"
+vim.cmd [[ set laststatus=3 ]]
 vim.cmd [[ highlight clear SignColumn ]]
 vim.cmd [[ set noshowmode ]]
 
@@ -10,71 +12,47 @@ vim.cmd [[ autocmd! ]]
 vim.cmd [[ autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline ]]
 vim.cmd [[ augroup END ]]
 
+-- vim.cmd [[ hightlight WinSeparator guibg=none ]]
 -- vim.cmd [[ highlight NonText guibg=none ]]
 -- vim.cmd [[ highlight Normal guibg=none ]]
 
-vim.o.ruler = true
-vim.o.background = "dark"
-
-vim.o.signcolumn = "yes"
-
-vim.g.mapleader = ","
-vim.b.mapleader = ","
-
-vim.g.hidden = true
-vim.g.nobackup = true
-vim.b.noswapfile = true
-vim.g.undofile = true
-vim.g.undordir = "~/.config/nvim/undodir"
-
-vim.wo.number = true
-vim.o.cursorline = true
-vim.wo.relativenumber = false
-vim.o.nowrap = true
-vim.wo.list = true
-
-vim.o.tabstop = 2
-vim.bo.tabstop = 2
-
-vim.o.softtabstop = 2
-vim.bo.softtabstop = 2
-
-vim.o.shiftwidth = 2
-vim.bo.shiftwidth = 2
-
-vim.o.autoindent = true
-vim.bo.autoindent = true
-
-vim.o.expandtab = true
-vim.bo.expandtab = true
-
-vim.o.autoindent = true
-vim.bo.autoindent = true
-
-vim.cmd "language en_US.utf-8"
-
-vim.o.termguicolors = true
-vim.o.completeopt = "menu,menuone,noselect,noinsert"
-vim.o.backspace = "indent,eol,start"
-
-vim.o.inccommand = "split"
-vim.o.shortmess = vim.o.shortmess .. "c"
-vim.o.cmdheight = 1
-
-vim.o.clipboard = vim.o.clipboard .. "unnamed,unnamedplus"
-vim.o.termguicolors = true
-vim.o.showtabline = 2
-
-vim.cmd [[ set laststatus=3 ]]
--- vim.cmd [[ hightlight WinSeparator guibg=none ]]
-
-vim.opt.foldlevel = 99
-vim.opt.foldmethod = "manual"
--- vim.opt.foldcolumn = "1"
 -- folding
 -- vim.cmd [[ set foldlevel=99 ]]
 -- vim.cmd [[ set foldmethod=manual ]]
 
+vim.g.mapleader = ","
+vim.g.hidden = true
+vim.g.nobackup = true
+vim.g.undofile = true
+vim.g.undordir = "~/.config/nvim/undodir"
+vim.g.nowrap = true
+vim.g.noswapfile = true
+
+vim.wo.number = true
+vim.wo.list = true
+vim.wo.relativenumber = false
+
+vim.opt.autoindent = true
+vim.opt.autoindent = true
+vim.opt.background = "dark"
+vim.opt.backspace = "indent,eol,start"
+vim.opt.clipboard = vim.o.clipboard .. "unnamed,unnamedplus"
+vim.opt.cmdheight = 1
+vim.opt.completeopt = "menu,menuone,noselect,noinsert"
+vim.opt.cursorline = true
+vim.opt.expandtab = true
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "manual"
+-- vim.opt.foldcolumn = "1"
+vim.opt.inccommand = "split"
+vim.opt.ruler = true
+vim.opt.shiftwidth = 2
+vim.opt.shortmess = vim.o.shortmess .. "c"
+vim.opt.showtabline = 2
+vim.opt.signcolumn = "yes"
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 2
+vim.opt.termguicolors = true
 
 vim.g.DevIconsAppendArtifactFix = 1
 
