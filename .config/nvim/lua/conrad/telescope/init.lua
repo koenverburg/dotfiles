@@ -127,7 +127,7 @@ function M.git_files()
     previewer = false,
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = "bottom",
+      prompt_position = "top",
     },
   }
 

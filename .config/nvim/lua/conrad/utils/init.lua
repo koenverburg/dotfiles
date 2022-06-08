@@ -94,9 +94,9 @@ function lsp_map(mode, key, action)
   vim.api.nvim_buf_set_keymap(0, mode, key, command, { noremap = true, silent = true })
 end
 
-function M.on_attach(client)
+function M.on_attach(client, bufnr)
   -- require("lsp_signature").on_attach()
-  -- require("virtualtypes").on_attach()
+  require("aerial").on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false

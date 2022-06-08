@@ -22,6 +22,7 @@ return require("packer").startup {
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "JoosepAlviste/nvim-ts-context-commentstring"
+    use "s1n7ax/nvim-comment-frame"
 
     -- LSP config
     use "neovim/nvim-lspconfig"
@@ -56,6 +57,7 @@ return require("packer").startup {
     use "rcarriga/nvim-notify"
     use "simrat39/symbols-outline.nvim"
     use "sunjon/shade.nvim"
+    use "stevearc/aerial.nvim"
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
@@ -88,14 +90,13 @@ return require("packer").startup {
     use "kyazdani42/nvim-web-devicons"
 
     -- My plugins
-    use "koenverburg/minimal-tabline.nvim"
     use "koenverburg/peepsight.nvim"
     use "koenverburg/cmd-palette.nvim"
-    -- use "koenverburg/virtual-types.nvim"
+    use "koenverburg/minimal-tabline.nvim"
 
     -- Snippets
-    use "L3MON4D3/LuaSnip"
-    use "saadparwaiz1/cmp_luasnip"
+    -- use "L3MON4D3/LuaSnip"
+    -- use "saadparwaiz1/cmp_luasnip"
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it
