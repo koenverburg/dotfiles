@@ -56,8 +56,8 @@ return require("packer").startup {
     use "numToStr/Comment.nvim"
     use "rcarriga/nvim-notify"
     use "simrat39/symbols-outline.nvim"
-    use "sunjon/shade.nvim"
     use "stevearc/aerial.nvim"
+    -- use "sunjon/shade.nvim"
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 

@@ -12,7 +12,6 @@ vim.cmd [[ autocmd! ]]
 vim.cmd [[ autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline ]]
 vim.cmd [[ augroup END ]]
 
--- vim.cmd [[ hightlight WinSeparator guibg=none ]]
 -- vim.cmd [[ highlight NonText guibg=none ]]
 -- vim.cmd [[ highlight Normal guibg=none ]]
 

@@ -156,6 +156,16 @@ function M.contains(table, element)
   return false
 end
 
+function M.hideTablineWhenSingleTab()
+  local total_tabs = vim.fn.tabpagenr "$"
+
+  if (total_tabs > 1) then
+    vim.opt.showtabline = 2
+  else
+    vim.opt.showtabline = 0
+  end
+end
+
 function M.get_query_matches(bufnr, query)
   local tree = vim.treesitter.get_parser(bufnr)
 
