@@ -47,7 +47,10 @@ normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<c
 -- normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
 
 -- Folding using Treesitter
+--
 normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
+
+vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'conrad.utils'.hideTablineWhenSingleTab() ]]
 
 
 -- Harpoon

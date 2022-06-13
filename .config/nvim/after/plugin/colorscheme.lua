@@ -16,6 +16,7 @@ local Group = require('colorbuddy').Group
 local groups = require('colorbuddy').groups
 
 local styles = require('colorbuddy').styles
+Group.new("WinSeparator", nil, nil, nil)
 Group.new("VertSplit", nil, nil, nil)
 -- Group.new('TSBoolean', nil, nil, styles.bold)
 -- Group.new('TSFunction', nil, nil, styles.bold)

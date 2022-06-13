@@ -5,25 +5,25 @@ require("Comment").setup() -- The bindings need to updated from this plugin
 
 -- vim.notify = require "notify"
 
-require("nvim-autopairs").setup()
-local Rule = require "nvim-autopairs.rule"
 local npairs = require "nvim-autopairs"
+local Rule = require "nvim-autopairs.rule"
+npairs.setup()
 npairs.add_rule(Rule("<", ">"))
 
 require("smartinput").setup {
-  ["go"] = { ";", ":=", ";" },
-  ["typescript"] = { " >", "=>", ">" },
-  ["typescriptreact"] = { " >", "=>", ">" },
-  ["javascript"] = { " >", "=>", ">" },
-  ["javascriptreact"] = { " >", "=>", ">" },
-  ["markdown"] = { "_", "__", "_" },
-  ["markdown"] = { "**", "****", "**" },
+  ["go"]               = { ";", ":=", ";"      },
+  ["typescript"]       = { " >", "=>", ">"     },
+  ["typescriptreact"]  = { " >", "=>", ">"     },
+  ["javascript"]       = { " >", "=>", ">"     },
+  ["javascriptreact"]  = { " >", "=>", ">"     },
+  ["markdown"]         = { "_", "__", "_"      },
+  ["markdown"]         = { "**", "****", "**"  },
 }
 
 require('aerial').setup({
-  open_automatic = true,
-  close_behavior = "global",
-  default_direction = "prefer_right",
+  open_automatic = false,
+  close_behavior = "close",
+  default_direction = "right",
   backends = { "lsp", "treesitter", "markdown" },
 })
 
@@ -50,9 +50,9 @@ require("conrad.plugins.charlist").setup {
 
 require("minimal-tabline").setup({
   enable = true,
-  file_name = true,
+  file_name = false,
   tab_index = true,
-  pane_count = true,
+  pane_count = false,
   modified_sign = true,
   no_name = '[No Name]'
 })
@@ -78,7 +78,7 @@ require('peepsight').setup({
   "func_literal",
 
   -- shared
-  "if_statement", -- go, js, ts
+  -- "if_statement", -- go, js, ts
 
   -- JavaScript / TypeScript
   "arrow_function",

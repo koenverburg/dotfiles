@@ -54,7 +54,10 @@ return require("packer").startup {
     use "ThePrimeagen/harpoon"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
+    use "rcarriga/nvim-notify"
+    use "simrat39/symbols-outline.nvim"
     use "stevearc/aerial.nvim"
+    -- use "sunjon/shade.nvim"
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
