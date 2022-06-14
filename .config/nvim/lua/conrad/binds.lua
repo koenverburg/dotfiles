@@ -11,12 +11,12 @@ telescope_map("<space>cwt", "create_worktree")
 
 telescope_map("<leader><space>h", "help_tags")
 
+telescope_map("<space><space>", "find_files")
 telescope_map("<space>ff", "find_files")
 telescope_map("<space>fg", "my_live_grep")
 telescope_map("<leader>z", "buffers")
 
 telescope_map("<space>t", "git_files")
--- telescope_map("<c-t>", "frecency_files")
 telescope_map("<space>gw", "git_worktrees")
 telescope_map("<space>ed", "find_files_dotfiles")
 
@@ -185,7 +185,7 @@ insert("<c-j>", [[ <cmd>lua require('conrad.setup.snippets').JumpBack()<cr> ]])
 insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> ]])
 
 -- Quick folding
--- normal("<space>f", "za<cr>")
+normal("<space>f", "za<cr>")
 
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 normal('<space>/', "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
