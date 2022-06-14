@@ -96,7 +96,6 @@ return require("packer").startup {
     -- Git
     use "TimUntersberger/neogit"
     use "sindrets/diffview.nvim"
-    use "rhysd/committia.vim"
 
     -- Snippets
     -- use "L3MON4D3/LuaSnip"
