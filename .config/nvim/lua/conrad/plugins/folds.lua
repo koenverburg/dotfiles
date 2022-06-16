@@ -10,15 +10,14 @@ local function P(value)
 end
 
 local query = {
-  go = [[
-  (import_declaration) @imports
-]],
-  typescript = [[
-    (import_statement) @imports
-  ]],
-  tsx = [[
-    (import_statement) @imports
-  ]],
+  go = "(import_declaration) @imports",
+  tsx = "(import_statement) @imports",
+
+  javascript = "(import_statement) @imports",
+  typescript = "(import_statement) @imports",
+
+  javascriptreact = "(import_statement) @imports",
+  typescriptreact = "(import_statement) @imports",
 }
 
 -- zE will remove markers
