@@ -172,7 +172,7 @@ normal("<leader>jf", ":HopWord<cr>")
 normal("<leader>ta", ":ToggleAlternate<cr>")
 
 -- Formatting
-normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.formatting()<cr> ]])
+normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
 
 -- Rapid movement
 normal("<s-a>", ":edit %:h<cr>")
