@@ -41,7 +41,7 @@ local utils = require('conrad.utils')
 
 local nebulous = utils.loadable('nebulous')
 nebulous.setup {
-  variant = "night",
+  variant = "fullmoon", -- night, twilight, midnight, fullmoon, quasar
   disable = {
     background = false,
     endOfBuffer = false,
@@ -65,7 +65,7 @@ nebulous.setup {
   }
 }
 
-vim.cmd [[ hi CursorLine gui=underline cterm=underline ]]
+vim.cmd [[ hi CursorLine gui=underline cterm=underline guibg=NONE ]]
 vim.cmd [[ hi VertSplit guifg=#000000]]
 
 -- Group.new("WinSeparator", styles.NONE, styles.NONE, styles.NONE)
