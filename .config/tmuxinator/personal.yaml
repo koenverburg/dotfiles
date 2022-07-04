@@ -1,26 +1,25 @@
 name: dot
 
 windows:
-  - dotfiles:
-      root: ~/code/github/dotfiles
+  - bot-0:
+      root: ~/code/github/binance-trading-bot-node 
 
-  - bot:
-      root: ~/code/github/node-bot
+  - bot-1:
+      root: ~/code/github/binance-trading-bot-node 
 
-  - hydra:
-      root: ~/code/github/hydra
+  - ckad:
+      root: ~/code/github/cloudfiles/ckad
 
-  - peepsight:
-      root: ~/code/github/peepsight.nvim
-
-  - minimal-tabline:
-      root: ~/code/github/minimal-tabline.nvim
-
-  - flashlight:
-      root: ~/code/github/flashlight.nvim
+  - starter:
+      root: ~/code/github/starter-templates-nextjs/
 
   - notes:
       root: ~/code/github/obsidian
 
-  - site:
-      root: ~/code/github/site
+  - dotfiles:
+      root: ~/code/github/dotfiles
+
+  # - site:
+  #     root: ~/code/github/site
+
+
