@@ -3,7 +3,7 @@
 get_cluster() {
   if !(hash kubectl) 2>/dev/null
   then
-    result="kubectl not found!"
+    result="!k"
   else
     context_info=$(kubectl config get-contexts --no-headers)
     cluster=$(echo "$context_info" | grep "*" | awk '{print $3}')

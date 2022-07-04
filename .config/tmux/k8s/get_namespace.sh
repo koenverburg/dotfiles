@@ -1,7 +1,7 @@
 get_namespace() {
   if !(hash kubectl) 2>/dev/null
   then
-    result="kubectl not found!"
+    result="!k"
   else
     context_info=$(kubectl config get-contexts --no-headers)
     namespace=$(echo "$context_info" | grep "*" | awk '{print $5}')

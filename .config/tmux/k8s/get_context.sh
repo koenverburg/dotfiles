@@ -1,7 +1,7 @@
 get_context() {
   if !(hash kubectl) 2>/dev/null
   then
-    result="kubectl not found!"
+    result="!k"
   else
     context=$(kubectl config current-context)
 
