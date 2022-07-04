@@ -16,9 +16,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 
 cmp.setup {
   snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-    end,
+    -- expand = function(args)
+    --   require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+    -- end,
   },
   mapping = {
     ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
@@ -48,7 +48,7 @@ cmp.setup {
   },
   sources = {
     { name = "nvim_lsp" },
-    { name = "luasnip" },
+    -- { name = "luasnip" },
     { name = "treesitter" },
     { name = "path" },
     { name = "buffer" },

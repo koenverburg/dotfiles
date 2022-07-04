@@ -1,10 +1,10 @@
 vim.cmd "language en_US.utf-8"
-vim.cmd [[ set laststatus=3 ]]
 vim.cmd [[ highlight clear SignColumn ]]
+
+vim.cmd [[ set nowrap ]]
+vim.cmd [[ set laststatus=3 ]]
 vim.cmd [[ set noshowmode ]]
-
 vim.cmd [[ set colorcolumn=80,120 ]]
-
 vim.cmd [[ set winbar=%m\ %t ]]
 
 vim.cmd [[ augroup illuminate_augroup ]]
@@ -24,7 +24,7 @@ vim.g.hidden = true
 vim.g.nobackup = true
 vim.g.undofile = true
 vim.g.undordir = "~/.config/nvim/undodir"
-vim.g.nowrap = true
+-- vim.g.nowrap = true
 vim.g.noswapfile = true
 
 vim.wo.number = true

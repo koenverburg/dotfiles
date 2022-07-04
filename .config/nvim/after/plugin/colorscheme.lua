@@ -1,24 +1,10 @@
 local utils = require('conrad.utils')
 
 -- require('ayu').setup({
---   mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+--   mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
 -- })
 -- vim.cmd [[ colorscheme ayu-dark ]]
-
 -- vim.cmd [[ colorscheme darcula ]]
--- require('colorbuddy').colorscheme('nebulous')
-
-local Color = require('colorbuddy').Color
-local colors = require('colorbuddy').colors
-
-local Group = require('colorbuddy').Group
-local groups = require('colorbuddy').groups
-
-local styles = require('colorbuddy').styles
--- Group.new("WinSeparator", styles.NONE, styles.NONE, styles.NONE)
--- Group.new("VertSplit", styles.NONE, styles.NONE, styles.NONE)
--- Group.new('TSBoolean', nil, nil, styles.bold)
--- Group.new('TSFunction', nil, nil, styles.bold)
 
 --     TSCharacter       = {},
 --     TSConditional     = {},
@@ -78,3 +64,11 @@ nebulous.setup {
     -- Treesitter colors
   }
 }
+
+vim.cmd [[ hi CursorLine gui=underline cterm=underline ]]
+vim.cmd [[ hi VertSplit guifg=#000000]]
+
+-- Group.new("WinSeparator", styles.NONE, styles.NONE, styles.NONE)
+-- Group.new("VertSplit", styles.NONE, styles.NONE, styles.NONE)
+-- Group.new('TSBoolean', nil, nil, styles.bold)
+-- Group.new('TSFunction', nil, nil, styles.bold)

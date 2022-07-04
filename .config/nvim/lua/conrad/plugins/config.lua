@@ -13,9 +13,9 @@ npairs.add_rule(Rule("<", ">"))
 require("smartinput").setup {
   ["go"]               = { ";", ":=", ";"      },
   ["typescript"]       = { " >", "=>", ">"     },
-  ["typescriptreact"]  = { " >", "=>", ">"     },
+  -- ["typescriptreact"]  = { " >", "=>", ">"     },
   ["javascript"]       = { " >", "=>", ">"     },
-  ["javascriptreact"]  = { " >", "=>", ">"     },
+  -- ["javascriptreact"]  = { " >", "=>", ">"     },
   ["markdown"]         = { "_", "__", "_"      },
   ["markdown"]         = { "**", "****", "**"  },
 }
