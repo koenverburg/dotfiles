@@ -1,4 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
+background_opacity: 1
 window:
   dimensions:
     columns: 140
@@ -6,8 +7,8 @@ window:
   padding:
     x: 3
     y: 3
-  # decorations: none
-  opacity: 1
+  decorations: none
+  opacity: 0.8
   dynamic_title: true
 scrolling:
   history: 10000
@@ -18,19 +19,18 @@ startup_mode: Windowed
 
 # Font configuration
 font:
-  # light:
-  #   family: FiraCode Nerd Font
-  #   style: Light
-  # normal:
-  #   family: FiraCode Nerd Font
-  #   style: Medium
-  # semiBold:
-  #   family: FiraCode Nerd Font
-  #   style: SemiBold
-  # bold:
-  #   family: FiraCode Nerd Font
-  #   style: Bold
-  #
+  light:
+    family: FiraCode Nerd Font
+    style: Light
+  normal:
+    family: FiraCode Nerd Font
+    style: Medium
+  semiBold:
+    family: FiraCode Nerd Font
+    style: SemiBold
+  bold:
+    family: FiraCode Nerd Font
+    style: Bold
   size: 15
 
   offset:
@@ -84,7 +84,8 @@ schemes:
 
   github: &github
     primary:
-      background: "#0b1015"
+      background: "#2B2E35" # fullmoon background color
+      # background: "#0b1015"
       # background: '#2d333b'
       foreground: "#adbac7"
     normal:
@@ -111,7 +112,7 @@ schemes:
     white: "0xffffff"
 
 # Colors Github theme (dimmed)
-colors: *ayu
+colors: *github
 
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
