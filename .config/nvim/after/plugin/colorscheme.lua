@@ -41,7 +41,7 @@ local utils = require('conrad.utils')
 
 local nebulous = utils.loadable('nebulous')
 nebulous.setup {
-  variant = "fullmoon", -- "quasar", 
+  variant = "fullmoon", -- night, twilight, midnight, fullmoon, quasar
   disable = {
     background = false,
     endOfBuffer = false,
