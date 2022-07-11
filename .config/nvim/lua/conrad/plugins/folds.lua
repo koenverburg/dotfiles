@@ -57,14 +57,14 @@ end
 
 function M.main()
   local buf_number = vim.api.nvim_get_current_buf()
-  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
+  local lang = ts_parsers.get_buf_lang(buf_number):gsub("-", "")
 
   if not query[lang] then
     print(string.format("Unsupported languages found: %s", lang))
     return
   end
 
-  local matches = utils.get_query_matches(bufnr, query[lang])
+  local matches = utils.get_query_matches(buf_number, query[lang])
   if matches == nil then
     return
   end

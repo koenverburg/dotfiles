@@ -52,7 +52,6 @@ normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
 
 vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'conrad.utils'.hideTablineWhenSingleTab() ]]
 
-
 -- Harpoon
 normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
 normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
@@ -156,7 +155,7 @@ normal("<C-b>", ":NvimTreeToggle<cr>")
 normal("<leader>gt", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal()<cr> ]])
 terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
-normal('<leader>gg', [[ <cmd>Neogit<cr> ]])
+normal("<leader>gg", [[ <cmd>Neogit<cr> ]])
 -- Focus mode
 normal("<leader><space>f", ":ZenMode<cr>")
 normal("<leader><space>ll", ":Twilight<cr>")
@@ -186,7 +185,9 @@ insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> 
 normal("<space>f", "za<cr>")
 
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
-normal('<space>/', "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
+normal("<space>/", "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
+
+normal("G", "Gzz")
 
 return {
   normal,
