@@ -6,13 +6,17 @@ local ts_parsers = require "nvim-treesitter.parsers"
 local M = {}
 local ns = vim.api.nvim_create_namespace "conrad/references"
 
+local js = [[
+  (variable_declarator) @captures
+  (arrow_function) @captures
+  (function_declaration) @captures
+  (generator_function_declaration) @captures
+]]
+
 local queries = {
-  typescript = [[
-    (variable_declarator) @captures
-    (arrow_function) @captures
-    (function_declaration) @captures
-    (generator_function_declaration) @captures
-  ]],
+  tsx = js,
+  typescript = js,
+  javascript = js,
   go = [[
     (var_declaration) @captures
     (function_declaration) @captures
