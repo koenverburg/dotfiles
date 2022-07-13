@@ -89,7 +89,7 @@ end
 function M.set_autocmd(bufnr)
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
-      require("conrad.plugins.show-unused")._find_references(bufnr)
+      require("conrad.plugins.show-references")._find_references(bufnr)
     end,
   })
 end
