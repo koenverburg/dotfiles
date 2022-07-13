@@ -112,6 +112,12 @@ alias dcud='docker-compose up -d'
 alias dcd='docker-compose down'
 alias dockerclean='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 
+
+# Recoding
+alias record='asciinema rec ./recoding.cast'
+alias showreel='asciinema rec'
+
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
+export PATH=$HOME/.bun/bin":$PATH

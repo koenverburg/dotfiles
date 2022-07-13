@@ -97,6 +97,7 @@ end
 function M.on_attach(client, bufnr)
   -- require("lsp_signature").on_attach()
   require("aerial").on_attach(client, bufnr)
+  require('conrad.plugins.show-references').on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false
@@ -156,20 +157,24 @@ function M.contains(table, element)
   return false
 end
 
-function M.get_query_matches(bufnr, query)
-  local tree = vim.treesitter.get_parser(bufnr)
+function M.hideTablineWhenSingleTab()
+  local total_tabs = vim.fn.tabpagenr "$"
 
-  if not tree then
-    return nil
+  if (total_tabs > 1) then
+    vim.opt.showtabline = 2
+  else
+    vim.opt.showtabline = 0
   end
+end
 
-  local ast = tree:parse()
-  local root = ast[1]:root()
-
-  local parsed = vim.treesitter.parse_query(tree:lang(), query)
-  local results = parsed:iter_matches(root, bufnr)
-
-  return results
+function M.dim(namespace, buffer, line_number)
+  pcall(vim.api.nvim_buf_set_extmark, buffer, namespace, line_number, 0, {
+    end_line = line_number + 1,
+    end_col = 0,
+    hl_group = "Comment", -- mvp
+    hl_eol = true,
+    priority = 10000,
+  })
 end
 
 function M.loadable(name)

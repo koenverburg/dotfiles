@@ -24,11 +24,11 @@ local function TableConcat(t1, t2)
 end
 
 local sources = core_sources
-if os == "Darwin" then
-  sources = TableConcat(sources, { formatting.eslint })
-else
-  sources = TableConcat(sources, { formatting.standardjs })
-end
+-- if os == "Darwin" then
+--   sources = TableConcat(sources, { formatting.eslint })
+-- else
+--   sources = TableConcat(sources, { formatting.standardjs })
+-- end
 
 ls.setup {
   sources = sources,

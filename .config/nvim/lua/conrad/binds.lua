@@ -11,12 +11,12 @@ telescope_map("<space>cwt", "create_worktree")
 
 telescope_map("<leader><space>h", "help_tags")
 
+telescope_map("<space><space>", "find_files")
 telescope_map("<space>ff", "find_files")
 telescope_map("<space>fg", "my_live_grep")
 telescope_map("<leader>z", "buffers")
 
 telescope_map("<space>t", "git_files")
--- telescope_map("<c-t>", "frecency_files")
 telescope_map("<space>gw", "git_worktrees")
 telescope_map("<space>ed", "find_files_dotfiles")
 
@@ -48,6 +48,8 @@ normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<c
 
 -- Folding using Treesitter
 normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
+
+vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'conrad.utils'.hideTablineWhenSingleTab() ]]
 
 
 -- Harpoon
@@ -153,9 +155,7 @@ normal("<C-b>", ":NvimTreeToggle<cr>")
 normal("<leader>gt", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal()<cr> ]])
 terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
-normal("<leader>gg", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal('lazygit')<cr> ]])
-terminal("<leader>gg", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
-
+normal("<leader>gg", [[ <cmd>Neogit<cr> ]])
 -- Focus mode
 normal("<leader><space>f", ":ZenMode<cr>")
 normal("<leader><space>ll", ":Twilight<cr>")
@@ -171,7 +171,7 @@ normal("<leader>jf", ":HopWord<cr>")
 normal("<leader>ta", ":ToggleAlternate<cr>")
 
 -- Formatting
-normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.formatting()<cr> ]])
+normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
 
 -- Rapid movement
 normal("<s-a>", ":edit %:h<cr>")
@@ -182,10 +182,18 @@ insert("<c-j>", [[ <cmd>lua require('conrad.setup.snippets').JumpBack()<cr> ]])
 insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> ]])
 
 -- Quick folding
--- normal("<space>f", "za<cr>")
+normal("<space>f", "za<cr>")
 
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
-normal('<space>/', "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
+normal("<space>/", "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
+
+normal("G", "Gzz")
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.cmd [[:w! ]]
+  end,
+})
 
 return {
   normal,

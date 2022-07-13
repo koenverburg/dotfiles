@@ -1,4 +1,5 @@
 local utils = require "conrad.utils"
+local ts_helpers = require "conrad.utils.treesitter"
 local ts_utils = require "nvim-treesitter.ts_utils"
 local ts_parsers = require "nvim-treesitter.parsers"
 local lsp_proto = vim.lsp.protocol
@@ -9,16 +10,17 @@ local function P(value)
   print(vim.inspect(value))
 end
 
+local js = "(import_statement) @imports"
+
 local query = {
-  go = [[
-  (import_declaration) @imports
-]],
-  typescript = [[
-    (import_statement) @imports
-  ]],
-  tsx = [[
-    (import_statement) @imports
-  ]],
+  go = "(import_declaration) @imports",
+
+  tsx = js,
+
+  javascript = js,
+  typescript = js,
+  javascriptreact = js,
+  typescriptreact = js,
 }
 
 -- zE will remove markers
@@ -33,7 +35,7 @@ function foldGo(matches)
   end
 end
 
-function foldTypescript(matches)
+function foldXscript(matches)
   local index = 1
   local start_fold_line = 0
   local end_fold_line = 0
@@ -58,14 +60,14 @@ end
 
 function M.main()
   local buf_number = vim.api.nvim_get_current_buf()
-  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
+  local lang = ts_parsers.get_buf_lang(buf_number):gsub("-", "")
 
   if not query[lang] then
     print(string.format("Unsupported languages found: %s", lang))
     return
   end
 
-  local matches = utils.get_query_matches(bufnr, query[lang])
+  local matches = ts_helpers.get_query_matches(buf_number, query[lang])
   if matches == nil then
     return
   end
@@ -75,7 +77,7 @@ function M.main()
   end
 
   if lang == "typescript" or lang == "tsx" then
-    foldTypescript(matches)
+    foldXscript(matches)
   end
 end
 

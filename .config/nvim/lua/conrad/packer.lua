@@ -36,7 +36,6 @@ return require("packer").startup {
     use "j-hui/fidget.nvim"
 
     -- Utils
-    use "sindrets/diffview.nvim"
     use "windwp/nvim-autopairs"
     use "kyazdani42/nvim-tree.lua"
     use "phaazon/hop.nvim"
@@ -54,7 +53,10 @@ return require("packer").startup {
     use "ThePrimeagen/harpoon"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
+    use "rcarriga/nvim-notify"
+    use "simrat39/symbols-outline.nvim"
     use "stevearc/aerial.nvim"
+    -- use "sunjon/shade.nvim"
     -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
@@ -90,6 +92,10 @@ return require("packer").startup {
     use "koenverburg/peepsight.nvim"
     use "koenverburg/cmd-palette.nvim"
     use "koenverburg/minimal-tabline.nvim"
+
+    -- Git
+    use "TimUntersberger/neogit"
+    use "sindrets/diffview.nvim"
 
     -- Snippets
     -- use "L3MON4D3/LuaSnip"
