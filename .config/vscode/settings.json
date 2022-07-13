@@ -33,7 +33,8 @@
   "[typescript]": {
     "editor.showUnused": true,
     "editor.formatOnSave": false,
-    "editor.formatOnSaveMode": "modifications"
+    "editor.formatOnSaveMode": "modifications",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
     "editor.showUnused": true,
@@ -55,7 +56,7 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/node_modules": true,
+    "**/node_modules": false,
     "**/flow-typed": true,
     "**/_build": true
   },
@@ -127,19 +128,20 @@
   "powershell.integratedConsole.focusConsoleOnExecute": false,
   "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
   "cSpell.userWords": [
-    "Cust",
-    "Deduplication",
-    "Outsystems",
-    "Typedefs",
-    "Umbraco",
-    "XSRF",
     "bedankt",
     "childaid",
+    "Cust",
     "datalayer",
+    "Deduplication",
     "godotenv",
     "organisation",
+    "outfile",
+    "Outsystems",
     "recaptcha",
-    "uwork"
+    "Typedefs",
+    "Umbraco",
+    "uwork",
+    "XSRF"
   ],
   "editor.minimap.enabled": false,
   "files.autoSave": "onFocusChange",
@@ -149,5 +151,9 @@
   "redhat.telemetry.enabled": true,
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "editor.inlineSuggest.enabled": true
 }

@@ -44,3 +44,4 @@ function dcd { docker-compose down }
 # Make
 
 Set-Alias m 'make'
+Set-Alias k 'kubectl'
