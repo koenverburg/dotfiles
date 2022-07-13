@@ -47,10 +47,10 @@ normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<c
 -- normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
 
 -- Folding using Treesitter
---
 normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
 
 vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'conrad.utils'.hideTablineWhenSingleTab() ]]
+
 
 -- Harpoon
 normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
@@ -188,6 +188,12 @@ normal("<space>f", "za<cr>")
 normal("<space>/", "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
 
 normal("G", "Gzz")
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.cmd [[:w! ]]
+  end,
+})
 
 return {
   normal,

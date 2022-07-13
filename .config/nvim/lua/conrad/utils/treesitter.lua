@@ -28,5 +28,20 @@ function M.get_node(queries)
   return nil
 end
 
+function M.get_query_matches(bufnr, query)
+  local tree = vim.treesitter.get_parser(bufnr)
+
+  if not tree then
+    return nil
+  end
+
+  local ast = tree:parse()
+  local root = ast[1]:root()
+
+  local parsed = vim.treesitter.parse_query(tree:lang(), query)
+  local results = parsed:iter_matches(root, bufnr)
+
+  return results
+end
 
 return M
