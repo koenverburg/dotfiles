@@ -1,5 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-background_opacity: 1
+# background_opacity: 1
 window:
   dimensions:
     columns: 140
@@ -8,7 +8,7 @@ window:
     x: 3
     y: 3
   decorations: none
-  opacity: 0.8
+  opacity: 0.9
   dynamic_title: true
 scrolling:
   history: 10000
@@ -84,8 +84,8 @@ schemes:
 
   github: &github
     primary:
-      background: "#2B2E35" # fullmoon background color
-      # background: "#0b1015"
+      # background: "#2B2E35" # fullmoon background color
+      background: "#0b1015" # night
       # background: '#2d333b'
       foreground: "#adbac7"
     normal:

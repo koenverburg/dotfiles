@@ -9,6 +9,8 @@ return require("packer").startup {
     use "glepnir/zephyr-nvim"
     use "Yagua/nebulous.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
+    use ({ 'projekt0n/github-nvim-theme' })
+    use 'shaunsingh/nord.nvim'
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
@@ -56,8 +58,6 @@ return require("packer").startup {
     use "rcarriga/nvim-notify"
     use "simrat39/symbols-outline.nvim"
     use "stevearc/aerial.nvim"
-    -- use "sunjon/shade.nvim"
-    -- use 'glepnir/prodoc.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- sessions
@@ -81,7 +81,6 @@ return require("packer").startup {
 
     -- Looks
     use "lewis6991/gitsigns.nvim"
-    -- use "nvim-lualine/lualine.nvim"
     use "tjdevries/express_line.nvim"
 
     -- Icons
@@ -96,6 +95,7 @@ return require("packer").startup {
     -- Git
     use "TimUntersberger/neogit"
     use "sindrets/diffview.nvim"
+    -- use "tjdevries/diff-therapy.nvim"
 
     -- Snippets
     -- use "L3MON4D3/LuaSnip"

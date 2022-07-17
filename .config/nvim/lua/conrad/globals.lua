@@ -15,8 +15,6 @@ vim.cmd [[ augroup END ]]
 vim.cmd [[ autocmd BufNewFile,BUfRead *.jsx set ft=javascript ]]
 vim.cmd [[ autocmd BufNewFile,BUfRead *.tsx set ft=typescript ]]
 
--- vim.cmd [[ highlight NonText guibg=none ]]
--- vim.cmd [[ highlight Normal guibg=none ]]
 
 -- folding
 -- vim.cmd [[ set foldlevel=99 ]]

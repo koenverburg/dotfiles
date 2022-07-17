@@ -46,6 +46,16 @@ require('nvim-comment-frame').setup({
 
 require("conrad.plugins.charlist").setup {
   enabled = true,
+  defaults = {
+    precedes = "…",
+    eol = " ",
+    tab = "  ",
+    trail = " ",
+    space = " ",
+    nbsp = "☠",
+    extends = "#",
+    conceal = "┊",
+  }
 }
 
 require("minimal-tabline").setup({
