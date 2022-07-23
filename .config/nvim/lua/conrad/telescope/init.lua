@@ -43,22 +43,12 @@ function M.session_lens()
 end
 
 function M.my_lsp_references()
-  local opts = {
-    layout_strategy = "vertical",
-    layout_config = {
-      prompt_position = "bottom",
-    },
-  }
+  local opts = themes.get_ivy()
   require("telescope.builtin").lsp_references(opts)
 end
 
 function M.my_lsp_document_symbols()
-  local opts = {
-    layout_strategy = "vertical",
-    layout_config = {
-      prompt_position = "bottom",
-    },
-  }
+  local opts = themes.get_ivy()
   require("telescope.builtin").lsp_document_symbols(opts)
 end
 

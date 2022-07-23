@@ -1,132 +1,125 @@
-require "nvim-treesitter"
-
-local lsp_proto = vim.lsp.protocol
 local utils = require "conrad.utils"
 local ts_helpers = require "conrad.utils.treesitter"
+local ts_utils = require "nvim-treesitter.ts_utils"
 local ts_parsers = require "nvim-treesitter.parsers"
 
 local P = utils.P
 
 local M = {}
 local ns = vim.api.nvim_create_namespace "conrad/complexity"
---
--- local attached_buffers = {}
 
-function M.show()
-  -- local buf_number = vim.api.nvim_get_current_buf()
-  --
-  -- if attached_buffers[buf_number] then
-  --   return
-  -- end
-  -- attached_buffers[buf_number] = true
 
-  -- local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
+-- LabelStatement: 1,
+-- BreakStatement: 1,
+-- GotoStatement: 1,
+-- ReturnStatement: 1,
+-- IfStatement: 1,
+-- IfClause: 1,
+-- ElseifClause: 1,
+-- ElseClause: 1,
+-- WhileStatement: 1,
+-- DoStatement: 1,
+-- RepeatStatement: 1,
+-- LocalStatement: 0,
+-- AssignmentStatement: 0,
+-- CallStatement: 0,
+-- FunctionDeclaration: 1,
+-- ForNumericStatement: 1,
+-- ForGenericStatement: 1,
+-- Chunk: 0,
+-- Identifier: 0,
+-- StringLiteral: 0,
+-- NumericLiteral: 0,
+-- BooleanLiteral: 0,
+-- NilLiteral: 0,
+-- VarargLiteral: 0,
+-- TableKey: 0,
+-- TableKeyString: 0,
+-- TableValue: 0,
+-- TableConstructorExpression: 0,
+-- UnaryExpression: 0,
+-- MemberExpression: 1,
+-- IndexExpression: 0,
+-- CallExpression: 0,
+-- TableCallExpression: 0,
+-- StringCallExpression: 0,
+-- Comment: 0
 
-  -- local query = {
-  --   go = [[
-  --   (function_declaration) @functions
-  -- ]],
-  --   typescript = [[
-  --     (arrow_function) @funcs
-  --     (function_declaration) @funcs
-  --     (return_statement) @edges
-  --
-  --     (if_statement) @ifstatements
-  --     (binary_expression) @expressions
-  --     (unary_expression) @expressions
-  --
-  --     (parenthesized_expression) @test
-  --   ]],
-  -- }
+local logic_queries = {
+  'lexical_declaration',
+  'variable_declarator',
+  'return_statement'
+}
 
-  local node = ts_helpers.get_node({
-    "function_declaration",
-    "method_declaration",
-    "func_literal",
-  })
+local js = [[
+  (arrow_function) @captures
+  (function_declaration) @captures
+  (generator_function_declaration) @captures
+]]
 
-  P(node)
-  P(node.__tostring(node))
-  -- P(node._rawquery(node))
-  P(getmetatable(node))
+local queries = {
+  tsx = js,
+  typescript = js,
+  javascript = js,
+  go = [[
+    (func_literal) @captures
+    (method_declaration) @captures
+    (function_declaration) @captures
+  ]],
+}
 
-  -- LabelStatement: 1,
-  -- BreakStatement: 1,
-  -- GotoStatement: 1,
-  -- ReturnStatement: 1,
-  -- IfStatement: 1,
-  -- IfClause: 1,
-  -- ElseifClause: 1,
-  -- ElseClause: 1,
-  -- WhileStatement: 1,
-  -- DoStatement: 1,
-  -- RepeatStatement: 1,
-  -- LocalStatement: 0,
-  -- AssignmentStatement: 0,
-  -- CallStatement: 0,
-  -- FunctionDeclaration: 1,
-  -- ForNumericStatement: 1,
-  -- ForGenericStatement: 1,
-  -- Chunk: 0,
-  -- Identifier: 0,
-  -- StringLiteral: 0,
-  -- NumericLiteral: 0,
-  -- BooleanLiteral: 0,
-  -- NilLiteral: 0,
-  -- VarargLiteral: 0,
-  -- TableKey: 0,
-  -- TableKeyString: 0,
-  -- TableValue: 0,
-  -- TableConstructorExpression: 0,
-  -- UnaryExpression: 0,
-  -- MemberExpression: 1,
-  -- IndexExpression: 0,
-  -- CallExpression: 0,
-  -- TableCallExpression: 0,
-  -- StringCallExpression: 0,
-  -- Comment: 0
+function M._get_language_query(bufnr)
+  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
+  local current_query = queries[lang]
 
-  -- if not query[lang] then
-  --   print(string.format("Unsupported languages found: %s", lang))
-  --   return
-  -- end
-  --
-  -- local matches = utils.get_query_matches(bufnr, query[lang])
-  -- if matches == nil then
-  --   return
-  -- end
-  --
-  -- local results = {}
-  -- for _, match, metadata in matches do
-  --   index = 1
-  --   utils.P(match)
-  -- end
-    -- utils.P(match[index]:named())
+  if not current_query then
+    vim.notify "Error: queries for this languages are not implemented"
+    return nil, lang
+  end
 
-    -- do while match[index] is true
-    -- if match[index+1] is nil then end is reached -> exit func
-    -- repeat
-    --   utils.P(match)
-    --   utils.P(match[index]:named())
-    --   index = index + 1
-    -- until next(match) == nil
-
-    --   utils.P(match[index]:named())
-
-    -- table.insert(results, {
-    --   node_type = match[1]:type(),
-    --   start_line = match[1]:start(),
-    --   -- symbol = symbol
-    -- })
-
-  -- utils.P(results)
-
-  -- for _, v in ipairs(results) do
-  --   utils.setVirtualText(ns, v.start_line, v.node_type, "--")
-  -- end
-
-  -- utils.P(getmetatable(captures[1]))
-  -- utils.P(lsp_proto.SymbolKind[node:symbol()] or "Unknown")
+  return current_query, lang
 end
+
+function M._get_functions()
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  local query, lang = M._get_language_query(bufnr)
+  if not query then
+    return
+  end
+
+  local matches = ts_helpers.get_query_matches(bufnr, query)
+
+  for _, match, _ in matches do
+
+    local parsed = vim.treesitter.parse_query(lang, query)
+
+    local results = parsed:iter_matches(match[1], bufnr)
+    -- local logical_matches = ts_helpers.walk_down(match[1], logic_queries)
+    P(getmetatable(results))
+
+    -- P(match[1]:_)
+    -- P(match[1]:child():type())
+    -- P(match[1].__tostring())
+
+    local line = match[1]:start()
+    utils.setVirtualText(ns, line, 0, "cc")
+  end
+end
+
+function M.set_autocmd()
+  vim.api.nvim_create_autocmd("BufWrite", {
+    callback = function()
+      require("conrad.plugins.complexity")._get_functions()
+    end,
+  })
+end
+
+M.set_autocmd()
+
+-- function M.on_attach(client, bufnr)
+--   M._get_functions(bufnr)
+--   -- M.set_autocmd(bufnr)
+-- end
 
 return M

@@ -7,11 +7,13 @@ local M = {}
 local ns = vim.api.nvim_create_namespace "conrad/references"
 
 local js = [[
+  (lexical_declaration) @captures
   (variable_declarator) @captures
-  (arrow_function) @captures
   (function_declaration) @captures
   (generator_function_declaration) @captures
 ]]
+
+-- (arrow_function) @captures
 
 local queries = {
   tsx = js,

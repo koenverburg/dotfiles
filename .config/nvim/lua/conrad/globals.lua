@@ -12,8 +12,10 @@ vim.cmd [[ autocmd! ]]
 vim.cmd [[ autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline ]]
 vim.cmd [[ augroup END ]]
 
-vim.cmd [[ autocmd BufNewFile,BUfRead *.jsx set ft=javascript ]]
-vim.cmd [[ autocmd BufNewFile,BUfRead *.tsx set ft=typescript ]]
+vim.cmd [[ autocmd BufNewFile,BUfRead *.js set ft=javascript ]]
+vim.cmd [[ autocmd BufNewFile,BUfRead *.jsx set ft=javascriptreact ]]
+vim.cmd [[ autocmd BufNewFile,BUfRead *.ts set ft=typescript ]]
+vim.cmd [[ autocmd BufNewFile,BUfRead *.tsx set ft=typescriptreact ]]
 
 
 -- folding

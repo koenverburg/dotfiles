@@ -6,9 +6,7 @@ local lsp_proto = vim.lsp.protocol
 
 local M = {}
 
-local function P(value)
-  print(vim.inspect(value))
-end
+local P = utils.P
 
 local js = "(import_statement) @imports"
 
@@ -19,6 +17,7 @@ local query = {
 
   javascript = js,
   typescript = js,
+
   javascriptreact = js,
   typescriptreact = js,
 }

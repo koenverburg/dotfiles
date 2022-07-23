@@ -11,6 +11,7 @@ return require("packer").startup {
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
     use ({ 'projekt0n/github-nvim-theme' })
     use 'shaunsingh/nord.nvim'
+    use "Yazeed1s/minimal.nvim"
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
@@ -36,6 +37,8 @@ return require("packer").startup {
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
     use "j-hui/fidget.nvim"
+    use "ChristianChiarulli/lsp-inlay-hints"
+    use "lvimuser/lsp-inlayhints.nvim"
 
     -- Utils
     use "windwp/nvim-autopairs"

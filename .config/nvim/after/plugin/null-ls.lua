@@ -12,7 +12,7 @@ local os = vim.loop.os_uname().sysname
 local core_sources = {
   -- completion.spell,
   formatting.gofmt,
-  formatting.stylua, -- install with cargo install stylua
+  formatting.stylua, -- install with "cargo install stylua"
   formatting.prettier,
 }
 
@@ -23,12 +23,14 @@ local function TableConcat(t1, t2)
   return t1
 end
 
+local hostname = vim.loop.os_gethostname()
 local sources = core_sources
--- if os == "Darwin" then
---   sources = TableConcat(sources, { formatting.eslint })
--- else
---   sources = TableConcat(sources, { formatting.standardjs })
--- end
+
+if string.find(hostname, 'AMS') then
+  sources = TableConcat(sources, { formatting.eslint })
+else
+  sources = TableConcat(sources, { formatting.standardjs })
+end
 
 ls.setup {
   sources = sources,

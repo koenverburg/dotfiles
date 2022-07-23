@@ -28,8 +28,8 @@ telescope_map("<space>ls", "session_lens")
 telescope_map("<space>fb", "browser")
 
 -- lsp
-telescope_map("<c-r>", "my_lsp_references")
-telescope_map("<c-d>", "my_lsp_document_symbols")
+telescope_map("<c-r>", "my_lsp_references") -- ivy
+telescope_map("<c-d>", "my_lsp_document_symbols") -- ivy
 telescope_map("<leader>cx", "lsp_code_actions")
 
 -- Refactoring
@@ -189,11 +189,11 @@ normal("<space>/", "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
 
 normal("G", "Gzz")
 
-vim.api.nvim_create_autocmd("InsertLeave", {
-  callback = function()
-    vim.cmd [[:w! ]]
-  end,
-})
+-- vim.api.nvim_create_autocmd("InsertLeave", {
+--   callback = function()
+--     vim.cmd [[:w ]]
+--   end,
+-- })
 
 return {
   normal,

@@ -17,6 +17,20 @@ function M.walk_tree(node, types)
   if not expr then return nil end
 end
 
+function M.walk_down(node, types)
+  local expr = node
+  local matches = {}
+
+  while expr do
+    if utils.contains(types, expr:type()) then
+      table.insert(matches, expr)
+    end
+
+    expr = expr:child()
+  end
+
+  if not expr then return nil end
+end
 
 function M.get_node(queries)
   local cursor_node = ts_utils.get_node_at_cursor()

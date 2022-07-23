@@ -1,6 +1,6 @@
-set nowrap
-set nonumber
-set colorcolumn=
+" set nowrap
+" set nonumber
+" set colorcolumn=
 
 " set tabstop = 2
 " set shiftwidth = 2

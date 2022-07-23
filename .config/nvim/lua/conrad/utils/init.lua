@@ -42,15 +42,17 @@ function M.inputOrUI(opts, callback)
 end
 
 function M.PopUpSearch()
-  local opts ={
+  local opts = {
     prompt = "Search For",
-    default = ""
+    default = "",
   }
 
   function proxy(value)
-    if value == nil or value == "" then return end
+    if value == nil or value == "" then
+      return
+    end
 
-    vim.cmd('/' .. value)
+    vim.cmd("/" .. value)
   end
 
   M.inputOrUI(opts, proxy)
@@ -101,6 +103,12 @@ function M.on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false
+  end
+
+  if client.name == "tsserver" then
+    -- require("lsp-inlayhints").setup_autocmd(bufnr, "typescript/inlayHints")
+  else
+    require("lsp-inlay_hints").setup_autocmd(bufnr)
   end
 
   lsp_map("n", "K", "vim.lsp.buf.hover")
@@ -160,7 +168,7 @@ end
 function M.hideTablineWhenSingleTab()
   local total_tabs = vim.fn.tabpagenr "$"
 
-  if (total_tabs > 1) then
+  if total_tabs > 1 then
     vim.opt.showtabline = 2
   else
     vim.opt.showtabline = 0
@@ -181,7 +189,7 @@ function M.loadable(name)
   local ok, module = pcall(require, name)
 
   if not ok then
-    vim.notify('Failed to load ' .. name)
+    vim.notify("Failed to load " .. name)
     return
   end
   return module

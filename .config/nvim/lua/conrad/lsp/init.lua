@@ -11,7 +11,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     underline = {
       severity_limit = "Warning",
     },
-    virtual_text = false,
+    virtual_text = true,
   })
 
 cmp.setup {
@@ -74,10 +74,12 @@ local servers = {
   },
   tsserver = {
     root_dir = vim.loop.cwd,
+    -- cmd = {"typescript-language-server", "--stdio"},
     filetypes = {
       "javascript",
       "javascriptreact",
       "javascript.jsx",
+
       "typescript",
       "typescriptreact",
       "typescript.tsx",
@@ -93,9 +95,9 @@ for name, opts in pairs(servers) do
   else
     local client = lspconfig[name]
     client.setup(vim.tbl_extend("force", {
-      flags = { debounce_text_changes = 150 },
       on_attach = utils.on_attach,
-      capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      flags = { debounce_text_changes = 150 },
+      -- capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     }, opts))
   end
 end
