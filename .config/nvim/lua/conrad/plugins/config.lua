@@ -11,23 +11,23 @@ npairs.setup()
 npairs.add_rule(Rule("<", ">"))
 
 require("smartinput").setup {
-  ["go"]               = { ";", ":=", ";"      },
-  ["typescript"]       = { " >", "=>", ">"     },
+  ["go"] = { ";", ":=", ";" },
+  ["typescript"] = { " >", "=>", ">" },
   -- ["typescriptreact"]  = { " >", "=>", ">"     },
-  ["javascript"]       = { " >", "=>", ">"     },
+  ["javascript"] = { " >", "=>", ">" },
   -- ["javascriptreact"]  = { " >", "=>", ">"     },
-  ["markdown"]         = { "_", "__", "_"      },
-  ["markdown"]         = { "**", "****", "**"  },
+  ["markdown"] = { "_", "__", "_" },
+  ["markdown"] = { "**", "****", "**" },
 }
 
-require('aerial').setup({
+require("aerial").setup {
   open_automatic = false,
   close_behavior = "close",
   default_direction = "right",
   backends = { "lsp", "treesitter", "markdown" },
-})
+}
 
-require('nvim-comment-frame').setup({
+require("nvim-comment-frame").setup {
   disable_default_keymap = true,
   -- keymap = '<space>cc',
   -- multiline_keymap = '<space>C',
@@ -37,12 +37,12 @@ require('nvim-comment-frame').setup({
   add_comment_above = true, -- add comment above the current line
   languages = {
     javascript = {
-      start_str = '//',
-      end_str = '//',
-      fill_char = '-'
-    }
-  }
-})
+      start_str = "//",
+      end_str = "//",
+      fill_char = "-",
+    },
+  },
+}
 
 require("conrad.plugins.charlist").setup {
   enabled = true,
@@ -55,33 +55,47 @@ require("conrad.plugins.charlist").setup {
     nbsp = "☠",
     extends = "#",
     conceal = "┊",
-  }
+  },
 }
 
-require("minimal-tabline").setup({
+require("minimal-tabline").setup {
   enable = true,
   file_name = false,
   tab_index = true,
   pane_count = false,
   modified_sign = true,
-  no_name = '[No Name]'
-})
+  no_name = "[No Name]",
+}
 
-require('cmd-palette').setup({
+require("cmd-palette").setup {
   { label = "Peepsight", cmd = "Peepsight" },
-  { label = "quite", callback = function()
-    vim.cmd [[ set nonumber ]]
-    vim.o.signcolumn = "no"
-    end
+  {
+    label = "quite",
+    callback = function()
+      vim.cmd [[ set nonumber ]]
+      vim.o.signcolumn = "no"
+    end,
   },
-  { label = "reset", callback = function()
-    vim.cmd [[ set number ]]
-    vim.o.signcolumn = "yes"
-    end
+  {
+    label = "reset",
+    callback = function()
+      vim.cmd [[ set number ]]
+      vim.o.signcolumn = "yes"
+    end,
   },
-})
+  {
+    label = "conceal",
+    callback = function()
+      if vim.o.conceallevel > 0 then
+        vim.o.conceallevel = 0
+      else
+        vim.o.conceallevel = 2
+      end
+    end,
+  },
+}
 
-require('peepsight').setup({
+require("peepsight").setup {
   -- go
   "function_declaration",
   "method_declaration",
@@ -94,5 +108,4 @@ require('peepsight').setup({
   "arrow_function",
   "function_declaration",
   "generator_function_declaration",
-})
-
+}
