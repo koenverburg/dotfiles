@@ -109,3 +109,15 @@ require("peepsight").setup {
   "function_declaration",
   "generator_function_declaration",
 }
+
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = {
+    "gopls",
+    "css-lsp",
+    "sumneko_lua",
+    "cssmodules-language-server",
+    "tailwindcss-language-server",
+    "typescript-language-server",
+  },
+}

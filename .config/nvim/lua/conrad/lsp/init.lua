@@ -58,6 +58,7 @@ cmp.setup {
 local servers = {
   vimls = {},
   dockerls = {},
+  sumneko_lua = {},
   gopls = {
     settings = {
       gopls = {

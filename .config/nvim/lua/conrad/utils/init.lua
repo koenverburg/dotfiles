@@ -107,7 +107,7 @@ function M.on_attach(client, bufnr)
 
   if client.name == "tsserver" then
     -- require("lsp-inlayhints").setup_autocmd(bufnr, "typescript/inlayHints")
-  else
+  elseif client.name == "lua" then
     require("lsp-inlay_hints").setup_autocmd(bufnr)
   end
 

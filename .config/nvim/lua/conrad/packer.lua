@@ -33,10 +33,13 @@ return require("packer").startup {
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-nvim-lsp"
-    use "tami5/lspsaga.nvim"
+    use "tami5/lspsaga.nvim" -- look into creating myown hovers
+    use "j-hui/fidget.nvim"
+    use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
+
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
-    use "j-hui/fidget.nvim"
+
     use "ChristianChiarulli/lsp-inlay-hints"
     use "lvimuser/lsp-inlayhints.nvim"
 
