@@ -51,7 +51,6 @@ normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
 
 vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'conrad.utils'.hideTablineWhenSingleTab() ]]
 
-
 -- Harpoon
 normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
 normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
@@ -66,12 +65,6 @@ normal("<C-j>", "<C-W><C-J>")
 normal("<C-k>", "<C-W><C-K>")
 normal("<C-l>", "<C-W><C-L>")
 normal("<C-h>", "<C-W><C-H>")
-
--- Easier moving of panes
--- normal('<C-S-j>', '<C-W>J')
--- normal('<C-S-K>', '<C-W>K')
--- normal('<C-S-L>', '<C-W>L')
--- normal('<C-S-H>', '<C-W>H')
 
 -- Better jk
 normal("j", "gj")
@@ -125,7 +118,7 @@ normal("<leader>T", ":tabnew<cr>")
 normal("<S-Tab>", ":tabnext<cr>")
 
 -- Credo, sort aliases in alphabetical order
-visual("<leader>s", ":'<,'>!sort -f<cr>")
+-- visual("<leader>s", ":'<,'>!sort -f<cr>")
 
 -- Swap : and ; to make colon commands easer to type
 normal(";", ":")
@@ -183,11 +176,19 @@ insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> 
 
 -- Quick folding
 normal("<space>f", "za<cr>")
-
--- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 normal("<space>/", "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
+-- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
 normal("G", "Gzz")
+
+
+-- Searching
+normal('<leader>S', [[ <cmd>lua require('spectre').open()<cr> ]])
+
+normal('<leader>sw', [[ <cmd>lua require('spectre').open_visual({ select_word=true })<cr> ]])
+visual('<leader>s', [[ <esc>:lua require('spectre').open_visual()<cr> ]])
+
+normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
 
 -- vim.api.nvim_create_autocmd("InsertLeave", {
 --   callback = function()
