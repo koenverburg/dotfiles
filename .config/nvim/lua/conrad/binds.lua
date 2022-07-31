@@ -6,6 +6,7 @@ local insert = utils.insert
 local terminal = utils.terminal
 local telescope_map = utils.telescope_map
 
+-- Telescope
 telescope_map("<space>gw", "get_worktrees")
 telescope_map("<space>cwt", "create_worktree")
 
@@ -14,11 +15,15 @@ telescope_map("<leader><space>h", "help_tags")
 telescope_map("<space><space>", "find_files")
 telescope_map("<space>ff", "find_files")
 telescope_map("<space>fg", "my_live_grep")
-telescope_map("<leader>z", "buffers")
 
 telescope_map("<space>t", "git_files")
 telescope_map("<space>gw", "git_worktrees")
 telescope_map("<space>ed", "find_files_dotfiles")
+
+-- Buffers: Cybu
+normal("<c-[>", "<Plug>(CybuPrev)")
+normal("<c-]>", "<Plug>(CybuNext)")
+telescope_map("<leader>z", "buffers")
 
 -- Search for a work
 telescope_map("<space>sg", "my_string_grep")
@@ -36,28 +41,54 @@ telescope_map("<leader>cx", "lsp_code_actions")
 telescope_map("<leader>re", "refactors")
 normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
 
--- Command Palette
-normal("<space>cp", "<cmd>CmdPalette<cr>")
-
--- Find 'n Replace
-normal("<leader>fr", ":%s/")
-visual("<leader>fr", "'>s/")
-
-normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
--- normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
-
--- Folding using Treesitter
-normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
-
-vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'conrad.utils'.hideTablineWhenSingleTab() ]]
-
 -- Harpoon
 normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
 normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
 normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 
+-- -- Snippets
+-- insert("<c-k>", [[ <cmd>lua require('conrad.setup.snippets').ExpandOrJump()<cr> ]])
+-- insert("<c-j>", [[ <cmd>lua require('conrad.setup.snippets').JumpBack()<cr> ]])
+-- insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> ]])
+
+-- vim.api.nvim_create_autocmd("InsertLeave", {
+--   callback = function()
+--     vim.cmd [[:w ]]
+--   end,
+-- })
+
+-- Vim bindings
+normal("G", "Gzz")
+
+-- Swap : and ; to make colon commands easer to type
+normal(";", ":")
+normal(":", ";")
+
+-- Quick folding
+normal("<space>f", "za<cr>")
+
+-- Formatting
+normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
+
+-- Rapid movement
+normal("<s-a>", ":edit %:h<cr>")
+
+-- Move whole lines, kudos @theprimeagen
+visual("J", ":m '>+1<CR>gv=gv")
+visual("K", ":m '<-2<CR>gv=gv")
+
+-- Copy from cursor position to end of the line
+normal("Y", "y$")
+
+-- Concat lines below on current line
+normal("J", "mzJ`z")
+
+-- Undo until , .
+insert(",", ",<c-g>u")
+insert(".", ".<c-g>u")
+
 -- This is so I can quickly quite out of vim without having to close all the buffers
--- normal("<leader>bd", "<cmd>qall<cr>") -- delete all buffers
+normal("<leader>bd", "<cmd>qall<cr>") -- delete all buffers
 normal("<leader>q", "<cmd>qall<cr>")
 
 -- Easier Moving between splits
@@ -97,7 +128,6 @@ insert("jk", "<esc>")
 visual("<", "<gv")
 visual(">", ">gv")
 
--- Searching
 -- quickly cancel search highlighting
 normal("<leader><space>", ":nohl<cr>")
 
@@ -120,27 +150,17 @@ normal("<S-Tab>", ":tabnext<cr>")
 -- Credo, sort aliases in alphabetical order
 -- visual("<leader>s", ":'<,'>!sort -f<cr>")
 
--- Swap : and ; to make colon commands easer to type
-normal(";", ":")
-normal(":", ";")
+-- Plugin bindings
+
+-- Searching
+normal('<leader>S', [[ <cmd>lua require('spectre').open()<cr> ]])
+normal('<leader>sw', [[ <cmd>lua require('spectre').open_visual({ select_word=true })<cr> ]])
+visual('<leader>s', [[ <esc>:lua require('spectre').open_visual()<cr> ]])
+normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
 
 -- sessions
 normal("<leader>ss", ":SSave<cr>")
 normal("<leader>sc", ":SClose<cr>")
-
--- Move whole lines, kudos @theprimeagen
-visual("J", ":m '>+1<CR>gv=gv")
-visual("K", ":m '<-2<CR>gv=gv")
-
--- Copy from cursor position to end of the line
-normal("Y", "y$")
-
--- Concat lines below on current line
-normal("J", "mzJ`z")
-
--- Undo until , .
-insert(",", ",<c-g>u")
-insert(".", ".<c-g>u")
 
 -- File Tree
 normal("<C-b>", ":NvimTreeToggle<cr>")
@@ -163,38 +183,24 @@ normal("<leader>jf", ":HopWord<cr>")
 -- Toggle Alternate
 normal("<leader>ta", ":ToggleAlternate<cr>")
 
--- Formatting
-normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
-
--- Rapid movement
-normal("<s-a>", ":edit %:h<cr>")
-
--- Snippets
-insert("<c-k>", [[ <cmd>lua require('conrad.setup.snippets').ExpandOrJump()<cr> ]])
-insert("<c-j>", [[ <cmd>lua require('conrad.setup.snippets').JumpBack()<cr> ]])
-insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> ]])
-
--- Quick folding
-normal("<space>f", "za<cr>")
+-- My plugins bindings
 normal("<space>/", "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
-normal("G", "Gzz")
+-- Command Palette
+normal("<space>cp", "<cmd>CmdPalette<cr>")
 
+-- Find 'n Replace
+normal("<leader>fr", ":%s/")
+visual("<leader>fr", "'>s/")
 
--- Searching
-normal('<leader>S', [[ <cmd>lua require('spectre').open()<cr> ]])
+normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
+-- normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
 
-normal('<leader>sw', [[ <cmd>lua require('spectre').open_visual({ select_word=true })<cr> ]])
-visual('<leader>s', [[ <esc>:lua require('spectre').open_visual()<cr> ]])
+-- Folding using Treesitter
+normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
 
-normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
-
--- vim.api.nvim_create_autocmd("InsertLeave", {
---   callback = function()
---     vim.cmd [[:w ]]
---   end,
--- })
+vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'conrad.utils'.hideTablineWhenSingleTab() ]]
 
 return {
   normal,
