@@ -9,6 +9,7 @@
 
 (("if"       @keyword) (#set! conceal "?"))
 (("else"     @keyword) (#set! conceal "!"))
+(("yield"     @keyword) (#set! conceal "y"))
 ;; (("else if"   @keyword) (#set! conceal "¿"))
 
 ;; (("for"      @keyword) (#set! conceal ""))

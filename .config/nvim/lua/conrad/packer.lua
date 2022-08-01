@@ -39,9 +39,10 @@ return require("packer").startup {
 
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
+    use 'simrat39/inlay-hints.nvim'
 
-    use "ChristianChiarulli/lsp-inlay-hints"
-    use "lvimuser/lsp-inlayhints.nvim"
+    -- Christian / LunarVim
+    use "LunarVim/peek.lua"
 
     -- Utils
     use "windwp/nvim-autopairs"

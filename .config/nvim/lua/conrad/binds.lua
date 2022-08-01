@@ -6,7 +6,11 @@ local insert = utils.insert
 local terminal = utils.terminal
 local telescope_map = utils.telescope_map
 
+-- ----------------------------------------------------------------------------
+--
 -- Telescope
+--
+-- ----------------------------------------------------------------------------
 telescope_map("<space>gw", "get_worktrees")
 telescope_map("<space>cwt", "create_worktree")
 
@@ -20,9 +24,6 @@ telescope_map("<space>t", "git_files")
 telescope_map("<space>gw", "git_worktrees")
 telescope_map("<space>ed", "find_files_dotfiles")
 
--- Buffers: Cybu
-normal("<c-[>", "<Plug>(CybuPrev)")
-normal("<c-]>", "<Plug>(CybuNext)")
 telescope_map("<leader>z", "buffers")
 
 -- Search for a work
@@ -30,21 +31,12 @@ telescope_map("<space>sg", "my_string_grep")
 telescope_map("<space>ls", "session_lens")
 
 -- File browser
-telescope_map("<space>fb", "browser")
+telescope_map("<space>fb", "browser") -- ivy
 
 -- lsp
 telescope_map("<c-r>", "my_lsp_references") -- ivy
 telescope_map("<c-d>", "my_lsp_document_symbols") -- ivy
 telescope_map("<leader>cx", "lsp_code_actions")
-
--- Refactoring
-telescope_map("<leader>re", "refactors")
-normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
-
--- Harpoon
-normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
-normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
-normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 
 -- -- Snippets
 -- insert("<c-k>", [[ <cmd>lua require('conrad.setup.snippets').ExpandOrJump()<cr> ]])
@@ -57,7 +49,11 @@ normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 --   end,
 -- })
 
+-- ----------------------------------------------------------------------------
+--
 -- Vim bindings
+--
+-- ----------------------------------------------------------------------------
 normal("G", "Gzz")
 
 -- Swap : and ; to make colon commands easer to type
@@ -150,7 +146,11 @@ normal("<S-Tab>", ":tabnext<cr>")
 -- Credo, sort aliases in alphabetical order
 -- visual("<leader>s", ":'<,'>!sort -f<cr>")
 
--- Plugin bindings
+-- ----------------------------------------------------------------------------
+--
+-- Plugins bindings
+--
+-- ----------------------------------------------------------------------------
 
 -- Searching
 normal('<leader>S', [[ <cmd>lua require('spectre').open()<cr> ]])
@@ -183,7 +183,25 @@ normal("<leader>jf", ":HopWord<cr>")
 -- Toggle Alternate
 normal("<leader>ta", ":ToggleAlternate<cr>")
 
+-- Refactoring
+telescope_map("<leader>re", "refactors")
+normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
+
+-- Harpoon
+normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
+normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
+normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
+
+-- lsp peek
+normal('gp', "<cmd>lua require('peek').Peek('definition')<cr>")
+
+
+-- ----------------------------------------------------------------------------
+--
 -- My plugins bindings
+--
+-- ----------------------------------------------------------------------------
+
 normal("<space>/", "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 

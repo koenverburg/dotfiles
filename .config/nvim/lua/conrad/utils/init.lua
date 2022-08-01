@@ -105,10 +105,8 @@ function M.on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
-  if client.name == "tsserver" then
-    -- require("lsp-inlayhints").setup_autocmd(bufnr, "typescript/inlayHints")
-  elseif client.name == "lua" then
-    require("lsp-inlay_hints").setup_autocmd(bufnr)
+  if client.name == "tsserver" or client.name == "lua" or client.name == "go" then
+    require("inlay-hints").on_attach(client, bufnr)
   end
 
   lsp_map("n", "K", "vim.lsp.buf.hover")
