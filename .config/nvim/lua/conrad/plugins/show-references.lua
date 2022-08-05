@@ -16,7 +16,6 @@ local js = [[
 -- (arrow_function) @captures
 
 local queries = {
-  tsx = js,
   typescript = js,
   javascript = js,
   go = [[
@@ -46,9 +45,18 @@ function M.reference_handler(err, locations, ctx, _)
   end
 end
 
+function mapTo(lang)
+  if lang == "typescriptreact" or lang == "tsx" then
+    return "typescript"
+  end
+
+  return lang
+end
+
 function M._get_language_query(bufnr)
   local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
-  local current_query = queries[lang]
+ 
+  local current_query = queries[mapTo(lang)]
 
   if not current_query then
     vim.notify "Error: queries for this languages are not implemented"

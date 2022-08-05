@@ -16,7 +16,7 @@ require("telescope").setup {
       case_mode = "ignore_case", -- or "ignore_case" or "respect_case", the default case_mode is "smart_case"
     },
     file_browser = {
-      theme = 'ivy'
+      theme = "ivy",
     },
   },
 }
@@ -69,7 +69,7 @@ end
 function M.my_string_grep()
   local input = {
     prompt = "string grep",
-    default = node_text or ""
+    default = "",
   }
 
   local function string_grep_proxy(value)
@@ -77,7 +77,7 @@ function M.my_string_grep()
       search = value,
       layout_strategy = "horizontal",
       layout_config = {
-        prompt_position = "bottom",
+        prompt_position = "top",
       },
     }
 
@@ -101,20 +101,20 @@ function M.my_live_grep()
   require("telescope.builtin").live_grep(opts)
 end
 
-function M.find_files()
+function find_files()
   local opts = {
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = "bottom",
+      prompt_position = "top",
     },
   }
 
   require("telescope.builtin").find_files(opts)
 end
 
-function M.git_files()
+function git_files()
   local opts = {
-    previewer = false,
+    previewer = true,
     layout_strategy = "horizontal",
     layout_config = {
       prompt_position = "top",
@@ -122,6 +122,24 @@ function M.git_files()
   }
 
   require("telescope.builtin").git_files(opts)
+end
+
+function directory_exists(path)
+  local f = io.open(path, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end
+
+function M.main_search()
+  if directory_exists ".git" then
+    git_files()
+  else
+    find_files()
+  end
 end
 
 function M.git_worktrees()

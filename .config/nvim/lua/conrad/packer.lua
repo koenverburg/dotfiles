@@ -4,14 +4,10 @@ return require("packer").startup {
     use { "wbthomason/packer.nvim", opt = true }
 
     -- Colorscheme
-    use "doums/darcula"
     use "Shatur/neovim-ayu"
     use "glepnir/zephyr-nvim"
     use "Yagua/nebulous.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
-    use { "projekt0n/github-nvim-theme" }
-    use "shaunsingh/nord.nvim"
-    use "Yazeed1s/minimal.nvim"
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
@@ -39,7 +35,7 @@ return require("packer").startup {
 
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
-    use 'simrat39/inlay-hints.nvim'
+    use "simrat39/inlay-hints.nvim"
 
     -- Christian / LunarVim
     use "LunarVim/peek.lua"
@@ -62,7 +58,6 @@ return require("packer").startup {
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
     use "rcarriga/nvim-notify"
-    use "simrat39/symbols-outline.nvim"
     use "stevearc/aerial.nvim"
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
@@ -75,7 +70,7 @@ return require("packer").startup {
     use "rmagatti/auto-session"
 
     -- Misc
-    use "RRethy/vim-illuminate"
+    use "RRethy/vim-illuminate" -- can be removed lsp should have support for this
 
     -- Lanaguages
     use "elzr/vim-json"

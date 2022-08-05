@@ -16,11 +16,10 @@ telescope_map("<space>cwt", "create_worktree")
 
 telescope_map("<leader><space>h", "help_tags")
 
-telescope_map("<space><space>", "find_files")
-telescope_map("<space>ff", "find_files")
-telescope_map("<space>fg", "my_live_grep")
-
 telescope_map("<space>t", "git_files")
+telescope_map("<space>ff", "find_files")
+telescope_map('<space><space>', 'main_search')
+
 telescope_map("<space>gw", "git_worktrees")
 telescope_map("<space>ed", "find_files_dotfiles")
 
@@ -28,6 +27,7 @@ telescope_map("<leader>z", "buffers")
 
 -- Search for a work
 telescope_map("<space>sg", "my_string_grep")
+telescope_map("<space>fg", "my_live_grep")
 telescope_map("<space>ls", "session_lens")
 
 -- File browser
