@@ -7,7 +7,9 @@ return require("packer").startup {
     use "Shatur/neovim-ayu"
     use "glepnir/zephyr-nvim"
     use "Yagua/nebulous.nvim"
+    use "ellisonleao/gruvbox.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
@@ -49,7 +51,7 @@ return require("packer").startup {
     use "nvim-lua/plenary.nvim"
     use "stevearc/dressing.nvim"
     use "glepnir/smartinput.nvim"
-    use "unblevable/quick-scope"
+    -- use "unblevable/quick-scope"
     use "ruifm/gitlinker.nvim"
     use "lewis6991/impatient.nvim"
     use "rmagatti/alternate-toggler"

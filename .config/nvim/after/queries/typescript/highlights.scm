@@ -10,6 +10,7 @@
 (("if"       @keyword) (#set! conceal "?"))
 (("else"     @keyword) (#set! conceal "!"))
 (("yield"     @keyword) (#set! conceal "y"))
+;; (("comment_start"    @comment) (#set! conceal ""))
 ;; (("else if"   @keyword) (#set! conceal "¿"))
 
 ;; (("for"      @keyword) (#set! conceal ""))
@@ -19,4 +20,3 @@
 ;; (("then"     @keyword) (#set! conceal "↙"))
 ;; (("do"       @keyword) (#set! conceal ""))
 
-;; (("comment_start"    @comment) (#set! conceal ""))
