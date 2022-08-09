@@ -10,16 +10,12 @@ local P = utils.P
 
 local js = "(import_statement) @imports"
 
-local query = {
+local queries = {
   go = "(import_declaration) @imports",
 
-  tsx = js,
-
   javascript = js,
+  tsx = js,
   typescript = js,
-
-  javascriptreact = js,
-  typescriptreact = js,
 }
 
 -- zE will remove markers
@@ -57,16 +53,41 @@ function foldXscript(matches)
   vim.cmd(string.format("%s,%s fold", start_fold_line, end_fold_line + 1))
 end
 
-function M.main()
-  local buf_number = vim.api.nvim_get_current_buf()
-  local lang = ts_parsers.get_buf_lang(buf_number):gsub("-", "")
+function mapTo(lang)
+  if lang == "typescriptreact" or lang == "tsx" then
+    return "typescript"
+  end
 
-  if not query[lang] then
-    print(string.format("Unsupported languages found: %s", lang))
+  if lang == "javascriptreact" then
+    return "javascript"
+  end
+
+  return lang
+end
+
+function M._get_language_query(bufnr)
+  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
+ 
+  local current_query = queries[mapTo(lang)]
+
+  if not current_query then
+    vim.notify "Error: queries for this languages are not implemented"
+    return nil
+  end
+
+  return current_query
+end
+
+function M.main()
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  local query = M._get_language_query(bufnr)
+  if not query then
     return
   end
 
-  local matches = ts_helpers.get_query_matches(buf_number, query[lang])
+
+  local matches = ts_helpers.get_query_matches(bufnr, query)
   if matches == nil then
     return
   end
@@ -75,7 +96,7 @@ function M.main()
     foldGo(matches)
   end
 
-  if lang == "typescript" or lang == "tsx" then
+  if lang == "typescript" then
     foldXscript(matches)
   end
 end

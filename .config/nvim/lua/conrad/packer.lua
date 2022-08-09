@@ -56,11 +56,12 @@ return require("packer").startup {
     use "lewis6991/impatient.nvim"
     use "rmagatti/alternate-toggler"
     use "ThePrimeagen/refactoring.nvim"
-    use "ThePrimeagen/harpoon"
+    -- use "ThePrimeagen/harpoon"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
     use "rcarriga/nvim-notify"
     use "stevearc/aerial.nvim"
+    use 'anuvyklack/hydra.nvim' 
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Searching

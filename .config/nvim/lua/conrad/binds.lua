@@ -63,9 +63,6 @@ normal(":", ";")
 -- Quick folding
 normal("<space>f", "za<cr>")
 
--- Formatting
-normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
-
 -- Rapid movement
 normal("<s-a>", ":edit %:h<cr>")
 
@@ -84,7 +81,7 @@ insert(",", ",<c-g>u")
 insert(".", ".<c-g>u")
 
 -- This is so I can quickly quite out of vim without having to close all the buffers
-normal("<leader>bd", "<cmd>qall<cr>") -- delete all buffers
+-- normal("<leader>bd", "<cmd>qall<cr>") -- delete all buffers
 normal("<leader>q", "<cmd>qall<cr>")
 
 -- Easier Moving between splits
@@ -126,12 +123,6 @@ visual(">", ">gv")
 
 -- quickly cancel search highlighting
 normal("<leader><space>", ":nohl<cr>")
-
--- window resizing
-normal("<a-left>", "5<c-w><")
-normal("<a-right>", "5<c-w>>")
-normal("<a-up>", ":resize +5<cr>")
-normal("<a-down>", ":resize -5<cr>")
 
 -- Faster saving
 -- normal('<leader>w', ':w<cr>')
@@ -188,9 +179,9 @@ telescope_map("<leader>re", "refactors")
 normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
 
 -- Harpoon
-normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
-normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
-normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
+-- normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
+-- normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
+-- normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 
 -- lsp peek
 normal('gp', "<cmd>lua require('peek').Peek('definition')<cr>")

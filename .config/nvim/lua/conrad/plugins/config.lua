@@ -123,9 +123,9 @@ require("mason-lspconfig").setup {
 }
 
 require("inlay-hints").setup({
-  only_current_line = true,
+  only_current_line = false,
 
   eol = {
-    right_align = true,
+    right_align = false,
   }
 })

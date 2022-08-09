@@ -97,7 +97,6 @@ function lsp_map(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
-  -- require("lsp_signature").on_attach()
   require("aerial").on_attach(client, bufnr)
   -- require('conrad.plugins.show-references').on_attach(client, bufnr)
 
@@ -109,6 +108,7 @@ function M.on_attach(client, bufnr)
     require("inlay-hints").on_attach(client, bufnr)
   end
 
+  M.normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
   lsp_map("n", "K", "vim.lsp.buf.hover")
   lsp_map("n", "gD", "vim.lsp.buf.declaration")
   lsp_map("n", "gd", "vim.lsp.buf.definition")
