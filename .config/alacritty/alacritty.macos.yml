@@ -136,7 +136,7 @@ schemes:
     background: "0xdc3232"
     white: "0xffffff"
 
-colors: *gruvbox
+colors: *github
 
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }

@@ -1,15 +1,29 @@
 ;; Keywords
 
-(("const"    @keyword) (#set! conceal "~"))
-(("import"   @keyword) (#set! conceal "ﬦ"))
-(("from"     @keyword) (#set! conceal ""))
-(("export"   @keyword) (#set! conceal "ﰈ"))
+(("const"    @keyword) (#set! conceal "c"))
+(("let"      @keyword) (#set! conceal "l"))
+(("import"   @keyword) (#set! conceal "imp"))
+(("from"     @keyword) (#set! conceal "frm"))
+(("export"   @keyword) (#set! conceal "exp"))
 (("function" @keyword) (#set! conceal ""))
-(("return"   @keyword) (#set! conceal ""))
+(("return"   @keyword) (#set! conceal "rtrn"))
 
-(("if"       @keyword) (#set! conceal "?"))
-(("else"     @keyword) (#set! conceal "!"))
+;; (("if"       @keyword) (#set! conceal "?"))
+;; (("else"     @keyword) (#set! conceal "!"))
+
 (("yield"     @keyword) (#set! conceal "y"))
+
+;; (("const"    @keyword) (#set! conceal "~"))
+;; (("import"   @keyword) (#set! conceal "ﬦ"))
+;; (("from"     @keyword) (#set! conceal ""))
+;; (("export"   @keyword) (#set! conceal "ﰈ"))
+;; (("function" @keyword) (#set! conceal ""))
+;; (("return"   @keyword) (#set! conceal ""))
+;;
+;; (("if"       @keyword) (#set! conceal "?"))
+;; (("else"     @keyword) (#set! conceal "!"))
+;; (("yield"     @keyword) (#set! conceal "y"))
+
 ;; (("comment_start"    @comment) (#set! conceal ""))
 ;; (("else if"   @keyword) (#set! conceal "¿"))
 
