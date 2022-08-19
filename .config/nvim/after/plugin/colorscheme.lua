@@ -46,7 +46,7 @@ nebulous.setup {
     TSConditional     = {},
     TSConstBuiltin    = {},
     TSConstMacro      = {},
-    TSConstant        = {},
+    TSConstant        = {style = "bold"},
     TSConstructor     = {},
     TSError           = {},
     TSException       = {},
