@@ -1,5 +1,4 @@
 require("fidget").setup()
-require("nvim-tree").setup()
 require("session-lens").setup()
 require("Comment").setup() -- The bindings need to updated from this plugin
 
