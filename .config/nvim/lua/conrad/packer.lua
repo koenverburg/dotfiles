@@ -74,6 +74,7 @@ return require("packer").startup {
 
     -- Misc
     use "RRethy/vim-illuminate" -- can be removed lsp should have support for this
+    use "nathom/filetype.nvim"
 
     -- Lanaguages
     use "elzr/vim-json"

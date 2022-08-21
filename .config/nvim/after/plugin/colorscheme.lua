@@ -56,7 +56,7 @@ nebulous.setup {
     TSFuncMacro       = {},
     TSFunction        = {style = "bold"},
     TSInclude         = {},
-    TSKeyword         = {},
+    TSKeyword         = {style = "bold"},
     TSLabel           = {},
     TSMethod          = {},
     TSNumber          = {},
@@ -72,7 +72,7 @@ nebulous.setup {
     TSTypeBuiltin     = {},
     TSVariable        = {},
     TSVariableBuiltin = {},
-    TSTagDelimiter    = {} --style = "bold,italic" },
+    TSTagDelimiter    = {}, --style = "bold,italic" },
 
     -- LineNr = { fg = "#5BBBDA", bg = "NONE", style = "NONE" },
     -- CursorLineNr = { fg = "#E1CD6C", bg = "NONE", style = "NONE" },

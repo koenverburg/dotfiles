@@ -16,7 +16,7 @@ require("telescope").setup {
       case_mode = "ignore_case", -- or "ignore_case" or "respect_case", the default case_mode is "smart_case"
     },
     file_browser = {
-      theme = "ivy",
+      -- theme = "ivy",
     },
   },
 }
@@ -107,6 +107,12 @@ function find_files()
     layout_config = {
       prompt_position = "top",
     },
+    find_command = {
+      'rg',
+      '--ignore',
+      '--hidden',
+      '--files'
+    }
   }
 
   require("telescope.builtin").find_files(opts)

@@ -6,8 +6,12 @@
 (("from"     @keyword) (#set! conceal "frm"))
 (("export"   @keyword) (#set! conceal "exp"))
 (("function" @keyword) (#set! conceal ""))
-(("return"   @keyword) (#set! conceal "rtrn"))
+(("return"   @keyword) (#set! conceal "r"))
+(("public"   @keyword) (#set! conceal "p"))
+(("static"   @keyword) (#set! conceal "s"))
 
+;; (("&&"   @keyword) (#set! conceal "and"))
+;; (("||"   @keyword) (#set! conceal "or"))
 ;; (("if"       @keyword) (#set! conceal "?"))
 ;; (("else"     @keyword) (#set! conceal "!"))
 
@@ -20,16 +24,14 @@
 ;; (("function" @keyword) (#set! conceal ""))
 ;; (("return"   @keyword) (#set! conceal ""))
 ;;
-;; (("if"       @keyword) (#set! conceal "?"))
-;; (("else"     @keyword) (#set! conceal "!"))
-;; (("yield"     @keyword) (#set! conceal "y"))
+(("if"       @keyword) (#set! conceal "?"))
+(("else"     @keyword) (#set! conceal "!"))
+(("&&"      @keyword) (#set! conceal "and"))
 
 ;; (("comment_start"    @comment) (#set! conceal ""))
 ;; (("else if"   @keyword) (#set! conceal "¿"))
 
 ;; (("for"      @keyword) (#set! conceal ""))
-;;
-;; (("&&"      @keyword) (#set! conceal "▼"))
 ;; (("end"      @keyword) (#set! conceal "–"))
 ;; (("then"     @keyword) (#set! conceal "↙"))
 ;; (("do"       @keyword) (#set! conceal ""))
