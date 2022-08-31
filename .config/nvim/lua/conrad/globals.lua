@@ -5,18 +5,16 @@ vim.cmd [[ set nowrap ]]
 vim.cmd [[ set laststatus=3 ]]
 vim.cmd [[ set noshowmode ]]
 -- vim.cmd [[ set colorcolumn=80,120 ]]
-vim.cmd [[ set winbar=%m\ %t ]]
 
 vim.cmd [[ augroup illuminate_augroup ]]
 vim.cmd [[ autocmd! ]]
 vim.cmd [[ autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline ]]
 vim.cmd [[ augroup END ]]
 
-vim.cmd [[ autocmd BufNewFile,BUfRead *.js set ft=javascript ]]
-vim.cmd [[ autocmd BufNewFile,BUfRead *.jsx set ft=javascriptreact ]]
-vim.cmd [[ autocmd BufNewFile,BUfRead *.ts set ft=typescript ]]
-vim.cmd [[ autocmd BufNewFile,BUfRead *.tsx set ft=typescriptreact ]]
-
+vim.cmd [[ autocmd BufNewFile,BufRead *.js set ft=javascript ]]
+vim.cmd [[ autocmd BufNewFile,BufRead *.jsx set ft=javascriptreact ]]
+vim.cmd [[ autocmd BufNewFile,BufRead *.ts set ft=typescript ]]
+vim.cmd [[ autocmd BufNewFile,BufRead *.tsx set ft=typescriptreact ]]
 
 -- folding
 -- vim.cmd [[ set foldlevel=99 ]]
@@ -64,3 +62,16 @@ vim.g.vim_markdown_folding_disabled = 1
 
 -- json
 vim.g.vim_json_syntax_conceal = 0
+
+local function status_line()
+  local file_name = "%m %t"
+  local modified = " %-m"
+  local right_align = "%="
+  local line_no = "%10([%l/%L%)]"
+
+  return string.format("%s%s%s%s", file_name, modified, right_align, line_no)
+end
+
+-- vim.cmd [[ set winbar=%m\ %t ]]
+-- vim.opt.statusline = status_line()
+vim.opt.winbar = status_line()

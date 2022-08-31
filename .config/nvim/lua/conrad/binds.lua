@@ -23,7 +23,7 @@ telescope_map('<space><space>', 'main_search')
 telescope_map("<space>gw", "git_worktrees")
 telescope_map("<space>ed", "find_files_dotfiles")
 
-telescope_map("<leader>z", "buffers")
+-- telescope_map("<leader>z", "buffers")
 
 -- Search for a work
 telescope_map("<space>sg", "my_string_grep")
@@ -54,6 +54,7 @@ telescope_map("<leader>cx", "lsp_code_actions")
 -- Vim bindings
 --
 -- ----------------------------------------------------------------------------
+normal("q", "NOP") -- turn of recording of macros
 normal("G", "Gzz")
 
 -- Swap : and ; to make colon commands easer to type
@@ -160,9 +161,10 @@ normal("<leader>gt", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal
 terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
 normal("<leader>gg", [[ <cmd>Neogit<cr> ]])
--- Focus mode
-normal("<leader><space>f", ":ZenMode<cr>")
-normal("<leader><space>ll", ":Twilight<cr>")
+
+-- -- Focus mode
+-- normal("<leader><space>f", ":ZenMode<cr>")
+-- normal("<leader><space>ll", ":Twilight<cr>")
 
 -- Commenting
 normal("<space>C", [[ <cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr> ]])
@@ -178,14 +180,13 @@ normal("<leader>ta", ":ToggleAlternate<cr>")
 telescope_map("<leader>re", "refactors")
 normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
 
+-- Focus
+normal("<leader>z", [[ <cmd>lua require'centerpad'.toggle { leftpad = 36, rightpad = 36 }<cr> ]])
+
 -- Harpoon
 -- normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
 -- normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
 -- normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
-
--- lsp peek
-normal('gp', "<cmd>lua require('peek').Peek('definition')<cr>")
-
 
 -- ----------------------------------------------------------------------------
 --

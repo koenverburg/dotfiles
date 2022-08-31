@@ -97,8 +97,8 @@ function lsp_map(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
-  require("aerial").on_attach(client, bufnr)
-  -- require('conrad.plugins.show-references').on_attach(client, bufnr)
+  -- require("aerial").on_attach(client, bufnr)
+  -- require("conrad.plugins.show-references").on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false
@@ -109,6 +109,8 @@ function M.on_attach(client, bufnr)
   end
 
   M.normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
+  M.normal('gp', "<cmd>lua require('peek').Peek('definition')<cr>")
+
   lsp_map("n", "K", "vim.lsp.buf.hover")
   lsp_map("n", "gD", "vim.lsp.buf.declaration")
   lsp_map("n", "gd", "vim.lsp.buf.definition")
