@@ -5,7 +5,7 @@
 local u = require('conrad.utils')
 
 u.loadable("impatient")
-u.loadable("packer_compiled")
+-- u.loadable("packer_compiled")
 
 require("conrad.disable_builtin")
 
