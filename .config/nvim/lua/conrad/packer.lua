@@ -51,12 +51,11 @@ return require("packer").startup {
     use "nvim-lua/plenary.nvim"
     use "stevearc/dressing.nvim"
     use "glepnir/smartinput.nvim"
-    -- use "unblevable/quick-scope"
-    use "ruifm/gitlinker.nvim"
+    use "unblevable/quick-scope"
+    -- use "ThePrimeagen/harpoon"
     use "lewis6991/impatient.nvim"
     use "rmagatti/alternate-toggler"
     use "ThePrimeagen/refactoring.nvim"
-    -- use "ThePrimeagen/harpoon"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
     use "rcarriga/nvim-notify"
@@ -69,12 +68,11 @@ return require("packer").startup {
     use "windwp/nvim-spectre"
 
     -- sessions
-    use "rmagatti/session-lens"
-    use "rmagatti/auto-session"
+    use 'jedrzejboczar/possession.nvim'
 
     -- Misc
     use "RRethy/vim-illuminate" -- can be removed lsp should have support for this
-    use "nathom/filetype.nvim"
+    -- use "nathom/filetype.nvim"
 
     -- Lanaguages
     use "elzr/vim-json"
@@ -94,7 +92,7 @@ return require("packer").startup {
 
     -- Icons
     use "ryanoasis/vim-devicons"
-    use "kyazdani42/nvim-web-devicons"
+    -- use "kyazdani42/nvim-web-devicons"
 
     -- My plugins
     use "koenverburg/peepsight.nvim"

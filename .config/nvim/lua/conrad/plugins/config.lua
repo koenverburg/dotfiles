@@ -1,5 +1,4 @@
 require("fidget").setup()
-require("session-lens").setup()
 require("Comment").setup() -- The bindings need to updated from this plugin
 
 -- vim.notify = require "notify"
@@ -122,9 +121,16 @@ require("mason-lspconfig").setup {
 }
 
 require("inlay-hints").setup({
-  only_current_line = false,
+  only_current_line = true,
 
   eol = {
-    right_align = false,
+    right_align = true,
   }
 })
+
+require('possession').setup {
+  load_silent = true,
+  autosave = {
+    current = true
+  }
+}

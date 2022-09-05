@@ -104,9 +104,9 @@ function M.on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
-  if client.name == "tsserver" or client.name == "lua" or client.name == "go" then
-    require("inlay-hints").on_attach(client, bufnr)
-  end
+  -- if client.name == "tsserver" or client.name == "lua" or client.name == "go" then
+  --   require("inlay-hints").on_attach(client, bufnr)
+  -- end
 
   M.normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
   M.normal('gp', "<cmd>lua require('peek').Peek('definition')<cr>")
