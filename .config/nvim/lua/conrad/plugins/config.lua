@@ -1,5 +1,6 @@
 require("fidget").setup()
 require("Comment").setup() -- The bindings need to updated from this plugin
+require("session-lens").setup()
 
 -- vim.notify = require "notify"
 
@@ -128,9 +129,9 @@ require("inlay-hints").setup({
   }
 })
 
-require('possession').setup {
-  load_silent = true,
-  autosave = {
-    current = true
-  }
-}
+-- require('possession').setup {
+--   load_silent = true,
+--   autosave = {
+--     current = true
+--   }
+-- }

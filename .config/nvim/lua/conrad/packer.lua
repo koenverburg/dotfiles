@@ -68,7 +68,9 @@ return require("packer").startup {
     use "windwp/nvim-spectre"
 
     -- sessions
-    use 'jedrzejboczar/possession.nvim'
+    -- use 'jedrzejboczar/possession.nvim'
+    use "rmagatti/session-lens"
+    use "rmagatti/auto-session"
 
     -- Misc
     use "RRethy/vim-illuminate" -- can be removed lsp should have support for this
@@ -91,8 +93,7 @@ return require("packer").startup {
     use "tjdevries/express_line.nvim"
 
     -- Icons
-    use "ryanoasis/vim-devicons"
-    -- use "kyazdani42/nvim-web-devicons"
+    use "kyazdani42/nvim-web-devicons"
 
     -- My plugins
     use "koenverburg/peepsight.nvim"
