@@ -1,7 +1,5 @@
-local ok, ls = pcall(require, "null-ls")
-if not ok then
-  return
-end
+local utils = require('conrad.utils')
+local ls = utils.loadable("null-ls")
 
 local spell = ls.builtins.completion
 local formatting = ls.builtins.formatting

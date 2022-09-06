@@ -18,7 +18,7 @@ telescope_map("<leader><space>h", "help_tags")
 
 telescope_map("<space>t", "git_files")
 telescope_map("<space>ff", "find_files")
-telescope_map('<space><space>', 'main_search')
+-- telescope_map('<space><space>', 'main_search')
 
 telescope_map("<space>gw", "git_worktrees")
 telescope_map("<space>ed", "find_files_dotfiles")
@@ -135,6 +135,7 @@ normal("<leader>T", ":tabnew<cr>")
 -- Tab movement
 normal("<S-Tab>", ":tabnext<cr>")
 
+normal('<space>', 'za')
 -- Credo, sort aliases in alphabetical order
 -- visual("<leader>s", ":'<,'>!sort -f<cr>")
 
@@ -167,7 +168,7 @@ normal("<leader>gg", [[ <cmd>Neogit<cr> ]])
 -- normal("<leader><space>ll", ":Twilight<cr>")
 
 -- Commenting
-normal("<space>C", [[ <cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr> ]])
+-- normal("<space>C", [[ <cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr> ]])
 -- visual("<space>c", ":Commentary<cr>")
 
 -- word hopping
