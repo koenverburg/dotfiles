@@ -117,6 +117,8 @@ alias dockerclean='docker rmi $(docker images --filter "dangling=true" -q --no-t
 alias record='asciinema rec ./recoding.cast'
 alias showreel='asciinema rec'
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH

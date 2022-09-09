@@ -149,7 +149,7 @@ require("packer").startup {
     use "rmagatti/alternate-toggler"
     use "jose-elias-alvarez/null-ls.nvim"
     -- use "numToStr/Comment.nvim"
-    use "rcarriga/nvim-notify"
+    -- use "rcarriga/nvim-notify"
     -- use 'anuvyklack/hydra.nvim' 
 
     -- Searching
@@ -288,4 +288,93 @@ end
 function terminal(key, func)
   M.bind("t", key, func)
 end
+-- }}}
+
+-- Vim Bindings {{{
+normal("q", "NOP") -- turn of recording of macros
+normal("G", "Gzz")
+
+-- Swap : and ; to make colon commands easer to type
+normal(";", ":")
+normal(":", ";")
+
+-- Quick folding
+normal("<space>f", "za<cr>")
+
+-- Rapid movement
+normal("<s-a>", ":edit %:h<cr>")
+
+-- Move whole lines, kudos @theprimeagen
+visual("J", ":m '>+1<CR>gv=gv")
+visual("K", ":m '<-2<CR>gv=gv")
+
+-- Copy from cursor position to end of the line
+normal("Y", "y$")
+
+-- Concat lines below on current line
+normal("J", "mzJ`z")
+
+-- Undo until , .
+insert(",", ",<c-g>u")
+insert(".", ".<c-g>u")
+
+-- This is so I can quickly quite out of vim without having to close all the buffers
+-- normal("<leader>bd", "<cmd>qall<cr>") -- delete all buffers
+normal("<leader>q", "<cmd>qall<cr>")
+
+-- Easier Moving between splits
+normal("<C-j>", "<C-W><C-J>")
+normal("<C-k>", "<C-W><C-K>")
+normal("<C-l>", "<C-W><C-L>")
+normal("<C-h>", "<C-W><C-H>")
+
+-- Better jk
+normal("j", "gj")
+normal("k", "gk")
+
+-- Faster moving from beginning to end of a line
+normal("H", "^")
+normal("L", "g_")
+
+visual("H", "^")
+visual("L", "g_")
+
+-- Jumping from the beginning of a []{}() to the end
+normal("<Tab>", "%")
+
+-- Splits
+normal("sh", ":sp<cr>|<c-w>j")
+normal("sv", ":vsp<cr>|<c-w>l")
+-- normal("<leader>sh", ":sp<cr>|<c-w>j|:Telescope find_files<cr>")
+-- normal("<leader>sv", ":vsp<cr>|<c-w>l|:Telescope find_files<cr>")
+
+-- Keep search matches in the middle of the window
+normal("n", "nzzzv")
+normal("N", "Nzzzv")
+
+-- Quickly return to normal mode
+insert("jk", "<esc>")
+
+-- keep text selected after indentation
+visual("<", "<gv")
+visual(">", ">gv")
+
+-- quickly cancel search highlighting
+normal("<leader><space>", ":nohl<cr>")
+
+-- Faster saving
+-- normal('<leader>w', ':w<cr>')
+-- insert('<leader>w', ':w<cr>')
+
+-- Creating a new tab
+normal("<leader>T", ":tabnew<cr>")
+
+-- Tab movement
+normal("<S-Tab>", ":tabnext<cr>")
+
+normal('<space>', 'za')
+
+-- Credo, sort aliases in alphabetical order
+-- visual("<leader>s", ":'<,'>!sort -f<cr>")
+
 -- }}}

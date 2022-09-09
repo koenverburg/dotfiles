@@ -29,7 +29,7 @@ vim.cmd [[ hi GitSignsDelete guibg=NONE ]]
 
 local nebulous = utils.loadable('nebulous')
 nebulous.setup {
-  variant = "night", -- night, twilight, midnight, fullmoon, quasar
+  variant = "fullmoon", -- night, twilight, midnight, fullmoon, quasar
   disable = {
     background = false,
     endOfBuffer = false,
@@ -58,9 +58,9 @@ nebulous.setup {
     TSInclude         = {},
     TSKeyword         = {style = "bold"},
     TSLabel           = {},
-    TSMethod          = {},
+    TSMethod          = {style = "bold"},
     TSNumber          = {},
-    TSOperator        = {},
+    TSOperator        = {style = "bold"},
     TSParameter       = {},
     TSProperty        = {},
     TSPunctBracket    = {},
@@ -68,7 +68,7 @@ nebulous.setup {
     TSStringEscape    = {},
     TSStringRegex     = {},
     TSStructure       = {},
-    TSType            = {},
+    TSType            = {style = "bold"},
     TSTypeBuiltin     = {},
     TSVariable        = {},
     TSVariableBuiltin = {},

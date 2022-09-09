@@ -1,6 +1,7 @@
 require("fidget").setup()
 require("Comment").setup() -- The bindings need to updated from this plugin
 require("session-lens").setup()
+-- require("tint").setup()
 
 -- vim.notify = require "notify"
 
@@ -19,12 +20,12 @@ require("smartinput").setup {
   ["markdown"] = { "**", "****", "**" },
 }
 
-require("aerial").setup {
-  open_automatic = false,
-  close_behavior = "close",
-  default_direction = "right",
-  backends = { "lsp", "treesitter", "markdown" },
-}
+-- require("aerial").setup {
+--   open_automatic = false,
+--   close_behavior = "close",
+--   default_direction = "right",
+--   backends = { "lsp", "treesitter" },
+-- }
 
 require("nvim-comment-frame").setup {
   disable_default_keymap = true,

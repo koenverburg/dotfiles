@@ -59,8 +59,9 @@ return require("packer").startup {
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
     use "rcarriga/nvim-notify"
-    use "stevearc/aerial.nvim"
-    use 'anuvyklack/hydra.nvim' 
+    -- use "stevearc/aerial.nvim"
+    use 'anuvyklack/hydra.nvim'
+    -- use 'levouh/tint.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Searching
