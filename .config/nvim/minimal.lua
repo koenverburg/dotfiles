@@ -73,6 +73,7 @@ local function status_line()
 
   return string.format("%s%s%s%s", file_name, modified, right_align, line_no)
 end
+
 vim.opt.winbar = status_line()
 -- }}}
 
@@ -98,12 +99,12 @@ if not packer_exists then
 end
 -- }}}
 
--- Bootstrap Packer {{{
+-- Packer {{{
 require("packer").startup {
   function(use)
-    use 'tweekmonster/startuptime.vim'
+    use "tweekmonster/startuptime.vim"
     use { "wbthomason/packer.nvim", opt = true }
-    use {"lewis6991/impatient.nvim", opt = true }
+    use { "lewis6991/impatient.nvim", opt = true }
 
     -- Colorscheme
     use "Shatur/neovim-ayu"
@@ -140,6 +141,7 @@ require("packer").startup {
     -- Misc
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
+    -- use "rainbowhxch/accelerated-jk.nvim"
 
     -- Utils
     use "windwp/nvim-autopairs"
@@ -150,7 +152,7 @@ require("packer").startup {
     use "jose-elias-alvarez/null-ls.nvim"
     -- use "numToStr/Comment.nvim"
     -- use "rcarriga/nvim-notify"
-    -- use 'anuvyklack/hydra.nvim' 
+    -- use 'anuvyklack/hydra.nvim'
 
     -- Searching
     use "google/vim-searchindex"
@@ -160,7 +162,7 @@ require("packer").startup {
     use "rmagatti/auto-session"
 
     -- Misc
-    use "RRethy/vim-illuminate" -- can be removed lsp should have support for this
+    use "RRethy/vim-illuminate"
     -- use "nathom/filetype.nvim"
 
     -- Lanaguages
@@ -207,7 +209,7 @@ require("minimal-tabline").setup {
 
 require("fidget").setup()
 require("session-lens").setup()
-require('lsp_signature').setup()
+require("lsp_signature").setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup {
@@ -266,6 +268,29 @@ require("nvim-treesitter.configs").setup {
   },
 }
 
+
+require("illuminate").configure {
+  delay = 100,
+  providers = {
+    "lsp",
+    "treesitter",
+    "regex",
+  },
+  filetype_overrides = {},
+  filetypes_denylist = {
+    "dirvish",
+    "fugitive",
+  },
+  filetypes_allowlist = {},
+  modes_denylist = {},
+  modes_allowlist = {},
+  providers_regex_syntax_denylist = {},
+  providers_regex_syntax_allowlist = {},
+  under_cursor = true,
+}
+
+vim.cmd [[ hi def IlluminatedWordText gui=underline ]]
+
 -- }}}
 
 -- utils {{{
@@ -274,34 +299,35 @@ function bind(mode, keys, func)
 end
 
 function normal(key, func)
-  M.bind("n", key, func)
+  bind("n", key, func)
 end
 
 function visual(key, func)
-  M.bind("v", key, func)
+  bind("v", key, func)
 end
 
 function insert(key, func)
-  M.bind("i", key, func)
+  bind("i", key, func)
 end
 
 function terminal(key, func)
-  M.bind("t", key, func)
+  bind("t", key, func)
 end
+
 -- }}}
 
 -- Vim Bindings {{{
-normal("q", "NOP") -- turn of recording of macros
-normal("G", "Gzz")
+-- normal("q", "NOP") -- turn of recording of macros
+-- normal("G", "Gzz")
 
 -- Swap : and ; to make colon commands easer to type
 normal(";", ":")
 normal(":", ";")
 
 -- Quick folding
-normal("<space>f", "za<cr>")
+-- normal("<space>f", "za<cr>")
 
--- Rapid movement
+-- Rapid movemenk
 normal("<s-a>", ":edit %:h<cr>")
 
 -- Move whole lines, kudos @theprimeagen
@@ -354,6 +380,7 @@ normal("N", "Nzzzv")
 
 -- Quickly return to normal mode
 insert("jk", "<esc>")
+normal("jk", "<esc>")
 
 -- keep text selected after indentation
 visual("<", "<gv")
@@ -372,9 +399,6 @@ normal("<leader>T", ":tabnew<cr>")
 -- Tab movement
 normal("<S-Tab>", ":tabnext<cr>")
 
-normal('<space>', 'za')
-
--- Credo, sort aliases in alphabetical order
--- visual("<leader>s", ":'<,'>!sort -f<cr>")
+normal("<space>", "za")
 
 -- }}}

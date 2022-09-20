@@ -107,8 +107,8 @@ return require("packer").startup {
     -- use "tjdevries/diff-therapy.nvim"
 
     -- Snippets
-    -- use "L3MON4D3/LuaSnip"
-    -- use "saadparwaiz1/cmp_luasnip"
+    use "L3MON4D3/LuaSnip"
+    use "saadparwaiz1/cmp_luasnip"
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it
