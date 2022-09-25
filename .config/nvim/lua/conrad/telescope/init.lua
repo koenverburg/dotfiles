@@ -70,6 +70,20 @@ function M.find_files_dotfiles()
   require("telescope.builtin").git_files(opts)
 end
 
+function M.find_files_notes()
+  local opts = {
+    previewer = false,
+    prompt_title = "~ Notes ~",
+    cwd = "~/code/github/obsidian",
+    layout_strategy = "vertical",
+    layout_config = {
+      prompt_position = "bottom",
+    },
+  }
+
+  require("telescope.builtin").git_files(opts)
+end
+
 function M.my_string_grep()
   local input = {
     prompt = "string grep",
@@ -123,14 +137,7 @@ function M.find_files()
 end
 
 function M.git_files()
-  local opts = {
-    previewer = true,
-    layout_strategy = "horizontal",
-    layout_config = {
-      prompt_position = "top",
-    },
-  }
-
+  local opts = {}
   require("telescope.builtin").git_files(opts)
 end
 
@@ -144,6 +151,18 @@ function M.ctrl_p()
   }
 
   require("telescope.builtin").git_files(opts)
+end
+
+function M.spell_checker()
+  local opts = themes.get_cursor {
+    prompt_title = "",
+    layout_config = {
+      height = 0.25,
+      width = 0.25
+    }
+  }
+
+  require("telescope.builtin").spell_suggest(opts)
 end
 
 -- function directory_exists(path)

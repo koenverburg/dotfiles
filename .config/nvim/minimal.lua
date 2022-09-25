@@ -268,7 +268,6 @@ require("nvim-treesitter.configs").setup {
   },
 }
 
-
 require("illuminate").configure {
   delay = 100,
   providers = {
@@ -317,8 +316,8 @@ end
 -- }}}
 
 -- Vim Bindings {{{
--- normal("q", "NOP") -- turn of recording of macros
--- normal("G", "Gzz")
+normal("q", "NOP") -- turn of recording of macros
+normal("G", "Gzz")
 
 -- Swap : and ; to make colon commands easer to type
 normal(";", ":")
