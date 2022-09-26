@@ -12,9 +12,8 @@
 
 ;; (("&&"   @keyword) (#set! conceal "and"))
 ;; (("||"   @keyword) (#set! conceal "or"))
-;; (("if"       @keyword) (#set! conceal "?"))
-;; (("else"     @keyword) (#set! conceal "!"))
-
+(("&&"      @keyword) (#set! conceal "&"))
+(("||"      @keyword) (#set! conceal "|"))
 (("yield"     @keyword) (#set! conceal "y"))
 
 ;; (("const"    @keyword) (#set! conceal "~"))
@@ -24,9 +23,6 @@
 ;; (("function" @keyword) (#set! conceal ""))
 ;; (("return"   @keyword) (#set! conceal ""))
 ;;
-(("if"       @keyword) (#set! conceal "?"))
-(("else"     @keyword) (#set! conceal "!"))
-(("&&"      @keyword) (#set! conceal "and"))
 
 ;; (("comment_start"    @comment) (#set! conceal ""))
 ;; (("else if"   @keyword) (#set! conceal "¿"))

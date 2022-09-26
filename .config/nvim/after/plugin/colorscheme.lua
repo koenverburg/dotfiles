@@ -29,7 +29,7 @@ vim.cmd [[ hi GitSignsDelete guibg=NONE ]]
 
 local nebulous = utils.loadable('nebulous')
 nebulous.setup {
-  variant = "fullmoon", -- night, twilight, midnight, fullmoon, quasar
+  variant = "night", -- night, twilight, midnight, fullmoon, quasar
   disable = {
     background = false,
     endOfBuffer = false,

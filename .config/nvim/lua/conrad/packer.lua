@@ -59,7 +59,7 @@ return require("packer").startup {
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
     use "rcarriga/nvim-notify"
-    -- use "stevearc/aerial.nvim"
+    use "stevearc/aerial.nvim"
     use 'anuvyklack/hydra.nvim'
     -- use 'levouh/tint.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
@@ -107,8 +107,8 @@ return require("packer").startup {
     -- use "tjdevries/diff-therapy.nvim"
 
     -- Snippets
-    -- use "L3MON4D3/LuaSnip"
-    -- use "saadparwaiz1/cmp_luasnip"
+    use "L3MON4D3/LuaSnip"
+    use "saadparwaiz1/cmp_luasnip"
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it

@@ -11,6 +11,10 @@ local telescope_map = utils.telescope_map
 -- Telescope
 --
 -- ----------------------------------------------------------------------------
+-- Find in other projects
+telescope_map("<space>sn", "find_files_notes")
+telescope_map("<space>ed", "find_files_dotfiles")
+
 telescope_map("<space>gw", "get_worktrees")
 telescope_map("<space>cwt", "create_worktree")
 
@@ -18,17 +22,19 @@ telescope_map("<leader><space>h", "help_tags")
 
 telescope_map("<space>t", "git_files")
 telescope_map("<space>ff", "find_files")
--- telescope_map('<space><space>', 'main_search')
+telescope_map('<space>p', 'ctrl_p')
+-- telescope_map("<space><space>", "buffers")
 
 telescope_map("<space>gw", "git_worktrees")
-telescope_map("<space>ed", "find_files_dotfiles")
 
--- telescope_map("<leader>z", "buffers")
 
 -- Search for a work
 telescope_map("<space>sg", "my_string_grep")
 telescope_map("<space>fg", "my_live_grep")
 telescope_map("<space>ls", "session_lens")
+
+-- spell checker
+telescope_map("<leader>sc", "spell_checker")
 
 -- File browser
 telescope_map("<space>fb", "browser") -- ivy
@@ -152,8 +158,8 @@ visual('<leader>s', [[ <esc>:lua require('spectre').open_visual()<cr> ]])
 normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
 
 -- sessions
-normal("<leader>ss", ":SSave<cr>")
-normal("<leader>sc", ":SClose<cr>")
+-- normal("<leader>ss", ":SSave<cr>")
+-- normal("<leader>sc", ":SClose<cr>")
 
 -- File Tree
 normal("<C-b>", ":NvimTreeToggle<cr>")

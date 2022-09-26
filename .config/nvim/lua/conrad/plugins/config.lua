@@ -20,12 +20,12 @@ require("smartinput").setup {
   ["markdown"] = { "**", "****", "**" },
 }
 
--- require("aerial").setup {
---   open_automatic = false,
---   close_behavior = "close",
---   default_direction = "right",
---   backends = { "lsp", "treesitter" },
--- }
+require("aerial").setup {
+  open_automatic = false,
+  close_behavior = "close",
+  default_direction = "right",
+  backends = { "lsp", "treesitter" },
+}
 
 require("nvim-comment-frame").setup {
   disable_default_keymap = true,
@@ -130,9 +130,23 @@ require("inlay-hints").setup({
   }
 })
 
--- require('possession').setup {
---   load_silent = true,
---   autosave = {
---     current = true
---   }
+-- require("illuminate").configure {
+--   -- delay = 100,
+--   providers = {
+--     "lsp",
+--     "treesitter",
+--     "regex",
+--   },
+--   filetype_overrides = {},
+--   filetypes_denylist = {
+--     "dirvish",
+--     "fugitive",
+--   },
+--   filetypes_allowlist = {},
+--   modes_denylist = {},
+--   modes_allowlist = {},
+--   providers_regex_syntax_denylist = {},
+--   providers_regex_syntax_allowlist = {},
+--   under_cursor = true,
 -- }
+-- vim.cmd [[ hi def IlluminatedWordText gui=underline ]]

@@ -7,6 +7,10 @@ require("telescope").setup {
   defaults = {
     color_devicons = true,
     borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+    layout_config = {
+      height = 0.75,
+      width = 0.9
+    }
   },
   extensions = {
     fzf = {
@@ -66,6 +70,20 @@ function M.find_files_dotfiles()
   require("telescope.builtin").git_files(opts)
 end
 
+function M.find_files_notes()
+  local opts = {
+    previewer = false,
+    prompt_title = "~ Notes ~",
+    cwd = "~/code/github/obsidian",
+    layout_strategy = "vertical",
+    layout_config = {
+      prompt_position = "bottom",
+    },
+  }
+
+  require("telescope.builtin").git_files(opts)
+end
+
 function M.my_string_grep()
   local input = {
     prompt = "string grep",
@@ -101,11 +119,11 @@ function M.my_live_grep()
   require("telescope.builtin").live_grep(opts)
 end
 
-function find_files()
+function M.find_files()
   local opts = {
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = "top",
+      prompt_position = "bottom",
     },
     find_command = {
       'rg',
@@ -118,35 +136,52 @@ function find_files()
   require("telescope.builtin").find_files(opts)
 end
 
-function git_files()
+function M.git_files()
+  local opts = {}
+  require("telescope.builtin").git_files(opts)
+end
+
+function M.ctrl_p()
   local opts = {
-    previewer = true,
+    previewer = false,
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = "top",
+      prompt_position = "bottom",
     },
   }
 
   require("telescope.builtin").git_files(opts)
 end
 
-function directory_exists(path)
-  local f = io.open(path, "r")
-  if f ~= nil then
-    io.close(f)
-    return true
-  else
-    return false
-  end
+function M.spell_checker()
+  local opts = themes.get_cursor {
+    prompt_title = "",
+    layout_config = {
+      height = 0.25,
+      width = 0.25
+    }
+  }
+
+  require("telescope.builtin").spell_suggest(opts)
 end
 
-function M.main_search()
-  if directory_exists ".git" then
-    git_files()
-  else
-    find_files()
-  end
-end
+-- function directory_exists(path)
+--   local f = io.open(path, "r")
+--   if f ~= nil then
+--     io.close(f)
+--     return true
+--   else
+--     return false
+--   end
+-- end
+--
+-- function M.main_search()
+--   if directory_exists ".git" then
+--     git_files()
+--   else
+--     find_files()
+--   end
+-- end
 
 function M.git_worktrees()
   require("telescope").extensions.git_worktree.git_worktrees()
