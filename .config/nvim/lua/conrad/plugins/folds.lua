@@ -65,9 +65,7 @@ function mapTo(lang)
   return lang
 end
 
-function M._get_language_query(bufnr)
-  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
- 
+function M._get_language_query(lang, bufnr)
   local current_query = queries[mapTo(lang)]
 
   if not current_query then
@@ -80,12 +78,12 @@ end
 
 function M.main()
   local bufnr = vim.api.nvim_get_current_buf()
+  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
 
-  local query = M._get_language_query(bufnr)
+  local query = M._get_language_query(lang, bufnr)
   if not query then
     return
   end
-
 
   local matches = ts_helpers.get_query_matches(bufnr, query)
   if matches == nil then
