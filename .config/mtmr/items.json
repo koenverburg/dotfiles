@@ -77,6 +77,18 @@
     "url": "https://cryptowat.ch/markets/kraken/ETH/usd"
   },
   {
+    "type": "currency",
+    "refreshInterval": 60, // in seconds
+    "bordered": false,
+    "align": "left",
+    "width": 100,
+    "from": "SOL",
+    "to": "USD",
+    "full": false, // BTC‣1337.1337$
+    "action": "openUrl",
+    "url": "https://cryptowat.ch/markets/kraken/SOL/usd"
+  },
+  {
     "type": "weather",
     "align": "right",
     "icon_type": "images",
