@@ -61,7 +61,6 @@ end
 
 -- Load first {{{
 loadable('impatient')
-loadable('packer_compiled')
 -- }}}
 
 -- Vim Opts {{{
@@ -117,7 +116,7 @@ local function status_line()
   return string.format("%s%s%s%s", file_name, modified, right_align, line_no)
 end
 
-vim.opt.winbar = status_line()
+-- vim.opt.winbar = status_line()
 -- }}}
 
 -- Bootstrap Packer {{{
@@ -243,7 +242,7 @@ require("packer").startup {
 -- Plugin Configs {{{
 require("minimal-tabline").setup {
   enable = true,
-  file_name = false,
+  file_name = true,
   tab_index = true,
   pane_count = false,
   modified_sign = false,
@@ -254,7 +253,7 @@ require('hop').setup()
 require("fidget").setup()
 require("gitsigns").setup()
 require("session-lens").setup()
-require('comment').setup()
+require('Comment').setup()
 require("lsp_signature").setup()
 
 require("mason").setup()
