@@ -1,5 +1,12 @@
 local utils = require('conrad.utils')
 
+-- local nc = utils.loadable('nightcoder')
+-- if nc then
+--   print('yes')
+--   vim.cmd [[ colorscheme nightcoder ]]
+--   return
+-- end
+
 -- require('ayu').setup({
 --   mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
 -- })
@@ -17,23 +24,22 @@ local utils = require('conrad.utils')
 --
 -- vim.cmd [[ colorscheme gruvbox ]]
 
-vim.cmd [[ hi TabLine guibg=NONE ]]
-vim.cmd [[ hi TabLineSel guibg=NONE ]]
-vim.cmd [[ hi TabLineFill guibg=NONE ]]
-
-vim.cmd [[ hi GitSignsAdd guibg=NONE ]]
-vim.cmd [[ hi GitSignsChange guibg=NONE ]]
-vim.cmd [[ hi GitSignsDelete guibg=NONE ]]
-
+-- vim.cmd [[ hi TabLine guibg=NONE ]]
+-- vim.cmd [[ hi TabLineSel guibg=NONE ]]
+-- vim.cmd [[ hi TabLineFill guibg=NONE ]]
+--
+-- vim.cmd [[ hi GitSignsAdd guibg=NONE ]]
+-- vim.cmd [[ hi GitSignsChange guibg=NONE ]]
+-- vim.cmd [[ hi GitSignsDelete guibg=NONE ]]
 
 
 local nebulous = utils.loadable('nebulous')
 nebulous.setup {
-  variant = "night", -- night, twilight, midnight, fullmoon, quasar
+  variant = "kv", -- night, twilight, midnight, fullmoon, quasar
   disable = {
     background = false,
     endOfBuffer = false,
-    terminal_colors = true,
+    terminal_colors = false,
   },
   italic = {
     comments   = false,
@@ -85,19 +91,18 @@ nebulous.setup {
   }
 }
 
-
 -- vim.cmd [[ hi CursorLine gui=underline cterm=underline guibg=NONE ]]
 -- vim.cmd [[ hi VertSplit guifg=#000000 ]] -- #2B2E35
 
-local highlight = function(group, attr, sp)
-  attr = attr and "gui=" .. attr or "gui=NONE"
-  sp = sp and "guisp=" .. sp or ""
+-- local highlight = function(group, attr, sp)
+--   attr = attr and "gui=" .. attr or "gui=NONE"
+--   sp = sp and "guisp=" .. sp or ""
+--
+--   vim.api.nvim_command("highlight " .. group .. " ".. attr .. " " .. sp)
+-- end
 
-  vim.api.nvim_command("highlight " .. group .. " ".. attr .. " " .. sp)
-end
-
-highlight("WinSeparator", "none")
-highlight("VertSplit", "none")
+-- highlight("WinSeparator", "none")
+-- highlight("VertSplit", "none")
 
 -- highlight('TSFunction', "bold")
 -- highlight('TSBoolean',  "bold")

@@ -1,12 +1,24 @@
 return require("packer").startup {
   function(use)
+    local local_use = function(name, opts)
+      opts = opts or {}
+
+      github_path = "~/code/github/"
+
+      if vim.fn.isdirectory(vim.fn.expand(github_path .. name)) == 1 then
+         opts[1] = string.format("%s/%s", github_path, name)
+      end
+
+      use(opts)
+    end
+
     -- use 'tweekmonster/startuptime.vim'
     use { "wbthomason/packer.nvim", opt = true }
 
     -- Colorscheme
     use "Shatur/neovim-ayu"
     use "glepnir/zephyr-nvim"
-    use "Yagua/nebulous.nvim"
+    use "koenverburg/nebulous.nvim"
     use "ellisonleao/gruvbox.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
     use { "catppuccin/nvim", as = "catppuccin" }
@@ -61,6 +73,7 @@ return require("packer").startup {
     use "rcarriga/nvim-notify"
     use "stevearc/aerial.nvim"
     use 'anuvyklack/hydra.nvim'
+    use 'norcalli/nvim-colorizer.lua'
     -- use 'levouh/tint.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
@@ -109,6 +122,10 @@ return require("packer").startup {
     -- Snippets
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
+
+    -- in dev plugins
+    -- local_use('nightcoder.nvim')
+    -- _= vim.cmd [[ packadd ~/code/github/nightcoder.nvim ]]
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it

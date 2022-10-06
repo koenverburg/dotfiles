@@ -1,6 +1,7 @@
 require("fidget").setup()
 require("Comment").setup() -- The bindings need to updated from this plugin
 require("session-lens").setup()
+require('colorizer').setup()
 -- require("tint").setup()
 
 -- vim.notify = require "notify"
