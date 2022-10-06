@@ -38,9 +38,10 @@ vim.opt.completeopt = "menu,menuone,noselect,noinsert"
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 
-vim.opt.foldmethod = "marker"
-vim.opt.foldenable = true
+-- vim.opt.foldenable = false
+-- vim.opt.foldmethod = "manual"
 vim.cmd [[ set foldlevel=0 ]]
+vim.cmd [[ set foldmethod=manual ]]
 
 vim.opt.inccommand = "split"
 vim.opt.ruler = true
@@ -62,7 +63,7 @@ vim.g.vim_markdown_folding_disabled = 1
 vim.g.vim_json_syntax_conceal = 0
 
 local function status_line()
-  local file_name = "%m %t"
+  local file_name = "%t"
   local modified = " %-m"
   local right_align = "%="
   local line_no = "%10([%l/%L%)]"

@@ -3,7 +3,7 @@
   email = creativekoen@gmail.com
 
 [core]
-  editor = nvim
+  editor = vim
 
 [github]
   name = Koen Verburg
@@ -19,6 +19,9 @@
   path = ~/code/bitbucket/.gitconfig
 
 [push]
+  default = current
+
+[pull]
   default = current
 
 [pager]

@@ -42,17 +42,17 @@ nebulous.setup {
     terminal_colors = false,
   },
   italic = {
-    comments   = false,
-    keywords   = false,
-    functions  = false,
-    variables  = false,
+    comments  = false,
+    keywords  = false,
+    functions = false,
+    variables = false,
   },
   custom_colors = { -- this table can hold any group of colors with their respective values
     TSCharacter       = {},
     TSConditional     = {},
     TSConstBuiltin    = {},
     TSConstMacro      = {},
-    TSConstant        = {style = "bold"},
+    TSConstant        = { style = "bold" },
     TSConstructor     = {},
     TSError           = {},
     TSException       = {},
@@ -60,13 +60,13 @@ nebulous.setup {
     TSFloat           = {},
     TSFuncBuiltin     = {},
     TSFuncMacro       = {},
-    TSFunction        = {style = "bold"},
+    TSFunction        = { style = "bold" },
     TSInclude         = {},
-    TSKeyword         = {style = "bold"},
+    TSKeyword         = { style = "bold" },
     TSLabel           = {},
-    TSMethod          = {style = "bold"},
+    TSMethod          = { style = "bold" },
     TSNumber          = {},
-    TSOperator        = {style = "bold"},
+    TSOperator        = { style = "bold" },
     TSParameter       = {},
     TSProperty        = {},
     TSPunctBracket    = {},
@@ -74,11 +74,12 @@ nebulous.setup {
     TSStringEscape    = {},
     TSStringRegex     = {},
     TSStructure       = {},
-    TSType            = {style = "bold"},
+    TSType            = { style = "bold" },
     TSTypeBuiltin     = {},
     TSVariable        = {},
     TSVariableBuiltin = {},
     TSTagDelimiter    = {}, --style = "bold,italic" },
+    -- WinSeparator      = { fg = "NONE", background = 'NONE' }
 
     -- LineNr = { fg = "#5BBBDA", bg = "NONE", style = "NONE" },
     -- CursorLineNr = { fg = "#E1CD6C", bg = "NONE", style = "NONE" },
@@ -103,6 +104,9 @@ nebulous.setup {
 
 -- highlight("WinSeparator", "none")
 -- highlight("VertSplit", "none")
+--
+-- vim.cmd [[ hi WinSeparator guifg=NONE ]] -- #2B2E35
+-- vim.cmd [[ hi VertSplit guifg=NONE ]] -- #2B2E35
 
 -- highlight('TSFunction', "bold")
 -- highlight('TSBoolean',  "bold")

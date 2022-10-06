@@ -14,7 +14,6 @@ local queries = {
   go = "(import_declaration) @imports",
 
   javascript = js,
-  tsx = js,
   typescript = js,
 }
 
@@ -65,10 +64,8 @@ function mapTo(lang)
   return lang
 end
 
-function M._get_language_query(bufnr)
-  local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
- 
-  local current_query = queries[mapTo(lang)]
+function M._get_language_query(lang, bufnr)
+  local current_query = queries[lang]
 
   if not current_query then
     vim.notify "Error: queries for this languages are not implemented"
@@ -79,13 +76,18 @@ function M._get_language_query(bufnr)
 end
 
 function M.main()
-  local bufnr = vim.api.nvim_get_current_buf()
+  vim.cmd [[ set foldmethod=manual ]]
 
-  local query = M._get_language_query(bufnr)
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lang = mapTo(ts_parsers.get_buf_lang(bufnr):gsub("-", ""))
+
+  -- hack, typescriptreact is not supported by treesitter
+  vim.cmd(string.format("set ft=%s", lang))
+
+  local query = M._get_language_query(lang, bufnr)
   if not query then
     return
   end
-
 
   local matches = ts_helpers.get_query_matches(bufnr, query)
   if matches == nil then
