@@ -1,39 +1,6 @@
 local utils = require('conrad.utils')
-
--- local nc = utils.loadable('nightcoder')
--- if nc then
---   print('yes')
---   vim.cmd [[ colorscheme nightcoder ]]
---   return
--- end
-
--- require('ayu').setup({
---   mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
--- })
--- vim.cmd [[ colorscheme ayu-dark ]]
--- vim.cmd [[ colorscheme darcula ]]
-
--- local palette = require('gruvbox.palette')
--- require('gruvbox').setup({
---   italic = false,
---   contrast = "hard",
---   overrides = {
---     SignColumn = { bg = palette.dark0_hard }
---   }
--- })
---
--- vim.cmd [[ colorscheme gruvbox ]]
-
--- vim.cmd [[ hi TabLine guibg=NONE ]]
--- vim.cmd [[ hi TabLineSel guibg=NONE ]]
--- vim.cmd [[ hi TabLineFill guibg=NONE ]]
---
--- vim.cmd [[ hi GitSignsAdd guibg=NONE ]]
--- vim.cmd [[ hi GitSignsChange guibg=NONE ]]
--- vim.cmd [[ hi GitSignsDelete guibg=NONE ]]
-
-
 local nebulous = utils.loadable('nebulous')
+
 nebulous.setup {
   variant = "kv", -- night, twilight, midnight, fullmoon, quasar
   disable = {
@@ -92,6 +59,20 @@ nebulous.setup {
   }
 }
 
+-- local nc = utils.loadable('nightcoder')
+-- if nc then
+--   print('yes')
+--   vim.cmd [[ colorscheme nightcoder ]]
+--   return
+-- end
+
+-- require('ayu').setup({
+--   mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+-- })
+-- vim.cmd [[ colorscheme ayu-dark ]]
+-- vim.cmd [[ colorscheme darcula ]]
+-- vim.cmd [[ colorscheme gruvbox ]]
+
 -- vim.cmd [[ hi CursorLine gui=underline cterm=underline guibg=NONE ]]
 -- vim.cmd [[ hi VertSplit guifg=#000000 ]] -- #2B2E35
 
@@ -114,5 +95,12 @@ nebulous.setup {
 -- highlight('Identifier',  "bold")
 -- highlight('TSVariable', "bold")
 
+-- vim.cmd [[ hi TabLine guibg=NONE ]]
+-- vim.cmd [[ hi TabLineSel guibg=NONE ]]
+-- vim.cmd [[ hi TabLineFill guibg=NONE ]]
+--
+-- vim.cmd [[ hi GitSignsAdd guibg=NONE ]]
+-- vim.cmd [[ hi GitSignsChange guibg=NONE ]]
+-- vim.cmd [[ hi GitSignsDelete guibg=NONE ]]
 -- vim.cmd [[ highlight NonText guibg=none ]]
 -- vim.cmd [[ highlight Normal guibg=none ]]

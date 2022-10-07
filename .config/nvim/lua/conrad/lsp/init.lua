@@ -15,7 +15,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
     underline = {
       severity_limit = "Warning",
     },
-    virtual_text = false,
+    virtual_text = true,
   })
 
 cmp.setup {
