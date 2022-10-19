@@ -1,8 +1,34 @@
 local utils = require('conrad.utils')
 local nebulous = utils.loadable('nebulous')
 
+local scheme = {
+  none        = 'NONE',
+  DarkRed     = "#FD2E6A",
+  DarkOrange  = "#ff8d03",
+  DarkBlue    = "#007ED3",
+  DarkGreen   = "#5EB95D",
+  DarkYellow  = "#FFCC00",
+  DarkMagenta = "#FE92E1",
+  DarkCyan    = "#56D6D6",
+  DarkGrey    = "#555555",
+  DarkGrey_2  = "#828989"
+}
+
+local red = {
+  shade_1 = '#8b0000',
+  shade_2 = '#7d0000',
+  shade_3 = '#6f0000',
+  shade_4 = '#610000',
+  shade_5 = '#530000',
+  shade_6 = '#460000',
+  shade_7 = '#380000',
+  shade_8 = '#2a0000',
+  shade_9 = '#1c0000',
+  shade_10 = '#0e0000',
+}
+
 nebulous.setup {
-  variant = "kv", -- night, twilight, midnight, fullmoon, quasar
+  variant = "night", -- night, twilight, midnight, fullmoon, quasar
   disable = {
     background = false,
     endOfBuffer = false,
@@ -15,6 +41,9 @@ nebulous.setup {
     variables = false,
   },
   custom_colors = { -- this table can hold any group of colors with their respective values
+    -- CursorLine        = { bg = red.shade_7 },
+    -- Normal            = { bg = red.shade_10 },
+    -- NormalNC          = { bg = red.shade_9 },
     TSCharacter       = {},
     TSConditional     = {},
     TSConstBuiltin    = {},
@@ -46,6 +75,23 @@ nebulous.setup {
     TSVariable        = {},
     TSVariableBuiltin = {},
     TSTagDelimiter    = {}, --style = "bold,italic" },
+
+    -- Telescope
+    TelescopeBorder =         { fg = scheme.Red,         bg = scheme.none, scheme.none },
+    TelescopeMatching =       { fg = scheme.Yellow,      bg = scheme.none, scheme.none },
+    TelescopeMultiSelection = { fg = scheme.LightGrey,   bg = scheme.none, scheme.none },
+    TelescopeNormal =         { fg = scheme.White,       bg = scheme.none, scheme.none },
+    TelescopePreviewBorder =  { fg = scheme.Red,         bg = scheme.none, scheme.none },
+    TelescopePrompt =         { fg = scheme.White,       bg = scheme.none, scheme.none },
+    TelescopePromptBorder =   { fg = scheme.Red,         bg = scheme.none, scheme.none },
+    TelescopePromptPrefix =   { fg = scheme.White,       bg = scheme.none, scheme.none },
+    TelescopeResultsBorder =  { fg = scheme.Red,         bg = scheme.none, scheme.none },
+    TelescopeSelection =      { fg = scheme.White,       bg = scheme.Grey, style = "bold" },
+    TelescopeSelectionCaret = { fg = scheme.Red,         bg = scheme.none, scheme.none },
+
+
+
+
     -- WinSeparator      = { fg = "NONE", background = 'NONE' }
 
     -- LineNr = { fg = "#5BBBDA", bg = "NONE", style = "NONE" },
