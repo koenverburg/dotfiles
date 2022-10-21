@@ -52,7 +52,7 @@ return require("packer").startup {
     use "simrat39/inlay-hints.nvim"
 
     -- Christian / LunarVim
-    use "LunarVim/peek.lua"
+    -- use "LunarVim/peek.lua"
 
     -- Utils
     use "windwp/nvim-autopairs"
@@ -71,7 +71,7 @@ return require("packer").startup {
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
     use "rcarriga/nvim-notify"
-    use "stevearc/aerial.nvim"
+    -- use "stevearc/aerial.nvim"
     use 'anuvyklack/hydra.nvim'
     use 'norcalli/nvim-colorizer.lua'
     -- use 'levouh/tint.nvim'
@@ -113,6 +113,7 @@ return require("packer").startup {
     use "koenverburg/peepsight.nvim"
     use "koenverburg/cmd-palette.nvim"
     use "koenverburg/minimal-tabline.nvim"
+    use "koenverburg/dim.lua" -- Fork
 
     -- Git
     use "TimUntersberger/neogit"

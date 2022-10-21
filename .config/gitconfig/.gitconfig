@@ -65,3 +65,5 @@
 
 [init]
 	defaultBranch = main
+[safe]
+	directory = /Users/verbukoe/code/github/dotfiles/dotbot
