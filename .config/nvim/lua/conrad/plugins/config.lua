@@ -125,6 +125,7 @@ require("mason-lspconfig").setup {
     "cssmodules-language-server",
     "tailwindcss-language-server",
     "typescript-language-server",
+    "dockerfile-language-server"
   },
 }
 
