@@ -1,10 +1,9 @@
 require('dim').setup()
-require("Comment").setup() -- The bindings need to updated from this plugin
+require("Comment").setup()
 require("session-lens").setup()
 require('colorizer').setup()
-
--- require("tint").setup()
--- vim.notify = require "notify"
+require('matchparen').setup()
+require("lsp_lines").setup()
 
 local npairs = require "nvim-autopairs"
 local Rule = require "nvim-autopairs.rule"
@@ -12,13 +11,11 @@ npairs.setup()
 npairs.add_rule(Rule("<", ">"))
 
 require("smartinput").setup {
-  ["go"] = { ";", ":=", ";" },
-  ["typescript"] = { " >", "=>", ">" },
-  -- ["typescriptreact"]  = { " >", "=>", ">"     },
-  ["javascript"] = { " >", "=>", ">" },
-  -- ["javascriptreact"]  = { " >", "=>", ">"     },
-  ["markdown"] = { "_", "__", "_" },
-  ["markdown"] = { "**", "****", "**" },
+  ["go"]              = { ";", ":=", ";" },
+  ["typescript"]      = { " >", "=>", ">" },
+  ["javascript"]      = { " >", "=>", ">" },
+  ["typescriptreact"] = { " >", "=>", ">" },
+  ["javascriptreact"] = { " >", "=>", ">" },
 }
 
 require("fidget").setup {
@@ -26,12 +23,6 @@ require("fidget").setup {
     spinner = "dots_snake"
   }
 }
-
--- require("aerial").setup {
---   open_automatic = false,
---   default_direction = "right",
---   backends = { "lsp", "treesitter" },
--- }
 
 require("nvim-comment-frame").setup {
   disable_default_keymap = true,
