@@ -1,8 +1,8 @@
+require('dim').setup()
 require("fidget").setup()
 require("Comment").setup() -- The bindings need to updated from this plugin
 require("session-lens").setup()
 require('colorizer').setup()
-require('dim').setup()
 -- require("tint").setup()
 
 -- vim.notify = require "notify"
@@ -115,12 +115,11 @@ require("mason").setup()
 require("mason-lspconfig").setup {
   ensure_installed = {
     "gopls",
-    "css-lsp",
+    "cssls",
+    "tsserver",
+    "dockerls",
     "sumneko_lua",
-    "cssmodules-language-server",
-    "tailwindcss-language-server",
-    "typescript-language-server",
-    "dockerfile-language-server"
+    "tailwindcss",
   },
 }
 
