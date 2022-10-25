@@ -21,7 +21,6 @@ return require("packer").startup {
     use "koenverburg/nebulous.nvim"
     use "ellisonleao/gruvbox.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
-    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"

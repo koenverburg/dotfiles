@@ -1,10 +1,9 @@
-require("fidget").setup()
+require('dim').setup()
 require("Comment").setup() -- The bindings need to updated from this plugin
 require("session-lens").setup()
 require('colorizer').setup()
-require('dim').setup()
--- require("tint").setup()
 
+-- require("tint").setup()
 -- vim.notify = require "notify"
 
 local npairs = require "nvim-autopairs"
@@ -20,6 +19,12 @@ require("smartinput").setup {
   -- ["javascriptreact"]  = { " >", "=>", ">"     },
   ["markdown"] = { "_", "__", "_" },
   ["markdown"] = { "**", "****", "**" },
+}
+
+require("fidget").setup {
+  text = {
+    spinner = "dots_snake"
+  }
 }
 
 -- require("aerial").setup {
@@ -130,6 +135,19 @@ require("inlay-hints").setup({
     right_align = true,
   }
 })
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern= "*",
+--   callback = function ()
+--     local bufnr = vim.api.nvim_get_current_buf()
+--     local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+--
+--     if (ft == 'typescript') then
+--       require('conrad.experiments.conceal').typescript()
+--     end
+--
+--   end
+-- })
 
 -- require("illuminate").configure {
 --   -- delay = 100,

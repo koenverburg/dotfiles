@@ -3,9 +3,11 @@ local utils = require "conrad.utils"
 local lspkind = require "lspkind"
 local lspconfig = require "lspconfig"
 
-require("luasnip.loaders.from_snipmate").lazy_load({
-  paths = vim.fn.stdpath("config") .. "/snippets",
-})
+-- require("luasnip.loaders.from_snipmate").lazy_load({
+--   paths = vim.fn.stdpath("config") .. "/snippets",
+-- })
+
+require("luasnip/loaders/from_vscode").lazy_load()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.handlers["textDocument/publishDiagnostics"], {
@@ -43,6 +45,10 @@ cmp.setup {
       { "i", "s" }
     ),
   },
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
   experimental = {
     native_menu = false,
     ghost_text = true,
@@ -50,12 +56,15 @@ cmp.setup {
   formatting = {
     format = lspkind.cmp_format(),
   },
+  view = {
+    entries = { name = "custom", selection_order = "near_cursor" },
+  },
   sources = {
     { name = "luasnip" },
     { name = "nvim_lsp" },
-    { name = "treesitter" },
-    { name = "path" },
-    { name = "buffer" },
+    -- { name = "treesitter" },
+    { name = "path", keyword_length = 3 },
+    { name = "buffer", keyword_length = 3 }
   },
 }
 

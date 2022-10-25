@@ -53,6 +53,8 @@ vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 
+-- vim.cmd [[ set conceallevel=2]]
+
 vim.g.DevIconsAppendArtifactFix = 1
 
 -- Markdown

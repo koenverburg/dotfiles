@@ -199,12 +199,15 @@ end
 
 function M.refactors()
   local opts = require("telescope.themes").get_cursor()
+  -- bufnr = bufnr or vim.api.nvim_get_current_buf()
 
   require("telescope.pickers").new(opts, {
     prompt_title = "refactors",
+
     finder = require("telescope.finders").new_table {
       results = require("refactoring").get_refactors(),
     },
+
     sorter = require("telescope.config").values.generic_sorter(opts),
     attach_mappings = function(_, map)
       map("i", "<CR>", refactor)
