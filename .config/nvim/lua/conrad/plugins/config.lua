@@ -111,12 +111,11 @@ require("mason").setup()
 require("mason-lspconfig").setup {
   ensure_installed = {
     "gopls",
-    "css-lsp",
+    "cssls",
+    "tsserver",
+    "dockerls",
     "sumneko_lua",
-    "cssmodules-language-server",
-    "tailwindcss-language-server",
-    "typescript-language-server",
-    "dockerfile-language-server"
+    "tailwindcss",
   },
 }
 
