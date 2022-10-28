@@ -2,7 +2,6 @@ require('dim').setup()
 require("Comment").setup()
 require("session-lens").setup()
 require('colorizer').setup()
-require('matchparen').setup()
 require("lsp_lines").setup()
 
 local npairs = require "nvim-autopairs"
@@ -22,6 +21,11 @@ require("fidget").setup {
   text = {
     spinner = "dots_snake"
   }
+}
+
+require("indent_blankline").setup {
+  show_current_context = false,
+  show_current_context_start = false,
 }
 
 require("nvim-comment-frame").setup {

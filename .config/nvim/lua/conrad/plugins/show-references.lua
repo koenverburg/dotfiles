@@ -45,7 +45,7 @@ function M.reference_handler(err, locations, ctx, _)
   end
 end
 
-function mapTo(lang)
+local mapTo = function(lang)
   if lang == "typescriptreact" or lang == "tsx" then
     return "typescript"
   end
@@ -55,7 +55,6 @@ end
 
 function M._get_language_query(bufnr)
   local lang = ts_parsers.get_buf_lang(bufnr):gsub("-", "")
- 
   local current_query = queries[mapTo(lang)]
 
   if not current_query then
@@ -108,7 +107,7 @@ function M.set_autocmd(bufnr)
   })
 end
 
-function M.on_attach(client, bufnr)
+function M.on_attach(_, bufnr)
   M._find_references(bufnr)
   M.set_autocmd(bufnr)
 end

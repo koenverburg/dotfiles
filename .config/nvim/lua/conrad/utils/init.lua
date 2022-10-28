@@ -97,7 +97,6 @@ function lsp_map(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
-  -- require("aerial").on_attach(client, bufnr)
   -- require("conrad.plugins.show-references").on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "gopls" then

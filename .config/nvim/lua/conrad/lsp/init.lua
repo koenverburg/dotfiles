@@ -10,15 +10,18 @@ local lspconfig = require "lspconfig"
 require("luasnip/loaders/from_vscode").lazy_load()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(vim.lsp.handlers["textDocument/publishDiagnostics"], {
-    signs = {
-      severity_limit = "Error",
-    },
-    underline = {
-      severity_limit = "Warning",
-    },
-    virtual_text = true,
-  })
+vim.lsp.with(vim.lsp.handlers["textDocument/publishDiagnostics"], {
+  signs = {
+    severity_limit = "Error",
+  },
+  underline = {
+    severity_limit = "Warning",
+  },
+})
+
+vim.diagnostic.config({
+  virtual_text = false,
+})
 
 cmp.setup {
   snippet = {
@@ -60,8 +63,8 @@ cmp.setup {
     entries = { name = "custom", selection_order = "near_cursor" },
   },
   sources = {
-    { name = "luasnip" },
     { name = "nvim_lsp" },
+    { name = "luasnip" },
     -- { name = "treesitter" },
     { name = "path", keyword_length = 3 },
     { name = "buffer", keyword_length = 3 }
@@ -74,6 +77,9 @@ local servers = {
   sumneko_lua = {
     settings = {
       Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+        },
         hint = {
           enable = true,
         },

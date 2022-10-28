@@ -174,8 +174,8 @@ normal("<leader>gg", [[ <cmd>Neogit<cr> ]])
 -- normal("<leader><space>ll", ":Twilight<cr>")
 
 -- Commenting
--- normal("<space>C", [[ <cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr> ]])
--- visual("<space>c", ":Commentary<cr>")
+normal("<space>C", [[ <cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr> ]])
+-- visual("<space>c", "<cmd>Commentary<cr>")
 
 -- word hopping
 normal("<leader>jf", ":HopWord<cr>")

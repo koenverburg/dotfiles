@@ -45,13 +45,11 @@ return require("packer").startup {
     use "tami5/lspsaga.nvim" -- look into creating myown hovers
     use "j-hui/fidget.nvim"
     use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
+    use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
     use "simrat39/inlay-hints.nvim"
-
-    -- Christian / LunarVim
-    -- use "LunarVim/peek.lua"
 
     -- Utils
     use "windwp/nvim-autopairs"
@@ -69,11 +67,9 @@ return require("packer").startup {
     use "ThePrimeagen/refactoring.nvim"
     use "jose-elias-alvarez/null-ls.nvim"
     use "numToStr/Comment.nvim"
-    use "rcarriga/nvim-notify"
-    -- use "stevearc/aerial.nvim"
+    -- use "rcarriga/nvim-notify"
     use 'anuvyklack/hydra.nvim'
     use 'norcalli/nvim-colorizer.lua'
-    -- use 'levouh/tint.nvim'
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Searching
@@ -81,7 +77,6 @@ return require("packer").startup {
     use "windwp/nvim-spectre"
 
     -- sessions
-    -- use 'jedrzejboczar/possession.nvim'
     use "rmagatti/session-lens"
     use "rmagatti/auto-session"
 
@@ -104,6 +99,7 @@ return require("packer").startup {
     -- Looks
     use "lewis6991/gitsigns.nvim"
     use "tjdevries/express_line.nvim"
+    use "lukas-reineke/indent-blankline.nvim"
 
     -- Icons
     use "kyazdani42/nvim-web-devicons"
