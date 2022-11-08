@@ -1,5 +1,6 @@
 local utils = require "conrad.utils"
 local lspconfig = require "lspconfig"
+local lsp = {}
 
 local servers = {
   vimls = {},
@@ -79,14 +80,18 @@ local servers = {
   cssls = { cmd = { "vscode-css-language-server", "--stdio" } },
 }
 
-for name, opts in pairs(servers) do
-  if type(opts) == "function" then
-    opts()
-  else
-    local client = lspconfig[name]
-    client.setup(vim.tbl_extend("force", {
-      on_attach = utils.on_attach,
-      flags = { debounce_text_changes = 150 },
-    }, opts))
+function lsp.init()
+  for name, opts in pairs(servers) do
+    if type(opts) == "function" then
+      opts()
+    else
+      local client = lspconfig[name]
+      client.setup(vim.tbl_extend("force", {
+        on_attach = utils.on_attach,
+        flags = { debounce_text_changes = 150 },
+      }, opts))
+    end
   end
 end
+
+return lsp

@@ -1,0 +1,12 @@
+{
+  "Log": {
+    "prefix": "lg",
+    "body": ["console.log({${1}})"],
+    "description": "log"
+  },
+  "import": {
+    "prefix": "imp",
+    "body": ["import ${1} from '${2}'"],
+    "description": "Imports package"
+  },
+}
