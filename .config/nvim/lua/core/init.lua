@@ -4,6 +4,6 @@ core.cmp()
 core.luasnip()
 
 local lsp = require('core.lsp')
-
 lsp.init()
 
+require('core.treesitter')

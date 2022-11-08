@@ -1,4 +1,4 @@
-local utils = require "conrad.utils"
+local utils = require "utils"
 local lspconfig = require "lspconfig"
 local lsp = {}
 
@@ -81,6 +81,18 @@ local servers = {
 }
 
 function lsp.init()
+  require("mason").setup()
+  require("mason-lspconfig").setup {
+    ensure_installed = {
+      "gopls",
+      "cssls",
+      "tsserver",
+      "dockerls",
+      "sumneko_lua",
+      "tailwindcss",
+    },
+  }
+
   for name, opts in pairs(servers) do
     if type(opts) == "function" then
       opts()
@@ -92,6 +104,22 @@ function lsp.init()
       }, opts))
     end
   end
+
+  -- require("lsp_lines").setup()
+  require("fidget").setup {
+    text = {
+      spinner = "dots_snake"
+    }
+  }
+
+  require("inlay-hints").setup({
+    only_current_line = true,
+
+    eol = {
+      right_align = true,
+    }
+  })
+
 end
 
 return lsp

@@ -1,33 +1,16 @@
 require('dim').setup()
-require("Comment").setup()
 require("session-lens").setup()
 require('colorizer').setup()
-require("lsp_lines").setup()
 
-local npairs = require "nvim-autopairs"
-local Rule = require "nvim-autopairs.rule"
-npairs.setup()
-npairs.add_rule(Rule("<", ">"))
+-- require("smartinput").setup {
+--   ["go"]              = { ";", ":=", ";" },
+--   ["typescript"]      = { " >", "=>", ">" },
+--   ["javascript"]      = { " >", "=>", ">" },
+--   ["typescriptreact"] = { " >", "=>", ">" },
+--   ["javascriptreact"] = { " >", "=>", ">" },
+-- }
 
-require("smartinput").setup {
-  ["go"]              = { ";", ":=", ";" },
-  ["typescript"]      = { " >", "=>", ">" },
-  ["javascript"]      = { " >", "=>", ">" },
-  ["typescriptreact"] = { " >", "=>", ">" },
-  ["javascriptreact"] = { " >", "=>", ">" },
-}
-
-require("fidget").setup {
-  text = {
-    spinner = "dots_snake"
-  }
-}
-
-require("indent_blankline").setup {
-  show_current_context = false,
-  show_current_context_start = false,
-}
-
+require("Comment").setup()
 require("nvim-comment-frame").setup {
   disable_default_keymap = true,
   -- keymap = '<space>cc',
@@ -43,6 +26,11 @@ require("nvim-comment-frame").setup {
       fill_char = "-",
     },
   },
+}
+
+require("indent_blankline").setup {
+  show_current_context = false,
+  show_current_context_start = false,
 }
 
 require("conrad.plugins.charlist").setup {
@@ -66,15 +54,6 @@ temp.author = 'Koen Verburg (Conrad The Programmer)'
 temp.email = ''
 
 -- require('coman')
-
-require("minimal-tabline").setup {
-  enable = true,
-  file_name = false,
-  tab_index = true,
-  pane_count = false,
-  modified_sign = true,
-  no_name = "[No Name]",
-}
 
 require("cmd-palette").setup {
   { label = "Peepsight", cmd = "Peepsight" },
@@ -119,26 +98,6 @@ require("peepsight").setup {
   "generator_function_declaration",
 }
 
-require("mason").setup()
-require("mason-lspconfig").setup {
-  ensure_installed = {
-    "gopls",
-    "cssls",
-    "tsserver",
-    "dockerls",
-    "sumneko_lua",
-    "tailwindcss",
-  },
-}
-
-require("inlay-hints").setup({
-  only_current_line = true,
-
-  eol = {
-    right_align = true,
-  }
-})
-
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern= "*",
 --   callback = function ()
@@ -152,23 +111,3 @@ require("inlay-hints").setup({
 --   end
 -- })
 
--- require("illuminate").configure {
---   -- delay = 100,
---   providers = {
---     "lsp",
---     "treesitter",
---     "regex",
---   },
---   filetype_overrides = {},
---   filetypes_denylist = {
---     "dirvish",
---     "fugitive",
---   },
---   filetypes_allowlist = {},
---   modes_denylist = {},
---   modes_allowlist = {},
---   providers_regex_syntax_denylist = {},
---   providers_regex_syntax_allowlist = {},
---   under_cursor = true,
--- }
--- vim.cmd [[ hi def IlluminatedWordText gui=underline ]]
