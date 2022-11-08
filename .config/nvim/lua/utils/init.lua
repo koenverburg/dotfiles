@@ -218,16 +218,12 @@ function M.get_query_matches(bufnr, query)
   return results
 end
 
-
-
-
-
 return setmetatable({}, {
   __index = function(_, k)
     if M[k] then
       return M[k]
     else
-      return require("conrad.utils")[k]
+      return require("utils")[k]
     end
   end,
 })

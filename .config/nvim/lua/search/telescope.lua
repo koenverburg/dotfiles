@@ -1,4 +1,4 @@
-local utils = require("conrad.utils")
+local utils = require("utils")
 local ts = require('telescope')
 local themes = require("telescope.themes")
 

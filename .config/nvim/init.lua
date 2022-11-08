@@ -12,7 +12,7 @@ require("bootstrap.packer")
 require('options')
 require("keybinds")
 
-require("conrad.plugins.config")
+require("conrad.config")
 
 require('core')
 require('ui')

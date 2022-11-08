@@ -1,5 +1,5 @@
-local utils = require "conrad.utils"
-local ts_helpers = require "conrad.utils.treesitter"
+local utils = require "utils"
+local ts_helpers = require "utils.treesitter"
 local ts_utils = require "nvim-treesitter.ts_utils"
 local ts_parsers = require "nvim-treesitter.parsers"
 
@@ -102,7 +102,7 @@ end
 function M.set_autocmd(bufnr)
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
-      require("conrad.plugins.show-references")._find_references(bufnr)
+      require("cexperiments.show-references")._find_references(bufnr)
     end,
   })
 end

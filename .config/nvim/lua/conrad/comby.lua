@@ -2,7 +2,7 @@ local Job = require "plenary.job"
 local term = require('lspsaga.floaterm')
 
 local async = require "plenary.async"
-local utils = require "conrad.utils"
+local utils = require "utils"
 local normal = utils.normal
 
 local M = {}

@@ -5,17 +5,6 @@ local visual = utils.visual
 local insert = utils.insert
 local terminal = utils.terminal
 
--- -- Snippets
--- insert("<c-k>", [[ <cmd>lua require('conrad.setup.snippets').ExpandOrJump()<cr> ]])
--- insert("<c-j>", [[ <cmd>lua require('conrad.setup.snippets').JumpBack()<cr> ]])
--- insert("<c-l>", [[ <cmd>lua require('conrad.setup.snippets').ChangeChoice()<cr> ]])
-
--- vim.api.nvim_create_autocmd("InsertLeave", {
---   callback = function()
---     vim.cmd [[:w ]]
---   end,
--- })
-
 -- ----------------------------------------------------------------------------
 --
 -- Vim bindings
@@ -162,7 +151,7 @@ normal("<leader>z", [[ <cmd>lua require'centerpad'.toggle { leftpad = 36, rightp
 --
 -- ----------------------------------------------------------------------------
 
-normal("<space>/", "<cmd>lua require('conrad.utils').PopUpSearch()<cr>")
+normal("<space>/", "<cmd>lua require('utils').PopUpSearch()<cr>")
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
 -- Command Palette
@@ -172,11 +161,11 @@ normal("<space>cp", "<cmd>CmdPalette<cr>")
 normal("<leader>fr", ":%s/")
 visual("<leader>fr", "'>s/")
 
-normal("<leader><leader>x", "<cmd>lua require'conrad.utils'.save_and_execute()<cr>")
--- normal("<leader><leader>c", "<cmd>lua require'conrad.core.virtualtext'.show()<cr>")
+normal("<leader><leader>x", "<cmd>lua require'utils'.save_and_execute()<cr>")
+-- normal("<leader><leader>c", "<cmd>lua require'core.virtualtext'.show()<cr>")
 
 -- Folding using Treesitter
-normal("<leader>fi", "<cmd>lua require 'conrad.plugins.folds'.main()<cr>")
+normal("<leader>fi", "<cmd>lua require 'plugins.folds'.main()<cr>")
 
--- vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'conrad.utils'.hideTablineWhenSingleTab() ]]
+vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'utils'.hideTablineWhenSingleTab() ]]
 

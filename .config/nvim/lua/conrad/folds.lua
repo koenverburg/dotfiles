@@ -1,5 +1,5 @@
-local utils = require "conrad.utils"
-local ts_helpers = require "conrad.utils.treesitter"
+local utils = require "utils"
+local ts_helpers = require "utils.treesitter"
 local ts_utils = require "nvim-treesitter.ts_utils"
 local ts_parsers = require "nvim-treesitter.parsers"
 local lsp_proto = vim.lsp.protocol

@@ -33,7 +33,7 @@ require("indent_blankline").setup {
   show_current_context_start = false,
 }
 
-require("conrad.plugins.charlist").setup {
+require("conrad.charlist").setup {
   enabled = true,
   -- defaults = {
   --   precedes = "…",
@@ -105,7 +105,7 @@ require("peepsight").setup {
 --     local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
 --
 --     if (ft == 'typescript') then
---       require('conrad.experiments.conceal').typescript()
+--       require('experiments.conceal').typescript()
 --     end
 --
 --   end

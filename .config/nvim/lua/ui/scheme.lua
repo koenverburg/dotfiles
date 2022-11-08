@@ -1,5 +1,5 @@
 local scheme = {}
-local utils = require('conrad.utils')
+local utils = require('utils')
 
 local base_scheme = {
   none        = 'NONE',
