@@ -175,6 +175,7 @@ normal("<leader>gg", [[ <cmd>Neogit<cr> ]])
 
 -- Commenting
 normal("<space>C", [[ <cmd>lua require('nvim-comment-frame').add_multiline_comment()<cr> ]])
+-- normal(',fa', '<cmd>ComAnnotation<cr>')
 -- visual("<space>c", "<cmd>Commentary<cr>")
 
 -- word hopping

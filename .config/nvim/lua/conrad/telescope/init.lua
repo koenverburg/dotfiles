@@ -36,6 +36,7 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "git_worktree"
 --require("telescope").load_extension "session-lens"
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension "telescope-tabs"
 
 local M = {}
 

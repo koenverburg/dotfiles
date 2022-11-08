@@ -59,6 +59,14 @@ require("conrad.plugins.charlist").setup {
   -- },
 }
 
+local temp = require('template')
+
+temp.temp_dir = '~/.config/nvim/template'
+temp.author = 'Koen Verburg (Conrad The Programmer)'
+temp.email = ''
+
+-- require('coman')
+
 require("minimal-tabline").setup {
   enable = true,
   file_name = false,

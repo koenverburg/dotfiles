@@ -3,7 +3,7 @@ return require("packer").startup {
     local local_use = function(name, opts)
       opts = opts or {}
 
-      github_path = "~/code/github/"
+      github_path = "~/code/github"
 
       if vim.fn.isdirectory(vim.fn.expand(github_path .. name)) == 1 then
          opts[1] = string.format("%s/%s", github_path, name)
@@ -17,7 +17,6 @@ return require("packer").startup {
 
     -- Colorscheme
     use "Shatur/neovim-ayu"
-    use "glepnir/zephyr-nvim"
     use "koenverburg/nebulous.nvim"
     use "ellisonleao/gruvbox.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
@@ -26,6 +25,7 @@ return require("packer").startup {
     use "nvim-telescope/telescope.nvim"
     use "ThePrimeagen/git-worktree.nvim"
     use "nvim-telescope/telescope-ui-select.nvim"
+    use 'LukasPietzschmann/telescope-tabs'
     use "nvim-telescope/telescope-file-browser.nvim"
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
@@ -59,7 +59,6 @@ return require("packer").startup {
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
     use "stevearc/dressing.nvim"
-    use "glepnir/smartinput.nvim"
     use "unblevable/quick-scope"
     -- use "ThePrimeagen/harpoon"
     use "lewis6991/impatient.nvim"
@@ -70,6 +69,13 @@ return require("packer").startup {
     -- use "rcarriga/nvim-notify"
     use 'anuvyklack/hydra.nvim'
     use 'norcalli/nvim-colorizer.lua'
+
+    -- Glepnir
+    use "glepnir/zephyr-nvim"
+    use "glepnir/smartinput.nvim"
+    use 'glepnir/template.nvim'
+    -- use 'glepnir/coman.nvim'
+
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
 
     -- Searching
@@ -80,8 +86,7 @@ return require("packer").startup {
     use "rmagatti/session-lens"
     use "rmagatti/auto-session"
 
-    -- Misc
-    use "RRethy/vim-illuminate" -- can be removed lsp should have support for this
+    -- use "RRethy/vim-illuminate" -- can be removed lsp should have support for this
     -- use "nathom/filetype.nvim"
 
     -- Lanaguages
@@ -121,7 +126,6 @@ return require("packer").startup {
 
     -- in dev plugins
     -- local_use('nightcoder.nvim')
-    -- _= vim.cmd [[ packadd ~/code/github/nightcoder.nvim ]]
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it

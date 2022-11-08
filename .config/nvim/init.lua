@@ -8,8 +8,9 @@ u.loadable("packer_compiled")
 
 require("conrad.disable_builtin")
 require("conrad.__bootstrap")
-
 require("conrad.packer")
+
+require('core')
 
 require("conrad.globals")
 require("conrad.binds")

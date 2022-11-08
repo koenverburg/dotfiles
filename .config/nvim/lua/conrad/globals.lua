@@ -4,7 +4,7 @@ vim.cmd [[ highlight clear SignColumn ]]
 vim.cmd [[ set nowrap ]]
 vim.cmd [[ set laststatus=3 ]]
 vim.cmd [[ set noshowmode ]]
--- vim.cmd [[ set colorcolumn=80,90,120 ]]
+vim.cmd [[ set colorcolumn=80,90,120 ]]
 
 -- vim.cmd [[ augroup illuminate_augroup ]]
 -- vim.cmd [[ autocmd! ]]
