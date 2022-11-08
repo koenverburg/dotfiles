@@ -26,85 +26,88 @@ local red = {
   shade_9 = '#1c0000',
   shade_10 = '#0e0000',
 }
+local nightcoder = utils.loadable('nightcoder')
+if nightcoder then
+  vim.cmd [[ colorscheme nightcoder ]]
+else
+  nebulous.setup {
+    variant = "night", -- night, twilight, midnight, fullmoon, quasar
+    disable = {
+      background = false,
+      endOfBuffer = false,
+      terminal_colors = false,
+    },
+    italic = {
+      comments  = false,
+      keywords  = false,
+      functions = false,
+      variables = false,
+    },
+    custom_colors = { -- this table can hold any group of colors with their respective values
+      -- CursorLine        = { bg = red.shade_7 },
+      -- Normal            = { bg = red.shade_10 },
+      -- NormalNC          = { bg = red.shade_9 },
+      TSCharacter       = {},
+      TSConditional     = {},
+      TSConstBuiltin    = {},
+      TSConstMacro      = {},
+      TSConstant        = { style = "bold" },
+      TSConstructor     = {},
+      TSError           = {},
+      TSException       = {},
+      TSField           = {},
+      TSFloat           = {},
+      TSFuncBuiltin     = {},
+      TSFuncMacro       = {},
+      TSFunction        = { style = "bold" },
+      TSInclude         = {},
+      TSKeyword         = { style = "bold" },
+      TSLabel           = {},
+      TSMethod          = { style = "bold" },
+      TSNumber          = {},
+      TSOperator        = { style = "bold" },
+      TSParameter       = {},
+      TSProperty        = {},
+      TSPunctBracket    = {},
+      TSString          = {},
+      TSStringEscape    = {},
+      TSStringRegex     = {},
+      TSStructure       = {},
+      TSType            = { style = "bold" },
+      TSTypeBuiltin     = {},
+      TSVariable        = {},
+      TSVariableBuiltin = {},
+      TSTagDelimiter    = {}, --style = "bold,italic" },
 
-nebulous.setup {
-  variant = "night", -- night, twilight, midnight, fullmoon, quasar
-  disable = {
-    background = false,
-    endOfBuffer = false,
-    terminal_colors = false,
-  },
-  italic = {
-    comments  = false,
-    keywords  = false,
-    functions = false,
-    variables = false,
-  },
-  custom_colors = { -- this table can hold any group of colors with their respective values
-    -- CursorLine        = { bg = red.shade_7 },
-    -- Normal            = { bg = red.shade_10 },
-    -- NormalNC          = { bg = red.shade_9 },
-    TSCharacter       = {},
-    TSConditional     = {},
-    TSConstBuiltin    = {},
-    TSConstMacro      = {},
-    TSConstant        = { style = "bold" },
-    TSConstructor     = {},
-    TSError           = {},
-    TSException       = {},
-    TSField           = {},
-    TSFloat           = {},
-    TSFuncBuiltin     = {},
-    TSFuncMacro       = {},
-    TSFunction        = { style = "bold" },
-    TSInclude         = {},
-    TSKeyword         = { style = "bold" },
-    TSLabel           = {},
-    TSMethod          = { style = "bold" },
-    TSNumber          = {},
-    TSOperator        = { style = "bold" },
-    TSParameter       = {},
-    TSProperty        = {},
-    TSPunctBracket    = {},
-    TSString          = {},
-    TSStringEscape    = {},
-    TSStringRegex     = {},
-    TSStructure       = {},
-    TSType            = { style = "bold" },
-    TSTypeBuiltin     = {},
-    TSVariable        = {},
-    TSVariableBuiltin = {},
-    TSTagDelimiter    = {}, --style = "bold,italic" },
-
-    -- Telescope
-    TelescopeBorder =         { fg = scheme.Red,         bg = scheme.none, scheme.none },
-    TelescopeMatching =       { fg = scheme.Yellow,      bg = scheme.none, scheme.none },
-    TelescopeMultiSelection = { fg = scheme.LightGrey,   bg = scheme.none, scheme.none },
-    TelescopeNormal =         { fg = scheme.White,       bg = scheme.none, scheme.none },
-    TelescopePreviewBorder =  { fg = scheme.Red,         bg = scheme.none, scheme.none },
-    TelescopePrompt =         { fg = scheme.White,       bg = scheme.none, scheme.none },
-    TelescopePromptBorder =   { fg = scheme.Red,         bg = scheme.none, scheme.none },
-    TelescopePromptPrefix =   { fg = scheme.White,       bg = scheme.none, scheme.none },
-    TelescopeResultsBorder =  { fg = scheme.Red,         bg = scheme.none, scheme.none },
-    TelescopeSelection =      { fg = scheme.White,       bg = scheme.Grey, style = "bold" },
-    TelescopeSelectionCaret = { fg = scheme.Red,         bg = scheme.none, scheme.none },
+      -- Telescope
+      TelescopeBorder =         { fg = scheme.Red,         bg = scheme.none, scheme.none },
+      TelescopeMatching =       { fg = scheme.Yellow,      bg = scheme.none, scheme.none },
+      TelescopeMultiSelection = { fg = scheme.LightGrey,   bg = scheme.none, scheme.none },
+      TelescopeNormal =         { fg = scheme.White,       bg = scheme.none, scheme.none },
+      TelescopePreviewBorder =  { fg = scheme.Red,         bg = scheme.none, scheme.none },
+      TelescopePrompt =         { fg = scheme.White,       bg = scheme.none, scheme.none },
+      TelescopePromptBorder =   { fg = scheme.Red,         bg = scheme.none, scheme.none },
+      TelescopePromptPrefix =   { fg = scheme.White,       bg = scheme.none, scheme.none },
+      TelescopeResultsBorder =  { fg = scheme.Red,         bg = scheme.none, scheme.none },
+      TelescopeSelection =      { fg = scheme.White,       bg = scheme.Grey, style = "bold" },
+      TelescopeSelectionCaret = { fg = scheme.Red,         bg = scheme.none, scheme.none },
 
 
 
 
-    -- WinSeparator      = { fg = "NONE", background = 'NONE' }
+      -- WinSeparator      = { fg = "NONE", background = 'NONE' }
 
-    -- LineNr = { fg = "#5BBBDA", bg = "NONE", style = "NONE" },
-    -- CursorLineNr = { fg = "#E1CD6C", bg = "NONE", style = "NONE" },
+      -- LineNr = { fg = "#5BBBDA", bg = "NONE", style = "NONE" },
+      -- CursorLineNr = { fg = "#E1CD6C", bg = "NONE", style = "NONE" },
 
-    -- it is possible to specify only the element to be changed
-    -- TelescopePreviewBorder = { fg = "#A13413" },
-    -- LspDiagnosticsDefaultError = { bg = "#E11313" },
+      -- it is possible to specify only the element to be changed
+      -- TelescopePreviewBorder = { fg = "#A13413" },
+      -- LspDiagnosticsDefaultError = { bg = "#E11313" },
 
-    -- Treesitter colors
+      -- Treesitter colors
+    }
   }
-}
-
+end
 -- local nc = utils.loadable('nightcoder')
 -- if nc then
 --   print('yes')
