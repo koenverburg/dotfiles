@@ -11,22 +11,9 @@ lines.tabline = function()
   }
 end
 
-local ok, plenary_reload = pcall(require, "plenary.reload")
-if not ok then
-  reloader = require
-else
-  reloader = plenary_reload.reload_module
+lines.winbar = function()
+  vim.opt.winbar = "%t %-m %{%v:lua.require'nvim-navic'.get_location()%}"
 end
-
-RELOAD = function(...)
-  return reloader(...)
-end
-
-R = function(name)
-  RELOAD(name)
-  return require(name)
-end
-
 
 lines.statusline = function()
   -- local helper = require "el.helper"
@@ -92,8 +79,15 @@ lines.statusline = function()
     table.insert(segments, show_lsp_status)
     table.insert(segments, sections.collapse_builtin(builtin.help_list, builtin.readonly_list))
     table.insert(segments, " ")
+
+    table.insert(segments, builtin.line)
+    table.insert(segments, "/")
+    table.insert(segments, builtin.number_of_lines)
+    table.insert(segments, " ")
+
     table.insert(segments, builtin.filetype)
     table.insert(segments, " ")
+
     -- table.insert(
     --   segments,
     --   subscribe.buf_autocmd("el_git_status", "BufWritePost", function(window, buffer)
@@ -106,7 +100,7 @@ lines.statusline = function()
     --
     return segments
   end
-  R('el').setup({ generator = generator })
+  require('el').setup({ generator = generator })
 end
 
 return lines

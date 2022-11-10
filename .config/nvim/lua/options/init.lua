@@ -42,6 +42,8 @@ opt.termguicolors = true
 opt.number = true
 opt.hidden = true
 opt.undofile = true
+opt.colorcolumn = "80,100,120"
+opt.laststatus=3
 -- opt.undordir = cache_dir .. "undodir/"
 -- opt.noswapfile = true
 
@@ -77,17 +79,5 @@ vim.cmd "language en_US.utf-8"
 vim.cmd [[ highlight clear SignColumn ]]
 
 vim.cmd [[ set nowrap ]]
-vim.cmd [[ set laststatus=3 ]]
 vim.cmd [[ set noshowmode ]]
-vim.cmd [[ set colorcolumn=80,90,120 ]]
 
-local function status_line()
-  local file_name = "%t"
-  local modified = " %-m"
-  local right_align = "%="
-  local line_no = "%10([%l/%L%)]"
-
-  return string.format("%s%s%s%s", file_name, modified, right_align, line_no)
-end
-
-vim.opt.winbar = status_line()

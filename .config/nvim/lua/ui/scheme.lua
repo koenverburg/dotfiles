@@ -27,11 +27,17 @@ local red = {
   shade_10 = '#0e0000',
 }
 
-scheme.nightcoder = function ()
+scheme.toggle = function()
   local nightcoder = utils.loadable('nightcoder')
   if nightcoder then
-    vim.cmd [[ colorscheme nightcoder ]]
+    scheme.nightcoder()
+  else
+    scheme.default()
   end
+end
+
+scheme.nightcoder = function ()
+  vim.cmd [[ colorscheme nightcoder ]]
 end
 
 scheme.default = function()
@@ -57,7 +63,7 @@ scheme.default = function()
       TSConditional     = {},
       TSConstBuiltin    = {},
       TSConstMacro      = {},
-      TSConstant        = { style = "bold" },
+      -- TSConstant        = { style = "bold" },
       TSConstructor     = {},
       TSError           = {},
       TSException       = {},
@@ -65,13 +71,13 @@ scheme.default = function()
       TSFloat           = {},
       TSFuncBuiltin     = {},
       TSFuncMacro       = {},
-      TSFunction        = { style = "bold" },
+      -- TSFunction        = { style = "bold" },
       TSInclude         = {},
-      TSKeyword         = { style = "bold" },
+      -- TSKeyword         = { style = "bold" },
       TSLabel           = {},
-      TSMethod          = { style = "bold" },
+      -- TSMethod          = { style = "bold" },
       TSNumber          = {},
-      TSOperator        = { style = "bold" },
+      -- TSOperator        = { style = "bold" },
       TSParameter       = {},
       TSProperty        = {},
       TSPunctBracket    = {},
@@ -79,7 +85,7 @@ scheme.default = function()
       TSStringEscape    = {},
       TSStringRegex     = {},
       TSStructure       = {},
-      TSType            = { style = "bold" },
+      -- TSType            = { style = "bold" },
       TSTypeBuiltin     = {},
       TSVariable        = {},
       TSVariableBuiltin = {},

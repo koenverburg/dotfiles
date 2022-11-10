@@ -1,7 +1,8 @@
 local scheme = require('ui.scheme')
 local lines = require('ui.lines')
 
-scheme.default()
+scheme.toggle()
 
 lines.tabline()
 lines.statusline()
+lines.winbar()

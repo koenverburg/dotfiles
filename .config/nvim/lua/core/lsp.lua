@@ -119,7 +119,58 @@ function lsp.init()
       right_align = true,
     }
   })
+end
 
+lsp.nullLs = function()
+  local ls = require('null-ls')
+  local utils = require('utils')
+  local completion = ls.builtins.completion
+  local formatting = ls.builtins.formatting
+  -- local diagnostics = ls.builtins.diagnostics
+
+  local core_sources = {
+    completion.spell,
+
+    formatting.gofmt,
+    formatting.stylua, -- install with "cargo install stylua"
+    formatting.eslint,
+
+    formatting.prettier,
+  }
+  -- local sources = core_sources
+  -- local function TableConcat(t1, t2)
+  --   for i = 1, #t2 do
+  --     t1[#t1 + 1] = t2[i]
+  --   end
+  --   return t1
+  -- end
+  --
+  -- local hostname = vim.loop.os_gethostname()
+  --
+  -- if string.find(hostname, 'AMS') then
+  --   sources = TableConcat(sources, {
+  --     -- diagnostics.eslint,
+  --     formatting.eslint
+  --   })
+  -- else
+  --   sources = TableConcat(sources, {
+  --     -- diagnostics.standardjs,
+  --     formatting.standardjs
+  --   })
+  -- end
+
+  ls.setup({
+    debug = true,
+    on_attach = utils.on_attach,
+    sources = {
+      -- ls.builtins.completion.spell,
+      -- ls.builtins.formatting.stylua,
+
+      -- ls.builtins.formatting.eslint,
+      -- ls.builtins.formatting.prettier,
+      -- ls.builtins.diagnostics.eslint,
+    },
+  })
 end
 
 return lsp

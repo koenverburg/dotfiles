@@ -67,14 +67,19 @@ local lsp_map = function(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
+  require("illuminate").on_attach(client)
   -- require("conrad.plugins.show-references").on_attach(client, bufnr)
 
-  if client.name == "tsserver" or client.name == "gopls" then
+  if client.name == "tsserver" or client.name == "gopls" or client.name == "sumneko_lua" then
     client.server_capabilities.document_formatting = false
   end
 
-  if client.name == "tsserver" or client.name == "lua" or client.name == "go" then
+  if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
     require("inlay-hints").on_attach(client, bufnr)
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    require('nvim-navic').attach(client, bufnr)
   end
 
   M.normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
