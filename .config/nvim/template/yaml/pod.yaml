@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{_variable_}}
+spec:
+  # imagePullSecrets:
+  #   - name: github-registery
+  containers:
+    - name: {{_variable_}}
+      image: busybox

@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{_variable_}}-job
+spec:
+  backoffLimit: 3
+  # parallelism: 3
+  # completions: 3
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        -  image: busybox
+           name: {{_variable_}}
