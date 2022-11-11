@@ -35,6 +35,7 @@ ts.load_extension "fzf"
 ts.load_extension "git_worktree"
 ts.load_extension "file_browser"
 ts.load_extension "telescope-tabs"
+ts.load_extension "find_template"
 -- ts.load_extension "session-lens"
 
 local M = {}
