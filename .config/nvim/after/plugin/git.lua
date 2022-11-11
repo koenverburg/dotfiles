@@ -1,4 +1,4 @@
-local utils = require('conrad.utils')
+local utils = require('utils')
 
 local neogit = utils.loadable('neogit')
 neogit.setup({
@@ -7,11 +7,11 @@ neogit.setup({
     -- The diffview integration enables the diff popup, which is a wrapper around `sindrets/diffview.nvim`.
     --
     -- Requires you to have `sindrets/diffview.nvim` installed.
-    -- use { 
-    --   'TimUntersberger/neogit', 
-    --   requires = { 
+    -- use {
+    --   'TimUntersberger/neogit',
+    --   requires = {
     --     'nvim-lua/plenary.nvim',
-    --     'sindrets/diffview.nvim' 
+    --     'sindrets/diffview.nvim'
     --   }
     -- }
     --

@@ -8,7 +8,7 @@ window:
     x: 3
     y: 3
   decorations: none
-  opacity: 0.9
+  opacity: 1
   dynamic_title: true
 scrolling:
   history: 10000

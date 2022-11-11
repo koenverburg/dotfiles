@@ -431,7 +431,7 @@ cmp.setup {
 
 function lsp_on_attach(client, bufnr)
   -- require("aerial").on_attach(client, bufnr)
-  -- require("conrad.plugins.show-references").on_attach(client, bufnr)
+  -- require("experiments.show-references").on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false

@@ -110,6 +110,8 @@ alias diffmain="git diff main --name-only --diff-filter=d '*.js' '*.jsx' '*.ts' 
 alias difflint="git diff main --name-only --diff-filter=d '*.ts' '*.tsx' | xargs eslint_d --fix"
 alias difftest="git diff main --name-only --diff-filter=d '*.spec.*' | fzf -m | xargs yarn jest --config=frontend/jest.frontend.json"
 
+alias pn='pnpm'
+
 # Kubernetes
 alias k="kubectl"
 

@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{_variable_}}-cron-job
+
+spec: # cron job spec
+  schedule: '30 21 * * *'
+
+  jobTemplate:
+    spec: # Job spec
+      template:
+
+        spec: # Pod spec
+          restartPolicy: OnFailure
+          containers:
+            -  image: busybox
+               name: {{_variable_}}

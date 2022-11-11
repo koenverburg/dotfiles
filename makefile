@@ -11,6 +11,7 @@ snapshot-macos:
 	brew bundle dump
 
 bootstrap-macos:
+	pip3 install ansible
 	bash ansible/macos.sh
 
 build-macos:
