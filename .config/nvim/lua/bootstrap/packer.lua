@@ -1,3 +1,6 @@
+local hostname = vim.loop.os_gethostname()
+
+local isWorkMacbook = string.find(hostname, "AMS")
 return require("packer").startup {
   function(use)
     local local_use = function(name, opts)
@@ -6,7 +9,7 @@ return require("packer").startup {
       github_path = "~/code/github"
 
       if vim.fn.isdirectory(vim.fn.expand(github_path .. name)) == 1 then
-         opts[1] = string.format("%s/%s", github_path, name)
+        opts[1] = string.format("%s/%s", github_path, name)
       end
 
       use(opts)
@@ -20,15 +23,16 @@ return require("packer").startup {
     use "koenverburg/nebulous.nvim"
     use "ellisonleao/gruvbox.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
-    use 'projekt0n/github-nvim-theme'
+    use "projekt0n/github-nvim-theme"
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
     use "ThePrimeagen/git-worktree.nvim"
     use "nvim-telescope/telescope-ui-select.nvim"
-    use 'LukasPietzschmann/telescope-tabs'
+    use "LukasPietzschmann/telescope-tabs"
     use "nvim-telescope/telescope-file-browser.nvim"
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+    use "axkirillov/easypick.nvim"
 
     -- treesitter
     use "nvim-treesitter/playground"
@@ -36,6 +40,7 @@ return require("packer").startup {
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "JoosepAlviste/nvim-ts-context-commentstring"
     use "s1n7ax/nvim-comment-frame"
+    use "cshuaimin/ssr.nvim"
 
     -- LSP config
     use "neovim/nvim-lspconfig"
@@ -47,7 +52,7 @@ return require("packer").startup {
     use "j-hui/fidget.nvim"
     use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-    use 'SmiteshP/nvim-navic'
+    use "SmiteshP/nvim-navic"
 
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
@@ -65,15 +70,21 @@ return require("packer").startup {
     use "lewis6991/impatient.nvim"
     use "rmagatti/alternate-toggler"
     use "ThePrimeagen/refactoring.nvim"
-    use "jose-elias-alvarez/null-ls.nvim"
+
+    if isWorkMacbook then
+      use { "jose-elias-alvarez/null-ls.nvim", commit = "76d0573fc159839a9c4e62a0ac4f1046845cdd50" }
+    else
+      use "jose-elias-alvarez/null-ls.nvim"
+    end
+
     use "numToStr/Comment.nvim"
     -- use "rcarriga/nvim-notify"
-    use 'anuvyklack/hydra.nvim'
-    use 'norcalli/nvim-colorizer.lua'
+    use "anuvyklack/hydra.nvim"
+    use "norcalli/nvim-colorizer.lua"
 
     -- Glepnir
     use "glepnir/zephyr-nvim"
-    use 'glepnir/template.nvim'
+    use "glepnir/template.nvim"
     -- use "glepnir/smartinput.nvim"
     -- use 'glepnir/coman.nvim'
 

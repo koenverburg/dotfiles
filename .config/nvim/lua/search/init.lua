@@ -1,3 +1,7 @@
+local pick = require('search.easypick')
+
+pick.setup()
+
 local telescope_map = function(key, f, options, buffer)
   local mode = "n"
 

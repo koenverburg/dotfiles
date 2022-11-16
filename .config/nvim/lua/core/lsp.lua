@@ -133,6 +133,9 @@ lsp.nullLs = function()
     formatting.gofmt,
     formatting.stylua, -- install with "cargo install stylua"
 
+     -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
+    formatting.yamlfmt,
+
     formatting.prettier,
   }
 
