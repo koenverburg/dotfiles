@@ -1,12 +1,7 @@
 local utils = require "utils"
-local ts_helpers = require "utils.treesitter"
-local ts_utils = require "nvim-treesitter.ts_utils"
 local ts_parsers = require "nvim-treesitter.parsers"
-local lsp_proto = vim.lsp.protocol
 
 local M = {}
-
-local P = utils.P
 
 local js = "(import_statement) @imports"
 
@@ -89,7 +84,7 @@ function M.main()
     return
   end
 
-  local matches = ts_helpers.get_query_matches(bufnr, query)
+  local matches = utils.get_query_matches(bufnr, query)
   if matches == nil then
     return
   end
