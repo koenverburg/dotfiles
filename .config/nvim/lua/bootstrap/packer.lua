@@ -47,6 +47,7 @@ return require("packer").startup {
     use "j-hui/fidget.nvim"
     use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
     use {"https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines.nvim"}
+    use 'SmiteshP/nvim-navic'
 
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
