@@ -7,4 +7,4 @@ local lsp = require('core.lsp')
 lsp.init()
 lsp.nullLs()
 
-require('core.treesitter')
+-- require('core.treesitter')

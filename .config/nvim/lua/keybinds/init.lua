@@ -64,8 +64,8 @@ normal("<Tab>", "%")
 -- Splits
 normal("sh", ":sp<cr>|<c-w>j")
 normal("sv", ":vsp<cr>|<c-w>l")
-normal("<leader>sh", ":sp<cr>|<c-w>j|:Telescope find_files<cr>")
-normal("<leader>sv", ":vsp<cr>|<c-w>l|:Telescope find_files<cr>")
+normal("<space>sh", ":sp<cr>|<c-w>j|:Telescope git_files<cr>")
+normal("<space>sv", ":vsp<cr>|<c-w>l|:Telescope git_files<cr>")
 
 -- Keep search matches in the middle of the window
 normal("n", "nzzzv")
@@ -165,7 +165,7 @@ normal("<leader><leader>x", "<cmd>lua require'utils'.save_and_execute()<cr>")
 -- normal("<leader><leader>c", "<cmd>lua require'core.virtualtext'.show()<cr>")
 
 -- Folding using Treesitter
-normal("<leader>fi", "<cmd>lua require 'plugins.folds'.main()<cr>")
+normal("<leader>fi", "<cmd>lua require 'conrad.folds'.main()<cr>")
 
 vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'utils'.hideTablineWhenSingleTab() ]]
 

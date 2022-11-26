@@ -82,8 +82,8 @@ function config.cmp()
       entries = { name = "custom", selection_order = "near_cursor" },
     },
     sources = {
-      { name = "luasnip" },
-      { name = "nvim_lsp", keyword_length = 3 },
+      { name = "nvim_lsp" },
+      { name = "luasnip",  keyword_length = 1  },
       { name = "buffer",   keyword_length = 3 },
       { name = "path",     keyword_length = 4 },
     },

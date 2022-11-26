@@ -82,6 +82,24 @@ require("cmd-palette").setup {
       end
     end,
   },
+  {
+    label = "Edit in new tab",
+    callback = function()
+      vim.cmd(":tabedit %|tabprev|:q")
+    end,
+  },
+  {
+    label = "view diff <> master",
+    callback = function()
+      vim.cmd(":Easypick changed_files_api")
+    end,
+  },
+  {
+    label = "view diff <> main",
+    callback = function()
+      vim.cmd(":Easypick changed_files_exp")
+    end,
+  },
 }
 
 require("peepsight").setup {
