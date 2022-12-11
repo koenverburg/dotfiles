@@ -21,15 +21,16 @@
     ~/.config/limelight/limelightrc: .config/limelight/limelightrc
     ~/.config/skhd/skhdrc: .config/skhd/skhdrc
     ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
-    ~/.slate.js: .config/slate/.slate.js
-    "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
+    # ~/.slate.js: .config/slate/.slate.js
+    # "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
 
     # ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
     # "~/Library/Application Support/mtmr/items.json": .config/mtmr/items.json
     # ~/Library/Application Support/Code/User/settings.json: .config/vscode/settings.json
     # ~/Library/Application Support/Code/User/keybindings.json: .config/vscode/keybindings.json
 
-# - shell:
+- shell:
+  - [git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions]
     # - [git submodule update --init --recursive, Installing submodules]
     # - [git clone https://github.com/AdamWagner/stackline.git ~/.hammerspoon/stackline]
     # - [brew tap homebrew/cask-fonts]
