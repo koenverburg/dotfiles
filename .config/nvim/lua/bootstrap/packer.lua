@@ -98,8 +98,6 @@ return require("packer").startup {
     use "rmagatti/session-lens"
     use "rmagatti/auto-session"
 
-    use "RRethy/vim-illuminate"
-
     -- Lanaguages
     use "elzr/vim-json"
     use "jidn/vim-dbml"
@@ -134,6 +132,8 @@ return require("packer").startup {
     -- Snippets
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
+
+    use 'nyngwang/murmur.lua'
 
     -- in dev plugins
     -- local_use('nightcoder.nvim')

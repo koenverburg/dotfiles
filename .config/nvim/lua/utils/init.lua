@@ -67,7 +67,6 @@ local lsp_map = function(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
-  require("illuminate").on_attach(client)
   -- require("conrad.plugins.show-references").on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "gopls" or client.name == "sumneko_lua" then

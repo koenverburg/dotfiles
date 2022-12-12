@@ -12,7 +12,7 @@ function config.diagnostic()
   })
 
   vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = true,
   })
 end
 
