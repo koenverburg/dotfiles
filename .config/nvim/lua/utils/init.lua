@@ -79,17 +79,18 @@ function M.on_attach(client, bufnr)
   end
 
   if client.server_capabilities.documentSymbolProvider then
-    require('nvim-navic').attach(client, bufnr)
+    require("nvim-navic").attach(client, bufnr)
   end
 
   M.normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
-  M.normal('gp', "<cmd>lua require('peek').Peek('definition')<cr>")
+  M.normal("gp", "<cmd>lua require('peek').Peek('definition')<cr>")
 
   lsp_map("n", "K", "vim.lsp.buf.hover")
   lsp_map("n", "gD", "vim.lsp.buf.declaration")
   lsp_map("n", "gd", "vim.lsp.buf.definition")
   lsp_map("n", "<c-]>", "vim.lsp.buf.definition")
   lsp_map("n", "gi", "vim.lsp.buf.implementation")
+  lsp_map("n", "goc", "vim.lsp.buf.outgoing_calls")
 
   -- lsp saga
   lsp_map("n", "K", "require('lspsaga.hover').render_hover_doc")
@@ -179,7 +180,9 @@ function M.walk_tree(node, types)
     expr = expr:parent()
   end
 
-  if not expr then return nil end
+  if not expr then
+    return nil
+  end
 end
 
 function M.walk_down(node, types)
@@ -194,7 +197,9 @@ function M.walk_down(node, types)
     expr = expr:child()
   end
 
-  if not expr then return nil end
+  if not expr then
+    return nil
+  end
 end
 
 function M.get_node(queries)
@@ -202,7 +207,9 @@ function M.get_node(queries)
 
   local node = M.walk_tree(cursor_node, queries)
 
-  if node then return node end
+  if node then
+    return node
+  end
 
   return nil
 end
@@ -223,12 +230,14 @@ function M.get_query_matches(bufnr, query)
   return results
 end
 
-return setmetatable({}, {
-  __index = function(_, k)
-    if M[k] then
-      return M[k]
-    else
-      return require("utils")[k]
-    end
-  end,
-})
+return M
+
+-- return setmetatable({}, {
+--   __index = function(_, k)
+--     if M[k] then
+--       return M[k]
+--     else
+--       return require("utils")[k]
+--     end
+--   end,
+-- })
