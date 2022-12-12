@@ -51,8 +51,8 @@ return require("packer").startup {
     use "tami5/lspsaga.nvim" -- look into creating myown hovers
     use "j-hui/fidget.nvim"
     use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
-    use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-    use "SmiteshP/nvim-navic"
+    use {"https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines.nvim"}
+    use 'SmiteshP/nvim-navic'
 
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
