@@ -1,8 +1,10 @@
 local scheme = require('ui.scheme')
-local lines = require('ui.lines')
-
 scheme.toggle()
 
+local lines = require('ui.lines')
 lines.tabline()
 lines.statusline()
 lines.winbar()
+
+local highlight = require('ui.highlights')
+highlight.setup()
