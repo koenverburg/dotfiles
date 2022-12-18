@@ -8,6 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="greenblood"
+# ZSH_THEME="alt-jonathan"
 ZSH_THEME="jonathan"
 # ZSH_THEME="robbyrussell"
 
@@ -135,16 +137,16 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
-export PATH=$HOME/.bun/bin:$PATH
-# export PATH="/usr/local/share/npm/bin:$PATH"
+# export PATH=$HOME/.bun/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
+export PATH="/usr/local/share/npm/bin:$PATH"
 # Bun
 export BUN_INSTALL="/Users/verbukoe/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Brew told me to set this
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
+# export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 

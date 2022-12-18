@@ -9,7 +9,7 @@ local servers = {
     settings = {
       Lua = {
         diagnostics = {
-          globals = { 'vim' }
+          globals = { "vim" },
         },
         hint = {
           enable = true,
@@ -108,22 +108,22 @@ function lsp.init()
   -- require("lsp_lines").setup()
   require("fidget").setup {
     text = {
-      spinner = "dots_snake"
-    }
+      spinner = "dots_snake",
+    },
   }
 
-  require("inlay-hints").setup({
+  require("inlay-hints").setup {
     only_current_line = true,
 
     eol = {
       right_align = true,
-    }
-  })
+    },
+  }
 end
 
 lsp.nullLs = function()
-  local ls = require('null-ls')
-  local utils = require('utils')
+  local ls = require "null-ls"
+  local utils = require "utils"
   local completion = ls.builtins.completion
   local formatting = ls.builtins.formatting
 
@@ -133,7 +133,7 @@ lsp.nullLs = function()
     formatting.gofmt,
     formatting.stylua, -- install with "cargo install stylua"
 
-     -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
+    -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
     formatting.yamlfmt,
 
     formatting.prettier,
@@ -149,21 +149,34 @@ lsp.nullLs = function()
 
   local hostname = vim.loop.os_gethostname()
 
-  if string.find(hostname, 'AMS') then
+  if string.find(hostname, "AMS") then
     sources = TableConcat(sources, {
-      formatting.eslint
+      formatting.eslint,
     })
   else
     sources = TableConcat(sources, {
-      formatting.standardjs
+      formatting.standardjs,
     })
   end
 
-  ls.setup({
+  ls.setup {
     debug = true,
     on_attach = utils.on_attach,
     sources = sources,
-  })
+  }
+end
+
+lsp.callstack = function()
+  require("litee.lib").setup()
+  require("litee.calltree").setup()
+
+  local litee = utils.loadable "litee.calltree.handlers"
+
+  if not litee then return end
+  local handlers = litee
+
+  vim.lsp.handlers["callHierarchy/incomingCalls"] = vim.lsp.with(handlers.ch_lsp_handler "from", {})
+  vim.lsp.handlers["callHierarchy/outgoingCalls"] = vim.lsp.with(handlers.ch_lsp_handler "to", {})
 end
 
 return lsp
