@@ -56,8 +56,9 @@ live_config_reload: true
 schemes:
   gruvbox: &gruvbox
     primary:
+      background: '#090807'
       # background: '0x282828'
-      background: '#1d2021'
+      # background: '#1d2021'
       foreground: '0xdfbf8e'
 
     normal:
@@ -136,7 +137,7 @@ schemes:
     background: "0xdc3232"
     white: "0xffffff"
 
-colors: *github
+colors: *gruvbox
 
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
