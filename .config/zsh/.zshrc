@@ -116,6 +116,11 @@ alias pn='pnpm'
 
 # Kubernetes
 alias k="kubectl"
+alias kc="kubectl create"
+alias kr="kubectl replace"
+alias krm="kubectl delete"
+alias kd="kubectl describe"
+alias kg="kubectl get"
 
 # docker
 alias dlsc='docker container ls -a' # -a because I want to see ALL
@@ -131,6 +136,8 @@ alias showreel='asciinema rec'
 
 # nvim
 alias resetnvim='nvim +Deletesession +qall'
+
+alias ss="bash ~/code/github/dotfiles/.config/tmux/session.sh"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
