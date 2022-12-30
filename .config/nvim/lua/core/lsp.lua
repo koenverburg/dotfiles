@@ -112,20 +112,26 @@ function lsp.init()
     },
   }
 
-  require("inlay-hints").setup {
-    only_current_line = true,
-
-    eol = {
-      right_align = true,
-    },
-  }
+  -- require("inlay-hints").setup {
+  --   only_current_line = true,
+  --
+  --   eol = {
+  --     right_align = true,
+  --   },
+  -- }
 end
 
 lsp.nullLs = function()
-  local ls = require "null-ls"
-  local utils = require "utils"
+  -- local ls = require "null-ls"
+  local ok, ls = pcall(require, "null-ls")
+
+  if not ok then
+    return
+  end
+
   local completion = ls.builtins.completion
   local formatting = ls.builtins.formatting
+  local d = ls.builtins.diagnostics
 
   local core_sources = {
     completion.spell,
@@ -135,7 +141,6 @@ lsp.nullLs = function()
 
     -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
     formatting.yamlfmt,
-
     formatting.prettier,
   }
 
@@ -155,7 +160,7 @@ lsp.nullLs = function()
     })
   else
     sources = TableConcat(sources, {
-      formatting.standardjs,
+      formatting.standardts,
     })
   end
 

@@ -5,14 +5,14 @@ return require("packer").startup {
   function(use)
     local local_use = function(name, opts)
       opts = opts or {}
+      local github_path = "~/code/github"
 
-      github_path = "~/code/github"
+      path = string.format("%s/%s", github_path, name)
 
-      if vim.fn.isdirectory(vim.fn.expand(github_path .. name)) == 1 then
-        opts[1] = string.format("%s/%s", github_path, name)
-      end
+      -- if vim.fn.isdirectory(vim.fn.expand(github_path .. name)) == 1 then
+      -- end
 
-      use(opts)
+      use(path)
     end
 
     -- use 'tweekmonster/startuptime.vim'
@@ -51,8 +51,8 @@ return require("packer").startup {
     use "tami5/lspsaga.nvim" -- look into creating myown hovers
     use "j-hui/fidget.nvim"
     use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
-    use {"https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines.nvim"}
-    use 'SmiteshP/nvim-navic'
+    use { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines.nvim" }
+    use "SmiteshP/nvim-navic"
 
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp_extensions.nvim"
@@ -70,6 +70,7 @@ return require("packer").startup {
     use "lewis6991/impatient.nvim"
     use "rmagatti/alternate-toggler"
     use "ThePrimeagen/refactoring.nvim"
+    use "m4xshen/autoclose.nvim"
 
     if isWorkMacbook then
       use { "jose-elias-alvarez/null-ls.nvim", commit = "76d0573fc159839a9c4e62a0ac4f1046845cdd50" }
@@ -85,7 +86,6 @@ return require("packer").startup {
     -- Glepnir
     use "glepnir/zephyr-nvim"
     use "glepnir/template.nvim"
-    -- use "glepnir/smartinput.nvim"
     -- use 'glepnir/coman.nvim'
 
     -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
@@ -133,10 +133,10 @@ return require("packer").startup {
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
 
-    use 'nyngwang/murmur.lua'
+    use "nyngwang/murmur.lua"
 
     -- in dev plugins
-    -- local_use('nightcoder.nvim')
+    local_use "nightcoder.nvim"
   end,
   config = {
     -- Move to lua dir so impatient.nvim can cache it

@@ -1,14 +1,9 @@
 require('dim').setup()
 require("session-lens").setup()
 require('colorizer').setup()
-
--- require("smartinput").setup {
---   ["go"]              = { ";", ":=", ";" },
---   ["typescript"]      = { " >", "=>", ">" },
---   ["javascript"]      = { " >", "=>", ">" },
---   ["typescriptreact"] = { " >", "=>", ">" },
---   ["javascriptreact"] = { " >", "=>", ">" },
--- }
+require("autoclose").setup({
+  ["<"] = { escape = true, close = true, pair = "<>" },
+})
 
 require("Comment").setup()
 require("nvim-comment-frame").setup {

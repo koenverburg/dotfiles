@@ -39,11 +39,14 @@ opt.signcolumn = "yes"
 opt.softtabstop = 2
 opt.tabstop = 2
 opt.termguicolors = true
+opt.updatetime = 50
+opt.guicursor = ""
 opt.number = true
 opt.hidden = true
 opt.undofile = true
 opt.colorcolumn = "80,100,120"
 opt.laststatus=3
+opt.incsearch = true
 -- opt.undordir = cache_dir .. "undodir/"
 -- opt.noswapfile = true
 
