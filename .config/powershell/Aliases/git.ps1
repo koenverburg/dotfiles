@@ -63,3 +63,9 @@ function myproject {
   git config user.name "Koen Verburg"
   git config user.email "creativekoen@gmail.com"
 }
+
+function fp {
+  $projects = Get-ChildItem -Name "~/code/github"
+  
+  $projects | fzf | % { cd "~/code/github/$_" } 
+}

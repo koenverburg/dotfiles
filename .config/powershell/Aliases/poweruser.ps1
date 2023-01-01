@@ -1,6 +1,7 @@
 # Yarn aliases
 Set-Alias y 'yarn'
 
+function pn { pnpm $args }
 function yw { yarn watch }
 function ys { yarn serve }
 function yt { yarn test -u $args }
