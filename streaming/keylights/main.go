@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -10,10 +11,17 @@ import (
 )
 
 const (
-	Office     = 11
-	Backdrop   = 5
-	LivingRoom = 1
+	Studio = 11
+	Plug   = 14
 )
+
+func prettyString(in interface{}) {
+	b, err := json.MarshalIndent(in, "", "  ")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Print(string(b))
+}
 
 func env(key string) string {
 	if os.Getenv("ENV") == "prod" {
@@ -21,7 +29,6 @@ func env(key string) string {
 	}
 
 	err := godotenv.Load(".env")
-
 	if err != nil {
 		log.Fatalf("Error loading .env file")
 	}
@@ -39,7 +46,7 @@ func turnOff(bridge huego.Bridge, groupID int) {
 	group, err := bridge.GetGroup(groupID)
 	checkIfErr(err)
 
-  group.Off()
+	group.Off()
 
 	fmt.Printf("Triggering colorloop for group: %s\n", group.Name)
 }
@@ -48,7 +55,16 @@ func turnOn(bridge huego.Bridge, groupID int) {
 	group, err := bridge.GetGroup(groupID)
 	checkIfErr(err)
 
-	group.On()
+	// group.On()
+
+  // Studio Id and led strip have the same ID
+	light, err := bridge.GetLight(Studio)
+	light.Off()
+
+	plug, err := bridge.GetLight(Plug)
+	checkIfErr(err)
+
+	plug.On()
 
 	fmt.Printf("Triggering colorloop for group: %s\n", group.Name)
 }
@@ -56,16 +72,11 @@ func turnOn(bridge huego.Bridge, groupID int) {
 func main() {
 	bridge := huego.New(env("HUE_IP"), env("HUE_API_KEY"))
 
-  groups, err := bridge.GetGroups()
-	checkIfErr(err)
-
-  fmt.Println(groups)
-
-	// createColorloop(*bridge, Office)
-	// createColorloop(*bridge, Backdrop)
-	// createColorloop(*bridge, LivingRoom)
-
-	// reset(*bridge, Office)
-	// reset(*bridge, Backdrop)
-	// reset(*bridge, LivingRoom)
+	state := os.Args[1:][0]
+	switch state {
+	case "on":
+		turnOn(*bridge, Studio)
+	case "off":
+		turnOff(*bridge, Studio)
+	}
 }
