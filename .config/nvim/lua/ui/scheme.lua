@@ -14,18 +14,18 @@ local base_scheme = {
   DarkGrey_2  = "#828989"
 }
 
-local red = {
-  shade_1 = '#8b0000',
-  shade_2 = '#7d0000',
-  shade_3 = '#6f0000',
-  shade_4 = '#610000',
-  shade_5 = '#530000',
-  shade_6 = '#460000',
-  shade_7 = '#380000',
-  shade_8 = '#2a0000',
-  shade_9 = '#1c0000',
-  shade_10 = '#0e0000',
-}
+-- local red = {
+--   shade_1 = '#8b0000',
+--   shade_2 = '#7d0000',
+--   shade_3 = '#6f0000',
+--   shade_4 = '#610000',
+--   shade_5 = '#530000',
+--   shade_6 = '#460000',
+--   shade_7 = '#380000',
+--   shade_8 = '#2a0000',
+--   shade_9 = '#1c0000',
+--   shade_10 = '#0e0000',
+-- }
 
 scheme.toggle = function()
   local nightcoder = utils.loadable('nightcoder')
@@ -40,8 +40,30 @@ scheme.nightcoder = function ()
   vim.cmd [[ colorscheme nightcoder ]]
 end
 
+scheme.github = function ()
+  vim.cmd [[ colorscheme github_dark_default ]]
+end
+
+scheme.gruvbox = function ()
+  vim.cmd [[ colorscheme gruvbox ]]
+end
+
+scheme.ayu = function ()
+  vim.cmd [[ colorscheme ayu-dark ]]
+end
+
+scheme.zephyr = function ()
+  vim.cmd [[ colorscheme zephyr ]]
+end
+
 scheme.default = function()
   local nebulous = utils.loadable('nebulous')
+
+  if nebulous == nil then
+    print("couldnt load nebulous")
+    return
+  end
+
   nebulous.setup {
     variant = "night", -- night, twilight, midnight, fullmoon, quasar
     disable = {

@@ -19,8 +19,8 @@ return require("packer").startup {
     use { "wbthomason/packer.nvim", opt = true }
 
     -- Colorscheme
-    use "Shatur/neovim-ayu"
-    use "koenverburg/nebulous.nvim"
+    -- use "Shatur/neovim-ayu"
+    -- use "LunarVim/github.nvim"
     use "ellisonleao/gruvbox.nvim"
     use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
     use "projekt0n/github-nvim-theme"
@@ -84,7 +84,7 @@ return require("packer").startup {
     use "norcalli/nvim-colorizer.lua"
 
     -- Glepnir
-    use "glepnir/zephyr-nvim"
+    -- use "glepnir/zephyr-nvim"
     use "glepnir/template.nvim"
     -- use 'glepnir/coman.nvim'
 
@@ -123,6 +123,13 @@ return require("packer").startup {
     use "koenverburg/cmd-palette.nvim"
     use "koenverburg/minimal-tabline.nvim"
     use "koenverburg/dim.lua" -- Fork
+    use "koenverburg/nebulous.nvim" -- Fork
+
+    -- GPT
+    -- use({
+    --   'terror/chatgpt.nvim',
+    --   run = 'pip3 install -r requirements.txt'
+    -- })
 
     -- Git
     use "TimUntersberger/neogit"

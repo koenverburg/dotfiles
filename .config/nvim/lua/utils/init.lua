@@ -61,56 +61,6 @@ function M.save_and_execute()
   end
 end
 
-local lsp_map = function(mode, key, action)
-  local command = string.format("<cmd>lua %s()<cr>", action)
-  vim.api.nvim_buf_set_keymap(0, mode, key, command, { noremap = true, silent = true })
-end
-
-function M.on_attach(client, bufnr)
-  -- require("conrad.plugins.show-references").on_attach(client, bufnr)
-
-  if client.name == "tsserver" or client.name == "gopls" or client.name == "sumneko_lua" then
-    client.server_capabilities.document_formatting = false
-  end
-
-  if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
-    require("inlay-hints").on_attach(client, bufnr)
-  end
-
-  if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
-  end
-
-  M.normal("<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
-  M.normal("gp", "<cmd>lua require('peek').Peek('definition')<cr>")
-
-  lsp_map("n", "K", "vim.lsp.buf.hover")
-  lsp_map("n", "gD", "vim.lsp.buf.declaration")
-  lsp_map("n", "gd", "vim.lsp.buf.definition")
-  lsp_map("n", "<c-]>", "vim.lsp.buf.definition")
-  lsp_map("n", "gi", "vim.lsp.buf.implementation")
-  lsp_map("n", "goc", "vim.lsp.buf.outgoing_calls")
-
-  -- lsp saga
-  lsp_map("n", "K", "require('lspsaga.hover').render_hover_doc")
-  lsp_map("n", "gr", "require('lspsaga.rename').rename")
-
-  lsp_map("n", "<leader>ca", "require('lspsaga.codeaction').code_action")
-  lsp_map("i", "<leader>ca", "require('lspsaga.codeaction').code_action")
-
-  lsp_map("n", "gx", "Lspsaga code_action<cr>")
-  lsp_map("x", "gx", ":<c-u>Lspsaga range_code_action<cr>")
-
-  -- Moved to telescope for these
-  -- lsp_map('n', '<c-r>', 'vim.lsp.buf.references')
-  -- lsp_map('n', 'gds', 'vim.lsp.buf.document_symbol')
-  -- lsp_map('n', 'gW', 'vim.lsp.buf.workspace_symbol')
-
-  lsp_map("n", "<leader>sd", "require('lspsaga.diagnostic').show_line_diagnostics")
-  lsp_map("n", "[e", "require('lspsaga.diagnostic').lsp_jump_diagnostic_prev")
-  lsp_map("n", "]e", "require('lspsaga.diagnostic').lsp_jump_diagnostic_next")
-end
-
 function M.is_empty(v)
   return v == nil or v == ""
 end
