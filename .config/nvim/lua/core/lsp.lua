@@ -93,7 +93,7 @@ local lsp_map = function(mode, key, action)
 end
 
 local on_attach = function(client, bufnr)
-  require("experiments.show-references").on_attach(client, bufnr)
+  -- require("experiments.show-references").on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false
