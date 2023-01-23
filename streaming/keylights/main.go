@@ -48,7 +48,7 @@ func turnOff(bridge huego.Bridge, groupID int) {
 
 	group.Off()
 
-	fmt.Printf("Triggering colorloop for group: %s\n", group.Name)
+	fmt.Printf("Turning on group: %s\n", group.Name)
 }
 
 func turnOn(bridge huego.Bridge, groupID int) {
@@ -66,7 +66,7 @@ func turnOn(bridge huego.Bridge, groupID int) {
 
 	plug.On()
 
-	fmt.Printf("Triggering colorloop for group: %s\n", group.Name)
+	fmt.Printf("Turning off group: %s\n", group.Name)
 }
 
 func main() {

@@ -139,6 +139,7 @@ alias resetnvim='nvim +Deletesession +qall'
 
 # alias ss="bash ~/code/github/dotfiles/.config/tmux/session.sh"
 alias commit="bash ~/code/github/dotfiles/streaming/commit/commit.sh"
+alias keylight="~/code/github/dotfiles/streaming/keylights/keylights"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
