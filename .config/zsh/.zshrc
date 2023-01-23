@@ -137,7 +137,8 @@ alias showreel='asciinema rec'
 # nvim
 alias resetnvim='nvim +Deletesession +qall'
 
-alias ss="bash ~/code/github/dotfiles/.config/tmux/session.sh"
+# alias ss="bash ~/code/github/dotfiles/.config/tmux/session.sh"
+alias commit="bash ~/code/github/dotfiles/streaming/commit/commit.sh"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
@@ -162,3 +163,13 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# pnpm
+export PNPM_HOME="/Users/koenverburg/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm endfpath=($fpath "/Users/koenverburg/.zfunctions")
+
+# Set typewritten ZSH as a prompt
+fpath=($fpath "/Users/koenverburg/.zfunctions")
+autoload -U promptinit; promptinit
+prompt typewritten
