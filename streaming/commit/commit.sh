@@ -1,6 +1,7 @@
 #!/bin/sh
 
-TICKET="" #$(~/code/github/dotfiles/streaming/commit/commit)
+TICKET=$(~/code/github/dotfiles/streaming/commit/commit)
+test -n $TICKET && gum confirm "Couldnt find ticket do you want to add it manually?" && TICKET=$(gum input --placeholder "ticket")
 
 TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert" "program" "ci" "k8s")
 SCOPE=$(gum input --placeholder "scope")
