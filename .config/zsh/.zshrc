@@ -141,6 +141,18 @@ alias resetnvim='nvim +Deletesession +qall'
 alias commit="bash ~/code/github/dotfiles/streaming/commit/commit.sh"
 alias keylight="~/code/github/dotfiles/streaming/keylights/keylights"
 
+alias work="timer 25m && terminal-notifier -message 'Pomodoro'\
+        -title 'Work Timer is up! Take a Break 😊'\
+        -sound Crystal"
+
+alias work60="timer 55m && terminal-notifier -message 'Pomodoro'\
+        -title 'Work Timer is up! Take a Break 😊'\
+        -sound Crystal"
+        
+alias rest="timer 5m && terminal-notifier -message 'Pomodoro'\
+        -title 'Break is over! Get back to work 😬'\
+        -sound Crystal"
+
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 export PATH=/opt/homebrew/bin:$PATH
@@ -171,6 +183,21 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm endfpath=($fpath "/Users/koenverburg/.zfunctions")
 
 # Set typewritten ZSH as a prompt
+export TYPEWRITTEN_PROMPT_LAYOUT="singleline"
+# export TYPEWRITTEN_PROMPT_LAYOUT="pure"
+export TYPEWRITTEN_SYMBOL="$"
+export TYPEWRITTEN_CURSOR="block"
+
+display_kube_context() {
+  tw_kube_context="$(kubectl config current-context 2> /dev/null)"
+
+  if [[ $tw_kube_context != "" ]]; then
+    echo "($(basename $tw_kube_context))"
+  fi
+}
+
+export TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION=display_kube_context
+
 fpath=($fpath "/Users/koenverburg/.zfunctions")
 autoload -U promptinit; promptinit
 prompt typewritten
