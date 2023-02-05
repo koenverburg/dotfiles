@@ -18,6 +18,13 @@ function codm { git checkout development $args }
 function comi { git checkout main $args }
 function gaa { git add --all $args }
 
+Set-Alias k 'kubectl'
+Set-Alias kc 'kubectl create'
+Set-Alias kr 'kubectl replace'
+Set-Alias krm 'kubectl delete'
+Set-Alias kd 'kubectl describe'
+Set-Alias kg 'kubectl get'
+
 function co {
   gf;
   git checkout $args;
@@ -67,5 +74,18 @@ function myproject {
 function fp {
   $projects = Get-ChildItem -Name "~/code/github"
   
-  $projects | fzf | % { cd "~/code/github/$_" } 
+  $projects | fzf --layout=reverse --header 'Find project' --header-lines=0 | % { cd "~/code/github/$_" } 
+}
+
+function kn {
+  param (
+    $namespace
+  )
+
+  if ($namespace -ne $Null) {
+    kubectl config set-context --current --namespace=$namespace
+  } else {
+    $namespaces = kubectl get namespace --no-headers -o custom-columns=":metadata.name"
+    $namespaces | fzf --height 40% --layout=reverse --header 'Switch k8s namespace' --header-lines=0 | % { kubectl config set-context --current --namespace=$_ }
+  }
 }
