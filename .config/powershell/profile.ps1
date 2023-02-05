@@ -1,6 +1,7 @@
 Import-Module Get-ChildItemColor
 Import-Module PSReadline
-Import-Module oh-my-posh
+# Import-Module oh-my-posh
+Import-Module syntax-highlighting
 
 # Aliases
 Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\folderjumping.ps1"
@@ -12,10 +13,39 @@ Import-Module "$home\code\github\dotfiles\.config\powershell\Aliases\terraform.p
 Import-Module "$home\code\github\dotfiles\overwrite\localProject.ps1"
 Import-Module "$home\code\github\dotfiles\.config\powershell\prompt.ps1"
 
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-# Autocompletion for arrow keys
-Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadlineKeyHandler -Key "Tab" -Function MenuComplete
+Set-PSReadlineKeyHandler -Key "UpArrow" -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key "DownArrow" -Function HistorySearchForward
+Set-PSReadLineOption -Colors @{ InlinePrediction = '#898c5b'}
+Set-PSReadlineOption -HistorySearchCursorMovesToEnd
+Set-PSReadLineKeyHandler -Key "RightArrow" -ScriptBlock {
+  param($key, $arg)
+
+  $line = $null
+  $cursor = $null
+  [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+
+  if ($cursor -lt $line.Length) {
+    [Microsoft.PowerShell.PSConsoleReadLine]::ForwardChar($key, $arg)
+  } else {
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptNextSuggestionWord($key, $arg)
+  }
+}
+
+Set-PSReadLineKeyHandler -Key End -ScriptBlock {
+  param($key, $arg)
+
+  $line = $null
+  $cursor = $null
+  [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+
+  if ($cursor -lt $line.Length) {
+    [Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine($key, $arg)
+  } else {
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion($key, $arg)
+  }
+}
 
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
@@ -36,4 +66,5 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-Set-PoshPrompt -Theme "$home\code\github\dotfiles\.config\powershell\prompt.omp.json"
+$ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
+Invoke-Expression (&starship init powershell)
