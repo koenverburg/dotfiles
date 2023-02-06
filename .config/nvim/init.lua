@@ -5,7 +5,7 @@
 -- require('impatient')
 require("bootstrap")
 require('options')
-require("bootstrap.packer")
+require("bootstrap.plugins")
 require("keybinds")
 require("conrad.config")
 require('core')
