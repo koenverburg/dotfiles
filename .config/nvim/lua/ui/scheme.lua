@@ -36,6 +36,12 @@ scheme.toggle = function()
   end
 end
 
+scheme.falcon = function ()
+  vim.cmd [[ colorscheme falcon ]]
+  vim.cmd [[ let g:falcon_background = 0 ]]
+  vim.cmd [[ let g:falcon_inactive = 1 ]]
+end
+
 scheme.nightcoder = function ()
   vim.cmd [[ colorscheme nightcoder ]]
 end

@@ -1,157 +1,141 @@
 local hostname = vim.loop.os_gethostname()
-
 local isWorkMacbook = string.find(hostname, "AMS")
-return require("packer").startup {
-  function(use)
-    local local_use = function(name, opts)
-      opts = opts or {}
-      local github_path = "~/code/github"
 
-      path = string.format("%s/%s", github_path, name)
+local nullLs = { "jose-elias-alvarez/null-ls.nvim" }
+if isWorkMacbook then
+  nullLs = { "jose-elias-alvarez/null-ls.nvim", commit = "76d0573fc159839a9c4e62a0ac4f1046845cdd50" }
+end
 
-      -- if vim.fn.isdirectory(vim.fn.expand(github_path .. name)) == 1 then
-      -- end
+require("lazy").setup {
+  nullLs,
+  -- Colorscheme
+  -- use "Shatur/neovim-ayu"
+  -- use "LunarVim/github.nvim"
+  "fenetikm/falcon",
+  { "ellisonleao/gruvbox.nvim", lazy = true },
+  { "tjdevries/gruvbuddy.nvim", dependencies = "tjdevries/colorbuddy.vim" },
+  "projekt0n/github-nvim-theme",
 
-      use(path)
-    end
+  -- Telescope
+  "nvim-telescope/telescope.nvim",
+  { "ThePrimeagen/git-worktree.nvim", lazy = true },
+  "nvim-telescope/telescope-ui-select.nvim",
+  { "LukasPietzschmann/telescope-tabs", lazy = true },
+  { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  { "axkirillov/easypick.nvim", lazy = true },
 
-    -- use 'tweekmonster/startuptime.vim'
-    use { "wbthomason/packer.nvim", opt = true }
+  -- treesitter
+  { "nvim-treesitter/playground", lazy = true },
+  { "nvim-treesitter/nvim-treesitter", lazy = true },
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+  { "s1n7ax/nvim-comment-frame", event = "VeryLazy" },
 
-    -- Colorscheme
-    -- use "Shatur/neovim-ayu"
-    -- use "LunarVim/github.nvim"
-    use "ellisonleao/gruvbox.nvim"
-    use { "tjdevries/gruvbuddy.nvim", requires = "tjdevries/colorbuddy.vim" }
-    use "projekt0n/github-nvim-theme"
+  -- LSP config
+  "neovim/nvim-lspconfig",
+  "onsails/lspkind-nvim",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-nvim-lsp",
+  "tami5/lspsaga.nvim", -- look into creating myown hovers,
+  "j-hui/fidget.nvim",
+  { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
+  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", name = "lsp_lines.nvim" },
+  { "SmiteshP/nvim-navic", lazy = true },
 
-    -- Telescope
-    use "nvim-telescope/telescope.nvim"
-    use "ThePrimeagen/git-worktree.nvim"
-    use "nvim-telescope/telescope-ui-select.nvim"
-    use "LukasPietzschmann/telescope-tabs"
-    use "nvim-telescope/telescope-file-browser.nvim"
-    use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-    use "axkirillov/easypick.nvim"
+  "ray-x/lsp_signature.nvim",
+  "nvim-lua/lsp_extensions.nvim",
+  { "simrat39/inlay-hints.nvim", lazy = true },
 
-    -- treesitter
-    use "nvim-treesitter/playground"
-    use "nvim-treesitter/nvim-treesitter"
-    use "nvim-treesitter/nvim-treesitter-textobjects"
-    use "JoosepAlviste/nvim-ts-context-commentstring"
-    use "s1n7ax/nvim-comment-frame"
-    use "cshuaimin/ssr.nvim"
+  -- Utils
+  { "kyazdani42/nvim-tree.lua", lazy = true, event = "VeryLazy" },
+  "phaazon/hop.nvim",
+  { "ellisonleao/glow.nvim", lazy = true },
+  "nvim-lua/popup.nvim",
+  "nvim-lua/plenary.nvim",
+  { "stevearc/dressing.nvim", event = "VeryLazy" },
+  "unblevable/quick-scope",
+  -- "ThePrimeagen/harpoon",
+  { "rmagatti/alternate-toggler", lazy = false },
+  { "ThePrimeagen/refactoring.nvim", lazy = false },
+  "m4xshen/autoclose.nvim",
 
-    -- LSP config
-    use "neovim/nvim-lspconfig"
-    use "onsails/lspkind-nvim"
-    use "hrsh7th/nvim-cmp"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "tami5/lspsaga.nvim" -- look into creating myown hovers
-    use "j-hui/fidget.nvim"
-    use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
-    use { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", as = "lsp_lines.nvim" }
-    use "SmiteshP/nvim-navic"
+  { "numToStr/Comment.nvim", lazy = true },
+  -- "rcarriga/nvim-notify",
+  { "anuvyklack/hydra.nvim", lazy = true },
+  "norcalli/nvim-colorizer.lua",
 
-    use "ray-x/lsp_signature.nvim"
-    use "nvim-lua/lsp_extensions.nvim"
-    use "simrat39/inlay-hints.nvim"
+  -- Glepnir
+  -- "glepnir/zephyr-nvim",
+  { "glepnir/template.nvim", lazy = true },
+  -- 'glepnir/coman.nvim',
+  -- 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement,
 
-    -- Utils
-    use "kyazdani42/nvim-tree.lua"
-    use "phaazon/hop.nvim"
-    use "ellisonleao/glow.nvim"
-    use "nvim-lua/popup.nvim"
-    use "nvim-lua/plenary.nvim"
-    use "stevearc/dressing.nvim"
-    use "unblevable/quick-scope"
-    -- use "ThePrimeagen/harpoon"
-    use "lewis6991/impatient.nvim"
-    use "rmagatti/alternate-toggler"
-    use "ThePrimeagen/refactoring.nvim"
-    use "m4xshen/autoclose.nvim"
+  -- Searching
+  { "google/vim-searchindex", lazy = true },
+  { "windwp/nvim-spectre", lazy = true },
 
-    if isWorkMacbook then
-      use { "jose-elias-alvarez/null-ls.nvim", commit = "76d0573fc159839a9c4e62a0ac4f1046845cdd50" }
-    else
-      use "jose-elias-alvarez/null-ls.nvim"
-    end
+  -- sessions
+  { "rmagatti/session-lens", lazy = true },
+  { "rmagatti/auto-session", lazy = true },
 
-    use "numToStr/Comment.nvim"
-    -- use "rcarriga/nvim-notify"
-    use "anuvyklack/hydra.nvim"
-    use "norcalli/nvim-colorizer.lua"
+  -- Lanaguages
+  "elzr/vim-json",
+  "jidn/vim-dbml",
+  "stephpy/vim-yaml",
+  "PProvost/vim-ps1",
+  "ekalinin/Dockerfile.vim",
 
-    -- Glepnir
-    -- use "glepnir/zephyr-nvim"
-    use "glepnir/template.nvim"
-    -- use 'glepnir/coman.nvim'
+  --  Markdown
+  { "godlygeek/tabular", lazy = true },
+  { "plasticboy/vim-markdown", lazy = true },
+  { "dhruvasagar/vim-table-mode", lazy = true },
 
-    -- use 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement
+  -- Looks
+  "lewis6991/gitsigns.nvim",
+  "tjdevries/express_line.nvim",
+  "lukas-reineke/indent-blankline.nvim",
 
-    -- Searching
-    use "google/vim-searchindex"
-    use "windwp/nvim-spectre"
+  -- Icons
+  "kyazdani42/nvim-web-devicons",
 
-    -- sessions
-    use "rmagatti/session-lens"
-    use "rmagatti/auto-session"
+  -- My plugins
+  "koenverburg/peepsight.nvim",
+  "koenverburg/cmd-palette.nvim",
+  "koenverburg/minimal-tabline.nvim",
+  "koenverburg/dim.lua", -- Fork,
+  "koenverburg/nebulous.nvim", -- Fork,
+  { dir = "~/code/github/nightcoder.nvim" },
 
-    -- Lanaguages
-    use "elzr/vim-json"
-    use "jidn/vim-dbml"
-    use "stephpy/vim-yaml"
-    use "PProvost/vim-ps1"
-    use "ekalinin/Dockerfile.vim"
+  -- Git
+  { "TimUntersberger/neogit", lazy = true },
+  { "sindrets/diffview.nvim", lazy = true },
+  -- "tjdevries/diff-therapy.nvim",
 
-    --  Markdown
-    use "godlygeek/tabular"
-    use "plasticboy/vim-markdown"
-    use "dhruvasagar/vim-table-mode"
+  -- Snippets
+  { "L3MON4D3/LuaSnip", lazy = true },
+  { "saadparwaiz1/cmp_luasnip", lazy = true },
+  { "nyngwang/murmur.lua", lazy = true },
 
-    -- Looks
-    use "lewis6991/gitsigns.nvim"
-    use "tjdevries/express_line.nvim"
-    use "lukas-reineke/indent-blankline.nvim"
-
-    -- Icons
-    use "kyazdani42/nvim-web-devicons"
-
-    -- My plugins
-    use "koenverburg/peepsight.nvim"
-    use "koenverburg/cmd-palette.nvim"
-    use "koenverburg/minimal-tabline.nvim"
-    use "koenverburg/dim.lua" -- Fork
-    use "koenverburg/nebulous.nvim" -- Fork
-
-    -- GPT
-    -- use({
-    --   'terror/chatgpt.nvim',
-    --   run = 'pip3 install -r requirements.txt'
-    -- })
-
-    -- Git
-    use "TimUntersberger/neogit"
-    use "sindrets/diffview.nvim"
-    -- use "tjdevries/diff-therapy.nvim"
-
-    -- Snippets
-    use "L3MON4D3/LuaSnip"
-    use "saadparwaiz1/cmp_luasnip"
-
-    use "nyngwang/murmur.lua"
-
-    -- in dev plugins
-    local_use "nightcoder.nvim"
-  end,
-  config = {
-    -- Move to lua dir so impatient.nvim can cache it
-    compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
-    display = {
-      open_fn = function()
-        return require("packer.util").float { border = "single" }
-      end,
-    },
+  -- AI
+  -- Remove the `use` here if you're using folke/lazy.nvim.
+  {
+    "Exafunction/codeium.vim",
+    config = function()
+      -- Change '<C-g>' here to any keycode you like.
+      vim.keymap.set("i", "<C-g>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true })
+      vim.keymap.set("i", "<c-;>", function()
+        return vim.fn["codeium#CycleCompletions"](1)
+      end, { expr = true })
+      vim.keymap.set("i", "<c-,>", function()
+        return vim.fn["codeium#CycleCompletions"](-1)
+      end, { expr = true })
+      vim.keymap.set("i", "<c-x>", function()
+        return vim.fn["codeium#Clear"]()
+      end, { expr = true })
+    end,
   },
 }
