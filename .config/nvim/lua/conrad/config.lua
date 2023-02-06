@@ -5,6 +5,7 @@ require("autoclose").setup({
   ["<"] = { escape = true, close = true, pair = "<>" },
 })
 
+require("hop").setup()
 require("Comment").setup()
 require("nvim-comment-frame").setup {
   disable_default_keymap = true,
@@ -24,7 +25,7 @@ require("nvim-comment-frame").setup {
 }
 
 require("indent_blankline").setup {
-  show_current_context = false,
+  show_current_context = true,
   show_current_context_start = false,
 }
 
