@@ -1,0 +1,35 @@
+# Use custom format
+format = """
+$directory\
+$git_branch\
+$git_status\
+$kubernetes\
+$lua\
+$nodejs\
+$golang\
+$package
+"""
+
+[directory]
+home_symbol = "~"
+read_only_style = "197"
+read_only = "  "
+format = " [$path]($style)[$read_only]($read_only_style) "
+
+[helm]
+format = 'via [⎈ $version](bold white) '
+
+[kubernetes]
+symbol = "k8s"
+format = "$symbol-$context@$namespace "
+disabled = false
+detect_folders = ['k8s']
+
+[kubernetes.context_aliases]
+'dev.local.cluster.k8s' = 'dev'
+'.*/openshift-cluster/.*' = 'openshift'
+'gke_.*_(?P<var_cluster>[\\w-]+)' = 'gke-$var_cluster'
+
+[kubernetes.user_aliases]
+'dev.local.cluster.k8s' = 'dev'
+'root/.*' = 'root'

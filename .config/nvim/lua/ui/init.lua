@@ -1,7 +1,5 @@
 local scheme = require('ui.scheme')
--- scheme.toggle()
--- scheme.default()
-scheme.zephyr()
+scheme.nightcoder()
 
 local lines = require('ui.lines')
 lines.tabline()
@@ -11,3 +9,4 @@ lines.winbar()
 local highlight = require('ui.highlights')
 highlight.setup()
 highlight.fix()
+highlight.hop()

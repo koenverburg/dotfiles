@@ -6,13 +6,15 @@
 
 - link:
     ~/AppData/local/nvim: .config/nvim
+    # ~/AppData/local/nvim/init.lua: .config/nvim/minimal.lua
     ~/AppData/Roaming/alacritty/alacritty.yml: .config/alacritty/alacritty.win.yml
     ~/AppData/Roaming/Code/User/settings.json: .config/vscode/settings.json
     ~/AppData/Roaming/Code/User/keybindings.json: .config/vscode/keybindings.json
     ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1: .config/powershell/profile.ps1
     ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: .config/powershell/profile.ps1
     ~/AppData/Roaming/lazygit/config.yml: .config/lazygit/config.yml
+    ~/.config/starship.toml: .config/starship/starship.toml
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
+    # - [git submodule update --init --recursive, Installing submodules]
     # - [./bootstrap.ps1 programs]
