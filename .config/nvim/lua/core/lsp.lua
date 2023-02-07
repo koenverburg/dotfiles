@@ -192,7 +192,7 @@ lsp.nullLs = function()
 
   local completion = ls.builtins.completion
   local formatting = ls.builtins.formatting
-  local d = ls.builtins.diagnostics
+  -- local d = ls.builtins.diagnostics
 
   local core_sources = {
     completion.spell,
@@ -203,6 +203,7 @@ lsp.nullLs = function()
     -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
     formatting.yamlfmt,
     formatting.prettier,
+    formatting.npm_groovy_lint
   }
 
   local sources = core_sources

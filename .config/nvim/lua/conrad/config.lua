@@ -1,9 +1,9 @@
-require('dim').setup()
+require("dim").setup()
 require("session-lens").setup()
-require('colorizer').setup()
-require("autoclose").setup({
+require("colorizer").setup()
+require("autoclose").setup {
   ["<"] = { escape = true, close = true, pair = "<>" },
-})
+}
 
 require("Comment").setup()
 require("nvim-comment-frame").setup {
@@ -42,11 +42,11 @@ require("conrad.charlist").setup {
   -- },
 }
 
-local temp = require('template')
+local temp = require "template"
 
-temp.temp_dir = '~/.config/nvim/template'
-temp.author = 'Koen Verburg (Conrad The Programmer)'
-temp.email = ''
+temp.temp_dir = "~/.config/nvim/template"
+temp.author = "Koen Verburg (Conrad The Programmer)"
+temp.email = ""
 
 -- require('coman')
 
@@ -79,24 +79,36 @@ require("cmd-palette").setup {
   {
     label = "Edit in new tab",
     callback = function()
-      vim.cmd(":tabedit %|tabprev|:q")
+      vim.cmd ":tabedit %|tabprev|:q"
     end,
   },
   {
     label = "view diff <> master",
     callback = function()
-      vim.cmd(":Easypick changed_files_api")
+      vim.cmd ":Easypick changed_files_api"
     end,
   },
   {
     label = "view diff <> main",
     callback = function()
-      vim.cmd(":Easypick changed_files_exp")
+      vim.cmd ":Easypick changed_files_exp"
     end,
   },
 }
 
+-- require("styler").setup({
+--   themes = {
+--     markdown = { colorscheme = "solarized", background = "light" },
+--     -- help = { colorscheme = "catppuccin-mocha", background = "dark" },
+--   },
+-- })
+
+-- require("no-neck-pain").setup()
+
 require("peepsight").setup {
+  -- markdown
+  "paragraph",
+
   -- go
   "function_declaration",
   "method_declaration",
@@ -125,4 +137,3 @@ require("peepsight").setup {
 --
 --   end
 -- })
-
