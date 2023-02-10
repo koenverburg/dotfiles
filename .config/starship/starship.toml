@@ -1,14 +1,17 @@
-# Use custom format
-format = """
-$directory\
-$git_branch\
-$git_status\
-$kubernetes\
-$lua\
-$nodejs\
-$golang\
-$package
-"""
+# format = """
+# $directory\
+# $git_branch\
+# $git_status\
+# $kubernetes\
+# $lua\
+# $nodejs\
+# $golang\
+# $character
+# """
+
+[character]
+success_symbol = ' [➜](bold green)'
+error_symbol = ' [✗](bold red)'
 
 [directory]
 home_symbol = "~"

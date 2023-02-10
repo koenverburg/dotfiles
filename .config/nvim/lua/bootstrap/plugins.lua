@@ -118,8 +118,9 @@ require("lazy").setup {
   { "saadparwaiz1/cmp_luasnip", lazy = true },
   { "nyngwang/murmur.lua", lazy = true },
 
+  "gen740/SmoothCursor.nvim",
+
   -- AI
-  -- Remove the `use` here if you're using folke/lazy.nvim.
   {
     "Exafunction/codeium.vim",
     config = function()

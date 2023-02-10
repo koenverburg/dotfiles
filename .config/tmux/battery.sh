@@ -1,7 +1,7 @@
 #!/bin/bash
 
 battery() {
-  local batt discharging percentage charge
+  local batt #discharging
 
   if [[ $(uname) == "Linux" ]]; then
     # batt0=/sys/class/power_supply/BAT0

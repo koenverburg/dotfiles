@@ -23,6 +23,7 @@
     ~/.config/limelight/limelightrc: .config/limelight/limelightrc
     ~/.config/skhd/skhdrc: .config/skhd/skhdrc
     ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
+    ~/.config/starship.toml: .config/starship/starship.toml
     # ~/.slate.js: .config/slate/.slate.js
     # "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
 

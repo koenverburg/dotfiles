@@ -81,6 +81,12 @@ function config.cmp()
     view = {
       entries = { name = "custom", selection_order = "near_cursor" },
     },
+    -- window = {
+    --   completion = cmp.config.window.bordered({
+    --     col_offset = -3,
+    --     side_padding = 0
+    --   })
+    -- },
     sources = {
       { name = "nvim_lsp" },
       { name = "luasnip",  keyword_length = 1  },

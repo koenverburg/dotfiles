@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="greenblood"
 # ZSH_THEME="alt-jonathan"
-ZSH_THEME="jonathan"
+# ZSH_THEME="jonathan"
 # ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
@@ -182,22 +182,24 @@ export PNPM_HOME="/Users/koenverburg/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm endfpath=($fpath "/Users/koenverburg/.zfunctions")
 
-# Set typewritten ZSH as a prompt
-export TYPEWRITTEN_PROMPT_LAYOUT="singleline"
+# # Set typewritten ZSH as a prompt
+# export TYPEWRITTEN_PROMPT_LAYOUT="singleline"
 # export TYPEWRITTEN_PROMPT_LAYOUT="pure"
-export TYPEWRITTEN_SYMBOL="$"
-export TYPEWRITTEN_CURSOR="block"
+# export TYPEWRITTEN_SYMBOL="$"
+# export TYPEWRITTEN_CURSOR="block"
 
-display_kube_context() {
-  tw_kube_context="$(kubectl config current-context 2> /dev/null)"
+# display_kube_context() {
+#   tw_kube_context="$(kubectl config current-context 2> /dev/null)"
+#
+#   if [[ $tw_kube_context != "" ]]; then
+#     echo "($(basename $tw_kube_context))"
+#   fi
+# }
 
-  if [[ $tw_kube_context != "" ]]; then
-    echo "($(basename $tw_kube_context))"
-  fi
-}
+# export TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION=display_kube_context
 
-export TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION=display_kube_context
+# fpath=($fpath "/Users/koenverburg/.zfunctions")
+# autoload -U promptinit; promptinit
+# prompt typewritten
 
-fpath=($fpath "/Users/koenverburg/.zfunctions")
-autoload -U promptinit; promptinit
-prompt typewritten
+eval "$(starship init zsh)"
