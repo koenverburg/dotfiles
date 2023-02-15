@@ -5,7 +5,7 @@ local lsp = {}
 local servers = {
   vimls = {},
   dockerls = {},
-  sumneko_lua = {
+  lua_ls = {
     settings = {
       Lua = {
         diagnostics = {
@@ -143,9 +143,9 @@ function lsp.init()
     ensure_installed = {
       "gopls",
       "cssls",
+      "lua_ls",
       "tsserver",
       "dockerls",
-      "sumneko_lua",
       "tailwindcss",
       "yamlls",
     },

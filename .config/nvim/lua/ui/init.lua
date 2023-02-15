@@ -1,5 +1,5 @@
 local scheme = require('ui.scheme')
-scheme.nightcoder()
+scheme.default()
 
 local lines = require('ui.lines')
 lines.tabline()
