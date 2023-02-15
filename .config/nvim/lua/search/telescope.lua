@@ -64,7 +64,7 @@ function M.find_files_dotfiles()
     -- previewer = true,
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = "bottom",
+      prompt_position = "top",
     },
   }
 
@@ -78,7 +78,7 @@ function M.find_files_notes()
     cwd = "~/code/github/obsidian",
     layout_strategy = "vertical",
     layout_config = {
-      prompt_position = "bottom",
+      prompt_position = "top",
     },
   }
 
@@ -113,7 +113,7 @@ function M.my_live_grep()
     -- sorting_strategy = 'descending',
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = "bottom",
+      prompt_position = "top",
     },
   }
 
@@ -124,7 +124,7 @@ function M.find_files()
   local opts = {
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = "bottom",
+      prompt_position = "top",
     },
     find_command = {
       'rg',
@@ -138,7 +138,11 @@ function M.find_files()
 end
 
 function M.git_files()
-  local opts = {}
+  local opts = {
+    layout_config = {
+      prompt_position = "top",
+    },
+  }
   require("telescope.builtin").git_files(opts)
 end
 
@@ -147,7 +151,7 @@ function M.ctrl_p()
     previewer = false,
     layout_strategy = "horizontal",
     layout_config = {
-      prompt_position = "bottom",
+      prompt_position = "top",
     },
   }
 
