@@ -39,7 +39,7 @@ insert(".", ".<c-g>u")
 
 -- This is so I can quickly quite out of vim without having to close all the buffers
 -- normal("<leader>bd", "<cmd>qall<cr>") -- delete all buffers
-normal("<leader>q", "<cmd>qall<cr>")
+normal("<leader>q", ":SaveSession<cr>|:qall<cr>")
 
 -- Easier Moving between splits
 normal("<C-j>", "<C-W><C-J>")

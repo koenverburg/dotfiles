@@ -47,6 +47,7 @@ opt.undofile = true
 opt.colorcolumn = "80,100,120"
 opt.laststatus=3
 opt.incsearch = true
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 -- opt.undordir = cache_dir .. "undodir/"
 -- opt.noswapfile = true
 

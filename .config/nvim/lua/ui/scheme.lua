@@ -62,7 +62,7 @@ scheme.default = function()
   local colors = require("nebulous.functions").get_colors("nova")
 
   nebulous.setup {
-    variant = "nova", -- night, nova, twilight, midnight, fullmoon, quasar
+    variant = "night", -- night, nova, twilight, midnight, fullmoon, quasar
     disable = {
       background = false,
       endOfBuffer = false,
@@ -75,15 +75,18 @@ scheme.default = function()
       variables = false,
     },
     custom_colors = {
-      LineNr =       { fg = colors.Blue,   bg = colors.none, style = colors.none },
-      CursorLineNr = { fg = colors.Yellow, bg = colors.none, style = colors.none },
-      TelescopeResultsBorder = { fg = colors.DarkGrey_2, bg = colors.none, style = colors.none },
-      TelescopePreviewBorder = { fg = colors.DarkGrey_2, bg = colors.none, style = colors.none },
-      TelescopePromptBorder =  { fg = colors.DarkGrey_2, bg = colors.none, style = colors.none },
-      TelescopeBorder =        { fg = colors.DarkGrey_2, bg = colors.none, style = colors.none },
+      -- LineNr =       { fg = colors.Blue,   bg = colors.none, style = colors.none },
+      -- CursorLineNr = { fg = colors.Yellow, bg = colors.none, style = colors.none },
+
+      -- TelescopeResultsBorder = { fg = colors.DarkGrey_2, bg = colors.none, style = colors.none },
+      -- TelescopePreviewBorder = { fg = colors.DarkGrey_2, bg = colors.none, style = colors.none },
+      -- TelescopePromptBorder =  { fg = colors.DarkGrey_2, bg = colors.none, style = colors.none },
+      -- TelescopeBorder =        { fg = colors.DarkGrey_2, bg = colors.none, style = colors.none },
+
       -- highlight groups for custom status line
-      StatusLineWarn = { fg = colors.DarkOrange, bg = colors.Grey, colors.none },
-      StatusLineModes = { fg = colors.Aqua, bg = colors.none, colors.none },
+      -- StatusLineWarn = { fg = colors.DarkOrange, bg = colors.Grey, colors.none },
+      -- StatusLineModes = { fg = colors.Aqua, bg = colors.none, colors.none },
+
       --Fidget
       FidgetTitle = { fg = colors.DarkOrange, bg = colors.none, style = colors.none },
       -- CursorLine        = { bg = red.shade_7 },

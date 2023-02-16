@@ -6,6 +6,7 @@ ts.setup {
   defaults = {
     color_devicons = true,
     borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+    sorting_strategy = "ascending",
     layout_config = {
       height = 0.75,
       width = 0.9
@@ -40,12 +41,12 @@ ts.load_extension "find_template"
 
 local M = {}
 
-function M.session_lens()
-  local opts = {
-    previewer = false,
-  }
-  require("session-lens").search_session(opts)
-end
+-- function M.session_lens()
+--   local opts = {
+--     previewer = false,
+--   }
+--   require("session-lens").search_session(opts)
+-- end
 
 function M.my_lsp_references()
   local opts = themes.get_ivy()

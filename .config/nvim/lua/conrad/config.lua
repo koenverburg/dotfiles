@@ -1,14 +1,13 @@
 require("dim").setup()
-require("session-lens").setup()
 require("colorizer").setup()
-require('smoothcursor').setup({
+require("smoothcursor").setup {
   autostart = true,
-  cursor = "",              -- cursor shape (need nerd font)
-  texthl = "SmoothCursor",   -- highlight group, default is { bg = nil, fg = "#FFD400" }
-  linehl = nil,              -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
-  type = "default",          -- define cursor movement calculate function, "default" or "exp" (exponential).
+  cursor = "", -- cursor shape (need nerd font)
+  texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
+  linehl = nil, -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
+  type = "default", -- define cursor movement calculate function, "default" or "exp" (exponential).
   fancy = {
-    enable = true,        -- enable fancy mode
+    enable = true, -- enable fancy mode
     head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
     body = {
       { cursor = "", texthl = "SmoothCursorRed" },
@@ -19,18 +18,18 @@ require('smoothcursor').setup({
       { cursor = ".", texthl = "SmoothCursorBlue" },
       { cursor = ".", texthl = "SmoothCursorPurple" },
     },
-    tail = { cursor = nil, texthl = "SmoothCursor" }
+    tail = { cursor = nil, texthl = "SmoothCursor" },
   },
-  flyin_effect = nil,        -- "bottom" or "top"
-  speed = 25,                -- max is 100 to stick to your current position
-  intervals = 35,            -- tick interval
-  priority = 10,             -- set marker priority
-  timeout = 3000,            -- timout for animation
-  threshold = 3,             -- animate if threshold lines jump
+  flyin_effect = nil, -- "bottom" or "top"
+  speed = 25, -- max is 100 to stick to your current position
+  intervals = 35, -- tick interval
+  priority = 10, -- set marker priority
+  timeout = 3000, -- timout for animation
+  threshold = 3, -- animate if threshold lines jump
   disable_float_win = false, -- disable on float window
-  enabled_filetypes = nil,   -- example: { "lua", "vim" }
-  disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
-})
+  enabled_filetypes = nil, -- example: { "lua", "vim" }
+  disabled_filetypes = nil, -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
+}
 require("autoclose").setup {
   ["<"] = { escape = true, close = true, pair = "<>" },
 }
@@ -168,3 +167,22 @@ require("peepsight").setup {
 --
 --   end
 -- })
+
+require("auto-session").setup {
+  bypass_session_save_file_types = {
+    "alpha",
+    "NvimTree",
+  },
+  pre_save_cmds = {
+    function()
+      vim.cmd "tabdo Workspace RightPanelToggle"
+    end,
+  },
+  post_restore_cmds = {
+    function()
+      vim.schedule(function()
+        vim.cmd "tabdo Workspace RightPanelToggle"
+      end)
+    end,
+  },
+}

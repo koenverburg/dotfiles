@@ -13,7 +13,7 @@ require("nvim-treesitter.configs").setup {
     "tsx",
     "typescript",
     "yaml",
-    "sumneko_lua"
+    -- "sumneko_lua"
     -- "lua",
   },
   context_commentstring = {

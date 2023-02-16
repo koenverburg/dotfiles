@@ -9,10 +9,9 @@ end
 require("lazy").setup {
   nullLs,
   -- Colorscheme
-  -- use "Shatur/neovim-ayu"
-  -- use "LunarVim/github.nvim"
-  "fenetikm/falcon",
-  { "ellisonleao/gruvbox.nvim", lazy = true },
+  "Yagua/nebulous.nvim",
+  "ldelossa/nvim-ide",
+  -- { "ellisonleao/gruvbox.nvim", lazy = true },
   { "tjdevries/gruvbuddy.nvim", dependencies = "tjdevries/colorbuddy.vim" },
   "projekt0n/github-nvim-theme",
 
@@ -66,8 +65,6 @@ require("lazy").setup {
   { "anuvyklack/hydra.nvim", lazy = true },
   "norcalli/nvim-colorizer.lua",
 
-  -- Glepnir
-  -- "glepnir/zephyr-nvim",
   { "glepnir/template.nvim", lazy = true },
   -- 'glepnir/coman.nvim',
   -- 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement,
@@ -77,7 +74,7 @@ require("lazy").setup {
   { "windwp/nvim-spectre", lazy = true },
 
   -- sessions
-  { "rmagatti/session-lens", lazy = true },
+  -- { "rmagatti/session-lens", lazy = true },
   { "rmagatti/auto-session", lazy = true },
 
   -- Lanaguages
@@ -96,8 +93,6 @@ require("lazy").setup {
   "lewis6991/gitsigns.nvim",
   "tjdevries/express_line.nvim",
   "lukas-reineke/indent-blankline.nvim",
-
-  -- Icons
   "kyazdani42/nvim-web-devicons",
 
   -- My plugins
@@ -105,7 +100,6 @@ require("lazy").setup {
   "koenverburg/cmd-palette.nvim",
   "koenverburg/minimal-tabline.nvim",
   "koenverburg/dim.lua", -- Fork,
-  "koenverburg/nebulous.nvim", -- Fork,
   { dir = "~/code/github/nightcoder.nvim" },
 
   -- Git
