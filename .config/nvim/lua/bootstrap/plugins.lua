@@ -55,6 +55,7 @@ require("lazy").setup {
   "nvim-lua/plenary.nvim",
   { "stevearc/dressing.nvim", event = "VeryLazy" },
   "unblevable/quick-scope",
+  'rainbowhxch/accelerated-jk.nvim',
   -- "ThePrimeagen/harpoon",
   { "rmagatti/alternate-toggler", lazy = false },
   { "ThePrimeagen/refactoring.nvim", lazy = false },

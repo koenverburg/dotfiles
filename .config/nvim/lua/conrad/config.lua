@@ -175,13 +175,17 @@ require("auto-session").setup {
   },
   pre_save_cmds = {
     function()
+      -- Close workspace when saving session
       vim.cmd "tabdo Workspace RightPanelToggle"
     end,
   },
   post_restore_cmds = {
     function()
       vim.schedule(function()
+        -- Open workspace when restoring session
         vim.cmd "tabdo Workspace RightPanelToggle"
+        -- Equalize window after buffers are move due to workspace buffers
+        vim.cmd(vim.api.nvim_replace_termcodes("normal <C-w>=", true, true, true))
       end)
     end,
   },
