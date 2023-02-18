@@ -11,6 +11,7 @@ require("lazy").setup {
   -- Colorscheme
   "Yagua/nebulous.nvim",
   "ldelossa/nvim-ide",
+  "lmburns/kimbox",
   -- { "ellisonleao/gruvbox.nvim", lazy = true },
   { "tjdevries/gruvbuddy.nvim", dependencies = "tjdevries/colorbuddy.vim" },
   "projekt0n/github-nvim-theme",
@@ -76,7 +77,7 @@ require("lazy").setup {
 
   -- sessions
   -- { "rmagatti/session-lens", lazy = true },
-  { "rmagatti/auto-session", lazy = true },
+  { "rmagatti/auto-session", lazy = false },
 
   -- Lanaguages
   "elzr/vim-json",

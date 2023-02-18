@@ -7,17 +7,17 @@ ide.setup = function()
     return
   end
 
-  local bufferlist = require "ide.components.bufferlist"
-  local explorer = require "ide.components.explorer"
-  local outline = require "ide.components.outline"
-  local callhierarchy = require "ide.components.callhierarchy"
-  local timeline = require "ide.components.timeline"
-  local terminal = require "ide.components.terminal"
-  local terminalbrowser = require "ide.components.terminal.terminalbrowser"
   local changes = require "ide.components.changes"
   local commits = require "ide.components.commits"
-  local branches = require "ide.components.branches"
-  local bookmarks = require "ide.components.bookmarks"
+  local outline = require "ide.components.outline"
+  local timeline = require "ide.components.timeline"
+  local bufferlist = require "ide.components.bufferlist"
+  local callhierarchy = require "ide.components.callhierarchy"
+  -- local explorer = require "ide.components.explorer"
+  -- local branches = require "ide.components.branches"
+  -- local bookmarks = require "ide.components.bookmarks"
+  -- local terminal = require "ide.components.terminal"
+  -- local terminalbrowser = require "ide.components.terminal.terminalbrowser"
 
   module.setup {
     -- The global icon set to use.
@@ -28,9 +28,9 @@ ide.setup = function()
     log_level = "info",
     -- Component specific configurations and default config overrides.
     components = {
-      -- The global keymap is applied to all Components before construction.
-      -- It allows common keymaps such as "hide" to be overridden, without having
-      -- to make an override entry for all Components.
+      BufferList = {
+          default_height = 10,
+      },
       --
       -- If a more specific keymap override is defined for a specific Component
       -- this takes precedence.
@@ -38,6 +38,7 @@ ide.setup = function()
         -- example, change all Component's hide keymap to "h"
         -- hide = h
       },
+
       -- example, prefer "x" for hide only for Explorer component.
       -- Explorer = {
       --     keymaps = {
@@ -47,19 +48,19 @@ ide.setup = function()
     },
     -- default panel groups to display on left and right.
     panels = {
-      -- right = "git",
       left = 'none',
       right = "explorer",
     },
     -- panels defined by groups of components, user is free to redefine the defaults
     -- and/or add additional.
     panel_groups = {
-      none = {},
+      none = {
+        -- callhierarchy.Name,
+        -- bookmarks.Name,
+      },
 
       explorer = {
-        -- bookmarks.Name,
         outline.Name,
-        callhierarchy.Name,
         bufferlist.Name,
         -- explorer.Name,
         -- terminalbrowser.Name,

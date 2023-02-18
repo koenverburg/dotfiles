@@ -1,5 +1,5 @@
 local scheme = require('ui.scheme')
-scheme.default()
+scheme.kimbox()
 
 local lines = require('ui.lines')
 lines.tabline()

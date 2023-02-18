@@ -9,6 +9,14 @@ scheme.toggle = function()
   end
 end
 
+scheme.kimbox = function ()
+  require("kimbox").setup({
+    style = "darker", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+  })
+  require("kimbox").load()
+end
+
+
 scheme.nightcoder = function ()
   vim.cmd [[ colorscheme nightcoder ]]
 end
