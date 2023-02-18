@@ -11,7 +11,7 @@ end
 
 scheme.kimbox = function ()
   require("kimbox").setup({
-    style = "darker", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    style = "dark", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
   })
   require("kimbox").load()
 end
