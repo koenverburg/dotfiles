@@ -1,6 +1,8 @@
-local utils = require("utils")
-local ts = require('telescope')
-local themes = require("telescope.themes")
+local utils = require "utils"
+local ts = require "telescope"
+local themes = require "telescope.themes"
+local actions = require "telescope.actions"
+local action_state = require "telescope.actions.state"
 
 ts.setup {
   defaults = {
@@ -9,8 +11,8 @@ ts.setup {
     sorting_strategy = "ascending",
     layout_config = {
       height = 0.75,
-      width = 0.9
-    }
+      width = 0.9,
+    },
   },
   extensions = {
     fzf = {
@@ -128,11 +130,11 @@ function M.find_files()
       prompt_position = "top",
     },
     find_command = {
-      'rg',
-      '--ignore',
-      '--hidden',
-      '--files'
-    }
+      "rg",
+      "--ignore",
+      "--hidden",
+      "--files",
+    },
   }
 
   require("telescope.builtin").find_files(opts)
@@ -164,8 +166,8 @@ function M.spell_checker()
     prompt_title = "",
     layout_config = {
       height = 0.25,
-      width = 0.25
-    }
+      width = 0.25,
+    },
   }
 
   require("telescope.builtin").spell_suggest(opts)
@@ -188,6 +190,31 @@ end
 --     find_files()
 --   end
 -- end
+
+function M.custom_buffers()
+  local opts = themes.get_dropdown {
+    previewer = false,
+    layout_strategy = "horizontal",
+    layout_config = {
+      prompt_position = "top",
+    },
+    attach_mappings = function(prompt_bufnr, map)
+      local delete_buf = function()
+        local selection = action_state.get_selected_entry()
+
+        actions.close(prompt_bufnr)
+
+        vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+      end
+
+      map("i", "d", delete_buf)
+
+      return true
+    end,
+  }
+
+  require("telescope.builtin").buffers(opts)
+end
 
 function M.git_worktrees()
   require("telescope").extensions.git_worktree.git_worktrees()

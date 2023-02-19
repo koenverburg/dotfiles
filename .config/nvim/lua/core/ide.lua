@@ -29,7 +29,7 @@ ide.setup = function()
     -- Component specific configurations and default config overrides.
     components = {
       BufferList = {
-          default_height = 10,
+        default_height = 10,
       },
       --
       -- If a more specific keymap override is defined for a specific Component

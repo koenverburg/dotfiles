@@ -2,7 +2,7 @@ local ts_utils = require "nvim-treesitter.ts_utils"
 local M = {}
 
 function M.bind(mode, keys, func)
-  vim.api.nvim_set_keymap(mode, keys, func, { noremap = true, silent = true })
+  vim.keymap.set(mode, keys, func, { noremap = true, silent = true })
 end
 
 function M.normal(key, func)

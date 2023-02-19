@@ -168,6 +168,53 @@ require("peepsight").setup {
 --   end
 -- })
 
+-- Open Workspace on new tab creation
+-- vim.api.nvim_create_autocmd("TabNew", {
+--   pattern = "*",
+--   callback = function()
+--     vim.schedule(function()
+--       vim.cmd "Workspace RightPanelToggle"
+--     end)
+--   end,
+-- })
+
+-- vim.api.nvim_create_autocmd("BufWinLeave", {
+--   pattern = "*",
+--   callback = function()
+--     print("hii")
+--     -- vim.schedule(function()
+--     --   vim.cmd "Workspace RightPanelToggle"
+--     -- end)
+--   end,
+-- })
+
+-- vim.api.nvim_create_autocmd("WinClosed", {
+--   pattern = {
+--     "*"
+--   },
+--
+--   callback = function()
+--     vim.cmd("wincmd c")
+--
+--     local stdBufCount = 0
+--     for _, v in ipairs(vim.api.nvim_list_wins()) do
+--       local name = vim.fn.bufname(vim.api.nvim_win_get_buf(v))
+--
+--       if string.find(name, "component://*") then
+--         goto continue
+--       end
+--
+--       stdBufCount = stdBufCount + 1
+--
+--       ::continue::
+--     end
+--
+--     if stdBufCount == 0 then
+--       vim.cmd("qa")
+--     end
+--   end
+-- })
+
 require("auto-session").setup {
   bypass_session_save_file_types = {
     "alpha",
@@ -182,11 +229,13 @@ require("auto-session").setup {
   post_restore_cmds = {
     function()
       vim.schedule(function()
-        -- Open workspace when restoring session
         vim.cmd "tabdo Workspace RightPanelToggle"
+        -- Open workspace when restoring session
         -- Equalize window after buffers are move due to workspace buffers
         vim.cmd(vim.api.nvim_replace_termcodes("normal <C-w>=", true, true, true))
       end)
     end,
   },
 }
+
+require("bookmarks").setup()

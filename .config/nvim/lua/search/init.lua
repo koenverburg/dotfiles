@@ -29,6 +29,7 @@ end
 --
 -- ----------------------------------------------------------------------------
 -- Find in other projects
+telescope_map("<space>ff", "find_files")
 telescope_map("<space>sn", "find_files_notes")
 telescope_map("<space>ed", "find_files_dotfiles")
 
@@ -38,9 +39,9 @@ telescope_map("<space>cwt", "create_worktree")
 telescope_map("<leader><space>h", "help_tags")
 
 telescope_map("<space>t", "git_files")
-telescope_map("<space>ff", "find_files")
 telescope_map('<space>p', 'ctrl_p')
--- telescope_map("<space><space>", "buffers")
+
+telescope_map("<space><space>", "custom_buffers")
 
 telescope_map("<space>gw", "git_worktrees")
 
