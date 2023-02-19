@@ -13,49 +13,29 @@ ide.setup = function()
   local timeline = require "ide.components.timeline"
   local bufferlist = require "ide.components.bufferlist"
   local callhierarchy = require "ide.components.callhierarchy"
-  -- local explorer = require "ide.components.explorer"
-  -- local branches = require "ide.components.branches"
-  -- local bookmarks = require "ide.components.bookmarks"
-  -- local terminal = require "ide.components.terminal"
-  -- local terminalbrowser = require "ide.components.terminal.terminalbrowser"
+  local bookmarks = require "ide.components.bookmarks"
+  local explorer = require "ide.components.explorer"
+  local branches = require "ide.components.branches"
+  local terminal = require "ide.components.terminal"
+  local terminalbrowser = require "ide.components.terminal.terminalbrowser"
 
   module.setup {
-    -- The global icon set to use.
-    -- values: "nerd", "codicon", "default"
     icon_set = "nerd",
-    -- Set the log level for nvim-ide's log. Log can be accessed with
-    -- 'Workspace OpenLog'. Values are 'debug', 'warn', 'info', 'error'
     log_level = "info",
-    -- Component specific configurations and default config overrides.
     components = {
-      BufferList = {
-        default_height = 10,
-      },
-      --
-      -- If a more specific keymap override is defined for a specific Component
-      -- this takes precedence.
-      global_keymaps = {
-        -- example, change all Component's hide keymap to "h"
-        -- hide = h
-      },
-
-      -- example, prefer "x" for hide only for Explorer component.
-      -- Explorer = {
-      --     keymaps = {
-      --         hide = "x",
-      --     }
-      -- }
+      -- BufferList = {
+      --   default_height = 10,
+      -- },
     },
-    -- default panel groups to display on left and right.
     panels = {
-      left = 'none',
+      left = "empty",
       right = "explorer",
     },
-    -- panels defined by groups of components, user is free to redefine the defaults
-    -- and/or add additional.
     panel_groups = {
-      none = {
-        -- callhierarchy.Name,
+      empty = {},
+
+      lhs = {
+        callhierarchy.Name,
         -- bookmarks.Name,
       },
 
@@ -66,15 +46,12 @@ ide.setup = function()
         -- terminalbrowser.Name,
       },
 
-      -- terminal = { terminal.Name },
+      terminal = { terminal.Name },
       git = { changes.Name, commits.Name, timeline.Name },
     },
-    -- workspaces config
     workspaces = {
-      -- which panels to open by default, one of: 'left', 'right', 'both', 'none'
-      auto_open = "none",
+      auto_open = "none" -- one of: 'left', 'right', 'both', 'none'
     },
-    -- default panel sizes for the different positions
     panel_sizes = {
       left = 30,
       right = 30,

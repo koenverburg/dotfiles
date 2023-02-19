@@ -5,7 +5,7 @@
   "SmoothCursor.nvim": { "branch": "main", "commit": "79f02173317a76ab406d182ac89b20b59f5e34fe" },
   "accelerated-jk.nvim": { "branch": "main", "commit": "38bbbf9258aab876906588ea979901ed3ed569c6" },
   "alternate-toggler": { "branch": "main", "commit": "9925bcfd7cee04b6c1f43c23edcf6c878552b7db" },
-  "auto-session": { "branch": "main", "commit": "c8b2f4048f846387361bd04cc185bf1aa7d2e3d1" },
+  "auto-session": { "branch": "main", "commit": "04ccdac802200ecc363b251cf922b2b022bb515c" },
   "autoclose.nvim": { "branch": "main", "commit": "5c63f2c28a48d556644f3650daccdf0ba03ea177" },
   "bookmarks.nvim": { "branch": "main", "commit": "982a774b27d5c6a383b025f43d20eb7b743fdbf0" },
   "cmd-palette.nvim": { "branch": "main", "commit": "24c4ee404cacad2b60b1e77e26b9d0574c8dbdf0" },
