@@ -8,7 +8,7 @@ lsp.init()
 lsp.nullLs()
 lsp.lines()
 
-local ide = require('core.ide')
-ide.setup()
+-- local ide = require('core.ide')
+-- ide.setup()
 
--- require('core.treesitter')
+require('core.treesitter')

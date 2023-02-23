@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup {
-  highlight = { enable = true, additional_vim_regex_highlighting = false },
+  highlight = { enable = true, additional_vim_regex_highlighting = true },
   indent = { enable = true },
   ensure_installed = {
     "css",
@@ -13,8 +13,8 @@ require("nvim-treesitter.configs").setup {
     "tsx",
     "typescript",
     "yaml",
+    "lua",
     -- "sumneko_lua"
-    -- "lua",
   },
   context_commentstring = {
     enable = true,

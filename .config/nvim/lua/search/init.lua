@@ -33,6 +33,9 @@ telescope_map("<space>ff", "find_files")
 telescope_map("<space>sn", "find_files_notes")
 telescope_map("<space>ed", "find_files_dotfiles")
 
+-- Bookmarks
+telescope_map("<space>b", "bookmarks")
+
 telescope_map("<space>gw", "get_worktrees")
 telescope_map("<space>cwt", "create_worktree")
 

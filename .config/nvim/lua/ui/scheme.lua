@@ -1,5 +1,32 @@
 local scheme = {}
 local utils = require('utils')
+
+local base_scheme = {
+  none        = 'NONE',
+  pinkish     = "#FD2E6A",
+  DarkOrange  = "#ff8d03",
+  DarkBlue    = "#007ED3",
+  DarkGreen   = "#5EB95D",
+  DarkYellow  = "#FFCC00",
+  DarkMagenta = "#FE92E1",
+  DarkCyan    = "#56D6D6",
+  DarkGrey    = "#555555",
+  DarkGrey_2  = "#828989"
+}
+
+local red = {
+  shade_1 = '#8b0000',
+  shade_2 = '#7d0000',
+  shade_3 = '#6f0000',
+  shade_4 = '#610000',
+  shade_5 = '#530000',
+  shade_6 = '#460000',
+  shade_7 = '#380000',
+  shade_8 = '#2a0000',
+  shade_9 = '#1c0000',
+  shade_10 = '#0e0000',
+}
+
 scheme.toggle = function()
   local nightcoder = utils.loadable('nightcoder')
   if nightcoder then
@@ -10,8 +37,45 @@ scheme.toggle = function()
 end
 
 scheme.kimbox = function ()
+  local c = require('kimbox.palette')
+  local ss = {
+    hint = '#FFCC00',
+    selected = base_scheme.DarkGrey,
+
+    floating = red.shade_10,
+    cursorline = '#39260E',
+    keyword = 'teal',
+    string = 'blue',
+  }
+
   require("kimbox").setup({
     style = "dark", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    highlights = {
+      -- TelescopeMatching = { fg = ss.hint },
+      -- TelescopeSelection = { fg = 'white', bg = ss.selected},
+      --
+      -- TelescopePromptTitle = { fg = 'white', bg = ss.floating, bold = true },
+      -- TelescopePromptPrefix = { fg = ss.hint },
+      -- TelescopePromptCounter = { fg = ss.hint },
+      -- TelescopePromptNormal = { bg = ss.floating },
+      -- TelescopePromptBorder = { fg = ss.cursorline, bg = ss.floating },
+      --
+      -- TelescopeResultsTitle = { fg = ss.floating, bg = ss.floating, bold = true },
+      -- TelescopeResultsNormal = { bg = ss.floating },
+      -- TelescopeResultsBorder = { fg = ss.floating, bg = ss.floating },
+      --
+      -- TelescopePreviewTitle = { fg = 'white', bg = ss.floating, bold = true },
+      -- TelescopePreviewNormal = { bg = ss.floating },
+      -- TelescopePreviewBorder = { fg = ss.floating, bg = ss.floating },
+
+      Search = {fg = '#000000', bg = '#FFCC00'},
+      IncSearch = {fg = '#000000', bg = c.colors.light_red},
+
+      Statusline = {
+        bg = '#39260E'
+        -- fg = c.purple, bg = c.bg
+      }
+    }
   })
   require("kimbox").load()
 end
@@ -33,31 +97,6 @@ scheme.zephyr = function ()
   vim.cmd [[ colorscheme zephyr ]]
 end
 
--- local base_scheme = {
---   none        = 'NONE',
---   DarkRed     = "#FD2E6A",
---   DarkOrange  = "#ff8d03",
---   DarkBlue    = "#007ED3",
---   DarkGreen   = "#5EB95D",
---   DarkYellow  = "#FFCC00",
---   DarkMagenta = "#FE92E1",
---   DarkCyan    = "#56D6D6",
---   DarkGrey    = "#555555",
---   DarkGrey_2  = "#828989"
--- }
-
--- local red = {
---   shade_1 = '#8b0000',
---   shade_2 = '#7d0000',
---   shade_3 = '#6f0000',
---   shade_4 = '#610000',
---   shade_5 = '#530000',
---   shade_6 = '#460000',
---   shade_7 = '#380000',
---   shade_8 = '#2a0000',
---   shade_9 = '#1c0000',
---   shade_10 = '#0e0000',
--- }
 
 
 scheme.default = function()

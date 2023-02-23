@@ -23,8 +23,8 @@ format = " [$path]($style)[$read_only]($read_only_style) "
 format = 'via [⎈ $version](bold white) '
 
 [kubernetes]
-symbol = "k8s"
-format = "$symbol-$context@$namespace "
+symbol = "k8s:"
+format = "$symbol $context@$namespace "
 disabled = false
 detect_folders = ['k8s']
 

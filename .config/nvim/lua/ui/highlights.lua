@@ -1,6 +1,6 @@
 local highlight = {}
 
-highlight.hop = function ()
+highlight.hop = function()
   local c = require("colorbuddy.color").colors
   local s = require("colorbuddy.style").styles
   local Group = require("colorbuddy.group").Group
@@ -11,7 +11,8 @@ highlight.hop = function ()
 end
 
 highlight.setup = function()
-  require('murmur').setup({})
+  require("murmur").setup {}
+  vim.api.nvim_set_hl(0, "murmur_cursor_rgb", { fg = "#0a100d", bg = "#ffcc00" })
 end
 
 highlight.fix = function()

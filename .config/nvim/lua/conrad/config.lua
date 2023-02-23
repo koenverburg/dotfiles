@@ -83,34 +83,6 @@ temp.email = ""
 require("cmd-palette").setup {
   { label = "Peepsight", cmd = "Peepsight" },
   {
-    label = "Close tab",
-    callback = function()
-      vim.cmd "tabclose"
-    end,
-  },
-  {
-    label = "exit",
-    callback = function()
-      -- vim.cmd "tabdo Workspace RightPanelToggle" -- if they are there
-      vim.cmd ":SaveSession"
-      vim.cmd ":qall"
-    end,
-  },
-
-  {
-    label = "ide",
-    callback = function()
-      vim.cmd "Workspace RightPanelToggle"
-    end,
-  },
-  {
-    label = "quite",
-    callback = function()
-      vim.cmd [[ set nonumber ]]
-      vim.o.signcolumn = "no"
-    end,
-  },
-  {
     label = "reset",
     callback = function()
       vim.cmd [[ set number ]]
@@ -190,73 +162,29 @@ require("peepsight").setup {
 -- })
 
 -- Open Workspace on new tab creation
-vim.api.nvim_create_autocmd("TabNew", {
-  pattern = "*",
-  callback = function()
-    vim.schedule(function()
-      vim.cmd "Workspace RightPanelToggle"
-      vim.cmd "Telescope git_files"
-      -- vim.cmd(vim.api.nvim_replace_termcodes("", true, true, true))
-    end)
-  end,
-})
-
--- vim.api.nvim_create_autocmd("", {
+-- vim.api.nvim_create_autocmd("TabNew", {
 --   pattern = "*",
 --   callback = function()
 --     vim.schedule(function()
---       vim.cmd "Workspace RightPanelToggle"
+--       vim.cmd "Telescope git_files"
 --     end)
 --   end,
 -- })
-
--- vim.api.nvim_create_autocmd("WinEnter", {
---   pattern = "*",
---   callback = function()
---     vim.schedule(function()
---       vim.cmd "Workspace RightPanelToggle"
---     end)
---   end,
--- })
-
-vim.api.nvim_create_autocmd("TabClosed", {
-  pattern = "*",
-  callback = function()
-    for _, v in ipairs(vim.api.nvim_list_wins()) do
-      local bufnr = vim.api.nvim_win_get_buf(v)
-      local name = vim.fn.bufname(bufnr)
-
-      if string.find(name, "component://*") then
-        -- vim.api.nvim_buf_delete(bufnr, { force = true })
-        vim.cmd "tabdo Workspace RightPanelToggle"
-        return
-      end
-    end
-  end
-})
+require("accelerated-jk").setup {
+  mode = "time_driven",
+  enable_deceleration = true,
+  acceleration_motions = {},
+  acceleration_limit = 150,
+  acceleration_table = { 2, 7, 26, 28, 30 },
+  -- acceleration_table = { 2, 7, 12, 17, 21, 24, 26, 28, 30 },
+  -- when 'enable_deceleration = true',
+  deceleration_table = { {200, 3}, {300, 7}, {450, 11}, {600, 15}, {750, 21}, {900, 9999} }
+  -- deceleration_table = { { 150, 9999 } },
+}
 
 require("auto-session").setup {
   bypass_session_save_file_types = {
     "alpha",
     "NvimTree",
   },
-  pre_save_cmds = {
-    function()
-      -- Close workspace when saving session
-      vim.cmd "tabdo Workspace RightPanelToggle"
-    end,
-  },
-  post_restore_cmds = {
-    function()
-      vim.schedule(function()
-        -- vim.cmd "tabdo Workspace LeftPanelToggle"
-        vim.cmd "tabdo Workspace RightPanelToggle"
-        -- Open workspace when restoring session
-        -- Equalize window after buffers are move due to workspace buffers
-        -- vim.cmd(vim.api.nvim_replace_termcodes("normal <C-w>=", true, true, true))
-      end)
-    end,
-  },
 }
-
--- require("bookmarks").setup()

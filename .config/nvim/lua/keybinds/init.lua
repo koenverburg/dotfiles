@@ -48,8 +48,8 @@ normal("<C-l>", "<C-W><C-L>")
 normal("<C-h>", "<C-W><C-H>")
 
 -- Better jk
-normal("j", "gj")
-normal("k", "gk")
+normal("j", "<Plug>(accelerated_jk_gj)")
+normal("k", "<Plug>(accelerated_jk_gk)")
 
 -- Faster moving from beginning to end of a line
 normal("H", "^")
@@ -92,14 +92,17 @@ normal("<leader>T", ":tabnew<cr>")
 normal("<S-Tab>", ":tabnext<cr>")
 
 normal('<space>', 'za')
+
 -- Credo, sort aliases in alphabetical order
--- visual("<leader>s", ":'<,'>!sort -f<cr>")
+visual("<leader>s", ":'<,'>!sort -f<cr>")
 
 -- ----------------------------------------------------------------------------
 --
 -- Plugins bindings
 --
 -- ----------------------------------------------------------------------------
+-- Bookmark
+normal('bt', [[ <cmd>BookmarkToggle<cr> ]])
 
 -- Searching
 normal('<leader>S', [[ <cmd>lua require('spectre').open()<cr> ]])

@@ -39,6 +39,7 @@ ts.load_extension "git_worktree"
 ts.load_extension "file_browser"
 ts.load_extension "telescope-tabs"
 ts.load_extension "find_template"
+ts.load_extension "vim_bookmarks"
 -- ts.load_extension "session-lens"
 
 local M = {}
@@ -140,21 +141,59 @@ function M.find_files()
   require("telescope.builtin").find_files(opts)
 end
 
+-- M.telescope_theme = {
+--   results_title = false,
+--   layout_strategy = "center",
+--   sorting_strategy = "ascending",
+--   previewer = false,
+--   prompt_prefix = "      ",
+--   winblend = 30,
+--   layout_config = { width = 0.6, height = 0.6 },
+--   borderchars = {
+--     preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+--     prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+--     results = { "─", " ", " ", " ", "╰", "╯", " ", " " },
+--   },
+-- }
+
 function M.git_files()
   local opts = {
+    prompt_prefix = "",
+    results_title = false,
     layout_config = {
       prompt_position = "top",
     },
+    -- winblend = 85,
+    -- borderchars = {
+    --   -- defaults = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    --   prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+    --   results = { "─", " ", " ", " ", " ", " ", " ", " " },
+    -- },
   }
   require("telescope.builtin").git_files(opts)
 end
 
 function M.ctrl_p()
   local opts = {
-    previewer = false,
-    layout_strategy = "horizontal",
+    prompt_prefix = "",
+    results_title = false,
     layout_config = {
+      width = 0.6,
+      height = 0.6,
       prompt_position = "top",
+    },
+
+    winblend = 90,
+    previewer = false,
+    layout_strategy = "center",
+    sorting_strategy = "ascending",
+
+    borderchars = {
+      -- defaults = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+      results = { "─", " ", " ", " ", " ", " ", " ", " " },
     },
   }
 
@@ -193,11 +232,22 @@ end
 
 function M.custom_buffers()
   local opts = themes.get_dropdown {
+    -- prompt_prefix = "",
+    -- results_title = false,
     previewer = false,
-    layout_strategy = "horizontal",
+    layout_strategy = "center",
+    sorting_strategy = "ascending",
     layout_config = {
+      width = 0.6,
+      height = 0.6,
       prompt_position = "top",
     },
+    -- borderchars = {
+    --   -- defaults = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    --   prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+    --   results = { "─", " ", " ", " ", " ", " ", " ", " " },
+    -- },
     attach_mappings = function(prompt_bufnr, map)
       local delete_buf = function()
         local selection = action_state.get_selected_entry()
@@ -214,6 +264,17 @@ function M.custom_buffers()
   }
 
   require("telescope.builtin").buffers(opts)
+end
+
+function M.bookmarks()
+  local opts = themes.get_dropdown {
+    previewer = false,
+    layout_strategy = "horizontal",
+    layout_config = {
+      prompt_position = "top",
+    },
+  }
+  require("telescope").extensions.vim_bookmarks.all(opts)
 end
 
 function M.git_worktrees()

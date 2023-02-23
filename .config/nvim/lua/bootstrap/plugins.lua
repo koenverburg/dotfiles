@@ -10,7 +10,7 @@ require("lazy").setup {
   nullLs,
   -- Colorscheme
   "Yagua/nebulous.nvim",
-  "ldelossa/nvim-ide",
+  -- "ldelossa/nvim-ide",
   "lmburns/kimbox",
   -- { "ellisonleao/gruvbox.nvim", lazy = true },
   { "tjdevries/gruvbuddy.nvim", dependencies = "tjdevries/colorbuddy.vim" },
@@ -94,6 +94,7 @@ require("lazy").setup {
   -- Looks
   "lewis6991/gitsigns.nvim",
   "tjdevries/express_line.nvim",
+  'nvim-lualine/lualine.nvim',
   "lukas-reineke/indent-blankline.nvim",
   "kyazdani42/nvim-web-devicons",
 
@@ -115,8 +116,9 @@ require("lazy").setup {
   { "nyngwang/murmur.lua", lazy = true },
 
   "gen740/SmoothCursor.nvim",
-
-  { "crusj/bookmarks.nvim", branch = "main" },
+  "rainbowhxch/accelerated-jk.nvim",
+  "MattesGroeger/vim-bookmarks",
+  "tom-anders/telescope-vim-bookmarks.nvim",
 
   -- AI
   {

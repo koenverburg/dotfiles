@@ -11,13 +11,13 @@ ide.setup = function()
   local commits = require "ide.components.commits"
   local outline = require "ide.components.outline"
   local timeline = require "ide.components.timeline"
+  local terminal = require "ide.components.terminal"
   local bufferlist = require "ide.components.bufferlist"
   local callhierarchy = require "ide.components.callhierarchy"
-  local bookmarks = require "ide.components.bookmarks"
-  local explorer = require "ide.components.explorer"
-  local branches = require "ide.components.branches"
-  local terminal = require "ide.components.terminal"
-  local terminalbrowser = require "ide.components.terminal.terminalbrowser"
+  -- local bookmarks = require "ide.components.bookmarks"
+  -- local explorer = require "ide.components.explorer"
+  -- local branches = require "ide.components.branches"
+  -- local terminalbrowser = require "ide.components.terminal.terminalbrowser"
 
   module.setup {
     icon_set = "nerd",

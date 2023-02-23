@@ -34,7 +34,6 @@ end
 
 function M.quite()
   vim.schedule(function()
-    vim.cmd "tabdo Workspace RightPanelToggle"
     vim.cmd ":SaveSession"
     vim.cmd ":qall"
   end)
