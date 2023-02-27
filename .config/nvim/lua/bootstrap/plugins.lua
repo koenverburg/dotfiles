@@ -94,7 +94,7 @@ require("lazy").setup {
   -- Looks
   "lewis6991/gitsigns.nvim",
   "tjdevries/express_line.nvim",
-  'nvim-lualine/lualine.nvim',
+  "nvim-lualine/lualine.nvim",
   "lukas-reineke/indent-blankline.nvim",
   "kyazdani42/nvim-web-devicons",
 
@@ -104,7 +104,6 @@ require("lazy").setup {
   "koenverburg/minimal-tabline.nvim",
   "koenverburg/dim.lua", -- Fork,
   { dir = "~/code/github/nightcoder.nvim" },
-
   -- Git
   { "TimUntersberger/neogit", lazy = true },
   { "sindrets/diffview.nvim", lazy = true },
@@ -119,6 +118,53 @@ require("lazy").setup {
   "rainbowhxch/accelerated-jk.nvim",
   "MattesGroeger/vim-bookmarks",
   "tom-anders/telescope-vim-bookmarks.nvim",
+  {
+    "folke/noice.nvim",
+    enabled = true,
+    config = function()
+      require("noice").setup {
+        -- lsp = {
+        --   -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        --   override = {
+        --     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        --     ["vim.lsp.util.stylize_markdown"] = true,
+        --     ["cmp.entry.get_documentation"] = true,
+        --   },
+        -- },
+        -- you can enable a preset for easier configuration
+        presets = {
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          bottom_search = false, -- use a classic bottom cmdline for search
+          lsp_doc_border = false, -- add a border to hover docs and signature help
+          command_palette = false, -- position the cmdline and popupmenu together
+          long_message_to_split = false, -- long messages will be sent to a split
+        },
+        cmdline = {
+          enabled = true, -- enables the Noice cmdline UI
+          view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+          opts = {}, -- global options for the cmdline. See section on views
+          ---@type table<string, CmdlineFormat>
+          format = {
+            -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
+            -- view: (default is cmdline view)
+            -- opts: any options passed to the view
+            -- icon_hl_group: optional hl_group for the icon
+            -- title: set to anything or empty string to hide
+            search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex" },
+            search_down = { kind = "search", pattern = "^/", icon = "", lang = "regex" },
+
+            cmdline = { pattern = "^:", icon = "", lang = "vim" },
+            filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
+            lua = { pattern = "^:%s*lua%s+", icon = "", lang = "lua" },
+            help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+            input = {}, -- Used by input()
+            -- lua = false, -- to disable a format, set to `false`
+          },
+        },
+      }
+    end,
+  },
+  "MunifTanjim/nui.nvim",
 
   -- AI
   {
@@ -139,4 +185,14 @@ require("lazy").setup {
       end, { expr = true })
     end,
   },
+
+  -- spec = { import = "lazy-plugins" },
+  -- defaults = {
+  --   lazy = true,
+  -- },
+  -- performance = {
+  --   cache = {
+  --     enabled = true,
+  --   },
+  -- },
 }

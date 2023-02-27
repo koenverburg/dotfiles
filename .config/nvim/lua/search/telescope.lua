@@ -175,26 +175,25 @@ function M.git_files()
 end
 
 function M.ctrl_p()
-  local opts = {
+  local opts = themes.get_dropdown {
     prompt_prefix = "",
     results_title = false,
+
+    previewer = false,
+    layout_strategy = "center",
+    sorting_strategy = "ascending",
     layout_config = {
       width = 0.6,
       height = 0.6,
       prompt_position = "top",
     },
 
-    winblend = 90,
-    previewer = false,
-    layout_strategy = "center",
-    sorting_strategy = "ascending",
-
-    borderchars = {
-      -- defaults = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-      results = { "─", " ", " ", " ", " ", " ", " ", " " },
-    },
+    -- borderchars = {
+    --   -- defaults = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    --   prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+    --   results = { "─", " ", " ", " ", " ", " ", " ", " " },
+    -- },
   }
 
   require("telescope.builtin").git_files(opts)
