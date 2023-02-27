@@ -118,6 +118,7 @@ require("lazy").setup {
   "rainbowhxch/accelerated-jk.nvim",
   "MattesGroeger/vim-bookmarks",
   "tom-anders/telescope-vim-bookmarks.nvim",
+  "simrat39/symbols-outline.nvim",
   {
     "folke/noice.nvim",
     enabled = true,

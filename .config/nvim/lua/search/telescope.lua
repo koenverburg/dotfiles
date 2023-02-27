@@ -52,12 +52,12 @@ local M = {}
 -- end
 
 function M.my_lsp_references()
-  local opts = themes.get_ivy()
+  local opts = themes.get_dropdown()
   require("telescope.builtin").lsp_references(opts)
 end
 
 function M.my_lsp_document_symbols()
-  local opts = themes.get_ivy()
+  local opts = themes.get_dropdown()
   require("telescope.builtin").lsp_document_symbols(opts)
 end
 

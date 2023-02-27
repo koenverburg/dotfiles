@@ -178,7 +178,7 @@ require("accelerated-jk").setup {
   acceleration_table = { 2, 7, 26, 28, 30 },
   -- acceleration_table = { 2, 7, 12, 17, 21, 24, 26, 28, 30 },
   -- when 'enable_deceleration = true',
-  deceleration_table = { {200, 3}, {300, 7}, {450, 11}, {600, 15}, {750, 21}, {900, 9999} }
+  deceleration_table = { { 200, 3 }, { 300, 7 }, { 450, 11 }, { 600, 15 }, { 750, 21 }, { 900, 9999 } },
   -- deceleration_table = { { 150, 9999 } },
 }
 
@@ -186,5 +186,17 @@ require("auto-session").setup {
   bypass_session_save_file_types = {
     "alpha",
     "NvimTree",
+  },
+  pre_save_cmds = {
+    function()
+      vim.cmd "tabdo SymbolsOutlineClose"
+    end,
+  },
+  post_restore_cmds = {
+    function()
+      vim.schedule(function()
+        -- vim.cmd "tabdo SymbolsOutlineOpen"
+      end)
+    end,
   },
 }

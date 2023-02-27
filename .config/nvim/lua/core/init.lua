@@ -12,3 +12,5 @@ lsp.lines()
 -- ide.setup()
 
 require('core.treesitter')
+
+require("symbols-outline").setup()
