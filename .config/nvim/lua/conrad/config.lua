@@ -36,6 +36,13 @@ require("autoclose").setup {
 
 require("hop").setup()
 require("Comment").setup()
+require("smartcolumn").setup {
+  colorcolumn = 80,
+  limit_to_line = false,
+  limit_to_window = false,
+  custom_colorcolumn = {},
+  disabled_filetypes = { "help", "text", "markdown" },
+}
 require("nvim-comment-frame").setup {
   disable_default_keymap = true,
   -- keymap = '<space>cc',
@@ -190,6 +197,7 @@ require("auto-session").setup {
   pre_save_cmds = {
     function()
       vim.cmd "tabdo SymbolsOutlineClose"
+      require("experiments.gc").clean()
     end,
   },
   post_restore_cmds = {
