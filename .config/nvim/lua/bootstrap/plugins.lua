@@ -167,6 +167,7 @@ require("lazy").setup {
   },
   "MunifTanjim/nui.nvim",
   "m4xshen/smartcolumn.nvim",
+  "levouh/tint.nvim",
 
   -- AI
   {

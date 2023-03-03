@@ -1,34 +1,34 @@
 local scheme = {}
-local utils = require('utils')
+local utils = require "utils"
 
 local base_scheme = {
-  none        = 'NONE',
-  pinkish     = "#FD2E6A",
-  DarkOrange  = "#ff8d03",
-  DarkBlue    = "#007ED3",
-  DarkGreen   = "#5EB95D",
-  DarkYellow  = "#FFCC00",
+  none = "NONE",
+  pinkish = "#FD2E6A",
+  DarkOrange = "#ff8d03",
+  DarkBlue = "#007ED3",
+  DarkGreen = "#5EB95D",
+  DarkYellow = "#FFCC00",
   DarkMagenta = "#FE92E1",
-  DarkCyan    = "#56D6D6",
-  DarkGrey    = "#555555",
-  DarkGrey_2  = "#828989"
+  DarkCyan = "#56D6D6",
+  DarkGrey = "#555555",
+  DarkGrey_2 = "#828989",
 }
 
 local red = {
-  shade_1 = '#8b0000',
-  shade_2 = '#7d0000',
-  shade_3 = '#6f0000',
-  shade_4 = '#610000',
-  shade_5 = '#530000',
-  shade_6 = '#460000',
-  shade_7 = '#380000',
-  shade_8 = '#2a0000',
-  shade_9 = '#1c0000',
-  shade_10 = '#0e0000',
+  shade_1 = "#8b0000",
+  shade_2 = "#7d0000",
+  shade_3 = "#6f0000",
+  shade_4 = "#610000",
+  shade_5 = "#530000",
+  shade_6 = "#460000",
+  shade_7 = "#380000",
+  shade_8 = "#2a0000",
+  shade_9 = "#1c0000",
+  shade_10 = "#0e0000",
 }
 
 scheme.toggle = function()
-  local nightcoder = utils.loadable('nightcoder')
+  local nightcoder = utils.loadable "nightcoder"
   if nightcoder then
     scheme.nightcoder()
   else
@@ -36,20 +36,31 @@ scheme.toggle = function()
   end
 end
 
-scheme.kimbox = function ()
-  local c = require('kimbox.palette')
-  local ss = {
-    hint = '#FFCC00',
-    selected = base_scheme.DarkGrey,
+scheme.kimbox = function()
+  local c = require "kimbox.palette"
+  -- local ss = {
+  --   hint = '#FFCC00',
+  --   selected = base_scheme.DarkGrey,
+  --
+  --   floating = red.shade_10,
+  --   cursorline = '#39260E',
+  --   keyword = 'teal',
+  --   string = 'blue',
+  -- }
 
-    floating = red.shade_10,
-    cursorline = '#39260E',
-    keyword = 'teal',
-    string = 'blue',
-  }
+  require("kimbox").setup {
+    style = "light", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 
-  require("kimbox").setup({
-    style = "dark", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    -- toggle_style_key = "<Leader>ts",
+    -- toggle_style_list = { "medium", "ocean", "vscode", "deep", "darker" }, -- or require("kimbox").bgs_list
+
+    -- General formatting --
+    allow_bold = true,
+    allow_italic = false,
+    allow_underline = true,
+    allow_undercurl = true,
+    allow_reverse = true,
+
     highlights = {
       -- TelescopeMatching = { fg = ss.hint },
       -- TelescopeSelection = { fg = 'white', bg = ss.selected},
@@ -68,45 +79,42 @@ scheme.kimbox = function ()
       -- TelescopePreviewNormal = { bg = ss.floating },
       -- TelescopePreviewBorder = { fg = ss.floating, bg = ss.floating },
 
-      Search = {fg = '#000000', bg = '#FFCC00'},
-      IncSearch = {fg = '#000000', bg = c.colors.light_red},
+      Search = { fg = "#000000", bg = "#FFCC00" },
+      IncSearch = { fg = "#000000", bg = c.colors.light_red },
 
       Statusline = {
-        bg = '#39260E'
+        bg = "#39260E",
         -- fg = c.purple, bg = c.bg
-      }
-    }
-  })
+      },
+    },
+  }
   require("kimbox").load()
 end
 
-
-scheme.nightcoder = function ()
+scheme.nightcoder = function()
   vim.cmd [[ colorscheme nightcoder ]]
 end
 
-scheme.github = function ()
+scheme.github = function()
   vim.cmd [[ colorscheme github_dark_default ]]
 end
 
-scheme.gruvbox = function ()
+scheme.gruvbox = function()
   vim.cmd [[ colorscheme gruvbox ]]
 end
 
-scheme.zephyr = function ()
+scheme.zephyr = function()
   vim.cmd [[ colorscheme zephyr ]]
 end
 
-
-
 scheme.default = function()
-  local nebulous = utils.loadable('nebulous')
+  local nebulous = utils.loadable "nebulous"
 
   if nebulous == nil then
-    print("couldnt load nebulous")
+    print "couldnt load nebulous"
     return
   end
-  local colors = require("nebulous.functions").get_colors("nova")
+  local colors = require("nebulous.functions").get_colors "nova"
 
   nebulous.setup {
     variant = "night", -- night, nova, twilight, midnight, fullmoon, quasar
@@ -116,8 +124,8 @@ scheme.default = function()
       terminal_colors = true,
     },
     italic = {
-      comments  = false,
-      keywords  = false,
+      comments = false,
+      keywords = false,
       functions = false,
       variables = false,
     },
@@ -194,7 +202,7 @@ scheme.default = function()
       -- LspDiagnosticsDefaultError = { bg = "#E11313" },
 
       -- Treesitter colors
-    }
+    },
   }
 end
 

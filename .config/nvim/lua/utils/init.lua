@@ -34,6 +34,8 @@ end
 
 function M.quite()
   vim.schedule(function()
+    -- require("experiments.gc").clean()
+    -- vim.cmd "tabdo SymbolsOutlineClose"
     vim.cmd ":SaveSession"
     vim.cmd ":qall"
   end)

@@ -3,8 +3,8 @@ scheme.kimbox()
 
 local lines = require('ui.lines')
 lines.tabline()
-lines.lualine()
--- lines.statusline()
+-- lines.lualine()
+lines.statusline()
 lines.winbar()
 
 local highlight = require('ui.highlights')

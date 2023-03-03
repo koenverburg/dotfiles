@@ -196,8 +196,8 @@ require("auto-session").setup {
   },
   pre_save_cmds = {
     function()
-      vim.cmd "tabdo SymbolsOutlineClose"
-      require("experiments.gc").clean()
+      -- vim.cmd "tabdo SymbolsOutlineClose"
+      -- require("experiments.gc").clean()
     end,
   },
   post_restore_cmds = {
@@ -208,3 +208,10 @@ require("auto-session").setup {
     end,
   },
 }
+require("tint").setup({
+  tint = -60,
+  -- saturation = 1,  -- Saturation to preserve
+  -- transforms = require("tint").transforms.SATURATE_TINT,  -- Showing default behavior, but value here can be predefined set of transforms
+  tint_background_colors = false,  -- Tint background portions of highlight groups
+  highlight_ignore_patterns = { "WinSeparator", "Status.*" } 
+})
