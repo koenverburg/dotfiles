@@ -61,8 +61,8 @@ shell:
 schemes:
   gruvbox: &gruvbox
     primary:
-      background: '#291804'
-      # background: '#090807'
+      # background: '#291804'
+      background: '#090807'
       # background: '0x282828'
       # background: '#1d2021'
       foreground: '0xdfbf8e'
