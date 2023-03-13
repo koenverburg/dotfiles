@@ -87,9 +87,10 @@ function M.setup(options)
   end
 
   if not is_empty(options.defaults) then
-    vim.o.listchars = tableToString(options.defaults)
+    vim.opt.listchars = tableToString(options.defaults)
   else
-    vim.o.listchars = tableToString(default_list)
+    print "No options, setting defaults"
+    vim.opt.listchars = tableToString(default_list)
   end
 end
 

@@ -2,13 +2,25 @@
 -- Author: Koen Verburg <creativekoen@gmail.com>
 -- Source: https://github.com/koenverburg/dotfiles
 
--- require('impatient')
-require("bootstrap")
-require('options')
-require("bootstrap.plugins")
-require("keybinds")
-require("conrad.config")
-require('core')
-require('ui')
-require('search')
-require('utils').hideTablineWhenSingleTab()
+vim.g.mapleader = ","
+require('_apache.bootstrap')
+require('_apache.lazy')
+require('_apache.options')
+require('_apache.keymaps')
+require('_apache.autocmds')
+require('_apache.functions').hideTablineWhenSingleTab()
+require("conrad.charlist").setup {
+  enabled = false,
+  defaults = {
+    eol = "↲",
+    tab = "» ",
+    trail = "·",
+    space = "·",
+    nbsp = "☠",
+    -- nbsp = '␣',
+    extends = "#",
+    precedes = "…",
+    conceal = "┊",
+  },
+}
+
