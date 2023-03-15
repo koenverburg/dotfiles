@@ -1,15 +1,16 @@
 is_enabled = require('_apache.functions').is_enabled
+local core = require('_apache.core')
 
 return {
   {
     "Yagua/nebulous.nvim",
     enabled = is_enabled('nebulous'),
     lazy = false,
-
-    config = function ()
-      require('nebulous').setup({
-        variant = "night"
-      })
+    opts = {
+      variant = "midnight"
+    },
+    config = function (_, opts)
+      require('nebulous').setup(opts)
     end,
   },
   {
@@ -19,7 +20,7 @@ return {
 
     config = function ()
       require("kimbox").setup {
-        style = "light", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+        style = "dark", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 
         -- General formatting --
         allow_bold = true,
@@ -30,7 +31,7 @@ return {
 
         highlights = {
           Search = { fg = "#000000", bg = "#FFCC00" },
-          IncSearch = { fg = "#000000", bg = c.colors.light_red },
+          IncSearch = { fg = "#000000", bg = core.colors.yellow},
 
           Statusline = {
             bg = "#39260E",

@@ -32,12 +32,6 @@ return {
   {
     "kyazdani42/nvim-web-devicons",
     enabled = is_enabled("icons"),
-
-    config = function()
-      require("nebulous").setup({
-        variant = "night",
-      })
-    end,
   },
   {
     "tjdevries/express_line.nvim",
