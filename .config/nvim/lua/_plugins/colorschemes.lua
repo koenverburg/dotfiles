@@ -7,7 +7,7 @@ return {
     enabled = is_enabled('nebulous'),
     lazy = false,
     opts = {
-      variant = "midnight"
+      variant = "night"
     },
     config = function (_, opts)
       require('nebulous').setup(opts)

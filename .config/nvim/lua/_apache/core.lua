@@ -45,6 +45,8 @@ local core = {
     ["noice"] = { enabled = true },
     ["dashboard"] = { enabled = true },
     ["explorer"]    = { enabled = true },
+    ["winsep"]    = { enabled = true },
+
     -- Languages
     ["languages"] = { enabled = true },
 

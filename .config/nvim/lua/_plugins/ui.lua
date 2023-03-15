@@ -389,4 +389,12 @@ return {
       },
     },
   },
+	{
+		"nvim-zh/colorful-winsep.nvim",
+    enabled = is_enabled('winsep'),
+		event = { "WinNew" },
+		config = function()
+      require('colorful-winsep').setup()
+		end,
+	}
 }
