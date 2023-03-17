@@ -33,8 +33,6 @@ vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,te
 -- opt.undordir = cache_dir .. "undodir/"
 -- opt.noswapfile = true
 
-opt.winbar = "%t %-m" --%{%v:lua.require'nvim-navic'.get_location()%}"
-
 vim.filetype.add {
   extension = {
     snap = 'json',

@@ -19,8 +19,10 @@ local core = {
     ["minimal-statusline"] = { enabled = true },
 
     -- Colorschemes
-    ["nebulous"] = { enabled = true },
-    ["kimbox"]   = { enabled = false },
+    ["kimbox"]          = { enabled = false },
+    ["nebulous"]        = { enabled = false },
+    ["no-clown-fiesta"] = { enabled = true },
+
 
     -- Search
     ["telescope"] = { enabled = true },
@@ -39,13 +41,13 @@ local core = {
     ["expressline"] = { enabled = false },
     ["dressing"] = { enabled = true },
     ["indent-blankline"] = { enabled = true },
-    ["smoothcursor"] = { enabled = true },
+    ["smoothcursor"] = { enabled = false },
     ["smartcolumn"] = { enabled = false},
     ["notify"] = { enabled = true },
     ["noice"] = { enabled = true },
     ["dashboard"] = { enabled = true },
     ["explorer"]    = { enabled = true },
-    ["winsep"]    = { enabled = true },
+    ["winsep"]    = { enabled = false },
 
     -- Languages
     ["languages"] = { enabled = true },

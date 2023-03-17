@@ -24,3 +24,5 @@ require("conrad.charlist").setup {
   },
 }
 
+-- wip plugin
+require('conrad.winbar')
