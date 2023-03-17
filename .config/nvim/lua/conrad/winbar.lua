@@ -27,13 +27,15 @@ local function get_icon_by_filetype(name)
     return ""
   end
 
-  local icon, _ = icons.get_icon_by_filetype(name)
+  local icon, color = icons.get_icon_by_filetype(name)
+
   if not icon then
     return ""
   end
 
-  return icon .. " "
+  return "%#"..color.."#".. icon .. "%#Normal#" .. " "
 end
+
 
 local function main()
   if (ignore() ~= true) and (is_nil(get_filename()) == false) then
@@ -44,6 +46,7 @@ local function main()
     vim.opt_local.winbar = nil
     return nil
   end
+
 end
 
 vim.api.nvim_create_autocmd(opts.events, { callback = main })

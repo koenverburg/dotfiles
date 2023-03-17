@@ -32,6 +32,9 @@ return {
   {
     "kyazdani42/nvim-web-devicons",
     enabled = is_enabled("icons"),
+    config = function ()
+      require('nvim-web-devicons').setup()
+    end
   },
   {
     "tjdevries/express_line.nvim",

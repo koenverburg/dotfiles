@@ -1,5 +1,6 @@
 on_attach = require('_apache.functions').on_attach
 is_enabled = require('_apache.functions').is_enabled
+local diagnosticSetup = require('experiments.diagnostic')
 
 local servers = {
   vimls = {},
@@ -101,12 +102,13 @@ return {
       "williamboman/mason-lspconfig.nvim",
     },
     config = function()
-      vim.diagnostic.config({
-        underline = true,
-        update_in_insert = false,
-        virtual_text = { spacing = 4, prefix = "●" },
-        severity_sort = true,
-      })
+      -- vim.diagnostic.config({
+      --   underline = true,
+      --   update_in_insert = false,
+      --   virtual_text = { spacing = 4, prefix = "●" },
+      --   severity_sort = true,
+      -- })
+      diagnosticSetup.setup()
       local lspconfig = require "lspconfig"
       for name, opts in pairs(servers) do
         if type(opts) == "function" then
