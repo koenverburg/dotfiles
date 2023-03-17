@@ -32,6 +32,7 @@ return {
   {
     "kyazdani42/nvim-web-devicons",
     enabled = is_enabled("icons"),
+    lazy = false,
     config = function ()
       require('nvim-web-devicons').setup()
     end
