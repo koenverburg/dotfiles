@@ -47,11 +47,18 @@ local function get_icon_by_filetype(name)
 end
 
 local function get_git_status(type)
-  local dict = {
+  local chars = {
     added = "+",
     changed = "~",
-    removed = "-"
+    removed = "-",
   }
+
+  local colors = {
+    added = "%#GitSignsAdd#",
+    changed = "%#GitSignsChange#",
+    removed = "%#GitSignsDelete#",
+  }
+
   if not vim.b.gitsigns_status_dict then
     return ""
   end
@@ -61,7 +68,7 @@ local function get_git_status(type)
   end
 
   if vim.b.gitsigns_status_dict[type] > 0 then
-    return dict[type] .. vim.b.gitsigns_status_dict[type] .. " "
+    return colors[type] .. chars[type] .. vim.b.gitsigns_status_dict[type] .. "%#Normal#" .. " "
   end
 
   return ""
@@ -76,12 +83,11 @@ local function get_git_status(type)
   -- }
 end
 
-
 local function main()
   if (ignore() ~= true) and (is_nil(get_filename()) == false) then
-    local added = get_git_status('added')
-    local changed = get_git_status('changed')
-    local removed = get_git_status('removed')
+    local added = get_git_status("added")
+    local changed = get_git_status("changed")
+    local removed = get_git_status("removed")
 
     local bar = get_icon_by_filetype(get_filetype()) .. "%t%m" .. "%=" .. added .. changed .. removed .. "%=" .. "%l/%L"
 
