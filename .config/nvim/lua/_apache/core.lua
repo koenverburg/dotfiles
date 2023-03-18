@@ -8,8 +8,8 @@ local core = {
     black = '#888888'
   },
 
-  treesitter_grammers = {},
   lsp_servers = {},
+  treesitter_grammers = {},
 
   plugins = {
     -- Personal

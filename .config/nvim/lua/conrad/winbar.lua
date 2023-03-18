@@ -1,6 +1,16 @@
 -- Inspired by https://github.com/aktersnurra/minibar.nvim
 local opts = {
-  ["ignore-filetypes"] = { "help", "startify", "dashboard", "packer", "NvimTree", "Trouble", "alpha", "Outline", "lazy" },
+  ["ignore-filetypes"] = {
+    "help",
+    "startify",
+    "dashboard",
+    "packer",
+    "NvimTree",
+    "Trouble",
+    "alpha",
+    "Outline",
+    "lazy",
+  },
   events = { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
 }
 
@@ -33,20 +43,53 @@ local function get_icon_by_filetype(name)
     return ""
   end
 
-  return "%#"..color.."#".. icon .. "%#Normal#" .. " "
+  return "%#" .. color .. "#" .. icon .. "%#Normal#" .. " "
+end
+
+local function get_git_status(type)
+  local dict = {
+    added = "+",
+    changed = "~",
+    removed = "-"
+  }
+  if not vim.b.gitsigns_status_dict then
+    return ""
+  end
+
+  if not vim.b.gitsigns_status_dict[type] then
+    return ""
+  end
+
+  if vim.b.gitsigns_status_dict[type] > 0 then
+    return dict[type] .. vim.b.gitsigns_status_dict[type] .. " "
+  end
+
+  return ""
+
+  -- {
+  --   added = 4,
+  --   changed = 0,
+  --   removed = 0,
+  --   head = "main",
+  --   gitdir = "/Users/koenverburg/code/github/dotfiles/.git",
+  --   root = "/Users/koenverburg/code/github/dotfiles"
+  -- }
 end
 
 
 local function main()
   if (ignore() ~= true) and (is_nil(get_filename()) == false) then
-    local bar = get_icon_by_filetype(get_filetype()) .. "%t%m" .. "%=" .. "%l/%L"
+    local added = get_git_status('added')
+    local changed = get_git_status('changed')
+    local removed = get_git_status('removed')
+
+    local bar = get_icon_by_filetype(get_filetype()) .. "%t%m" .. "%=" .. added .. changed .. removed .. "%=" .. "%l/%L"
 
     return vim.api.nvim_set_option_value("winbar", (" " .. bar), { scope = "local" })
   else
     vim.opt_local.winbar = nil
     return nil
   end
-
 end
 
 vim.api.nvim_create_autocmd(opts.events, { callback = main })
