@@ -20,18 +20,18 @@ startup_mode: Windowed
 # Font configuration
 font:
   light:
-    family: FiraCode Nerd Font
-    style: Light
+    family: JetBrainsMono Nerd Font
+    style: Regular
   normal:
-    family: FiraCode Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Medium
   semiBold:
-    family: FiraCode Nerd Font
+    family: JetBrainsMono Nerd Font
     style: SemiBold
   bold:
-    family: FiraCode Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Bold
-  size: 12
+  size: 13.5
 
   offset:
     x: 0
@@ -56,8 +56,8 @@ live_config_reload: true
 schemes:
   gruvbox: &gruvbox
     primary:
-      background: '#291804'
-      # background: '#090807'
+      # background: '#291804'
+      background: '#090807'
       # background: '0x282828'
       # background: '#1d2021'
       foreground: '0xdfbf8e'
