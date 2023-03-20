@@ -1,83 +1,84 @@
-is_enabled = require('_apache.functions').is_enabled
+is_enabled = require("_apache.functions").is_enabled
+local core = require("_apache.core")
 -- 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement,
 return {
   {
     "rmagatti/alternate-toggler",
-    enabled = is_enabled('misc'),
+    enabled = is_enabled("misc"),
     lazy = false,
-    config = function () end,
+    config = function() end,
   },
   {
     "unblevable/quick-scope",
-    enabled = is_enabled('misc'),
+    enabled = is_enabled("misc"),
     lazy = false,
-    config = function () end,
+    config = function() end,
   },
   {
     "koenverburg/dim.lua", -- Fork,
-    enabled = is_enabled('misc'),
+    enabled = is_enabled("misc"),
     lazy = true,
-    config = function ()
+    config = function()
       require("dim").setup()
     end,
   },
   {
     "norcalli/nvim-colorizer.lua",
-    enabled = is_enabled('misc'),
-    config = function ()
+    enabled = is_enabled("misc"),
+    config = function()
       require("colorizer").setup()
     end,
   },
   {
     "phaazon/hop.nvim",
-    enabled = is_enabled('misc'),
+    enabled = is_enabled("misc"),
     lazy = false,
-    config = function ()
+    config = function()
       require("hop").setup()
     end,
   },
   {
     "numToStr/Comment.nvim",
-    enabled = is_enabled('comment'),
+    enabled = is_enabled("comment"),
     lazy = false,
-    config = function ()
-      require('Comment').setup()
+    config = function()
+      require("Comment").setup()
     end,
   },
   {
     "nyngwang/murmur.lua",
-    enabled = is_enabled('murmur'),
+    enabled = is_enabled("murmur"),
     lazy = false,
-    config = function ()
-      require("murmur").setup {}
-      vim.api.nvim_set_hl(0, "murmur_cursor_rgb", { fg = "#0a100d", bg = "#ffcc00" })
+    config = function()
+      require("murmur").setup({})
+      vim.api.nvim_set_hl(0, "murmur_cursor_rgb", { fg = core.colors.black, bg = core.colors.black })
     end,
   },
   {
     -- doesnt really work??
     "m4xshen/autoclose.nvim",
-    enabled = is_enabled('misc'),
+    enabled = is_enabled("misc"),
     lazy = false,
-    config = function ()
-      require("autoclose").setup {
+    config = function()
+      require("autoclose").setup({
         ["<"] = { escape = true, close = true, pair = "<>" },
-      }
+      })
     end,
   },
   {
     "levouh/tint.nvim",
-    enabled = is_enabled('tint'),
+    enabled = is_enabled("tint"),
     lazy = false,
     opts = {
       tint = -60,
       -- saturation = 1,  -- Saturation to preserve
       -- transforms = require("tint").transforms.SATURATE_TINT,  -- Showing default behavior, but value here can be predefined set of transforms
-      tint_background_colors = false,  -- Tint background portions of highlight groups
-      highlight_ignore_patterns = { "WinSeparator", "Status.*" }
+      tint_background_colors = false, -- Tint background portions of highlight groups
+      highlight_ignore_patterns = { "WinSeparator", "Status.*" },
     },
     config = function(_, opts)
-      require('tint').setup(opts)
-    end
+      require("tint").setup(opts)
+    end,
   },
   {
     "rainbowhxch/accelerated-jk.nvim",
@@ -96,7 +97,7 @@ return {
     },
     config = function(_, opts)
       require("accelerated-jk").setup(opts)
-    end
+    end,
   },
   {
     "anuvyklack/hydra.nvim",
@@ -138,17 +139,17 @@ return {
     config = function(_, opts)
       local hydra = require("hydra")
       hydra(opts)
-    end
+    end,
   },
   {
     "glepnir/template.nvim",
     enabled = is_enabled("template"),
     config = function()
-      local temp = require "template"
+      local temp = require("template")
       temp.temp_dir = "~/.config/nvim/template"
       temp.author = "Koen Verburg (Conrad The Programmer)"
       temp.email = ""
-    end
+    end,
   },
   {
     "folke/persistence.nvim",
@@ -162,5 +163,5 @@ return {
         -- pre_save = nil, -- a function to call before saving the session
       })
     end,
-  }
+  },
 }

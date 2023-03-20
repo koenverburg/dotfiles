@@ -296,8 +296,6 @@ normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
 normal("<leader>gt", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal()<cr> ]])
 terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
-normal("<leader>gg", [[ <cmd>Neogit<cr> ]])
-
 -- -- Focus mode
 -- normal("<leader><space>f", ":ZenMode<cr>")
 -- normal("<leader><space>ll", ":Twilight<cr>")
@@ -346,5 +344,5 @@ normal("<leader><leader>x", "<cmd>lua require'_apache.functions'.save_and_execut
 -- Folding using Treesitter
 normal("<leader>fi", "<cmd>lua require 'conrad.folds'.main()<cr>")
 
-vim.cmd [[ autocmd WinEnter,WinLeave * :lua require'_apache.functions'.hideTablineWhenSingleTab() ]]
+vim.cmd [[ autocmd WinEnter,WinLeave,BufWinEnter * :lua require'_apache.functions'.hideTablineWhenSingleTab() ]]
 

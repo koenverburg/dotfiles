@@ -24,6 +24,11 @@ return {
   {
     "TimUntersberger/neogit",
     enabled = is_enabled("git"),
+    dependencies = {"nvim-lua/plenary.nvim"},
+
+    keys = {
+      { "<leader>gg", "<cmd>Neogit<cr>"}
+    },
 
     config = function()
       require("neogit").setup({
