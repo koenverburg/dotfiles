@@ -19,6 +19,7 @@ local config = {
 
   virtual_text = false,
   -- virtual_text = { spacing = 4, prefix = "●" },
+
   float = {
     focusable = false,
     style = "minimal",

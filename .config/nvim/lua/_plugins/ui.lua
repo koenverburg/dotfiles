@@ -33,9 +33,9 @@ return {
     "kyazdani42/nvim-web-devicons",
     enabled = is_enabled("icons"),
     lazy = false,
-    config = function ()
-      require('nvim-web-devicons').setup()
-    end
+    config = function()
+      require("nvim-web-devicons").setup()
+    end,
   },
   {
     "tjdevries/express_line.nvim",
@@ -144,7 +144,14 @@ return {
       end
       require("el").setup({
         generator = generator,
-        regenerate_autocmds = { "WinEnter", "WinLeave", "DiagnosticChanged", "ModeChanged", "BufEnter", "BufWritePost" },
+        regenerate_autocmds = {
+          "WinEnter",
+          "WinLeave",
+          "DiagnosticChanged",
+          "ModeChanged",
+          "BufEnter",
+          "BufWritePost",
+        },
       })
 
       local highlight = function(group, properties)
@@ -164,20 +171,23 @@ return {
         highlight(hl, col)
       end
 
-      vim.api.nvim_create_autocmd({ "WinEnter", "WinLeave", "DiagnosticChanged", "ModeChanged", "BufEnter", "BufWritePost" }, {
-        pattern = "*",
-        callback = function()
-          for hl, col in pairs(colors_keys) do
-            highlight(hl, col)
-          end
-        end,
-      })
+      vim.api.nvim_create_autocmd(
+        { "WinEnter", "WinLeave", "DiagnosticChanged", "ModeChanged", "BufEnter", "BufWritePost" },
+        {
+          pattern = "*",
+          callback = function()
+            for hl, col in pairs(colors_keys) do
+              highlight(hl, col)
+            end
+          end,
+        }
+      )
     end,
   },
-    {
+  {
     "gen740/SmoothCursor.nvim",
     lazy = false,
-    enabled = is_enabled('smoothcursor'),
+    enabled = is_enabled("smoothcursor"),
     opts = {
       autostart = true,
       cursor = "", -- cursor shape (need nerd font)
@@ -210,12 +220,12 @@ return {
     },
     config = function(_, opts)
       require("smoothcursor").setup(opts)
-    end
+    end,
   },
   {
     "m4xshen/smartcolumn.nvim",
     lazy = false,
-    enabled = is_enabled('smartcolumn'),
+    enabled = is_enabled("smartcolumn"),
     opts = {
       colorcolumn = 80,
       limit_to_line = false,
@@ -225,11 +235,11 @@ return {
     },
     config = function(_, opts)
       require("smartcolumn").setup(opts)
-    end
+    end,
   },
   {
     "rcarriga/nvim-notify",
-    enabled = is_enabled('notify'),
+    enabled = is_enabled("notify"),
     lazy = false,
     keys = {
       {
@@ -255,19 +265,25 @@ return {
   },
   {
     "folke/noice.nvim",
-    enabled = is_enabled('noice'),
+    enabled = is_enabled("noice"),
     lazy = false,
     dependencies = {
-      "MunifTanjim/nui.nvim"
+      "MunifTanjim/nui.nvim",
     },
     opts = {
-      presets = {
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        bottom_search = false, -- use a classic bottom cmdline for search
-        lsp_doc_border = false, -- add a border to hover docs and signature help
-        command_palette = false, -- position the cmdline and popupmenu together
-        long_message_to_split = false, -- long messages will be sent to a split
-      },
+      -- lsp = {
+      --   override = {
+      --     ["vim.lsp.handlers['textDocument/hover']"] = false,
+      --     ["vim.lsp.handlers['textDocument/signatureHelp']"] = false,
+      --   },
+      -- },
+      -- presets = {
+      --   inc_rename = false, -- enables an input dialog for inc-rename.nvim
+      --   bottom_search = false, -- use a classic bottom cmdline for search
+      --   lsp_doc_border = false, -- add a border to hover docs and signature help
+      --   command_palette = false, -- position the cmdline and popupmenu together
+      --   long_message_to_split = false, -- long messages will be sent to a split
+      -- },
       cmdline = {
         enabled = true, -- enables the Noice cmdline UI
         view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
@@ -287,10 +303,10 @@ return {
       require("noice").setup(opts)
     end,
   },
-   {
+  {
     "goolord/alpha-nvim",
     event = "VimEnter",
-    enabled = is_enabled('dashboard'),
+    enabled = is_enabled("dashboard"),
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
       -- Memento Mori
@@ -351,7 +367,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
-    enabled = is_enabled('explorer'),
+    enabled = is_enabled("explorer"),
     keys = {
       {
         "<C-b>",
@@ -393,12 +409,12 @@ return {
       },
     },
   },
-	{
-		"nvim-zh/colorful-winsep.nvim",
-    enabled = is_enabled('winsep'),
-		event = { "WinNew" },
-		config = function()
-      require('colorful-winsep').setup()
-		end,
-	}
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    enabled = is_enabled("winsep"),
+    event = { "WinNew" },
+    config = function()
+      require("colorful-winsep").setup()
+    end,
+  },
 }

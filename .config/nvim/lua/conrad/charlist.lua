@@ -82,14 +82,13 @@ function M.setup(options)
   -- }, options)
 
   if not options.enabled then
-    print "not enabled"
     return
   end
 
   if not is_empty(options.defaults) then
     vim.opt.listchars = tableToString(options.defaults)
   else
-    print "No options, setting defaults"
+    -- print "No options, setting defaults"
     vim.opt.listchars = tableToString(default_list)
   end
 end

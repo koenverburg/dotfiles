@@ -11,8 +11,7 @@ local servers = {
         diagnostics = {
           globals = { "vim" },
         },
-        hint = {
-          enable = true,
+        hint = { enable = true,
         },
       },
     },
@@ -252,8 +251,7 @@ return {
         "yamlls",
       },
     },
-    ---@param opts MasonSettings | {ensure_installed: string[]}
-    config = function(plugin, opts)
+    config = function(_, opts)
       require("mason").setup(opts)
     end,
   },
