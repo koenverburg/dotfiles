@@ -48,9 +48,9 @@ end
 
 local function get_git_status(type)
   local chars = {
-    added = "+",
+    added = "",
     changed = "~",
-    removed = "-",
+    removed = "",
   }
 
   local colors = {
