@@ -11,7 +11,7 @@ local opts = {
     "Outline",
     "lazy",
   },
-  events = { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
+  events = { "CursorMoved", "CursorHold", "BufWinEnter", "BufEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
 }
 
 local function is_nil(val)
