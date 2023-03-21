@@ -31,8 +31,8 @@ return {
     opts = {
       regenerate_autocmds = { "WinEnter", "WinLeave", "ModeChanged", "BufEnter", "BufWritePost" },
     },
-    config = function (_, opts)
-      require('minimal-statusline').setup(opts)
+    config = function ()
+      require('minimal-statusline').setup()
     end,
   },
   {

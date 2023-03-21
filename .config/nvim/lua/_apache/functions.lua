@@ -57,13 +57,17 @@ function M.save_and_execute()
 end
 
 function M.hideTablineWhenSingleTab()
-  local total_tabs = vim.fn.tabpagenr "$"
+  local events = { "TabClosed" }
 
-  if total_tabs > 1 then
-    vim.opt.showtabline = 2
-  else
-    vim.opt.showtabline = 0
-  end
+  vim.api.nvim_create_autocmd(events, { callback = function()
+    local total_tabs = vim.fn.tabpagenr "$"
+
+    if total_tabs > 1 then
+      vim.opt.showtabline = 2
+    else
+      vim.opt.showtabline = 0
+    end
+  end})
 end
 
 function M.bind(mode, keys, func)
