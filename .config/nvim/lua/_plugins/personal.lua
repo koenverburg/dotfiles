@@ -28,9 +28,9 @@ return {
     -- dir = "~/code/github/minimal-statusline.nvim",
     enabled = is_enabled('minimal-statusline'),
     lazy = false,
-    opts = {
-      regenerate_autocmds = { "WinEnter", "WinLeave", "ModeChanged", "BufEnter", "BufWritePost" },
-    },
+    -- opts = {
+    --   regenerate_autocmds = { "WinEnter", "WinLeave", "ModeChanged", "BufEnter", "BufWritePost" },
+    -- },
     config = function ()
       require('minimal-statusline').setup()
     end,

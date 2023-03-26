@@ -4,10 +4,6 @@ is_enabled = require("_apache.functions").is_enabled
 -- "ThePrimeagen/git-worktree.nvim"
 return {
   {
-    "google/vim-searchindex",
-    enabled = is_enabled("search"),
-  },
-  {
     "windwp/nvim-spectre",
     enabled = is_enabled("search"),
     config = function() end,

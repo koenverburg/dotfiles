@@ -3,6 +3,12 @@ local core = require("_apache.core")
 -- 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement,
 return {
   {
+    "nullchilly/fsread.nvim",
+    enabled = is_enabled("misc"),
+    lazy = false,
+    config = function() end,
+  },
+  {
     "rmagatti/alternate-toggler",
     enabled = is_enabled("misc"),
     lazy = false,
@@ -31,7 +37,7 @@ return {
   },
   {
     "phaazon/hop.nvim",
-    enabled = is_enabled("misc"),
+    enabled = is_enabled("hop"),
     lazy = false,
     config = function()
       require("hop").setup()

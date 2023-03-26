@@ -123,6 +123,21 @@ if is_enabled('telescope') then
     funcs.inputOrUI(input, string_grep_proxy)
   end)
 
+  -- blazing fast current word searching
+  funcs.telescope_map("<space>cs", function()
+    local cword = vim.fn.expand('<cword>')
+
+    local opts = {
+      search = cword,
+      layout_strategy = "horizontal",
+      layout_config = {
+        prompt_position = "top",
+      },
+    }
+
+    require("telescope.builtin").grep_string(opts)
+  end)
+
   funcs.telescope_map("<space>fg", function()
     local opts = {
       -- shorten_path = false,
@@ -306,7 +321,7 @@ terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float
 -- visual("<space>c", "<cmd>Commentary<cr>")
 
 -- word hopping
-normal("<leader>jf", ":HopWord<cr>")
+normal("<leader>jf", ":HopWordMW<cr>")
 
 -- Toggle Alternate
 normal("<leader>ta", ":ToggleAlternate<cr>")

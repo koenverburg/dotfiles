@@ -54,8 +54,10 @@ local core = {
 
     -- Misc
     ['misc'] = { enabled = true },
+    ['hop'] = { enabled = true },
+    ['leap'] = { enabled = false },
     ["icons"] = { enabled = true },
-    ["tint"] = { enabled = true},
+    ["tint"] = { enabled = false },
     ["accelerated-jk"] = { enabled = true},
     ["hydra"] = { enabled = true},
     ["template"] = { enabled = false },

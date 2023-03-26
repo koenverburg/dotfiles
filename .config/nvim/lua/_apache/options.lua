@@ -1,7 +1,7 @@
 vim.g.mapleader = ","
 
 local opt = vim.opt
-local cache_dir = vim.env.HOME .. '/.cache/nvim/'
+-- local cache_dir = vim.env.HOME .. '/.cache/nvim/'
 
 opt.autoindent = true
 opt.background = "dark"
@@ -29,6 +29,8 @@ opt.colorcolumn = "80,100,120"
 opt.laststatus=3
 opt.incsearch = true
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+
 -- opt.switchbuf = 'uselast'
 -- opt.undordir = cache_dir .. "undodir/"
 -- opt.noswapfile = true
@@ -66,4 +68,4 @@ vim.cmd [[ highlight clear SignColumn ]]
 
 vim.cmd [[ set nowrap ]]
 vim.cmd [[ set noshowmode ]]
-
+vim.cmd [[ set shortmess-=S ]]
