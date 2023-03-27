@@ -138,7 +138,44 @@ schemes:
     background: "0xdc3232"
     white: "0xffffff"
 
-colors: *gruvbox
+  no-clown-fiesta: &no-clown-fiesta
+    primary:
+      background: '#151515'
+      foreground: '#e1e1e1'
+
+    # Normal colors
+    normal:
+      black:   '#202020'
+      red:     '#ac4142'
+      green:   '#88afa2'
+      yellow:  '#f4bf75'
+      blue:    '#73c0ff'
+      magenta: '#aa759f'
+      cyan:    '#5f9ea0'
+      white:   '#d0d0d0'
+
+    # Bright colors
+    bright:
+      black:   '#555555'
+      red:     '#cd5c5c'
+      green:   '#90a959'
+      yellow:  '#ffdead'
+      blue:    '#a5d6ff'
+      magenta: '#cf75bc'
+      cyan:    '#75b5aa'
+      white:   '#e1e1e1'
+
+    # Cursor color
+    cursor:
+      text: '#e1e1e1'
+      cursor: '#e1e1e1'
+
+    # Selection color
+    selection:
+      text: '#e1e1e1'
+      background: '#5e5e5e'
+
+colors: *no-clown-fiesta
 
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
