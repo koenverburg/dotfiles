@@ -17,23 +17,20 @@ startup_mode: Windowed
 
 # Font configuration
 font:
-  italic:
-    family: FiraCode NF
-    style: Regular
   light:
-    family: FiraCode NF
+    family: JetBrainsMono NF
     style: Regular
   normal:
-    family: FiraCode NF
-    style: Regular
-  semiBold:
-    family: FiraCode NF
+    family: JetBrainsMono NF
     style: Medium
-  bold:
-    family: FiraCode NF
+  semiBold:
+    family: JetBrainsMono NF
     style: SemiBold
+  bold:
+    family: JetBrainsMono NF
+    style: Bold
 
-  size: 10.5
+  size: 10
 
   offset:
     x: 0
