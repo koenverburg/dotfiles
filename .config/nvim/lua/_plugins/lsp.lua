@@ -1,6 +1,6 @@
-on_attach = require('_apache.functions').on_attach
-is_enabled = require('_apache.functions').is_enabled
-local diagnosticSetup = require('experiments.diagnostic')
+on_attach = require("_apache.functions").on_attach
+is_enabled = require("_apache.functions").is_enabled
+local diagnosticSetup = require("experiments.diagnostic")
 
 local servers = {
   vimls = {},
@@ -11,8 +11,7 @@ local servers = {
         diagnostics = {
           globals = { "vim" },
         },
-        hint = { enable = true,
-        },
+        hint = { enable = true },
       },
     },
   },
@@ -86,16 +85,16 @@ local servers = {
   -- cssls = { cmd = { "vscode-css-language-server", "--stdio" } },
 }
 
-  -- "ray-x/lsp_signature.nvim",
-  -- "nvim-lua/lsp_extensions.nvim",
-  -- { "simrat39/inlay-hints.nvim", lazy = true },
-  -- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", name = "lsp_lines.nvim" },
+-- "ray-x/lsp_signature.nvim",
+-- "nvim-lua/lsp_extensions.nvim",
+-- { "simrat39/inlay-hints.nvim", lazy = true },
+-- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", name = "lsp_lines.nvim" },
 
 return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled('lsp'),
+    enabled = is_enabled("lsp"),
     dependencies = {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -108,7 +107,7 @@ return {
       --   severity_sort = true,
       -- })
       diagnosticSetup.setup()
-      local lspconfig = require "lspconfig"
+      local lspconfig = require("lspconfig")
       for name, opts in pairs(servers) do
         if type(opts) == "function" then
           opts()
@@ -120,43 +119,44 @@ return {
           }, opts))
         end
       end
-    end
+    end,
   },
   {
     "L3MON4D3/LuaSnip",
     event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled('lsp-snippets'),
+    enabled = is_enabled("lsp-snippets"),
     dependencies = {
-      "saadparwaiz1/cmp_luasnip"
+      "saadparwaiz1/cmp_luasnip",
     },
     config = function()
-      local ls = require('luasnip')
+      local ls = require("luasnip")
 
       ls.config.set_config({
         history = false,
-        updateevents = 'TextChanged,TextChangedI',
+        updateevents = "TextChanged,TextChangedI",
       })
 
-      require('luasnip.loaders.from_vscode').lazy_load()
-      require('luasnip.loaders.from_vscode').lazy_load({
-        paths = { './snippets/' },
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({
+        paths = { "./snippets/" },
       })
-    end
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
     event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled('lsp'),
+    enabled = is_enabled("lsp"),
     dependencies = {
       "mason.nvim",
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "onsails/lspkind-nvim",
-      "tami5/lspsaga.nvim"
     },
-    opts = function()
+    config = function()
       local cmp = require("cmp")
+      local kind = require("lspkind")
+
       return {
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -193,7 +193,11 @@ return {
           entries = { name = "custom", selection_order = "near_cursor" },
         },
         formatting = {
-          format = require('lspkind').cmp_format()
+          format = require("lspkind").cmp_format(),
+          -- format = function(entry, vim_item)
+          --   vim_item.kind = kind.symbol_map[vim_item.kind]
+          --   return vim_item
+          -- end
         },
         experimental = {
           native_menu = false,
@@ -207,7 +211,7 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled('lsp') and is_enabled('lsp-formatting'),
+    enabled = is_enabled("lsp") and is_enabled("lsp-formatting"),
     dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")
@@ -224,19 +228,41 @@ return {
           -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
           formatting.yamlfmt,
           formatting.prettier,
-          formatting.npm_groovy_lint
+          formatting.npm_groovy_lint,
         },
       }
     end,
     config = function(_, opts)
-      require('null-ls').setup(opts)
-    end
+      require("null-ls").setup(opts)
+    end,
+  },
+  {
+    "glepnir/lspsaga.nvim",
+    event = "BufRead",
+    enabled = is_enabled("lsp"),
+    config = function()
+      require("lspsaga").setup({
+        symbol_in_winbar = {
+          enable = false,
+          separator = " ",
+          ignore_patterns = {},
+          hide_keyword = true,
+          show_file = true,
+          folder_level = 2,
+          respect_root = false,
+          color_mode = true,
+        },
+      })
+    end,
+    dependencies = {
+      { "nvim-treesitter/nvim-treesitter" },
+    },
   },
   {
     "williamboman/mason.nvim",
     event = { "BufReadPre", "BufNewFile" },
     cmd = "Mason",
-    enabled = is_enabled('lsp'),
+    enabled = is_enabled("lsp"),
     -- keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
@@ -257,20 +283,20 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    enabled = is_enabled('lsp'),
+    enabled = is_enabled("lsp"),
     lazy = false,
-    config = function ()
-      require("fidget").setup {
+    config = function()
+      require("fidget").setup({
         text = {
           spinner = "dots_snake",
         },
-      }
+      })
     end,
   },
   {
     "simrat39/symbols-outline.nvim",
-    enabled = is_enabled('lsp'),
-    config = function ()
+    enabled = is_enabled("lsp"),
+    config = function()
       require("symbols-outline").setup()
     end,
   },
