@@ -116,31 +116,25 @@ function M.on_attach(client, bufnr)
 
   M.bind("n", "<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
 
-  lsp_map("n", "K", "vim.lsp.buf.hover")
+  -- lsp_map("n", "K", "vim.lsp.buf.hover")
   lsp_map("n", "gD", "vim.lsp.buf.declaration")
   lsp_map("n", "gd", "vim.lsp.buf.definition")
   lsp_map("n", "<c-]>", "vim.lsp.buf.definition")
   lsp_map("n", "gi", "vim.lsp.buf.implementation")
   lsp_map("n", "goc", "vim.lsp.buf.outgoing_calls")
 
-  -- lsp saga
-  lsp_map("n", "K", "require('lspsaga.hover').render_hover_doc")
-  lsp_map("n", "gr", "require('lspsaga.rename').rename")
+  M.bind("n", "K", "<cmd>Lspsaga hover_doc<cr>")
+  M.bind("n", "gr", "<cmd>Lspsaga rename<cr>")
 
-  lsp_map("n", "<leader>ca", "require('lspsaga.codeaction').code_action")
-  lsp_map("i", "<leader>ca", "require('lspsaga.codeaction').code_action")
+  M.bind("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
+  M.bind("i", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
 
-  lsp_map("n", "gx", "Lspsaga code_action<cr>")
-  lsp_map("x", "gx", ":<c-u>Lspsaga range_code_action<cr>")
+  M.bind("n", "gx", "<cmd>Lspsaga code_action<cr>")
+  M.bind("x", "gx", "<cmd><c-u>Lspsaga range_code_action<cr>")
 
-  -- Moved to telescope for these
-  -- lsp_map('n', '<c-r>', 'vim.lsp.buf.references')
-  -- lsp_map('n', 'gds', 'vim.lsp.buf.document_symbol')
-  -- lsp_map('n', 'gW', 'vim.lsp.buf.workspace_symbol')
-
-  lsp_map("n", "<leader>sd", "require('lspsaga.diagnostic').show_line_diagnostics")
-  lsp_map("n", "[e", "require('lspsaga.diagnostic').lsp_jump_diagnostic_prev")
-  lsp_map("n", "]e", "require('lspsaga.diagnostic').lsp_jump_diagnostic_next")
+  M.bind("n", "<leader>sd", "<cmd>Lspsaga show_line_diagnostics<cr>")
+  M.bind("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+  M.bind("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>")
 end
 
 return M

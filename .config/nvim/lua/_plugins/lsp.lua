@@ -155,9 +155,7 @@ return {
     },
     config = function()
       local cmp = require("cmp")
-      local kind = require("lspkind")
-
-      return {
+      cmp.setup({
         completion = {
           completeopt = "menu,menuone,noinsert",
         },
@@ -193,11 +191,9 @@ return {
           entries = { name = "custom", selection_order = "near_cursor" },
         },
         formatting = {
-          format = require("lspkind").cmp_format(),
-          -- format = function(entry, vim_item)
-          --   vim_item.kind = kind.symbol_map[vim_item.kind]
-          --   return vim_item
-          -- end
+          format = require("lspkind").cmp_format({
+            mode = 'symbol_text'
+          }),
         },
         experimental = {
           native_menu = false,
@@ -205,7 +201,7 @@ return {
             hl_group = "LspCodeLens",
           },
         },
-      }
+      })
     end,
   },
   {
@@ -242,6 +238,9 @@ return {
     enabled = is_enabled("lsp"),
     config = function()
       require("lspsaga").setup({
+        lightbulb = {
+          enable = false,
+        },
         symbol_in_winbar = {
           enable = false,
           separator = " ",

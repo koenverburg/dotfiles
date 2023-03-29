@@ -4,8 +4,8 @@ local core = require("_apache.core")
 return {
   {
     "nullchilly/fsread.nvim",
-    enabled = is_enabled("misc"),
-    lazy = false,
+    enabled = false, --is_enabled("misc"),
+    lazy = true,
     config = function() end,
   },
   {
