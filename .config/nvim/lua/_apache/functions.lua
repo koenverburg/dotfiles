@@ -116,18 +116,18 @@ function M.on_attach(client, bufnr)
 
   M.bind("n", "<leader>lf", [[ <cmd>lua vim.lsp.buf.format({async=true})<cr> ]])
 
-  -- lsp_map("n", "K", "vim.lsp.buf.hover")
+  lsp_map("n", "K", "vim.lsp.buf.hover")
   lsp_map("n", "gD", "vim.lsp.buf.declaration")
   lsp_map("n", "gd", "vim.lsp.buf.definition")
   lsp_map("n", "<c-]>", "vim.lsp.buf.definition")
   lsp_map("n", "gi", "vim.lsp.buf.implementation")
   lsp_map("n", "goc", "vim.lsp.buf.outgoing_calls")
+  lsp_map("n", "<leader>ca", "vim.lsp.buf.code_action")
+  lsp_map("i", "<leader>ca", "vim.lsp.buf.code_action")
 
-  M.bind("n", "K", "<cmd>Lspsaga hover_doc<cr>")
-  M.bind("n", "gr", "<cmd>Lspsaga rename<cr>")
+  -- M.bind("n", "K", "<cmd>Lspsaga hover_doc<cr>")
+  -- M.bind("n", "gr", "<cmd>Lspsaga rename<cr>") -- moved to treesitter rename
 
-  M.bind("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
-  M.bind("i", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
 
   M.bind("n", "gx", "<cmd>Lspsaga code_action<cr>")
   M.bind("x", "gx", "<cmd><c-u>Lspsaga range_code_action<cr>")

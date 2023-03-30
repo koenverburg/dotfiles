@@ -6,9 +6,10 @@ return {
     version = false,
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
-    enabled = is_enabled "treesitter",
+    enabled = is_enabled("treesitter"),
     dependencies = {
       "nvim-treesitter/playground",
+      "nvim-treesitter/nvim-treesitter-refactor",
       -- {
       --   "nvim-treesitter/nvim-treesitter-textobjects"
       -- }
@@ -59,6 +60,15 @@ return {
             jsx_fragment = "{/* %s */}",
             jsx_attribute = "{/* %s */}",
             comment = "// %s",
+          },
+        },
+      },
+      refactor = {
+        smart_rename = {
+          enable = true,
+          -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
+          keymaps = {
+            smart_rename = "gr",
           },
         },
       },

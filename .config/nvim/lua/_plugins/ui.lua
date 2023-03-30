@@ -4,18 +4,19 @@ return {
   {
     "stevearc/dressing.nvim",
     enabled = is_enabled("dressing"),
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
+    lazy = false,
+    -- init = function()
+    --   ---@diagnostic disable-next-line: duplicate-set-field
+    --   vim.ui.select = function(...)
+    --     require("lazy").load({ plugins = { "dressing.nvim" } })
+    --     return vim.ui.select(...)
+    --   end
+    --   ---@diagnostic disable-next-line: duplicate-set-field
+    --   vim.ui.input = function(...)
+    --     -- require("lazy").load({ plugins = { "dressing.nvim" } })
+    --     return vim.ui.input(...)
+    --   end
+    -- end,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -271,11 +272,58 @@ return {
       "MunifTanjim/nui.nvim",
     },
     opts = {
-      -- lsp = {
-      --   override = {
-      --     ["vim.lsp.handlers['textDocument/hover']"] = false,
-      --     ["vim.lsp.handlers['textDocument/signatureHelp']"] = false,
+      lsp = {
+        override = {
+          ["vim.lsp.handlers['textDocument/hover']"] = false,
+          ["vim.lsp.handlers['textDocument/signatureHelp']"] = false,
+        },
+        hover = {
+          enabled = false
+        },
+        signature = {
+          enabled = false
+        }
+      },
+      --   hover = {
+      --     enabled = true,
+      --     view = nil, -- when nil, use defaults from documentation
+      --     ---@type NoiceViewOptions
+      --     opts = {}, -- merged with defaults from documentation
+      --     border = {
+      --       style = "rounded",
+      --     },
       --   },
+      --   signature = {
+      --     enabled = true,
+      --     auto_open = {
+      --       enabled = true,
+      --       trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+      --       luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
+      --       throttle = 50, -- Debounce lsp signature help request by 50ms
+      --     },
+      --     view = nil, -- when nil, use defaults from documentation
+      --     ---@type NoiceViewOptions
+      --     opts = {}, -- merged with defaults from documentation
+      --   },
+      --   documentation = {
+      --     view = "hover",
+      --     ---@type NoiceViewOptions
+      --     opts = {
+      --       lang = "markdown",
+      --       replace = true,
+      --       render = "plain",
+      --       format = { "{message}" },
+      --       win_options = { concealcursor = "n", conceallevel = 3 },
+      --     },
+      --   },
+      -- },
+      -- popupmenu = {
+      --   enabled = true, -- enables the Noice popupmenu UI
+      --   ---@type 'nui'|'cmp'
+      --   backend = "nui", -- backend to use to show regular cmdline completions
+      --   ---@type NoicePopupmenuItemKind|false
+      --   -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+      --   kind_icons = {}, -- set to `false` to disable icons
       -- },
       -- presets = {
       --   inc_rename = false, -- enables an input dialog for inc-rename.nvim
@@ -295,7 +343,7 @@ return {
           filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
           lua = { pattern = "^:%s*lua%s+", icon = "", lang = "lua" },
           help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
-          input = {}, -- Used by input()
+          -- input = {}, -- Used by input()
         },
       },
     },

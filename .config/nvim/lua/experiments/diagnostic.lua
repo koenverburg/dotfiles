@@ -34,8 +34,8 @@ local M = {}
 function M.setup()
   apply_signs()
   vim.diagnostic.config(config)
-  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with({border = "rounded", width = 60})
-  -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded", width = 60})
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers["textDocument/hover"], {border = "rounded", width = 60})
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded", width = 60})
 end
 
 return M

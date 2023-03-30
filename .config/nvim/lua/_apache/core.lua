@@ -39,7 +39,7 @@ local core = {
 
     -- UI
     ["expressline"] = { enabled = false },
-    ["dressing"] = { enabled = true },
+    ["dressing"]    = { enabled = false }, -- turning off because of noice
     ["indent-blankline"] = { enabled = true },
     ["smoothcursor"] = { enabled = false },
     ["smartcolumn"] = { enabled = false},
