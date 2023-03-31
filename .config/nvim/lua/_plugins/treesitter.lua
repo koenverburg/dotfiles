@@ -47,20 +47,6 @@ return {
 
           js = "// %s",
           ts = "// %s",
-          tsx = {
-            __default = "// %s",
-            jsx_element = "{/* %s */}",
-            jsx_fragment = "{/* %s */}",
-            jsx_attribute = "{/* %s */}",
-            comment = "// %s",
-          },
-          jsx = {
-            __default = "// %s",
-            jsx_element = "{/* %s */}",
-            jsx_fragment = "{/* %s */}",
-            jsx_attribute = "{/* %s */}",
-            comment = "// %s",
-          },
         },
       },
       refactor = {
