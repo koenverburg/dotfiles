@@ -38,7 +38,7 @@ return {
   {
     "koenverburg/peepsight.nvim",
     enabled = is_enabled('peepsight'),
-
+    cmd = "Peepsight",
     config = function ()
       require("peepsight").setup {
         -- markdown
@@ -64,7 +64,7 @@ return {
   {
     "koenverburg/cmd-palette.nvim",
     enabled = is_enabled('cmd-palette'),
-
+    cmd = "CmdPalette",
     config = function ()
      require("cmd-palette").setup {
       { label = "Peepsight", cmd = "Peepsight" },

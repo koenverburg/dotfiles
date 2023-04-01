@@ -3,13 +3,13 @@
 -- Source: https://github.com/koenverburg/dotfiles
 
 vim.g.mapleader = ","
-require('_apache.bootstrap')
-require('_apache.lazy')
-require('_apache.options')
-require('_apache.keymaps')
-require('_apache.autocmds')
-require('_apache.functions').hideTablineWhenSingleTab()
-require("conrad.charlist").setup {
+require("_apache.bootstrap")
+require("_apache.lazy")
+require("_apache.options")
+require("_apache.keymaps")
+require("_apache.autocmds")
+require("_apache.functions").hideTablineWhenSingleTab()
+require("conrad.charlist").setup({
   enabled = false,
   defaults = {
     eol = "↲",
@@ -22,7 +22,7 @@ require("conrad.charlist").setup {
     precedes = "…",
     conceal = "┊",
   },
-}
+})
 
 -- wip plugin
-require('conrad.winbar')
+require("conrad.winbar")
