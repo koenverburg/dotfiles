@@ -59,7 +59,7 @@ format = '[⎈ $version](bold white) '
 [kubernetes]
 disabled = false
 symbol = "⎈ "
-format = "[$symbol$context@$namespace](bright-black)"
+format = "[$symbol$context@$namespace](yellow)"
 detect_folders = ['k8s']
 
 [kubernetes.context_aliases]
