@@ -39,14 +39,16 @@ local core = {
 
     -- UI
     ["expressline"] = { enabled = false },
-    ["dressing"] = { enabled = true },
+    ["dressing"]    = { enabled = false }, -- turning off because of noice
     ["indent-blankline"] = { enabled = true },
     ["smoothcursor"] = { enabled = false },
     ["smartcolumn"] = { enabled = false},
-    ["notify"] = { enabled = true },
+
     ["noice"] = { enabled = true },
+    ["notify"] = { enabled = true },
+
     ["dashboard"] = { enabled = true },
-    ["explorer"]    = { enabled = true },
+    ["explorer"]  = { enabled = true },
     ["winsep"]    = { enabled = false },
 
     -- Languages

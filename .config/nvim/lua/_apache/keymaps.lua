@@ -342,7 +342,7 @@ normal("<leader>ta", ":ToggleAlternate<cr>")
 -- My plugins bindings
 --
 -- ----------------------------------------------------------------------------
-
+normal("<space>ta", "<cmd>lua require('experiments.edit-alt').edit()<cr>")
 normal("<space>/", "<cmd>lua require('_apache.functions').PopUpSearch()<cr>")
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 

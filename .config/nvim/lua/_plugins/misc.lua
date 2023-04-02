@@ -4,8 +4,8 @@ local core = require("_apache.core")
 return {
   {
     "nullchilly/fsread.nvim",
-    enabled = is_enabled("misc"),
-    lazy = false,
+    enabled = false, --is_enabled("misc"),
+    lazy = true,
     config = function() end,
   },
   {
@@ -49,6 +49,11 @@ return {
     lazy = false,
     config = function()
       require("Comment").setup()
+      local comment_ft = require "Comment.ft"
+      comment_ft.set("lua", { "--%s", "--[[%s]]" })
+
+      comment_ft.set("javascriptreact", { "{/* %s */}", "// %s" })
+      comment_ft.set("typescriptreact", { "{/* %s */}", "// %s"})
     end,
   },
   {
