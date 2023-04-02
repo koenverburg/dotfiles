@@ -122,15 +122,15 @@ function M.on_attach(client, bufnr)
   lsp_map("n", "<c-]>", "vim.lsp.buf.definition")
   lsp_map("n", "gi", "vim.lsp.buf.implementation")
   lsp_map("n", "goc", "vim.lsp.buf.outgoing_calls")
+
   lsp_map("n", "<leader>ca", "vim.lsp.buf.code_action")
   lsp_map("i", "<leader>ca", "vim.lsp.buf.code_action")
 
   -- M.bind("n", "K", "<cmd>Lspsaga hover_doc<cr>")
   -- M.bind("n", "gr", "<cmd>Lspsaga rename<cr>") -- moved to treesitter rename
 
-
-  M.bind("n", "gx", "<cmd>Lspsaga code_action<cr>")
-  M.bind("x", "gx", "<cmd><c-u>Lspsaga range_code_action<cr>")
+  -- M.bind("n", "gx", "<cmd>Lspsaga code_action<cr>")
+  -- M.bind("x", "gx", "<cmd><c-u>Lspsaga range_code_action<cr>")
 
   M.bind("n", "<leader>sd", "<cmd>Lspsaga show_line_diagnostics<cr>")
   M.bind("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>")

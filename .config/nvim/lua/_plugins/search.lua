@@ -1,8 +1,8 @@
 is_enabled = require("_apache.functions").is_enabled
 
--- "nvim-telescope/telescope-ui-select.nvim"
 -- "ThePrimeagen/git-worktree.nvim"
 return {
+  "nvim-telescope/telescope-ui-select.nvim",
   {
     "windwp/nvim-spectre",
     enabled = is_enabled("search"),
@@ -39,6 +39,7 @@ return {
       })
 
       require("telescope").load_extension("fzf")
+      require("telescope").load_extension("ui-select")
     end,
   },
   {
