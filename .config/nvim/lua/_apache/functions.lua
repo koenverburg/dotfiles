@@ -100,7 +100,13 @@ local lsp_map = function(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
-  -- require("experiments.show-references").on_attach(client, bufnr)
+  -- local references = require("conrad.show-references")
+  -- if references.is_supported(bufnr) then
+  --   references.on_attach(client, bufnr)
+  --   -- require('experiments.static-info').show_early_exit()
+  --   -- require('experiments.static-info').show_named_imports()
+  --   -- require('experiments.static-info').show_default_exports()
+  -- end
 
   if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false
@@ -125,16 +131,6 @@ function M.on_attach(client, bufnr)
 
   lsp_map("n", "<leader>ca", "vim.lsp.buf.code_action")
   lsp_map("i", "<leader>ca", "vim.lsp.buf.code_action")
-
-  -- M.bind("n", "K", "<cmd>Lspsaga hover_doc<cr>")
-  -- M.bind("n", "gr", "<cmd>Lspsaga rename<cr>") -- moved to treesitter rename
-
-  -- M.bind("n", "gx", "<cmd>Lspsaga code_action<cr>")
-  -- M.bind("x", "gx", "<cmd><c-u>Lspsaga range_code_action<cr>")
-
-  M.bind("n", "<leader>sd", "<cmd>Lspsaga show_line_diagnostics<cr>")
-  M.bind("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-  M.bind("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>")
 end
 
 return M

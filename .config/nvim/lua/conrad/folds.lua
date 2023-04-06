@@ -15,7 +15,7 @@ local queries = {
 -- zE will remove markers
 -- za will toggle folds
 
-function foldGo(matches)
+local function foldGo(matches)
   for _, match, metadata in matches do
     local start_line = match[1]:start() + 1
     local end_line = match[1]:end_() + 1
@@ -24,7 +24,7 @@ function foldGo(matches)
   end
 end
 
-function foldXscript(matches)
+local function foldXscript(matches)
   local index = 1
   local start_fold_line = 0
   local end_fold_line = 0
@@ -47,7 +47,7 @@ function foldXscript(matches)
   vim.cmd(string.format("%s,%s fold", start_fold_line, end_fold_line + 1))
 end
 
-function mapTo(lang)
+local function mapTo(lang)
   if lang == "typescriptreact" or lang == "tsx" then
     return "typescript"
   end
@@ -59,7 +59,7 @@ function mapTo(lang)
   return lang
 end
 
-function M._get_language_query(lang, bufnr)
+function M._get_language_query(lang)
   local current_query = queries[lang]
 
   if not current_query then
@@ -79,12 +79,12 @@ function M.main()
   -- hack, typescriptreact is not supported by treesitter
   vim.cmd(string.format("set ft=%s", lang))
 
-  local query = M._get_language_query(lang, bufnr)
+  local query = M._get_language_query(lang)
   if not query then
     return
   end
 
-  local matches = utils.get_query_matches(bufnr, query)
+  local matches = utils.get_query_matches(bufnr, lang, query)
   if matches == nil then
     return
   end

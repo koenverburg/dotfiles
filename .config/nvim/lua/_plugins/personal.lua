@@ -24,8 +24,8 @@ return {
     end,
   },
   {
-    "koenverburg/minimal-statusline.nvim",
-    -- dir = "~/code/github/minimal-statusline.nvim",
+    -- "koenverburg/minimal-statusline.nvim",
+    dir = "~/code/github/minimal-statusline.nvim",
     enabled = is_enabled("minimal-statusline"),
     lazy = false,
     -- opts = {

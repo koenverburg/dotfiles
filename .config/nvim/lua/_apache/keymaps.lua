@@ -3,7 +3,7 @@ local normal = funcs.normal
 local visual = funcs.visual
 local insert = funcs.insert
 local terminal = funcs.terminal
-is_enabled = funcs.is_enabled
+local is_enabled = funcs.is_enabled
 
 if is_enabled('telescope') then
   local themes = require "telescope.themes"
@@ -44,7 +44,7 @@ if is_enabled('telescope') then
     require("telescope.builtin").git_files(opts)
   end)
 
-  funcs.telescope_map('<space>p', function()
+  local simple_git = function()
     local opts = themes.get_dropdown {
       prompt_prefix = "",
       results_title = false,
@@ -65,7 +65,10 @@ if is_enabled('telescope') then
       -- },
     }
     require("telescope.builtin").git_files(opts)
-  end)
+  end
+
+  funcs.telescope_map('<space>p', simple_git)
+  funcs.telescope_map('<c-p>', simple_git)
 
   funcs.telescope_map("<space><space>", function()
     local opts = themes.get_dropdown {
@@ -152,7 +155,7 @@ if is_enabled('telescope') then
     require("telescope.builtin").live_grep(opts)
   end)
 
-  funcs.telescope_map("<space>sn",function()
+  funcs.telescope_map("<space>sn", function()
     local opts = {
       previewer = false,
       prompt_title = "~ Notes ~",
@@ -178,6 +181,17 @@ if is_enabled('telescope') then
     }
 
     require("telescope.builtin").git_files(opts)
+  end)
+
+  funcs.telescope_map("<leader>sd", function()
+    local opts = themes.get_dropdown({
+      prompt_prefix = "",
+      results_title = false,
+      -- layout_config = {
+      --   prompt_position = "top",
+      -- },
+    })
+    require("telescope.builtin").diagnostics(opts)
   end)
 
   -- funcs.telescope_map("<leader><space>h", "help_tags")

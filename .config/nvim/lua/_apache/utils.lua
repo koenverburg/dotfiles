@@ -10,14 +10,15 @@ function M.P(value)
   return value
 end
 
-function M.setVirtualText(ns, line, text, prefix)
+function M.setVirtualText(ns, line, text, prefix, color)
+  color = color or "Comment"
   local virtualText = string.format(" %s", text)
 
   if not M.is_empty(prefix) then
     virtualText = string.format(" %s %s", prefix, text)
   end
 
-  vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, "Comment" } }, {})
+  vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, color } }, {})
 end
 
 function M.contains(table, element)
@@ -93,8 +94,8 @@ function M.get_node(queries)
   return nil
 end
 
-function M.get_query_matches(bufnr, query)
-  local tree = vim.treesitter.get_parser(bufnr)
+function M.get_query_matches(bufnr, lang, query)
+  local tree = vim.treesitter.get_parser(bufnr, lang)
 
   if not tree then
     return nil
@@ -103,7 +104,7 @@ function M.get_query_matches(bufnr, query)
   local ast = tree:parse()
   local root = ast[1]:root()
 
-  local parsed = vim.treesitter.parse_query(tree:lang(), query)
+  local parsed = vim.treesitter.parse_query(lang, query)
   local results = parsed:iter_matches(root, bufnr)
 
   return results
