@@ -199,14 +199,17 @@ end
 
 if is_enabled('telescope') and is_enabled('lsp') then
   local themes = require "telescope.themes"
+
   funcs.telescope_map("<c-r>", function()
     local opts = themes.get_dropdown()
     require("telescope.builtin").lsp_references(opts)
   end)
+
   funcs.telescope_map("<c-d>",function()
     local opts = themes.get_dropdown()
     require("telescope.builtin").lsp_document_symbols(opts)
   end)
+
   funcs.telescope_map("<leader>cx", "lsp_code_actions")
 end
 
