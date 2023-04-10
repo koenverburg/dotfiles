@@ -1,7 +1,7 @@
 - clean: ["~"]
 
-- create:
-    - ~/code/tools
+# - create:
+#     - ~/code/tools
 
 - defaults:
     link:
@@ -12,20 +12,20 @@
     ~/.gitconfig: .config/gitconfig/.gitconfig
     ~/.tmux.conf: ./ansible/playbooks/roles/tmux/files/.tmux.conf
     ~/.config/nvim: ./.config/nvim
-    # ~/.config/fish/config.fish: ./ansible/playbooks/roles/fish/files/config.fish
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    # - fish -c 'omf install'
-    # - fish -c 'omf install bass'
+
+    # Tools
+    - sudo apt-get install -y tmux
+    - sudo apt-get install -y bat
 
     # Neovim stuff
-    # - sudo apt-get install -y git
-    # - sudo apt-get install -y make
-    # - sudo apt-get install -y cmake
-    # - sudo apt-get install -y gcc
-    # - sudo apt-get install -y ninja-build
-    # - sudo apt-get install -y ruby
+    - sudo apt-get install ninja-build gettext libtool-bin cmake g++ pkg-config unzip curl
+    - sudo apt-get install -y git
+    - sudo apt-get install -y make
+    - sudo apt-get install -y gcc
+    - sudo apt-get install -y ruby
 
     # Languages I write in
     # - sudo apt-get install -y python3
@@ -35,7 +35,11 @@
     # Automation tooling
     # - sudo apt-get install -y terraform
     # - sudo apt-get install -y ansible
+    - apt-get install -y yq
+    - apt-get install -y ripgrep
+
+    - bash ./nvim-appimage.sh
 
     # Other tooling
-    - cargo install git-delta
+    # - cargo install git-delta
     # - nvm install 14.15.4
