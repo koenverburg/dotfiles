@@ -87,10 +87,16 @@ local servers = {
 
 -- "ray-x/lsp_signature.nvim",
 -- "nvim-lua/lsp_extensions.nvim",
--- { "simrat39/inlay-hints.nvim", lazy = true },
+--
 -- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", name = "lsp_lines.nvim" },
 
 return {
+  {
+    "simrat39/inlay-hints.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = false,
+    enabled = is_enabled("lsp"),
+  },
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -192,7 +198,7 @@ return {
         },
         formatting = {
           format = require("lspkind").cmp_format({
-            mode = 'symbol_text'
+            mode = "symbol_text",
           }),
         },
         experimental = {

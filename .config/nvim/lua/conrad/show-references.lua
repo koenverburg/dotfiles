@@ -94,15 +94,15 @@ function M._find_references(bufnr)
   local matches = utils.get_query_matches(bufnr, lang, query)
   for _, match, _ in matches do
     local params = convert_to_lsp_param(bufnr, match[1])
-
     vim.lsp.buf_request(bufnr, "textDocument/references", params, M.reference_handler)
   end
 end
 
 function M.set_autocmd(bufnr)
-  vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter", "BufWritePost" }, {
+  vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter", "BufWritePost", "BufWrite" }, {
     callback = function()
       local references = require("conrad.show-references")
+      vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
       if references.is_supported(bufnr) then
         references._find_references(bufnr)
@@ -126,7 +126,7 @@ end
 
 function M.on_attach(_, bufnr)
   M._find_references(bufnr)
-  M.set_autocmd(bufnr)
+  -- M.set_autocmd(bufnr)
 end
 
 return M

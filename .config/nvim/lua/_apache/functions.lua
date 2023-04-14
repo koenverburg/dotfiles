@@ -67,7 +67,7 @@ local function hide_tabline()
 end
 
 function M.hideTablineWhenSingleTab()
-  local events = { "TabEnter", "TabClosed", "TabNew" }
+  local events = { "TabClosed", "TabNew", "BufDelete" }
 
   hide_tabline()
   vim.api.nvim_create_autocmd(events, { callback = hide_tabline })
@@ -103,13 +103,18 @@ local lsp_map = function(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
-  -- local references = require("conrad.show-references")
-  -- if references.is_supported(bufnr) then
-  --   references.on_attach(client, bufnr)
-  --   -- require('experiments.static-info').show_early_exit()
-  --   -- require('experiments.static-info').show_named_imports()
-  --   -- require('experiments.static-info').show_default_exports()
-  -- end
+  local static_info = require('experiments.static-info')
+
+  if static_info.enabled_when_supprted_filetype(bufnr) then
+    -- trigger once
+    static_info.show_reference()
+    static_info.show_early_exit()
+    static_info.show_named_imports()
+    static_info.show_default_exports()
+
+    -- trigger when buffer changes
+    static_info.autocmd()
+  end
 
   if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false
@@ -135,5 +140,6 @@ function M.on_attach(client, bufnr)
   lsp_map("n", "<leader>ca", "vim.lsp.buf.code_action")
   lsp_map("i", "<leader>ca", "vim.lsp.buf.code_action")
 end
+
 
 return M

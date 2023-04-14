@@ -113,6 +113,7 @@ alias difflint="git diff main --name-only --diff-filter=d '*.ts' '*.tsx' | xargs
 alias difftest="git diff main --name-only --diff-filter=d '*.spec.*' | fzf -m | xargs yarn jest --config=frontend/jest.frontend.json"
 
 alias pn='pnpm'
+alias lg='lazygit'
 
 # Kubernetes
 alias k="kubectl"
@@ -121,6 +122,7 @@ alias kr="kubectl replace"
 alias krm="kubectl delete"
 alias kd="kubectl describe"
 alias kg="kubectl get"
+alias kdr="kubectl --dry-run=\"client\" -o yaml"
 
 # docker
 alias dlsc='docker container ls -a' # -a because I want to see ALL
