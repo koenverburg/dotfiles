@@ -6,3 +6,9 @@ overwrite/
 .config/nvim/lua/packer_compiled.lua
 node_modules/
 packer_compiled.lua
+streaming/commit/commit
+streaming/commit/commit.exe
+streaming/k8s-info/k8s-info
+streaming/k8s-info/k8s-info.exe
+streaming/keylights/keylights
+streaming/keylights/keylights.exe
