@@ -3,6 +3,26 @@ local core = {
     isWorkLaptop = string.find(vim.loop.os_gethostname(), "AMS")
   },
 
+  icons = {
+    Class = "",
+    Constructor = "",
+    Function = "󰊕",
+    Keyword = "",
+    Method = "",
+    Module = "",
+    Field = "",
+    Snippet = "󰘖",
+    Text = "",
+    Variable = "",
+  },
+
+  signs = {
+    {name = "DiagnosticSignError", text = ""},
+    {name = "DiagnosticSignWarn", text = ""},
+    {name = "DiagnosticSignHint", text = ""},
+    {name = "DiagnosticSignInfo", text = ""}
+  },
+
   colors = {
     yellow = '#FFCC00',
     black = '#888888'

@@ -14,6 +14,9 @@ local opts = {
   events = { "CursorMoved", "CursorHold", "BufWinEnter", "BufEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
 }
 
+
+
+
 local function is_nil(val)
   return ((val == nil) or (val == ""))
 end
@@ -30,14 +33,32 @@ local function ignore()
   return vim.tbl_contains(opts["ignore-filetypes"], get_filetype())
 end
 
-local function get_icon_by_filetype(name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local function get_icon_by_filetype(ft)
   local ok, icons = pcall(require, "nvim-web-devicons")
 
   if not ok then
     return ""
   end
 
-  local icon, color = icons.get_icon_by_filetype(name)
+  if not ft then
+    return ""
+  end
+
+  local icon, color = icons.get_icon_by_filetype(ft)
 
   if not icon then
     return ""
@@ -45,6 +66,14 @@ local function get_icon_by_filetype(name)
 
   return "%#" .. color .. "#" .. icon .. "%#Normal#" .. " "
 end
+
+
+
+
+
+
+
+
 
 local function get_git_status(type)
   local chars = {
@@ -89,6 +118,7 @@ local function main()
     local changed = get_git_status("changed")
     local removed = get_git_status("removed")
 
+    -- todo make this a table
     local bar = get_icon_by_filetype(get_filetype()) .. "%t%m" .. "%=" .. added .. changed .. removed .. "%=" .. "%l/%L"
 
     return vim.api.nvim_set_option_value("winbar", (" " .. bar), { scope = "local" })

@@ -1,3 +1,4 @@
+local core = require("_apache.core")
 on_attach = require("_apache.functions").on_attach
 is_enabled = require("_apache.functions").is_enabled
 local diagnosticSetup = require("experiments.diagnostic")
@@ -161,6 +162,7 @@ return {
     },
     config = function()
       local cmp = require("cmp")
+
       cmp.setup({
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -196,10 +198,24 @@ return {
         view = {
           entries = { name = "custom", selection_order = "near_cursor" },
         },
+        window = {
+          completion = cmp.config.window.bordered({
+            border = "rounded"
+          })
+        },
         formatting = {
-          format = require("lspkind").cmp_format({
-            mode = "symbol_text",
-          }),
+          fields = {"kind", "abbr", "menu",},
+          format = function(entry, vim_item)
+            vim_item.kind = (core.icons[vim_item.kind] or "?") .. " " .. vim_item.kind
+            vim_item.menu = entry.source.name
+
+            vim_item.abbr = vim_item.abbr:match("[^(]+")
+
+            return vim_item
+          end
+          -- format = require("lspkind").cmp_format({
+          --   mode = "symbol_text",
+          -- }),
         },
         experimental = {
           native_menu = false,
