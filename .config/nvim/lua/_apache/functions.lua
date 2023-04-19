@@ -107,7 +107,7 @@ function M.on_attach(client, bufnr)
 
   if static_info.enabled_when_supprted_filetype(bufnr) then
     -- trigger once
-    static_info.show_reference()
+    -- static_info.show_reference()
     static_info.show_early_exit()
     static_info.show_named_imports()
     static_info.show_default_exports()

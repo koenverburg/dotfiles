@@ -1,6 +1,7 @@
 local M = {}
 local api = vim.api
 local get_node_text = vim.treesitter.get_node_text or vim.treesitter.query.get_node_text
+local parse_query = vim.treesitter.query.parse
 
 local utils = require("_apache.utils")
 local ts_utils = require("nvim-treesitter.ts_utils")
@@ -40,20 +41,20 @@ end
 -- (arrow_function) @captures
 local function_queriess = [[
   (function) @captures
+  (method_definition) @captures
   (lexical_declaration) @captures
   (function_declaration) @captures
   (generator_function_declaration) @captures
 ]]
 local exit_queries = [[ (return_statement) @captures ]]
 local import_query = [[ (import_statement) @captures ]]
-local exports_query = [[ (export_statement) @captures ]]
 
 local function query_for_returns(bufnr, lang, function_tree)
   if lang == "typescriptreact" then
     lang = "tsx"
   end
 
-  local parsed = vim.treesitter.parse_query(lang, exit_queries)
+  local parsed = parse_query(lang, exit_queries)
 
   for _, match in parsed:iter_matches(function_tree, bufnr) do
     for _, node in pairs(match) do
@@ -80,7 +81,7 @@ local function query_buffer(bufnr, queries)
 
   local tree = parser:parse()
   local root = tree[1]:root()
-  local parsed = vim.treesitter.parse_query(lang, queries)
+  local parsed = parse_query(lang, queries)
 
   return parser, parsed, root
 end
@@ -129,6 +130,7 @@ function M.show_default_exports()
   local bufnr = vim.api.nvim_get_current_buf()
   if not M.enabled_when_supprted_filetype(bufnr) then return end
 
+  local exports_query = [[ (export_statement) @captures ]]
   local _, parsed, root = query_buffer(bufnr, exports_query)
   if not parsed then
     return
@@ -137,7 +139,7 @@ function M.show_default_exports()
     for _, node in pairs(match) do
       local text = get_node_text(node, bufnr)
 
-      if string.match(text, "default") then
+      if string.match(text, "export default") then
         utils.setVirtualText(ns, node:start(), "Default export found", signs.error.text, signs.error.name)
       end
     end
@@ -216,7 +218,7 @@ function M.autocmd()
   register_autocmd(function ()
     -- vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
-    M.show_reference()
+    -- M.show_reference()
     M.show_early_exit()
     M.show_named_imports()
     M.show_default_exports()
