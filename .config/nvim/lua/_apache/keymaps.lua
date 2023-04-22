@@ -205,6 +205,12 @@ if is_enabled('telescope') and is_enabled('lsp') then
     require("telescope.builtin").lsp_references(opts)
   end)
 
+  funcs.telescope_map("gr", function()
+    local opts = themes.get_dropdown()
+    require("telescope.builtin").lsp_references(opts)
+  end)
+
+
   funcs.telescope_map("<c-d>",function()
     local opts = themes.get_dropdown()
     require("telescope.builtin").lsp_document_symbols(opts)

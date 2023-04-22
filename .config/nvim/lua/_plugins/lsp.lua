@@ -107,6 +107,18 @@ return {
       "williamboman/mason-lspconfig.nvim",
     },
     config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup {
+        ensure_installed = {
+          "gopls",
+          "cssls",
+          "tsserver",
+          "dockerls",
+          "sumneko_lua",
+          "tailwindcss",
+          "yamlls",
+        },
+      }
       -- vim.diagnostic.config({
       --   underline = true,
       --   update_in_insert = false,

@@ -114,6 +114,8 @@ alias difftest="git diff main --name-only --diff-filter=d '*.spec.*' | fzf -m | 
 
 alias pn='pnpm'
 alias lg='lazygit'
+alias fp="bash ~/code/github/dotfiles/.config/zsh/find-project.sh"
+
 
 # Kubernetes
 alias k="kubectl"
@@ -150,7 +152,7 @@ alias work="timer 25m && terminal-notifier -message 'Pomodoro'\
 alias work60="timer 55m && terminal-notifier -message 'Pomodoro'\
         -title 'Work Timer is up! Take a Break 😊'\
         -sound Crystal"
-        
+
 alias rest="timer 5m && terminal-notifier -message 'Pomodoro'\
         -title 'Break is over! Get back to work 😬'\
         -sound Crystal"
@@ -205,3 +207,4 @@ export PATH="$PNPM_HOME:$PATH"
 # prompt typewritten
 
 eval "$(starship init zsh)"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
