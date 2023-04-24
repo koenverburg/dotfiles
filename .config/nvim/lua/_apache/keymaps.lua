@@ -183,16 +183,16 @@ if is_enabled('telescope') then
     require("telescope.builtin").git_files(opts)
   end)
 
-  funcs.telescope_map("<leader>sd", function()
-    local opts = themes.get_dropdown({
-      prompt_prefix = "",
-      results_title = false,
-      -- layout_config = {
-      --   prompt_position = "top",
-      -- },
-    })
-    require("telescope.builtin").diagnostics(opts)
-  end)
+  -- funcs.telescope_map("<leader>sd", function()
+  --   local opts = themes.get_dropdown({
+  --     prompt_prefix = "",
+  --     results_title = false,
+  --     -- layout_config = {
+  --     --   prompt_position = "top",
+  --     -- },
+  --   })
+  --   require("telescope.builtin").diagnostics(opts)
+  -- end)
 
   -- funcs.telescope_map("<leader><space>h", "help_tags")
 end
