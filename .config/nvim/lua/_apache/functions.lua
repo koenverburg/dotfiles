@@ -3,7 +3,7 @@ local core = require('_apache.core')
 local M = {}
 
 function M.is_enabled(plugin)
-	return core.plugins[plugin].enabled
+  return core.plugins[plugin].enabled
 end
 
 function M.inputOrUI(opts, callback)
@@ -67,10 +67,8 @@ local function hide_tabline()
 end
 
 function M.hideTablineWhenSingleTab()
-  local events = { "TabClosed", "TabNew", "BufDelete" }
-
   hide_tabline()
-  vim.api.nvim_create_autocmd(events, { callback = hide_tabline })
+  vim.api.nvim_create_autocmd({ "TabClosed", "TabNew", "BufDelete", "WinNew" }, { callback = hide_tabline })
 end
 
 function M.bind(mode, keys, func)
@@ -141,6 +139,5 @@ function M.on_attach(client, bufnr)
   lsp_map("n", "<leader>ca", "vim.lsp.buf.code_action")
   lsp_map("i", "<leader>ca", "vim.lsp.buf.code_action")
 end
-
 
 return M

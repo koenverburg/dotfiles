@@ -315,6 +315,11 @@ visual("<leader>s", ":'<,'>!sort -f<cr>")
 -- Plugins bindings
 --
 -- ----------------------------------------------------------------------------
+
+-- Formatting
+normal("ga", "<Plug>(EasyAlign)")
+visual("ga", "<Plug>(EasyAlign)")
+
 -- Bookmark
 normal('bt', [[ <cmd>BookmarkToggle<cr> ]])
 
