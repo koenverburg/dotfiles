@@ -6,7 +6,7 @@ end
 
 local opts = {
   patterns = {
-    ts = "test.ts",
+    ts = "spec.ts",
     tsx = "spec.tsx",
   },
 }

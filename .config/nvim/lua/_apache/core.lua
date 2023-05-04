@@ -36,7 +36,7 @@ local core = {
     ["peepsight"]          = { enabled = true },
     ["cmd-palette"]        = { enabled = true },
     ["minimal-tabline"]    = { enabled = true },
-    ["minimal-statusline"] = { enabled = true },
+    ["minimal-statusline"] = { enabled = false },
 
     -- Colorschemes
     ["kimbox"]          = { enabled = false },
@@ -53,42 +53,47 @@ local core = {
     ["lsp"]            = { enabled = true },
     ["lsp-snippets"]   = { enabled = true },
     ["lsp-formatting"] = { enabled = true },
+    ["formatting"]     = { enabled = true },
 
     -- Tree Sitter
     ["treesitter"] = { enabled = true },
 
     -- UI
-    ["expressline"] = { enabled = false },
-    ["dressing"]    = { enabled = false }, -- turning off because of noice
+    ["expressline"]      = { enabled = true },
+    ["lualine"]          = { enabled = false },
+    ["dressing"]         = { enabled = false }, -- turning off because of noice
     ["indent-blankline"] = { enabled = true },
-    ["smoothcursor"] = { enabled = false },
-    ["smartcolumn"] = { enabled = false},
+    ["smoothcursor"]     = { enabled = false },
+    ["smartcolumn"]      = { enabled = false},
+    ["bionic"]           = { enabled = true },
 
-    ["noice"] = { enabled = true },
+    ["noice"]  = { enabled = true },
     ["notify"] = { enabled = true },
 
     ["dashboard"] = { enabled = true },
     ["explorer"]  = { enabled = true },
-    ["winsep"]    = { enabled = false },
+
+    -- Focus
+    ["winsep"] = { enabled = false },
+    ["tint"]   = { enabled = false },
 
     -- Languages
     ["languages"] = { enabled = true },
 
     -- Misc
-    ['misc'] = { enabled = true },
-    ['hop'] = { enabled = true },
-    ['leap'] = { enabled = false },
-    ["icons"] = { enabled = true },
-    ["tint"] = { enabled = false },
+    ['misc']           = { enabled = true },
+    ['hop']            = { enabled = true },
+    ['leap']           = { enabled = false },
+    ["icons"]          = { enabled = true },
     ["accelerated-jk"] = { enabled = true},
-    ["hydra"] = { enabled = true},
-    ["template"] = { enabled = false },
-    ["comment"] = { enabled = true },
-    ["murmur"] = { enabled = true },
-    ["persistence"] = { enabled = true },
+    ["hydra"]          = { enabled = true},
+    ["template"]       = { enabled = false },
+    ["comment"]        = { enabled = true },
+    ["cursorword"]     = { enabled = true },
+    ["persistence"]    = { enabled = true },
 
     -- AI
-    ["codeium"] = { enabled = false },
+    ["codeium"] = { enabled = true },
 
     ["git"] = { enabled = true },
   }

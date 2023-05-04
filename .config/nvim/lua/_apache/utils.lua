@@ -12,10 +12,10 @@ end
 
 function M.setVirtualText(ns, line, text, prefix, color)
   color = color or "Comment"
-  local virtualText = string.format(" %s", text)
+  local virtualText = string.format("%s", text)
 
   if not M.is_empty(prefix) then
-    virtualText = string.format(" %s %s", prefix, text)
+    virtualText = string.format("%s %s", prefix, text)
   end
 
   vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, color } }, {})

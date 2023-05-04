@@ -8,7 +8,10 @@ require("_apache.lazy")
 require("_apache.options")
 require("_apache.keymaps")
 require("_apache.autocmds")
+
 require("_apache.functions").hideTablineWhenSingleTab()
+
+require("conrad.winbar")
 require("conrad.charlist").setup({
   enabled = false,
   defaults = {
@@ -23,6 +26,3 @@ require("conrad.charlist").setup({
     conceal = "┊",
   },
 })
-
--- wip plugin
-require("conrad.winbar")

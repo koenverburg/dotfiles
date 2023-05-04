@@ -1,4 +1,4 @@
-is_enabled = require("_apache.functions").is_enabled
+local is_enabled = require("_apache.functions").is_enabled
 
 return {
   { dir = "~/code/github/nightcoder.nvim" },
@@ -23,18 +23,18 @@ return {
       require("minimal-tabline").setup(opts)
     end,
   },
-  {
-    "koenverburg/minimal-statusline.nvim",
-    -- dir = "~/code/github/minimal-statusline.nvim",
-    enabled = is_enabled("minimal-statusline"),
-    lazy = false,
-    -- opts = {
-    --   regenerate_autocmds = { "WinEnter", "WinLeave", "ModeChanged", "BufEnter", "BufWritePost" },
-    -- },
-    config = function()
-      require("minimal-statusline").setup()
-    end,
-  },
+  -- {
+  --   "koenverburg/minimal-statusline.nvim",
+  --   -- dir = "~/code/github/minimal-statusline.nvim",
+  --   enabled = is_enabled("minimal-statusline"),
+  --   lazy = false,
+  --   -- opts = {
+  --   --   regenerate_autocmds = { "WinEnter", "WinLeave", "ModeChanged", "BufEnter", "BufWritePost" },
+  --   -- },
+  --   config = function()
+  --     require("minimal-statusline").setup()
+  --   end,
+  -- },
   {
     "koenverburg/peepsight.nvim",
     enabled = is_enabled("peepsight"),

@@ -10,12 +10,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-  group = augroup("resize_splits"),
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "VimResized" }, {
+--   group = augroup("resize_splits"),
+--   callback = function()
+--     vim.cmd("tabdo wincmd =")
+--   end,
+-- })
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --   group = augroup("close_with_q"),

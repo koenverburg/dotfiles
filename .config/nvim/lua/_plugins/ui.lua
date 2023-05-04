@@ -1,4 +1,4 @@
-is_enabled = require("_apache.functions").is_enabled
+local is_enabled = require("_apache.functions").is_enabled
 
 return {
   {
@@ -46,103 +46,57 @@ return {
     },
     enabled = is_enabled("expressline"),
     lazy = false,
-
     config = function()
-      -- vim.cmd([[set fillchars+=vert:┃]])
-      -- vim.cmd([[set fillchars+=horiz:━]])
-      vim.cmd([[set fillchars+=stl:━]])
 
-      -- vim.cmd([[set fillchars+=horizup:┻]])
-      -- local helper = require "el.helper"
-      local subscribe = require("el.subscribe")
-      local extensions = require("el.extensions")
-      local builtin = require("el.builtin")
-      local sections = require("el.sections")
-      local hi = sections.highlight
-      local line = " "
+      local helper        = require("el.helper")
+      local extensions    = require("el.extensions")
+      local builtin       = require("el.builtin")
+      local sections      = require("el.sections")
+      local stl           = require('experiments.statusline')
+      local stl_providers = stl.providers
 
-      local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(window, buffer)
-        local branch = extensions.git_branch(window, buffer)
-        if branch then
-          return " " .. extensions.git_icon() .. " " .. branch
-        end
-      end)
-
-      local shortened_file = function(_, buffer)
-        if buffer.name == "" then
-          return builtin.file(_, buffer)
-        end
-
-        if string.len(vim.fn.fnamemodify(buffer.name, ":.")) > 50 then
-          return vim.fn.fnamemodify(buffer.name, ":t")
-        end
-
-        return vim.fn.fnamemodify(buffer.name, ":.")
-      end
-
-      local show_lsp_status = function(_, buffer)
-        local buffer_clients = vim.lsp.buf_get_clients(buffer.bufnr)
-        local attached_lsps = {}
-
-        for _, v in pairs(buffer_clients) do
-          table.insert(attached_lsps, v.name)
-        end
-
-        if #attached_lsps == 0 then
-          return ""
-        end
-
-        local lsps = table.concat(attached_lsps, ",")
-
-        return " lsp (" .. lsps .. ") "
-      end
-
-      local generator = function(_, _) -- window, bufnr
-        local segments = {}
-
-        table.insert(segments, line)
-        table.insert(segments, extensions.mode)
-        table.insert(segments, git_branch)
-        table.insert(segments, line)
-
-        table.insert(segments, sections.split)
-        table.insert(segments, line)
-        table.insert(segments, shortened_file)
-        table.insert(segments, builtin.modified)
-        table.insert(segments, line)
-        table.insert(
-          segments,
-          subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, buffer)
-            return extensions.file_icon(_, buffer)
-          end)
+      local render_async = function(id, autocmd, element)
+        return helper.async_buf_setter(
+          id,
+          autocmd,
+          element,
+          5000
         )
-        table.insert(segments, line)
+      end
+
+      local generator = function(window, _) -- window, bufnr
+        local segments = {}
+        table.insert(segments, stl.builtins.space)
+        table.insert(segments, extensions.mode)
+
+        table.insert(segments, stl.builtins.space)
+        table.insert(segments, render_async(window.win_id, 'el_git_branch', stl_providers.git_branch))
+
+        table.insert(segments, stl.builtins.space)
+        table.insert(segments, render_async(window.win_id, 'el_git_stat', stl_providers.git_changes))
+
+        table.insert(segments, stl.builtins.space)
+        table.insert(segments, sections.split)
+
+        table.insert(segments, stl.builtins.space)
+        table.insert(segments, stl_providers.file_icon)
+        table.insert(segments, stl.builtins.space)
+        table.insert(segments, stl_providers.filename)
+        table.insert(segments, builtin.modified)
+        table.insert(segments, stl.builtins.space)
 
         table.insert(segments, sections.split)
-        table.insert(segments, show_lsp_status)
+        table.insert(segments, stl_providers.diagnostic)
+        table.insert(segments, stl_providers.lsp_enabled and stl_providers.lsp() or stl_providers.filetype())
         table.insert(segments, sections.collapse_builtin(builtin.help_list, builtin.readonly_list))
-        table.insert(segments, line)
 
-        table.insert(segments, builtin.line)
-        table.insert(segments, "/")
-        table.insert(segments, builtin.number_of_lines)
-        table.insert(segments, line)
-
-        table.insert(segments, builtin.filetype)
-        table.insert(segments, line)
-
-        -- table.insert(
-        --   segments,
-        --   subscribe.buf_autocmd("el_git_status", "BufWritePost", function(window, buffer)
-        --     local changes = extensions.git_changes(window, buffer)
-        --     if changes then
-        --       return " " .. changes .. " "
-        --     end
-        --   end)
-        -- )
-        --
+        table.insert(segments, stl.builtins.space)
         return segments
       end
+
+      local ignore  = { "help", "packer", "spectre_panel", "TelescopePrompt" }
+      local disable = { "neogitstatus", "netrw", "lir", "lazy", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage" }
+
       require("el").setup({
         generator = generator,
         regenerate_autocmds = {
@@ -154,35 +108,6 @@ return {
           "BufWritePost",
         },
       })
-
-      local highlight = function(group, properties)
-        local fg = properties.fg == nil and "" or "guifg=" .. properties.fg
-        local bg = properties.bg == nil and "" or "guibg=" .. properties.bg
-        local style = properties.style == nil and "" or "gui=" .. properties.style
-        local cmd = table.concat({ "highlight", group, bg, fg, style }, " ")
-        vim.cmd(cmd)
-      end
-
-      local colors_keys = {
-        Statusline = { fg = "none", bg = "none", style = "none" },
-        -- ElInsert = { fg = "none", bg = "none", style = "none" },
-      }
-
-      for hl, col in pairs(colors_keys) do
-        highlight(hl, col)
-      end
-
-      vim.api.nvim_create_autocmd(
-        { "WinEnter", "WinLeave", "DiagnosticChanged", "ModeChanged", "BufEnter", "BufWritePost" },
-        {
-          pattern = "*",
-          callback = function()
-            for hl, col in pairs(colors_keys) do
-              highlight(hl, col)
-            end
-          end,
-        }
-      )
     end,
   },
   {
@@ -191,12 +116,12 @@ return {
     enabled = is_enabled("smoothcursor"),
     opts = {
       autostart = true,
-      cursor = "", -- cursor shape (need nerd font)
+      cursor = "",          -- cursor shape (need nerd font)
       texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
-      linehl = nil, -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
-      type = "default", -- define cursor movement calculate function, "default" or "exp" (exponential).
+      linehl = nil,            -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
+      type = "default",        -- define cursor movement calculate function, "default" or "exp" (exponential).
       fancy = {
-        enable = true, -- enable fancy mode
+        enable = true,         -- enable fancy mode
         head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
         body = {
           { cursor = "", texthl = "SmoothCursorRed" },
@@ -204,20 +129,20 @@ return {
           { cursor = "●", texthl = "SmoothCursorYellow" },
           { cursor = "●", texthl = "SmoothCursorGreen" },
           { cursor = "•", texthl = "SmoothCursorAqua" },
-          { cursor = ".", texthl = "SmoothCursorBlue" },
-          { cursor = ".", texthl = "SmoothCursorPurple" },
+          { cursor = ".",   texthl = "SmoothCursorBlue" },
+          { cursor = ".",   texthl = "SmoothCursorPurple" },
         },
         tail = { cursor = nil, texthl = "SmoothCursor" },
       },
-      flyin_effect = nil, -- "bottom" or "top"
-      speed = 25, -- max is 100 to stick to your current position
-      intervals = 35, -- tick interval
-      priority = 10, -- set marker priority
-      timeout = 3000, -- timout for animation
-      threshold = 3, -- animate if threshold lines jump
+      flyin_effect = nil,        -- "bottom" or "top"
+      speed = 25,                -- max is 100 to stick to your current position
+      intervals = 35,            -- tick interval
+      priority = 10,             -- set marker priority
+      timeout = 3000,            -- timout for animation
+      threshold = 3,             -- animate if threshold lines jump
       disable_float_win = false, -- disable on float window
-      enabled_filetypes = nil, -- example: { "lua", "vim" }
-      disabled_filetypes = nil, -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
+      enabled_filetypes = nil,   -- example: { "lua", "vim" }
+      disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
     },
     config = function(_, opts)
       require("smoothcursor").setup(opts)
@@ -333,12 +258,11 @@ return {
       --   long_message_to_split = false, -- long messages will be sent to a split
       -- },
       cmdline = {
-        enabled = true, -- enables the Noice cmdline UI
+        enabled = true,         -- enables the Noice cmdline UI
         view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
         format = {
           search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex" },
           search_down = { kind = "search", pattern = "^/", icon = "", lang = "regex" },
-
           cmdline = { pattern = "^:", icon = "", lang = "vim" },
           filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
           lua = { pattern = "^:%s*lua%s+", icon = "", lang = "lua" },
@@ -458,11 +382,146 @@ return {
     },
   },
   {
-    "nvim-zh/colorful-winsep.nvim",
+    "denstiny/colorful-winsep.nvim",
     enabled = is_enabled("winsep"),
     event = { "WinNew" },
     config = function()
-      require("colorful-winsep").setup()
+      require("colorful-winsep").setup({
+        -- highlight = {
+        --   bg = "#16161E",
+        --   fg = "#1F3442",
+        -- },
+        -- timer refresh rate
+        interval = 0,
+        -- This plugin will not be activated for filetype in the following table.
+        no_exec_files = { "packer", "TelescopePrompt", "mason", "CompetiTest", "NvimTree" },
+        -- Symbols for separator lines, the order: horizontal, vertical, top left, top right, bottom left, bottom right.
+        symbols = { "━", "┃", "┏", "┓", "┗", "┛" },
+        -- close_event = function()
+        --   -- Executed after closing the window separator
+        -- end,
+        -- create_event = function()
+        --   -- Executed after creating the window separator
+        -- end,
+      })
     end,
   },
+  {
+    "nullchilly/fsread.nvim",
+    enabled = is_enabled("bionic"),
+    lazy = false,
+    -- config = function(_, opts)
+    --   -- require('').setup(opts)
+    -- end
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    enabled = is_enabled("lualine"),
+    event = { "BufReadPost" },
+    dependencies = {
+      "arkav/lualine-lsp-progress"
+    },
+    lazy = false,
+    config = function()
+      local disable = { "neogitstatus", "netrw", "lir", "lazy", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage" }
+      local ignore = { "help", "packer", "spectre_panel", "TelescopePrompt" }
+
+      local function active_clients()
+        local clients = vim.lsp.buf_get_clients()
+        local client_names = {}
+        for _, client in pairs(clients) do
+          if client.name ~= "null-ls" then
+            table.insert(client_names, client.name)
+          end
+        end
+        return #client_names > 0 and table.concat(client_names, ", ") or ""
+      end
+
+      local function hide_in_width()
+        return false --vim.fn.winwidth(0) < 80
+      end
+
+      local diagnostics = {
+        diagnostics = true,
+        sources = { "nvim_diagnostic" },
+        sections = { "error", "warn" },
+        symbols = { error = " ", warn = " " },
+        colored = false,
+        disabled_buftypes = { "nvim-tree" },
+        padding = 0,
+        update_in_insert = false,
+        always_visible = true,
+      }
+
+      local diff = {
+        diff = true,
+        colored = false,
+        disabled_buftypes = { "nvim-tree" },
+        cond = hide_in_width,
+      }
+
+      local branch = {
+        "b:gitsigns_head",
+        icon = " ",
+        disabled_buftypes = { "nvim-tree" },
+        cond = hide_in_width,
+      }
+
+      local filetype = {
+        filetype = true,
+        icon_only = true,
+        disabled_buftypes = { "nvim-tree" },
+        colored = false,
+        cond = hide_in_width,
+      }
+
+      local language_server = {
+        active_clients,
+        disabled_buftypes = { "nvim-tree" },
+        cond = hide_in_width,
+      }
+
+      local lsp_progress = {
+        lsp_progress = true,
+        display_components = { { "title", "percentage", "message" } },
+        timer = { progress_enddelay = 500, lsp_client_name_enddelay = 500 },
+      }
+
+      local opts = {
+        options = {
+          -- theme = "no-clown-fiesta",
+          theme = "auto",
+          globalstatus = true,
+          icons_enabled = false,
+          ignore_focus = ignore,
+          component_separators = "",
+          always_divide_middle = true,
+          disabled_filetypes = disable,
+          section_separators = { left = "", right = "" },
+        },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { branch, diff },
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {},
+          -- lualine_x = { lsp_progress, language_server, diagnostics },
+          -- lualine_y = { filetype },
+          -- lualine_z = { "location", "progress" },
+        },
+        inactive_sections = {
+          lualine_a = { "mode" },
+          lualine_b = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = { "location", "progress" },
+        },
+        extensions = {},
+      }
+
+      require("lualine").setup(opts) --, { require("nvim-web-devicons"), require("lualine-lsp-progress") })
+    end
+  }
 }

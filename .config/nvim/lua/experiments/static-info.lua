@@ -193,7 +193,57 @@ function M.show_reference(bufnr)
     local params = convert_to_lsp_param(bufnr, match[1])
     vim.lsp.buf_request(bufnr, "textDocument/references", params, reference_handler)
   end
+end
 
+function M.format(bufnr)
+  bufnr = bufnr or api.nvim_get_current_buf()
+  if not M.enabled_when_supprted_filetype(bufnr) then return end
+
+  local order_queries = [[
+    (import_statement) @imports
+  ]]
+  -- (type_alias_declaration) @types
+  -- (interface_declaration) @types
+  -- (export_statement) @exports
+  --
+  -- (function) @functions
+  -- (method_definition) @functions
+  -- (lexical_declaration) @functions
+  -- (function_declaration) @functions
+  -- (generator_function_declaration) @functions
+
+  local _, parsed, root = query_buffer(bufnr, order_queries)
+
+  if not parsed then
+    return
+  end
+
+  local edits = {}
+
+  local lines = 0
+
+  for _, match in parsed:iter_matches(root, bufnr) do
+    for _, node in pairs(match) do
+      local range = ts_utils.node_to_lsp_range(node)
+
+      -- print(vim.inspect(range))
+
+      range["end"].line = lines
+      range.start.line = lines
+
+      -- local text = get_node_text(node, bufnr)
+      -- print(text)
+
+      local text_edit = { range = range, newText = get_node_text(node, bufnr) }
+      table.insert(edits, text_edit)
+      lines = lines + 1
+    end
+    lines = lines + 1
+  end
+
+  -- print(vim.inspect(edits))
+
+  vim.lsp.util.apply_text_edits(edits, bufnr, "utf-8")
 end
 
 function M.enabled_when_supprted_filetype(bufnr)
@@ -206,7 +256,6 @@ function M.enabled_when_supprted_filetype(bufnr)
   return false
 end
 
-
 function M.main()
   M.show_reference()
   M.show_early_exit()
@@ -215,7 +264,7 @@ function M.main()
 end
 
 function M.autocmd()
-  register_autocmd(function ()
+  register_autocmd(function()
     -- vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
     -- M.show_reference()

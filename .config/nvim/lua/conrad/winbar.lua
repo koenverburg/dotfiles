@@ -11,7 +11,8 @@ local opts = {
     "Outline",
     "lazy",
   },
-  events = { "CursorMoved", "CursorHold", "BufWinEnter", "BufEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
+  events = { "CursorMoved", "CursorHold", "BufWinEnter", "BufEnter", "BufFilePost", "InsertEnter", "BufWritePost",
+    "TabClosed" },
 }
 
 
@@ -119,9 +120,19 @@ local function main()
     local removed = get_git_status("removed")
 
     -- todo make this a table
-    local bar = get_icon_by_filetype(get_filetype()) .. "%t%m" .. "%=" .. added .. changed .. removed .. "%=" .. "%l/%L"
+    local bar = {
+      " ",
+      get_icon_by_filetype(get_filetype()),
+      "%t%m",
+      "%=",
+      added,
+      changed,
+      removed,
+      "%=",
+      "%l/%L"
+    }
 
-    return vim.api.nvim_set_option_value("winbar", (" " .. bar), { scope = "local" })
+    return vim.api.nvim_set_option_value("winbar", table.concat(bar, ""), { scope = "local" })
   else
     vim.opt_local.winbar = nil
     return nil

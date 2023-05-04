@@ -35,6 +35,7 @@ return {
         "typescript",
         "yaml",
         "lua",
+        "gitcommit"
       },
       context_commentstring = {
         enable = true,
