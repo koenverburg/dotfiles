@@ -5,7 +5,11 @@ local parse_query = vim.treesitter.query.parse
 
 local utils = require("_apache.utils")
 local ts_utils = require("nvim-treesitter.ts_utils")
-local ns = vim.api.nvim_create_namespace("conrad/static-info")
+
+local ns_imports = vim.api.nvim_create_namespace("conrad/imports")
+local ns_references = vim.api.nvim_create_namespace("conrad/references")
+local ns_early_exit = vim.api.nvim_create_namespace("conrad/early-exit")
+local ns_default_exports= vim.api.nvim_create_namespace("conrad/default_exports")
 
 local signs = {
   error = { name = "DiagnosticSignError", text = "" },
@@ -49,7 +53,7 @@ local function_queriess = [[
 local exit_queries = [[ (return_statement) @captures ]]
 local import_query = [[ (import_statement) @captures ]]
 
-local function query_for_returns(bufnr, lang, function_tree)
+local function query_for_returns(namespace, bufnr, lang, function_tree)
   if lang == "typescriptreact" then
     lang = "tsx"
   end
@@ -62,9 +66,9 @@ local function query_for_returns(bufnr, lang, function_tree)
       local node_end = tostring(node:end_())
 
       if func_end == node_end then
-        utils.setVirtualText(ns, node:start(), "original exit", signs.info.text, signs.info.name)
+        utils.setVirtualText(namespace, node:start(), "original exit", signs.info.text, signs.info.name)
       else
-        utils.setVirtualText(ns, node:start(), "early exit", signs.info.text, signs.info.name)
+        utils.setVirtualText(namespace, node:start(), "early exit", signs.info.text, signs.info.name)
       end
     end
   end
@@ -100,7 +104,7 @@ function M.show_early_exit()
         vim.notify("parser not found")
         return
       end
-      query_for_returns(bufnr, parser:lang(), node)
+      query_for_returns(ns_early_exit, bufnr, parser:lang(), node)
     end
   end
 end
@@ -118,9 +122,9 @@ function M.show_named_imports()
       local text = get_node_text(node, bufnr)
 
       if string.match(text, "* as") then
-        utils.setVirtualText(ns, node:start(), "Star import found", signs.error.text, signs.error.name)
+        utils.setVirtualText(ns_imports, node:start(), "Star import found", signs.error.text, signs.error.name)
       elseif not string.match(text, "{") then
-        utils.setVirtualText(ns, node:start(), "Named import found", signs.error.text, signs.error.name)
+        utils.setVirtualText(ns_imports, node:start(), "Named import found", signs.error.text, signs.error.name)
       end
     end
   end
@@ -140,7 +144,7 @@ function M.show_default_exports()
       local text = get_node_text(node, bufnr)
 
       if string.match(text, "export default") then
-        utils.setVirtualText(ns, node:start(), "Default export found", signs.error.text, signs.error.name)
+        utils.setVirtualText(ns_default_exports, node:start(), "Default export found", signs.error.text, signs.error.name)
       end
     end
   end
@@ -159,9 +163,9 @@ local function reference_handler(err, locations, ctx, _)
   local count = #locations - 1
 
   if count > 0 then
-    utils.setVirtualText(ns, line, "R " .. count, signs.info.text, signs.info.name)
+    utils.setVirtualText(ns_references, line, "R " .. count, signs.info.text, signs.info.name)
   else
-    utils.setVirtualText(ns, line, "Unused code", signs.error.text, signs.error.name)
+    utils.setVirtualText(ns_references, line, "Unused code", signs.error.text, signs.error.name)
   end
 end
 
@@ -263,11 +267,15 @@ function M.main()
   M.show_default_exports()
 end
 
+
 function M.autocmd()
   register_autocmd(function()
-    -- vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    vim.api.nvim_buf_clear_namespace(0, ns_imports, 0, -1)
+    vim.api.nvim_buf_clear_namespace(0, ns_references, 0, -1)
+    vim.api.nvim_buf_clear_namespace(0, ns_early_exit, 0, -1)
+    vim.api.nvim_buf_clear_namespace(0, ns_default_exports, 0, -1)
 
-    -- M.show_reference()
+    M.show_reference()
     M.show_early_exit()
     M.show_named_imports()
     M.show_default_exports()

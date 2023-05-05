@@ -130,7 +130,7 @@ function M.on_attach(client, bufnr)
 
   lsp_map("n", "<leader>sd", "vim.diagnostic.open_float")
   lsp_map("n", "K", "vim.lsp.buf.hover")
-  lsp_map('n', '<C-K>', "vim.lsp.buf.signature_help")
+  -- lsp_map('n', '<C-K>', "vim.lsp.buf.signature_help")
   lsp_map("n", "gD", "vim.lsp.buf.declaration")
   lsp_map("n", "gd", "vim.lsp.buf.definition")
   lsp_map("n", "<c-]>", "vim.lsp.buf.definition")
