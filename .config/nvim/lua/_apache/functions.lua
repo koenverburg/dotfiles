@@ -118,6 +118,13 @@ function M.on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
+  require "lsp_signature".on_attach({
+    bind = true,
+    handler_opts = {
+      border = "rounded"
+    }
+  }, bufnr)
+
   -- if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
   --   require("inlay-hints").on_attach(client, bufnr)
   -- end

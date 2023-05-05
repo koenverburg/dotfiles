@@ -99,6 +99,11 @@ return {
     enabled = is_enabled("lsp"),
   },
   {
+    "ray-x/lsp_signature.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    enabled = is_enabled("lsp"),
+  },
+  {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     enabled = is_enabled("lsp"),
