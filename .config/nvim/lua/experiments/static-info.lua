@@ -261,7 +261,7 @@ function M.enabled_when_supprted_filetype(bufnr)
 end
 
 function M.main()
-  M.show_reference()
+  -- M.show_reference()
   M.show_early_exit()
   M.show_named_imports()
   M.show_default_exports()
@@ -275,7 +275,7 @@ function M.autocmd()
     vim.api.nvim_buf_clear_namespace(0, ns_early_exit, 0, -1)
     vim.api.nvim_buf_clear_namespace(0, ns_default_exports, 0, -1)
 
-    M.show_reference()
+    -- M.show_reference()
     M.show_early_exit()
     M.show_named_imports()
     M.show_default_exports()

@@ -1,6 +1,6 @@
 local core = require("_apache.core")
-on_attach = require("_apache.functions").on_attach
-is_enabled = require("_apache.functions").is_enabled
+local on_attach = require("_apache.functions").on_attach
+local is_enabled = require("_apache.functions").is_enabled
 local diagnosticSetup = require("experiments.diagnostic")
 
 local servers = {

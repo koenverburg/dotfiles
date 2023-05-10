@@ -1,4 +1,4 @@
-is_enabled = require("_apache.functions").is_enabled
+local is_enabled = require("_apache.functions").is_enabled
 
 return {
   {
@@ -37,19 +37,20 @@ return {
         "lua",
         "gitcommit"
       },
-      context_commentstring = {
-        enable = true,
-        config = {
-          yml = "# %s",
-          yaml = "# %s",
-
-          css = "// %s",
-          scss = "// %s",
-
-          js = "// %s",
-          ts = "// %s",
-        },
-      },
+      -- context_commentstring = {
+      --   enable = true,
+      --   config = {
+      --     json = "// %s",
+      --     yml = "# %s",
+      --     yaml = "# %s",
+      --
+      --     css = "// %s",
+      --     scss = "// %s",
+      --
+      --     js = "// %s",
+      --     ts = "// %s",
+      --   },
+      -- },
       refactor = {
         smart_rename = {
           enable = true,

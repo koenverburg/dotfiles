@@ -55,8 +55,9 @@ return {
       local comment_ft = require "Comment.ft"
       comment_ft.set("lua", { "--%s", "--[[%s]]" })
 
-      comment_ft.set("javascriptreact", { "{/* %s */}", "// %s" })
-      comment_ft.set("typescriptreact", { "{/* %s */}", "// %s" })
+      comment_ft.set('json', { "// %s"})
+      comment_ft.set("javascriptreact", { "// %s" })
+      comment_ft.set("typescriptreact", { "// %s" })
     end,
   },
   {
