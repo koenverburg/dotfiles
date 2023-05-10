@@ -104,7 +104,7 @@ function M.get_query_matches(bufnr, lang, query)
   local ast = tree:parse()
   local root = ast[1]:root()
 
-  local parsed = vim.treesitter.parse_query(lang, query)
+  local parsed = vim.treesitter.query.parse_query(lang, query)
   local results = parsed:iter_matches(root, bufnr)
 
   return results
