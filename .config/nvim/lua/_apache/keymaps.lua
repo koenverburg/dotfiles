@@ -105,9 +105,9 @@ if is_enabled('telescope') then
     require("telescope.builtin").buffers(opts)
   end)
 
-  funcs.telescope_map("<space>sg", function()
+  funcs.telescope_map("<space>gs", function()
     local input = {
-      prompt = "string grep",
+      prompt = "Grep String",
       default = "",
     }
 
