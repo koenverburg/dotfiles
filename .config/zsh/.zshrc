@@ -142,7 +142,6 @@ alias showreel='asciinema rec'
 alias resetnvim='nvim +Deletesession +qall'
 
 # alias ss="bash ~/code/github/dotfiles/.config/tmux/session.sh"
-alias commit="bash ~/code/github/dotfiles/streaming/commit/commit.sh"
 alias keylight="~/code/github/dotfiles/streaming/keylights/keylights"
 
 alias work="timer 25m && terminal-notifier -message 'Pomodoro'\
