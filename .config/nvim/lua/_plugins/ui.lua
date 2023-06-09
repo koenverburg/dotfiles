@@ -47,21 +47,15 @@ return {
     enabled = is_enabled("expressline"),
     lazy = false,
     config = function()
-
-      local helper        = require("el.helper")
-      local extensions    = require("el.extensions")
-      local builtin       = require("el.builtin")
-      local sections      = require("el.sections")
-      local stl           = require('experiments.statusline')
+      local helper = require("el.helper")
+      local extensions = require("el.extensions")
+      local builtin = require("el.builtin")
+      local sections = require("el.sections")
+      local stl = require("experiments.statusline")
       local stl_providers = stl.providers
 
       local render_async = function(id, autocmd, element)
-        return helper.async_buf_setter(
-          id,
-          autocmd,
-          element,
-          5000
-        )
+        return helper.async_buf_setter(id, autocmd, element, 5000)
       end
 
       local generator = function(window, _) -- window, bufnr
@@ -70,10 +64,10 @@ return {
         table.insert(segments, extensions.mode)
 
         table.insert(segments, stl.builtins.space)
-        table.insert(segments, render_async(window.win_id, 'el_git_branch', stl_providers.git_branch))
+        table.insert(segments, render_async(window.win_id, "el_git_branch", stl_providers.git_branch))
 
         table.insert(segments, stl.builtins.space)
-        table.insert(segments, render_async(window.win_id, 'el_git_stat', stl_providers.git_changes))
+        table.insert(segments, render_async(window.win_id, "el_git_stat", stl_providers.git_changes))
 
         table.insert(segments, stl.builtins.space)
         table.insert(segments, sections.split)
@@ -94,8 +88,9 @@ return {
         return segments
       end
 
-      local ignore  = { "help", "packer", "spectre_panel", "TelescopePrompt" }
-      local disable = { "neogitstatus", "netrw", "lir", "lazy", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage" }
+      local ignore = { "help", "packer", "spectre_panel", "TelescopePrompt" }
+      local disable =
+        { "neogitstatus", "netrw", "lir", "lazy", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage" }
 
       require("el").setup({
         generator = generator,
@@ -116,12 +111,12 @@ return {
     enabled = is_enabled("smoothcursor"),
     opts = {
       autostart = true,
-      cursor = "",          -- cursor shape (need nerd font)
+      cursor = "", -- cursor shape (need nerd font)
       texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
-      linehl = nil,            -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
-      type = "default",        -- define cursor movement calculate function, "default" or "exp" (exponential).
+      linehl = nil, -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
+      type = "default", -- define cursor movement calculate function, "default" or "exp" (exponential).
       fancy = {
-        enable = true,         -- enable fancy mode
+        enable = true, -- enable fancy mode
         head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
         body = {
           { cursor = "", texthl = "SmoothCursorRed" },
@@ -129,20 +124,20 @@ return {
           { cursor = "●", texthl = "SmoothCursorYellow" },
           { cursor = "●", texthl = "SmoothCursorGreen" },
           { cursor = "•", texthl = "SmoothCursorAqua" },
-          { cursor = ".",   texthl = "SmoothCursorBlue" },
-          { cursor = ".",   texthl = "SmoothCursorPurple" },
+          { cursor = ".", texthl = "SmoothCursorBlue" },
+          { cursor = ".", texthl = "SmoothCursorPurple" },
         },
         tail = { cursor = nil, texthl = "SmoothCursor" },
       },
-      flyin_effect = nil,        -- "bottom" or "top"
-      speed = 25,                -- max is 100 to stick to your current position
-      intervals = 35,            -- tick interval
-      priority = 10,             -- set marker priority
-      timeout = 3000,            -- timout for animation
-      threshold = 3,             -- animate if threshold lines jump
+      flyin_effect = nil, -- "bottom" or "top"
+      speed = 25, -- max is 100 to stick to your current position
+      intervals = 35, -- tick interval
+      priority = 10, -- set marker priority
+      timeout = 3000, -- timout for animation
+      threshold = 3, -- animate if threshold lines jump
       disable_float_win = false, -- disable on float window
-      enabled_filetypes = nil,   -- example: { "lua", "vim" }
-      disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
+      enabled_filetypes = nil, -- example: { "lua", "vim" }
+      disabled_filetypes = nil, -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
     },
     config = function(_, opts)
       require("smoothcursor").setup(opts)
@@ -203,11 +198,11 @@ return {
           ["vim.lsp.handlers['textDocument/signatureHelp']"] = false,
         },
         hover = {
-          enabled = false
+          enabled = false,
         },
         signature = {
-          enabled = false
-        }
+          enabled = false,
+        },
       },
       --   hover = {
       --     enabled = true,
@@ -258,7 +253,7 @@ return {
       --   long_message_to_split = false, -- long messages will be sent to a split
       -- },
       cmdline = {
-        enabled = true,         -- enables the Noice cmdline UI
+        enabled = true, -- enables the Noice cmdline UI
         view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
         format = {
           search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex" },
@@ -281,6 +276,7 @@ return {
     enabled = is_enabled("dashboard"),
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
+      -- local query = require('possession.query')
       -- Memento Mori
       -- Memento Vivere
       -- Now its your turn
@@ -308,7 +304,13 @@ return {
 
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
-        dashboard.button("s", " " .. " Restore Session", [[<cmd>lua require("persistence").load()<cr>]]),
+        dashboard.button(
+          "s",
+          " " .. " List Sessions",
+          [[<cmd>lua require('telescope').extensions.possession.list()<cr>]]
+        ),
+        dashboard.button("s", " " .. " Show Session", [[<cmd>PossessionShow<cr>]]),
+        dashboard.button("s", " " .. " Create Session", [[<cmd>PossessionSave<cr>]]),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }
       return dashboard
@@ -419,11 +421,12 @@ return {
     enabled = is_enabled("lualine"),
     event = { "BufReadPost" },
     dependencies = {
-      "arkav/lualine-lsp-progress"
+      "arkav/lualine-lsp-progress",
     },
     lazy = false,
     config = function()
-      local disable = { "neogitstatus", "netrw", "lir", "lazy", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage" }
+      local disable =
+        { "neogitstatus", "netrw", "lir", "lazy", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage" }
       local ignore = { "help", "packer", "spectre_panel", "TelescopePrompt" }
 
       local function active_clients()
@@ -522,6 +525,6 @@ return {
       }
 
       require("lualine").setup(opts) --, { require("nvim-web-devicons"), require("lualine-lsp-progress") })
-    end
-  }
+    end,
+  },
 }

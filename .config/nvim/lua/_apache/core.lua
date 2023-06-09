@@ -41,6 +41,7 @@ local core = {
     -- Colorschemes
     ["kimbox"]          = { enabled = false },
     ["nebulous"]        = { enabled = false },
+    ["gruvbox"]         = { enabled = false },
     ["no-clown-fiesta"] = { enabled = true },
 
 
@@ -68,7 +69,7 @@ local core = {
     ["bionic"]           = { enabled = true },
 
     ["noice"]  = { enabled = true },
-    ["notify"] = { enabled = true },
+    ["notify"] = { enabled = false },
 
     ["dashboard"] = { enabled = true },
     ["explorer"]  = { enabled = true },
@@ -90,12 +91,17 @@ local core = {
     ["template"]       = { enabled = false },
     ["comment"]        = { enabled = true },
     ["cursorword"]     = { enabled = true },
-    ["persistence"]    = { enabled = true },
 
     -- AI
     ["codeium"] = { enabled = true },
+    ["chatgpt"] = { enabled = false },
 
     ["git"] = { enabled = true },
+
+    -- Sessions
+    ["session"]     = { enabled = false },
+    ["possession"]  = { enabled = true },
+    ["persistence"] = { enabled = false },
   }
 }
 

@@ -38,7 +38,7 @@ function M.quite()
   vim.schedule(function()
     -- require("experiments.gc").clean()
     -- vim.cmd "tabdo SymbolsOutlineClose"
-    require("persistence").save()
+    -- require("persistence").save()
     vim.cmd(":qall")
   end)
 end

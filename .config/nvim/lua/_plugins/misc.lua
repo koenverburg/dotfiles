@@ -4,7 +4,7 @@ local core = require("_apache.core")
 return {
   {
     "nullchilly/fsread.nvim",
-    enabled = false, --is_enabled("misc"),
+    enabled = true, --is_enabled("misc"),
     lazy = true,
     config = function()
     end,
@@ -14,6 +14,21 @@ return {
     enabled = is_enabled("misc"),
     lazy = false,
     config = function()
+      require("alternate-toggler").setup {
+        alternates = {
+          ["dev"] = "prod",
+          ["prod"] = "dev",
+
+          ["development"] = "production",
+          ["production"] = "development",
+
+          ["live"] = "backtest",
+          ["backtest"] = "live",
+
+          ["==="] = "!==",
+          ["=="] = "!=",
+        }
+      }
     end,
   },
   {
@@ -240,19 +255,6 @@ return {
       temp.temp_dir = "~/.config/nvim/template"
       temp.author = "Koen Verburg (Conrad The Programmer)"
       temp.email = ""
-    end,
-  },
-  {
-    "folke/persistence.nvim",
-    enabled = is_enabled("persistence"),
-    lazy = false,
-    event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    config = function()
-      require("persistence").setup({
-        dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"), -- directory where session files are saved
-        options = { "buffers", "curdir", "tabpages" },               -- sessionoptions used for saving
-        -- pre_save = nil, -- a function to call before saving the session
-      })
     end,
   },
   {

@@ -36,7 +36,6 @@ return {
             override_generic_sorter = true, -- override the generic sorter
             case_mode = "ignore_case", -- or "ignore_case" or "respect_case", the default case_mode is "smart_case"
           },
-
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({
               layout_config = {
@@ -51,6 +50,7 @@ return {
 
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")
+      require("telescope").load_extension("possession")
     end,
   },
   {
