@@ -141,6 +141,17 @@ alias showreel='asciinema rec'
 # nvim
 alias resetnvim='nvim +Deletesession +qall'
 
+alias testfront="TZ=Europe/Amsterdam \
+BABEL_ENV='test' \
+NODE_ICU_DATA=node_modules/full-icu \
+LC_ALL=en_US.utf-8 \
+JEST_SUITE_NAME='Frontend_Tests' \
+./node_modules/.bin/jest \
+--config=frontend/jest.frontend.json \
+--maxWorkers=50% -u \
+--cacheDirectory=./.jest-cache"
+
+
 # alias ss="bash ~/code/github/dotfiles/.config/tmux/session.sh"
 alias keylight="~/code/github/dotfiles/streaming/keylights/keylights"
 
