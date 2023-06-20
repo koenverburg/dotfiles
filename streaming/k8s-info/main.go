@@ -80,7 +80,7 @@ func getPodCount(clientset *kubernetes.Clientset, ctx context.Context, namespace
 func format(name string, value string) string {
   lhs := fmt.Sprintf("#[fg=#979BAC]%s", name )
 
-  rhs := fmt.Sprintf("#[fg=#c6c8d1]#[bold]%s#[nobold]", value) 
+  rhs := fmt.Sprintf("#[fg=#c6c8d1]#[bold]%s#[nobold]", value)
 
   return fmt.Sprintf("%s:%s", lhs, rhs)
 }
@@ -95,12 +95,12 @@ func main() {
 	pods, err := getPodCount(clientset, ctx, namespace)
 	checkForErr(err)
 
-	context, err := getContext(clientset, ctx)
-	checkForErr(err)
+	// context, err := getContext(clientset, ctx)
+	// checkForErr(err)
 
   list := []string{
     format("clu", cluster),
-    format("ctx", context),
+    // format("ctx", context),
     format("ns", namespace),
     format("p", fmt.Sprintf("%v", pods)),
   }
