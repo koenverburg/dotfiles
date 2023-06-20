@@ -47,10 +47,15 @@ selection:
   save_to_clipboard: false
 
 cursor:
-  style: Block
-  unfocused_hollow: true
-  thickness: 0.1
+  style:
+    shape: Block
+  # unfocused_hollow: true
+  # custom_colors: true
+  # thickness: 0.1
 live_config_reload: true
+
+shell:
+  program: zsh
 
 schemes:
   gruvbox: &gruvbox
@@ -138,6 +143,11 @@ schemes:
     white: "0xffffff"
 
   no-clown-fiesta: &no-clown-fiesta
+    # Cursor color
+    cursor:
+      text: '#888888'
+      cursor: '#FFCC00'
+
     primary:
       background: '#151515'
       foreground: '#e1e1e1'
@@ -164,10 +174,6 @@ schemes:
       cyan:    '#75b5aa'
       white:   '#e1e1e1'
 
-    # Cursor color
-    cursor:
-      text: '#e1e1e1'
-      cursor: '#e1e1e1'
 
     # Selection color
     selection:
