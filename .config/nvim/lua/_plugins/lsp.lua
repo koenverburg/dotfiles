@@ -2,6 +2,7 @@ local core = require("_apache.core")
 local on_attach = require("_apache.functions").on_attach
 local is_enabled = require("_apache.functions").is_enabled
 local diagnosticSetup = require("experiments.diagnostic")
+local cody = require("experiments.cody")
 
 local servers = {
   vimls = {},
@@ -84,6 +85,17 @@ local servers = {
   },
   html = { cmd = { "vscode-html-language-server", "--stdio" } },
   -- cssls = { cmd = { "vscode-css-language-server", "--stdio" } },
+  llmsp = {
+    settings = {
+      llmsp = {
+        sourcegraph = {
+          autoComplete = "always",
+          accessToken = cody.get_token(),
+          url = "https://sourcegraph.sourcegraph.com",
+        },
+      },
+    },
+  },
 }
 
 -- "ray-x/lsp_signature.nvim",
@@ -113,17 +125,17 @@ return {
     },
     config = function()
       require("mason").setup()
-      require("mason-lspconfig").setup {
+      require("mason-lspconfig").setup({
         ensure_installed = {
           "gopls",
           "cssls",
           "tsserver",
           "dockerls",
-          "sumneko_lua",
+          -- "sumneko_lua",
           "tailwindcss",
           "yamlls",
         },
-      }
+      })
       -- vim.diagnostic.config({
       --   underline = true,
       --   update_in_insert = false,
@@ -132,6 +144,10 @@ return {
       -- })
       diagnosticSetup.setup()
       local lspconfig = require("lspconfig")
+
+      cody.register_llmsp_config(lspconfig)
+      -- cody.set_explain()
+
       for name, opts in pairs(servers) do
         if type(opts) == "function" then
           opts()
@@ -217,11 +233,11 @@ return {
         },
         window = {
           completion = cmp.config.window.bordered({
-            border = "rounded"
-          })
+            border = "rounded",
+          }),
         },
         formatting = {
-          fields = {"kind", "abbr", "menu",},
+          fields = { "kind", "abbr", "menu" },
           format = function(entry, vim_item)
             vim_item.kind = (core.icons[vim_item.kind] or "?") .. " " .. vim_item.kind
             vim_item.menu = entry.source.name
@@ -229,7 +245,7 @@ return {
             vim_item.abbr = vim_item.abbr:match("[^(]+")
 
             return vim_item
-          end
+          end,
           -- format = require("lspkind").cmp_format({
           --   mode = "symbol_text",
           -- }),

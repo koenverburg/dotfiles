@@ -1,4 +1,4 @@
-local is_enabled = require('_apache.functions').is_enabled
+local is_enabled = require("_apache.functions").is_enabled
 
 return {
   -- AI
@@ -21,5 +21,25 @@ return {
         return vim.fn["codeium#Clear"]()
       end, { expr = true })
     end,
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    enabled = is_enabled('chatgpt'),
+    config = function()
+      local file = vim.fn.readfile("/Users/verbukoe/.chatgpt")
+      if file then
+        require("chatgpt").setup({
+          api_key_cmd = file[1]
+        })
+      else
+        print('No chatgpt token found')
+      end
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }
