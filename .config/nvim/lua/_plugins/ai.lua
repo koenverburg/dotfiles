@@ -1,10 +1,11 @@
-is_enabled = require('_apache.functions').is_enabled
+local is_enabled = require('_apache.functions').is_enabled
 
 return {
   -- AI
   {
     "Exafunction/codeium.vim",
     enabled = is_enabled('codeium'),
+    lazy = false,
     config = function()
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set("i", "<C-g>", function()

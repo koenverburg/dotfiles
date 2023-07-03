@@ -9,7 +9,7 @@ require("_apache.options")
 require("_apache.keymaps")
 require("_apache.autocmds")
 
-require("_apache.functions").hideTablineWhenSingleTab()
+-- require("_apache.functions").hideTablineWhenSingleTab()
 
 require("conrad.winbar")
 require("conrad.charlist").setup({

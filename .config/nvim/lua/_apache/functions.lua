@@ -68,7 +68,7 @@ end
 
 function M.hideTablineWhenSingleTab()
   hide_tabline()
-  vim.api.nvim_create_autocmd({ "TabClosed", "TabNew", "BufDelete", "WinNew" }, { callback = hide_tabline })
+  vim.api.nvim_create_autocmd({ "TabClosed", "TabNew" }, { callback = hide_tabline })
 end
 
 function M.bind(mode, keys, func)
