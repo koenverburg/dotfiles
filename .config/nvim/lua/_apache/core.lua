@@ -39,10 +39,11 @@ local core = {
     ["minimal-statusline"] = { enabled = false },
 
     -- Colorschemes
-    ["kimbox"]          = { enabled = false },
-    ["nebulous"]        = { enabled = false },
-    ["gruvbox"]         = { enabled = false },
-    ["no-clown-fiesta"] = { enabled = true },
+    ["auto-colorscheme"] = { enabled = true },
+    ["no-clown-fiesta"]  = { enabled = true },
+    ["nebulous"]         = { enabled = true },
+    ["gruvbox"]          = { enabled = false },
+    ["kimbox"]           = { enabled = false },
 
 
     -- Search
@@ -75,7 +76,7 @@ local core = {
     ["explorer"]  = { enabled = true },
 
     -- Focus
-    ["winsep"] = { enabled = false },
+    ["winsep"] = { enabled = true },
     ["tint"]   = { enabled = false },
 
     -- Languages
@@ -83,6 +84,7 @@ local core = {
 
     -- Misc
     ['misc']           = { enabled = true },
+    ['colorizer']      = { enabled = true },
     ['hop']            = { enabled = true },
     ['leap']           = { enabled = false },
     ["icons"]          = { enabled = true },
@@ -96,12 +98,15 @@ local core = {
     ["codeium"] = { enabled = true },
     ["chatgpt"] = { enabled = false },
 
-    ["git"] = { enabled = true },
 
     -- Sessions
     ["session"]     = { enabled = false },
     ["possession"]  = { enabled = true },
     ["persistence"] = { enabled = false },
+
+    -- Utils
+    ["git"] = { enabled = true },
+    ["treesj"] = { enabled = true },
   }
 }
 

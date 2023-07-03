@@ -24,12 +24,10 @@ return {
   {
     "TimUntersberger/neogit",
     enabled = is_enabled("git"),
-    dependencies = {"nvim-lua/plenary.nvim"},
-
+    dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<leader>gg", "<cmd>Neogit<cr>"}
+      { "<leader>gg", "<cmd>Neogit<cr>" },
     },
-
     config = function()
       require("neogit").setup({
         integrations = {
@@ -41,7 +39,7 @@ return {
   {
     "sindrets/diffview.nvim",
     enabled = is_enabled("git"),
-
-    config = function() end,
+    config = function()
+    end,
   },
 }
