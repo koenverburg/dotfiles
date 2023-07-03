@@ -2,7 +2,7 @@ local core = require("_apache.core")
 local on_attach = require("_apache.functions").on_attach
 local is_enabled = require("_apache.functions").is_enabled
 local diagnosticSetup = require("experiments.diagnostic")
-local cody = require("experiments.cody")
+-- local cody = require("experiments.cody")
 
 local servers = {
   vimls = {},
@@ -85,17 +85,17 @@ local servers = {
   },
   html = { cmd = { "vscode-html-language-server", "--stdio" } },
   -- cssls = { cmd = { "vscode-css-language-server", "--stdio" } },
-  llmsp = {
-    settings = {
-      llmsp = {
-        sourcegraph = {
-          autoComplete = "always",
-          accessToken = cody.get_token(),
-          url = "https://sourcegraph.sourcegraph.com",
-        },
-      },
-    },
-  },
+  -- llmsp = {
+  --   settings = {
+  --     llmsp = {
+  --       sourcegraph = {
+  --         autoComplete = "always",
+  --         accessToken = cody.get_token(),
+  --         url = "https://sourcegraph.sourcegraph.com",
+  --       },
+  --     },
+  --   },
+  -- },
 }
 
 -- "ray-x/lsp_signature.nvim",
@@ -145,7 +145,7 @@ return {
       diagnosticSetup.setup()
       local lspconfig = require("lspconfig")
 
-      cody.register_llmsp_config(lspconfig)
+      -- cody.register_llmsp_config(lspconfig)
       -- cody.set_explain()
 
       for name, opts in pairs(servers) do
