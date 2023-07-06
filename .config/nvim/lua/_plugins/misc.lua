@@ -49,6 +49,7 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     enabled = is_enabled("colorizer"),
+    lazy = false,
     config = function()
       require("colorizer").setup()
     end,

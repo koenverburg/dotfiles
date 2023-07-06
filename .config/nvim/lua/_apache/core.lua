@@ -39,11 +39,12 @@ local core = {
     ["minimal-statusline"] = { enabled = false },
 
     -- Colorschemes
-    ["auto-colorscheme"] = { enabled = true },
+    ["auto-colorscheme"] = { enabled = false },
     ["no-clown-fiesta"]  = { enabled = true },
-    ["nebulous"]         = { enabled = true },
+    ["nebulous"]         = { enabled = false },
     ["gruvbox"]          = { enabled = false },
     ["kimbox"]           = { enabled = false },
+    ["gruvbuddy"]        = { enabled = false },
 
 
     -- Search
@@ -76,7 +77,7 @@ local core = {
     ["explorer"]  = { enabled = true },
 
     -- Focus
-    ["winsep"] = { enabled = true },
+    ["winsep"] = { enabled = false },
     ["tint"]   = { enabled = false },
 
     -- Languages

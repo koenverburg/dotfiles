@@ -13,23 +13,23 @@ opt.cursorline = true
 opt.expandtab = true
 opt.inccommand = "split"
 opt.ruler = true
-opt.shiftwidth = 2
 opt.shortmess = vim.o.shortmess .. "c" .. "F"
-opt.showtabline = 2
 opt.signcolumn = "yes"
-opt.softtabstop = 2
 opt.tabstop = 2
-opt.termguicolors = true
+opt.shiftwidth = 2
+opt.showtabline = 2
+opt.softtabstop = 2
 opt.updatetime = 50
 opt.guicursor = ""
 opt.number = true
 opt.hidden = true
 opt.undofile = true
-opt.colorcolumn = "80,100,120"
+-- opt.colorcolumn = "80,100,120"
 opt.laststatus=3
 opt.incsearch = true
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-
+-- vim.opt.termguicolors = true
+vim.cmd [[ set termguicolors ]]
 
 -- opt.switchbuf = 'uselast'
 -- opt.undordir = cache_dir .. "undodir/"

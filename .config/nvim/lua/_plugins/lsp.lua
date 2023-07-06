@@ -219,10 +219,11 @@ return {
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
+          { name = "nvim_lua" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
-          { name = "buffer" },
           { name = "path" },
+          { name = "buffer",  keyword_length = 5 },
         }),
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Replace,
@@ -232,9 +233,36 @@ return {
           entries = { name = "custom", selection_order = "near_cursor" },
         },
         window = {
-          completion = cmp.config.window.bordered({
-            border = "rounded",
-          }),
+          -- completion = cmp.config.window.bordered({
+          --   border = "rounded",
+          -- }),
+        },
+        sorting = {
+          -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
+          comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+
+            -- copied from cmp-under, but I don't think I need the plugin for this.
+            -- I might add some more of my own.
+            function(entry1, entry2)
+              local _, entry1_under = entry1.completion_item.label:find("^_+")
+              local _, entry2_under = entry2.completion_item.label:find("^_+")
+              entry1_under = entry1_under or 0
+              entry2_under = entry2_under or 0
+              if entry1_under > entry2_under then
+                return false
+              elseif entry1_under < entry2_under then
+                return true
+              end
+            end,
+
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+          },
         },
         formatting = {
           fields = { "kind", "abbr", "menu" },
@@ -246,15 +274,13 @@ return {
 
             return vim_item
           end,
-          -- format = require("lspkind").cmp_format({
-          --   mode = "symbol_text",
-          -- }),
         },
         experimental = {
           native_menu = false,
-          ghost_text = {
+          ghost_text = false,
+          --[[ ghost_text = {
             hl_group = "LspCodeLens",
-          },
+          }, ]]
         },
       })
     end,
