@@ -22,6 +22,15 @@ return {
       end, { expr = true })
     end,
   },
+  -- {
+  --   "sourcegraph/sg.nvim",
+  --   enabled = is_enabled('sg'),
+  --   lazy = false,
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --
+  --   -- If you have a recent version of lazy.nvim, you don't need to add this!
+  --   -- build = "nvim -l build/init.lua",
+  -- },
   {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",

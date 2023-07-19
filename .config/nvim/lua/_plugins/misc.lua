@@ -10,25 +10,64 @@ return {
     end,
   },
   {
+    "FluxxField/bionic-reading.nvim",
+    enabled = false,
+    lazy = false,
+    config = function()
+      require("bionic-reading").setup({
+        -- determines if the file types below will be
+        -- automatically highlighted on buffer open
+        auto_highlight = true,
+        -- the file types you want to highlight with
+        -- the node types you would like to target
+        -- using treesitter
+        file_types = {
+          ["text"] = {
+            "any", -- highlight any node
+          },
+          -- EX: only highlights comments in lua files
+          ["lua"] = {
+            "comment",
+          },
+        },
+        -- the highlighting styles applied
+        -- IMPORTANT - if link is present, no other
+        -- styles are applied
+        hl_group_value = {
+          -- link = "Bold",
+          bg = "red",
+          fg = "blue",
+          bold = true,
+        },
+        -- Flag used to control if the user is prompted
+        -- if BRToggle is called on a file type that is not
+        -- explicitly defined above
+        prompt_user = true,
+        -- Enable or disable the use of treesitter
+        treesitter = true,
+        -- Flag used to control if highlighting is applied as
+        -- you type
+        update_in_insert_mode = true,
+      })
+    end,
+  },
+  {
     "rmagatti/alternate-toggler",
     enabled = is_enabled("misc"),
     lazy = false,
     config = function()
-      require("alternate-toggler").setup {
+      require("alternate-toggler").setup({
         alternates = {
           ["dev"] = "prod",
           ["prod"] = "dev",
-
           ["development"] = "production",
           ["production"] = "development",
-
           ["live"] = "backtest",
           ["backtest"] = "live",
-
           ["==="] = "!==",
           ["=="] = "!=",
-        }
-      }
+        },
+      })
     end,
   },
   {
@@ -68,10 +107,10 @@ return {
     lazy = false,
     config = function()
       require("Comment").setup()
-      local comment_ft = require "Comment.ft"
+      local comment_ft = require("Comment.ft")
       comment_ft.set("lua", { "--%s", "--[[%s]]" })
 
-      comment_ft.set('json', { "// %s"})
+      comment_ft.set("json", { "// %s" })
       comment_ft.set("javascriptreact", { "// %s" })
       comment_ft.set("typescriptreact", { "// %s" })
     end,
@@ -82,9 +121,9 @@ return {
     lazy = false,
     opts = {
       providers = {
-        'lsp',
-        'treesitter',
-        'regex',
+        "lsp",
+        "treesitter",
+        "regex",
       },
       -- delay: delay in milliseconds
       delay = 100,
@@ -94,8 +133,8 @@ return {
       filetype_overrides = {},
       -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
       filetypes_denylist = {
-        'dirvish',
-        'fugitive',
+        "dirvish",
+        "fugitive",
       },
       -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
       filetypes_allowlist = {},
@@ -131,16 +170,16 @@ return {
         -- guifg = nil,
         -- guibg = nil,
 
-        guifg= core.colors.yellow,
+        guifg = core.colors.yellow,
         guibg = core.colors.black,
         fg = core.colors.yellow,
         bg = core.colors.black,
-        guisp = 'pink'
+        guisp = "pink",
       }
 
-      vim.cmd [[highlight! link IlluminatedWordText LspReferenceText]]
-      vim.cmd [[highlight! link IlluminatedWordRead LspReferenceRead]]
-      vim.cmd [[highlight! link IlluminatedWordWrite LspReferenceWrite]]
+      vim.cmd([[highlight! link IlluminatedWordText LspReferenceText]])
+      vim.cmd([[highlight! link IlluminatedWordRead LspReferenceRead]])
+      vim.cmd([[highlight! link IlluminatedWordWrite LspReferenceWrite]])
 
       -- vim.api.nvim_set_hl(0, "IlluminateWord", colors)
       -- vim.api.nvim_set_hl(0, "IlluminateWordText", colors)
@@ -260,7 +299,7 @@ return {
   },
   {
     "junegunn/vim-easy-align",
-    enabled = is_enabled('formatting'),
-    lazy = false
-  }
+    enabled = is_enabled("formatting"),
+    lazy = false,
+  },
 }

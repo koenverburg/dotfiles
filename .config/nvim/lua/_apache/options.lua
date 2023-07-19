@@ -28,8 +28,8 @@ opt.undofile = true
 opt.laststatus=3
 opt.incsearch = true
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
--- vim.opt.termguicolors = true
-vim.cmd [[ set termguicolors ]]
+vim.opt.termguicolors = true
+-- vim.cmd [[ set termguicolors ]]
 
 -- opt.switchbuf = 'uselast'
 -- opt.undordir = cache_dir .. "undodir/"

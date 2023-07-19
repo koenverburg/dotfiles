@@ -27,28 +27,21 @@ local servers = {
   gopls = {
     settings = {
       gopls = {
-        codelenses = {
-          test = true,
-          tidy = true,
-          generate = true,
-          references = true,
-          upgrade_dependency = true,
-        },
         hints = {
-          assignVariableTypes = true,
-          compositeLiteralFields = true,
-          compositeLiteralTypes = true,
           constantValues = true,
-          functionTypeParameters = true,
           parameterNames = true,
           rangeVariableTypes = true,
+          assignVariableTypes = true,
+          compositeLiteralTypes = true,
+          compositeLiteralFields = true,
+          functionTypeParameters = true,
         },
-        gofumpt = true,
       },
     },
   },
   tsserver = {
     root_dir = vim.loop.cwd,
+    disable_formatting = true,
     settings = {
       javascript = {
         inlayHints = {
@@ -98,18 +91,42 @@ local servers = {
   -- },
 }
 
--- "ray-x/lsp_signature.nvim",
 -- "nvim-lua/lsp_extensions.nvim",
---
 -- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", name = "lsp_lines.nvim" },
 
 return {
   {
-    "simrat39/inlay-hints.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    "ray-x/go.nvim",
+    dependencies = {  -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
     lazy = false,
     enabled = is_enabled("lsp"),
+    ft = {"go", 'gomod'},
+    event = {"CmdlineEnter"},
+    build = ':lua require("go.install").update_all_sync()',
+    config = function()
+      require("go").setup({
+        hint = true
+      })
+    end,
   },
+  -- {
+  --   "simrat39/inlay-hints.nvim",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   lazy = false,
+  --   enabled = is_enabled("lsp"),
+  --   init = function()
+  --     require("inlay-hints").setup({
+  --       only_current_line = false,
+  --       eol = {
+  --         right_align = true,
+  --       }
+  --     })
+  --   end
+  -- },
   {
     "ray-x/lsp_signature.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -121,6 +138,8 @@ return {
     enabled = is_enabled("lsp"),
     dependencies = {
       "mason.nvim",
+      -- "lvimuser/lsp-inlayhints.nvim",
+      -- "simrat39/inlay-hints.nvim",
       "williamboman/mason-lspconfig.nvim",
     },
     config = function()
@@ -129,22 +148,16 @@ return {
         ensure_installed = {
           "gopls",
           "cssls",
+          "yamlls",
           "tsserver",
           "dockerls",
-          -- "sumneko_lua",
           "tailwindcss",
-          "yamlls",
+          -- "sumneko_lua",
         },
       })
-      -- vim.diagnostic.config({
-      --   underline = true,
-      --   update_in_insert = false,
-      --   virtual_text = { spacing = 4, prefix = "●" },
-      --   severity_sort = true,
-      -- })
+
       diagnosticSetup.setup()
       local lspconfig = require("lspconfig")
-
       -- cody.register_llmsp_config(lspconfig)
       -- cody.set_explain()
 
@@ -154,6 +167,7 @@ return {
         else
           local client = lspconfig[name]
           client.setup(vim.tbl_extend("force", {
+            -- inlay_hints = { enabled = true },
             on_attach = on_attach,
             flags = { debounce_text_changes = 150 },
           }, opts))
@@ -223,7 +237,7 @@ return {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
-          { name = "buffer",  keyword_length = 5 },
+          { name = "buffer", keyword_length = 5 },
         }),
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Replace,

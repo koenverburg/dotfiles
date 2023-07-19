@@ -127,4 +127,36 @@ return {
       require("auto-dark-mode").init()
     end,
   },
+  {
+    "tjdevries/gruvbuddy.nvim",
+    dependencies = {
+      {
+        "tjdevries/colorbuddy.nvim",
+        branch = "dev"
+      }
+    },
+    enabled = is_enabled('gruvbuddy'),
+    lazy = false,
+    init = function()
+      require('colorbuddy').colorscheme('gruvbuddy')
+      local Group = require("colorbuddy.group").Group
+      local g = require("colorbuddy.group").groups
+      local s = require("colorbuddy.style").styles
+
+      Group.new("CmpItemAbbr", g.Comment)
+      Group.new("CmpItemAbbrDeprecated", g.Error)
+      Group.new("CmpItemAbbrMatchFuzzy", g.CmpItemAbbr.fg:dark(), nil, s.italic)
+      Group.new("CmpItemKind", g.Special)
+      Group.new("CmpItemMenu", g.NonText)
+
+      -- Color.new("gray0", "#111111")
+      -- Color.new("gray2", "#373b41")
+      -- Color.new("gray1", "#282a2e")
+      -- Color.new("gray3", "#969896")
+      -- Color.new("gray4", "#b4b7b4")
+      -- Color.new("gray5", "#c5c8c6")
+      -- Color.new("gray6", "#e0e0e0")
+      -- Color.new("gray7", "#ffffff")
+    end
+  }
 }

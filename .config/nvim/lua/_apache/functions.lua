@@ -102,7 +102,6 @@ end
 
 function M.on_attach(client, bufnr)
   local static_info = require('experiments.static-info')
-
   if static_info.enabled_when_supprted_filetype(bufnr) then
     -- trigger once
     -- static_info.show_reference()
@@ -116,6 +115,11 @@ function M.on_attach(client, bufnr)
 
   if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
     client.server_capabilities.document_formatting = false
+  end
+
+  local ih = require("inlay-hints")
+  if ih then
+    ih.on_attach(client, bufnr)
   end
 
   require "lsp_signature".on_attach({

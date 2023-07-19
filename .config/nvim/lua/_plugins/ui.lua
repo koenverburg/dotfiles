@@ -76,12 +76,12 @@ return {
         table.insert(segments, stl_providers.file_icon)
         table.insert(segments, stl.builtins.space)
         table.insert(segments, stl_providers.filename)
-        table.insert(segments, builtin.modified)
+        table.insert(segments, stl_providers.dim(builtin.modified))
         table.insert(segments, stl.builtins.space)
 
         table.insert(segments, sections.split)
         table.insert(segments, stl_providers.diagnostic)
-        table.insert(segments, stl_providers.lsp_enabled and stl_providers.lsp() or stl_providers.filetype())
+        table.insert(segments, stl_providers.lsp_or_filetype())
         table.insert(segments, sections.collapse_builtin(builtin.help_list, builtin.readonly_list))
 
         table.insert(segments, stl.builtins.space)

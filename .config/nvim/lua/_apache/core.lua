@@ -96,7 +96,8 @@ local core = {
     ["cursorword"]     = { enabled = true },
 
     -- AI
-    ["codeium"] = { enabled = true },
+    ["sg"]      = { enabled = false },
+    ["codeium"] = { enabled = false },
     ["chatgpt"] = { enabled = false },
 
 

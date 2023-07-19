@@ -162,6 +162,20 @@ function providers.lsp_enabled()
 	return true
 end
 
+function providers.lsp_or_filetype()
+  if not providers.lsp_enabled() then
+    return "%="
+  end
+
+  if #providers.lsp() > 0 then
+    return providers.lsp()
+  elseif  #providers.filetype() > 0 then
+    return providers.filetype()
+  end
+
+  return "%="
+end
+
 function providers.file_icon()
   local ft = providers.filetype()
 
@@ -226,6 +240,10 @@ function providers.filename()
   end
 
   return utils.dim(vim.fn.fnamemodify(name, ":."))
+end
+
+function providers.dim(value)
+  return utils.dim(value)
 end
 
 local statusline = {

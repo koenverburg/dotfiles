@@ -206,17 +206,21 @@ if is_enabled('telescope') and is_enabled('lsp') then
   end)
 
   funcs.telescope_map("gr", function()
-    local opts = themes.get_dropdown()
+    local opts = {}
     require("telescope.builtin").lsp_references(opts)
   end)
 
 
   funcs.telescope_map("<c-d>",function()
-    local opts = themes.get_dropdown()
+    local opts = {}
     require("telescope.builtin").lsp_document_symbols(opts)
   end)
 
   funcs.telescope_map("<leader>cx", "lsp_code_actions")
+end
+
+if is_enabled('telescope') and is_enabled('lsp') and is_enabled('sg') then
+  normal('<space>ss', [[<cmd>lua require('sg.telescope').fuzzy_search_results()<CR>]])
 end
 
 -- ----------------------------------------------------------------------------
