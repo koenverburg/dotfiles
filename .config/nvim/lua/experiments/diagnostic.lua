@@ -11,7 +11,7 @@ local config = {
   underline = true,
   severity_sort = true,
   update_in_insert = false,
-  virtual_text = true,
+  virtual_text = false,
   -- virtual_text = { spacing = 4, prefix = "●" },
 
   float = {

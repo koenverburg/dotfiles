@@ -183,25 +183,25 @@ if is_enabled('telescope') then
     require("telescope.builtin").git_files(opts)
   end)
 
-  -- funcs.telescope_map("<leader>sd", function()
-  --   local opts = themes.get_dropdown({
-  --     prompt_prefix = "",
-  --     results_title = false,
-  --     -- layout_config = {
-  --     --   prompt_position = "top",
-  --     -- },
-  --   })
-  --   require("telescope.builtin").diagnostics(opts)
-  -- end)
+   funcs.telescope_map("<leader><space>d", function()
+     local opts = {
+       prompt_prefix = "",
+       results_title = false,
+       -- layout_config = {
+       --   prompt_position = "top",
+       -- },
+     }
+     require("telescope.builtin").diagnostics(opts)
+   end)
 
   -- funcs.telescope_map("<leader><space>h", "help_tags")
 end
 
 if is_enabled('telescope') and is_enabled('lsp') then
-  local themes = require "telescope.themes"
+  -- local themes = require "telescope.themes"
 
   funcs.telescope_map("<c-r>", function()
-    local opts = themes.get_dropdown()
+    local opts = {}
     require("telescope.builtin").lsp_references(opts)
   end)
 
@@ -209,7 +209,6 @@ if is_enabled('telescope') and is_enabled('lsp') then
     local opts = {}
     require("telescope.builtin").lsp_references(opts)
   end)
-
 
   funcs.telescope_map("<c-d>",function()
     local opts = {}
@@ -228,8 +227,8 @@ end
 -- Vim bindings
 --
 -- ----------------------------------------------------------------------------
--- normal("q", "NOP") -- turn of recording of macros
--- normal("G", "Gzz")
+normal("q", "NOP") -- turn of recording of macros
+normal("G", "Gzz")
 
 -- Swap : and ; to make colon commands easer to type
 normal(";", ":")
@@ -280,10 +279,10 @@ visual("L", "g_")
 normal("<Tab>", "%")
 
 -- Splits
-normal("sh", ":sp<cr>|<c-w>j")
-normal("sv", ":vsp<cr>|<c-w>l")
-normal("<space>sh", ":sp<cr>|<c-w>j|:Telescope git_files<cr>")
-normal("<space>sv", ":vsp<cr>|<c-w>l|:Telescope git_files<cr>")
+normal("-", ":sp<cr>|<c-w>j")
+normal("|", ":vsp<cr>|<c-w>l")
+normal("<space>-", ":sp<cr>|<c-w>j|:Telescope git_files<cr>")
+normal("<space>|", ":vsp<cr>|<c-w>l|:Telescope git_files<cr>")
 
 -- Keep search matches in the middle of the window
 normal("n", "nzzzv")
@@ -291,6 +290,8 @@ normal("N", "Nzzzv")
 
 -- Quickly return to normal mode
 insert("jk", "<esc>")
+insert("jj", "<esc>")
+insert("kk", "<esc>")
 
 -- keep text selected after indentation
 visual("<", "<gv")
@@ -304,7 +305,7 @@ normal("<leader><space>", ":nohl<cr>")
 -- insert('<leader>w', ':w<cr>')
 
 -- Creating a new tab
-normal("<leader>T", ":tabnew<cr>")
+normal("<leader>t", ":tabnew<cr>|:Telescope git_files<cr>")
 
 -- Tab movement
 normal("<S-Tab>", ":tabnext<cr>")
@@ -325,7 +326,7 @@ normal("ga", "<Plug>(EasyAlign)")
 visual("ga", "<Plug>(EasyAlign)")
 
 -- Bookmark
-normal('bt', [[ <cmd>BookmarkToggle<cr> ]])
+-- normal('bt', [[ <cmd>BookmarkToggle<cr> ]])
 
 -- Searching
 normal('<leader>S', [[ <cmd>lua require('spectre').open()<cr> ]])
@@ -340,8 +341,8 @@ normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
 -- File Tree
 -- normal("<C-b>", "<cmd>lua require('')")
 
-normal("<leader>gt", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal()<cr> ]])
-terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
+-- normal("<leader>gt", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal()<cr> ]])
+-- terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
 -- -- Focus mode
 -- normal("<leader><space>f", ":ZenMode<cr>")
@@ -375,7 +376,7 @@ normal("<leader>ta", ":ToggleAlternate<cr>")
 --
 -- ----------------------------------------------------------------------------
 normal("<space>ta", "<cmd>lua require('experiments.edit-alt').edit()<cr>")
-normal("<space>/", "<cmd>lua require('_apache.functions').PopUpSearch()<cr>")
+-- normal("<space>/", "<cmd>lua require('_apache.functions').PopUpSearch()<cr>")
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
 -- Command Palette
@@ -383,7 +384,10 @@ normal("<space>cp", "<cmd>CmdPalette<cr>")
 
 -- Find 'n Replace
 normal("<leader>fr", ":%s/")
+normal("<space>fr", ":%s/")
+
 visual("<leader>fr", "'>s/")
+visual("<space>fr", "'>s/")
 
 normal("<leader><leader>x", "<cmd>lua require'_apache.functions'.save_and_execute()<cr>")
 -- normal("<leader><leader>c", "<cmd>lua require'core.virtualtext'.show()<cr>")
