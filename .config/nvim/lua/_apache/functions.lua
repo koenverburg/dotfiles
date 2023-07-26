@@ -108,6 +108,7 @@ function M.on_attach(client, bufnr)
     static_info.show_early_exit()
     static_info.show_named_imports()
     static_info.show_default_exports()
+    static_info.show_cyclomatic_complexity()
 
     -- trigger when buffer changes
     static_info.autocmd()
@@ -117,10 +118,10 @@ function M.on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
-  local ih = require("inlay-hints")
-  if ih then
-    ih.on_attach(client, bufnr)
-  end
+  -- local ih = require("inlay-hints")
+  -- if ih then
+  --   ih.on_attach(client, bufnr)
+  -- end
 
   require "lsp_signature".on_attach({
     bind = true,
