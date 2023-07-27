@@ -303,6 +303,18 @@ local function recurse_tree(node)
   return nested_count
 end
 
+local function switch(n, ...)
+  for _,v in ipairs {...} do
+    if v[1] == n or v[1] == nil then
+      return v[2]()
+    end
+  end
+end
+
+local function case(n,f)
+  return {n,f}
+end
+
 function M.show_cyclomatic_complexity(bufnr)
   bufnr = bufnr or api.nvim_get_current_buf()
   if not M.enabled_when_supprted_filetype(bufnr) then
@@ -377,14 +389,12 @@ function M.show_cyclomatic_complexity(bufnr)
       end
     end
 
-    if complexity > 1 then
-      if complexity < 10 then
-        utils.setVirtualText(ns_cc, node:start(), complexity, "cc", nil) -- signs.info.highlightGroup)
-      elseif complexity > 10 and complexity < 15 then
-        utils.setVirtualText(ns_cc, node:start(), complexity, "cc", signs.hint.highlightGroup)
-      else
-        utils.setVirtualText(ns_cc, node:start(), complexity, "cc", signs.warn.highlightGroup)
-      end
+    if complexity > 0 and complexity < 10 then
+      utils.setVirtualText(ns_cc, node:start(), complexity, "cc", nil) --signs.info.highlightGroup)
+    elseif complexity > 10 and complexity < 15 then
+      utils.setVirtualText(ns_cc, node:start(), complexity, "cc", signs.hint.highlightGroup)
+    else
+      utils.setVirtualText(ns_cc, node:start(), complexity, "cc", signs.error.highlightGroup)
     end
   end
 end

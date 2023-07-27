@@ -45,24 +45,30 @@ local servers = {
     settings = {
       javascript = {
         inlayHints = {
-          includeInlayEnumMemberValueHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayParameterNameHints = 'all',
           includeInlayVariableTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
         },
       },
       typescript = {
         inlayHints = {
-          includeInlayEnumMemberValueHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHints = 'all',
           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
+
           includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+
+          includeInlayEnumMemberValueHints = true,
+
+          includeInlayPropertyDeclarationTypeHints = true,
         },
       },
     },
@@ -97,36 +103,100 @@ local servers = {
 return {
   {
     "ray-x/go.nvim",
-    dependencies = {  -- optional packages
+    dependencies = {
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
     lazy = false,
     enabled = is_enabled("lsp"),
-    ft = {"go", 'gomod'},
-    event = {"CmdlineEnter"},
+    ft = { "go", "gomod" },
+    event = { "CmdlineEnter" },
     build = ':lua require("go.install").update_all_sync()',
     config = function()
       require("go").setup({
-        hint = true
+        hint = true,
       })
     end,
   },
-  -- {
-  --   "simrat39/inlay-hints.nvim",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   lazy = false,
-  --   enabled = is_enabled("lsp"),
-  --   init = function()
-  --     require("inlay-hints").setup({
-  --       only_current_line = false,
-  --       eol = {
-  --         right_align = true,
-  --       }
-  --     })
-  --   end
-  -- },
+  {
+    "VidocqH/lsp-lens.nvim",
+    enabled = is_enabled("lsp"),
+    event = "BufRead",
+    opts = {
+      include_declaration = true, -- Reference include declaration
+      sections = { -- Enable / Disable specific request
+        definition = false,
+        references = true,
+        implementation = false,
+      },
+    },
+    keys = {
+      {
+        -- LspLensToggle
+        "<leader>uL",
+        "<cmd>LspLensToggle<CR>",
+        desc = "LSP Len Toggle",
+      },
+    },
+  },
+  {
+    "koenverburg/lsp-inlayhints.nvim",
+    ft = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
+    event = "LspAttach",
+    branch = "anticonceal",
+    enabled = is_enabled("lsp"),
+    opts = {
+      inlay_hints = {
+        parameter_hints = {
+          show = true,
+          prefix = "",
+          separator = ", ",
+          remove_colon_end = true,
+          remove_colon_start = true,
+        },
+        type_hints = {
+          show = true,
+          prefix = "",
+          separator = ", ",
+          remove_colon_end = true,
+          remove_colon_start = true,
+        },
+        only_current_line = false,
+        labels_separator = " ",
+        max_len_align = false,
+        max_len_align_padding = 1,
+        highlight = "LspInlayHint",
+        priority = 0,
+      },
+      enabled_at_startup = true,
+      debug_mode = false,
+    },
+    init = function(_, options)
+      vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = "LspAttach_inlayhints",
+        callback = function(args)
+          if not (args.data and args.data.client_id) then
+            return
+          end
+
+          local bufnr = args.buf
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          require("lsp-inlayhints").on_attach(client, bufnr)
+        end,
+      })
+
+      require("lsp-inlayhints").setup(options)
+
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader>uI",
+        "<cmd>lua require('lsp-inlayhints').toggle()<CR>",
+        { noremap = true, silent = true }
+      )
+    end,
+  },
   {
     "ray-x/lsp_signature.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -138,8 +208,6 @@ return {
     enabled = is_enabled("lsp"),
     dependencies = {
       "mason.nvim",
-      -- "lvimuser/lsp-inlayhints.nvim",
-      -- "simrat39/inlay-hints.nvim",
       "williamboman/mason-lspconfig.nvim",
     },
     config = function()
@@ -167,7 +235,7 @@ return {
         else
           local client = lspconfig[name]
           client.setup(vim.tbl_extend("force", {
-            -- inlay_hints = { enabled = true },
+            inlay_hints = { enabled = true },
             on_attach = on_attach,
             flags = { debounce_text_changes = 150 },
           }, opts))
