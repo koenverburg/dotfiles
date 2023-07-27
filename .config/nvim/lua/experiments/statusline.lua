@@ -193,10 +193,10 @@ local function get_diagnostic_info(level)
   end
 
   local signs = {
-    core.signs[1].text,
-    core.signs[2].text,
-    core.signs[3].text,
-    core.signs[4].text,
+    core.diagnosticSigns[1].text,
+    core.diagnosticSigns[2].text,
+    core.diagnosticSigns[3].text,
+    core.diagnosticSigns[4].text,
   }
 
   local count = #vim.diagnostic.get(0, { level = level })
@@ -207,21 +207,21 @@ function providers.diagnostic()
   local errors   = get_diagnostic_info(1)
   local warnings = get_diagnostic_info(2)
   local hints    = get_diagnostic_info(3)
-  -- local info     = get_diagnostic_info(4)
+  local info     = get_diagnostic_info(4)
 
   local sb = {}
 
-  table.insert(sb, "%#"..core.signs[1].name.."#")
+  table.insert(sb, "%#"..core.diagnosticSigns[1].name.."#")
   table.insert(sb, errors)
 
-  table.insert(sb, "%#"..core.signs[2].name.."#")
+  table.insert(sb, "%#"..core.diagnosticSigns[2].name.."#")
   table.insert(sb, warnings)
 
-  table.insert(sb, "%#"..core.signs[3].name.."#")
+  table.insert(sb, "%#"..core.diagnosticSigns[3].name.."#")
   table.insert(sb, hints)
 
-  -- table.insert(sb, "%#"..core.signs[4].name.."#")
-  -- table.insert(sb, info)
+  table.insert(sb, "%#"..core.diagnosticSigns[4].name.."#")
+  table.insert(sb, info)
 
   table.insert(sb, "%#Normal#")
 

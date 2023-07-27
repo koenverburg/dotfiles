@@ -3,6 +3,51 @@ local core = {
     isWorkLaptop = string.find(vim.loop.os_gethostname(), "AMS")
   },
 
+  signs = {
+   error = "",
+   warn = "",
+   hint = "",
+   info = "",
+   git = " ",
+   searchProject = "󰺅",
+   searchFiles = "󰱽",
+   searchText = "󱎸",
+   notebook = "",
+   recentfiles = "󱋢",
+   cog = "",
+   org = "",
+   checkmark = "",
+   rightArrow = "",
+   smallRightArrow = "",
+   guillemet = "»",
+   close = "",
+   gitAdd = "|",
+   gitDelete = "_",
+   gitTopDelete = "‾",
+   gitChangeDelete = "~",
+   gitUntracked = "┆",
+   telescope = "",
+   caret = ">",
+   cmd =  "",
+   lightning = "",
+   document = "",
+   import = "",
+   keyboard = "",
+   sleep = "󰒲",
+   filledOrb = "●",
+   orb = "○",
+   package = "󰏗",
+   vim = "",
+   code = "",
+   play = "",
+   star = "",
+   line = "‒",
+   ignored = "",
+   unstaged = "",
+   staged = "",
+   conflict = "",
+  },
+
   icons = {
     Class = "",
     Constructor = "",
@@ -16,7 +61,7 @@ local core = {
     Variable = "",
   },
 
-  signs = {
+  diagnosticSigns = {
     {name = "DiagnosticSignError", text = ""},
     {name = "DiagnosticSignWarn", text = ""},
     {name = "DiagnosticSignHint", text = ""},
@@ -77,7 +122,6 @@ local core = {
     ["explorer"]  = { enabled = true },
 
     -- Focus
-    ["winsep"] = { enabled = false },
     ["tint"]   = { enabled = false },
 
     -- Languages
