@@ -1,7 +1,7 @@
 local utils = require("_apache.utils")
-local ts = require('nvim-treesitter')
-local parsers = require('nvim-treesitter.parsers')
 local ts_utils = require('nvim-treesitter.ts_utils')
+-- local ts = require('nvim-treesitter')
+-- local parsers = require('nvim-treesitter.parsers')
 
 local M = {}
 local api = vim.api
@@ -10,7 +10,7 @@ local parse_query = vim.treesitter.query.parse
 
 local ns_cc = vim.api.nvim_create_namespace("conrad/cyclomatic_complexity")
 local ns_imports = vim.api.nvim_create_namespace("conrad/imports")
-local ns_references = vim.api.nvim_create_namespace("conrad/references")
+-- local ns_references = vim.api.nvim_create_namespace("conrad/references")
 local ns_early_exit = vim.api.nvim_create_namespace("conrad/early-exit")
 local ns_default_exports = vim.api.nvim_create_namespace("conrad/default_exports")
 
@@ -79,28 +79,28 @@ local function query_for_returns(namespace, bufnr, lang, function_tree)
   end
 end
 
-local function query_for_if_statemenets(namespace, bufnr, lang, function_tree)
-  if lang == "typescriptreact" then
-    lang = "tsx"
-  end
-
-  local parsed = parse_query(lang, inverseable_ifs_queries)
-
-  for _, match in parsed:iter_matches(function_tree, bufnr) do
-    for _, node in pairs(match) do
-      local func_start = tostring(function_tree:start())
-      local node_start = tostring(node:start())
-
-      print(func_start, node_start)
-
-      -- if func_start == node_start then
-      --   utils.setVirtualText(namespace, node:start(), "original exit", signs.info.text, signs.info.name)
-      -- else
-      --   utils.setVirtualText(namespace, node:start(), "early exit", signs.info.text, signs.info.name)
-      -- end
-    end
-  end
-end
+-- local function query_for_if_statemenets(namespace, bufnr, lang, function_tree)
+--   if lang == "typescriptreact" then
+--     lang = "tsx"
+--   end
+--
+--   local parsed = parse_query(lang, inverseable_ifs_queries)
+--
+--   for _, match in parsed:iter_matches(function_tree, bufnr) do
+--     for _, node in pairs(match) do
+--       local func_start = tostring(function_tree:start())
+--       local node_start = tostring(node:start())
+--
+--       print(func_start, node_start)
+--
+--       -- if func_start == node_start then
+--       --   utils.setVirtualText(namespace, node:start(), "original exit", signs.info.text, signs.info.name)
+--       -- else
+--       --   utils.setVirtualText(namespace, node:start(), "early exit", signs.info.text, signs.info.name)
+--       -- end
+--     end
+--   end
+-- end
 
 local function query_buffer(bufnr, queries)
   local filetype = vim.api.nvim_buf_get_option(bufnr, "ft")
@@ -202,57 +202,57 @@ function M.show_default_exports()
   end
 end
 
-local function reference_handler(err, locations, ctx, _)
-  if err then
-    return
-  end
+-- local function reference_handler(err, locations, ctx, _)
+--   if err then
+--     return
+--   end
+--
+--   if not locations or vim.tbl_isempty(locations) then
+--     return
+--   end
+--
+--   local line = ctx.params.position.line
+--   local count = #locations - 1
+--
+--   if count > 0 then
+--     utils.setVirtualText(ns_references, line, "R " .. count, nil, signs.hint.highlightGroup)
+--     -- utils.setVirtualText(ns_references, line, "R " .. count, signs.info.icon, signs.info.highlightGroup)
+--   else
+--     utils.setVirtualText(ns_references, line, "Unused code", signs.error.icon, signs.error.highlightGroup)
+--   end
+-- end
 
-  if not locations or vim.tbl_isempty(locations) then
-    return
-  end
+-- local function convert_to_lsp_param(bufnr, node)
+--   local range = ts_utils.node_to_lsp_range(node)
+--   return {
+--     textDocument = vim.lsp.util.make_text_document_params(bufnr),
+--     position = {
+--       line = range.start.line,
+--       character = range.start.character,
+--     },
+--     context = {
+--       includeDeclaration = true,
+--     },
+--   }
+-- end
 
-  local line = ctx.params.position.line
-  local count = #locations - 1
-
-  if count > 0 then
-    utils.setVirtualText(ns_references, line, "R " .. count, nil, signs.hint.highlightGroup)
-    -- utils.setVirtualText(ns_references, line, "R " .. count, signs.info.icon, signs.info.highlightGroup)
-  else
-    utils.setVirtualText(ns_references, line, "Unused code", signs.error.icon, signs.error.highlightGroup)
-  end
-end
-
-local function convert_to_lsp_param(bufnr, node)
-  local range = ts_utils.node_to_lsp_range(node)
-  return {
-    textDocument = vim.lsp.util.make_text_document_params(bufnr),
-    position = {
-      line = range.start.line,
-      character = range.start.character,
-    },
-    context = {
-      includeDeclaration = true,
-    },
-  }
-end
-
-function M.show_reference(bufnr)
-  bufnr = bufnr or api.nvim_get_current_buf()
-  if not M.enabled_when_supprted_filetype(bufnr) then
-    return
-  end
-
-  local _, parsed, root = query_buffer(bufnr, function_queriess)
-
-  if not parsed then
-    return
-  end
-
-  for _, match in parsed:iter_matches(root, bufnr) do
-    local params = convert_to_lsp_param(bufnr, match[1])
-    vim.lsp.buf_request(bufnr, "textDocument/references", params, reference_handler)
-  end
-end
+-- function M.show_reference(bufnr)
+--   bufnr = bufnr or api.nvim_get_current_buf()
+--   if not M.enabled_when_supprted_filetype(bufnr) then
+--     return
+--   end
+--
+--   local _, parsed, root = query_buffer(bufnr, function_queriess)
+--
+--   if not parsed then
+--     return
+--   end
+--
+--   for _, match in parsed:iter_matches(root, bufnr) do
+--     local params = convert_to_lsp_param(bufnr, match[1])
+--     vim.lsp.buf_request(bufnr, "textDocument/references", params, reference_handler)
+--   end
+-- end
 
 local function recurse_tree(node)
   local nested_count = 0
@@ -301,18 +301,6 @@ local function recurse_tree(node)
   end
 
   return nested_count
-end
-
-local function switch(n, ...)
-  for _,v in ipairs {...} do
-    if v[1] == n or v[1] == nil then
-      return v[2]()
-    end
-  end
-end
-
-local function case(n,f)
-  return {n,f}
 end
 
 function M.show_cyclomatic_complexity(bufnr)
@@ -463,7 +451,6 @@ function M.enabled_when_supprted_filetype(bufnr)
 end
 
 function M.main()
-  -- M.show_reference()
   M.show_early_exit()
   M.show_named_imports()
   M.show_default_exports()
@@ -474,11 +461,9 @@ function M.autocmd()
   register_autocmd(function()
     vim.api.nvim_buf_clear_namespace(0, ns_cc, 0, -1)
     vim.api.nvim_buf_clear_namespace(0, ns_imports, 0, -1)
-    vim.api.nvim_buf_clear_namespace(0, ns_references, 0, -1)
     vim.api.nvim_buf_clear_namespace(0, ns_early_exit, 0, -1)
     vim.api.nvim_buf_clear_namespace(0, ns_default_exports, 0, -1)
 
-    -- M.show_reference()
     M.show_early_exit()
     M.show_named_imports()
     M.show_default_exports()
