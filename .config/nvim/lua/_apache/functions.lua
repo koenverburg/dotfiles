@@ -104,7 +104,6 @@ function M.on_attach(client, bufnr)
   local static_info = require('experiments.static-info')
   if static_info.enabled_when_supprted_filetype(bufnr) then
     -- trigger once
-    -- static_info.show_reference()
     static_info.show_early_exit()
     static_info.show_named_imports()
     static_info.show_default_exports()
@@ -115,6 +114,7 @@ function M.on_attach(client, bufnr)
   end
 
   if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
+    -- vim.lsp.buf.inlay_hint(bufnr, true)
     client.server_capabilities.document_formatting = false
   end
 
@@ -129,10 +129,6 @@ function M.on_attach(client, bufnr)
       border = "rounded"
     }
   }, bufnr)
-
-  -- if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
-  --   require("inlay-hints").on_attach(client, bufnr)
-  -- end
 
   -- if client.server_capabilities.documentSymbolProvider then
   --   require("nvim-navic").attach(client, bufnr)

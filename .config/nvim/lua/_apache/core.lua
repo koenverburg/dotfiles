@@ -90,7 +90,7 @@ local core = {
     ["gruvbox"]          = { enabled = false },
     ["kimbox"]           = { enabled = false },
     ["gruvbuddy"]        = { enabled = false },
-
+    ["darcula"]          = { enabled = false },
 
     -- Search
     ["telescope"] = { enabled = true },
@@ -153,6 +153,7 @@ local core = {
     -- Utils
     ["git"] = { enabled = true },
     ["treesj"] = { enabled = true },
+    ["mini-hipatterns"] = { enabled = true },
   }
 }
 

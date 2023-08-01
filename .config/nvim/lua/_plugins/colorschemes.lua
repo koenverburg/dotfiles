@@ -158,5 +158,16 @@ return {
       -- Color.new("gray6", "#e0e0e0")
       -- Color.new("gray7", "#ffffff")
     end
+  },
+  {
+  "briones-gabriel/darcula-solid.nvim",
+    dependencies = {
+      "rktjmp/lush.nvim"
+    },
+    enabled = is_enabled('darcula'),
+    lazy = false,
+    config = function()
+      vim.cmd 'colorscheme darcula-solid'
+    end
   }
 }

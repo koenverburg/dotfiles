@@ -141,7 +141,8 @@ return {
     },
   },
   {
-    "koenverburg/lsp-inlayhints.nvim",
+    "lvimuser/lsp-inlayhints.nvim",
+    -- "koenverburg/lsp-inlayhints.nvim",
     ft = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
     event = "LspAttach",
     branch = "anticonceal",

@@ -43,7 +43,7 @@ end
 
 function providers.git_branch()
 	if not vim.b.gitsigns_status_dict then
-		return ""
+		return "%#Normal# "
 	end
 
 	local branch = vim.b.gitsigns_status_dict["head"]
@@ -55,7 +55,7 @@ function providers.git_branch()
 		return branch
 	end
 
-	return icon .. " " .. "%#" .. color .. "#" .. branch .. "%#Normal#"
+	return "%#Normal# " .. icon .. " " .. "%#" .. color .. "#" .. branch .. "%#Normal#"
 end
 
 function providers.git_changes()

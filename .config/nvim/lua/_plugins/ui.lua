@@ -61,10 +61,10 @@ return {
 
       local generator = function(window, _) -- window, bufnr
         local segments = {}
-        table.insert(segments, stl.builtins.space)
+        -- table.insert(segments, stl.builtins.space)
         table.insert(segments, extensions.mode)
 
-        table.insert(segments, stl.builtins.space)
+        -- table.insert(segments, stl.builtins.space)
         table.insert(segments, render_async(window.win_id, "el_git_branch", stl_providers.git_branch))
 
         table.insert(segments, stl.builtins.space)
