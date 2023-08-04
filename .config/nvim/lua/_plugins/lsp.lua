@@ -434,8 +434,11 @@ return {
   {
     "simrat39/symbols-outline.nvim",
     enabled = is_enabled("lsp"),
+    lazy = false,
     config = function()
-      require("symbols-outline").setup()
+      require("symbols-outline").setup({
+        position = 'left'
+      })
     end,
   },
 }

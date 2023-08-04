@@ -76,27 +76,33 @@ return {
           end,
         },
         {
-          label = "telescope - Payments",
+          label = "telescope - filter - Payments",
           callback = function()
             require("experiments.edit-alt").filter_for("payment")
           end,
         },
         {
-          label = "telescope - Payments widget",
+          label = "telescope - filter - Payments widget",
           callback = function()
             require("experiments.edit-alt").filter_for("payment widget")
           end,
         },
         {
-          label = "telescope - widget",
+          label = "telescope - filter - widget",
           callback = function()
             require("experiments.edit-alt").filter_for("widget")
           end,
         },
         {
-          label = "telescope - nvim",
+          label = "telescope - filter - nvim",
           callback = function()
             require("experiments.edit-alt").filter_for("nvim")
+          end,
+        },
+        {
+          label = "telescope - filter - typescript",
+          callback = function()
+            require("experiments.edit-alt").filter_for(".ts")
           end,
         },
         {

@@ -2,7 +2,7 @@ local funcs = require('_apache.functions')
 local normal = funcs.normal
 local visual = funcs.visual
 local insert = funcs.insert
-local terminal = funcs.terminal
+-- local terminal = funcs.terminal
 local is_enabled = funcs.is_enabled
 
 if is_enabled('telescope') then
@@ -107,7 +107,7 @@ if is_enabled('telescope') then
 
   funcs.telescope_map("<space>gs", function()
     local input = {
-      prompt = "Grep String",
+      prompt = "Grep String ",
       default = "",
     }
 
@@ -320,6 +320,9 @@ visual("<leader>s", ":'<,'>!sort -f<cr>")
 -- Plugins bindings
 --
 -- ----------------------------------------------------------------------------
+
+-- Symbols
+normal("<space>o", "<cmd>SymbolsOutline<cr>")
 
 -- Formatting
 normal("ga", "<Plug>(EasyAlign)")

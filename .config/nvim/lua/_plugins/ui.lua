@@ -1,4 +1,5 @@
-local is_enabled = require("_apache.functions").is_enabled
+local funcs = require("_apache.functions")
+local is_enabled = funcs.is_enabled
 local icons = require('_apache.core').signs
 
 return {
@@ -308,7 +309,9 @@ Life Is Yours To Create
           [[<cmd>lua require('telescope').extensions.possession.list()<cr>]]
         ),
         dashboard.button("s", " " .. " Show Session", [[<cmd>PossessionShow<cr>]]),
-        dashboard.button("s", " " .. " Create Session", [[<cmd>PossessionSave<cr>]]),
+        -- dashboard.button("s", " " .. " Create Session",
+        --   [[<cmd>lua require('_apache.functions').createSession()<cr>]]
+        -- ),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }
       return dashboard
@@ -344,7 +347,10 @@ Life Is Yours To Create
       {
         "<C-b>",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+          require("neo-tree.command").execute({
+            toggle = true,
+            dir = vim.loop.cwd()
+          })
         end,
         desc = "Explorer NeoTree (cwd)",
       },
@@ -367,6 +373,7 @@ Life Is Yours To Create
         follow_current_file = true,
       },
       window = {
+        position = "right",
         mappings = {
           ["<space>"] = "none",
         },
@@ -380,6 +387,9 @@ Life Is Yours To Create
         },
       },
     },
+    config = function (_, opts)
+      require('neo-tree').setup(opts)
+    end
   },
   {
     "nullchilly/fsread.nvim",

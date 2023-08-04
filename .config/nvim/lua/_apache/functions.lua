@@ -114,7 +114,7 @@ function M.on_attach(client, bufnr)
   end
 
   if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
-    -- vim.lsp.buf.inlay_hint(bufnr, true)
+    -- vim.lsp.inlay_hint(bufnr, true)
     client.server_capabilities.document_formatting = false
   end
 
@@ -147,6 +147,20 @@ function M.on_attach(client, bufnr)
 
   lsp_map("n", "<leader>ca", "vim.lsp.buf.code_action")
   lsp_map("i", "<leader>ca", "vim.lsp.buf.code_action")
+end
+
+function M.createSession()
+  local input = {
+    prompt = "Session name ",
+    default = "",
+  }
+
+  M.inputOrUI(input, function (value)
+    print(value)
+    print("hii")
+    -- vim.cmd("set modifiable")
+    -- vim.cmd("<cmd>PossessionSave " .. value .. "<cr>")
+  end)
 end
 
 return M
