@@ -72,7 +72,7 @@ return {
         table.insert(segments, render_async(window.win_id, "el_git_stat", stl_providers.git_changes))
 
         table.insert(segments, stl.builtins.space)
-        table.insert(segments, sections.split)
+        -- table.insert(segments, sections.split)
 
         table.insert(segments, stl.builtins.space)
         table.insert(segments, stl_providers.file_icon)

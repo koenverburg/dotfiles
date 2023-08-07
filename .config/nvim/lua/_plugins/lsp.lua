@@ -7,6 +7,7 @@ local diagnosticSetup = require("experiments.diagnostic")
 local servers = {
   vimls = {},
   dockerls = {},
+  rome = {},
   lua_ls = {
     settings = {
       Lua = {
@@ -377,19 +378,28 @@ return {
       local nls = require("null-ls")
       local completion = nls.builtins.completion
       local formatting = nls.builtins.formatting
+
+
+      local sources = {
+        completion.spell,
+
+        formatting.gofmt,
+        formatting.stylua, -- install with "cargo install stylua"
+
+        -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
+        formatting.yamlfmt,
+      }
+
+      if core.env.isWorkLaptop == true then
+        table.insert(sources,formatting.prettier)
+        table.insert(sources,formatting.npm_groovy_lint)
+      else
+        table.insert(sources,formatting.rome)
+      end
+
       return {
         on_attach = on_attach,
-        sources = {
-          completion.spell,
-
-          formatting.gofmt,
-          formatting.stylua, -- install with "cargo install stylua"
-
-          -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
-          formatting.yamlfmt,
-          formatting.prettier,
-          formatting.npm_groovy_lint,
-        },
+        sources = sources,
       }
     end,
     config = function(_, opts)

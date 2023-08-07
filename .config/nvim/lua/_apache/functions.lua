@@ -118,6 +118,10 @@ function M.on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
+  -- if client.name == "rome" then
+  --   client.server_capabilities.document_formatting = true
+  -- end
+
   -- local ih = require("inlay-hints")
   -- if ih then
   --   ih.on_attach(client, bufnr)
