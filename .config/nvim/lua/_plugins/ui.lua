@@ -354,6 +354,16 @@ Life Is Yours To Create
         end,
         desc = "Explorer NeoTree (cwd)",
       },
+      {
+        "<space>b",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            dir = vim.loop.cwd()
+          })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
     },
     deactivate = function()
       vim.cmd([[Neotree close]])
@@ -399,4 +409,18 @@ Life Is Yours To Create
     --   -- require('').setup(opts)
     -- end
   },
+  {
+    'smithbm2316/centerpad.nvim',
+    enabled = is_enabled('centerpad'),
+    lazy = false,
+    keys = {
+      {
+        "<space>c",
+        function()
+          require("centerpad").toggle()
+        end,
+        desc = "Centerpad",
+      },
+    },
+  }
 }

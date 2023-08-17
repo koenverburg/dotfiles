@@ -129,7 +129,7 @@ local core = {
 
     -- Misc
     ['misc']           = { enabled = true },
-    ['colorizer']      = { enabled = true },
+    ['colorizer']      = { enabled = false },
     ['hop']            = { enabled = true },
     ['leap']           = { enabled = false },
     ["icons"]          = { enabled = true },
@@ -153,6 +153,7 @@ local core = {
     -- Utils
     ["git"] = { enabled = true },
     ["treesj"] = { enabled = true },
+    ["centerpad"] = { enabled = true },
     ["mini-hipatterns"] = { enabled = true },
   }
 }

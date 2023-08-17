@@ -83,23 +83,39 @@ return {
     end,
   },
   {
-    "rmagatti/alternate-toggler",
-    enabled = is_enabled("misc"),
+    'nguyenvukhang/nvim-toggler',
+    enabled = true,
     lazy = false,
-    config = function()
-      require("alternate-toggler").setup({
-        alternates = {
+    config = function ()
+      require('nvim-toggler').setup({
+        -- your own inverses
+        inverses = {
           ["dev"] = "prod",
           ["prod"] = "dev",
           ["development"] = "production",
           ["production"] = "development",
           ["live"] = "backtest",
           ["backtest"] = "live",
+          ["true"] = "false",
+          ["True"] = "False",
+          ["TRUE"] = "FALSE",
+          ["Yes"] = "No",
+          ["YES"] = "NO",
+          ["1"] = "0",
+          ["<"] = ">",
+          ["("] = ")",
+          ["["] = "]",
+          ["{"] = "}",
+          ['"'] = "'",
+          ['""'] = "''",
+          ["+"] = "-",
           ["==="] = "!==",
-          ["=="] = "!=",
+          ["=="] = "!="
         },
+        remove_default_keybinds = true,
+        remove_default_inverses = true,
       })
-    end,
+    end
   },
   {
     "unblevable/quick-scope",

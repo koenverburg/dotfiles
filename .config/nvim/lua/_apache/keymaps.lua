@@ -360,7 +360,7 @@ normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
 normal("<leader>jf", ":HopWordMW<cr>")
 
 -- Toggle Alternate
-normal("<leader>ta", ":ToggleAlternate<cr>")
+normal("<leader>ta", "<cmd>lua require('nvim-toggler').toggle()<cr>")
 
 -- Refactoring
 -- normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])

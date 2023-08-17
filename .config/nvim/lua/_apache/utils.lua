@@ -21,6 +21,28 @@ function M.setVirtualText(ns, line, text, prefix, color)
   vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, color } }, {})
 end
 
+function M.setVirtualTextAbove(ns, line, text, prefix, color)
+  color = color or "Comment"
+  local virtualText = string.format("%s", text)
+
+  if not M.is_empty(prefix) then
+    virtualText = string.format("%s %s", prefix, text)
+  end
+
+  -- vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, color } }, {})
+  vim.api.nvim_buf_set_extmark(0, ns, line, 0, {
+    virt_lines = {
+      {
+        {
+          virtualText,
+          color
+        }
+      }
+    },
+    virt_lines_above = true
+  })
+end
+
 function M.contains(table, element)
   for _, value in pairs(table) do
     if value == element then

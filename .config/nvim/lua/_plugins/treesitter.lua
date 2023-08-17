@@ -8,6 +8,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     enabled = is_enabled("treesitter"),
     dependencies = {
+      "filNaj/tree-setter",
       "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-refactor",
       -- {
@@ -51,6 +52,9 @@ return {
       --     ts = "// %s",
       --   },
       -- },
+      tree_setter = {
+        enable = true
+      },
       refactor = {
         smart_rename = {
           enable = true,
