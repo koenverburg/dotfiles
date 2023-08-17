@@ -24,6 +24,7 @@
     # ~/.config/skhd/skhdrc: .config/skhd/skhdrc
     # ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
     ~/.config/starship.toml: .config/starship/starship.toml
+    ~/.wezterm.lua: .config/wezterm/wezterm.lua
     # ~/.slate.js: .config/slate/.slate.js
     # "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
 

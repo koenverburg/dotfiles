@@ -14,6 +14,7 @@
     ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1: .config/powershell/profile.ps1
     ~/AppData/Roaming/lazygit/config.yml: .config/lazygit/config.yml
     ~/.config/starship.toml: .config/starship/starship.toml
+    ~/.wezterm.lua: .config/wezterm/wezterm.lua
 
 - shell:
     # - [git submodule update --init --recursive, Installing submodules]
