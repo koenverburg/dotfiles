@@ -54,6 +54,9 @@ cursor:
   # thickness: 0.1
 live_config_reload: true
 
+env:
+  TERM: xterm-256color
+
 shell:
   program: zsh
 
