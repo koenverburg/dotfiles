@@ -2,6 +2,10 @@ local is_enabled = require("_apache.functions").is_enabled
 local core = require("_apache.core")
 -- 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement,
 return {
+-- { "typicode/bg.nvim",
+--     lazy = false,
+--     enabled = true
+--   },
 {
     "Zeioth/markmap.nvim",
     build = "npm i --location=global markmap-cli",

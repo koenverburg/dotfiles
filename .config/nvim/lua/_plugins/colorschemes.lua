@@ -29,9 +29,9 @@ return {
       palette_overrides = {},
     },
     config = function(_, opts)
+      vim.cmd("set background=light")
       require("gruvbox").setup(opts)
       vim.cmd("colorscheme gruvbox")
-      vim.cmd("set background=light")
     end,
   },
   {
@@ -39,7 +39,8 @@ return {
     enabled = is_enabled("nebulous"),
     lazy = false,
     opts = {
-      variant = "quasar", -- "night",
+      variant = "night", -- "night",
+      -- variant = "quasar", -- "night",
     },
     config = function(_, opts)
       if not is_enabled("auto-colorscheme") then

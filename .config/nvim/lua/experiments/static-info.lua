@@ -378,11 +378,11 @@ function M.show_cyclomatic_complexity(bufnr)
     end
 
     if complexity > 1 and complexity < 10 then
-      utils.setVirtualTextAbove(ns_cc, node:start(), complexity, "Complexity", nil) --signs.info.highlightGroup)
+      utils.setVirtualText(ns_cc, node:start(), complexity, "Complexity", nil) --signs.info.highlightGroup)
     elseif complexity > 10 and complexity < 15 then
-      utils.setVirtualTextAbove(ns_cc, node:start(), complexity, "Complexity", signs.hint.highlightGroup)
+      utils.setVirtualText(ns_cc, node:start(), complexity, "Complexity", signs.hint.highlightGroup)
     elseif complexity > 15 then
-      utils.setVirtualTextAbove(ns_cc, node:start(), complexity, "Complexity", signs.error.highlightGroup)
+      utils.setVirtualText(ns_cc, node:start(), complexity, "Complexity", signs.error.highlightGroup)
     end
   end
 end

@@ -4,7 +4,7 @@ local opt = vim.opt
 -- local cache_dir = vim.env.HOME .. '/.cache/nvim/'
 
 opt.autoindent = true
-opt.background = "dark"
+opt.background = "light"
 opt.backspace = "indent,eol,start"
 opt.clipboard = vim.o.clipboard .. "unnamed,unnamedplus"
 opt.cmdheight = 1

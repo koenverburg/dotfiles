@@ -1,3 +1,6 @@
+
+local ide_enabled = false
+
 local core = {
   env = {
     isWorkLaptop = string.find(vim.loop.os_gethostname(), "AMS")
@@ -85,9 +88,9 @@ local core = {
 
     -- Colorschemes
     ["auto-colorscheme"] = { enabled = false },
-    ["no-clown-fiesta"]  = { enabled = true },
+    ["no-clown-fiesta"]  = { enabled = false },
     ["nebulous"]         = { enabled = false },
-    ["gruvbox"]          = { enabled = false },
+    ["gruvbox"]          = { enabled = true },
     ["kimbox"]           = { enabled = false },
     ["gruvbuddy"]        = { enabled = false },
     ["darcula"]          = { enabled = false },
@@ -118,7 +121,7 @@ local core = {
     ["noice"]  = { enabled = true },
     ["notify"] = { enabled = false },
 
-    ["dashboard"] = { enabled = true },
+    ["dashboard"] = { enabled = not ide_enabled },
     ["explorer"]  = { enabled = true },
 
     -- Focus
@@ -155,6 +158,8 @@ local core = {
     ["treesj"] = { enabled = true },
     ["centerpad"] = { enabled = true },
     ["mini-hipatterns"] = { enabled = true },
+
+    ["ide"] = { enabled = ide_enabled },
   }
 }
 
