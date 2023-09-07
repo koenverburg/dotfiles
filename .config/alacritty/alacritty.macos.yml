@@ -31,7 +31,7 @@ font:
   bold:
     family: JetBrainsMono Nerd Font
     style: Bold
-  size: 13.5
+  size: 14
 
   offset:
     x: 0
