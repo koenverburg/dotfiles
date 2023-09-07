@@ -1,4 +1,3 @@
-
 local ide_enabled = false
 
 local core = {
@@ -88,9 +87,9 @@ local core = {
 
     -- Colorschemes
     ["auto-colorscheme"] = { enabled = false },
-    ["no-clown-fiesta"]  = { enabled = false },
+    ["no-clown-fiesta"]  = { enabled = true },
     ["nebulous"]         = { enabled = false },
-    ["gruvbox"]          = { enabled = true },
+    ["gruvbox"]          = { enabled = false },
     ["kimbox"]           = { enabled = false },
     ["gruvbuddy"]        = { enabled = false },
     ["darcula"]          = { enabled = false },
@@ -98,7 +97,6 @@ local core = {
     -- Search
     ["telescope"] = { enabled = true },
     ["search"]    = { enabled = true },
-
 
     -- lsp
     ["lsp"]            = { enabled = true },
@@ -133,11 +131,9 @@ local core = {
     -- Misc
     ['misc']           = { enabled = true },
     ['colorizer']      = { enabled = false },
-    ['hop']            = { enabled = true },
     ['leap']           = { enabled = false },
     ["icons"]          = { enabled = true },
     ["accelerated-jk"] = { enabled = true},
-    ["hydra"]          = { enabled = true},
     ["template"]       = { enabled = false },
     ["comment"]        = { enabled = true },
     ["cursorword"]     = { enabled = true },
@@ -147,7 +143,6 @@ local core = {
     ["codeium"] = { enabled = false },
     ["chatgpt"] = { enabled = false },
 
-
     -- Sessions
     ["session"]     = { enabled = false },
     ["possession"]  = { enabled = true },
@@ -156,10 +151,17 @@ local core = {
     -- Utils
     ["git"] = { enabled = true },
     ["treesj"] = { enabled = true },
-    ["centerpad"] = { enabled = true },
     ["mini-hipatterns"] = { enabled = true },
 
     ["ide"] = { enabled = ide_enabled },
+
+    -- Focus (create focus.lua)
+    ["centerpad"] = { enabled = true },
+
+    -- navigation
+    ["tabtree"] = { enabled = true },
+    ['hop']     = { enabled = true }, -- move
+    ["hydra"]   = { enabled = true}, -- move
   }
 }
 

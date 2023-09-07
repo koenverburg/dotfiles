@@ -129,6 +129,8 @@ local function main()
       changed,
       removed,
       "%=",
+      "%c",
+      " ",
       "%l/%L"
     }
 

@@ -1,4 +1,5 @@
 local is_enabled = require("_apache.functions").is_enabled
+local core = require('_apache.core')
 
 -- "ThePrimeagen/git-worktree.nvim"
 return {
@@ -22,8 +23,10 @@ return {
       ts.setup({
         defaults = {
           color_devicons = true,
-          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
           sorting_strategy = "ascending",
+          selection_caret = core.signs.caret .. " ",
+          prompt_prefix = " " .. core.signs.telescope .. " ",
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
           layout_config = {
             height = 0.75,
             width = 0.9,

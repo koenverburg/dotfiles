@@ -53,7 +53,7 @@ return {
       --   },
       -- },
       tree_setter = {
-        enable = true
+        enable = false
       },
       refactor = {
         smart_rename = {

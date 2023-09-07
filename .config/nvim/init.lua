@@ -9,7 +9,7 @@ require("_apache.options")
 require("_apache.keymaps")
 require("_apache.autocmds")
 
-require("_legacy.bg")
+-- require("_legacy.bg")
 
 -- require("_apache.functions").hideTablineWhenSingleTab()
 

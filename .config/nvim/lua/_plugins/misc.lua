@@ -2,47 +2,49 @@ local is_enabled = require("_apache.functions").is_enabled
 local core = require("_apache.core")
 -- 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement,
 return {
--- { "typicode/bg.nvim",
---     lazy = false,
---     enabled = true
---   },
-{
+  {
+    "typicode/bg.nvim",
+    lazy = false,
+    enabled = true,
+  },
+  {
     "Zeioth/markmap.nvim",
     build = "npm i --location=global markmap-cli",
     cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
     opts = {
       html_output = "./markmap.html", -- (default) Setting a empty string "" here means: [Current buffer path].html
       hide_toolbar = true, -- (default)
-      grace_period = 3600000 -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
+      grace_period = 3600000, -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
     },
-    config = function(_, opts) require("markmap").setup(opts) end
+    config = function(_, opts)
+      require("markmap").setup(opts)
+    end,
   },
-{
-    'echasnovski/mini.hipatterns',
-    enabled = is_enabled('mini-hipatterns'),
+  {
+    "echasnovski/mini.hipatterns",
+    enabled = is_enabled("mini-hipatterns"),
     lazy = false,
     config = function()
-      local hipatterns = require('mini.hipatterns')
+      local hipatterns = require("mini.hipatterns")
       hipatterns.setup({
         highlighters = {
           -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-          fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'DiagnosticSignError' },
-          hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'DiagnosticSignWarn'  },
-          todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'DiagnosticSignHint'  },
-          note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'DiagnosticSignInfo'  },
+          fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "DiagnosticSignError" },
+          hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "DiagnosticSignWarn" },
+          todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "DiagnosticSignHint" },
+          note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "DiagnosticSignInfo" },
 
           -- Highlight hex color strings (`#rrggbb`) using that color
           hex_color = hipatterns.gen_highlighter.hex_color(),
         },
       })
-    end
+    end,
   },
   {
     "nullchilly/fsread.nvim",
     enabled = true, --is_enabled("misc"),
     lazy = true,
-    config = function()
-    end,
+    config = function() end,
   },
   {
     "FluxxField/bionic-reading.nvim",
@@ -87,11 +89,11 @@ return {
     end,
   },
   {
-    'nguyenvukhang/nvim-toggler',
+    "nguyenvukhang/nvim-toggler",
     enabled = true,
     lazy = false,
-    config = function ()
-      require('nvim-toggler').setup({
+    config = function()
+      require("nvim-toggler").setup({
         -- your own inverses
         inverses = {
           ["dev"] = "prod",
@@ -114,19 +116,18 @@ return {
           ['""'] = "''",
           ["+"] = "-",
           ["==="] = "!==",
-          ["=="] = "!="
+          ["=="] = "!=",
         },
         remove_default_keybinds = true,
         remove_default_inverses = true,
       })
-    end
+    end,
   },
   {
     "unblevable/quick-scope",
     enabled = is_enabled("misc"),
     lazy = false,
-    config = function()
-    end,
+    config = function() end,
   },
   {
     "koenverburg/dim.lua", -- Fork,
@@ -309,28 +310,28 @@ return {
       },
       heads = {
         -- move between windows
-        { "h",     "<C-w>h" },
-        { "j",     "<C-w>j" },
-        { "k",     "<C-w>k" },
-        { "l",     "<C-w>l" },
+        { "h", "<C-w>h" },
+        { "j", "<C-w>j" },
+        { "k", "<C-w>k" },
+        { "l", "<C-w>l" },
 
         -- resizing window
-        { "H",     "<C-w>3<" },
-        { "L",     "<C-w>3>" },
-        { "K",     "<C-w>2+" },
-        { "J",     "<C-w>2-" },
+        { "H", "<C-w>3<" },
+        { "L", "<C-w>3>" },
+        { "K", "<C-w>2+" },
+        { "J", "<C-w>2-" },
 
         -- equalize window sizes
-        { "e",     "<C-w>=" },
+        { "e", "<C-w>=" },
 
         -- close active window
-        { "Q",     ":q<cr>" },
+        { "Q", ":q<cr>" },
         { "<C-q>", ":q<cr>" },
 
         -- exit this Hydra
-        { "q",     nil,      { exit = true, nowait = true } },
-        { ";",     nil,      { exit = true, nowait = true } },
-        { "<Esc>", nil,      { exit = true, nowait = true } },
+        { "q", nil, { exit = true, nowait = true } },
+        { ";", nil, { exit = true, nowait = true } },
+        { "<Esc>", nil, { exit = true, nowait = true } },
       },
     },
     config = function(_, opts)

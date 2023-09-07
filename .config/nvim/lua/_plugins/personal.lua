@@ -106,6 +106,12 @@ return {
           end,
         },
         {
+          label = "telescope - filter - lua",
+          callback = function()
+            require("experiments.edit-alt").filter_for(".lua")
+          end,
+        },
+        {
           label = "conceal",
           callback = function()
             if vim.o.conceallevel > 0 then

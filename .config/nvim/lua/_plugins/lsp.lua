@@ -2,6 +2,7 @@ local core = require("_apache.core")
 local on_attach = require("_apache.functions").on_attach
 local is_enabled = require("_apache.functions").is_enabled
 local diagnosticSetup = require("experiments.diagnostic")
+local os = require('os')
 -- local cody = require("experiments.cody")
 
 local servers = {
@@ -122,10 +123,11 @@ return {
   },
   {
     "VidocqH/lsp-lens.nvim",
+    -- dir = "~/code/github/lsp-lens.nvim",
     enabled = is_enabled("lsp"),
     event = "BufRead",
     opts = {
-      include_declaration = true, -- Reference include declaration
+      include_declaration = false, -- Reference include declaration
       sections = { -- Enable / Disable specific request
         definition = false,
         references = true,
@@ -147,7 +149,7 @@ return {
     ft = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
     event = "LspAttach",
     branch = "anticonceal",
-    enabled = is_enabled("lsp"),
+    enabled = false, -- is_enabled("lsp"),
     opts = {
       inlay_hints = {
         parameter_hints = {
@@ -260,7 +262,15 @@ return {
         updateevents = "TextChanged,TextChangedI",
       })
 
-      require("luasnip.loaders.from_vscode").lazy_load()
+      -- local parse = require("luasnip.util.parser").parse_snippet
+      -- local s = require("luasnip.nodes.snippet").S
+      -- local p = require("luasnip.extras").partial
+      --
+      -- s("date", p(os.date, "%Y-%m-%d"))
+      -- s("time", p(os.date, "%H:%M"))
+      -- s("htime", p(os.date, "%Y-%m-%dT%H:%M:%S+10:00"))
+
+      -- require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_vscode").lazy_load({
         paths = { "./snippets/" },
       })

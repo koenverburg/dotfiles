@@ -287,7 +287,7 @@ return {
 
 Sigma
 
-84600
+86400
 
 discipline
 

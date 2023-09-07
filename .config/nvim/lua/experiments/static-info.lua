@@ -69,11 +69,11 @@ local function query_for_returns(namespace, bufnr, lang, function_tree)
     for _, node in pairs(match) do
       local func_end = tostring(function_tree:end_() - 1)
       local node_end = tostring(node:end_())
-
+      local line, col, _ = node:start()
       if func_end == node_end then
-        utils.setVirtualText(namespace, node:start(), "original exit", signs.info.icon, nil) -- signs.info.highlightGroup)
+        utils.setVirtualText(namespace, line, col, "original exit", signs.info.icon, nil) -- signs.info.highlightGroup)
       else
-        utils.setVirtualText(namespace, node:start(), "early exit", signs.info.icon, nil) -- signs.info.highlightGroup)
+        utils.setVirtualText(namespace, line, col, "early exit", signs.info.icon, nil) -- signs.info.highlightGroup)
       end
     end
   end
@@ -152,11 +152,13 @@ function M.show_named_imports()
   for _, match in parsed:iter_matches(root, bufnr) do
     for _, node in pairs(match) do
       local text = get_node_text(node, bufnr)
+      local line, col, _ = node:start()
 
       if string.match(text, "* as") then
         utils.setVirtualText(
           ns_imports,
-          node:start(),
+          line,
+          col,
           "Star import found",
           signs.error.text,
           signs.error.highlightGroup
@@ -164,7 +166,8 @@ function M.show_named_imports()
       elseif not string.match(text, "{") then
         utils.setVirtualText(
           ns_imports,
-          node:start(),
+          line,
+          col,
           "Named import found",
           signs.error.text,
           signs.error.highlightGroup
@@ -188,11 +191,13 @@ function M.show_default_exports()
   for _, match in parsed:iter_matches(root, bufnr) do
     for _, node in pairs(match) do
       local text = get_node_text(node, bufnr)
+      local line, col, _ = node:start()
 
       if string.match(text, "export default") then
         utils.setVirtualText(
           ns_default_exports,
-          node:start(),
+          line,
+          col,
           "Default export found",
           signs.error.text,
           signs.error.highlightGroup
@@ -303,6 +308,16 @@ local function recurse_tree(node)
   return nested_count
 end
 
+local function location(first, second, default)
+  if first then
+    return first:start()
+  elseif second then
+    return second:start()
+  else
+    return default:start()
+  end
+end
+
 function M.show_cyclomatic_complexity(bufnr)
   bufnr = bufnr or api.nvim_get_current_buf()
   if not M.enabled_when_supprted_filetype(bufnr) then
@@ -377,12 +392,24 @@ function M.show_cyclomatic_complexity(bufnr)
       end
     end
 
+    -- local node1 = utils.walk_tree(node, {
+    --   "lexical_declaration"
+    -- })
+
+    -- local node2 = utils.walk_tree(node, {
+    --   "export_statement",
+    --   "return_statement"
+    -- })
+
+    -- local line, col, _ = location(node1, node2, node)
+    local line, col, _ = node:start()
+
     if complexity > 1 and complexity < 10 then
-      utils.setVirtualText(ns_cc, node:start(), complexity, "Complexity", nil) --signs.info.highlightGroup)
+      utils.setVirtualTextAbove(ns_cc, line, col, complexity, "Complexity", nil) --signs.info.highlightGroup)
     elseif complexity > 10 and complexity < 15 then
-      utils.setVirtualText(ns_cc, node:start(), complexity, "Complexity", signs.hint.highlightGroup)
+      utils.setVirtualTextAbove(ns_cc, line, col, complexity, "Complexity", signs.hint.highlightGroup)
     elseif complexity > 15 then
-      utils.setVirtualText(ns_cc, node:start(), complexity, "Complexity", signs.error.highlightGroup)
+      utils.setVirtualTextAbove(ns_cc, line, col, complexity, "Complexity", signs.error.highlightGroup)
     end
   end
 end

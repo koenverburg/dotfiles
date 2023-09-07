@@ -10,7 +10,7 @@ function M.P(value)
   return value
 end
 
-function M.setVirtualText(ns, line, text, prefix, color)
+function M.setVirtualText(ns, line, col, text, prefix, color)
   color = color or "Comment"
   local virtualText = string.format("%s", text)
 
@@ -21,25 +21,31 @@ function M.setVirtualText(ns, line, text, prefix, color)
   vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, color } }, {})
 end
 
-function M.setVirtualTextAbove(ns, line, text, prefix, color)
+local function createIndent(tbl, length)
+  for i = 1, length do
+    tbl[i] = { " ", 0 }
+  end
+  return tbl
+end
+
+function M.setVirtualTextAbove(ns, line, col, text, prefix, color)
+  col = col or 0
   color = color or "Comment"
-  local virtualText = string.format("%s", text)
+
+  text = string.format("%s", text)
 
   if not M.is_empty(prefix) then
-    virtualText = string.format("%s %s", prefix, text)
+    text = string.format("%s %s", prefix, text)
   end
 
-  -- vim.api.nvim_buf_set_virtual_text(0, ns, line, { { virtualText, color } }, {})
-  vim.api.nvim_buf_set_extmark(0, ns, line, 0, {
-    virt_lines = {
-      {
-        {
-          virtualText,
-          color
-        }
-      }
-    },
-    virt_lines_above = true
+  local tbl = {}
+  createIndent(tbl, col)
+
+  table.insert(tbl, { text, color })
+
+  vim.api.nvim_buf_set_extmark(0, ns, line, col, {
+    virt_lines_above = true,
+    virt_lines = { tbl },
   })
 end
 

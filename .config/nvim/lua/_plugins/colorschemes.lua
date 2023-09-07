@@ -2,6 +2,15 @@ local is_enabled = require("_apache.functions").is_enabled
 local core = require("_apache.core")
 
 return {
+{
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    enabled = false,
+    config = function()
+      require('nordic').load()
+    end
+  },
   {
     "ellisonleao/gruvbox.nvim",
     enabled = is_enabled("gruvbox"),
@@ -29,7 +38,7 @@ return {
       palette_overrides = {},
     },
     config = function(_, opts)
-      vim.cmd("set background=light")
+      vim.cmd("set background=dark")
       require("gruvbox").setup(opts)
       vim.cmd("colorscheme gruvbox")
     end,
