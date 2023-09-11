@@ -441,7 +441,7 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    enabled = is_enabled("lsp"),
+    enabled = false, -- is_enabled("lsp"),
     lazy = false,
     config = function()
       require("fidget").setup({
