@@ -15,9 +15,6 @@ local opts = {
     "TabClosed" },
 }
 
-
-
-
 local function is_nil(val)
   return ((val == nil) or (val == ""))
 end
@@ -33,20 +30,6 @@ end
 local function ignore()
   return vim.tbl_contains(opts["ignore-filetypes"], get_filetype())
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 local function get_icon_by_filetype(ft)
   local ok, icons = pcall(require, "nvim-web-devicons")
@@ -67,14 +50,6 @@ local function get_icon_by_filetype(ft)
 
   return "%#" .. color .. "#" .. icon .. "%#Normal#" .. " "
 end
-
-
-
-
-
-
-
-
 
 local function get_git_status(type)
   local chars = {

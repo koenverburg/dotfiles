@@ -1,7 +1,10 @@
 local is_enabled = require("_apache.functions").is_enabled
 
 return {
-  { dir = "~/code/github/nightcoder.nvim" },
+  {
+    dir = "~/code/github/nightcoder.nvim",
+    lazy = false
+  },
   {
     "koenverburg/minimal-tabline.nvim",
     branch = "develop",

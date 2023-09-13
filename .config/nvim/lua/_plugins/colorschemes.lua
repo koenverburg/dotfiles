@@ -2,7 +2,7 @@ local is_enabled = require("_apache.functions").is_enabled
 local core = require("_apache.core")
 
 return {
-{
+  {
     'AlexvZyl/nordic.nvim',
     lazy = false,
     priority = 1000,
@@ -58,8 +58,8 @@ return {
     end,
   },
   {
-    "aktersnurra/no-clown-fiesta.nvim",
-    -- dir = "~/code/github/no-clown-fiesta.nvim",
+    -- "aktersnurra/no-clown-fiesta.nvim",
+    dir = "~/code/github/no-clown-fiesta.nvim",
     enabled = is_enabled("no-clown-fiesta"),
     lazy = false,
     opts = {

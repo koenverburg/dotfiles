@@ -152,7 +152,8 @@ schemes:
       cursor: '#FFCC00'
 
     primary:
-      background: '#151515'
+      background: '#00010A'
+      # background: '#151515'
       foreground: '#e1e1e1'
 
     # Normal colors

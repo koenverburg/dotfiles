@@ -440,18 +440,6 @@ return {
     end,
   },
   {
-    "j-hui/fidget.nvim",
-    enabled = false, -- is_enabled("lsp"),
-    lazy = false,
-    config = function()
-      require("fidget").setup({
-        text = {
-          spinner = "dots_snake",
-        },
-      })
-    end,
-  },
-  {
     "simrat39/symbols-outline.nvim",
     enabled = is_enabled("lsp"),
     lazy = false,
