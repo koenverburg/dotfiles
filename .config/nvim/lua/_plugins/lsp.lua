@@ -398,6 +398,8 @@ return {
 
         -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
         formatting.yamlfmt,
+
+        nls.builtins.code_actions.ts_node_action,
       }
 
       if core.env.isWorkLaptop == true then

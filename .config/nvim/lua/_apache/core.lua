@@ -152,6 +152,9 @@ local core = {
     ["git"] = { enabled = true },
     ["treesj"] = { enabled = true },
     ["mini-hipatterns"] = { enabled = true },
+    ["surround"] = { enabled = false },
+    ["multi-cursor"] = { enabled = false },
+    ["ts-node-action"] = { enabled = true },
 
     ["ide"] = { enabled = ide_enabled },
 

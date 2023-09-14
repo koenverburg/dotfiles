@@ -11,8 +11,6 @@ require("_apache.autocmds")
 
 -- require("_legacy.bg")
 
--- require("_apache.functions").hideTablineWhenSingleTab()
-
 require("conrad.winbar")
 require("conrad.charlist").setup({
   enabled = false,
