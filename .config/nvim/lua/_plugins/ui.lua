@@ -1,8 +1,18 @@
 local funcs = require("_apache.functions")
 local is_enabled = funcs.is_enabled
-local icons = require('_apache.core').signs
+local icons = require("_apache.core").signs
 
 return {
+  {
+    "anuvyklack/pretty-fold.nvim",
+    enabled = is_enabled('pretty-fold'),
+    lazy = false,
+    config = function()
+      require("pretty-fold").setup({
+        -- fill_char = '-',
+      })
+    end,
+  },
   {
     "stevearc/dressing.nvim",
     enabled = is_enabled("dressing"),
@@ -349,7 +359,7 @@ Life Is Yours To Create
         function()
           require("neo-tree.command").execute({
             toggle = true,
-            dir = vim.loop.cwd()
+            dir = vim.loop.cwd(),
           })
         end,
         desc = "Explorer NeoTree (cwd)",
@@ -359,7 +369,7 @@ Life Is Yours To Create
         function()
           require("neo-tree.command").execute({
             toggle = true,
-            dir = vim.loop.cwd()
+            dir = vim.loop.cwd(),
           })
         end,
         desc = "Explorer NeoTree (cwd)",
@@ -397,9 +407,9 @@ Life Is Yours To Create
         },
       },
     },
-    config = function (_, opts)
-      require('neo-tree').setup(opts)
-    end
+    config = function(_, opts)
+      require("neo-tree").setup(opts)
+    end,
   },
   {
     "nullchilly/fsread.nvim",
@@ -410,8 +420,8 @@ Life Is Yours To Create
     -- end
   },
   {
-    'smithbm2316/centerpad.nvim',
-    enabled = is_enabled('centerpad'),
+    "smithbm2316/centerpad.nvim",
+    enabled = is_enabled("centerpad"),
     lazy = false,
     keys = {
       {
@@ -422,5 +432,5 @@ Life Is Yours To Create
         desc = "Centerpad",
       },
     },
-  }
+  },
 }

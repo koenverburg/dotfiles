@@ -122,9 +122,9 @@ return {
     end,
   },
   {
-    "VidocqH/lsp-lens.nvim",
-    -- dir = "~/code/github/lsp-lens.nvim",
-    enabled = is_enabled("lsp"),
+    -- "VidocqH/lsp-lens.nvim",
+    dir = "~/code/github/lsp-lens.nvim",
+    enabled = false, -- is_enabled("lsp"),
     event = "BufRead",
     opts = {
       include_declaration = false, -- Reference include declaration
@@ -388,7 +388,6 @@ return {
       local nls = require("null-ls")
       local completion = nls.builtins.completion
       local formatting = nls.builtins.formatting
-
 
       local sources = {
         completion.spell,

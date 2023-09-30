@@ -19,15 +19,28 @@ return {
   {
     "kylechui/nvim-surround",
     enabled = is_enabled("surround"),
+    lazy = false,
     config = function()
       require("nvim-surround").setup()
     end,
   },
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   enabled = is_enabled("multi-cursor"),
-  --   config = function()
-  --     -- require("v").setup()
-  --   end,
-  -- },
+  {
+    "smoka7/multicursors.nvim",
+    -- lazy = "VeryLazy",
+    enabled = is_enabled("multicursors"),
+    dependencies = {
+      -- "smoka7/hydra.nvim",
+      "anuvyklack/hydra.nvim"
+    },
+    opts = {},
+    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+    keys = {
+      {
+        mode = { "v", "n" },
+        "<Leader>m",
+        "<cmd>MCstart<cr>",
+        desc = "Create a selection for selected text or word under the cursor",
+      },
+    },
+  },
 }

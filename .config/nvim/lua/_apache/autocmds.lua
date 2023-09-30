@@ -10,6 +10,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- vim.api.nvim_create_autocmd({ "WinEnter" }, {
+--   group = augroup("foldregions"),
+--   callback = function()
+--     require('conrad.region').main()
+--   end,
+-- })
+
 -- vim.api.nvim_create_autocmd({ "VimResized" }, {
 --   group = augroup("resize_splits"),
 --   callback = function()

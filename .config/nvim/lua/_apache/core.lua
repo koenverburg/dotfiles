@@ -76,7 +76,17 @@ local core = {
   },
 
   lsp_servers = {},
+
   treesitter_grammers = {},
+
+  supported_languages = {
+    "lua",
+    -- "javascript",
+    -- "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "tsx",
+  },
 
   plugins = {
     -- Personal
@@ -115,6 +125,7 @@ local core = {
     ["smoothcursor"]     = { enabled = false },
     ["smartcolumn"]      = { enabled = false},
     ["bionic"]           = { enabled = true },
+    ["pretty-fold"]      = { enabled = true },
 
     ["noice"]  = { enabled = true },
     ["notify"] = { enabled = false },
@@ -149,12 +160,12 @@ local core = {
     ["persistence"] = { enabled = false },
 
     -- Utils
-    ["git"] = { enabled = true },
-    ["treesj"] = { enabled = true },
+    ["git"]             = { enabled = true },
+    ["treesj"]          = { enabled = true },
     ["mini-hipatterns"] = { enabled = true },
-    ["surround"] = { enabled = false },
-    ["multi-cursor"] = { enabled = false },
-    ["ts-node-action"] = { enabled = true },
+    ["surround"]        = { enabled = true },
+    ["ts-node-action"]  = { enabled = true },
+    ["multicursors"]    = { enabled = true },
 
     ["ide"] = { enabled = ide_enabled },
 

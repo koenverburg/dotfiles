@@ -315,6 +315,9 @@ normal('<space>', 'za')
 -- Credo, sort aliases in alphabetical order
 visual("<leader>s", ":'<,'>!sort -f<cr>")
 
+-- open folds faster, za toggles folds that are created
+normal('of', 'za')
+
 -- ----------------------------------------------------------------------------
 --
 -- Plugins bindings
@@ -379,6 +382,7 @@ normal("<leader>ta", "<cmd>lua require('nvim-toggler').toggle()<cr>")
 --
 -- ----------------------------------------------------------------------------
 normal("<space>ta", "<cmd>lua require('experiments.edit-alt').edit()<cr>")
+normal("<leader>fr", "<cmd>lua require('conrad.region').main()<cr>")
 -- normal("<space>/", "<cmd>lua require('_apache.functions').PopUpSearch()<cr>")
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
@@ -386,11 +390,11 @@ normal("<space>ta", "<cmd>lua require('experiments.edit-alt').edit()<cr>")
 normal("<space>cp", "<cmd>CmdPalette<cr>")
 
 -- Find 'n Replace
-normal("<leader>fr", ":%s/")
+-- normal("<leader>fr", ":%s/")
 normal("<space>fr", ":%s/")
 
-visual("<leader>fr", "'>s/")
-visual("<space>fr", "'>s/")
+-- visual("<leader>fr", "'>s/")
+-- visual("<space>fr", "'>s/")
 
 normal("<leader><leader>x", "<cmd>lua require'_apache.functions'.save_and_execute()<cr>")
 -- normal("<leader><leader>c", "<cmd>lua require'core.virtualtext'.show()<cr>")

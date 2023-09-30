@@ -48,8 +48,8 @@ return {
     enabled = is_enabled("nebulous"),
     lazy = false,
     opts = {
-      variant = "night", -- "night",
-      -- variant = "quasar", -- "night",
+      -- variant = "night", -- "night",
+      variant = "quasar", -- "night",
     },
     config = function(_, opts)
       if not is_enabled("auto-colorscheme") then
