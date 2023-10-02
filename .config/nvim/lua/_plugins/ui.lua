@@ -5,7 +5,7 @@ local icons = require("_apache.core").signs
 return {
   {
     "anuvyklack/pretty-fold.nvim",
-    enabled = is_enabled('pretty-fold'),
+    enabled = is_enabled("pretty-fold"),
     lazy = false,
     config = function()
       require("pretty-fold").setup({
@@ -33,13 +33,15 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     enabled = is_enabled("indent-blankline"),
+    main = "ibl",
     lazy = false,
     opts = {
-      show_current_context = true,
-      show_current_context_start = false,
+      scope = {
+        enabled = true
+      },
     },
     config = function(_, opts)
-      require("indent_blankline").setup(opts)
+      require("ibl").setup(opts)
     end,
   },
   {

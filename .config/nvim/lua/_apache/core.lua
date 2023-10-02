@@ -96,9 +96,10 @@ local core = {
     ["minimal-statusline"] = { enabled = false },
 
     -- Colorschemes
-    ["auto-colorscheme"] = { enabled = false },
+    ["auto-colorscheme"] = { enabled = true },
     ["no-clown-fiesta"]  = { enabled = true },
-    ["nebulous"]         = { enabled = false },
+    ["nebulous"]         = { enabled = true },
+
     ["gruvbox"]          = { enabled = false },
     ["kimbox"]           = { enabled = false },
     ["gruvbuddy"]        = { enabled = false },

@@ -27,7 +27,7 @@ return {
   {
     "smoka7/multicursors.nvim",
     -- lazy = "VeryLazy",
-    enabled = is_enabled("multicursors"),
+    enabled = false, -- is_enabled("multicursors"),
     dependencies = {
       -- "smoka7/hydra.nvim",
       "anuvyklack/hydra.nvim"

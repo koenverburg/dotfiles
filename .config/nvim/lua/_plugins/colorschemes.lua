@@ -3,15 +3,6 @@ local core = require("_apache.core")
 
 return {
   {
-    'AlexvZyl/nordic.nvim',
-    lazy = false,
-    priority = 1000,
-    enabled = false,
-    config = function()
-      require('nordic').load()
-    end
-  },
-  {
     "ellisonleao/gruvbox.nvim",
     enabled = is_enabled("gruvbox"),
     lazy = false,
@@ -31,14 +22,14 @@ return {
       invert_selection = false,
       invert_intend_guides = false,
       inverse = true, -- invert background for search, diffs, statuslines and errors
-      contrast = "",  -- can be "hard", "soft" or empty string
+      contrast = "", -- can be "hard", "soft" or empty string
       dim_inactive = false,
       transparent_mode = false,
       overrides = {},
       palette_overrides = {},
     },
     config = function(_, opts)
-      vim.cmd("set background=dark")
+      vim.cmd("set background=light")
       require("gruvbox").setup(opts)
       vim.cmd("colorscheme gruvbox")
     end,
@@ -53,6 +44,7 @@ return {
     },
     config = function(_, opts)
       if not is_enabled("auto-colorscheme") then
+        vim.cmd("set background=light")
         require("nebulous").setup(opts)
       end
     end,
@@ -76,6 +68,7 @@ return {
     },
     config = function(_, opts)
       if not is_enabled("auto-colorscheme") then
+        vim.cmd("set background=dark")
         require("no-clown-fiesta").setup(opts)
         vim.cmd([[colorscheme no-clown-fiesta]])
       end
@@ -112,6 +105,7 @@ return {
     config = {
       update_interval = 1000,
       set_dark_mode = function()
+        vim.cmd("set background=dark")
         require("no-clown-fiesta").setup({
           transparent = false, -- Enable this to disable the bg color
           styles = {
@@ -129,7 +123,7 @@ return {
       set_light_mode = function()
         vim.api.nvim_set_option("background", "light")
         require("nebulous").setup({
-          variant = "quasar"
+          variant = "quasar",
         })
       end,
     },
@@ -142,13 +136,13 @@ return {
     dependencies = {
       {
         "tjdevries/colorbuddy.nvim",
-        branch = "dev"
-      }
+        branch = "dev",
+      },
     },
-    enabled = is_enabled('gruvbuddy'),
+    enabled = is_enabled("gruvbuddy"),
     lazy = false,
     init = function()
-      require('colorbuddy').colorscheme('gruvbuddy')
+      require("colorbuddy").colorscheme("gruvbuddy")
       local Group = require("colorbuddy.group").Group
       local g = require("colorbuddy.group").groups
       local s = require("colorbuddy.style").styles
@@ -167,17 +161,17 @@ return {
       -- Color.new("gray5", "#c5c8c6")
       -- Color.new("gray6", "#e0e0e0")
       -- Color.new("gray7", "#ffffff")
-    end
+    end,
   },
   {
-  "briones-gabriel/darcula-solid.nvim",
+    "briones-gabriel/darcula-solid.nvim",
     dependencies = {
-      "rktjmp/lush.nvim"
+      "rktjmp/lush.nvim",
     },
-    enabled = is_enabled('darcula'),
+    enabled = is_enabled("darcula"),
     lazy = false,
     config = function()
-      vim.cmd 'colorscheme darcula-solid'
-    end
-  }
+      vim.cmd("colorscheme darcula-solid")
+    end,
+  },
 }
