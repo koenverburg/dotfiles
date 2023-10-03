@@ -149,6 +149,7 @@ local core = {
     ["template"]       = { enabled = false },
     ["comment"]        = { enabled = true },
     ["cursorword"]     = { enabled = true },
+    ['refactoring']    = { enabled = true },
 
     -- AI
     ["sg"]      = { enabled = false },

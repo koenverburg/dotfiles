@@ -8,6 +8,28 @@ return {
     enabled = true,
   },
   {
+    "ThePrimeagen/refactoring.nvim",
+    enabled = is_enabled('refactoring'),
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("refactoring").setup({
+        printf_statements = {
+          typescript = {
+            "console.log('Hiii #%s')"
+          }
+        },
+        print_var_statements = {
+          typescript = {
+            "console.log('%s', { %s })"
+          }
+        }
+      })
+    end,
+  },
+  {
     "Zeioth/markmap.nvim",
     build = "npm i --location=global markmap-cli",
     cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },

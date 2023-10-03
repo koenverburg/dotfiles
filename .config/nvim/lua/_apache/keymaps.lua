@@ -222,6 +222,19 @@ if is_enabled('telescope') and is_enabled('lsp') and is_enabled('sg') then
   normal('<space>ss', [[<cmd>lua require('sg.telescope').fuzzy_search_results()<CR>]])
 end
 
+if is_enabled('refactoring') then
+  normal('<leader>rr', [[ <cmd>lua require('refactoring').select_refactor()<CR> ]])
+
+  visual('<leader>rev', [[ <cmd>lua require('refactoring').refactor('Extract Variable')<CR> ]])
+  visual('<leader>ref', [[ <cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
+
+  normal('<leader>rv', [[ <cmd>lua require('refactoring').debug.print_var()<CR> ]])
+  visual('<leader>rv', [[ <cmd>lua require('refactoring').debug.print_var()<CR> ]])
+
+  normal('<leader>dl', [[ <cmd>lua require('refactoring').debug.printf({})<CR> ]])
+  normal('<leader>cl', [[ <cmd>lua require('refactoring').debug.cleanup({})<CR> ]])
+end
+
 -- ----------------------------------------------------------------------------
 --
 -- Vim bindings
