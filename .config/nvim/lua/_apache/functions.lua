@@ -1,4 +1,4 @@
-local core = require('_apache.core')
+local core = require("_apache.core")
 
 local M = {}
 
@@ -48,16 +48,16 @@ function M.save_and_execute()
   local filetype = vim.bo.filetype
 
   if filetype == "vim" then
-    vim.cmd [[silent! write]]
-    vim.cmd [[source %]]
+    vim.cmd([[silent! write]])
+    vim.cmd([[source %]])
   elseif filetype == "lua" then
-    vim.cmd [[silent! write]]
-    vim.cmd [[luafile %]]
+    vim.cmd([[silent! write]])
+    vim.cmd([[luafile %]])
   end
 end
 
 local function hide_tabline()
-  local total_tabs = vim.fn.tabpagenr "$"
+  local total_tabs = vim.fn.tabpagenr("$")
 
   if total_tabs > 1 then
     vim.opt.showtabline = 2
@@ -101,7 +101,7 @@ local lsp_map = function(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
-  local static_info = require('experiments.static-info')
+  local static_info = require("experiments.static-info")
   if static_info.enabled_when_supprted_filetype(bufnr) then
     -- trigger once
     static_info.show_early_exit()
@@ -127,11 +127,11 @@ function M.on_attach(client, bufnr)
   --   ih.on_attach(client, bufnr)
   -- end
 
-  require "lsp_signature".on_attach({
+  require("lsp_signature").on_attach({
     bind = true,
     handler_opts = {
-      border = "rounded"
-    }
+      border = "rounded",
+    },
   }, bufnr)
 
   -- if client.server_capabilities.documentSymbolProvider then
@@ -159,12 +159,34 @@ function M.createSession()
     default = "",
   }
 
-  M.inputOrUI(input, function (value)
+  M.inputOrUI(input, function(value)
     print(value)
     print("hii")
     -- vim.cmd("set modifiable")
     -- vim.cmd("<cmd>PossessionSave " .. value .. "<cr>")
   end)
+end
+
+function M.createTerminal(cmd)
+  local Terminal = require("toggleterm.terminal").Terminal
+  local window = Terminal:new({
+    cmd = cmd or "zsh",
+    dir = "git_dir",
+    direction = "float",
+    float_opts = {
+      border = "double",
+    },
+    -- function to run on opening the terminal
+    on_open = function(term)
+      vim.cmd("startinsert!")
+      vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    end,
+    -- function to run on closing the terminal
+    on_close = function(term)
+      vim.cmd("startinsert!")
+    end,
+  })
+  window:toggle()
 end
 
 return M

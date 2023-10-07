@@ -360,8 +360,6 @@ normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
 -- File Tree
 -- normal("<C-b>", "<cmd>lua require('')")
 
--- normal("<leader>gt", [[ <cmd>lua require('lspsaga.floaterm').open_float_terminal()<cr> ]])
--- terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
 
 -- -- Focus mode
 -- normal("<leader><space>f", ":ZenMode<cr>")
@@ -378,9 +376,6 @@ normal("<leader>jf", ":HopWordMW<cr>")
 -- Toggle Alternate
 normal("<leader>ta", "<cmd>lua require('nvim-toggler').toggle()<cr>")
 
--- Refactoring
--- normal("<leader>rd", [[ :lua require('refactoring').debug.printf({ below = true })<cr> ]])
-
 -- Focus
 -- normal("<leader>z", [[ <cmd>lua require'centerpad'.toggle { leftpad = 36, rightpad = 36 }<cr> ]])
 
@@ -388,6 +383,14 @@ normal("<leader>ta", "<cmd>lua require('nvim-toggler').toggle()<cr>")
 -- normal("<c-m>", '<cmd>lua require("harpoon.mark").add_file()<cr>')
 -- normal("<c-f>", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
 -- normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
+
+-- Terminal
+normal("<leader>gt", [[ <cmd>lua require('_apache.functions').createTerminal("lazygit")<cr> ]])
+-- terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
+
+
+
+
 
 -- ----------------------------------------------------------------------------
 --
@@ -415,5 +418,5 @@ normal("<leader><leader>x", "<cmd>lua require'_apache.functions'.save_and_execut
 -- Folding using Treesitter
 normal("<leader>fi", "<cmd>lua require 'conrad.folds'.main()<cr>")
 
-vim.cmd [[ autocmd WinEnter,WinLeave,BufWinEnter * :lua require'_apache.functions'.hideTablineWhenSingleTab() ]]
+-- vim.cmd [[ autocmd WinEnter,WinLeave,BufWinEnter * :lua require'_apache.functions'.hideTablineWhenSingleTab() ]]
 

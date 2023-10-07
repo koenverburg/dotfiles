@@ -129,7 +129,6 @@ local core = {
     ["pretty-fold"]      = { enabled = true },
 
     ["noice"]  = { enabled = true },
-    ["notify"] = { enabled = false },
 
     ["dashboard"] = { enabled = not ide_enabled },
     ["explorer"]  = { enabled = true },
