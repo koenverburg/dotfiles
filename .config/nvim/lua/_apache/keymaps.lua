@@ -1,14 +1,14 @@
-local funcs = require('_apache.functions')
+local funcs = require("_apache.functions")
 local normal = funcs.normal
 local visual = funcs.visual
 local insert = funcs.insert
--- local terminal = funcs.terminal
+local terminal = funcs.terminal
 local is_enabled = funcs.is_enabled
 
-if is_enabled('telescope') then
-  local themes = require "telescope.themes"
-  local actions = require "telescope.actions"
-  local action_state = require "telescope.actions.state"
+if is_enabled("telescope") then
+  local themes = require("telescope.themes")
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
 
   funcs.telescope_map("<space>ff", function()
     local opts = {
@@ -45,7 +45,7 @@ if is_enabled('telescope') then
   end)
 
   local simple_git = function()
-    local opts = themes.get_dropdown {
+    local opts = themes.get_dropdown({
       prompt_prefix = "",
       results_title = false,
 
@@ -63,15 +63,15 @@ if is_enabled('telescope') then
       --   prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
       --   results = { "─", " ", " ", " ", " ", " ", " ", " " },
       -- },
-    }
+    })
     require("telescope.builtin").git_files(opts)
   end
 
-  funcs.telescope_map('<space>p', simple_git)
-  funcs.telescope_map('<c-p>', simple_git)
+  funcs.telescope_map("<space>p", simple_git)
+  funcs.telescope_map("<c-p>", simple_git)
 
   funcs.telescope_map("<space><space>", function()
-    local opts = themes.get_dropdown {
+    local opts = themes.get_dropdown({
       -- prompt_prefix = "",
       -- results_title = false,
       previewer = false,
@@ -101,7 +101,7 @@ if is_enabled('telescope') then
 
         return true
       end,
-    }
+    })
     require("telescope.builtin").buffers(opts)
   end)
 
@@ -128,7 +128,7 @@ if is_enabled('telescope') then
 
   -- blazing fast current word searching
   funcs.telescope_map("<space>cs", function()
-    local cword = vim.fn.expand('<cword>')
+    local cword = vim.fn.expand("<cword>")
 
     local opts = {
       search = cword,
@@ -183,21 +183,21 @@ if is_enabled('telescope') then
     require("telescope.builtin").git_files(opts)
   end)
 
-   funcs.telescope_map("<leader><space>d", function()
-     local opts = {
-       prompt_prefix = "",
-       results_title = false,
-       -- layout_config = {
-       --   prompt_position = "top",
-       -- },
-     }
-     require("telescope.builtin").diagnostics(opts)
-   end)
+  funcs.telescope_map("<leader><space>d", function()
+    local opts = {
+      prompt_prefix = "",
+      results_title = false,
+      -- layout_config = {
+      --   prompt_position = "top",
+      -- },
+    }
+    require("telescope.builtin").diagnostics(opts)
+  end)
 
   -- funcs.telescope_map("<leader><space>h", "help_tags")
 end
 
-if is_enabled('telescope') and is_enabled('lsp') then
+if is_enabled("telescope") and is_enabled("lsp") then
   -- local themes = require "telescope.themes"
 
   funcs.telescope_map("<c-r>", function()
@@ -210,7 +210,7 @@ if is_enabled('telescope') and is_enabled('lsp') then
   --   require("telescope.builtin").lsp_references(opts)
   -- end)
 
-  funcs.telescope_map("<c-d>",function()
+  funcs.telescope_map("<c-d>", function()
     local opts = {}
     require("telescope.builtin").lsp_document_symbols(opts)
   end)
@@ -218,25 +218,31 @@ if is_enabled('telescope') and is_enabled('lsp') then
   funcs.telescope_map("<leader>cx", "lsp_code_actions")
 end
 
-if is_enabled('telescope') and is_enabled('lsp') and is_enabled('sg') then
-  normal('<space>ss', [[<cmd>lua require('sg.telescope').fuzzy_search_results()<CR>]])
+if is_enabled("telescope") and is_enabled("lsp") and is_enabled("sg") then
+  normal("<space>ss", [[<cmd>lua require('sg.telescope').fuzzy_search_results()<CR>]])
 end
 
-if is_enabled('refactoring') then
-  normal('<leader>rr', [[ <cmd>lua require('refactoring').select_refactor()<CR> ]])
+if is_enabled("refactoring") then
+  normal("<leader>rr", [[ <cmd>lua require('refactoring').select_refactor()<CR> ]])
 
-  visual('<leader>rev', [[ <cmd>lua require('refactoring').refactor('Extract Variable')<CR> ]])
-  visual('<leader>ref', [[ <cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
+  visual("<leader>rev", [[ <cmd>lua require('refactoring').refactor('Extract Variable')<CR> ]])
+  visual("<leader>ref", [[ <cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
 
-  normal('<leader>rv', [[ <cmd>lua require('refactoring').debug.print_var()<CR> ]])
-  visual('<leader>rv', [[ <cmd>lua require('refactoring').debug.print_var()<CR> ]])
+  normal("<leader>rv", [[ <cmd>lua require('refactoring').debug.print_var()<CR> ]])
+  visual("<leader>rv", [[ <cmd>lua require('refactoring').debug.print_var()<CR> ]])
 
-  normal('<leader>dl', [[ <cmd>lua require('refactoring').debug.printf({})<CR> ]])
-  normal('<leader>cl', [[ <cmd>lua require('refactoring').debug.cleanup({})<CR> ]])
+  normal("<leader>dl", [[ <cmd>lua require('refactoring').debug.printf({})<CR> ]])
+  normal("<leader>cl", [[ <cmd>lua require('refactoring').debug.cleanup({})<CR> ]])
 end
 
--- ----------------------------------------------------------------------------
---
+if is_enabled("tmux") then
+  normal("<c-h>", "<CMD>lua require('Navigator').left()<CR>")
+  normal("<c-k>", "<CMD>lua require('Navigator').up()<CR>")
+  normal("<c-l>", "<CMD>lua require('Navigator').right()<CR>")
+  normal("<c-j>", "<CMD>lua require('Navigator').down()<CR>")
+  normal("<c-p>", "<CMD>lua require('Navigator').previous()<CR>")
+end
+
 -- Vim bindings
 --
 -- ----------------------------------------------------------------------------
@@ -268,14 +274,15 @@ insert(",", ",<c-g>u")
 insert(".", ".<c-g>u")
 
 -- This is so I can quickly quite out of vim without having to close all the buffers
--- normal("<leader>bd", "<cmd>qall<cr>") -- delete all buffers
 normal("<leader>q", "<cmd>lua require('_apache.functions').quite()<cr>")
 
 -- Easier Moving between splits
-normal("<C-j>", "<C-W><C-J>")
-normal("<C-k>", "<C-W><C-K>")
-normal("<C-l>", "<C-W><C-L>")
-normal("<C-h>", "<C-W><C-H>")
+if not is_enabled("tmux") then
+  normal("<C-j>", "<C-W><C-J>")
+  normal("<C-k>", "<C-W><C-K>")
+  normal("<C-l>", "<C-W><C-L>")
+  normal("<C-h>", "<C-W><C-H>")
+end
 
 -- Better jk
 normal("j", "<Plug>(accelerated_jk_gj)")
@@ -323,13 +330,13 @@ normal("<leader>t", ":tabnew<cr>|:Telescope git_files<cr>")
 -- Tab movement
 normal("<S-Tab>", ":tabnext<cr>")
 
-normal('<space>', 'za')
+normal("<space>", "za")
 
 -- Credo, sort aliases in alphabetical order
 visual("<leader>s", ":'<,'>!sort -f<cr>")
 
 -- open folds faster, za toggles folds that are created
-normal('of', 'za')
+normal("of", "za")
 
 -- ----------------------------------------------------------------------------
 --
@@ -348,10 +355,10 @@ visual("ga", "<Plug>(EasyAlign)")
 -- normal('bt', [[ <cmd>BookmarkToggle<cr> ]])
 
 -- Searching
-normal('<leader>S', [[ <cmd>lua require('spectre').open()<cr> ]])
-normal('<leader>sw', [[ <cmd>lua require('spectre').open_visual({ select_word=true })<cr> ]])
-visual('<leader>s', [[ <esc>:lua require('spectre').open_visual()<cr> ]])
-normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
+normal("<leader>S", [[ <cmd>lua require('spectre').open()<cr> ]])
+normal("<leader>sw", [[ <cmd>lua require('spectre').open_visual({ select_word=true })<cr> ]])
+visual("<leader>s", [[ <esc>:lua require('spectre').open_visual()<cr> ]])
+normal("<leader>sp", [[ viw:lua require('spectre').open_file_search()<cr> ]])
 
 -- sessions
 -- normal("<leader>ss", ":SSave<cr>")
@@ -359,7 +366,6 @@ normal('<leader>sp', [[ viw:lua require('spectre').open_file_search()<cr> ]])
 
 -- File Tree
 -- normal("<C-b>", "<cmd>lua require('')")
-
 
 -- -- Focus mode
 -- normal("<leader><space>f", ":ZenMode<cr>")
@@ -386,11 +392,6 @@ normal("<leader>ta", "<cmd>lua require('nvim-toggler').toggle()<cr>")
 
 -- Terminal
 normal("<leader>gt", [[ <cmd>lua require('_apache.functions').createTerminal("lazygit")<cr> ]])
--- terminal("<leader>gt", [[ <c-\><c-n>:lua require('lspsaga.floaterm').close_float_terminal()<cr> ]])
-
-
-
-
 
 -- ----------------------------------------------------------------------------
 --
@@ -419,4 +420,3 @@ normal("<leader><leader>x", "<cmd>lua require'_apache.functions'.save_and_execut
 normal("<leader>fi", "<cmd>lua require 'conrad.folds'.main()<cr>")
 
 -- vim.cmd [[ autocmd WinEnter,WinLeave,BufWinEnter * :lua require'_apache.functions'.hideTablineWhenSingleTab() ]]
-

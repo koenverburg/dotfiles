@@ -175,6 +175,7 @@ local core = {
 
     -- navigation
     ["tabtree"] = { enabled = true },
+    ["tmux"]    = { enabled = true },
     ['hop']     = { enabled = true }, -- move
     ["hydra"]   = { enabled = true}, -- move
   }

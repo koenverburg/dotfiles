@@ -38,4 +38,12 @@ return {
       })
     end,
   },
+  {
+    "numToStr/Navigator.nvim",
+    enabled = is_enabled("tmux"),
+    lazy = false,
+    config = function()
+      require("Navigator").setup()
+    end,
+  },
 }
