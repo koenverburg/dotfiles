@@ -14,23 +14,6 @@ return {
     end,
   },
   {
-    "stevearc/dressing.nvim",
-    enabled = is_enabled("dressing"),
-    lazy = false,
-    -- init = function()
-    --   ---@diagnostic disable-next-line: duplicate-set-field
-    --   vim.ui.select = function(...)
-    --     require("lazy").load({ plugins = { "dressing.nvim" } })
-    --     return vim.ui.select(...)
-    --   end
-    --   ---@diagnostic disable-next-line: duplicate-set-field
-    --   vim.ui.input = function(...)
-    --     -- require("lazy").load({ plugins = { "dressing.nvim" } })
-    --     return vim.ui.input(...)
-    --   end
-    -- end,
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     enabled = is_enabled("indent-blankline"),
     main = "ibl",
