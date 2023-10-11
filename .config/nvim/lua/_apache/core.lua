@@ -2,7 +2,7 @@ local ide_enabled = false
 
 local core = {
   env = {
-    isWorkLaptop = string.find(vim.loop.os_gethostname(), "AMS")
+    isWorkLaptop = string.find(vim.loop.os_gethostname(), "AMS") ~= nil
   },
 
   signs = {
@@ -93,7 +93,7 @@ local core = {
     ["peepsight"]          = { enabled = true },
     ["cmd-palette"]        = { enabled = true },
     ["minimal-tabline"]    = { enabled = true },
-    ["minimal-statusline"] = { enabled = false },
+    ["minimal-statusline"] = { enabled = true },
 
     -- Colorschemes
     ["auto-colorscheme"] = { enabled = true },
@@ -119,12 +119,10 @@ local core = {
     ["treesitter"] = { enabled = true },
 
     -- UI
-    ["expressline"]      = { enabled = true },
-    ["lualine"]          = { enabled = false },
-    ["dressing"]         = { enabled = false }, -- turning off because of noice
-    ["indent-blankline"] = { enabled = true },
+    ["expressline"]      = { enabled = false },
     ["smoothcursor"]     = { enabled = false },
-    ["smartcolumn"]      = { enabled = false},
+    ["smartcolumn"]      = { enabled = false },
+    ["indent-blankline"] = { enabled = true },
     ["bionic"]           = { enabled = true },
     ["pretty-fold"]      = { enabled = true },
 
