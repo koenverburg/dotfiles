@@ -179,7 +179,7 @@ if is_enabled("telescope") and is_enabled("lsp") then
   funcs.telescope_map("<c-r>", function()
     local opts = {
       previewer = true,
-      layout_config = ts_settings.wide_lsp('top').layout_config,
+      layout_config = ts_settings.wide('top').layout_config,
     }
     require("telescope.builtin").lsp_references(opts)
   end)
@@ -192,7 +192,7 @@ if is_enabled("telescope") and is_enabled("lsp") then
   funcs.telescope_map("<c-d>", function()
     local opts = {
       previewer = true,
-      layout_config = ts_settings.wide_lsp('top').layout_config,
+      layout_config = ts_settings.wide('top').layout_config,
     }
     require("telescope.builtin").lsp_document_symbols(opts)
   end)

@@ -11,6 +11,8 @@ require("core.options")
 require("core.keymaps")
 require("core.autocmds")
 
+require('logic.functions').hideTablineWhenSingleTab()
+
 require("conrad.winbar")
 require("conrad.charlist").setup({
   enabled = false,

@@ -27,7 +27,7 @@ opt.undofile = true
 opt.colorcolumn = "80,100,120"
 opt.laststatus=3
 opt.incsearch = true
-opt.showtabline = 1
+-- opt.showtabline = 1
 opt.termguicolors = true
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 

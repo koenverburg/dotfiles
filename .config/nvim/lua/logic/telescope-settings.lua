@@ -1,4 +1,4 @@
-local config = require('core.config')
+local config = require("core.config")
 local M = {}
 
 M.default = {
@@ -16,7 +16,7 @@ M.default = {
   --   prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
   --   results = { "─", " ", " ", " ", " ", " ", " ", " " },
   -- },
-  borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+  borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 }
 
 function M.wide(position)
@@ -27,14 +27,22 @@ function M.wide(position)
         return math.floor(max_lines * 0.95)
       end,
       width = function(_, _, max_columns)
-        local ww = vim.fn.winwidth('%')
-        if ww < max_columns then
-          return max_columns
+        local ww = vim.fn.winwidth("%")
+
+        print(ww, max_columns)
+        local winnr = vim.fn.winnr("$")
+        print(winnr)
+
+        if winnr > 1 and winnr < 3 then
+          return math.floor(ww * winnr * 0.95)
+        elseif ww > max_columns then
+          print('elseif')
+          return math.floor(ww * winnr * 0.95)
         else
-          return ww - 10
+          return math.floor(max_columns * 0.95)
         end
-      end
-    }
+      end,
+    },
   }
 end
 
@@ -46,13 +54,20 @@ function M.wide_lsp(position)
         return math.floor(max_lines * 0.95)
       end,
       width = function(_, _, max_columns)
-        local ww = vim.fn.winwidth('%')
-        if ww < max_columns then
-          return max_columns
+        local ww = vim.fn.winwidth("%")
+
+        -- print(ww, max_columns)
+        local winnr = vim.fn.winnr("$")
+        -- print(winnr)
+
+        if winnr > 1 and winnr < 3 then
+          return math.floor(ww * winnr * 0.95)
+        elseif ww < max_columns and winnr > 3 then
+          return math.floor(ww * 3 * 0.95)
         else
-          return ww - 10
+          return math.floor(max_columns * 0.95)
         end
-      end
+      end,
     },
   }
 end

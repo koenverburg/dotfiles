@@ -11,8 +11,16 @@ local opts = {
     "Outline",
     "lazy",
   },
-  events = { "CursorMoved", "CursorHold", "BufWinEnter", "BufEnter", "BufFilePost", "InsertEnter", "BufWritePost",
-    "TabClosed" },
+  events = {
+    "CursorMoved",
+    "CursorHold",
+    "BufWinEnter",
+    "BufEnter",
+    "BufFilePost",
+    "InsertEnter",
+    "BufWritePost",
+    "TabClosed",
+  },
 }
 
 local function is_nil(val)
@@ -106,7 +114,7 @@ local function main()
       "%=",
       "%c",
       " ",
-      "%l/%L"
+      "%l/%L",
     }
 
     return vim.api.nvim_set_option_value("winbar", table.concat(bar, ""), { scope = "local" })
