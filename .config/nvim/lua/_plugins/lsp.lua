@@ -1,7 +1,7 @@
-local core = require("_apache.core")
-local on_attach = require("_apache.functions").on_attach
-local is_enabled = require("_apache.functions").is_enabled
-local diagnosticSetup = require("experiments.diagnostic")
+local core = require("core.config")
+local on_attach = require("logic.functions").on_attach
+local is_enabled = require("logic.functions").is_enabled
+local diagnosticSetup = require("logic.diagnostic")
 local os = require('os')
 -- local cody = require("experiments.cody")
 
@@ -128,7 +128,7 @@ return {
     event = "BufRead",
     opts = {
       include_declaration = false, -- Reference include declaration
-      sections = { -- Enable / Disable specific request
+      sections = {                 -- Enable / Disable specific request
         definition = false,
         references = true,
         implementation = false,
@@ -317,7 +317,7 @@ return {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
-          { name = "buffer", keyword_length = 5 },
+          { name = "buffer",  keyword_length = 5 },
         }),
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Replace,
@@ -402,10 +402,10 @@ return {
       }
 
       if core.env.isWorkLaptop == true then
-        table.insert(sources,formatting.prettier)
-        table.insert(sources,formatting.npm_groovy_lint)
+        table.insert(sources, formatting.prettier)
+        table.insert(sources, formatting.npm_groovy_lint)
       else
-        table.insert(sources,formatting.rome)
+        table.insert(sources, formatting.rome)
       end
 
       return {

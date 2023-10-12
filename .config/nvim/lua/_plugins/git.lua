@@ -1,4 +1,4 @@
-local is_enabled = require("_apache.functions").is_enabled
+local is_enabled = require("logic.functions").is_enabled
 
 return {
   {
@@ -38,8 +38,6 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-    enabled = is_enabled("git"),
-    config = function()
-    end,
+    enabled = is_enabled("git")
   },
 }

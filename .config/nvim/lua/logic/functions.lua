@@ -1,4 +1,4 @@
-local core = require("_apache.core")
+local core = require("core.config")
 
 local M = {}
 

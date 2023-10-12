@@ -1,4 +1,4 @@
-local signs = require("_apache.core").diagnosticSigns
+local signs = require("core.config").diagnosticSigns
 
 local function apply_signs()
   for _, sign in ipairs(signs) do

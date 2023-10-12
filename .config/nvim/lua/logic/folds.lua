@@ -1,4 +1,4 @@
-local utils = require "_apache.utils"
+local utils = require "logic.utils"
 local ts_parsers = require "nvim-treesitter.parsers"
 
 local M = {}

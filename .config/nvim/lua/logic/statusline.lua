@@ -1,5 +1,5 @@
 local Job = require("plenary.job")
-local core = require("_apache.core")
+local core = require("core.config")
 
 local utils = {}
 local providers = {}

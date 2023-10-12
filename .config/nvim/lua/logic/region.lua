@@ -1,6 +1,6 @@
 local M = {}
-local core = require('_apache.core')
-local utils = require("_apache.utils")
+local core = require('core.config')
+local utils = require("logic.utils")
 local ts_utils = require('nvim-treesitter.ts_utils')
 
 local parse_query = vim.treesitter.query.parse
@@ -71,12 +71,12 @@ function M.main()
   end
 
   for i = 1, #nodes_of_interest, 2 do
-    local pair = {nodes_of_interest[i], nodes_of_interest[i + 1]}
+    local pair = { nodes_of_interest[i], nodes_of_interest[i + 1] }
 
     local from = pair[1]
     local to = pair[2]
 
-    vim.cmd(string.format("%s,%s fold", from:start() + 1 , to:start() + 1))
+    vim.cmd(string.format("%s,%s fold", from:start() + 1, to:start() + 1))
   end
 end
 

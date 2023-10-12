@@ -3,13 +3,13 @@
 -- Source: https://github.com/koenverburg/dotfiles
 
 vim.g.mapleader = ","
+
 require("_apache.bootstrap")
 require("_apache.lazy")
-require("_apache.options")
-require("_apache.keymaps")
-require("_apache.autocmds")
 
--- require("_legacy.bg")
+require("core.options")
+require("core.keymaps")
+require("core.autocmds")
 
 require("conrad.winbar")
 require("conrad.charlist").setup({

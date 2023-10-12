@@ -1,5 +1,5 @@
-local is_enabled = require("_apache.functions").is_enabled
-local core = require("_apache.core")
+local is_enabled = require("logic.functions").is_enabled
+local core = require("core.config")
 -- 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement,
 return {
   {
@@ -35,8 +35,8 @@ return {
     cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
     opts = {
       html_output = "./markmap.html", -- (default) Setting a empty string "" here means: [Current buffer path].html
-      hide_toolbar = true, -- (default)
-      grace_period = 3600000, -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
+      hide_toolbar = true,            -- (default)
+      grace_period = 3600000,         -- (default) Stops markmap watch after 60 minutes. Set it to 0 to disable the grace_period.
     },
     config = function(_, opts)
       require("markmap").setup(opts)
@@ -332,28 +332,28 @@ return {
       },
       heads = {
         -- move between windows
-        { "h", "<C-w>h" },
-        { "j", "<C-w>j" },
-        { "k", "<C-w>k" },
-        { "l", "<C-w>l" },
+        { "h",     "<C-w>h" },
+        { "j",     "<C-w>j" },
+        { "k",     "<C-w>k" },
+        { "l",     "<C-w>l" },
 
         -- resizing window
-        { "H", "<C-w>3<" },
-        { "L", "<C-w>3>" },
-        { "K", "<C-w>2+" },
-        { "J", "<C-w>2-" },
+        { "H",     "<C-w>3<" },
+        { "L",     "<C-w>3>" },
+        { "K",     "<C-w>2+" },
+        { "J",     "<C-w>2-" },
 
         -- equalize window sizes
-        { "e", "<C-w>=" },
+        { "e",     "<C-w>=" },
 
         -- close active window
-        { "Q", ":q<cr>" },
+        { "Q",     ":q<cr>" },
         { "<C-q>", ":q<cr>" },
 
         -- exit this Hydra
-        { "q", nil, { exit = true, nowait = true } },
-        { ";", nil, { exit = true, nowait = true } },
-        { "<Esc>", nil, { exit = true, nowait = true } },
+        { "q",     nil,      { exit = true, nowait = true } },
+        { ";",     nil,      { exit = true, nowait = true } },
+        { "<Esc>", nil,      { exit = true, nowait = true } },
       },
     },
     config = function(_, opts)

@@ -1,4 +1,5 @@
-local funcs = require("_apache.functions")
+local ts_settings = require("logic.telescope-settings")
+local funcs = require("logic.functions")
 local normal = funcs.normal
 local visual = funcs.visual
 local insert = funcs.insert
@@ -30,16 +31,7 @@ if is_enabled("telescope") then
     local opts = {
       prompt_prefix = "",
       results_title = false,
-      layout_config = {
-        prompt_position = "top",
-      },
-      -- winblend = 85,
-      -- borderchars = {
-      --   -- defaults = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      --   prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-      --   results = { "─", " ", " ", " ", " ", " ", " ", " " },
-      -- },
+      layout_config = ts_settings.wide('top').layout_config,
     }
     require("telescope.builtin").git_files(opts)
   end)
@@ -52,17 +44,8 @@ if is_enabled("telescope") then
       previewer = false,
       layout_strategy = "center",
       sorting_strategy = "ascending",
-      layout_config = {
-        width = 0.6,
-        height = 0.6,
-        prompt_position = "top",
-      },
-      -- borderchars = {
-      --   -- defaults = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      --   prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-      --   results = { "─", " ", " ", " ", " ", " ", " ", " " },
-      -- },
+
+      layout_config = ts_settings.small_dropdown('top').layout_config,
     })
     require("telescope.builtin").git_files(opts)
   end
@@ -115,9 +98,7 @@ if is_enabled("telescope") then
       local opts = {
         search = value,
         layout_strategy = "horizontal",
-        layout_config = {
-          prompt_position = "top",
-        },
+        layout_config = ts_settings.wide('top').layout_config,
       }
 
       require("telescope.builtin").grep_string(opts)
@@ -133,9 +114,7 @@ if is_enabled("telescope") then
     local opts = {
       search = cword,
       layout_strategy = "horizontal",
-      layout_config = {
-        prompt_position = "top",
-      },
+      layout_config = ts_settings.wide('top').layout_config,
     }
 
     require("telescope.builtin").grep_string(opts)
@@ -147,9 +126,7 @@ if is_enabled("telescope") then
       -- scroll_strategy = 'cycle',
       -- sorting_strategy = 'descending',
       layout_strategy = "horizontal",
-      layout_config = {
-        prompt_position = "top",
-      },
+      layout_config = ts_settings.wide('top').layout_config,
     }
 
     require("telescope.builtin").live_grep(opts)
@@ -183,13 +160,12 @@ if is_enabled("telescope") then
     require("telescope.builtin").git_files(opts)
   end)
 
-  funcs.telescope_map("<leader><space>d", function()
+  funcs.telescope_map("<space>fd", function()
     local opts = {
       prompt_prefix = "",
       results_title = false,
-      -- layout_config = {
-      --   prompt_position = "top",
-      -- },
+      previewer = false,
+      layout_config = ts_settings.wide('top').layout_config,
     }
     require("telescope.builtin").diagnostics(opts)
   end)
@@ -201,7 +177,10 @@ if is_enabled("telescope") and is_enabled("lsp") then
   -- local themes = require "telescope.themes"
 
   funcs.telescope_map("<c-r>", function()
-    local opts = {}
+    local opts = {
+      previewer = true,
+      layout_config = ts_settings.wide_lsp('top').layout_config,
+    }
     require("telescope.builtin").lsp_references(opts)
   end)
 
@@ -211,7 +190,10 @@ if is_enabled("telescope") and is_enabled("lsp") then
   -- end)
 
   funcs.telescope_map("<c-d>", function()
-    local opts = {}
+    local opts = {
+      previewer = true,
+      layout_config = ts_settings.wide_lsp('top').layout_config,
+    }
     require("telescope.builtin").lsp_document_symbols(opts)
   end)
 
@@ -274,7 +256,7 @@ insert(",", ",<c-g>u")
 insert(".", ".<c-g>u")
 
 -- This is so I can quickly quite out of vim without having to close all the buffers
-normal("<leader>q", "<cmd>lua require('_apache.functions').quite()<cr>")
+normal("<leader>q", "<cmd>lua require('logic.functions').quite()<cr>")
 
 -- Easier Moving between splits
 if not is_enabled("tmux") then
@@ -391,7 +373,7 @@ normal("<leader>ta", "<cmd>lua require('nvim-toggler').toggle()<cr>")
 -- normal("<c-a>", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>')
 
 -- Terminal
-normal("<leader>gt", [[ <cmd>lua require('_apache.functions').createTerminal("lazygit")<cr> ]])
+normal("<leader>gt", [[ <cmd>lua require('logic.functions').createTerminal("lazygit")<cr> ]])
 
 -- ----------------------------------------------------------------------------
 --
@@ -399,8 +381,8 @@ normal("<leader>gt", [[ <cmd>lua require('_apache.functions').createTerminal("la
 --
 -- ----------------------------------------------------------------------------
 normal("<space>ta", "<cmd>lua require('experiments.edit-alt').edit()<cr>")
-normal("<leader>fr", "<cmd>lua require('conrad.region').main()<cr>")
--- normal("<space>/", "<cmd>lua require('_apache.functions').PopUpSearch()<cr>")
+normal("<leader>fr", "<cmd>lua require('logic.region').main()<cr>")
+-- normal("<space>/", "<cmd>lua require('logic.functions').PopUpSearch()<cr>")
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
 -- Command Palette
@@ -413,10 +395,9 @@ normal("<space>fr", ":%s/")
 -- visual("<leader>fr", "'>s/")
 -- visual("<space>fr", "'>s/")
 
-normal("<leader><leader>x", "<cmd>lua require'_apache.functions'.save_and_execute()<cr>")
--- normal("<leader><leader>c", "<cmd>lua require'core.virtualtext'.show()<cr>")
+normal("<leader><leader>x", "<cmd>lua require'logic.functions'.save_and_execute()<cr>")
 
 -- Folding using Treesitter
-normal("<leader>fi", "<cmd>lua require 'conrad.folds'.main()<cr>")
+normal("<leader>fi", "<cmd>lua require 'logic.folds'.main()<cr>")
 
--- vim.cmd [[ autocmd WinEnter,WinLeave,BufWinEnter * :lua require'_apache.functions'.hideTablineWhenSingleTab() ]]
+-- vim.cmd [[ autocmd WinEnter,WinLeave,BufWinEnter * :lua require'logic.functions'.hideTablineWhenSingleTab() ]]

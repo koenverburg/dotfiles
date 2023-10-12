@@ -1,6 +1,6 @@
-local funcs = require("_apache.functions")
+local funcs = require("logic.functions")
 local is_enabled = funcs.is_enabled
-local icons = require("_apache.core").signs
+local icons = require("core.config").signs
 
 return {
   {
@@ -33,126 +33,6 @@ return {
     lazy = false,
     config = function()
       require("nvim-web-devicons").setup()
-    end,
-  },
-  {
-    "tjdevries/express_line.nvim",
-    dependencies = {
-      "nvim-lua/popup.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-    enabled = is_enabled("expressline"),
-    lazy = false,
-    config = function()
-      local helper = require("el.helper")
-      local extensions = require("el.extensions")
-      local builtin = require("el.builtin")
-      local sections = require("el.sections")
-      local stl = require("experiments.statusline")
-      local stl_providers = stl.providers
-
-      local render_async = function(id, autocmd, element)
-        return helper.async_buf_setter(id, autocmd, element, 5000)
-      end
-
-      local generator = function(window, _) -- window, bufnr
-        local segments = {}
-        -- table.insert(segments, stl.builtins.space)
-        table.insert(segments, extensions.mode)
-
-        -- table.insert(segments, stl.builtins.space)
-        table.insert(segments, render_async(window.win_id, "el_git_branch", stl_providers.git_branch))
-
-        table.insert(segments, stl.builtins.space)
-        table.insert(segments, render_async(window.win_id, "el_git_stat", stl_providers.git_changes))
-
-        table.insert(segments, stl.builtins.space)
-        -- table.insert(segments, sections.split)
-
-        table.insert(segments, stl.builtins.space)
-        table.insert(segments, stl_providers.file_icon)
-        table.insert(segments, stl.builtins.space)
-        table.insert(segments, stl_providers.filename)
-        table.insert(segments, stl_providers.dim(builtin.modified))
-        table.insert(segments, stl.builtins.space)
-
-        table.insert(segments, sections.split)
-        table.insert(segments, stl_providers.diagnostic)
-        table.insert(segments, stl_providers.lsp_or_filetype())
-        table.insert(segments, sections.collapse_builtin(builtin.help_list, builtin.readonly_list))
-
-        table.insert(segments, stl.builtins.space)
-        return segments
-      end
-
-      local ignore = { "help", "packer", "spectre_panel", "TelescopePrompt" }
-      local disable =
-        { "neogitstatus", "netrw", "lir", "lazy", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage" }
-
-      require("el").setup({
-        generator = generator,
-        regenerate_autocmds = {
-          "WinEnter",
-          "WinLeave",
-          "DiagnosticChanged",
-          "ModeChanged",
-          "BufEnter",
-          "BufWritePost",
-        },
-      })
-    end,
-  },
-  {
-    "gen740/SmoothCursor.nvim",
-    lazy = false,
-    enabled = is_enabled("smoothcursor"),
-    opts = {
-      autostart = true,
-      cursor = "", -- cursor shape (need nerd font)
-      texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
-      linehl = nil, -- highlight sub-cursor line like 'cursorline', "CursorLine" recommended
-      type = "default", -- define cursor movement calculate function, "default" or "exp" (exponential).
-      fancy = {
-        enable = true, -- enable fancy mode
-        head = { cursor = "", texthl = "SmoothCursor", linehl = nil },
-        body = {
-          { cursor = "", texthl = "SmoothCursorRed" },
-          { cursor = "", texthl = "SmoothCursorOrange" },
-          { cursor = "●", texthl = "SmoothCursorYellow" },
-          { cursor = "●", texthl = "SmoothCursorGreen" },
-          { cursor = "•", texthl = "SmoothCursorAqua" },
-          { cursor = ".", texthl = "SmoothCursorBlue" },
-          { cursor = ".", texthl = "SmoothCursorPurple" },
-        },
-        tail = { cursor = nil, texthl = "SmoothCursor" },
-      },
-      flyin_effect = nil, -- "bottom" or "top"
-      speed = 25, -- max is 100 to stick to your current position
-      intervals = 35, -- tick interval
-      priority = 10, -- set marker priority
-      timeout = 3000, -- timout for animation
-      threshold = 3, -- animate if threshold lines jump
-      disable_float_win = false, -- disable on float window
-      enabled_filetypes = nil, -- example: { "lua", "vim" }
-      disabled_filetypes = nil, -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
-    },
-    config = function(_, opts)
-      require("smoothcursor").setup(opts)
-    end,
-  },
-  {
-    "m4xshen/smartcolumn.nvim",
-    lazy = false,
-    enabled = is_enabled("smartcolumn"),
-    opts = {
-      colorcolumn = 80,
-      limit_to_line = false,
-      limit_to_window = false,
-      custom_colorcolumn = {},
-      disabled_filetypes = { "help", "text", "markdown" },
-    },
-    config = function(_, opts)
-      require("smartcolumn").setup(opts)
     end,
   },
   {
@@ -224,7 +104,7 @@ return {
       --   long_message_to_split = false, -- long messages will be sent to a split
       -- },
       cmdline = {
-        enabled = true, -- enables the Noice cmdline UI
+        enabled = true,         -- enables the Noice cmdline UI
         view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
         format = {
           search_up = { kind = "search", pattern = "^%?", icon = "", lang = "regex" },
@@ -369,14 +249,6 @@ Life Is Yours To Create
     config = function(_, opts)
       require("neo-tree").setup(opts)
     end,
-  },
-  {
-    "nullchilly/fsread.nvim",
-    enabled = is_enabled("bionic"),
-    lazy = false,
-    -- config = function(_, opts)
-    --   -- require('').setup(opts)
-    -- end
   },
   {
     "smithbm2316/centerpad.nvim",

@@ -1,5 +1,5 @@
-local is_enabled = require("_apache.functions").is_enabled
-local core = require("_apache.core")
+local is_enabled = require("logic.functions").is_enabled
+local core = require("core.config")
 
 return {
   {
@@ -36,7 +36,7 @@ return {
     config = function()
       require("persistence").setup({
         dir = vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/"), -- directory where session files are saved
-        options = { "buffers", "curdir", "tabpages" }, -- sessionoptions used for saving
+        options = { "buffers", "curdir", "tabpages" },               -- sessionoptions used for saving
         -- pre_save = nil, -- a function to call before saving the session
       })
     end,

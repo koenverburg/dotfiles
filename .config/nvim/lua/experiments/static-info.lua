@@ -1,7 +1,5 @@
-local utils = require("_apache.utils")
+local utils = require("logic.utils")
 local ts_utils = require('nvim-treesitter.ts_utils')
--- local ts = require('nvim-treesitter')
--- local parsers = require('nvim-treesitter.parsers')
 
 local M = {}
 local api = vim.api
@@ -73,7 +71,7 @@ local function query_for_returns(namespace, bufnr, lang, function_tree)
       if func_end == node_end then
         utils.setVirtualText(namespace, line, col, "original exit", signs.info.icon, nil) -- signs.info.highlightGroup)
       else
-        utils.setVirtualText(namespace, line, col, "early exit", signs.info.icon, nil) -- signs.info.highlightGroup)
+        utils.setVirtualText(namespace, line, col, "early exit", signs.info.icon, nil)    -- signs.info.highlightGroup)
       end
     end
   end
@@ -268,16 +266,16 @@ local function recurse_tree(node)
         local child_type = body:type()
 
         if
-          child_type == "lexical_declaration"
-          or child_type == "catch_clause"
-          or child_type == "switch_case"
-          or child_type == "switch_default"
+            child_type == "lexical_declaration"
+            or child_type == "catch_clause"
+            or child_type == "switch_case"
+            or child_type == "switch_default"
 
-          or child_type == "yield_expression"
-          or child_type == "binary_expression"
-          or child_type == "member_expression"
-          or child_type == "logical_expression"
-          or child_type == "conditional_expression"
+            or child_type == "yield_expression"
+            or child_type == "binary_expression"
+            or child_type == "member_expression"
+            or child_type == "logical_expression"
+            or child_type == "conditional_expression"
         then
           nested_count = nested_count + 1
           -- utils.setVirtualText(ns_cc, body:start(), "+1", "cc", nil) -- signs.info.highlightGroup)
@@ -285,18 +283,18 @@ local function recurse_tree(node)
 
 
         if
-          child_type == "if_statement"
-          or child_type == "do_statement"
-          or child_type == "for_statement"
-          or child_type == "try_statement"
-          or child_type == "case_statement"
-          or child_type == "while_statement"
-          or child_type == "throw_statement"
-          or child_type == "return_statement"
-          or child_type == "for_in_statement"
-          or child_type == "switch_statement"
-          or child_type == "default_statement"
-          or child_type == "expression_statement"
+            child_type == "if_statement"
+            or child_type == "do_statement"
+            or child_type == "for_statement"
+            or child_type == "try_statement"
+            or child_type == "case_statement"
+            or child_type == "while_statement"
+            or child_type == "throw_statement"
+            or child_type == "return_statement"
+            or child_type == "for_in_statement"
+            or child_type == "switch_statement"
+            or child_type == "default_statement"
+            or child_type == "expression_statement"
         then
           nested_count = nested_count + recurse_tree(body)
           -- utils.setVirtualText(ns_cc, body:start(), "+1", "cc", nil) -- signs.info.highlightGroup)
@@ -340,54 +338,52 @@ function M.show_cyclomatic_complexity(bufnr)
           local child_type = body:type()
 
           if
-            child_type == "lexical_declaration"
-            or child_type == "catch_clause"
-            or child_type == "switch_case"
-            or child_type == "switch_default"
+              child_type == "lexical_declaration"
+              or child_type == "catch_clause"
+              or child_type == "switch_case"
+              or child_type == "switch_default"
 
-            or child_type == "yield_expression"
-            or child_type == "member_expression"
-            or child_type == "binary_expression"
-            or child_type == "logical_expression"
-            or child_type == "conditional_expression"
+              or child_type == "yield_expression"
+              or child_type == "member_expression"
+              or child_type == "binary_expression"
+              or child_type == "logical_expression"
+              or child_type == "conditional_expression"
 
-            or child_type == "if_statement"
-            or child_type == "do_statement"
-            or child_type == "for_statement"
-            or child_type == "try_statement"
-            or child_type == "case_statement"
-            or child_type == "while_statement"
-            or child_type == "throw_statement"
-            or child_type == "return_statement"
-            or child_type == "for_in_statement"
-            or child_type == "switch_statement"
-            or child_type == "default_statement"
-            or child_type == "expression_statement"
+              or child_type == "if_statement"
+              or child_type == "do_statement"
+              or child_type == "for_statement"
+              or child_type == "try_statement"
+              or child_type == "case_statement"
+              or child_type == "while_statement"
+              or child_type == "throw_statement"
+              or child_type == "return_statement"
+              or child_type == "for_in_statement"
+              or child_type == "switch_statement"
+              or child_type == "default_statement"
+              or child_type == "expression_statement"
           then
             complexity = complexity + 1
             -- utils.setVirtualText(ns_cc, body:start(), "+1", "cc", nil) -- signs.info.highlightGroup)
           end
 
-        if
-          child_type == "if_statement"
-          or child_type == "do_statement"
-          or child_type == "for_statement"
-          or child_type == "try_statement"
-          or child_type == "case_statement"
-          or child_type == "while_statement"
-          or child_type == "throw_statement"
-          or child_type == "return_statement"
-          or child_type == "for_in_statement"
-          or child_type == "switch_statement"
-          or child_type == "default_statement"
-          or child_type == "expression_statement"
-        then
-          complexity = complexity + 1
-          complexity = complexity + recurse_tree(body)
-          -- utils.setVirtualText(ns_cc, body:start(), "+1", "cc", nil) -- signs.info.highlightGroup)
-        end
-
-
+          if
+              child_type == "if_statement"
+              or child_type == "do_statement"
+              or child_type == "for_statement"
+              or child_type == "try_statement"
+              or child_type == "case_statement"
+              or child_type == "while_statement"
+              or child_type == "throw_statement"
+              or child_type == "return_statement"
+              or child_type == "for_in_statement"
+              or child_type == "switch_statement"
+              or child_type == "default_statement"
+              or child_type == "expression_statement"
+          then
+            complexity = complexity + 1
+            complexity = complexity + recurse_tree(body)
+            -- utils.setVirtualText(ns_cc, body:start(), "+1", "cc", nil) -- signs.info.highlightGroup)
+          end
         end
       end
     end
