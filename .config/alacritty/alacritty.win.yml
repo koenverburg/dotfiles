@@ -56,94 +56,80 @@ shell:
   program: pwsh.exe
 
 schemes:
-  gruvbox: &gruvbox
-    primary:
-      # background: '#291804'
-      background: '#090807'
-      # background: '0x282828'
-      # background: '#1d2021'
-      foreground: '0xdfbf8e'
-
-    normal:
-      black:   '0x665c54'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xe78a4e'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xdfbf8e'
-
-    bright:
-      black:   '0x928374'
-      red:     '0xea6962'
-      green:   '0xa9b665'
-      yellow:  '0xe3a84e'
-      blue:    '0x7daea3'
-      magenta: '0xd3869b'
-      cyan:    '0x89b482'
-      white:   '0xdfbf8e'
-
-  # Colors (Ayu Dark)
-  ayu: &ayu
+  githublight: &githublight
     # Default colors
     primary:
-      background: '0x0f1419'
-      foreground: '0xe6e1cf'
+      background: '0xffffff'
+      foreground: '0x1F2328'
+
+    # Cursor colors
+    #
+    # These will only be used when the `custom_cursor_colors` field is set to `true`.
+    cursor:
+      text: '0xffffff'
+      cursor: '0x1f2328'
 
     # Normal colors
     normal:
-      black:   '0x000000'
-      red:     '0xf34a4a'
-      green:   '0xbae67e'
-      yellow:  '0xffee99'
-      blue:    '0x73d0ff'
-      magenta: '0xd4bfff'
-      cyan:    '0x83CEC6'
-      white:   '0xf2f2f2'
+      black: '0x24292f'
+      red: '0xcf222e'
+      green: '0x116329'
+      yellow: '0x4d2d00'
+      blue: '0x0969da'
+      magenta: '0x8250df'
+      cyan: '0x1b7c83'
+      white: '0x6e7781'
 
     # Bright colors
     bright:
-      black:   '0x737d87'
-      red:     '0xff3333'
-      green:   '0xc2d94c'
-      yellow:  '0xe7c547'
-      blue:    '0x59c2ff'
-      magenta: '0xb77ee0'
-      cyan:    '0x5ccfe6'
-      white:   '0xffffff'
-
+      black: '0x57606a'
+      red: '0xa40e26'
+      green: '0x1a7f37'
+      yellow: '0x633c01'
+      blue: '0x218bff'
+      magenta: '0x8250df'
+      cyan: '0x1b7c83'
+      white: '0x6e7781'
   github: &github
     primary:
-      background: "#0b1015"
-      # background: '#2d333b'
-      foreground: "#adbac7"
+      background: '0x0a0c10'
+      foreground: '0xf0f3f6'
+
+    cursor:
+      text: '0x30363d'
+      cursor: '#FFCC00'
+
+    # Normal colors
     normal:
-      black: "#2d333b"
-      red: "#f47067"
-      green: "#8ddb8c"
-      yellow: "#f69d50"
-      blue: "#6cb6ff"
-      magenta: "#dcbdfb"
-      cyan: "#96d0ff"
-      white: "#adbac7"
+      black: '0x7a828e'
+      red: '0xff9492'
+      green: '0x26cd4d'
+      yellow: '0xf0b72f'
+      blue: '0x71b7ff'
+      magenta: '0xcb9eff'
+      cyan: '0x39c5cf'
+      white: '0xd9dee3'
+
+    # Bright colors
     bright:
-      black: "#768390"
-      red: "#f47067"
-      green: "#8ddb8c"
-      yellow: "#f69d50"
-      blue: "#6cb6ff"
-      magenta: "#dcbdfb"
-      cyan: "#96d0ff"
-      white: "#adbac7"
-  selection:
-    text: "0xffffff"
-    background: "0xdc3232"
-    white: "0xffffff"
+      black: '0x9ea7b3'
+      red: '0xffb1af'
+      green: '0x4ae168'
+      yellow: '0xf7c843'
+      blue: '0x91cbff'
+      magenta: '0xcb9eff'
+      cyan: '0x39c5cf'
+      white: '0xd9dee3'
 
   no-clown-fiesta: &no-clown-fiesta
+    # Cursor color
+    cursor:
+      text: '#888888'
+      cursor: '#FFCC00'
+
     primary:
-      background: '#151515'
+      background: '#00010A'
+      # background: '#151515'
       foreground: '#e1e1e1'
 
     # Normal colors
@@ -168,17 +154,15 @@ schemes:
       cyan:    '#75b5aa'
       white:   '#e1e1e1'
 
-    # Cursor color
-    cursor:
-      text: '#e1e1e1'
-      cursor: '#e1e1e1'
 
     # Selection color
     selection:
       text: '#e1e1e1'
       background: '#5e5e5e'
 
-colors: *no-clown-fiesta
+# colors: *no-clown-fiesta
+# colors: *no-clown-fiesta
+colors: *github
 
 key_bindings:
   - { key: N, mods: Alt, action: SpawnNewInstance }
