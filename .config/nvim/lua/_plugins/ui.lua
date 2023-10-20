@@ -20,7 +20,7 @@ return {
     lazy = false,
     opts = {
       scope = {
-        enabled = true
+        enabled = false
       },
     },
     config = function(_, opts)

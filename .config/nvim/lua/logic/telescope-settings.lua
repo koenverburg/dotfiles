@@ -26,48 +26,25 @@ function M.wide(position)
       height = function(_, _, max_lines)
         return math.floor(max_lines * 0.95)
       end,
-      width = function(_, _, max_columns)
-        local ww = vim.fn.winwidth("%")
-
-        print(ww, max_columns)
-        local winnr = vim.fn.winnr("$")
-        print(winnr)
-
-        if winnr > 1 and winnr < 3 then
-          return math.floor(ww * winnr * 0.95)
-        elseif ww > max_columns then
-          print('elseif')
-          return math.floor(ww * winnr * 0.95)
-        else
-          return math.floor(max_columns * 0.95)
-        end
-      end,
-    },
-  }
-end
-
-function M.wide_lsp(position)
-  return {
-    layout_config = {
-      prompt_position = position,
-      height = function(_, _, max_lines)
-        return math.floor(max_lines * 0.95)
-      end,
-      width = function(_, _, max_columns)
-        local ww = vim.fn.winwidth("%")
-
-        -- print(ww, max_columns)
-        local winnr = vim.fn.winnr("$")
-        -- print(winnr)
-
-        if winnr > 1 and winnr < 3 then
-          return math.floor(ww * winnr * 0.95)
-        elseif ww < max_columns and winnr > 3 then
-          return math.floor(ww * 3 * 0.95)
-        else
-          return math.floor(max_columns * 0.95)
-        end
-      end,
+      -- width = function(_, _, max_columns)
+      --   local ww = vim.fn.winwidth("%")
+      --
+      --   local winnr = vim.fn.winnr("$")
+      --
+      --   -- print(ww, max_columns)
+      --   -- print(winnr)
+      --
+      --   -- if winnr > 1 and winnr < 3 then
+      --   --   print('hii')
+      --   --   return math.floor(ww * winnr * 0.95)
+      --   -- elseif ww > max_columns then
+      --   --   print('elseif')
+      --   --   return math.floor(ww * winnr * 0.95)
+      --   -- else
+      --   --   print('last')
+      --   -- end
+      --   return math.floor(((ww * winnr) - 10 ) * 0.95)
+      -- end,
     },
   }
 end

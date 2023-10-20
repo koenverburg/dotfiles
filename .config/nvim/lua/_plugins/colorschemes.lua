@@ -1,5 +1,10 @@
 local is_enabled = require("logic.functions").is_enabled
 
+local function mode(theme)
+  -- os.execute('cmd')
+  return string.format('sed -i "" -e "s#^colors: \\*.*#colors: *%s#g" ~/code/github/dotfiles/.config/alacritty/alacritty.macos.yml', theme)
+end
+
 return {
   {
     "ellisonleao/gruvbox.nvim",
@@ -81,26 +86,36 @@ return {
     config = {
       update_interval = 1000,
       set_dark_mode = function()
-        vim.cmd("set background=dark")
-        require("no-clown-fiesta").setup({
-          transparent = false, -- Enable this to disable the bg color
-          styles = {
-            -- You can set any of the style values specified for `:h nvim_set_hl`
-            comments = {},
-            keywords = {},
-            functions = { bold = true },
-            variables = {},
-            type = { bold = true },
-            lsp = { underline = true },
-          },
-        })
-        vim.cmd([[colorscheme no-clown-fiesta]])
+        require("github-theme").setup({})
+        vim.cmd("colorscheme github_dark_high_contrast")
+
+        local cmd = mode('github')
+        os.execute(cmd)
+
+        -- vim.cmd("set background=dark")
+        -- require("no-clown-fiesta").setup({
+        --   transparent = false, -- Enable this to disable the bg color
+        --   styles = {
+        --     -- You can set any of the style values specified for `:h nvim_set_hl`
+        --     comments = {},
+        --     keywords = {},
+        --     functions = { bold = true },
+        --     variables = {},
+        --     type = { bold = true },
+        --     lsp = { underline = true },
+        --   },
+        -- })
+        -- vim.cmd([[colorscheme no-clown-fiesta]])
       end,
       set_light_mode = function()
-        vim.api.nvim_set_option("background", "light")
-        require("nebulous").setup({
-          variant = "quasar",
-        })
+        require("github-theme").setup({})
+        vim.cmd("colorscheme github_light_high_contrast")
+        local cmd = mode('githublight')
+        os.execute(cmd)
+        -- vim.api.nvim_set_option("background", "light")
+        -- require("nebulous").setup({
+        --   variant = "quasar",
+        -- })
       end,
     },
     init = function()
@@ -116,6 +131,18 @@ return {
     lazy = false,
     config = function()
       vim.cmd("colorscheme darcula-solid")
+    end,
+  },
+  {
+    "projekt0n/github-nvim-theme",
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    enabled = is_enabled('github'),
+    config = function()
+      if not is_enabled("auto-colorscheme") then
+        require("github-theme").setup({})
+        vim.cmd("colorscheme github_dark")
+      end
     end,
   },
 }

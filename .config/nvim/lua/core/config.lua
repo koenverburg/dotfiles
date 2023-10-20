@@ -95,8 +95,9 @@ local core = {
 
     -- Colorschemes
     ["auto-colorscheme"]   = { enabled = true },
-    ["no-clown-fiesta"]    = { enabled = true },
-    ["nebulous"]           = { enabled = true },
+    ["github"]             = { enabled = true },
+    ["no-clown-fiesta"]    = { enabled = false },
+    ["nebulous"]           = { enabled = false },
     ["gruvbox"]            = { enabled = false },
     ["darcula"]            = { enabled = false },
 
