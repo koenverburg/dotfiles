@@ -94,9 +94,11 @@ local core = {
     ["minimal-statusline"] = { enabled = true },
 
     -- Colorschemes
-    ["auto-colorscheme"]   = { enabled = true },
-    ["github"]             = { enabled = true },
-    ["no-clown-fiesta"]    = { enabled = false },
+    ["themery"]            = { enabled = false },
+    ["auto-colorscheme"]   = { enabled = false },
+
+    ["github"]             = { enabled = false },
+    ["no-clown-fiesta"]    = { enabled = true },
     ["nebulous"]           = { enabled = false },
     ["gruvbox"]            = { enabled = false },
     ["darcula"]            = { enabled = false },

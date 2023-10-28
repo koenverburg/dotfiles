@@ -2,7 +2,10 @@ local is_enabled = require("logic.functions").is_enabled
 
 local function mode(theme)
   -- os.execute('cmd')
-  return string.format('sed -i "" -e "s#^colors: \\*.*#colors: *%s#g" ~/code/github/dotfiles/.config/alacritty/alacritty.macos.yml', theme)
+  return string.format(
+    'sed -i "" -e "s#^colors: \\*.*#colors: *%s#g" ~/code/github/dotfiles/.config/alacritty/alacritty.macos.yml',
+    theme
+  )
 end
 
 return {
@@ -26,14 +29,14 @@ return {
       invert_selection = false,
       invert_intend_guides = false,
       inverse = true, -- invert background for search, diffs, statuslines and errors
-      contrast = "",  -- can be "hard", "soft" or empty string
+      contrast = "", -- can be "hard", "soft" or empty string
       dim_inactive = false,
       transparent_mode = false,
       overrides = {},
       palette_overrides = {},
     },
     config = function(_, opts)
-      vim.cmd("set background=dark")
+      vim.cmd("set background=light")
       require("gruvbox").setup(opts)
       vim.cmd("colorscheme gruvbox")
     end,
@@ -47,7 +50,7 @@ return {
       variant = "quasar", -- "night",
     },
     config = function(_, opts)
-      if not is_enabled("auto-colorscheme") then
+      if not is_enabled("auto-colorscheme") or not is_enabled("themery") then
         vim.cmd("set background=light")
         require("nebulous").setup(opts)
       end
@@ -73,7 +76,7 @@ return {
       },
     },
     config = function(_, opts)
-      if not is_enabled("auto-colorscheme") then
+      if not is_enabled("auto-colorscheme") or not is_enabled("themery") then
         vim.cmd("set background=dark")
         require("no-clown-fiesta").setup(opts)
         vim.cmd([[colorscheme no-clown-fiesta]])
@@ -89,7 +92,7 @@ return {
         require("github-theme").setup({})
         vim.cmd("colorscheme github_dark_high_contrast")
 
-        local cmd = mode('github')
+        local cmd = mode("github")
         os.execute(cmd)
 
         -- vim.cmd("set background=dark")
@@ -110,7 +113,7 @@ return {
       set_light_mode = function()
         require("github-theme").setup({})
         vim.cmd("colorscheme github_light_high_contrast")
-        local cmd = mode('githublight')
+        local cmd = mode("githublight")
         os.execute(cmd)
         -- vim.api.nvim_set_option("background", "light")
         -- require("nebulous").setup({
@@ -135,14 +138,31 @@ return {
   },
   {
     "projekt0n/github-nvim-theme",
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
-    enabled = is_enabled('github'),
+    enabled = is_enabled("github"),
     config = function()
-      if not is_enabled("auto-colorscheme") then
+      if not is_enabled("auto-colorscheme") or not is_enabled("themery") then
         require("github-theme").setup({})
         vim.cmd("colorscheme github_dark")
       end
+    end,
+  },
+  {
+    "zaldih/themery.nvim",
+    lazy = false,
+    enabled = is_enabled("themery"),
+    config = function()
+      -- Minimal config
+      require("themery").setup({
+        -- themes = {
+        --   -- "nebulous",
+        --   "github_dark_high_contrast",
+        --   -- "no-clown-fiesta",
+        -- },
+        themeConfigFile = "~/.config/nvim/lua/conrad/themery.lua", -- Described below
+        livePreview = false, -- Apply theme while browsing. Default to true.
+      })
     end,
   },
 }
