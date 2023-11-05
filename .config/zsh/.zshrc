@@ -125,6 +125,7 @@ alias krm="kubectl delete"
 alias kd="kubectl describe"
 alias kg="kubectl get"
 alias kdr="kubectl --dry-run=\"client\" -o yaml"
+alias kdash="k9s --logoless"
 
 # docker
 alias dlsc='docker container ls -a' # -a because I want to see ALL
@@ -218,3 +219,6 @@ export PATH="$PNPM_HOME:$PATH"
 
 eval "$(starship init zsh)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
