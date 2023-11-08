@@ -112,6 +112,11 @@ function M.on_attach(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
+  if M.is_enabled('nvim-navbuddy') then
+    local navbuddy = require("nvim-navbuddy")
+    navbuddy.attach(client, bufnr)
+  end
+
   -- if client.name == "rome" then
   --   client.server_capabilities.document_formatting = true
   -- end

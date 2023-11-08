@@ -88,6 +88,7 @@ local core = {
 
   plugins = {
     -- Personal
+    ["nightcoder"]         = { enabled = false },
     ["peepsight"]          = { enabled = true },
     ["cmd-palette"]        = { enabled = true },
     ["minimal-tabline"]    = { enabled = true },
@@ -167,6 +168,8 @@ local core = {
     ["tmux"]               = { enabled = true },
     ['hop']                = { enabled = true }, -- move
     ["hydra"]              = { enabled = true }, -- move
+    ["nvim-window"]        = { enabled = true },
+    ["nvim-navbuddy"]      = { enabled = true },
   }
 }
 

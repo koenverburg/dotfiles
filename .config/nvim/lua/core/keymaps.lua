@@ -381,7 +381,7 @@ normal("<leader>gt", [[ <cmd>lua require('logic.functions').createTerminal("lazy
 --
 -- ----------------------------------------------------------------------------
 normal("<space>ta", "<cmd>lua require('experiments.edit-alt').edit()<cr>")
-normal("<leader>fr", "<cmd>lua require('logic.region').main()<cr>")
+
 -- normal("<space>/", "<cmd>lua require('logic.functions').PopUpSearch()<cr>")
 -- normal('<Leader>T', [[ <cmd>lua require'lsp_extensions'.inlay_hints()<cr> ]])
 
@@ -397,7 +397,5 @@ normal("<space>fr", ":%s/")
 
 normal("<leader><leader>x", "<cmd>lua require'logic.functions'.save_and_execute()<cr>")
 
--- Folding using Treesitter
-normal("<leader>fi", "<cmd>lua require 'logic.folds'.main()<cr>")
 
 -- vim.cmd [[ autocmd WinEnter,WinLeave,BufWinEnter * :lua require'logic.functions'.hideTablineWhenSingleTab() ]]

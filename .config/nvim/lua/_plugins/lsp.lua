@@ -230,8 +230,6 @@ return {
 
       diagnosticSetup.setup()
       local lspconfig = require("lspconfig")
-      -- cody.register_llmsp_config(lspconfig)
-      -- cody.set_explain()
 
       for name, opts in pairs(servers) do
         if type(opts) == "function" then
@@ -253,6 +251,7 @@ return {
     enabled = is_enabled("lsp-snippets"),
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets"
     },
     config = function()
       local ls = require("luasnip")
@@ -262,15 +261,15 @@ return {
         updateevents = "TextChanged,TextChangedI",
       })
 
-      -- local parse = require("luasnip.util.parser").parse_snippet
-      -- local s = require("luasnip.nodes.snippet").S
-      -- local p = require("luasnip.extras").partial
-      --
-      -- s("date", p(os.date, "%Y-%m-%d"))
-      -- s("time", p(os.date, "%H:%M"))
-      -- s("htime", p(os.date, "%Y-%m-%dT%H:%M:%S+10:00"))
+      local parse = require("luasnip.util.parser").parse_snippet
+      local s = require("luasnip.nodes.snippet").S
+      local p = require("luasnip.extras").partial
 
-      -- require("luasnip.loaders.from_vscode").lazy_load()
+      s("date", p(os.date, "%Y-%m-%d"))
+      s("time", p(os.date, "%H:%M"))
+      -- s("time2", p(os.date, "%Y-%m-%dT%H:%M:%S+10:00"))
+
+      require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_vscode").lazy_load({
         paths = { "./snippets/" },
       })
@@ -286,6 +285,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "onsails/lspkind-nvim",
+      "L3MON4D3/LuaSnip"
     },
     config = function()
       local cmp = require("cmp")
@@ -313,9 +313,9 @@ return {
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
+          { name = "luasnip" },
           { name = "nvim_lua" },
           { name = "nvim_lsp" },
-          { name = "luasnip" },
           { name = "path" },
           { name = "buffer",  keyword_length = 5 },
         }),
