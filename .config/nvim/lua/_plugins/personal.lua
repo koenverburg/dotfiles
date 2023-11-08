@@ -4,6 +4,10 @@ return {
   {
     dir = "~/code/github/nightcoder.nvim",
     lazy = false,
+    enabled = is_enabled("nightcoder"),
+    config = function()
+      require('nightcoder').setup()
+    end,
   },
   {
     "koenverburg/minimal-tabline.nvim",
