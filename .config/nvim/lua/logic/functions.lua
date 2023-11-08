@@ -107,18 +107,6 @@ local lsp_map = function(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
-  local static_info = require("experiments.static-info")
-  if static_info.enabled_when_supprted_filetype(bufnr) then
-    -- trigger once
-    static_info.show_early_exit()
-    static_info.show_named_imports()
-    static_info.show_default_exports()
-    static_info.show_cyclomatic_complexity()
-
-    -- trigger when buffer changes
-    static_info.autocmd()
-  end
-
   if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
     -- vim.lsp.inlay_hint(bufnr, true)
     client.server_capabilities.document_formatting = false

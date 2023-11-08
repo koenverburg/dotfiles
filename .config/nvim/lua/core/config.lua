@@ -92,6 +92,7 @@ local core = {
     ["cmd-palette"]        = { enabled = true },
     ["minimal-tabline"]    = { enabled = true },
     ["minimal-statusline"] = { enabled = true },
+    ["static"]             = { enabled = true },
 
     -- Colorschemes
     ["themery"]            = { enabled = false },
