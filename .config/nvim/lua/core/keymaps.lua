@@ -3,7 +3,6 @@ local funcs = require("logic.functions")
 local normal = funcs.normal
 local visual = funcs.visual
 local insert = funcs.insert
-local terminal = funcs.terminal
 local is_enabled = funcs.is_enabled
 
 if is_enabled("telescope") then

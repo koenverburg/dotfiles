@@ -1,4 +1,40 @@
 local is_enabled = require("logic.functions").is_enabled
+local normal = require("logic.functions").normal
+
+if is_enabled("treesitter") then
+  local function dropCaptures()
+    local result = vim.treesitter.get_captures_at_cursor(0)
+    vim.notify(table.concat(result, ' '))
+    -- print(vim.inspect(result))
+
+    -- local id = vim.fn.synID(vim.fn.line("."), vim.fn.col("."), 0)
+    -- local transId = vim.fn.synIDtrans(id)
+    -- local name = vim.fn.synIDattr(id, "name")
+    -- print(vim.inspect(transId, name))
+
+    -- local function get_hl(name)
+    --   local ok, hl = pcall(vim.api.nvim_get_hl_by_name, name, true)
+    --   if not ok then
+    --     return
+    --   end
+    --   for _, key in pairs({ "foreground", "background", "special" }) do
+    --     if hl[key] then
+    --       hl[key] = string.format("#%06x", hl[key])
+    --     end
+    --   end
+    --   return hl
+    -- end
+    -- print(result[1])
+
+    -- local v = get_hl('@' ..  result[1])
+    -- if v then
+    --   for key, value in pairs(v) do
+    --     print(key .. ' ' .. value)
+    --   end
+    -- end
+  end
+  normal("<leader>fc", dropCaptures)
+end
 
 return {
   {
@@ -13,8 +49,8 @@ return {
       "nvim-treesitter/nvim-treesitter-refactor",
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        lazy = true
-      }
+        lazy = true,
+      },
     },
 
     opts = {
@@ -37,7 +73,7 @@ return {
         "typescript",
         "yaml",
         "lua",
-        "gitcommit"
+        "gitcommit",
       },
       -- context_commentstring = {
       --   enable = true,
@@ -54,7 +90,7 @@ return {
       --   },
       -- },
       tree_setter = {
-        enable = false
+        enable = false,
       },
       refactor = {
         smart_rename = {

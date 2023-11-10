@@ -58,8 +58,8 @@ return {
   },
   {
     -- "aktersnurra/no-clown-fiesta.nvim",
-    "koenverburg/no-clown-fiesta.nvim",
-    -- dir = "~/code/github/no-clown-fiesta.nvim",
+    -- "koenverburg/no-clown-fiesta.nvim",
+    dir = "~/code/github/no-clown-fiesta.nvim",
     enabled = is_enabled("no-clown-fiesta"),
     branch = "personal-touch",
     lazy = false,
