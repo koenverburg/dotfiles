@@ -107,6 +107,8 @@ local lsp_map = function(mode, key, action)
 end
 
 function M.on_attach(client, bufnr)
+  client.server_capabilities.semanticTokensProvider = nil
+
   if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "gopls" then
     -- vim.lsp.inlay_hint(bufnr, true)
     client.server_capabilities.document_formatting = false
