@@ -10,6 +10,14 @@ return {
     end,
   },
   {
+    dir = "~/code/github/complexity.nvim",
+    lazy = false,
+    enabled = true, -- is_enabled("nightcoder"),
+    config = function()
+      require('complexity').setup()
+    end,
+  },
+  {
     "koenverburg/minimal-tabline.nvim",
     branch = "develop",
     -- dir = "~/code/github/minimal-tabline.nvim",
@@ -41,6 +49,8 @@ return {
   },
   {
     "koenverburg/peepsight.nvim",
+    branch = "update",
+    -- dir = "~/code/github/peepsight.nvim",
     enabled = is_enabled("peepsight"),
     cmd = "Peepsight",
     config = function()

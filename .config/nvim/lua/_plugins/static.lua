@@ -11,8 +11,8 @@ end
 
 return {
   {
-    "koenverburg/static.nvim",
-    -- dir = "~/code/github/static.nvim",
+    -- "koenverburg/static.nvim",
+    dir = "~/code/github/static.nvim",
     lazy = false,
     enabled = is_enabled(plugin),
     config = function()

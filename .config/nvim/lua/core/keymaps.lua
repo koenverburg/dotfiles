@@ -325,6 +325,10 @@ normal("of", "za")
 --
 -- ----------------------------------------------------------------------------
 
+-- Peepsight
+normal("<space>c", "<cmd>lua require('peepsight').enable_center()<cr>")
+normal("<space>C", "<cmd>lua require('peepsight').toggle()<cr>")
+
 -- Symbols
 normal("<space>o", "<cmd>SymbolsOutline<cr>")
 
