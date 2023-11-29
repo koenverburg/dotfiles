@@ -141,11 +141,6 @@ local core = {
     ["cursorword"]         = { enabled = true },
     ['refactoring']        = { enabled = true },
 
-    -- AI
-    ["sg"]                 = { enabled = false },
-    ["codeium"]            = { enabled = false },
-    ["chatgpt"]            = { enabled = false },
-
     -- Sessions
     ["possession"]         = { enabled = true },
     ["session"]            = { enabled = false },
@@ -169,6 +164,7 @@ local core = {
     ['hop']                = { enabled = true }, -- move
     ["hydra"]              = { enabled = true }, -- move
     ["nvim-window"]        = { enabled = true },
+    ["gen"]                = { enabled = true },
     ["nvim-navbuddy"]      = { enabled = true },
   }
 }
