@@ -199,9 +199,9 @@ if is_enabled("telescope") and is_enabled("lsp") then
   funcs.telescope_map("<leader>cx", "lsp_code_actions")
 end
 
-if is_enabled("telescope") and is_enabled("lsp") and is_enabled("sg") then
-  normal("<space>ss", [[<cmd>lua require('sg.telescope').fuzzy_search_results()<CR>]])
-end
+-- if is_enabled("telescope") and is_enabled("lsp") and is_enabled("sg") then
+--   normal("<space>ss", [[<cmd>lua require('sg.telescope').fuzzy_search_results()<CR>]])
+-- end
 
 if is_enabled("refactoring") then
   normal("<leader>rr", [[ <cmd>lua require('refactoring').select_refactor()<CR> ]])
