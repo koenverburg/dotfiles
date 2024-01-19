@@ -65,7 +65,6 @@ local core = {
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn", text = "" },
     { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" }
   },
 
   colors = {
@@ -104,6 +103,7 @@ local core = {
     ["nebulous"]           = { enabled = false },
     ["gruvbox"]            = { enabled = false },
     ["darcula"]            = { enabled = false },
+    ["solarized"]          = { enabled = false },
 
     -- Search
     ["telescope"]          = { enabled = true },
@@ -140,6 +140,7 @@ local core = {
     ["comment"]            = { enabled = true },
     ["cursorword"]         = { enabled = true },
     ['refactoring']        = { enabled = true },
+    ['eyeliner']           = { enabled = true },
 
     -- Sessions
     ["possession"]         = { enabled = true },
@@ -166,6 +167,7 @@ local core = {
     ["nvim-window"]        = { enabled = true },
     ["gen"]                = { enabled = true },
     ["nvim-navbuddy"]      = { enabled = true },
+    ["deadcolumn.nvim"]    = { enabled = true },
   }
 }
 

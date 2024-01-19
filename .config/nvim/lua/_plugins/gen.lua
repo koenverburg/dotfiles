@@ -1,7 +1,7 @@
 local is_enabled = require("logic.functions").is_enabled
 
 if is_enabled('gen') then
-  local gen, ok = pcall(require, 'gen')
+  local ok, gen = pcall(require, 'gen')
 
   if ok then
     gen.prompts['Elaborate_Text'] = {
@@ -25,7 +25,6 @@ if is_enabled('gen') then
     }
   end
 end
-
 
 return {
   {

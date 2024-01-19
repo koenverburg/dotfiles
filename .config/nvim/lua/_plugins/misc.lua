@@ -64,7 +64,7 @@ return {
   },
   {
     "nullchilly/fsread.nvim",
-    enabled = true, --is_enabled("misc"),
+    enabled = false, --is_enabled("misc"),
     lazy = true,
     config = function() end,
   },
@@ -76,7 +76,7 @@ return {
       require("bionic-reading").setup({
         -- determines if the file types below will be
         -- automatically highlighted on buffer open
-        auto_highlight = true,
+        auto_highlight = false,
         -- the file types you want to highlight with
         -- the node types you would like to target
         -- using treesitter
@@ -92,12 +92,12 @@ return {
         -- the highlighting styles applied
         -- IMPORTANT - if link is present, no other
         -- styles are applied
-        hl_group_value = {
-          -- link = "Bold",
-          bg = "red",
-          fg = "blue",
-          bold = true,
-        },
+        -- hl_group_value = {
+        --   -- link = "Bold",
+        --   bg = "red",
+        --   fg = "blue",
+        --   bold = true,
+        -- },
         -- Flag used to control if the user is prompted
         -- if BRToggle is called on a file type that is not
         -- explicitly defined above
@@ -146,10 +146,17 @@ return {
     end,
   },
   {
-    "unblevable/quick-scope",
-    enabled = is_enabled("misc"),
+    'jinh0/eyeliner.nvim',
+    enabled = is_enabled("eyeliner"),
     lazy = false,
-    config = function() end,
+    config = function()
+      require('eyeliner').setup {
+        dim = true,
+        highlight_on_key = true, -- this must be set to true for dimming to work!
+      }
+      vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg = core.colors.yellow, bold = true, underline = true })
+      vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg = core.colors.yellow, underline = true })
+    end
   },
   {
     "koenverburg/dim.lua", -- Fork,
@@ -275,7 +282,7 @@ return {
     end,
   },
   {
-    -- doesnt really work??
+    -- does it really work??
     "m4xshen/autoclose.nvim",
     enabled = is_enabled("misc"),
     lazy = false,

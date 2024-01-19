@@ -53,7 +53,6 @@ return {
         -- "y",
         -- "z",
       },
-
       -- A group to use for overwriting the Normal highlight group in the floating
       -- window. This can be used to change the background color.
       -- normal_hl = "Normal",

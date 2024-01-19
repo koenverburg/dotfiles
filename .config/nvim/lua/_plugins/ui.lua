@@ -134,20 +134,16 @@ return {
       local logo = [[
 
 
-Sigma
 
-86400
 
-discipline
 
-Memento Mori
 
+
+ Memento Mori
 Memento Vivere
 
-It's Your Turn
-
-Life Is Yours To Create
-
+Never  complain
+ Never explain
       ]]
 
       dashboard.section.header.val = vim.split(logo, "\n")
