@@ -1,8 +1,9 @@
 local core = {
   env = {
-    isWorkLaptop = string.find(vim.loop.os_gethostname(), "AMS") ~= nil
+    isWorkLaptop = string.find(vim.loop.os_gethostname(), "AMS") ~= nil,
   },
 
+  -- #region signs
   signs = {
     error = "",
     warn = "",
@@ -47,7 +48,9 @@ local core = {
     staged = "",
     conflict = "",
   },
+  -- #endregion signs
 
+  -- #region icons
   icons = {
     Class = "",
     Constructor = "",
@@ -60,16 +63,17 @@ local core = {
     Text = "",
     Variable = "",
   },
+  -- #endregion icons
 
   diagnosticSigns = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignWarn",  text = "" },
+    { name = "DiagnosticSignHint",  text = "" },
   },
 
   colors = {
-    yellow = '#FFCC00',
-    black = '#888888'
+    yellow = "#FFCC00",
+    black = "#888888",
   },
 
   lsp_servers = {},
@@ -85,90 +89,69 @@ local core = {
     "tsx",
   },
 
+  -- #region plugins
   plugins = {
-    -- Personal
-    ["nightcoder"]         = { enabled = false },
-    ["peepsight"]          = { enabled = true },
-    ["cmd-palette"]        = { enabled = true },
-    ["minimal-tabline"]    = { enabled = true },
-    ["minimal-statusline"] = { enabled = true },
-    ["static"]             = { enabled = true },
-
-    -- Colorschemes
-    ["themery"]            = { enabled = false },
-    ["auto-colorscheme"]   = { enabled = false },
-
-    ["github"]             = { enabled = false },
-    ["no-clown-fiesta"]    = { enabled = true },
-    ["nebulous"]           = { enabled = false },
-    ["gruvbox"]            = { enabled = false },
-    ["darcula"]            = { enabled = false },
-    ["solarized"]          = { enabled = false },
-
-    -- Search
-    ["telescope"]          = { enabled = true },
-    ["search"]             = { enabled = true },
-
-    -- lsp
-    ["lsp"]                = { enabled = true },
-    ["lsp-snippets"]       = { enabled = true },
-    ["lsp-formatting"]     = { enabled = true },
-    ["formatting"]         = { enabled = true },
-
-    -- Tree Sitter
-    ["treesitter"]         = { enabled = true },
-
-    -- UI
-    ["indent-blankline"]   = { enabled = true },
-    ["pretty-fold"]        = { enabled = true },
-
-    ["noice"]              = { enabled = true },
-
-    ["dashboard"]          = { enabled = true },
-    ["explorer"]           = { enabled = true },
-
-    -- Focus
-    ["tint"]               = { enabled = false },
-
-    -- Misc
-    ['misc']               = { enabled = true },
-    ['colorizer']          = { enabled = false },
-    ['leap']               = { enabled = false },
-    ["icons"]              = { enabled = true },
+    -- stylua: ignore
     ["accelerated-jk"]     = { enabled = true },
-    ["template"]           = { enabled = false },
+    ["auto-colorscheme"]   = { enabled = false },
+    ["centerpad"]          = { enabled = true },
+    ["cmd-palette"]        = { enabled = true },
+    ["cokeline"]           = { enabled = true },
+    ["colorizer"]          = { enabled = false },
     ["comment"]            = { enabled = true },
     ["cursorword"]         = { enabled = true },
-    ['refactoring']        = { enabled = true },
-    ['eyeliner']           = { enabled = true },
-
-    -- Sessions
-    ["possession"]         = { enabled = true },
-    ["session"]            = { enabled = false },
-    ["persistence"]        = { enabled = false },
-
-    -- Utils
-    ["git"]                = { enabled = true },
-    ["treesj"]             = { enabled = true },
-    ["mini-hipatterns"]    = { enabled = true },
-    ["surround"]           = { enabled = true },
-    ["ts-node-action"]     = { enabled = true },
-    ["multicursors"]       = { enabled = false },
-    ["toggleterm"]         = { enabled = true },
-
-    -- Focus (create focus.lua)
-    ["centerpad"]          = { enabled = true },
-
-    -- navigation
-    ["tabtree"]            = { enabled = true },
-    ["tmux"]               = { enabled = true },
-    ['hop']                = { enabled = true }, -- move
-    ["hydra"]              = { enabled = true }, -- move
-    ["nvim-window"]        = { enabled = true },
-    ["gen"]                = { enabled = true },
-    ["nvim-navbuddy"]      = { enabled = true },
+    ["darcula"]            = { enabled = false },
+    ["dashboard"]          = { enabled = true },
     ["deadcolumn.nvim"]    = { enabled = true },
-  }
+    ["eyeliner"]           = { enabled = true },
+    ["formatting"]         = { enabled = true },
+    ["gen"]                = { enabled = false },
+    ["git"]                = { enabled = true },
+    ["github"]             = { enabled = false },
+    ["gruvbox"]            = { enabled = false },
+    ["hop"]                = { enabled = true }, -- move
+    ["hydra"]              = { enabled = true }, -- move
+    ["icons"]              = { enabled = true },
+    ["indent-blankline"]   = { enabled = true },
+    ["leap"]               = { enabled = false },
+    ["lsp"]                = { enabled = true },
+    ["lsp-formatting"]     = { enabled = true },
+    ["lsp-snippets"]       = { enabled = true },
+    ["mini-hipatterns"]    = { enabled = true },
+    ["minimal-statusline"] = { enabled = false },
+    ["fork-whiskyline"]    = { enabled = true },
+    ["minimal-tabline"]    = { enabled = true },
+    ["misc"]               = { enabled = true },
+    ["multicursors"]       = { enabled = false },
+    ["nebulous"]           = { enabled = false },
+    ["nightcoder"]         = { enabled = false },
+    ["no-clown-fiesta"]    = { enabled = true },
+    ["noice"]              = { enabled = true },
+    ["nvim-navbuddy"]      = { enabled = false }, -- should use more
+    ["nvim-tree"]          = { enabled = true },
+    ["nvim-window"]        = { enabled = true },
+    ["peepsight"]          = { enabled = true },
+    ["persistence"]        = { enabled = false },
+    ["possession"]         = { enabled = true },
+    ["pretty-fold"]        = { enabled = true },
+    ["refactoring"]        = { enabled = true },
+    ["search"]             = { enabled = true },
+    ["session"]            = { enabled = false },
+    ["solarized"]          = { enabled = false },
+    ["static"]             = { enabled = true },
+    ["surround"]           = { enabled = true },
+    ["tabtree"]            = { enabled = true },
+    ["telescope"]          = { enabled = true },
+    ["template"]           = { enabled = false },
+    ["themery"]            = { enabled = false },
+    ["tint"]               = { enabled = false },
+    ["tmux"]               = { enabled = true },
+    ["toggleterm"]         = { enabled = false },
+    ["treesitter"]         = { enabled = true },
+    ["treesj"]             = { enabled = true },
+    ["ts-node-action"]     = { enabled = true },
+  },
+  -- #endregion
 }
 
 return core

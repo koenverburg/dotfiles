@@ -1,9 +1,9 @@
-local is_enabled = require("logic.functions").is_enabled
+require("global")
 
 return {
   {
     "roobert/tabtree.nvim",
-    enabled = is_enabled("tabtree"),
+    enabled = Is_enabled("tabtree"),
     lazy = false,
     -- keys = {
     --   { "[", "<cmd>lua require('tabtree').previous()<cr>" },
@@ -40,7 +40,7 @@ return {
   },
   {
     "numToStr/Navigator.nvim",
-    enabled = is_enabled("tmux"),
+    enabled = Is_enabled("tmux"),
     lazy = false,
     config = function()
       require("Navigator").setup()

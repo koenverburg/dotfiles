@@ -1,4 +1,4 @@
-local is_enabled = require("logic.functions").is_enabled
+require("global")
 local ts_settings = require('logic.telescope-settings')
 
 -- "ThePrimeagen/git-worktree.nvim"
@@ -6,12 +6,12 @@ return {
   "nvim-telescope/telescope-ui-select.nvim",
   {
     "windwp/nvim-spectre",
-    enabled = is_enabled("search"),
+    enabled = Is_enabled("search"),
     config = function() end,
   },
   {
     "nvim-telescope/telescope.nvim",
-    enabled = is_enabled("telescope"),
+    enabled = Is_enabled("telescope"),
     lazy = false,
     dependencies = {
       "nvim-lua/popup.nvim",
@@ -48,7 +48,7 @@ return {
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
-    enabled = is_enabled("telescope"),
+    enabled = Is_enabled("telescope"),
     lazy = false,
     build = "make",
   },

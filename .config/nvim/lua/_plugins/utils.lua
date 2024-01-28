@@ -1,22 +1,27 @@
-local is_enabled = require("logic.functions").is_enabled
+require("global")
 
 return {
   {
+    "dstein64/vim-startuptime",
+    lazy = false,
+    enabled = true,
+  },
+  {
     "Wansmer/treesj",
     keys = { "<space>m", "<space>j", "<space>s" },
-    enabled = is_enabled("treesj"),
+    enabled = Is_enabled("treesj"),
     config = function()
       require("treesj").setup({})
     end,
   },
   {
     "ckolkey/ts-node-action",
-    enabled = is_enabled("ts-node-action"),
+    enabled = Is_enabled("ts-node-action"),
     opts = {},
   },
   {
     "kylechui/nvim-surround",
-    enabled = is_enabled("surround"),
+    enabled = Is_enabled("surround"),
     lazy = false,
     config = function()
       require("nvim-surround").setup()
@@ -25,7 +30,7 @@ return {
   {
     "smoka7/multicursors.nvim",
     -- lazy = "VeryLazy",
-    enabled = false, -- is_enabled("multicursors"),
+    enabled = false, -- Is_enabled("multicursors"),
     dependencies = {
       -- "smoka7/hydra.nvim",
       "anuvyklack/hydra.nvim",
@@ -44,7 +49,7 @@ return {
   {
     "akinsho/toggleterm.nvim",
     version = "*",
-    enabled = is_enabled('toggleterm'),
+    enabled = Is_enabled('toggleterm'),
     opts = {
       --[[ things you want to change go here]]
     },

@@ -1,6 +1,6 @@
+require("global")
 local core = require("core.config")
 local on_attach = require("logic.functions").on_attach
-local is_enabled = require("logic.functions").is_enabled
 local diagnosticSetup = require("logic.diagnostic")
 local os = require('os')
 -- local cody = require("experiments.cody")
@@ -111,7 +111,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     lazy = false,
-    enabled = is_enabled("lsp"),
+    enabled = false, -- Is_enabled("lsp"),
     ft = { "go", "gomod" },
     event = { "CmdlineEnter" },
     build = ':lua require("go.install").update_all_sync()',
@@ -124,8 +124,8 @@ return {
   {
     -- "VidocqH/lsp-lens.nvim",
     dir = "~/code/github/lsp-lens.nvim",
-    enabled = false, -- is_enabled("lsp"),
-    event = "BufRead",
+    enabled = false, -- Is_enabled("lsp"),
+    event = LoadOnBuffer,
     opts = {
       include_declaration = false, -- Reference include declaration
       sections = {                 -- Enable / Disable specific request
@@ -149,7 +149,7 @@ return {
     ft = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescriptreact" },
     event = "LspAttach",
     branch = "anticonceal",
-    enabled = false, -- is_enabled("lsp"),
+    enabled = false, -- Is_enabled("lsp"),
     opts = {
       inlay_hints = {
         parameter_hints = {
@@ -203,13 +203,13 @@ return {
   },
   {
     "ray-x/lsp_signature.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled("lsp"),
+    event = LoadOnBuffer,
+    enabled = Is_enabled("lsp"),
   },
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled("lsp"),
+    event = LoadOnBuffer,
+    enabled = Is_enabled("lsp"),
     dependencies = {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -247,8 +247,8 @@ return {
   },
   {
     "L3MON4D3/LuaSnip",
-    event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled("lsp-snippets"),
+    event = LoadOnBuffer,
+    enabled = Is_enabled("lsp-snippets"),
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets"
@@ -277,8 +277,8 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled("lsp"),
+    event = LoadOnBuffer,
+    enabled = Is_enabled("lsp"),
     dependencies = {
       "mason.nvim",
       "hrsh7th/nvim-cmp",
@@ -381,8 +381,8 @@ return {
   },
   {
     "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    enabled = is_enabled("lsp") and is_enabled("lsp-formatting"),
+    event = LoadOnBuffer,
+    enabled = Is_enabled("lsp") and Is_enabled("lsp-formatting"),
     dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")
@@ -419,9 +419,9 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = LoadOnBuffer,
     cmd = "Mason",
-    enabled = is_enabled("lsp"),
+    enabled = Is_enabled("lsp"),
     -- keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
@@ -442,8 +442,12 @@ return {
   },
   {
     "simrat39/symbols-outline.nvim",
-    enabled = is_enabled("lsp"),
-    lazy = false,
+    enabled = Is_enabled("lsp"),
+    event = LoadOnBuffer,
+    -- lazy = false,
+    keys = {
+      { "<leader>o", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline"}
+    },
     config = function()
       require("symbols-outline").setup({
         position = 'left'

@@ -1,15 +1,16 @@
-local is_enabled = require("logic.functions").is_enabled
+require('global')
 local core = require("core.config")
 -- 'bkad/CamelCaseMotion' -- WordJumping like resharper and faster movement,
 return {
   {
     "typicode/bg.nvim",
     lazy = false,
-    enabled = true,
+    enabled = false,
   },
   {
     "ThePrimeagen/refactoring.nvim",
-    enabled = is_enabled('refactoring'),
+    enabled = Is_enabled('refactoring'),
+    event = LoadOnBuffer,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -44,7 +45,7 @@ return {
   },
   {
     "echasnovski/mini.hipatterns",
-    enabled = is_enabled("mini-hipatterns"),
+    enabled = Is_enabled("mini-hipatterns"),
     lazy = false,
     config = function()
       local hipatterns = require("mini.hipatterns")
@@ -64,8 +65,8 @@ return {
   },
   {
     "nullchilly/fsread.nvim",
-    enabled = false, --is_enabled("misc"),
-    lazy = true,
+    enabled = false, --Is_enabled("misc"),
+    lazy = false,
     config = function() end,
   },
   {
@@ -113,15 +114,16 @@ return {
   {
     "nguyenvukhang/nvim-toggler",
     enabled = true,
+    event = LoadOnBuffer,
     lazy = false,
     config = function()
       require("nvim-toggler").setup({
         -- your own inverses
         inverses = {
           ["dev"] = "prod",
-          ["prod"] = "dev",
+          -- ["prod"] = "dev",
           ["development"] = "production",
-          ["production"] = "development",
+          -- ["production"] = "development",
           ["live"] = "backtest",
           ["backtest"] = "live",
           ["true"] = "false",
@@ -147,8 +149,9 @@ return {
   },
   {
     'jinh0/eyeliner.nvim',
-    enabled = is_enabled("eyeliner"),
-    lazy = false,
+    enabled = Is_enabled("eyeliner"),
+    event = LoadOnBuffer,
+    -- lazy = true,
     config = function()
       require('eyeliner').setup {
         dim = true,
@@ -160,32 +163,41 @@ return {
   },
   {
     "koenverburg/dim.lua", -- Fork,
-    enabled = is_enabled("misc"),
-    lazy = true,
+    event = LoadOnBuffer,
+    enabled = false,
+    -- enabled = Is_enabled("misc"),
+    lazy = false,
     config = function()
       require("dim").setup()
     end,
   },
   {
     "norcalli/nvim-colorizer.lua",
-    enabled = is_enabled("colorizer"),
-    lazy = false,
+    enabled = Is_enabled("colorizer"),
+    event = LoadOnBuffer,
+    -- lazy = true,
     config = function()
       require("colorizer").setup()
     end,
   },
   {
     "phaazon/hop.nvim",
-    enabled = is_enabled("hop"),
-    lazy = false,
+    enabled = Is_enabled("hop"),
+    event = LoadOnBuffer,
+    -- lazy = false,
+    keys = {
+      -- { "<leader>jf", "<cmd>HopWord<cr>", desc = "Word jump" },
+      { "<leader>jf", "<cmd>HopWordMW<cr>", desc = "NeoTree" },
+    },
     config = function()
       require("hop").setup()
     end,
   },
   {
     "numToStr/Comment.nvim",
-    enabled = is_enabled("comment"),
-    lazy = false,
+    enabled = Is_enabled("comment"),
+    event = LoadOnBuffer,
+    -- lazy = false,
     config = function()
       require("Comment").setup()
       local comment_ft = require("Comment.ft")
@@ -198,8 +210,9 @@ return {
   },
   {
     "RRethy/vim-illuminate",
-    enabled = is_enabled("cursorword"),
-    lazy = false,
+    enabled = Is_enabled("cursorword"),
+    event = LoadOnBuffer,
+    -- lazy = false,
     opts = {
       providers = {
         "lsp",
@@ -284,7 +297,8 @@ return {
   {
     -- does it really work??
     "m4xshen/autoclose.nvim",
-    enabled = is_enabled("misc"),
+    enabled = Is_enabled("misc"),
+    event = LoadOnBuffer,
     lazy = false,
     config = function()
       require("autoclose").setup({
@@ -294,7 +308,7 @@ return {
   },
   {
     "levouh/tint.nvim",
-    enabled = is_enabled("tint"),
+    enabled = Is_enabled("tint"),
     lazy = false,
     opts = {
       tint = -60,
@@ -309,7 +323,8 @@ return {
   },
   {
     "rainbowhxch/accelerated-jk.nvim",
-    enabled = is_enabled("accelerated-jk"),
+    enabled = Is_enabled("accelerated-jk"),
+    event = LoadOnBuffer,
     lazy = false,
     opts = {
       mode = "time_driven",
@@ -328,8 +343,9 @@ return {
   },
   {
     "anuvyklack/hydra.nvim",
-    enabled = is_enabled("hydra"),
-    lazy = false,
+    enabled = Is_enabled("hydra"),
+    -- lazy = false,
+    event = LoadOnBuffer,
     opts = {
       name = "Change / Resize Window",
       mode = { "n" },
@@ -370,7 +386,7 @@ return {
   },
   {
     "glepnir/template.nvim",
-    enabled = is_enabled("template"),
+    enabled = Is_enabled("template"),
     config = function()
       local temp = require("template")
       temp.temp_dir = "~/.config/nvim/template"
@@ -380,7 +396,7 @@ return {
   },
   {
     "junegunn/vim-easy-align",
-    enabled = is_enabled("formatting"),
+    enabled = Is_enabled("formatting"),
     lazy = false,
   },
 }

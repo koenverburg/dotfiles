@@ -1,9 +1,9 @@
-local is_enabled = require("logic.functions").is_enabled
+require("global")
 
 return {
   {
     "lewis6991/gitsigns.nvim",
-    enabled = is_enabled("git"),
+    enabled = Is_enabled("git"),
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       signs = {
@@ -23,7 +23,7 @@ return {
   },
   {
     "TimUntersberger/neogit",
-    enabled = is_enabled("git"),
+    enabled = Is_enabled("git"),
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
       { "<leader>gg", "<cmd>Neogit<cr>" },
@@ -38,6 +38,6 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-    enabled = is_enabled("git")
+    enabled = Is_enabled("git")
   },
 }

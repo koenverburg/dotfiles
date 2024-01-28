@@ -1,4 +1,4 @@
-local is_enabled = require("core.config")
+require("global")
 
 return {
   {
@@ -7,7 +7,7 @@ return {
       "haydenmeade/neotest-jest",
     },
     lazy = false,
-    enabled = true,
+    enabled = false,
     config = function()
       require("neotest").setup({
         adapters = {
@@ -29,7 +29,7 @@ return {
   {
     "aaronhallaert/continuous-testing.nvim",
     lazy = false,
-    enabled = true,
+    enabled = false,
     config = function()
       -- %file will be replace with the test file
       require("continuous-testing").setup({

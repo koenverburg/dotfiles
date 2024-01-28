@@ -4,6 +4,7 @@ return {
   "stephpy/vim-yaml",
   "PProvost/vim-ps1",
   "ekalinin/Dockerfile.vim",
+
   -- generic depencies
   "nvim-lua/popup.nvim",
   "nvim-lua/plenary.nvim",

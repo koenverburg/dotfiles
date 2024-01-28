@@ -1,12 +1,11 @@
-local funcs = require("logic.functions")
-local is_enabled = funcs.is_enabled
-local icons = require("core.config").signs
+require('global')
 
 return {
   {
     "anuvyklack/pretty-fold.nvim",
-    enabled = is_enabled("pretty-fold"),
-    lazy = false,
+    enabled = Is_enabled("pretty-fold"),
+    event = LoadOnBuffer,
+    -- lazy = false,
     config = function()
       require("pretty-fold").setup({
         -- fill_char = '-',
@@ -15,9 +14,10 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    enabled = is_enabled("indent-blankline"),
+    enabled = Is_enabled("indent-blankline"),
+    event = LoadOnBuffer,
     main = "ibl",
-    lazy = false,
+    -- lazy = false,
     opts = {
       scope = {
         enabled = false
@@ -29,15 +29,16 @@ return {
   },
   {
     "kyazdani42/nvim-web-devicons",
-    enabled = is_enabled("icons"),
-    lazy = false,
+    enabled = Is_enabled("icons"),
+    event = LoadOnBuffer,
+    -- lazy = true,
     config = function()
       require("nvim-web-devicons").setup()
     end,
   },
   {
     "folke/noice.nvim",
-    enabled = is_enabled("noice"),
+    enabled = Is_enabled("noice"),
     lazy = false,
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -124,7 +125,7 @@ return {
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
-    enabled = is_enabled("dashboard"),
+    enabled = Is_enabled("dashboard"),
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
       -- local query = require('possession.query')
@@ -185,70 +186,8 @@ Never  complain
     end,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    cmd = "Neotree",
-    enabled = is_enabled("explorer"),
-    keys = {
-      {
-        "<C-b>",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            dir = vim.loop.cwd(),
-          })
-        end,
-        desc = "Explorer NeoTree (cwd)",
-      },
-      {
-        "<space>b",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
-            dir = vim.loop.cwd(),
-          })
-        end,
-        desc = "Explorer NeoTree (cwd)",
-      },
-    },
-    deactivate = function()
-      vim.cmd([[Neotree close]])
-    end,
-    init = function()
-      vim.g.neo_tree_remove_legacy_commands = 1
-      if vim.fn.argc() == 1 then
-        local stat = vim.loop.fs_stat(vim.fn.argv(0))
-        if stat and stat.type == "directory" then
-          require("neo-tree")
-        end
-      end
-    end,
-    opts = {
-      filesystem = {
-        bind_to_cwd = false,
-        follow_current_file = true,
-      },
-      window = {
-        position = "right",
-        mappings = {
-          ["<space>"] = "none",
-        },
-      },
-      default_component_configs = {
-        indent = {
-          with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
-          expander_collapsed = "",
-          expander_expanded = "",
-          expander_highlight = "NeoTreeExpander",
-        },
-      },
-    },
-    config = function(_, opts)
-      require("neo-tree").setup(opts)
-    end,
-  },
-  {
     "smithbm2316/centerpad.nvim",
-    enabled = is_enabled("centerpad"),
+    enabled = Is_enabled("centerpad"),
     lazy = false,
     keys = {
       {

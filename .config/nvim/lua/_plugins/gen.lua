@@ -1,6 +1,6 @@
-local is_enabled = require("logic.functions").is_enabled
+require("global")
 
-if is_enabled('gen') then
+if Is_enabled('gen') then
   local ok, gen = pcall(require, 'gen')
 
   if ok then
@@ -30,7 +30,7 @@ return {
   {
     "David-Kunz/gen.nvim",
     lazy = false,
-    enabled = is_enabled('gen'),
+    enabled = Is_enabled('gen'),
     opts = {
       model         = "codellama",
       display_mode  = "float", -- The display mode. Can be "float" or "split".

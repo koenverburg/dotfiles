@@ -1,10 +1,10 @@
-local is_enabled = require("logic.functions").is_enabled
+require('global')
 
 return {
   {
     dir = "~/code/github/nightcoder.nvim",
     lazy = false,
-    enabled = is_enabled("nightcoder"),
+    enabled = Is_enabled("nightcoder"),
     config = function()
       require('nightcoder').setup()
     end,
@@ -12,7 +12,7 @@ return {
   {
     dir = "~/code/github/complexity.nvim",
     lazy = false,
-    enabled = true, -- is_enabled("nightcoder"),
+    enabled = true, -- Is_enabled("nightcoder"),
     config = function()
       require('complexity').setup()
     end,
@@ -20,9 +20,10 @@ return {
   {
     "koenverburg/minimal-tabline.nvim",
     branch = "develop",
+    event = LoadOnBuffer,
     -- dir = "~/code/github/minimal-tabline.nvim",
-    enabled = is_enabled("minimal-tabline"),
-    lazy = false,
+    enabled = Is_enabled("minimal-tabline"),
+    lazy = true,
     opts = {
       enabled = true,
       file_name = false,
@@ -41,7 +42,7 @@ return {
   {
     -- "koenverburg/minimal-statusline.nvim",
     dir = "~/code/github/minimal-statusline.nvim",
-    enabled = is_enabled("minimal-statusline"),
+    enabled = Is_enabled("minimal-statusline"),
     lazy = false,
     config = function()
       require("minimal-statusline").setup()
@@ -51,7 +52,7 @@ return {
     "koenverburg/peepsight.nvim",
     branch = "update",
     -- dir = "~/code/github/peepsight.nvim",
-    enabled = is_enabled("peepsight"),
+    enabled = Is_enabled("peepsight"),
     cmd = "Peepsight",
     config = function()
       require("peepsight").setup({
@@ -77,7 +78,7 @@ return {
   },
   {
     "koenverburg/cmd-palette.nvim",
-    enabled = is_enabled("cmd-palette"),
+    enabled = Is_enabled("cmd-palette"),
     cmd = "CmdPalette",
     config = function()
       require("cmd-palette").setup({

@@ -1,16 +1,11 @@
-local is_enabled = require("logic.functions").is_enabled
-local normal = require("logic.functions").normal
+require("global")
 
 local plugin = "deadcolumn.nvim"
 
--- if is_enabled(plugin) then
---   normal("<leader>w", "<cmd>lua require('nvim-window').pick()<cr>")
--- end
-
 return {
   "Bekaboo/" .. plugin,
-  enabled = is_enabled(plugin),
-  event = { "BufReadPre", "BufNewFile" },
+  enabled = Is_enabled(plugin),
+  event = LoadOnBuffer,
   lazy = false,
   opts = function()
     require("deadcolumn").setup({

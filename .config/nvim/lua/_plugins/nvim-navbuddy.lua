@@ -1,15 +1,18 @@
-local is_enabled = require("logic.functions").is_enabled
+require("global")
 local normal = require("logic.functions").normal
 
 local plugin = "nvim-navbuddy"
 
-if is_enabled(plugin) then
-  normal("<leader>jd", "<cmd>lua require('nvim-navbuddy').open()<cr>")
-end
+-- if Is_enabled(plugin) then
+--   normal("<leader>jd", "<cmd>lua require('nvim-navbuddy').open()<cr>")
+-- end
 
 return {
   "SmiteshP/" .. plugin,
-  enabled = is_enabled(plugin),
+  enabled = Is_enabled(plugin),
+  keys = {
+    { "<leader>jf", "<cmd>lua require('nvim-navbuddy').opne()<cr>", desc = "Navbuddy open" },
+  },
   lazy = false,
   dependencies = {
     "SmiteshP/nvim-navic",

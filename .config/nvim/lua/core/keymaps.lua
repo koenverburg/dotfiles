@@ -329,9 +329,6 @@ normal("of", "za")
 normal("<space>c", "<cmd>lua require('peepsight').enable_center()<cr>")
 normal("<space>C", "<cmd>lua require('peepsight').toggle()<cr>")
 
--- Symbols
-normal("<space>o", "<cmd>SymbolsOutline<cr>")
-
 -- Formatting
 normal("ga", "<Plug>(EasyAlign)")
 visual("ga", "<Plug>(EasyAlign)")
@@ -349,9 +346,6 @@ normal("<leader>sp", [[ viw:lua require('spectre').open_file_search()<cr> ]])
 -- normal("<leader>ss", ":SSave<cr>")
 -- normal("<leader>sc", ":SClose<cr>")
 
--- File Tree
--- normal("<C-b>", "<cmd>lua require('')")
-
 -- -- Focus mode
 -- normal("<leader><space>f", ":ZenMode<cr>")
 -- normal("<leader><space>ll", ":Twilight<cr>")
@@ -362,7 +356,7 @@ normal("<leader>sp", [[ viw:lua require('spectre').open_file_search()<cr> ]])
 -- visual("<space>c", "<cmd>Commentary<cr>")
 
 -- word hopping
-normal("<leader>jf", ":HopWordMW<cr>")
+-- normal("<leader>jf", ":HopWordMW<cr>")
 
 -- Toggle Alternate
 normal("<leader>ta", "<cmd>lua require('nvim-toggler').toggle()<cr>")

@@ -3,6 +3,7 @@
 -- Source: https://github.com/koenverburg/dotfiles
 
 vim.g.mapleader = ","
+vim.loader.enable()
 
 require("_apache.bootstrap")
 require("_apache.lazy")

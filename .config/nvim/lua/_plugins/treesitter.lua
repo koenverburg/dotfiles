@@ -1,7 +1,7 @@
-local is_enabled = require("logic.functions").is_enabled
+require('global')
 local normal = require("logic.functions").normal
 
-if is_enabled("treesitter") then
+if Is_enabled("treesitter") then
   local function dropCaptures()
     local result = vim.treesitter.get_captures_at_cursor(0)
     vim.notify(table.concat(result, ' '))
@@ -41,8 +41,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false,
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    enabled = is_enabled("treesitter"),
+    event = LoadOnBuffer,
+    enabled = Is_enabled("treesitter"),
     dependencies = {
       "filNaj/tree-setter",
       "nvim-treesitter/playground",

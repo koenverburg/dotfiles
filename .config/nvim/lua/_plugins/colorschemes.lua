@@ -1,4 +1,4 @@
-local is_enabled = require("logic.functions").is_enabled
+require("global")
 
 local function mode(theme)
   -- os.execute('cmd')
@@ -11,7 +11,7 @@ end
 return {
   {
     "Tsuzat/NeoSolarized.nvim",
-    enabled = is_enabled("solarized"),
+    enabled = Is_enabled("solarized"),
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
@@ -46,7 +46,7 @@ return {
   },
   {
     "ellisonleao/gruvbox.nvim",
-    enabled = is_enabled("gruvbox"),
+    enabled = Is_enabled("gruvbox"),
     lazy = false,
     opts = {
       bold = true,
@@ -78,14 +78,14 @@ return {
   },
   {
     "Yagua/nebulous.nvim",
-    enabled = is_enabled("nebulous"),
+    enabled = Is_enabled("nebulous"),
     lazy = false,
     opts = {
       -- variant = "night", -- "night",
       variant = "quasar", -- "night",
     },
     config = function(_, opts)
-      if not is_enabled("auto-colorscheme") or not is_enabled("themery") then
+      if not Is_enabled("auto-colorscheme") or not is_enabled("themery") then
         vim.cmd("set background=light")
         require("nebulous").setup(opts)
       end
@@ -95,7 +95,7 @@ return {
     -- "aktersnurra/no-clown-fiesta.nvim",
     -- "koenverburg/no-clown-fiesta.nvim",
     dir = "~/code/github/no-clown-fiesta.nvim",
-    enabled = is_enabled("no-clown-fiesta"),
+    enabled = Is_enabled("no-clown-fiesta"),
     branch = "personal-touch",
     lazy = false,
     opts = {
@@ -111,7 +111,7 @@ return {
       },
     },
     config = function(_, opts)
-      if not is_enabled("auto-colorscheme") or not is_enabled("themery") then
+      if not Is_enabled("auto-colorscheme") or not is_enabled("themery") then
         vim.cmd("set background=dark")
         require("no-clown-fiesta").setup(opts)
         vim.cmd([[colorscheme no-clown-fiesta]])
@@ -120,7 +120,7 @@ return {
   },
   {
     "f-person/auto-dark-mode.nvim",
-    enabled = is_enabled("auto-colorscheme"),
+    enabled = Is_enabled("auto-colorscheme"),
     config = {
       update_interval = 1000,
       set_dark_mode = function()
@@ -165,7 +165,7 @@ return {
     dependencies = {
       "rktjmp/lush.nvim",
     },
-    enabled = is_enabled("darcula"),
+    enabled = Is_enabled("darcula"),
     lazy = false,
     config = function()
       vim.cmd("colorscheme darcula-solid")
@@ -175,9 +175,9 @@ return {
     "projekt0n/github-nvim-theme",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
-    enabled = is_enabled("github"),
+    enabled = Is_enabled("github"),
     config = function()
-      if not is_enabled("auto-colorscheme") or not is_enabled("themery") then
+      if not Is_enabled("auto-colorscheme") or not is_enabled("themery") then
         require("github-theme").setup({})
         vim.cmd("colorscheme github_dark")
       end
@@ -186,7 +186,7 @@ return {
   {
     "zaldih/themery.nvim",
     lazy = false,
-    enabled = is_enabled("themery"),
+    enabled = Is_enabled("themery"),
     config = function()
       -- Minimal config
       require("themery").setup({

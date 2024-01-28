@@ -1,11 +1,11 @@
-local is_enabled = require("logic.functions").is_enabled
-local core = require("core.config")
+require("global")
+-- local core = require("core.config")
 
 return {
   {
     "RutaTang/spectacle.nvim",
     lazy = false,
-    enabled = is_enabled("session"),
+    enabled = Is_enabled("session"),
     config = function()
       require("spectacle").setup({})
     end,
@@ -17,7 +17,7 @@ return {
   {
     "jedrzejboczar/possession.nvim",
     lazy = false,
-    enabled = is_enabled("possession"),
+    enabled = Is_enabled("possession"),
     opts = {
       session_dir = vim.fn.getcwd() .. "/.possession"
     },
@@ -30,7 +30,7 @@ return {
   },
   {
     "folke/persistence.nvim",
-    enabled = is_enabled("persistence"),
+    enabled = Is_enabled("persistence"),
     lazy = false,
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
     config = function()

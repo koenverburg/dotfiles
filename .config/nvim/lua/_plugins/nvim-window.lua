@@ -1,16 +1,19 @@
-local is_enabled = require("logic.functions").is_enabled
-local normal = require("logic.functions").normal
+require("global")
+-- local normal = require("logic.functions").normal
 
 local plugin = "nvim-window"
 
-if is_enabled(plugin) then
-  normal("<leader>w", "<cmd>lua require('nvim-window').pick()<cr>")
-end
+-- if Is_enabled(plugin) then
+--   normal("<leader>w", "<cmd>lua require('nvim-window').pick()<cr>")
+-- end
 
 return {
   "yorickpeterse/" .. plugin,
-  enabled = is_enabled(plugin),
-  lazy = false,
+  enabled = Is_enabled(plugin),
+  lazy = true,
+  keys = {
+    { "<leader>w", "<cmd>lua require('nvim-window').pick()<cr>", desc = "Window open" },
+  },
   opts = function()
     vim.cmd [[ hi BlackOnLightYellow guifg=#000000 guibg=#FFCC00 ]]
 
