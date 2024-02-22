@@ -24,6 +24,9 @@
   reflog = delta
   show = delta
 
+[diff]
+  renameLimit = 999999
+
 [interactive]
   diffFilter = delta --color-only --features=interactive
 

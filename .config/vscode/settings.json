@@ -22,7 +22,8 @@
   },
   "[javascript]": {
     "editor.formatOnSave": false,
-    "editor.formatOnSaveMode": "modifications"
+    "editor.formatOnSaveMode": "modifications",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascriptreact]": {
     "editor.showUnused": true,
@@ -43,8 +44,8 @@
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true,
-    "source.organizeImports": false
+    "source.fixAll.tslint": "explicit",
+    "source.organizeImports": "never"
   },
   "[xml]": {
     "editor.formatOnSave": false
@@ -77,17 +78,16 @@
   "window.titleBarStyle": "custom",
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.statusBar.visible": true,
-  "workbench.editor.showIcons": false,
-  "workbench.sideBar.location": "left",
-  "workbench.activityBar.visible": true,
+  "workbench.editor.showIcons": true,
+  "workbench.sideBar.location": "right",
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
-  "workbench.colorTheme": "GitHub Dark Default",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.pinnedTabSizing": "compact",
   // Editor
   "editor.rulers": [
     80,
+    100,
     120
   ],
   "editor.fontSize": 15,
@@ -95,7 +95,7 @@
   "editor.lineHeight": 29,
   "editor.lineNumbers": "on",
   "editor.formatOnSave": true,
-  "editor.glyphMargin": false,
+  "editor.glyphMargin": true,
   "editor.formatOnPaste": true,
   "editor.fontLigatures": true,
   "explorer.confirmDelete": false,
@@ -103,13 +103,13 @@
   "editor.matchBrackets": "always",
   "editor.detectIndentation": false,
   "editor.snippetSuggestions": "top",
-  "editor.occurrencesHighlight": true,
+  "editor.occurrencesHighlight": "singleFile",
   "editor.renderLineHighlight": "all",
   "editor.suggest.localityBonus": true,
   "editor.renderWhitespace": "all",
   "editor.tabCompletion": "onlySnippets", // I what to see all
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-  "editor.fontFamily": "'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Cascadia Code', 'Fira Code Retina', Consolas, 'Courier New', monospace",
   "editor.tokenColorCustomizations": {
     "enabled": true
   },
@@ -122,8 +122,7 @@
   "files.trimTrailingWhitespace": true,
   "typescript.referencesCodeLens.enabled": true,
   "javascript.referencesCodeLens.enabled": true,
-  "typescript.implementationsCodeLens.enabled": true,
-  "breadcrumbs.enabled": false, // Still taking up space
+  "typescript.implementationsCodeLens.enabled": true, // Still taking up space
   "typescript.updateImportsOnFileMove.enabled": "never",
   "powershell.integratedConsole.focusConsoleOnExecute": false,
   "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
@@ -153,7 +152,26 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.inlineSuggest.enabled": true
+  "editor.inlineSuggest.enabled": true,
+  "explorer.confirmDragAndDrop": false,
+  "aws.telemetry": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "workbench.colorTheme": "GitHub Dark Default",
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "aws.suppressPrompts": {
+    "codeWhispererConnectionExpired": true
+  },
+  "cody.inlineChat.enabled": false,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "debug.showBreakpointsInOverviewRuler": true,
+  "debug.javascript.breakOnConditionalError": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "workbench.editor.tabActionLocation": "left",
+  "editor.largeFileOptimizations": false
 }
