@@ -192,6 +192,9 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+# Wezterm
+PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+
 # pnpm
 export PNPM_HOME="/Users/koenverburg/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
