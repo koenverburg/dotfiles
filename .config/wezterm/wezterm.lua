@@ -30,7 +30,10 @@ end
 -- For example, changing the color scheme:
 config.color_scheme = scheme_for_appearance(get_appearance())
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font("JetBrainsMono Nerd Font", {
+  weight = "Regular",
+  bold = true,
+})
 config.window_decorations = "RESIZE"
 
 config.window_padding = {

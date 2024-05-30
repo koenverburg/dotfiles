@@ -3,15 +3,19 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$cmd_duration\
+$line_break\
+$character"""
+# $cmd_duration\
+# $kubernetes\
+
+right_format = """
 $nodejs\
 $lua\
 $go\
 $rust\
 $helm\
-$kubernetes\
-$line_break\
-$character"""
+"""
+
 
 [directory]
 style = "blue"

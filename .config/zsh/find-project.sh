@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-selected=$(find ~/code/github ~/code/2023/locker ~/code/2023/showroom ~/code/2023/sportbag -mindepth 1 -maxdepth 1 -type d | fzf --layout=reverse --header 'Find project' --header-lines=0)
+selected=$(find ~/code/2024 ~/code/github ~/code/2023/locker ~/code/2023/showroom ~/code/2023/sportbag -mindepth 1 -maxdepth 1 -type d | fzf --layout=reverse --header 'Find project' --header-lines=0)
 
 if [[ -z $selected ]]; then
   exit 0

@@ -152,7 +152,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.inlineSuggest.enabled": true,
   "explorer.confirmDragAndDrop": false,
@@ -160,7 +160,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.colorTheme": "GitHub Light",
   "extensions.autoUpdate": "onlyEnabledExtensions",
   "aws.suppressPrompts": {
     "codeWhispererConnectionExpired": true
@@ -173,5 +173,6 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "workbench.editor.tabActionLocation": "left",
-  "editor.largeFileOptimizations": false
+  "editor.largeFileOptimizations": false,
+  "workbench.activityBar.location": "top"
 }

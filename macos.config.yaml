@@ -13,7 +13,8 @@
 
 - link:
     ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf
-    ~/.config/nvim: .config/nvim
+    ~/.config/nvim: ~/code/github/nvim
+    # ~/.config/nvim: .config/nvim
     ~/.zshrc: .config/zsh/.zshrc
     # ~/.oh-my-zsh/custom/themes/alt-jonathan.zsh-theme: .config/zsh/alt-jonathan.zsh-theme
     # ~/.oh-my-zsh/custom/themes/greenblood.zsh-theme: .config/zsh/greenblood.zsh-theme
@@ -34,9 +35,9 @@
     ~/Library/Application Support/Code/User/keybindings.json: .config/vscode/keybindings.json
 
 - shell:
-  - [git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions]
-  - [curl -sS https://starship.rs/install.sh | sh]
-  - [curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash]
+  # - [git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions]
+  # - [curl -sS https://starship.rs/install.sh | sh]
+  # - [curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash]
     # - [git submodule update --init --recursive, Installing submodules]
     # - [git clone https://github.com/AdamWagner/stackline.git ~/.hammerspoon/stackline]
     # - [brew tap homebrew/cask-fonts]
