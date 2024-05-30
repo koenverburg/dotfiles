@@ -11,7 +11,7 @@ return {
       { "<leader>fi", "<cmd>lua require('static.treesitter').fold_imports()<cr>", desc = "Static - fold imports" },
       { "<leader>fr", "<cmd>lua require('static.treesitter').region()<cr>", desc = "Static - fold regions" },
     },
-    enabled = Is_enabled(plugin),
+    enabled = false, -- Is_enabled(plugin),
     config = function()
       require("static").setup()
     end,

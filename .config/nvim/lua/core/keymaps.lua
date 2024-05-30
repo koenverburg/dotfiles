@@ -387,7 +387,7 @@ normal("<space>cp", "<cmd>CmdPalette<cr>")
 
 -- Find 'n Replace
 -- normal("<leader>fr", ":%s/")
-normal("<space>fr", ":%s/")
+
 
 -- visual("<leader>fr", "'>s/")
 -- visual("<space>fr", "'>s/")

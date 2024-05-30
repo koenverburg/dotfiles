@@ -1,4 +1,4 @@
-require('global')
+require("global")
 
 return {
   {
@@ -6,15 +6,15 @@ return {
     lazy = false,
     enabled = Is_enabled("nightcoder"),
     config = function()
-      require('nightcoder').setup()
+      require("nightcoder").setup()
     end,
   },
   {
     dir = "~/code/github/complexity.nvim",
     lazy = false,
-    enabled = true, -- Is_enabled("nightcoder"),
+    enabled = false, -- Is_enabled("nightcoder"),
     config = function()
-      require('complexity').setup()
+      require("complexity").setup()
     end,
   },
   {

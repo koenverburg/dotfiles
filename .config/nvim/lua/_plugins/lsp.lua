@@ -8,7 +8,6 @@ local os = require('os')
 local servers = {
   vimls = {},
   dockerls = {},
-  rome = {},
   lua_ls = {
     settings = {
       Lua = {
@@ -208,7 +207,8 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    event = LoadOnBuffer,
+    -- event = LoadOnBuffer,
+    lazy = false,
     enabled = Is_enabled("lsp"),
     dependencies = {
       "mason.nvim",
@@ -314,8 +314,8 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "luasnip" },
-          { name = "nvim_lua" },
           { name = "nvim_lsp" },
+          { name = "nvim_lua" },
           { name = "path" },
           { name = "buffer",  keyword_length = 5 },
         }),
@@ -332,7 +332,7 @@ return {
           -- }),
         },
         sorting = {
-          -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
+          -- TODO: Would be cool to add stuff like "See variable names before method names", or something like that.
           comparators = {
             cmp.config.compare.offset,
             cmp.config.compare.exact,
@@ -386,26 +386,19 @@ return {
     dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")
-      local completion = nls.builtins.completion
       local formatting = nls.builtins.formatting
+      -- local completion = nls.builtins.completion
 
       local sources = {
-        completion.spell,
-
         formatting.gofmt,
-        formatting.stylua, -- install with "cargo install stylua"
-
-        -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
-        formatting.yamlfmt,
-
+        formatting.stylua,  -- install with "cargo install stylua"
+        formatting.yamlfmt, -- brew install devopyio/yamlfmt/yamlfmt or go get -u github.com/devopyio/yamlfmt
+        formatting.prettier,
         nls.builtins.code_actions.ts_node_action,
       }
 
       if core.env.isWorkLaptop == true then
-        table.insert(sources, formatting.prettier)
         table.insert(sources, formatting.npm_groovy_lint)
-      else
-        table.insert(sources, formatting.rome)
       end
 
       return {
@@ -446,7 +439,7 @@ return {
     event = LoadOnBuffer,
     -- lazy = false,
     keys = {
-      { "<leader>o", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline"}
+      { "<leader>o", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" }
     },
     config = function()
       require("symbols-outline").setup({

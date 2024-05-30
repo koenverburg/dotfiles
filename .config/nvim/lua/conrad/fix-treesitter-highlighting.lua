@@ -1,245 +1,116 @@
--- This "undeprecates" the "TS..." highlight groups
--- from the treesitter highlight chain and fixes
--- colorschemes that have not yet been ported to the
--- new style @group highlights. Simply require this
--- file in your setup somewhere.
-
-local ts = vim.treesitter
-local api = vim.api
-
-local M = {}
-
-M.default_map = {
-  ["annotation"] = "TSAnnotation",
-
-  ["attribute"] = "TSAttribute",
-
-  ["boolean"] = "TSBoolean",
-
-  ["character"] = "TSCharacter",
-  ["character.special"] = "TSCharacterSpecial",
-
-  ["comment"] = "TSComment",
-
-  ["conditional"] = "TSConditional",
-
-  ["constant"] = "TSConstant",
-  ["constant.builtin"] = "TSConstBuiltin",
-  ["constant.macro"] = "TSConstMacro",
-
-  ["constructor"] = "TSConstructor",
-
-  ["debug"] = "TSDebug",
-  ["define"] = "TSDefine",
-
-  ["error"] = "TSError",
-  ["exception"] = "TSException",
-
-  ["field"] = "TSField",
-
-  ["float"] = "TSFloat",
-
-  ["function"] = "TSFunction",
-  ["function.call"] = "TSFunctionCall",
-  ["function.builtin"] = "TSFuncBuiltin",
-  ["function.macro"] = "TSFuncMacro",
-
-  ["include"] = "TSInclude",
-
-  ["keyword"] = "TSKeyword",
-  ["keyword.function"] = "TSKeywordFunction",
-  ["keyword.operator"] = "TSKeywordOperator",
-  ["keyword.return"] = "TSKeywordReturn",
-
-  ["label"] = "TSLabel",
-
-  ["method"] = "TSMethod",
-  ["method.call"] = "TSMethodCall",
-
-  ["namespace"] = "TSNamespace",
-
-  ["none"] = "TSNone",
-  ["number"] = "TSNumber",
-
-  ["operator"] = "TSOperator",
-
-  ["parameter"] = "TSParameter",
-  ["parameter.reference"] = "TSParameterReference",
-
-  ["preproc"] = "TSPreProc",
-
-  ["property"] = "TSProperty",
-
-  ["punctuation.delimiter"] = "TSPunctDelimiter",
-  ["punctuation.bracket"] = "TSPunctBracket",
-  ["punctuation.special"] = "TSPunctSpecial",
-
-  ["repeat"] = "TSRepeat",
-
-  ["storageclass"] = "TSStorageClass",
-
-  ["string"] = "TSString",
-  ["string.regex"] = "TSStringRegex",
-  ["string.escape"] = "TSStringEscape",
-  ["string.special"] = "TSStringSpecial",
-
-  ["symbol"] = "TSSymbol",
-
-  ["tag"] = "TSTag",
-  ["tag.attribute"] = "TSTagAttribute",
-  ["tag.delimiter"] = "TSTagDelimiter",
-
-  ["text"] = "TSText",
-  ["text.strong"] = "TSStrong",
-  ["text.emphasis"] = "TSEmphasis",
-  ["text.underline"] = "TSUnderline",
-  ["text.strike"] = "TSStrike",
-  ["text.title"] = "TSTitle",
-  ["text.literal"] = "TSLiteral",
-  ["text.uri"] = "TSURI",
-  ["text.math"] = "TSMath",
-  ["text.reference"] = "TSTextReference",
-  ["text.environment"] = "TSEnvironment",
-  ["text.environment.name"] = "TSEnvironmentName",
-
-  ["text.note"] = "TSNote",
-  ["text.warning"] = "TSWarning",
-  ["text.danger"] = "TSDanger",
-
-  ["todo"] = "TSTodo",
-
-  ["type"] = "TSType",
-  ["type.builtin"] = "TSTypeBuiltin",
-  ["type.qualifier"] = "TSTypeQualifier",
-  ["type.definition"] = "TSTypeDefinition",
-
-  ["variable"] = "TSVariable",
-  ["variable.builtin"] = "TSVariableBuiltin",
-}
-
--- compatibility shim
-local link_captures
-if ts.highlighter.hl_map then
-  link_captures = function(capture, hlgroup)
-    ts.highlighter.hl_map[capture] = hlgroup
-  end
-elseif not vim.g.skip_ts_default_groups then
-  link_captures = function(capture, hlgroup)
-    api.nvim_set_hl(0, "@" .. capture, { link = hlgroup, default = true })
-  end
+----------------------
+-- Fixing nvim-treesitter highlighting
+-----------------
+-- See this comment: https://github.com/nvim-treesitter/nvim-treesitter/commit/42ab95d5e11f247c6f0c8f5181b02e816caa4a4f#commitcomment-87014462
+-- Short version: that commit removed old TS* highlight groups that were necessary for some colorschemes.
+-- The code below restores them.
+local hl = function(group, opts)
+  opts.default = true
+  vim.api.nvim_set_hl(0, group, opts)
 end
 
-local function link_all_captures()
-  if link_captures then
-    for capture, hlgroup in pairs(M.default_map) do
-      link_captures(capture, hlgroup)
-    end
-  end
-end
+-- Misc #region
+hl("@comment", { link = "Comment" })
+-- hl('@error', {link = 'Error'})
+hl("@none", { bg = "NONE", fg = "NONE" })
+hl("@preproc", { link = "PreProc" })
+hl("@define", { link = "Define" })
+hl("@operator", { link = "Operator" })
+-- #endregion
 
-link_all_captures()
+-- Punctuation #region
+hl("@punctuation.delimiter", { link = "Delimiter" })
+hl("@punctuation.bracket", { link = "Delimiter" })
+hl("@punctuation.special", { link = "Delimiter" })
+-- #endregion
 
-function M.set_default_hlgroups()
-  if not ts.highlighter.hl_map and not vim.g.skip_ts_default_groups then
-    link_all_captures()
-  end
-  local highlights = {
-    TSNone = { default = true },
-    TSPunctDelimiter = { link = "Delimiter", default = true },
-    TSPunctBracket = { link = "Delimiter", default = true },
-    TSPunctSpecial = { link = "Delimiter", default = true },
+-- Literals #region
+hl("@string", { link = "String" })
+hl("@string.regex", { link = "String" })
+hl("@string.escape", { link = "SpecialChar" })
+hl("@string.special", { link = "SpecialChar" })
 
-    TSConstant = { link = "Constant", default = true },
-    TSConstBuiltin = { link = "Special", default = true },
-    TSConstMacro = { link = "Define", default = true },
-    TSString = { link = "String", default = true },
-    TSStringRegex = { link = "String", default = true },
-    TSStringEscape = { link = "SpecialChar", default = true },
-    TSStringSpecial = { link = "SpecialChar", default = true },
-    TSCharacter = { link = "Character", default = true },
-    TSCharacterSpecial = { link = "SpecialChar", default = true },
-    TSNumber = { link = "Number", default = true },
-    TSBoolean = { link = "Boolean", default = true },
-    TSFloat = { link = "Float", default = true },
+hl("@character", { link = "Character" })
+hl("@character.special", { link = "SpecialChar" })
 
-    TSFunction = { link = "Function", default = true },
-    TSFunctionCall = { link = "TSFunction", default = true },
-    TSFuncBuiltin = { link = "Special", default = true },
-    TSFuncMacro = { link = "Macro", default = true },
-    TSParameter = { link = "Identifier", default = true },
-    TSParameterReference = { link = "TSParameter", default = true },
-    TSMethod = { link = "Function", default = true },
-    TSMethodCall = { link = "TSMethod", default = true },
-    TSField = { link = "Identifier", default = true },
-    TSProperty = { link = "Identifier", default = true },
-    TSConstructor = { link = "Special", default = true },
-    TSAnnotation = { link = "PreProc", default = true },
-    TSAttribute = { link = "PreProc", default = true },
-    TSNamespace = { link = "Include", default = true },
-    TSSymbol = { link = "Identifier", default = true },
+hl("@boolean", { link = "Boolean" })
+hl("@number", { link = "Number" })
+hl("@float", { link = "Float" })
+-- #endregion
 
-    TSConditional = { link = "Conditional", default = true },
-    TSRepeat = { link = "Repeat", default = true },
-    TSLabel = { link = "Label", default = true },
-    TSOperator = { link = "Operator", default = true },
-    TSKeyword = { link = "Keyword", default = true },
-    TSKeywordFunction = { link = "Keyword", default = true },
-    TSKeywordOperator = { link = "TSOperator", default = true },
-    TSKeywordReturn = { link = "TSKeyword", default = true },
-    TSException = { link = "Exception", default = true },
-    TSDebug = { link = "Debug", default = true },
-    TSDefine = { link = "Define", default = true },
-    TSPreProc = { link = "PreProc", default = true },
-    TSStorageClass = { link = "StorageClass", default = true },
+-- Functions #region
+hl("@function", { link = "Function" })
+hl("@function.call", { link = "Function" })
+hl("@function.builtin", { link = "Special" })
+hl("@function.macro", { link = "Macro" })
 
-    TSTodo = { link = "Todo", default = true },
+hl("@method", { link = "Function" })
+hl("@method.call", { link = "Function" })
 
-    TSType = { link = "Type", default = true },
-    TSTypeBuiltin = { link = "Type", default = true },
-    TSTypeQualifier = { link = "Type", default = true },
-    TSTypeDefinition = { link = "Typedef", default = true },
+hl("@constructor", { link = "Special" })
+hl("@parameter", { link = "Identifier" })
+-- #endregion
 
-    TSInclude = { link = "Include", default = true },
+-- Keywords #region
+hl("@keyword", { link = "Keyword" })
+hl("@keyword.function", { link = "Keyword" })
+hl("@keyword.operator", { link = "Keyword" })
+hl("@keyword.return", { link = "Keyword" })
 
-    TSVariableBuiltin = { link = "Special", default = true },
+hl("@conditional", { link = "Conditional" })
+hl("@repeat", { link = "Repeat" })
+hl("@debug", { link = "Debug" })
+hl("@label", { link = "Label" })
+hl("@include", { link = "Include" })
+hl("@exception", { link = "Exception" })
+-- #endregion
 
-    TSText = { link = "TSNone", default = true },
-    TSStrong = { bold = true, default = true },
-    TSEmphasis = { italic = true, default = true },
-    TSUnderline = { underline = true },
-    TSStrike = { strikethrough = true },
+-- Types #region
+hl("@type", { link = "Type" })
+hl("@type.builtin", { link = "Type" })
+hl("@type.qualifier", { link = "Type" })
+hl("@type.definition", { link = "Typedef" })
 
-    TSMath = { link = "Special", default = true },
-    TSTextReference = { link = "Constant", default = true },
-    TSEnvironment = { link = "Macro", default = true },
-    TSEnvironmentName = { link = "Type", default = true },
-    TSTitle = { link = "Title", default = true },
-    TSLiteral = { link = "String", default = true },
-    TSURI = { link = "Underlined", default = true },
+hl("@storageclass", { link = "StorageClass" })
+hl("@attribute", { link = "PreProc" })
+hl("@field", { link = "Identifier" })
+hl("@property", { link = "Identifier" })
+-- #endregion
 
-    TSComment = { link = "Comment", default = true },
-    TSNote = { link = "SpecialComment", default = true },
-    TSWarning = { link = "Todo", default = true },
-    TSDanger = { link = "WarningMsg", default = true },
+-- Identifiers #region
+hl("@variable", { link = "Normal" })
+hl("@variable.builtin", { link = "Special" })
 
-    TSTag = { link = "Label", default = true },
-    TSTagDelimiter = { link = "Delimiter", default = true },
-    TSTagAttribute = { link = "TSProperty", default = true },
-  }
+hl("@constant", { link = "Constant" })
+hl("@constant.builtin", { link = "Special" })
+hl("@constant.macro", { link = "Define" })
 
-  for k, v in pairs(highlights) do
-    api.nvim_set_hl(0, k, v)
-  end
-end
+hl("@namespace", { link = "Include" })
+hl("@symbol", { link = "Identifier" })
+-- #endregion
 
-local augroup = api.nvim_create_augroup("NvimTreesitter", {})
-api.nvim_create_autocmd("ColorScheme", {
-  group = augroup,
-  callback = M.set_default_hlgroups,
-  desc = "Set default highlights",
-})
+-- Text #region
+hl("@text", { link = "Normal" })
+hl("@text.strong", { bold = true })
+hl("@text.emphasis", { italic = true })
+hl("@text.underline", { underline = true })
+hl("@text.strike", { strikethrough = true })
+hl("@text.title", { link = "Title" })
+hl("@text.literal", { link = "String" })
+hl("@text.uri", { link = "Underlined" })
+hl("@text.math", { link = "Special" })
+hl("@text.environment", { link = "Macro" })
+hl("@text.environment.name", { link = "Type" })
+hl("@text.reference", { link = "Constant" })
 
--- define highlights
-M.set_default_hlgroups()
+hl("@text.todo", { link = "Todo" })
+hl("@text.note", { link = "SpecialComment" })
+hl("@text.warning", { link = "WarningMsg" })
+hl("@text.danger", { link = "ErrorMsg" })
+-- #endregion
 
-return M
+-- Tags #region
+hl("@tag", { link = "Tag" })
+hl("@tag.attribute", { link = "Identifier" })
+hl("@tag.delimiter", { link = "Delimiter" })
+-- #endregion

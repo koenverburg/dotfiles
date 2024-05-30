@@ -41,7 +41,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false,
     build = ":TSUpdate",
-    event = LoadOnBuffer,
+    lazy = false,
+    -- event = LoadOnBuffer,
     enabled = Is_enabled("treesitter"),
     dependencies = {
       "filNaj/tree-setter",

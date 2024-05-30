@@ -14,6 +14,8 @@ require("core.autocmds")
 
 require('logic.functions').hideTablineWhenSingleTab()
 
+-- require('conrad.fix-treesitter-highlighting')
+
 require("conrad.winbar")
 require("conrad.charlist").setup({
   enabled = false,

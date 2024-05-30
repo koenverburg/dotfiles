@@ -71,7 +71,7 @@ return {
       palette_overrides = {},
     },
     config = function(_, opts)
-      vim.cmd("set background=light")
+      vim.cmd("set background=dark")
       require("gruvbox").setup(opts)
       vim.cmd("colorscheme gruvbox")
     end,
@@ -85,7 +85,7 @@ return {
       variant = "quasar", -- "night",
     },
     config = function(_, opts)
-      if not Is_enabled("auto-colorscheme") or not is_enabled("themery") then
+      if not Is_enabled("auto-colorscheme") or not Is_enabled("themery") then
         vim.cmd("set background=light")
         require("nebulous").setup(opts)
       end
@@ -111,7 +111,31 @@ return {
       },
     },
     config = function(_, opts)
-      if not Is_enabled("auto-colorscheme") or not is_enabled("themery") then
+      if not Is_enabled("auto-colorscheme") or not Is_enabled("themery") then
+        vim.cmd("set background=dark")
+        require("no-clown-fiesta").setup(opts)
+        vim.cmd([[colorscheme no-clown-fiesta]])
+      end
+    end,
+  },
+  {
+    "aktersnurra/no-clown-fiesta.nvim",
+    enabled = Is_enabled("default-no-clown-fiesta"),
+    lazy = false,
+    opts = {
+      transparent = false, -- Enable this to disable the bg color
+      styles = {
+        -- You can set any of the style values specified for `:h nvim_set_hl`
+        comments = {},
+        keywords = {},
+        functions = { bold = true },
+        variables = {},
+        type = { bold = true },
+        lsp = { underline = true },
+      },
+    },
+    config = function(_, opts)
+      if not Is_enabled("auto-colorscheme") or not Is_enabled("themery") then
         vim.cmd("set background=dark")
         require("no-clown-fiesta").setup(opts)
         vim.cmd([[colorscheme no-clown-fiesta]])
@@ -177,7 +201,7 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     enabled = Is_enabled("github"),
     config = function()
-      if not Is_enabled("auto-colorscheme") or not is_enabled("themery") then
+      if not Is_enabled("auto-colorscheme") or not Is_enabled("themery") then
         require("github-theme").setup({})
         vim.cmd("colorscheme github_dark")
       end

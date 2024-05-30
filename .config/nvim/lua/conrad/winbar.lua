@@ -1,3 +1,4 @@
+local core = require('core.config')
 -- Inspired by https://github.com/aktersnurra/minibar.nvim
 local opts = {
   ["ignore-filetypes"] = {
@@ -96,7 +97,54 @@ local function get_git_status(type)
   -- }
 end
 
+-- local function get_diagnostic_info(level)
+--   if vim.diagnostic.is_disabled(0) then
+--     return ""
+--   end
+--
+--   local signs = {
+--     core.diagnosticSigns[1].text,
+--     core.diagnosticSigns[2].text,
+--     core.diagnosticSigns[3].text,
+--     core.diagnosticSigns[4].text,
+--   }
+--
+--   local count = #vim.diagnostic.get(0, { level = level })
+--   return count == 0 and "" or signs[level] .. " " .. tostring(count) .. " "
+-- end
+--
+-- local function diagnostic()
+--   if vim.diagnostic.is_disabled(0) then
+--     return ""
+--   end
+--   local errors   = get_diagnostic_info(1)
+--   local warnings = get_diagnostic_info(2)
+--   local hints    = get_diagnostic_info(3)
+--   local info     = get_diagnostic_info(4)
+--
+--   local sb = {}
+--
+--   table.insert(sb, "%#" .. core.diagnosticSigns[1].name .. "#")
+--   table.insert(sb, errors)
+--
+--   table.insert(sb, "%#" .. core.diagnosticSigns[2].name .. "#")
+--   table.insert(sb, warnings)
+--
+--   table.insert(sb, "%#" .. core.diagnosticSigns[3].name .. "#")
+--   table.insert(sb, hints)
+--
+--   table.insert(sb, "%#" .. core.diagnosticSigns[4].name .. "#")
+--   table.insert(sb, info)
+--
+--   table.insert(sb, "%#Normal#")
+--
+--   return table.concat(sb) or " "
+-- end
+--
+
 local function main()
+  -- local trouble = diagnostic()
+
   if (ignore() ~= true) and (is_nil(get_filename()) == false) then
     local added = get_git_status("added")
     local changed = get_git_status("changed")
@@ -112,6 +160,7 @@ local function main()
       changed,
       removed,
       "%=",
+      -- "%=",
       "%c",
       " ",
       "%l/%L",
