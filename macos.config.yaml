@@ -12,22 +12,23 @@
     # - ~/.hammerspoon
 
 - link:
+    # ~/.config/nvim: .config/nvim
     ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf
     ~/.config/nvim: ~/code/github/nvim
-    # ~/.config/nvim: .config/nvim
     ~/.zshrc: .config/zsh/.zshrc
-    # ~/.oh-my-zsh/custom/themes/alt-jonathan.zsh-theme: .config/zsh/alt-jonathan.zsh-theme
-    # ~/.oh-my-zsh/custom/themes/greenblood.zsh-theme: .config/zsh/greenblood.zsh-theme
     ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.macos.yml
     ~/.gitconfig: .config/gitconfig/.gitconfig
+    ~/.config/starship.toml: .config/starship/starship.toml
+    ~/.wezterm.lua: .config/wezterm/wezterm.lua
+    ~/.goji.json: .config/goji/goji.json
+    # ~/.oh-my-zsh/custom/themes/alt-jonathan.zsh-theme: .config/zsh/alt-jonathan.zsh-theme
+    # ~/.oh-my-zsh/custom/themes/greenblood.zsh-theme: .config/zsh/greenblood.zsh-theme
     # ~/.config/yabai/yabairc: .config/yabai/yabairc
     # ~/.config/limelight/limelightrc: .config/limelight/limelightrc
     # ~/.config/skhd/skhdrc: .config/skhd/skhdrc
     # ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
-    ~/.config/starship.toml: .config/starship/starship.toml
-    ~/.wezterm.lua: .config/wezterm/wezterm.lua
     # ~/.slate.js: .config/slate/.slate.js
-    # "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
+    "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
 
     # ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
     # "~/Library/Application Support/mtmr/items.json": .config/mtmr/items.json
@@ -35,9 +36,9 @@
     ~/Library/Application Support/Code/User/keybindings.json: .config/vscode/keybindings.json
 
 - shell:
-  # - [git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions]
-  # - [curl -sS https://starship.rs/install.sh | sh]
-  # - [curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash]
+    # - [git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions]
+    # - [curl -sS https://starship.rs/install.sh | sh]
+    # - [curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash]
     # - [git submodule update --init --recursive, Installing submodules]
     # - [git clone https://github.com/AdamWagner/stackline.git ~/.hammerspoon/stackline]
     # - [brew tap homebrew/cask-fonts]

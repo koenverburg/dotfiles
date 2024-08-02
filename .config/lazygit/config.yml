@@ -5,7 +5,7 @@ git:
 
 customCommands:
   - key: "C"
-    command: "cz"
+    command: "goji"
     context: "files"
     loadingText: "opening commitizen commit tool"
     subprocess: true
