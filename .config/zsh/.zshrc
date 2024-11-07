@@ -86,10 +86,10 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/go/bin:$PATH
-# export PATH=$HOME/.bun/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
+export PATH="/usr/local/go/bin":$PATH
 export PATH="/usr/local/share/npm/bin:$PATH"
+
 # Bun
 export BUN_INSTALL="/Users/verbukoe/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -114,6 +114,19 @@ PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export PNPM_HOME="/Users/koenverburg/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
+# Rust
+export PATH="$PATH:$HOME/.cargo/env"
+
+# pnpm
+export PATH="$PATH:$PNPM_HOME"
+
+# Golang
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
+
+# pnpm endfpath=($fpath "/Users/koenverburg/.zfunctions")
 
 export NVM_DIR="$HOME/.nvm"
 # [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
