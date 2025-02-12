@@ -5,9 +5,9 @@ git:
 
 customCommands:
   - key: "C"
-    command: "goji"
+    command: "committer"
     context: "files"
-    loadingText: "opening commitizen commit tool"
+    loadingText: "opening my commit tool"
     subprocess: true
 
 gui:

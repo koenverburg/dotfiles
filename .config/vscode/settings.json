@@ -79,7 +79,6 @@
   "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
   "workbench.statusBar.visible": true,
   "workbench.editor.showIcons": true,
-  "workbench.sideBar.location": "right",
   "workbench.editor.tabSizing": "shrink",
   "workbench.editor.tabCloseButton": "left",
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -160,7 +159,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "Solarized Light",
   "extensions.autoUpdate": "onlyEnabledExtensions",
   "aws.suppressPrompts": {
     "codeWhispererConnectionExpired": true
@@ -174,5 +173,10 @@
   },
   "workbench.editor.tabActionLocation": "left",
   "editor.largeFileOptimizations": false,
-  "workbench.activityBar.location": "top"
+  "workbench.activityBar.location": "top",
+  "git.openRepositoryInParentFolders": "always",
+  "workbench.sideBar.location": "right",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

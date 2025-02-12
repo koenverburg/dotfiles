@@ -4,7 +4,8 @@ $git_branch\
 $git_state\
 $git_status\
 $line_break\
-$character"""
+$character\
+"""
 # $cmd_duration\
 # $kubernetes\
 

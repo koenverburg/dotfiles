@@ -1,0 +1,38 @@
+version: '3'
+
+tasks:
+  setup:
+    deps: [setup-windows, setup-mac, setup-ubuntu]
+
+  setup-windows:
+    platforms: [windows]
+    cmds:
+      - echo 'Running command on Windows'
+
+  setup-mac:
+    platforms: [darwin]
+    cmds:
+      - echo 'Running command on MacOS'
+      # - mkdir ~/code/
+      # - mkdir ~/code/github
+      # - git clone https://github.com/koenverburg/dotfiles.git ~/code/github/dotfiles
+      # - git clone https://github.com/koenverburg/nvim.git ~/code/github/nvim
+      # - git clone https://github.com/neovim/neovim.git ~/code/github/neovim
+
+  setup-ubuntu:
+    platforms: [linux]
+    cmds:
+      # base folders
+      - mkdir ~/code
+      - mkdir ~/code/github
+
+      # Personal Repos
+      # - git clone https://github.com/koenverburg/dotfiles.git ~/code/github/dotfiles
+      # - git clone https://github.com/koenverburg/nvim.git ~/code/github/nvim
+
+      # Neovim
+      - git clone https://github.com/neovim/neovim.git ~/code/github/neovim --depth=100
+      - sudo apt-get install ninja-build gettext cmake unzip curl build-essential gcc -y
+      - cd ~/code/github/neovim
+      - make CMAKE_BUILD_TYPE=Release
+      - sudo make install
