@@ -1,78 +1,167 @@
-format = """
+# === PROMPT LAYOUT ===
+format = """\
+$kubernetes\
 $directory\
-$git_branch\
-$git_state\
-$git_status\
-$line_break\
-$character\
-"""
-# $cmd_duration\
-# $kubernetes\
+$git_branch$git_status
+$character"""
 
-right_format = """
-$nodejs\
-$lua\
-$go\
+right_format = """\
 $rust\
-$helm\
+$nodejs\
+$battery\
 """
 
-
-[directory]
-style = "blue"
-
-[character]
-success_symbol = "[#](purple)"
-error_symbol = "[#](red)"
-vimcmd_symbol = "[#](green)"
-
-[git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
-
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
-
-[time]
-disabled = true
-format = '🕙[\[ $time \]]($style) '
-time_format = '%T'
-# time_range = '10:00:00-14:00:00'
-
-[nodejs]
-format = ' [$version](bold green) '
-
-[helm]
-format = '[⎈ $version](bold white) '
-
+# === KUBERNETES ===
 [kubernetes]
+format = '[$context/$namespace](fg:#5f8787) '
 disabled = false
-symbol = "⎈ "
-format = "[$symbol$context@$namespace](yellow)"
-detect_folders = ['k8s']
+# Avoid slow config reads
+detect_files = ['.kube', 'deploy', 'k8s']
 
-[kubernetes.context_aliases]
-'do-ams3-k8s-do-ams-3-pool-01' = 'digitalocean-p01'
-'dev.local.cluster.k8s' = 'dev'
-'.*/openshift-cluster/.*' = 'openshift'
-'gke_.*_(?P<var_cluster>[\\w-]+)' = 'gke-$var_cluster'
+# === DIRECTORY ===
+[directory]
+format = '[$path](fg:#c1c1c1) '
+truncation_length = 3
+truncate_to_repo = true
 
-[kubernetes.user_aliases]
-'dev.local.cluster.k8s' = 'dev'
-'root/.*' = 'root'
+# === GIT BRANCH ===
+[git_branch]
+format = '[$branch](fg:#888888) '
+only_attached = true
+# Delay git until necessary
+disabled = false
+
+# === GIT STATUS ===
+[git_status]
+format = '([$all_status$ahead_behind](fg:#aaaaaa)) '
+disabled = false
+# Optimize Git check
+ignore_submodules = true
+detect_extensions = false
+
+# === RUST ===
+[rust]
+format = '[🦀 $version](fg:#fbcb97) '
+detect_folders = ['.git']  # fallback: show if .git exists
+disabled = false
+
+# === NODE.JS ===
+[nodejs]
+format = '[⬢ $version](fg:#e78a53) '
+detect_files = ['./package.json', '.node-version', '.nvmrc']
+detect_extensions = ['js', 'ts']
+disabled = false
+
+# === BATTERY ===
+[battery]
+disabled = false
+full_symbol = ''
+charging_symbol = '⚡'
+discharging_symbol = '🔋'
+
+[[battery.display]]
+threshold = 100
+style = 'fg:#aaaaaa'
+
+# === CHARACTER ===
+[character]
+success_symbol = '[>](fg:#c1c1c1) '
+error_symbol = '[✗](fg:#5f8787) '
+
+# scheme: "Black Metal (Bathory)"
+# author: "metalelf0 (https://github.com/metalelf0)"
+# base00: "#000000"
+# base01: "#121212"
+# base02: "#222222"
+# base03: "#333333"
+# base04: "#999999"
+# base05: "#c1c1c1"
+# base06: "#999999"
+# base07: "#c1c1c1"
+# base08: "#5f8787"
+# base09: "#aaaaaa"
+# base0A: "#e78a53"
+# base0B: "#fbcb97"
+# base0C: "#aaaaaa"
+# base0D: "#888888"
+# base0E: "#999999"
+# base0F: "#444444"
+
+# format = """
+# $directory\
+# $git_branch\
+# $git_state\
+# $git_status\
+# $line_break\
+# $character\
+# """
+# # $cmd_duration\
+# # $kubernetes\
+#
+# right_format = """
+# $nodejs\
+# $lua\
+# $go\
+# $rust\
+# $helm\
+# $time\
+# """
+#
+# [directory]
+# style = "blue"
+#
+# [character]
+# success_symbol = "[>](purple)"
+# error_symbol = "[>](red)"
+# vimcmd_symbol = "[>](green)"
+#
+# [git_branch]
+# format = "[$branch]($style)"
+# style = "bright-black"
+#
+# [git_status]
+# format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+# style = "cyan"
+# conflicted = "​"
+# untracked = "​"
+# modified = "​"
+# staged = "​"
+# renamed = "​"
+# deleted = "​"
+# stashed = "≡"
+#
+# [git_state]
+# format = '\([$state( $progress_current/$progress_total)]($style)\) '
+# style = "bright-black"
+#
+# [cmd_duration]
+# format = "[$duration]($style) "
+# style = "yellow"
+#
+# [time]
+# disabled = false
+# format = '🕙[\[ $time \]]($style) '
+# time_format = '%T'
+# # time_range = '10:00:00-14:00:00'
+#
+# [nodejs]
+# format = ' [$version](bold green) '
+#
+# [helm]
+# format = '[⎈ $version](bold white) '
+#
+# [kubernetes]
+# disabled = false
+# symbol = "⎈ "
+# format = "[$symbol$context@$namespace](yellow)"
+# detect_folders = ['k8s']
+#
+# [kubernetes.context_aliases]
+# 'do-ams3-k8s-do-ams-3-pool-01' = 'digitalocean-p01'
+# 'dev.local.cluster.k8s' = 'dev'
+# '.*/openshift-cluster/.*' = 'openshift'
+# 'gke_.*_(?P<var_cluster>[\\w-]+)' = 'gke-$var_cluster'
+#
+# [kubernetes.user_aliases]
+# 'dev.local.cluster.k8s' = 'dev'
+# 'root/.*' = 'root'
