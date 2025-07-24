@@ -9,6 +9,7 @@
     - ~/.config/yabai
     - ~/.config/limelight
     - ~/.config/skhd
+    - ~/.config/starship/themes
     # - ~/.hammerspoon
 
 - link:
@@ -18,9 +19,16 @@
     ~/.zshrc: .config/zsh/.zshrc
     ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.macos.yml
     ~/.gitconfig: .config/gitconfig/.gitconfig
+
     ~/.config/starship.toml: .config/starship/starship.toml
-    ~/.wezterm.lua: .config/wezterm/wezterm.lua
-    ~/.goji.json: .config/goji/goji.json
+    ~/.config/starship/themes/default.toml: .config/starship/starship.toml
+    ~/.config/starship/themes/cyberpunk.toml: .config/starship/themes/cyberpunk.toml
+    ~/.config/starship/themes/minimal.toml: .config/starship/themes/minimal.toml
+    ~/.config/starship/themes/slanted.toml: .config/starship/themes/slanted.toml
+
+    # ~/.wezterm.lua: .config/wezterm/wezterm.lua
+    # ~/.goji.json: .config/goji/goji.json
+
     # ~/.oh-my-zsh/custom/themes/alt-jonathan.zsh-theme: .config/zsh/alt-jonathan.zsh-theme
     # ~/.oh-my-zsh/custom/themes/greenblood.zsh-theme: .config/zsh/greenblood.zsh-theme
     # ~/.config/yabai/yabairc: .config/yabai/yabairc
@@ -28,8 +36,10 @@
     # ~/.config/skhd/skhdrc: .config/skhd/skhdrc
     # ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
     # ~/.slate.js: .config/slate/.slate.js
-    "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
 
+    "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
+    "~/Library/Application Support/nushell/config.nu": .config/nushell/config.nu
+    "~/Library/Application Support/nushell/black-metal-bathory.nu": .config/nushell/black-metal-bathory.nu
     # ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
     # "~/Library/Application Support/mtmr/items.json": .config/mtmr/items.json
     ~/Library/Application Support/Code/User/settings.json: .config/vscode/settings.json
