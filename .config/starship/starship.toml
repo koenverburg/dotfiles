@@ -1,6 +1,8 @@
+add_newline = false
+
 # === PROMPT LAYOUT ===
+# $kubernetes\
 format = """\
-$kubernetes\
 $directory\
 $git_branch$git_status
 $character"""
@@ -8,7 +10,7 @@ $character"""
 right_format = """\
 $rust\
 $nodejs\
-$battery\
+$battery
 """
 
 # === KUBERNETES ===
@@ -16,7 +18,7 @@ $battery\
 format = '[$context/$namespace](fg:#5f8787) '
 disabled = false
 # Avoid slow config reads
-detect_files = ['.kube', 'deploy', 'k8s']
+# detect_folders = ['.kube', 'deploy', 'k8s']
 
 # === DIRECTORY ===
 [directory]
@@ -28,6 +30,7 @@ truncate_to_repo = true
 [git_branch]
 format = '[$branch](fg:#888888) '
 only_attached = true
+# detect_folders = ['.git']  # fallback: show if .git exists
 # Delay git until necessary
 disabled = false
 
@@ -37,12 +40,13 @@ format = '([$all_status$ahead_behind](fg:#aaaaaa)) '
 disabled = false
 # Optimize Git check
 ignore_submodules = true
-detect_extensions = false
+# detect_extensions = false
 
 # === RUST ===
 [rust]
 format = '[🦀 $version](fg:#fbcb97) '
-detect_folders = ['.git']  # fallback: show if .git exists
+detect_files = ['Cargo.toml']  # fallback: show if .git exists
+# detect_folders = ['.git']  # fallback: show if .git exists
 disabled = false
 
 # === NODE.JS ===
@@ -65,8 +69,8 @@ style = 'fg:#aaaaaa'
 
 # === CHARACTER ===
 [character]
-success_symbol = '[>](fg:#c1c1c1) '
-error_symbol = '[✗](fg:#5f8787) '
+success_symbol = ' [Σ](fg:#5f8787)'
+error_symbol = ' [Σ](fg:#e78a53)'
 
 # scheme: "Black Metal (Bathory)"
 # author: "metalelf0 (https://github.com/metalelf0)"
