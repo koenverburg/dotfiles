@@ -10,6 +10,7 @@
     - ~/.config/limelight
     - ~/.config/skhd
     - ~/.config/starship/themes
+    - ~/.config/zellij
     # - ~/.hammerspoon
 
 - link:
@@ -26,24 +27,16 @@
     ~/.config/starship/themes/minimal.toml: .config/starship/themes/minimal.toml
     ~/.config/starship/themes/slanted.toml: .config/starship/themes/slanted.toml
 
-    # ~/.wezterm.lua: .config/wezterm/wezterm.lua
-    # ~/.goji.json: .config/goji/goji.json
-
-    # ~/.oh-my-zsh/custom/themes/alt-jonathan.zsh-theme: .config/zsh/alt-jonathan.zsh-theme
-    # ~/.oh-my-zsh/custom/themes/greenblood.zsh-theme: .config/zsh/greenblood.zsh-theme
+    ~/.config/zellij/config.kdl: .config/zellij/config.kdl
+    ~/.config/zellij/layouts: .config/zellij/layouts
     # ~/.config/yabai/yabairc: .config/yabai/yabairc
     # ~/.config/limelight/limelightrc: .config/limelight/limelightrc
     # ~/.config/skhd/skhdrc: .config/skhd/skhdrc
     # ~/.hammerspoon/init.lua: .config/hammerspoon/init.lua
-    # ~/.slate.js: .config/slate/.slate.js
 
     "~/Library/Application Support/lazygit/config.yml": .config/lazygit/config.yml
     "~/Library/Application Support/nushell/config.nu": .config/nushell/config.nu
     "~/Library/Application Support/nushell/black-metal-bathory.nu": .config/nushell/black-metal-bathory.nu
-    # ~/.config/fish/config.fish: ansible/playbooks/roles/fish/files/config.fish
-    # "~/Library/Application Support/mtmr/items.json": .config/mtmr/items.json
-    ~/Library/Application Support/Code/User/settings.json: .config/vscode/settings.json
-    ~/Library/Application Support/Code/User/keybindings.json: .config/vscode/keybindings.json
 
 - shell:
     # - [git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions]
@@ -56,10 +49,3 @@
     # - [brew install neovim --head]
     # - [brew install lua fzf bat delta ninja libtool automake cmake pkg-config gettext] # neovim development
     # - [brew install node yarn]
-    # # language servers for nvim lsp
-    # - [npm i -g typescript-language-server]
-    # - [npm i -g vscode-html-languageserver-bin]
-    # - [npm i -g yaml-language-server]
-    # - [npm i -g graphql-language-service-server]
-    # - [npm i -g @stoplight/spectral]
-    # - [npm i -g vscode-css-languageserver-bin]
