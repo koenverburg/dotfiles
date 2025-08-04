@@ -183,6 +183,13 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "resize" "pane" "tab" "entersearch" "renametab" "renamepane" {
         bind "r" { SwitchToMode "resize"; }
+        bind "Ctrl y" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+                floating true
+                ignore_case true
+                quick_jump true
+            }
+        }
     }
     shared_among "scroll" "search" {
         bind "PageDown" { PageScrollDown; }

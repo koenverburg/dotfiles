@@ -39,6 +39,9 @@
     "~/Library/Application Support/nushell/black-metal-bathory.nu": .config/nushell/black-metal-bathory.nu
 
 - shell:
+
+    mkdir -p ~/.config/zellij/plugins && curl -L "https://github.com/rvcas/room/releases/latest/download/room.wasm" -o ~/.config/zellij/plugins/room.wasm
+    mkdir -p ~/.config/zellij/plugins && curl -L "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" -o ~/.config/zellij/plugins/zjstatus.wasm
     # - [git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions]
     # - [curl -sS https://starship.rs/install.sh | sh]
     # - [curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash]

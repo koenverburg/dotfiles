@@ -163,7 +163,6 @@ def fps [] {
     if ($selected | is-empty) {
         return
     }
-
     cd $selected
 
     # Select layout
@@ -175,59 +174,73 @@ def fps [] {
         | each { |layout| $layout | path basename | str replace ".kdl" "" }
     )
 
-    # Add "default" option and let user select
-    # let layout_options = (["default"] | append $available_layouts | str join "\n")
     let selected_layout = (
         $available_layouts
         | str join "\n"
         | fzf --layout=reverse --header 'Select layout' --header-lines=0
         | str trim
     )
-
     if ($selected_layout | is-empty) {
         return
     }
 
     let selected_name = ($selected | path basename | str replace -a "." "_")
-    let zellij_running = (ps | where name =~ "zellij" | length) > 0
-    let in_zellij = ($env.ZELLIJ? | is-not-empty)
 
+    # Get all sessions
     let sessions = (
         do { zellij ls -n } | complete | get stdout | lines | each { |line| $line | str trim } | where $it != ""
     )
 
-    # Check if main session exists and is EXITED
-    let session_exited = (
-        $sessions | any { |session| $session | str contains $selected_name } # and ($session | str contains "EXITED")
-    )
-
-    # Delete dead main session if it exists
-    if $session_exited {
-        zellij delete-session $selected_name --force
-    }
-
-    let session_exists = (
-        $sessions | any { |session| $session | str contains $selected_name } # and ($session | str contains "EXITED")
-    )
+    # Check if any session with our name exists
+    let matching_sessions = ($sessions | where { |session| $session | str contains $selected_name })
+    let session_exists = ($matching_sessions | length) > 0
 
     if $session_exists {
-        zellij attach $selected_name
+        # Check if the existing session is exited
+        let session_exited = ($matching_sessions | any { |session| $session | str contains "EXITED" })
+
+        if $session_exited {
+            print $"Session ($selected_name) exited, cleaning up..."
+            zellij delete-session $selected_name --force
+            print $"Creating new session with layout ($selected_layout)"
+            zellij --session $selected_name --new-session-with-layout $selected_layout
+        } else {
+            print $"Session ($selected_name) exists and is alive, attaching..."
+            zellij attach $selected_name
+        }
     } else {
-        # We don't have a main session yet
+        print $"No session found, creating new one with layout ($selected_layout)..."
         zellij --session $selected_name --new-session-with-layout $selected_layout
     }
+}
 
-    # If not in zellij and zellij isn't running, create new session and attach
-    # if (not $in_zellij) and (not $zellij_running) {
-    #     if $selected_layout == "default" {
-    #         cd $selected
-    #         zellij --session $selected_name
-    #     } else {
-    #         cd $selected
-    #         zellij --session $selected_name --layout $selected_layout
-    #     }
-    #     return
-    # }
+def servermode [] {
+    let name = "servermode"
+    let sessions = (
+        do { zellij ls -n } | complete | get stdout | lines | each { |line| $line | str trim } | where $it != ""
+    )
+
+    # Check if any session with our name exists
+    let matching_sessions = ($sessions | where { |session| $session | str contains $name })
+    let session_exists = ($matching_sessions | length) > 0
+
+    if $session_exists {
+        # Check if the existing session is exited
+        let session_exited = ($matching_sessions | any { |session| $session | str contains "EXITED" })
+
+        if $session_exited {
+            print "Session exited, cleaning up..."
+            zellij delete-session $name --force
+            print "Creating new session"
+            zellij --session $name --new-session-with-layout "servermode"
+        } else {
+            print "Session exists and is alive, attaching..."
+            zellij attach $name
+        }
+    } else {
+        print "No session found, creating new one..."
+        zellij --session $name --new-session-with-layout "servermode"
+    }
 }
 
 # -----------------------------------------------------------------------------
