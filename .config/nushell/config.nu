@@ -48,7 +48,8 @@ path add ~/.yarn/bin
 path add ~/.cargo/bin
 path add ~/.local/bin
 path add ~/.local/share/go/bin
-
+path add /opt/homebrew/opt/fnm/bin
+path add ~/code/tools/typescript-go/built/local
 # -----------------------------------------------------------------------------
 # ENVIRONMENT VARIABLES
 # -----------------------------------------------------------------------------
@@ -60,9 +61,9 @@ $env.GOMODCACHE = "~/.local/share/go-mod-cache"
 
 # Development tools
 $env.EDITOR = "nvim"
-$env.NVM_DIR = "~/.nvm"
 $env.BUN_INSTALL = "~/.bun"
 $env.PNPM_HOME = "/Users/koenverburg/Library/pnpm"
+$env.FNM_PATH = "/opt/homebrew/opt/fnm/bin"
 
 # System configuration
 $env.HOMEBREW_NO_AUTO_UPDATE = "1"
@@ -98,7 +99,6 @@ alias la = ls -a
 alias lg = lazygit
 alias nf = neofetch
 alias pn = pnpm
-alias fp = bash ~/code/github/dotfiles/.config/zsh/find-project.sh
 
 # Kubernetes aliases
 alias k = kubectl
@@ -124,6 +124,8 @@ alias showreel = asciinema rec
 
 # Neovim aliases
 alias resetnvim = nvim +Deletesession +qall
+
+alias ju = just --justfile ~/.justfile --working-directory .
 
 # Test aliases
 alias testfront = TZ=Europe/Amsterdam BABEL_ENV='test' NODE_ICU_DATA=node_modules/full-icu LC_ALL=en_US.utf-8 JEST_SUITE_NAME='Frontend_Tests' ./node_modules/.bin/jest --config=frontend/jest.frontend.json --maxWorkers=80% -u --cacheDirectory=./.jest-cache
@@ -160,9 +162,11 @@ def fps [] {
         | str join "\n"
         | fzf --layout=reverse --header 'Find project' --header-lines=0
     )
+
     if ($selected | is-empty) {
         return
     }
+
     cd $selected
 
     # Select layout
@@ -204,8 +208,11 @@ def fps [] {
 
         if $session_exited {
             print $"Session ($selected_name) exited, cleaning up..."
+
             zellij delete-session $selected_name --force
+
             print $"Creating new session with layout ($selected_layout)"
+
             if $in_zellij {
                 zellij action attach --name $selected_name --layout $selected_layout
             } else {
@@ -294,12 +301,15 @@ if not (which fnm | is-empty) {
     )
 }
 
+mkdir ($nu.data-dir | path join "vendor/autoload")
+tv init nu | save -f ($nu.data-dir | path join "vendor/autoload/tv.nu")
+
 # -----------------------------------------------------------------------------
 # EXTERNAL SOURCES AND INITIALIZATION
 # -----------------------------------------------------------------------------
 
 # Source theme configuration
-source ~/.config/nushell/black-metal-bathory.nu
+source ~/code/github/dotfiles/.config/nushell/black-metal-bathory.nu
 
 set color_config
 update terminal
