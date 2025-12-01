@@ -59,7 +59,7 @@
   cob = branch -b
 
   # pretty log
-  plog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  plog = log --color --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %s' --abbrev-commit --
 
   refresh = !sh -c "git checkout main;git pull;git checkout -"
   lint = !sh -c "git show --pretty="" --name-only HEAD --diff-filter=d | grep '.ts\\|.js\\|.tsx|\\.jsx' | xargs npx eslint_d"
@@ -68,5 +68,6 @@
 
 [init]
 	defaultBranch = main
+
 [safe]
 	directory = /Users/verbukoe/code/github/dotfiles/dotbot
