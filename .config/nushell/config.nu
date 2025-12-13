@@ -2,14 +2,6 @@
 # ENVIRONMENT VARIABLES AND SYSTEM SETUP
 # -----------------------------------------------------------------------------
 
-# Prompt indicators
-$env.PROMPT_INDICATOR = {|| "" }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| "" }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| "" }
-$env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
-$env.STARSHIP_SHELL = "nu"
-
-# Environment variable conversions
 $env.ENV_CONVERSIONS = {
     "PATH": {
         from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
@@ -21,7 +13,6 @@ $env.ENV_CONVERSIONS = {
     }
 }
 
-# Library and plugin directories
 $env.NU_LIB_DIRS = [
     ($nu.default-config-dir | path join 'scripts')
     ($nu.data-dir | path join 'completions')
@@ -31,25 +22,6 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins')
 ]
 
-# -----------------------------------------------------------------------------
-# PATH CONFIGURATION
-# -----------------------------------------------------------------------------
-
-use std "path add"
-
-# Add paths to PATH
-path add /usr/local/bin
-path add /usr/local/go/bin
-path add /usr/local/share/npm/bin
-path add /opt/homebrew/bin
-path add /Users/koenverburg/Library/pnpm
-path add ~/.bun/bin
-path add ~/.yarn/bin
-path add ~/.cargo/bin
-path add ~/.local/bin
-path add ~/.local/share/go/bin
-path add /opt/homebrew/opt/fnm/bin
-path add ~/code/tools/typescript-go/built/local
 # -----------------------------------------------------------------------------
 # ENVIRONMENT VARIABLES
 # -----------------------------------------------------------------------------
@@ -74,6 +46,7 @@ $env.PKG_CONFIG_PATH = "/opt/homebrew/opt/curl/lib/pkgconfig"
 # NUSHELL CONFIGURATION
 # -----------------------------------------------------------------------------
 
+$env.STARSHIP_SHELL = "nu"
 $env.config.show_banner = false
 $env.config.buffer_editor = "nvim"
 
@@ -84,21 +57,47 @@ $env.config.buffer_editor = "nvim"
 #     sync_on_enter: true
 # }
 
+
+# -----------------------------------------------------------------------------
+# ENVIRONMENT VARIABLES AND SYSTEM SETUP
+# -----------------------------------------------------------------------------
+
+
+# Prompt indicators
+$env.PROMPT_INDICATOR = {|| "" }
+$env.PROMPT_INDICATOR_VI_INSERT = {|| "" }
+$env.PROMPT_INDICATOR_VI_NORMAL = {|| "" }
+$env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
+$env.PROMPT_COMMAND_RIGHT = ""
+# -----------------------------------------------------------------------------
+# PATH CONFIGURATION
+# -----------------------------------------------------------------------------
+
+use std "path add"
+
+# Add paths to PATH
+path add /usr/local/bin
+path add /usr/local/go/bin
+path add /usr/local/share/npm/bin
+path add /opt/homebrew/bin
+path add /Users/koenverburg/Library/pnpm
+path add ~/.bun/bin
+path add ~/.yarn/bin
+path add ~/.cargo/bin
+path add ~/.local/bin
+path add ~/.local/share/go/bin
+path add /opt/homebrew/opt/fnm/bin
+path add ~/code/tools/typescript-go/built/local
+
 # -----------------------------------------------------------------------------
 # ALIASES
 # -----------------------------------------------------------------------------
-
-# Git aliases
-alias diffmain = git diff main --name-only --diff-filter=d '*.js' '*.jsx' '*.ts' '*.tsx'
-alias difflint = git diff main --name-only --diff-filter=d '*.ts' '*.tsx' | xargs eslint_d --fix
-alias difftest = git diff main --name-only --diff-filter=d '*.spec.*' | fzf -m | xargs yarn jest --config=frontend/jest.frontend.json
 
 # General aliases
 alias ll = ls -l
 alias la = ls -a
 alias lg = lazygit
 alias nf = neofetch
-alias pn = pnpm
 
 # Kubernetes aliases
 alias k = kubectl
@@ -122,13 +121,7 @@ alias dockerclean = docker rmi (docker images --filter "dangling=true" -q --no-t
 alias record = asciinema rec ./recoding.cast
 alias showreel = asciinema rec
 
-# Neovim aliases
-alias resetnvim = nvim +Deletesession +qall
-
 alias ju = just --justfile ~/.justfile --working-directory .
-
-# Test aliases
-alias testfront = TZ=Europe/Amsterdam BABEL_ENV='test' NODE_ICU_DATA=node_modules/full-icu LC_ALL=en_US.utf-8 JEST_SUITE_NAME='Frontend_Tests' ./node_modules/.bin/jest --config=frontend/jest.frontend.json --maxWorkers=80% -u --cacheDirectory=./.jest-cache
 
 # -----------------------------------------------------------------------------
 # CUSTOM FUNCTIONS
@@ -137,6 +130,10 @@ alias testfront = TZ=Europe/Amsterdam BABEL_ENV='test' NODE_ICU_DATA=node_module
 def --env fp [] {
     let selected = (
         ls ~/code/github
+        | append (ls ~/code/2026)
+        | append (ls ~/code/2025)
+        | append (ls ~/code/2025-h2)
+        | append (ls ~/code/2025-h2/checkout.git/tickets)
         | where type == dir
         | get name
         | str join "\n"
@@ -154,9 +151,13 @@ def --env fp [] {
 }
 
 def fps [] {
+    # ls ~/code/github | append (ls ~/code/2025-h2) | append (ls ~/code/2025-h2/checkout.git/tickets/) | where type == dir
+
     # Select project
     let selected = (
         ls ~/code/github
+        | append (ls ~/code/2025-h2)
+        | append (ls ~/code/2025-h2/checkout.git/tickets)
         | where type == dir
         | get name
         | str join "\n"
@@ -310,13 +311,21 @@ tv init nu | save -f ($nu.data-dir | path join "vendor/autoload/tv.nu")
 
 # Source theme configuration
 source ~/code/github/dotfiles/.config/nushell/black-metal-bathory.nu
+source ~/code/github/dotfiles/.config/nushell/git.nu
 
 set color_config
 update terminal
 use activate
 
-mkdir ($nu.data-dir | path join "vendor/autoload")
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+$env.PROMPT_COMMAND = {||
+    let icon = if ($env.LAST_EXIT_CODE == 0) {
+        (ansi green) + "#" + (ansi reset) + " "
+    } else {
+        (ansi red) + "#" + (ansi reset) + " "
+    }
+
+   ($env.__GIT_INFO_CACHE.value | default "") + $icon
+}
 
 # Initialize starship
 # mkdir ~/.cache/starship

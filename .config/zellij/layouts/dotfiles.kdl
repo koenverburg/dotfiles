@@ -14,13 +14,9 @@ layout {
         mode_move          "#[fg=#c1c1c1,bg=#000000,bold] {name} "
 
         format_left   "{mode}#[fg=#000000,bg=#5f8787,bold] {session} #[fg=#5f8787,bg=#000000]#[fg=#000000,bg=#5f8787] #[fg=#5f8787,bg=#000000]#[fg=#000000,bg=#5f8787]#[fg=#5f8787,bg=#000000] {tabs}"
-
         format_center ""
-
         format_right "#[fg=#000000,bg=#c1c1c1]#[fg=#c1c1c1,bg=#000000]#[fg=#000000,bg=#c1c1c1] #[fg=#c1c1c1,bg=#000000]#[fg=#000000,bg=#c1c1c1]#[fg=#222222,bg=#c1c1c1]{datetime}"
-
         format_space  ""
-
         // format_space  "#[bg=#000000]"
 
         tab_normal    "#[fg=#c1c1c1] ○ {name} "
@@ -31,6 +27,36 @@ layout {
         datetime_timezone "Europe/Amsterdam"
       }
     }
-    pane
+    children
+  }
+
+  tab name="Dotfiles" {
+    pane {
+      cwd "~/code/github/dotfiles"
+    }
+  }
+
+  tab name="nvim" {
+    pane {
+      cwd "~/code/github/nvim"
+    }
+  }
+
+  tab name="internal" {
+    pane {
+      cwd "~/code/github/internal.nvim"
+    }
+  }
+
+  tab name="thorax" {
+    pane {
+      cwd "~/code/github/thorax.nvim"
+    }
+  }
+
+  tab name="trader" {
+    pane {
+      cwd "~/code/github/trading-bots"
+    }
   }
 }
