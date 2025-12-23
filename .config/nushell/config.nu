@@ -27,7 +27,7 @@ $env.NU_PLUGIN_DIRS = [
 # -----------------------------------------------------------------------------
 
 # Go configuration
-$env.GOROOT = "/usr/local/go"
+$env.GOROOT = "/opt/homebrew/bin/go"
 $env.GOPATH = "~/.local/share/go"
 $env.GOMODCACHE = "~/.local/share/go-mod-cache"
 
@@ -286,45 +286,48 @@ def servermode [] {
     }
 }
 
+# Source theme configuration
+source ~/code/github/dotfiles/.config/nushell/black-metal-bathory.nu
+source ~/code/github/dotfiles/.config/nushell/prompt_levels.nu
 # -----------------------------------------------------------------------------
 # BOOTSTRAP RUNTIMES
 # -----------------------------------------------------------------------------
 
-if not (which fnm | is-empty) {
-    ^fnm env --json | from json | load-env
-
-    $env.PATH = $env.PATH | prepend ($env.FNM_MULTISHELL_PATH | path join (if $nu.os-info.name == 'windows' {''} else {'bin'}))
-    $env.config.hooks.env_change.PWD = (
-        $env.config.hooks.env_change.PWD? | append {
-            condition: {|| ['.nvmrc' '.node-version', 'package.json'] | any {|el| $el | path exists}}
-            code: {|| ^fnm use --install-if-missing}
-        }
-    )
-}
-
-mkdir ($nu.data-dir | path join "vendor/autoload")
-tv init nu | save -f ($nu.data-dir | path join "vendor/autoload/tv.nu")
+source ~/code/github/dotfiles/.config/nushell/git.nu
+# source ~/code/github/dotfiles/.config/nushell/go.nu
+source ~/code/github/dotfiles/.config/nushell/lua.nu
+source ~/code/github/dotfiles/.config/nushell/node.nu
+source ~/code/github/dotfiles/.config/nushell/rust.nu
 
 # -----------------------------------------------------------------------------
 # EXTERNAL SOURCES AND INITIALIZATION
 # -----------------------------------------------------------------------------
-
-# Source theme configuration
-source ~/code/github/dotfiles/.config/nushell/black-metal-bathory.nu
-source ~/code/github/dotfiles/.config/nushell/git.nu
 
 set color_config
 update terminal
 use activate
 
 $env.PROMPT_COMMAND = {||
-    let icon = if ($env.LAST_EXIT_CODE == 0) {
-        (ansi green) + "#" + (ansi reset) + " "
-    } else {
-        (ansi red) + "#" + (ansi reset) + " "
-    }
+  let icon = if ($env.LAST_EXIT_CODE == 0) {
+    (ansi green) + "#" + (ansi reset) + " "
+  } else {
+    (ansi red) + "#" + (ansi reset) + " "
+  }
 
-   ($env.__GIT_INFO_CACHE.value | default "") + $icon
+  if ($env.__PROMPT_LEVEL.value == 0 or $env.__PROMPT_LEVEL.value == 1) {
+    ($icon)
+  } else if ($env.__PROMPT_LEVEL.value == 2 or $env.__PROMPT_LEVEL.in_zellij) {
+    ($env.__GIT_INFO_CACHE.value | default "") + $icon
+  } else if ($env.__PROMPT_LEVEL.value == 3) {
+    let cwd = (pwd) | path basename
+    $cwd + " " + ($env.__GIT_INFO_CACHE.value | default "") + " " + $icon
+  }
+}
+
+$env.PROMPT_COMMAND_RIGHT = {||
+  if ($env.__PROMPT_LEVEL.value != 0) {
+    ($env.__LUA_INFO_CACHE.value | default "") + ($env.__RUST_INFO_CACHE.value | default "") + ($env.__NODE_INFO_CACHE.value | default "")
+  }
 }
 
 # Initialize starship
