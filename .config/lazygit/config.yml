@@ -1,14 +1,11 @@
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
-customCommands:
-  - key: "C"
-    command: "committer"
-    context: "files"
-    loadingText: "opening my commit tool"
-    subprocess: true
+  pagers:
+    - externalDiffCommand: difft --color=always
 
 gui:
+  sidePanelWidth: 0.2
   showCommandLog: false
+
+  expandedSidePanelWeight: 3
+  expandFocusedSidePanel: true
+

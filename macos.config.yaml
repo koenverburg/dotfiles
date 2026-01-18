@@ -14,21 +14,22 @@
     # - ~/.hammerspoon
 
 - link:
-    # ~/.config/nvim: .config/nvim
-    ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf
+    # ~/.tmux.conf: ansible/playbooks/roles/tmux/files/.tmux.conf
     ~/.config/nvim: ~/code/github/nvim
-    ~/.zshrc: .config/zsh/.zshrc
+    ~/.config/television : ~/code/github/dotfiles/.config/television
+    # ~/.zshrc: .config/zsh/.zshrc
     ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.macos.yml
     ~/.gitconfig: .config/gitconfig/.gitconfig
 
-    ~/.config/starship.toml: .config/starship/starship.toml
-    ~/.config/starship/themes/default.toml: .config/starship/starship.toml
-    ~/.config/starship/themes/cyberpunk.toml: .config/starship/themes/cyberpunk.toml
-    ~/.config/starship/themes/minimal.toml: .config/starship/themes/minimal.toml
-    ~/.config/starship/themes/slanted.toml: .config/starship/themes/slanted.toml
+    # ~/.config/starship.toml: .config/starship/starship.toml
+    # ~/.config/starship/themes/default.toml: .config/starship/starship.toml
+    # ~/.config/starship/themes/cyberpunk.toml: .config/starship/themes/cyberpunk.toml
+    # ~/.config/starship/themes/minimal.toml: .config/starship/themes/minimal.toml
+    # ~/.config/starship/themes/slanted.toml: .config/starship/themes/slanted.toml
 
     ~/.config/zellij/config.kdl: .config/zellij/config.kdl
     ~/.config/zellij/layouts: .config/zellij/layouts
+    ~/.config/k9s: .config/k9s
     # ~/.config/yabai/yabairc: .config/yabai/yabairc
     # ~/.config/limelight/limelightrc: .config/limelight/limelightrc
     # ~/.config/skhd/skhdrc: .config/skhd/skhdrc
@@ -39,9 +40,10 @@
     "~/Library/Application Support/nushell/black-metal-bathory.nu": .config/nushell/black-metal-bathory.nu
 
 - shell:
+    # mkdir -p ~/.config/zellij/plugins && curl -L "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" -o ~/.config/zellij/plugins/zjstatus.wasm
+    # curl -L "https://github.com/imsnif/monocle/releases/latest/download/monocle.wasm" -o ~/.config/zellij/plugins/monocle.wasm
+    # - cargo install --git https://github.com/FMotalleb/nu_plugin_desktop_notifications.git
 
-    mkdir -p ~/.config/zellij/plugins && curl -L "https://github.com/rvcas/room/releases/latest/download/room.wasm" -o ~/.config/zellij/plugins/room.wasm
-    mkdir -p ~/.config/zellij/plugins && curl -L "https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" -o ~/.config/zellij/plugins/zjstatus.wasm
 
     # - [git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions]
     # - [curl -sS https://starship.rs/install.sh | sh]
