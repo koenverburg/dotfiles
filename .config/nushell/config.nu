@@ -2,17 +2,6 @@
 # ENVIRONMENT VARIABLES AND SYSTEM SETUP
 # -----------------------------------------------------------------------------
 
-$env.ENV_CONVERSIONS = {
-    "PATH": {
-        from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-        to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-    }
-    "Path": {
-        from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-        to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-    }
-}
-
 $env.NU_LIB_DIRS = [
     ($nu.default-config-dir | path join 'scripts')
     ($nu.data-dir | path join 'completions')
@@ -28,17 +17,17 @@ $env.NU_PLUGIN_DIRS = [
 
 # Go configuration
 $env.GOROOT = "/opt/homebrew/bin/go"
-$env.GOPATH = "~/.local/share/go"
-$env.GOMODCACHE = "~/.local/share/go-mod-cache"
+$env.GOPATH = $env.HOME + "/.local/share/go"
+$env.GOMODCACHE = $env.HOME + "/.local/share/go-mod-cache"
 
 # Development tools
 $env.EDITOR = "nvim"
-$env.BUN_INSTALL = "~/.bun"
+$env.BUN_INSTALL = $env.HOME + "/.bun"
 $env.PNPM_HOME = "/Users/koenverburg/Library/pnpm"
 $env.FNM_PATH = "/opt/homebrew/opt/fnm/bin"
 
 # System configuration
-$env.HOMEBREW_NO_AUTO_UPDATE = "1"
+# $env.HOMEBREW_NO_AUTO_UPDATE = "1"
 $env.CPPFLAGS = "-I/opt/homebrew/opt/curl/include"
 $env.PKG_CONFIG_PATH = "/opt/homebrew/opt/curl/lib/pkgconfig"
 
@@ -97,6 +86,7 @@ path add ~/code/tools/typescript-go/built/local
 alias ll = ls -l
 alias la = ls -a
 alias lg = lazygit
+alias mg = mergiraf
 alias nf = neofetch
 
 # Kubernetes aliases
@@ -289,6 +279,7 @@ def servermode [] {
 # Source theme configuration
 source ~/code/github/dotfiles/.config/nushell/black-metal-bathory.nu
 source ~/code/github/dotfiles/.config/nushell/prompt_levels.nu
+
 # -----------------------------------------------------------------------------
 # BOOTSTRAP RUNTIMES
 # -----------------------------------------------------------------------------
@@ -316,7 +307,7 @@ $env.PROMPT_COMMAND = {||
 
   if ($env.__PROMPT_LEVEL.value == 0 or $env.__PROMPT_LEVEL.value == 1) {
     ($icon)
-  } else if ($env.__PROMPT_LEVEL.value == 2 or $env.__PROMPT_LEVEL.in_zellij) {
+  } else if ($env.__PROMPT_LEVEL.value == 2) {
     ($env.__GIT_INFO_CACHE.value | default "") + $icon
   } else if ($env.__PROMPT_LEVEL.value == 3) {
     let cwd = (pwd) | path basename

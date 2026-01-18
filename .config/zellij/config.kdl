@@ -182,11 +182,11 @@ keybinds clear-defaults=true {
     }
     shared_except "locked" "resize" "pane" "tab" "entersearch" "renametab" "renamepane" {
         bind "r" { SwitchToMode "resize"; }
+    }
+    shared_except "locked" {
         bind "Ctrl y" {
-            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
-                floating true
-                ignore_case true
-                quick_jump true
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/harpoon.wasm" {
+                floating true; move_to_focused_tab true;
             }
         }
     }
@@ -225,15 +225,10 @@ keybinds clear-defaults=true {
 
 plugins {
     about location="zellij:about"
-    tab-bar location="zellij:tab-bar"
+    // tab-bar location="zellij:tab-bar"
     status-bar location="zellij:status-bar"
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
-
-    compact-bar location="zellij:compact-bar"
-    // { // replace it with these lines
-    //     tooltip "Ctrl esc"
-    // }
 
     filepicker location="zellij:strider" {
         cwd "/"
@@ -242,17 +237,43 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
+
+    zellij-pane-picker location="https://github.com/shihanng/zellij-pane-picker/releases/download/v0.6.0/zellij-pane-picker.wasm" {
+        list_panes ""
+        plugin_select_down "Ctrl n"
+        plugin_select_up "Ctrl p"
+    }
+
+    zjstatus-hints location="https://github.com/b0o/zjstatus-hints/releases/latest/download/zjstatus-hints.wasm" {
+        max_length 0
+        overflow_str "..."
+        pipe_name "zjstatus_hints"
+        hide_in_base_mode true
+    }
+    harpoon location="file:~/.config/zellij/plugins/harpoon.wasm" {}
 }
 
-load_plugins { }
+load_plugins {
+    harpoon
+    zellij-pane-picker
+    zjstatus-hints
+}
 
+// default_layout "compact" // make sure this is set so you'll get the compact-bar instead of the default UI
+page_frames false
+default_shell "nu"
 default_mode "locked"
 default_layout "compact"
-default_shell "nu"
-
-pane_frames false
-show_startup_tips false
 
 simplified_ui true
 copy_on_select true
 styled_underlines true
+
+show_startup_tips false
+
+ui {
+  pane_frames {
+    rounded_corners true
+    hide_session_name false
+  }
+}

@@ -2,35 +2,37 @@ layout {
   default_tab_template {
     pane size=1 borderless=true {
       plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
-        hide_frame_for_single_pane "true"
+        hide_frame_for_single_pane "false"
 
-        mode_normal        "#[fg=#c1c1c1,bg=#000000,bold] {name} "
-        mode_locked        "#[fg=#5f8787,bg=#000000,bold] {name} "
-        mode_resize        "#[fg=#a06666,bg=#000000,bold] {name} "
-        mode_pane          "#[fg=#aaaaaa,bg=#000000,bold] {name} "
-        mode_tab           "#[fg=#999999,bg=#000000,bold] {name} "
-        mode_scroll        "#[fg=#a66666,bg=#000000,bold] {name} "
-        mode_session       "#[fg=#aaaaaa,bg=#000000,bold] {name} "
-        mode_move          "#[fg=#c1c1c1,bg=#000000,bold] {name} "
+        mode_normal        "#[fg=#c1c1c1,bold] {name} "
+        mode_locked        "#[fg=#5f8787,bold] {name} "
+        mode_resize        "#[fg=#a06666,bold] {name} "
+        mode_pane          "#[fg=#aaaaaa,bold] {name} "
+        mode_tab           "#[fg=#999999,bold] {name} "
+        mode_scroll        "#[fg=#a66666,bold] {name} "
+        mode_session       "#[fg=#aaaaaa,bold] {name} "
+        mode_move          "#[fg=#c1c1c1,bold] {name} "
 
-        format_left   "{mode}#[fg=#000000,bg=#5f8787,bold] {session} #[fg=#5f8787,bg=#000000]#[fg=#000000,bg=#5f8787] #[fg=#5f8787,bg=#000000]#[fg=#000000,bg=#5f8787]#[fg=#5f8787,bg=#000000] {tabs}"
+        format_left   "{mode}#[fg=#e78a53,bold]({session}) {tabs}"
 
         format_center ""
 
-        format_right "#[fg=#000000,bg=#c1c1c1]#[fg=#c1c1c1,bg=#000000]#[fg=#000000,bg=#c1c1c1] #[fg=#c1c1c1,bg=#000000]#[fg=#000000,bg=#c1c1c1]#[fg=#222222,bg=#c1c1c1]{datetime}"
+        format_right "{pipe_zjstatus_hints} {datetime}"
 
         format_space  ""
 
         // format_space  "#[bg=#000000]"
 
-        tab_normal    "#[fg=#c1c1c1] ○ {name} "
-        tab_active    "#[fg=#c1c1c1] ● {name} "
+        tab_normal    "#[fg=#333333] ○ {name} "
+        tab_active    "#[fg=#c1c1c1,bold] ● {name} "
 
-        datetime      "#[fg=#222222,bg=#c1c1c1,bold] {format} "
+        datetime      "#[fg=#fbcb97] {format} "
         datetime_format "%A, %d %b %Y %H:%M"
         datetime_timezone "Europe/Amsterdam"
+
+        pipe_zjstatus_hints_format "{output}"
       }
     }
-    pane
+    children
   }
 }

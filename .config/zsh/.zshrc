@@ -129,10 +129,23 @@ export PATH=$PATH:$GOPATH/bin
 # pnpm endfpath=($fpath "/Users/koenverburg/.zfunctions")
 
 export NVM_DIR="$HOME/.nvm"
-# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 eval "$(starship init zsh)"
+
+# fnm
+FNM_PATH="/opt/homebrew/opt/fnm/bin"
+if [ -d "$FNM_PATH" ]; then
+  eval "`fnm env`"
+fi
+
+# bun completions
+[ -s "/Users/verbukoe/code/2025-h2/checkout-bridge/~/.bun/_bun" ] && source "/Users/verbukoe/code/2025-h2/checkout-bridge/~/.bun/_bun"
+
+# bun
+export BUN_INSTALL="~/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
