@@ -24,32 +24,15 @@
 [pull]
   default = current
 
-[pager]
-  diff = delta
-  log = delta
-  reflog = delta
-  show = delta
-
 [diff]
   renameLimit = 999999
 
 [interactive]
   diffFilter = delta --color-only --features=interactive
 
-[delta]
-  features = decorations
-
-[delta "interactive"]
-  keep-plus-minus-markers = false
-
-[delta "decorations"]
-  commit-decoration-style = blue ol
-  commit-style = raw
-  file-style = omit
-  hunk-header-decoration-style = blue box
-  hunk-header-file-style = red
-  hunk-header-line-number-style = "#067a00"
-  hunk-header-style = file line-number syntax
+[merge "mergiraf"]
+  name = mergiraf
+  driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 
 [alias]
   cedit = commit --amend
@@ -65,6 +48,11 @@
   lint = !sh -c "git show --pretty="" --name-only HEAD --diff-filter=d | grep '.ts\\|.js\\|.tsx|\\.jsx' | xargs npx eslint_d"
   changedfiles = !git --no-pager diff main...HEAD --name-only --diff-filter=d '*.js' '*.jsx' '*.ts' '*.tsx'
   changedtests = !git --no-pager diff main...HEAD --name-only --diff-filter=d '*.spec.js' '*.spec.jsx' '*.spec.ts' '*.spec.tsx'
+
+  # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+  dlog = -c diff.external=difft log --ext-diff
+  dshow = -c diff.external=difft show --ext-diff
+  ddiff = -c diff.external=difft diff
 
 [init]
 	defaultBranch = main

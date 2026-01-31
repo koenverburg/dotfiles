@@ -1,0 +1,63 @@
+themes {
+  bathory {
+    // general text
+    text_unselected {
+      base        193 193 193   // base05 #c1c1c1
+      background  0   0   0     // base00 #000000
+      emphasis_0  153 153 153   // base04/0E #999999
+      emphasis_1  136 136 136   // base0D #888888
+      emphasis_2  170 170 170   // base09/0C #aaaaaa
+      emphasis_3  95  135 135   // base08 #5f8787
+    }
+
+    text_selected {
+      base        193 193 193
+      background  18  18  18    // base01 #121212
+      emphasis_0  231 138 83    // base0A #e78a53 (accent)
+    }
+
+    ribbon_unselected {
+      base        193 193 193
+      background  0   0   0
+      emphasis_0  51  51  51    // base03
+      emphasis_1  153 153 153
+    }
+
+    ribbon_selected {
+      base        193 193 193
+      background  34  34  34    // base02
+      emphasis_0  95  135 135   // base08
+      emphasis_1  251 203 151   // base0B
+    }
+
+    table_title {
+      base        170 170 170   // base09
+      background  0   0   0
+      emphasis_0  231 138 83    // base0A
+    }
+
+    table_cell_unselected {
+      base        193 193 193
+      background  0   0   0
+      emphasis_0  136 136 136
+    }
+
+    table_cell_selected {
+      base        193 193 193
+      background  18  18  18
+      emphasis_0  231 138 83    // highlight
+    }
+
+    list_unselected {
+      base        193 193 193
+      background  0   0   0
+      emphasis_0  95  135 135
+    }
+
+    list_selected {
+      base        193 193 193
+      background  34  34  34
+      emphasis_0  251 203 151
+    }
+  }
+}

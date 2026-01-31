@@ -9,3 +9,74 @@ gui:
   expandedSidePanelWeight: 3
   expandFocusedSidePanel: true
 
+  # theme:
+  #   # Borders & focus
+  #   activeBorderColor:
+  #     - "#bd93f9"  # purple
+  #   inactiveBorderColor:
+  #     - "#44475a"  # current line / selection
+  #   searchingActiveBorderColor:
+  #     - "#ffb86c"  # orange
+  #
+  #   # Selections / ranges
+  #   selectedLineBgColor:
+  #     - "#44475a"  # selection
+  #   selectedRangeBgColor:
+  #     - "#44475a"
+  #
+  #   # Commit decorations
+  #   cherryPickedCommitBgColor:
+  #     - "#44475a"
+  #   cherryPickedCommitFgColor:
+  #     - "#50fa7b"  # green
+  #
+  #   # Diff / status accents
+  #   unstagedChangesColor:
+  #     - "#ff5555"  # red
+  #
+  #   # Texts
+  #   defaultFgColor:
+  #     - "#f8f8f2"  # foreground
+  #   optionsTextColor:
+  #     - "#6272a4"  # comment / secondary
+
+
+  # Theme Bathory
+  # theme:
+  #   # Borders & panels
+  #   activeBorderColor:
+  #     - "#5f8787"  # base08 (teal-ish)
+  #   inactiveBorderColor:
+  #     - "#333333"  # base03
+  #   searchingActiveBorderColor:
+  #     - "#e78a53"  # base0A
+  #
+  #   # Lists / selections
+  #   selectedLineBgColor:
+  #     - "#121212"  # base01
+  #   selectedRangeBgColor:
+  #     - "#222222"  # base02
+  #
+  #   # Commit decorations
+  #   cherryPickedCommitBgColor:
+  #     - "#333333"  # base03
+  #   cherryPickedCommitFgColor:
+  #     - "#fbcb97"  # base0B
+  #
+  #   # Diff / status accents
+  #   unstagedChangesColor:
+  #     - "#e78a53"  # base0A (orange)
+  #
+  #   # General text colors
+  #   defaultFgColor:
+  #     - "#c1c1c1"  # base05
+  #   optionsTextColor:
+  #     - "#888888"  # base0D
+  #
+  #   # Additional (supported by recent LG versions)
+  #   # NOTE: Lazygit uses your terminal background; keep it true black for this scheme.
+  #   # You can also add these if desired:
+  #   inactiveViewSelectedLineBgColor:
+  #     - "#121212"
+  #   borderColor:
+  #     - "#333333"
