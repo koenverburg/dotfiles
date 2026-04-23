@@ -1,0 +1,129 @@
+server:
+  host: "0.0.0.0"
+  port: 8000
+  log_level: INFO
+  log_file: ~/logs/mlx-coding.log
+
+models:
+  # Model 1: ULTRA-FAST - Autocomplete & instant responses
+  # https://huggingface.co/mlx-community/Qwen3.5-4B-OptiQ-4bit
+  # hf download --local-dir mlx-community/Qwen3.5-4B-OptiQ-4bit "mlx-community/Qwen3.5-4B-OptiQ-4bit"
+  - model_path: mlx-community/Qwen3.5-4B-OptiQ-4bit
+    model_type: lm
+    model_id: instant
+
+    # Parsers
+    tool_call_parser: qwen3_coder
+    enable_auto_tool_choice: false
+
+    # Memory & concurrency (optimized for high throughput)
+    context_length: 16384
+    max_concurrency: 4      # M2 can handle 4 lightweight instances
+    queue_size: 20
+    queue_timeout: 30       # Changed: Fail fast for instant responses
+
+    # Sampling (deterministic, fast)
+    max_tokens: 1024
+    temperature: 0.1
+    top_p: 0.9
+    top_k: 40               # Changed: More variety than 20
+    repetition_penalty: 1.05
+
+    # Cache settings (aggressive caching)
+    prompt_cache_size: 100
+    prompt_cache_max_bytes: 536870912  # 512MB
+
+    # Parsers
+    tool_call_parser: qwen3_coder
+    enable_auto_tool_choice: false
+
+    # Optimization flags (NEW)
+    optimization:
+      use_flash_attention: true
+      kv_cache_quantization: true  # Extra speed
+      batch_inference: true
+
+  # Model 2: FAST - Chat, drafting, general coding
+  # https://huggingface.co/mlx-community/Qwen3.5-9B-MLX-4bit
+  # hf download --local-dir mlx-community/Qwen3.5-9B-MLX-4bit "mlx-community/Qwen3.5-9B-MLX-4bit"
+  - model_path: mlx-community/Qwen3.5-9B-MLX-4bit
+    model_type: multimodal  # Supports vision!
+    model_id: fast
+
+    # Parsers
+    tool_call_parser: qwen3_coder
+    reasoning_parser: qwen3_5
+    enable_auto_tool_choice: true
+
+    # Memory & concurrency
+    context_length: 32768
+    max_concurrency: 2
+    queue_size: 10
+    queue_timeout: 120      # Changed: 2 min instead of 3
+
+    # Sampling (balanced creativity)
+    max_tokens: 4096
+    temperature: 0.5
+    top_p: 0.95
+    top_k: 40
+    repetition_penalty: 1.05
+
+    # Cache settings
+    prompt_cache_size: 50
+    prompt_cache_max_bytes: 1073741824  # 1GB
+
+    # Parsers
+    tool_call_parser: qwen3_coder
+    reasoning_parser: qwen3_5
+    enable_auto_tool_choice: true
+
+    # Optimization flags (NEW)
+    optimization:
+      use_flash_attention: true
+      enable_prompt_caching: true
+
+  # Model 3: SMART - Complex reasoning, architecture, refactoring
+  # https://huggingface.co/mlx-community/Qwen3.6-27B-4bit
+  # hf download --local-dir mlx-community/Qwen3.6-27B-4bit "mlx-community/Qwen3.6-27B-4bit"
+  - model_path: mlx-community/Qwen3.6-27B-4bit
+    model_type: multimodal  # Qwen3.6 supports vision
+    model_id: smart
+
+    # Parsers (Qwen3.6 has enhanced reasoning)
+    tool_call_parser: qwen3_coder
+    reasoning_parser: qwen3_5
+    enable_auto_tool_choice: true
+
+    # Memory & concurrency
+    context_length: 32768   # Changed: Start with 32K (safer for 32GB RAM)
+    max_concurrency: 1
+    queue_size: 5
+    queue_timeout: 300      # Changed: 5 min instead of 10
+
+    # Sampling (precise reasoning)
+    max_tokens: 8192
+    temperature: 0.2
+    top_p: 0.9
+    top_k: 30
+    repetition_penalty: 1.05
+
+    # Cache settings (large contexts)
+    prompt_cache_size: 20
+    prompt_cache_max_bytes: 4294967296  # 4GB
+
+    # Parsers (Qwen3.6 enhanced reasoning)
+    tool_call_parser: qwen3_coder
+    reasoning_parser: qwen3_5
+    enable_auto_tool_choice: true
+
+    # Optimization flags (NEW)
+    optimization:
+      use_flash_attention: true
+      enable_prompt_caching: true  # Critical for large contexts
+
+    # Optional: Speculative decoding (10-15% faster) (NEW)
+    # Uncomment if you want extra speed
+    # speculative:
+    #   enabled: true
+    #   draft_model: mlx-community/Qwen3.5-4B-OptiQ-4bit
+    #   draft_tokens: 8
