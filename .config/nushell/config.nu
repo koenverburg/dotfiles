@@ -2,28 +2,28 @@
 # ENVIRONMENT VARIABLES AND SYSTEM SETUP
 # -----------------------------------------------------------------------------
 
-$env.NU_LIB_DIRS = [
-    ($nu.default-config-dir | path join 'scripts')
-    ($nu.data-dir | path join 'completions')
-]
-
-$env.NU_PLUGIN_DIRS = [
-    ($nu.default-config-dir | path join 'plugins')
-]
+# $env.NU_LIB_DIRS = [
+#     ($nu.default-config-dir | path join 'scripts')
+#     ($nu.data-dir | path join 'completions')
+# ]
+#
+# $env.NU_PLUGIN_DIRS = [
+#     ($nu.default-config-dir | path join 'plugins')
+# ]
 
 # -----------------------------------------------------------------------------
 # ENVIRONMENT VARIABLES
 # -----------------------------------------------------------------------------
 
 # Go configuration
-$env.GOROOT = "/opt/homebrew/bin/go"
+$env.GOROOT = "/opt/homebrew/opt/go/libexec"
+# $env.GOROOT = "/opt/homebrew/bin/go"
 $env.GOPATH = $env.HOME + "/.local/share/go"
 $env.GOMODCACHE = $env.HOME + "/.local/share/go-mod-cache"
 
 # Development tools
 $env.EDITOR = "nvim"
 $env.BUN_INSTALL = $env.HOME + "/.bun"
-$env.PNPM_HOME = "/Users/koenverburg/Library/pnpm"
 $env.FNM_PATH = "/opt/homebrew/opt/fnm/bin"
 
 # System configuration
@@ -39,18 +39,9 @@ $env.STARSHIP_SHELL = "nu"
 $env.config.show_banner = false
 $env.config.buffer_editor = "nvim"
 
-# History configuration
-# $env.config.history = {
-#     file: ($nu.home-path | ".nu_history")
-#     max_size: 50000
-#     sync_on_enter: true
-# }
-
-
 # -----------------------------------------------------------------------------
 # ENVIRONMENT VARIABLES AND SYSTEM SETUP
 # -----------------------------------------------------------------------------
-
 
 # Prompt indicators
 $env.PROMPT_INDICATOR = {|| "" }
@@ -69,7 +60,6 @@ path add /usr/local/bin
 path add /usr/local/go/bin
 path add /usr/local/share/npm/bin
 path add /opt/homebrew/bin
-path add /Users/koenverburg/Library/pnpm
 path add ~/.bun/bin
 path add ~/.yarn/bin
 path add ~/.cargo/bin
@@ -107,10 +97,6 @@ alias dcud = docker-compose up -d
 alias dcd = docker-compose down
 alias dockerclean = docker rmi (docker images --filter "dangling=true" -q --no-trunc)
 
-# Recording aliases
-alias record = asciinema rec ./recoding.cast
-alias showreel = asciinema rec
-
 alias ju = just --justfile ~/.justfile --working-directory .
 
 # -----------------------------------------------------------------------------
@@ -121,9 +107,8 @@ def --env fp [] {
     let selected = (
         ls ~/code/github
         | append (ls ~/code/2026)
-        | append (ls ~/code/2025)
-        | append (ls ~/code/2025-h2)
-        | append (ls ~/code/2025-h2/checkout.git/tickets)
+        | append (ls ~/code/2026/ecom.git/tickets)
+        | append (ls ~/code/2026/checkout.git/tickets)
         | where type == dir
         | get name
         | str join "\n"
@@ -146,8 +131,9 @@ def fps [] {
     # Select project
     let selected = (
         ls ~/code/github
-        | append (ls ~/code/2025-h2)
-        | append (ls ~/code/2025-h2/checkout.git/tickets)
+        | append (ls ~/code/2026)
+        | append (ls ~/code/2026/ecom.git/tickets)
+        | append (ls ~/code/2026/checkout.git/tickets)
         | where type == dir
         | get name
         | str join "\n"
@@ -229,55 +215,8 @@ def fps [] {
     }
 }
 
-def servermode [] {
-    let name = "servermode"
-    let layout = "servermode"
-
-    let sessions = (
-        do { zellij ls -n } | complete | get stdout | lines | each { |line| $line | str trim } | where $it != ""
-    )
-
-    # Check if any session with our name exists
-    let matching_sessions = ($sessions | where { |session| $session | str contains $name })
-    let session_exists = ($matching_sessions | length) > 0
-
-    let in_zellij = ($env.ZELLIJ? | is-not-empty)
-
-    if $session_exists {
-        # Check if the existing session is exited
-        let session_exited = ($matching_sessions | any { |session| $session | str contains "EXITED" })
-
-        if $session_exited {
-            print $"Session ($name) exited, cleaning up..."
-            zellij delete-session $name --force
-            print $"Creating new session with layout ($layout)"
-            if $in_zellij {
-                zellij action -c $name --layout $layout
-            } else {
-                zellij --session $name --new-session-with-layout $layout
-            }
-        } else {
-            print $"Session ($name) exists and is alive..."
-            if $in_zellij {
-                print "Switching to session"
-                zellij action switch-session $name
-            } else {
-                print "Attaching to session"
-                zellij attach $name
-            }
-        }
-    } else {
-        print $"No session found, creating new one with layout ($layout)..."
-        if $in_zellij {
-            zellij action new-session --name $name --layout $layout
-        } else {
-            zellij --session $name --new-session-with-layout $layout
-        }
-    }
-}
-
 # Source theme configuration
-source ~/code/github/dotfiles/.config/nushell/black-metal-bathory.nu
+# source ~/code/github/dotfiles/.config/nushell/black-metal-bathory.nu
 source ~/code/github/dotfiles/.config/nushell/prompt_levels.nu
 
 # -----------------------------------------------------------------------------
@@ -294,9 +233,9 @@ source ~/code/github/dotfiles/.config/nushell/rust.nu
 # EXTERNAL SOURCES AND INITIALIZATION
 # -----------------------------------------------------------------------------
 
-set color_config
-update terminal
-use activate
+# set color_config
+# update terminal
+# use activate
 
 $env.PROMPT_COMMAND = {||
   let icon = if ($env.LAST_EXIT_CODE == 0) {
@@ -320,7 +259,3 @@ $env.PROMPT_COMMAND_RIGHT = {||
     ($env.__LUA_INFO_CACHE.value | default "") + ($env.__RUST_INFO_CACHE.value | default "") + ($env.__NODE_INFO_CACHE.value | default "")
   }
 }
-
-# Initialize starship
-# mkdir ~/.cache/starship
-# starship init nu | save -f ~/.cache/starship/init.nu
