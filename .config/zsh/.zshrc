@@ -1,51 +1,95 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Set oh-my-zsh theme (robbyrussell is default)
+ZSH_THEME="robbyrussell"
+
 plugins=(
   git
-  # zsh-lazyload
-  zsh-autosuggestions
+  zsh-autosuggestions     # Fish-like autosuggestions
+  zsh-syntax-highlighting # Syntax highlighting as you type
 )
 
 source $ZSH/oh-my-zsh.sh
+
+##########
+# AUTOCOMPLETE CONFIG (Fish-like behavior)
+##########
+
+# Accept autosuggestion with Ctrl+Space or End key
+bindkey "^ " autosuggest-accept
+bindkey "^[[F" autosuggest-accept  # End key
+
+# Partial acceptance with Ctrl+Right Arrow
+bindkey "^[[1;5C" forward-word
+
+# Autosuggestion color (gray like fish)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#808080"
+
+# Faster autosuggestions (async mode)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 
 ##########
 # HISTORY
 ##########
 
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=20000        # Reduced from 50k for performance
+SAVEHIST=10000        # Reduced from 50k - saves disk space
 
-setopt INC_APPEND_HISTORY     # Immediately append to history file.
-setopt EXTENDED_HISTORY       # Record timestamp in history.
-setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS       # Dont record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS   # Delete old recorded entry if new entry is a duplicate.
-setopt HIST_FIND_NO_DUPS      # Do not display a line previously found.
-setopt HIST_IGNORE_SPACE      # Dont record an entry starting with a space.
-setopt HIST_SAVE_NO_DUPS      # Dont write duplicate entries in the history file.
-setopt SHARE_HISTORY          # Share history between all sessions.
-unsetopt HIST_VERIFY          # Execute commands using history (e.g.: using !$) immediately
+setopt HIST_IGNORE_DUPS              # Remove duplicates before printing history entry
+setopt HIST_FIND_NO_DUPS             # Don't search in already-printed entries
+setopt HIST_EXPIRE_DUPS_FIRST         # Expire first those printed more than once
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt SHARE_HISTORY
+
+##########
+# ENV
+##########
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+export GOPATH=$HOME/go
+export BUN_INSTALL="$HOME/.bun"
+export PNPM_HOME="$HOME/Library/pnpm"
+export PYENV_ROOT="$HOME/.pyenv"
+
+##########
+# PATH
+##########
+
+path=(
+  /usr/local/bin
+  /usr/bin
+  /bin
+  /usr/sbin
+  /sbin
+  /opt/homebrew/bin
+  $HOME/.cargo/bin       # Cargo binaries (go + rust tooling)
+  /usr/local/go/bin      # Go binaries
+  $HOME/.yarn/bin
+  $GOPATH/bin
+  $BUN_INSTALL/bin
+  $PNPM_HOME
+  /opt/homebrew/opt/fnm/bin
+  /Applications/WezTerm.app/Contents/MacOS
+  $PYENV_ROOT/bin
+  $path
+)
+export PATH
 
 ##########
 # ALIAS
 ##########
 
-alias tx="tmuxinator"
-
-# (adidas) chk commands
-alias diffmain="git diff main --name-only --diff-filter=d '*.js' '*.jsx' '*.ts' '*.tsx'"
-alias difflint="git diff main --name-only --diff-filter=d '*.ts' '*.tsx' | xargs eslint_d --fix"
-alias difftest="git diff main --name-only --diff-filter=d '*.spec.*' | fzf -m | xargs yarn jest --config=frontend/jest.frontend.json"
-
-alias pn='pnpm'
 alias lg='lazygit'
-alias fp="bash ~/code/github/dotfiles/.config/zsh/find-project.sh"
-
+alias mg='mergiraf'
+alias ju='just --justfile ~/.justfile --working-directory .'
 
 # Kubernetes
 alias k="kubectl"
@@ -54,98 +98,43 @@ alias kr="kubectl replace"
 alias krm="kubectl delete"
 alias kd="kubectl describe"
 alias kg="kubectl get"
-alias kdr="kubectl --dry-run=\"client\" -o yaml"
+alias kdr='kubectl --dry-run="client" -o yaml'
 alias kdash="k9s --logoless"
 
-# docker
-alias dlsc='docker container ls -a' # -a because I want to see ALL
-alias dlsi='docker images -a' # -a because I want to see ALL
+# Docker
+alias dlsc='docker container ls -a'
+alias dlsi='docker images -a'
 alias dps='docker ps'
 alias dcud='docker-compose up -d'
 alias dcd='docker-compose down'
 alias dockerclean='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 
-# Recoding
-alias record='asciinema rec ./recoding.cast'
+# Recording
+alias record='asciinema rec ./recording.cast'
 alias showreel='asciinema rec'
 
-# nvim
-alias resetnvim='nvim +Deletesession +qall'
+##########
+# TOOLS
+##########
 
-alias testfront="TZ=Europe/Amsterdam \
-BABEL_ENV='test' \
-NODE_ICU_DATA=node_modules/full-icu \
-LC_ALL=en_US.utf-8 \
-JEST_SUITE_NAME='Frontend_Tests' \
-./node_modules/.bin/jest \
---config=frontend/jest.frontend.json \
---maxWorkers=80% -u \
---cacheDirectory=./.jest-cache"
+# pyenv - use --no-rehash for faster startup
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init - --no-rehash)"
+fi
 
-export HOMEBREW_NO_AUTO_UPDATE=1
-
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/.yarn/bin:$PATH
-export PATH="/usr/local/go/bin":$PATH
-export PATH="/usr/local/share/npm/bin:$PATH"
-
-# Bun
-export BUN_INSTALL="/Users/verbukoe/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Brew told me to set this
-# export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-# export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
-
-# completions
-[ -s "/Users/verbukoe/.bun/_bun" ] && source "/Users/verbukoe/.bun/_bun"
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export NVM_DIR=~/.nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-# Wezterm
-PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
-
-# pnpm
-export PNPM_HOME="/Users/koenverburg/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-# Rust
-export PATH="$PATH:$HOME/.cargo/env"
-
-# pnpm
-export PATH="$PATH:$PNPM_HOME"
-
-# Golang
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH
-export PATH=$PATH:$GOPATH/bin
-
-# pnpm endfpath=($fpath "/Users/koenverburg/.zfunctions")
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-eval "$(starship init zsh)"
-
-# fnm
-FNM_PATH="/opt/homebrew/opt/fnm/bin"
-if [ -d "$FNM_PATH" ]; then
-  eval "`fnm env`"
+# fnm - explicitly specify zsh
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
 # bun completions
-[ -s "/Users/verbukoe/code/2025-h2/checkout-bridge/~/.bun/_bun" ] && source "/Users/verbukoe/code/2025-h2/checkout-bridge/~/.bun/_bun"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
-# bun
-export BUN_INSTALL="~/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+##########
+# TENX
+##########
+
+function fp() {
+  local dir
+  dir=$(tenx find-project) && cd "$dir"
+}
