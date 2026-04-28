@@ -35,7 +35,7 @@ def --env update_git_info_cache [] {
     "main" => $branch,
     "develop" => $branch,
     _ => {
-      if ($branch | str starts-with "OPP") {
+      if ($branch | str starts-with "DXP") {
         (git branch --show-current | str trim | str substring 0..8)
       } else { "" }
     }
@@ -61,4 +61,3 @@ $env.config.hooks.env_change.PWD = (
     code: {|| update_git_info_cache }
   }
 )
-
