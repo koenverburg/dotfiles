@@ -64,20 +64,19 @@ export PYENV_ROOT="$HOME/.pyenv"
 ##########
 
 path=(
-  /usr/local/bin
-  /usr/bin
   /bin
-  /usr/sbin
   /sbin
-  /opt/homebrew/bin
-  $HOME/.cargo/bin       # Cargo binaries (go + rust tooling)
+  /usr/bin
+  /usr/sbin
+  /usr/local/bin
   /usr/local/go/bin      # Go binaries
+  /opt/homebrew/bin
+  /opt/homebrew/opt/fnm/bin
+  $HOME/.local/bin
+  $HOME/.cargo/bin       # Cargo binaries (go + rust tooling)
   $HOME/.yarn/bin
   $GOPATH/bin
   $BUN_INSTALL/bin
-  $PNPM_HOME
-  /opt/homebrew/opt/fnm/bin
-  /Applications/WezTerm.app/Contents/MacOS
   $PYENV_ROOT/bin
   $path
 )

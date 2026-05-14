@@ -40,7 +40,7 @@ keybinds clear-defaults=true {
         bind "i" { TogglePanePinned; SwitchToMode "Normal"; }
     }
     move {
-        bind "Ctrl h" { SwitchToMode "Normal"; }
+        bind "Ctrl m" { SwitchToMode "Normal"; }
         bind "n" "Tab" { MovePane; }
         bind "p" { MovePaneBackwards; }
         bind "h" "Left" { MovePane "Left"; }
@@ -269,7 +269,7 @@ plugins {
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     compact-bar location="zellij:compact-bar" {
-        tooltip "H"
+        tooltip "F1"
     }
     session-manager location="zellij:session-manager"
     welcome-screen location="zellij:session-manager" {

@@ -69,6 +69,40 @@ path add /opt/homebrew/opt/fnm/bin
 path add ~/code/tools/typescript-go/built/local
 
 # -----------------------------------------------------------------------------
+# ENVIRONMENT VARIABLES
+# -----------------------------------------------------------------------------
+
+# Go configuration
+$env.GOROOT = "/usr/local/go"
+$env.GOPATH = "~/.local/share/go"
+$env.GOMODCACHE = "~/.local/share/go-mod-cache"
+
+# Development tools
+$env.EDITOR = "nvim"
+$env.BUN_INSTALL = "~/.bun"
+$env.FNM_PATH = "/opt/homebrew/opt/fnm/bin"
+
+# System configuration
+$env.HOMEBREW_NO_AUTO_UPDATE = "1"
+$env.CPPFLAGS = "-I/opt/homebrew/opt/curl/include"
+$env.PKG_CONFIG_PATH = "/opt/homebrew/opt/curl/lib/pkgconfig"
+
+# -----------------------------------------------------------------------------
+# NUSHELL CONFIGURATION
+# -----------------------------------------------------------------------------
+
+$env.config.show_banner = false
+$env.config.buffer_editor = "nvim"
+
+# History configuration
+# $env.config.history = {
+#     file: ($nu.home-path | ".nu_history")
+#     max_size: 50000
+#     sync_on_enter: true
+# }
+>>>>>>> Stashed changes
+
+# -----------------------------------------------------------------------------
 # ALIASES
 # -----------------------------------------------------------------------------
 

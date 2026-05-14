@@ -17,20 +17,18 @@ layout {
 
         format_center ""
 
-        format_right "{pipe_zjstatus_hints} {datetime}"
+        format_right "{datetime}"
 
         format_space  ""
 
         // format_space  "#[bg=#000000]"
 
-        tab_normal    "#[fg=#333333] ○ {name} "
+        tab_normal    "#[fg=#aaaaaa] ○ {name} "
         tab_active    "#[fg=#c1c1c1,bold] ● {name} "
 
         datetime      "#[fg=#fbcb97] {format} "
         datetime_format "%A, %d %b %Y %H:%M"
         datetime_timezone "Europe/Amsterdam"
-
-        pipe_zjstatus_hints_format "{output}"
       }
     }
     children
