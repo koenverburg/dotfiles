@@ -1,0 +1,12 @@
+cwd := `pwd`
+
+download-model MODEL FILE:
+  hf download {{MODEL}} \
+    --include "*Q4_K_M.gguf" "*mmproj-F16.gguf" "*MTP*.gguf" \
+    --local-dir ./{{FILE}}
+
+download-tool TOOL NAME:
+  git clone {{TOOL}} ~/code/tools/{{NAME}} --depth 10
+
+
+import? '~/code/github/adidas/.config/root.justfile'

@@ -100,7 +100,6 @@ $env.config.buffer_editor = "nvim"
 #     max_size: 50000
 #     sync_on_enter: true
 # }
->>>>>>> Stashed changes
 
 # -----------------------------------------------------------------------------
 # ALIASES

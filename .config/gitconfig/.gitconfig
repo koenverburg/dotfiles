@@ -18,6 +18,12 @@
 [includeIf "gitdir:~/code/2025/"]
   path = ~/code/bitbucket.gitconfig
 
+[includeIf "gitdir:~/code/2026/"]
+  path = ~/code/bitbucket.gitconfig
+
+[includeIf "gitdir:~/code/workspaces"]
+  path = ~/code/bitbucket.gitconfig
+
 [push]
   default = current
 
