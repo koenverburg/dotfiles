@@ -1,13 +1,13 @@
 [user]
   name = Koen Verburg
-  email = creativekoen@gmail.com
+  email = 10489237+koenverburg@users.noreply.github.com
 
 [core]
   editor = vim
 
 [github]
   name = Koen Verburg
-  email = creativekoen@gmail.com
+  email = 10489237+koenverburg@users.noreply.github.com
 
 [includeIf "gitdir:~/code/2023/"]
   path = ~/code/bitbucket.gitconfig
@@ -21,7 +21,7 @@
 [includeIf "gitdir:~/code/2026/"]
   path = ~/code/bitbucket.gitconfig
 
-[includeIf "gitdir:~/code/workspaces"]
+[includeIf "gitdir:~/code/workspaces/"]
   path = ~/code/bitbucket.gitconfig
 
 [push]
@@ -35,6 +35,9 @@
 
 [interactive]
   diffFilter = delta --color-only --features=interactive
+
+[commit]
+  gpgsign = false
 
 [merge "mergiraf"]
   name = mergiraf
@@ -65,3 +68,5 @@
 
 [safe]
 	directory = /Users/verbukoe/code/github/dotfiles/dotbot
+[git]
+	sign-commit = false
