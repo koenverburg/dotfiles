@@ -66,7 +66,3 @@
 [init]
 	defaultBranch = main
 
-[safe]
-	directory = /Users/verbukoe/code/github/dotfiles/dotbot
-[git]
-	sign-commit = false

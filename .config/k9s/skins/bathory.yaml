@@ -1,0 +1,65 @@
+# ~/.config/k9s/skins/bathory.yaml
+k9s:
+  # Global look & feel
+  body:
+    fgColor: "#c1c1c1"   # base05
+    bgColor: "#000000"   # base00
+    logoColor: "#5f8787" # base08
+
+  info:
+    fgColor: "#aaaaaa"   # base09
+    sectionColor: "#888888" # base0D
+
+  frame:
+    border:
+      fgColor: "#333333"   # base03
+      focusColor: "#5f8787" # base08
+    menu:
+      fgColor: "#c1c1c1"   # base05
+      keyColor: "#e78a53"  # base0A
+      numKeyColor: "#888888" # base0D
+    crumbs:
+      fgColor: "#c1c1c1"   # base05
+      bgColor: "#121212"   # base01
+      activeColor: "#fbcb97" # base0B
+    status:
+      newColor: "#fbcb97"      # base0B
+      modifyColor: "#e78a53"   # base0A
+      addColor: "#5f8787"      # base08
+      errorColor: "#444444"    # base0F (muted “danger”)
+      highlightColor: "#aaaaaa" # base09
+      killColor: "#999999"     # base04/0E
+      completedColor: "#222222" # base02
+    title:
+      fgColor: "#c1c1c1"       # base05
+      bgColor: "#000000"       # base00
+      highlightColor: "#e78a53" # base0A
+      counterColor: "#888888"  # base0D
+      filterColor: "#999999"   # base04/0E
+
+  views:
+    table:
+      fgColor: "#c1c1c1"
+      bgColor: "#000000"
+      header:
+        fgColor: "#aaaaaa"     # base09
+        bgColor: "#000000"
+        sorterColor: "#e78a53" # base0A
+      row:
+        # Selected row background
+        cursorColor: "#121212" # base01
+        # Marked rows
+        markColor: "#5f8787"   # base08
+      # Status-column specific overrides (optional)
+      status:
+        completedColor: "#222222"
+        pendingColor: "#888888"
+        errorColor: "#444444"
+
+    logs:
+      fgColor: "#c1c1c1"
+      bgColor: "#000000"
+      indicator:
+        fgColor: "#e78a53"     # base0A
+        bgColor: "#000000"
+

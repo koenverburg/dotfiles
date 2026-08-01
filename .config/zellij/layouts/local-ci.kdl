@@ -1,0 +1,14 @@
+layout {
+  pane size=1 {
+    command "dum" "typecheck"
+  }
+  pane size=1 {
+    command "dum" "build:ts"
+  }
+  pane size=1 {
+    command "dum" "build:ssr"
+  }
+  pane size=1 {
+    command "dum" "lint"
+  }
+}

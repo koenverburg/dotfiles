@@ -1,9 +1,0 @@
-- name: Remove python2
-  become: yes
-  apt:
-    name: python2
-    state: absent
-
-- name: Run autoremove
-  become: yes
-  shell: apt autoremove --purge

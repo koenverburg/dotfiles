@@ -1,0 +1,106 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
+        hide_frame_for_single_pane "true"
+
+        mode_normal        "#[fg=#c1c1c1,bold] {name} "
+        mode_locked        "#[fg=#5f8787,bold] {name} "
+        mode_resize        "#[fg=#a06666,bold] {name} "
+        mode_pane          "#[fg=#aaaaaa,bold] {name} "
+        mode_tab           "#[fg=#999999,bold] {name} "
+        mode_scroll        "#[fg=#a66666,bold] {name} "
+        mode_session       "#[fg=#aaaaaa,bold] {name} "
+        mode_move          "#[fg=#c1c1c1,bold] {name} "
+
+        format_left   "{mode}#[fg=#e78a53,bold]({session}) {tabs}"
+
+        format_center ""
+
+        format_right "{datetime}"
+
+        format_space  ""
+
+        // format_space  "#[bg=#000000]"
+
+        tab_normal    "#[fg=#aaaaaa] ○ {name} "
+        tab_active    "#[fg=#c1c1c1,bold] ● {name} "
+
+        datetime      "#[fg=#fbcb97] {format} "
+        datetime_format "%A, %d %b %Y %H:%M"
+        datetime_timezone "Europe/Amsterdam"
+      }
+    }
+    children
+  }
+
+  // tab name="Translations" {
+  //   pane {
+  //     cwd "~/code/2026/" // clone the repo
+  //   }
+  // }
+
+  tab name="Bridge" {
+    pane {
+      cwd "~/code/2026/checkout-bridge"
+    }
+  }
+
+  tab name="PDP" {
+    pane {
+      cwd "~/code/2026/pdp"
+    }
+  }
+
+  tab name="Unified" {
+    pane {
+      cwd "~/code/2026/ecom-checkout"
+    }
+  }
+
+  tab name="Toss SDK OG" {
+    pane {
+      cwd "~/code/2026/ecom.git/tickets/DXP-6065-toss-sdk-hooks"
+    }
+  }
+
+  tab name="Toss SDK Buttons" {
+    pane {
+      cwd "~/code/2026/ecom.git/tickets/DXP-6065-add-hpp-buttons"
+    }
+  }
+
+  tab name="Payment Widgets" {
+    pane {
+      cwd "~/code/2026/checkout.git/tickets/DXP-6643-add-toss-payment-widget"
+    }
+  }
+
+  tab name="Payment Widgets" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "~/code/2026/checkout.git/tickets/DXP-6643-add-toss-payment-widget"
+      }
+      pane {
+        cwd "~/code/2026/checkout.git/tickets/DXP-6643-add-toss-payment-widget"
+      }
+    }
+  }
+
+  tab name="Payment Widgets" {
+    pane {
+      cwd "~/code/2026/checkout.git/tickets/DXP-6795-add-toss-brand-pay"
+    }
+  }
+
+  tab name="Toss Brand Pay" {
+    pane split_direction="vertical" {
+      pane {
+        cwd "~/code/2026/checkout.git/tickets/DXP-6795-add-toss-brand-pay"
+      }
+      pane {
+        cwd "~/code/2026/checkout.git/tickets/DXP-6795-add-toss-brand-pay"
+      }
+    }
+  }
+}

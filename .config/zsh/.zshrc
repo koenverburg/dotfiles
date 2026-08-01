@@ -137,3 +137,8 @@ function fp() {
   local dir
   dir=$(tenx find-project) && cd "$dir"
 }
+
+# >>> aip >>>
+export PATH="/Users/verbukoe/.local/bin:$PATH"
+fpath=("/Users/verbukoe/.local/share/aip/completions" $fpath)
+# <<< aip <<<

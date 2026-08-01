@@ -1,5 +1,0 @@
-- name: Setting up Ubuntu
-  hosts: local
-  tasks:
-    - include: ../tasks/ubuntu/neovim.yml
-    - include: ../tasks/ubuntu/zsh.yml
