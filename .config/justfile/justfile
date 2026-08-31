@@ -8,5 +8,7 @@ download-model MODEL FILE:
 download-tool TOOL NAME:
   git clone {{TOOL}} ~/code/tools/{{NAME}} --depth 10
 
+edit-ssh:
+  nvim ~/.ssh/config
 
 import? '~/code/github/adidas/.config/root.justfile'
