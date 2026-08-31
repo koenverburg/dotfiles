@@ -1,4 +1,5 @@
 #!/usr/bin/env nu
+
 # Bootstrap symlink manager
 # Supports macOS and Linux/Ubuntu config mappings
 
@@ -21,8 +22,11 @@ def linux-dirs [] {
 
 def macos-configs [] {
   {
+    zshrc:  { source: ".config/zsh/.zshrc",    target: "~/.zshrc"  }
+    nvim:  { source: "~/code/github/nvim",    target: "~/.config/nvim"  }
     rootjust:  { source: ".config/justfile/justfile",    target: "~/.justfile"  }
     gitconfig: { source: ".config/gitconfig/.gitconfig", target: "~/.gitconfig" }
+
 
     k9s:            { source: ".config/k9s",                           target: "~/.config/k9s"                     }
     # nvim:           { source: ".config/nvim",                          target: "~/.config/nvim"                    }
@@ -33,6 +37,7 @@ def macos-configs [] {
     lazygit:        { source: ".config/lazygit/config.yml",             target: "~/Library/Application Support/lazygit/config.yml"             }
     nushell_config: { source: ".config/nushell/config.nu",              target: "~/Library/Application Support/nushell/config.nu"              }
     nushell_theme:  { source: ".config/nushell/black-metal-bathory.nu", target: "~/Library/Application Support/nushell/black-metal-bathory.nu" }
+    ghostty:        { source: ".config/ghostty/config.ghostty",         target: "~/Library/Application Support/com.mitchellh.ghostty/config.ghostty" }
   }
 }
 
@@ -45,6 +50,7 @@ def macos-dirs [] {
     "~/.config/zellij"
     "~/Library/Application Support/lazygit"
     "~/Library/Application Support/nushell"
+    "~/Library/Application Support/com.mitchellh.ghostty"
   ]
 }
 

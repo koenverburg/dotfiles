@@ -102,6 +102,9 @@ alias is := init-symlinks
 sync-symlinks:
     nu bootstrap.nu {{ os() }}
 
+sync-symlink TARGET:
+    nu bootstrap.nu {{ os() }} {{ TARGET }}
+
 init-symlinks:
     nu bootstrap.nu {{ os() }} init
 
