@@ -5,24 +5,8 @@
 [core]
   editor = vim
 
-[github]
-  name = Koen Verburg
-  email = 10489237+koenverburg@users.noreply.github.com
-
-[includeIf "gitdir:~/code/2023/"]
-  path = ~/code/bitbucket.gitconfig
-
-[includeIf "gitdir:~/code/2024/"]
-  path = ~/code/bitbucket.gitconfig
-
-[includeIf "gitdir:~/code/2025/"]
-  path = ~/code/bitbucket.gitconfig
-
-[includeIf "gitdir:~/code/2026/"]
-  path = ~/code/bitbucket.gitconfig
-
-[includeIf "gitdir:~/code/workspaces/"]
-  path = ~/code/bitbucket.gitconfig
+[includeIf "gitdir:~/workspaces/"]
+  path = ~/workspaces/adidas.gitconfig
 
 [push]
   default = current
@@ -44,25 +28,8 @@
   driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 
 [alias]
-  cedit = commit --amend
-  co = checkout
-  com = checkout main
-  cod = checkout develop
-  cob = branch -b
-
   # pretty log
   plog = log --color --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %s' --abbrev-commit --
 
-  refresh = !sh -c "git checkout main;git pull;git checkout -"
-  lint = !sh -c "git show --pretty="" --name-only HEAD --diff-filter=d | grep '.ts\\|.js\\|.tsx|\\.jsx' | xargs npx eslint_d"
-  changedfiles = !git --no-pager diff main...HEAD --name-only --diff-filter=d '*.js' '*.jsx' '*.ts' '*.tsx'
-  changedtests = !git --no-pager diff main...HEAD --name-only --diff-filter=d '*.spec.js' '*.spec.jsx' '*.spec.ts' '*.spec.tsx'
-
-  # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
-  dlog = -c diff.external=difft log --ext-diff
-  dshow = -c diff.external=difft show --ext-diff
-  ddiff = -c diff.external=difft diff
-
 [init]
 	defaultBranch = main
-
