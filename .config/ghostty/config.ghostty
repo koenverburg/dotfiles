@@ -23,7 +23,7 @@ macos-icon-ghost-color = #E78B52
 macos-icon-screen-color = #000000
 
 # theme = dark:catppuccin-frappe,light:Builtin Solarized Light
-theme = dark:Nord,light:Nord Light
+theme = dark:Gruvbox Dark,light:Nord Light
 # shell-integration = nu
 
 # Scheme: Black Metal (Bathory)
