@@ -5,9 +5,6 @@
 [core]
   editor = vim
 
-[includeIf "gitdir:~/workspaces/"]
-  path = ~/workspaces/adidas.gitconfig
-
 [push]
   default = current
 

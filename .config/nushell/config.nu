@@ -66,7 +66,9 @@ path add ~/.cargo/bin
 path add ~/.local/bin
 path add ~/.local/share/go/bin
 path add /opt/homebrew/opt/fnm/bin
+# path add ($env.FNM_MULTISHELL_PATH + /bin)
 path add ~/code/tools/typescript-go/built/local
+# path add /opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.3.0/bin
 
 # -----------------------------------------------------------------------------
 # ENVIRONMENT VARIABLES
@@ -139,9 +141,13 @@ alias ju = just --justfile ~/.justfile --working-directory .
 def --env fp [] {
     let selected = (
         ls ~/code/github
-        | append (ls ~/code/2026)
-        | append (ls ~/code/2026/ecom.git/tickets)
-        | append (ls ~/code/2026/checkout.git/tickets)
+        # | append (ls ~/code/2026)
+        # | append (ls ~/code/2026/ecom.git/tickets)
+        # | append (ls ~/code/2026/checkout.git/tickets)
+        # | append (ls ~/code/2026)
+        # | append (ls ~/code/2025)
+        # | append (ls ~/code/2025-h2)
+        # | append (ls ~/code/2025-h2/checkout.git/tickets)
         | where type == dir
         | get name
         | str join "\n"
@@ -164,9 +170,11 @@ def fps [] {
     # Select project
     let selected = (
         ls ~/code/github
-        | append (ls ~/code/2026)
-        | append (ls ~/code/2026/ecom.git/tickets)
-        | append (ls ~/code/2026/checkout.git/tickets)
+        # | append (ls ~/code/2026)
+        # | append (ls ~/code/2026/ecom.git/tickets)
+        # | append (ls ~/code/2026/checkout.git/tickets)
+        # | append (ls ~/code/2025-h2)
+        # | append (ls ~/code/2025-h2/checkout.git/tickets)
         | where type == dir
         | get name
         | str join "\n"
@@ -202,7 +210,7 @@ def fps [] {
 
     # Get all sessions
     let sessions = (
-        do { zellij ls -n } | complete | get stdout | lines | each { |line| $line | str trim } | where $it != ""
+      do { zellij ls -n } | complete | get stdout | lines | each { |line| $line | str trim } | where $it != ""
     )
 
     # Check if any session with our name exists

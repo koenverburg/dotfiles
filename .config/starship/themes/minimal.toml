@@ -1,0 +1,38 @@
+format = """\
+$directory $git_branch$git_status $character\
+"""
+right_format = """\
+$rust $nodejs $battery\
+"""
+
+[directory]
+format = "[$path](fg:#c1c1c1) "
+
+[git_branch]
+format = "[$branch](fg:#aaaaaa) "
+
+[git_status]
+format = '([$all_status$ahead_behind](fg:#666666)) '
+
+[kubernetes]
+disabled = true
+
+[rust]
+format = '[🦀 $version](fg:#999999) '
+detect_folders = []
+
+[nodejs]
+format = '[⬢ $version](fg:#999999) '
+detect_files = []
+
+[battery]
+discharging_symbol = "–"
+charging_symbol = "+"
+full_symbol = ""
+[[battery.display]]
+threshold = 100
+style = "fg:#999999"
+
+[character]
+success_symbol = "[#](fg:#c1c1c1) "
+error_symbol = "[!](fg:#ff4444) "

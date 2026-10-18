@@ -122,8 +122,67 @@ if command -v pyenv >/dev/null 2>&1; then
 fi
 
 # fnm - explicitly specify zsh
-if command -v fnm >/dev/null 2>&1; then
-  eval "$(fnm env --use-on-cd --shell zsh)"
+# if command -v fnm >/dev/null 2>&1; then
+#   eval "$(fnm env --use-on-cd --shell zsh)"
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.yarn/bin:$PATH
+export PATH="/usr/local/go/bin":$PATH
+export PATH="/usr/local/share/npm/bin:$PATH"
+
+# Bun
+export BUN_INSTALL="/Users/verbukoe/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Brew told me to set this
+# export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+# export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+
+# completions
+[ -s "/Users/verbukoe/.bun/_bun" ] && source "/Users/verbukoe/.bun/_bun"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export NVM_DIR=~/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Wezterm
+PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+
+# pnpm
+export PNPM_HOME="/Users/koenverburg/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# Rust
+export PATH="$PATH:$HOME/.cargo/env"
+
+# pnpm
+export PATH="$PATH:$PNPM_HOME"
+
+# Golang
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
+
+# pnpm endfpath=($fpath "/Users/koenverburg/.zfunctions")
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+eval "$(starship init zsh)"
+
+# fnm
+FNM_PATH="/opt/homebrew/opt/fnm/bin"
+if [ -d "$FNM_PATH" ]; then
+  eval "`fnm env`"
 fi
 
 # bun completions
@@ -142,3 +201,18 @@ function fp() {
 export PATH="/Users/verbukoe/.local/bin:$PATH"
 fpath=("/Users/verbukoe/.local/share/aip/completions" $fpath)
 # <<< aip <<<
+# bun
+export BUN_INSTALL="~/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# opencode
+export PATH=/Users/koenverburg/.opencode/bin:$PATH
+
+. "$HOME/.local/bin/env"
+
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"

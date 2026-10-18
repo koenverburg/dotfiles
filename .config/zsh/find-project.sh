@@ -6,7 +6,10 @@ if [[ -z $selected ]]; then
   exit 0
 fi
 
+# cd $selected
+
 selected_name=$(basename "$selected" | tr . _)
+
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then

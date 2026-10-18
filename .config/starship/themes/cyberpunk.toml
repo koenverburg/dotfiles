@@ -1,0 +1,40 @@
+format = """
+[](#ff00ff)$directory[](fg:#ff00ff bg:#00ffff)$git_branch$git_status[](fg:#00ffff bg:#222222)$kubernetes[](fg:#222222)$character
+"""
+right_format = """\
+$rust $nodejs $battery
+"""
+
+[directory]
+style = "bg:#ff00ff fg:black"
+format = "[$path]($style) "
+
+[git_branch]
+style = "bg:#00ffff fg:black"
+format = " [$branch]($style)"
+
+[git_status]
+style = "bg:#00ffff fg:black"
+format = ' [$all_status]($style)'
+
+[kubernetes]
+style = "bg:#222222 fg:#00ffff"
+format = " [$context/$namespace]($style) "
+
+[rust]
+format = '[🦀 $version](bold #ff00ff) '
+
+[nodejs]
+format = '[⬢ $version](bold #00ffff) '
+
+[battery]
+discharging_symbol = "🔋"
+charging_symbol = "⚡"
+full_symbol = ""
+[[battery.display]]
+threshold = 100
+style = "bold #ff00ff"
+
+[character]
+success_symbol = "[➜](bold #00ffff) "
+error_symbol = "[✗](bold red) "

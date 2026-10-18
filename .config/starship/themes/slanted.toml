@@ -1,0 +1,38 @@
+format = """
+[](#999999)$directory[](fg:#999999 bg:#5f8787)$git_branch$git_status[](fg:#5f8787 bg:#333333)$character
+"""
+right_format = """\
+$rust $nodejs $battery\
+"""
+
+[directory]
+style = "bg:#999999 fg:#000000"
+format = " [$path]($style)"
+
+[git_branch]
+style = "bg:#5f8787 fg:#ffffff"
+format = " [$branch]($style)"
+
+[git_status]
+style = "bg:#5f8787 fg:#ffffff"
+format = " [$all_status]($style)"
+
+[rust]
+format = '[🦀 $version](fg:#fbcb97) '
+detect_folders = []
+
+[nodejs]
+format = '[⬢ $version](fg:#e78a53) '
+detect_files = []
+
+[battery]
+discharging_symbol = "🔋"
+charging_symbol = "⚡"
+full_symbol = ""
+[[battery.display]]
+threshold = 100
+style = "fg:#aaaaaa"
+
+[character]
+success_symbol = "[⮞](fg:#fbcb97) "
+error_symbol = "[✗](fg:#ff0000) "
